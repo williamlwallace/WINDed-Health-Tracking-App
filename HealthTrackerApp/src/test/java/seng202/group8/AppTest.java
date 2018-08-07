@@ -35,4 +35,11 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    /**
+     * Lorenzo Fasano Initial test
+     */
+    public void lorenzoFasanoInitialTest() {
+        assertTrue(true);
+    }
 }
