@@ -42,9 +42,4 @@ public class AppTest
     public void lorenzoFasanoInitialTest() {
         assertTrue(true);
     }
-
-    public void samTest() {
-        App samApp = new App();
-        assertEquals(1000, samApp.Sam);
-    }
 }
