@@ -50,4 +50,11 @@ public class AppTest
     public void JoelRiddenTest1() {
         assertTrue(true);
     }
+
+    /**
+     * William Wallace
+     */
+    public void williamWallaceInitialTest() {
+        assertTrue(true);
+    }
 }
