@@ -1,7 +1,7 @@
 junit:
   stage: test
   script:
-    - mvn -B clean test
+    - cd HealthTrackerApp mvn -B clean test
 generate_artifacts:
   stage: deploy
   script:
