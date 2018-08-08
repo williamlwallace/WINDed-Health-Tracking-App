@@ -48,6 +48,13 @@ public class AppTest
     }
 
     /**
+     * William Wallace
+     */
+    public void williamWallaceInitialTest() {
+        assertTrue(true);
+    }
+
+    /**
      * Clarke Mcfadzien
      */
     public void clarkeTest() {
