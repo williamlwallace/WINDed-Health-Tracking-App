@@ -8,4 +8,4 @@ generate_artifacts:
     - mvn -B clean site package
   artifacts:
     paths:
-      - HealthTrackerApp/target/s202*.jar
+    - HealthTrackerApp/target/s202*.jar
