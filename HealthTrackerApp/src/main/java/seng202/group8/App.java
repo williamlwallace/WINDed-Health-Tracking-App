@@ -6,6 +6,7 @@ package seng202.group8;
  */
 public class App 
 {
+    public int sam = 1000;
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
