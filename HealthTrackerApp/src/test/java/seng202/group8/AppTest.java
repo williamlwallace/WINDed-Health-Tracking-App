@@ -42,4 +42,19 @@ public class AppTest
     public void lorenzoFasanoInitialTest() {
         assertTrue(true);
     }
+
+
+    /**
+     * Joel Ridden
+     */
+    public void JoelRiddenTest1() {
+        assertTrue(true);
+    }
+
+    /**
+     * William Wallace
+     */
+    public void williamWallaceInitialTest() {
+        assertTrue(true);
+    }
 }
