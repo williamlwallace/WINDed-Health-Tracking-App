@@ -1,18 +1,21 @@
 package seng202.group8.activity_collection;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ActivityList {
 
 
+    private String title;
+    private Date creationDate;
     private ArrayList<Activity> activityList;
-
 
     /**
      * Structure containing Activity object, offers storage, sort and retrieval of this objects.
      */
-    public ActivityList() {
+    public ActivityList(String title) {
         activityList= new ArrayList<Activity>();
+        this.title = title;
     }
 
 
@@ -25,7 +28,6 @@ public class ActivityList {
     }
 
     /**
-     *
      * @param activity a new Activity object to add to the activityList attribute
      * @return a boolean value
      */
