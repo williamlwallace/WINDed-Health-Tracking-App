@@ -14,10 +14,10 @@ public class ActivityList {
      * Structure containing Activity object, offers storage, sort and retrieval of this objects.
      */
     public ActivityList(String title) {
-        activityList= new ArrayList<Activity>();
         this.title = title;
+        creationDate = new Date();
+        activityList= new ArrayList<Activity>();
     }
-
 
     /**
      * @param index index of Activity object to retrieve
@@ -42,6 +42,48 @@ public class ActivityList {
         int finalSize = activityList.size();
 
         return (finalSize == (initialSize + 1));
+    }
+
+    /**
+     *
+     * @return the title attribute
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param newTitle a String object
+     */
+    public void setTitle(String newTitle) {
+        if (newTitle.length() < 20 && newTitle.length() > 5) {
+            this.title = newTitle;
+        } else {
+            // to limit in related View class, no point in adding an error handler here
+            System.out.println("Not acceptable title size");
+        }
+    }
+
+    /**
+     * @return the creationDate attribute
+     */
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    /**
+     * @param newCreationDate a Date greater than the current date (if any present)
+     */
+    public void setCreationDate(Date newCreationDate) {
+        if (creationDate != null) {
+            if (newCreationDate.getTime() > creationDate.getTime()) {
+                this.creationDate = newCreationDate;
+            } else {
+                System.out.println("Invalid date");
+            }
+        } else {
+            this.creationDate = newCreationDate;
+        }
     }
 
     /**
