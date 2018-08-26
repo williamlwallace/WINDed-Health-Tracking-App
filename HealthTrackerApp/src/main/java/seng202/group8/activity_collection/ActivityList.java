@@ -1,5 +1,7 @@
 package seng202.group8.activity_collection;
 
+import org.omg.CORBA.Current;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,7 +36,7 @@ public class ActivityList {
     public boolean insertActivity(Activity activity) {
         int initialSize = activityList.size();
         for (int i = 0; i < activityList.size(); i++) {
-            if (activity.mockVal < activityList.get(i).mockVal) {
+            if (activity.getCreationDate().before(activityList.get(i).getCreationDate())) {
                 activityList.add(i, activity);
             }
         }
@@ -56,7 +58,7 @@ public class ActivityList {
      * @param newTitle a String object
      */
     public void setTitle(String newTitle) {
-        if (newTitle.length() < 20 && newTitle.length() > 5) {
+        if (newTitle.length() < 25 && newTitle.length() > 5) {
             this.title = newTitle;
         } else {
             // to limit in related View class, no point in adding an error handler here
@@ -75,14 +77,11 @@ public class ActivityList {
      * @param newCreationDate a Date greater than the current date (if any present)
      */
     public void setCreationDate(Date newCreationDate) {
-        if (creationDate != null) {
-            if (newCreationDate.getTime() > creationDate.getTime()) {
-                this.creationDate = newCreationDate;
-            } else {
-                System.out.println("Invalid date");
-            }
-        } else {
+        Date currentDate = new Date();
+        if (newCreationDate.after(currentDate)) {
             this.creationDate = newCreationDate;
+        } else {
+            System.out.println("Invalid date");
         }
     }
 
