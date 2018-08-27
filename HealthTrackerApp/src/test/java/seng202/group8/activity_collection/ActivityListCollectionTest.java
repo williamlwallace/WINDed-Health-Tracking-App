@@ -49,7 +49,7 @@ public class ActivityListCollectionTest {
     public void setTitleRejectedBehaviour() {
         String newTitle = "No";
         activityListCollection.setTitle(newTitle);
-        assertEquals(activityListCollection.getTitle(), "I am long enough");
+        assertEquals(activityListCollection.getTitle(), "Great Collection");
     }
 
     @Test
