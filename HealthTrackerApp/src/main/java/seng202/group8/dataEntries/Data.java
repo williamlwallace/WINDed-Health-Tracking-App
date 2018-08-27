@@ -1,27 +1,33 @@
-import java.util.ArrayList;
-
 package seng202.group8.dataEntries;
 
-public abstract class Data
-{
+import java.util.ArrayList;
 
-    private String ActivityType = "Test";
+public abstract class Data {
 
-    private ArrayList<Tuple<Double, Double, Double>> coordinatesList = new ArrayList<Tuple<Double, Double, Double>>;
+    /*This structure uses the coordinates list, and heart rate list as arguments to calculate the calories consumed in
+    * an activity
+    * XX TESTS NOT WRITTEN JUST YET*/
 
-    private ArrayList<Integer> heartRateList = new ArrayList<Integer>;
+    private ArrayList<Double> coordinatesList;
+    private ArrayList<Integer> heartRateList;
+    private double consumedCalories;
 
-    private ArrayList<CSVDataLine> inputData;
+    public ArrayList<Double> getCoordinatesList() { return coordinatesList; }
+    public ArrayList<Integer> getHeartRateList() { return heartRateList; }
 
-    private abstract double consumedCalories();
+    public void setCoordinatesList(ArrayList<Double> newCoordinatesList) { this.coordinatesList = newCoordinatesList; }
+    public void setHeartRateList(ArrayList<Integer> newHeartRateList)  { this.heartRateList = newHeartRateList; }
+//    private ArrayList<CSVDataLine> inputData;
 
-    public static void main() {
+    abstract double getConsumedCalories();
 
-        inputData = getCSVActivities();
+    public Data(ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList, String activityType) {
 
-        heartRateList = getHeartRateList();
+//        double inputData = getCSVActivities();
+        this.heartRateList = newHeartRateList;
+        this.coordinatesList = newCoordinatesList;
+        this.consumedCalories = getConsumedCalories();
 
-        coordinatesList = getCoordinatesList();
     }
 
 }
