@@ -38,6 +38,7 @@ public class ActivityList {
         for (int i = 0; i < activityList.size(); i++) {
             if (activity.getCreationDate().before(activityList.get(i).getCreationDate())) {
                 activityList.add(i, activity);
+                return true;
             }
         }
         activityList.add(activity);
@@ -78,7 +79,7 @@ public class ActivityList {
      */
     public void setCreationDate(Date newCreationDate) {
         Date currentDate = new Date();
-        if (newCreationDate.after(currentDate)) {
+        if (newCreationDate.before(currentDate)) {
             this.creationDate = newCreationDate;
         } else {
             System.out.println("Invalid date");
