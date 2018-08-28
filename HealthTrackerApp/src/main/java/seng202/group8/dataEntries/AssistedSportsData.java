@@ -1,8 +1,11 @@
-package seng202.group8.dataEntries;
-
+//package seng202.group8.dataEntries;
+//
 //public class AssistedSportsData extends Data {
-//    double consumedCalories;
-
-//    abstract
-
+//
+//    private double consumedCalories;
+//
+//    abstract double getConsumedCalories(String activityType){
+//
+//    }
+//
 //}
