@@ -54,13 +54,21 @@ public class ActivityListCollectionTest {
 
     @Test
     public void insertActivityListTest() {
-        Date dateInFuture = activityListFastWalks.getCreationDate();
-        activityListJog.setCreationDate(new Date(dateInFuture.getTime() * 2));
-        activityListCollection.insertActivityList(activityListJog);
+
+        activityListJog.setCreationDate(new Date(1234));
+        activityListFastWalks.setCreationDate(new Date(2345));
+
         activityListCollection.insertActivityList(activityListFastWalks);
+        activityListCollection.insertActivityList(activityListJog);
+
+        for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
+            System.out.println(activityList.getCreationDate());
+            System.out.println(activityList.getTitle());
+        }
 
         String titleZerothPosActivityList = activityListCollection.getActivityListCollection().get(0).getTitle();
-        assertEquals(titleZerothPosActivityList, "Fast Walks with friends");
+        assertEquals(titleZerothPosActivityList, "Intense runs");
+
     }
 
 }
