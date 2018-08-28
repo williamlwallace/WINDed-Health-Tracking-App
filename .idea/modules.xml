@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SENG202Team8.iml" filepath="$PROJECT_DIR$/SENG202Team8.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/src/main/main.iml" filepath="$PROJECT_DIR$/HealthTrackerApp/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/src/test/test.iml" filepath="$PROJECT_DIR$/HealthTrackerApp/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" filepath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" />
     </modules>
   </component>
 </project>

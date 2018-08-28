@@ -20,6 +20,10 @@ public class WeightRecord extends Records{
      */
     public Double weight;
 
+    /**
+     * Adds a new weight record object and calls super classes functions for adding date and adding to record list
+     * @param weight the weight value as a double for the users weight entry
+     */
     public WeightRecord(Double weight) {
         setWeight(weight);
         super.createDate();
