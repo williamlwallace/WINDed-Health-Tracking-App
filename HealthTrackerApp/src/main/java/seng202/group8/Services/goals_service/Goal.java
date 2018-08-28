@@ -3,8 +3,11 @@ package seng202.group8.Services.goals_service;
 import seng202.group8.Services.goals_service.goal_types.GoalType;
 import seng202.group8.User.User;
 
+import java.util.Date;
+
 public abstract class Goal {
 
+    private Date startDate;
     private GoalType goalType;
     private User user;
     private boolean isCompleted;
@@ -12,6 +15,7 @@ public abstract class Goal {
 
     public Goal(User user) {
         this.user = user;
+        this.startDate = new Date();
     }
 
     /**
@@ -54,12 +58,29 @@ public abstract class Goal {
         return isCompleted;
     }
 
+
     /**
      *
      * @param isCompleted new boolean value to assign to isCompleted parameter
      */
     public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
+    }
+
+    /**
+     *
+     * @return the goal startDate
+     */
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    /**
+     *
+     * @param startDate a new Date object for startDate parameter
+     */
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public abstract void checkIsCompleted();
