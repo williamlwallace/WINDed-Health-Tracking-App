@@ -124,4 +124,26 @@ public class RecordsTest {
         ArrayList<WeightRecord> list = UserStats.getUserWeightRecords();
         assertEquals(list.get(0).getWeight(), weight);
     }
+
+    @Test
+    public void checkBMIList() {
+        UserStats.addUserBMITypeRecords(FIT);
+        ArrayList<BMITypeRecord> list = UserStats.getUserBMITypeRecords();
+        assertEquals(list.get(0).getBmi(), FIT);
+    }
+
+    @Test
+    public void checkFatList() {
+        Double fat = 16.75;
+        UserStats.addUserFatToMuscleRecords(fat);
+        ArrayList<FatToMuscleRecord> list = UserStats.getUserFatToMuscleRecords();
+        assertEquals(list.get(0).getFatToMuscle(), fat);
+    }
+
+    @Test
+    public void checkStressList() {
+        UserStats.addUserStressLevelRecords(PERCEIVED);
+        ArrayList<StressLevelRecord> list = UserStats.getUserStressLevelRecords();
+        assertEquals(list.get(0).getStress(), PERCEIVED);
+    }
 }
