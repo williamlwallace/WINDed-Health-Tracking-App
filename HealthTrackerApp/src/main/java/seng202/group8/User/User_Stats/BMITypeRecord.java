@@ -24,7 +24,7 @@ public class BMITypeRecord extends Records {
     public BMIType bmi;
 
     /**
-     * creates the object bmirecord and calls super classes function for date and adds to record list
+     * creates the object bmirecord and calls super classes function for date
      * @param bmi the input for creating the bmi record
      */
     public BMITypeRecord(BMIType bmi) {

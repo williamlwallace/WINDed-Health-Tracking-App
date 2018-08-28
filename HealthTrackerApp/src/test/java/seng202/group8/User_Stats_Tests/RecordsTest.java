@@ -12,6 +12,11 @@ import seng202.group8.User.User_Stats.StressLevelRecord;
 import seng202.group8.User.User_Stats.WeightRecord;
 
 import static org.junit.Assert.*;
+import static seng202.group8.User.BMIType.FIT;
+import static seng202.group8.User.BMIType.LIGHT;
+import static seng202.group8.User.StressLevelType.NOTPERCEIVED;
+import static seng202.group8.User.StressLevelType.PERCEIVED;
+
 import java.util.Date;
 
 public class RecordsTest {
@@ -28,7 +33,7 @@ public class RecordsTest {
         BMIType bmi = BMIType.FIT;
         bmiRecord = new BMITypeRecord(bmi);
         fatRecord = new FatToMuscleRecord(55.99);
-        StressLevelType stress = StressLevelType.PERCEIVED;
+        StressLevelType stress = PERCEIVED;
         stressRecord = new StressLevelRecord(stress);
     }
 
@@ -54,9 +59,69 @@ public class RecordsTest {
     }
 
     @Test
-    public void checkDateOFWeightRecord() {
+    public void checkDateOfWeightRecord() {
         weightRecord.createDate();
         Date date = new Date();
         assertEquals(weightRecord.getDate(), date);
+    }
+
+    @Test
+    public void correctFatRecord() {
+        Double testFat = 55.99;
+        assertEquals(fatRecord.getFatToMuscle(), testFat);
+    }
+
+    @Test
+    public void changeFatRecord() {
+        fatRecord.setFatToMuscle(100.00);
+        Double testFat = 100.00;
+        assertEquals(fatRecord.getFatToMuscle(), testFat);
+    }
+
+    @Test
+    public void checkDateOfFatRecord() {
+        fatRecord.createDate();
+        Date date = new Date();
+        assertEquals(fatRecord.getDate(), date);
+    }
+
+    @Test
+    public void correctBMIRecord() {
+        BMIType testbmi = FIT;
+        assertEquals(bmiRecord.getBmi(), testbmi);
+    }
+
+    @Test
+    public void changeBMIRecord() {
+        bmiRecord.setBmi(LIGHT);
+        BMIType bmi = LIGHT;
+        assertEquals(bmiRecord.getBmi(), bmi);
+    }
+
+    @Test
+    public void checkDateOfBMIRecord() {
+        bmiRecord.createDate();
+        Date date = new Date();
+        assertEquals(bmiRecord.getDate(), date);
+    }
+
+    @Test
+    public void correctStressRecord() {
+        StressLevelType stress = PERCEIVED;
+        assertEquals(stressRecord.getStress(), stress);
+    }
+
+    @Test
+    public void changeStressRecord() {
+        stressRecord.setStress(NOTPERCEIVED);
+        StressLevelType stress = NOTPERCEIVED;
+        assertEquals(stressRecord.getStress(), stress);
+    }
+
+    @Test
+    public void checkDateOfStressRecord() {
+        stressRecord.createDate();
+        Date date = new Date();
+        assertEquals(stressRecord.getDate(), date);
     }
 }

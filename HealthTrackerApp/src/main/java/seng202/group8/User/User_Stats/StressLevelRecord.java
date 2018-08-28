@@ -24,7 +24,7 @@ public class StressLevelRecord extends Records {
     public StressLevelType stress;
 
     /**
-     * Creates the stress level record and calls the super class functions to create a date and add the record to a record list
+     * Creates the stress level record and calls the super class functions to create a date
      * @param stress an enum value used to set the stress level type
      */
     public StressLevelRecord(StressLevelType stress) {

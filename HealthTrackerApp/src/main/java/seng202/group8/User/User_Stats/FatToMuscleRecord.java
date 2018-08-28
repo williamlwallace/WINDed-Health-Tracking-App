@@ -22,7 +22,7 @@ public class FatToMuscleRecord extends Records {
     public Double fatToMuscle;
 
     /**
-     * creates the fat to muscle record and uses the super methods to create the date and add the record to a list
+     * creates the fat to muscle record and uses the super methods to create the date
      * @param fatToMuscle a double for the fat to muscle entry
      */
     public FatToMuscleRecord(Double fatToMuscle) {
