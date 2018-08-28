@@ -10,19 +10,19 @@ public class UserStats {
      *Getters for arrayLists for records
      */
 
-    public ArrayList getUserWeightRecords() {
+    public static ArrayList getUserWeightRecords() {
         return userWeightRecords;
     }
 
-    public ArrayList getUserFatToMuscleRecords() {
+    public static ArrayList getUserFatToMuscleRecords() {
         return userFatToMuscleRecords;
     }
 
-    public ArrayList getUserBMITypeRecords() {
+    public static ArrayList getUserBMITypeRecords() {
         return userBMITypeRecords;
     }
 
-    public ArrayList getUserStressLevelRecords() {
+    public static ArrayList getUserStressLevelRecords() {
         return userStressLevelRecords;
     }
 
@@ -31,22 +31,22 @@ public class UserStats {
      * Each function takes the input needed for the record specified
      */
 
-    public void addUserFatToMuscleRecords(Double fatToMuscle) {
+    public static void addUserFatToMuscleRecords(Double fatToMuscle) {
         FatToMuscleRecord record = new FatToMuscleRecord(fatToMuscle);
         userFatToMuscleRecords.add(record);
     }
 
-    public void addUserWeightRecords(Double weight) {
+    public static void addUserWeightRecords(Double weight) {
         WeightRecord record = new WeightRecord(weight);
         userWeightRecords.add(record);
     }
 
-    public void addUserBMITypeRecords(BMIType bmi) {
+    public static void addUserBMITypeRecords(BMIType bmi) {
         BMITypeRecord record = new BMITypeRecord(bmi);
         userBMITypeRecords.add(record);
     }
 
-    public void addUserStressLevelRecords(StressLevelType stress) {
+    public static void addUserStressLevelRecords(StressLevelType stress) {
         StressLevelRecord record = new StressLevelRecord(stress);
         userStressLevelRecords.add(record);
     }
@@ -55,8 +55,8 @@ public class UserStats {
     /**
      *Initial Variables
      */
-    public ArrayList userWeightRecords = new ArrayList<WeightRecord>();
-    public ArrayList userFatToMuscleRecords = new ArrayList<FatToMuscleRecord>();
-    public ArrayList userBMITypeRecords = new ArrayList<BMITypeRecord>();
-    public ArrayList userStressLevelRecords = new ArrayList<StressLevelRecord>();
+    private static ArrayList userWeightRecords = new ArrayList<WeightRecord>();
+    private static ArrayList userFatToMuscleRecords = new ArrayList<FatToMuscleRecord>();
+    private static ArrayList userBMITypeRecords = new ArrayList<BMITypeRecord>();
+    private static ArrayList userStressLevelRecords = new ArrayList<StressLevelRecord>();
 }
