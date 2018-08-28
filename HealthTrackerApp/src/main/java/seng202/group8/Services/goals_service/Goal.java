@@ -50,10 +50,18 @@ public abstract class Goal {
      *
      * @return a boolean value representing if the Goal is now complete
      */
-    public boolean isCompleted() {
+    public boolean getIsCompleted() {
         return isCompleted;
     }
 
-    abstract void checkIsCompleted();
+    /**
+     *
+     * @param isCompleted new boolean value to assign to isCompleted parameter
+     */
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
+
+    public abstract void checkIsCompleted();
 
 }
