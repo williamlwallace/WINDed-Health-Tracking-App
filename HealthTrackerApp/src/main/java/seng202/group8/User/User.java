@@ -1,6 +1,7 @@
 package seng202.group8.User;
 
 import seng202.group8.User.User_Stats.UserStats;
+import seng202.group8.activity_collection.ActivityListCollection;
 
 /**
  * User is the class which stores the User data for a user of the Winded App
@@ -16,6 +17,7 @@ public class User {
     private BMIType BMI;
     private UserStats userStats;
     private StressLevelType stressLevel;
+    private ActivityListCollection userActivities;
 
 
     /**
@@ -30,6 +32,7 @@ public class User {
         this.age = age;
         this.weight = weight;
         this.height = height;
+        this.userActivities = new ActivityListCollection(name + "'s activity collection");
         setBMI(calculateBMI());
     }
 
@@ -137,6 +140,21 @@ public class User {
      */
     public StressLevelType getStressLevel() {
         return stressLevel;
+    }
+
+    /**
+     * @return The activity list collection of all the users activities
+     */
+    public ActivityListCollection getUserActivities() {
+        return userActivities;
+    }
+
+    /**
+     * Assign an ActivityListCollection to the user for the activities they have done
+     * @param userActivities the ActivityListCollection that belongs to the user
+     */
+    public void setUserActivities(ActivityListCollection userActivities) {
+        this.userActivities = userActivities;
     }
 
     /**
