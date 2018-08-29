@@ -13,17 +13,17 @@ public class UserTest {
     private User newUser;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         newUser = new User("Jack", 19, 70.5, 183.5);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         newUser = null;
     }
 
     @Test
     public void calculateBMI() {
-        assertEquals(BMIType.NORMAL, newUser.calculateBMI());
+        assertEquals(BMIType.NORMAL, newUser.getBMI());
     }
 }
