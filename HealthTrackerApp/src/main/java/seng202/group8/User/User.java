@@ -30,7 +30,7 @@ public class User {
         this.age = age;
         this.weight = weight;
         this.height = height;
-        //setBMI()
+        setBMI(calculateBMI());
     }
 
     /**
