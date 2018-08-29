@@ -1,5 +1,8 @@
 package seng202.group8.activity_collection;
 
+import seng202.group8.dataEntries.Data;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -71,5 +74,20 @@ public class ActivityListCollection {
     public void setActivityListCollection(ArrayList<ActivityList> activityListCollection) {
         this.activityListCollection = activityListCollection;
     }
+
+    /* Can use or test once the Data class and subclasses will be ready
+    public ArrayList<Activity> retrieveSameTypeActivities(DataType dataType, Date minDate) {
+        ArrayList<Activity> retrievedData = new ArrayList<Activity>();
+        for (ActivityList activityList : activityListCollection) {
+            for (Activity data : activityList.getActivityList()) {
+                if (!(data.getCreationDate().before(minDate)) {
+                    retrievedData.add(data);
+                }
+            }
+        }
+
+        return retrievedData;
+    }
+    */
 
 }
