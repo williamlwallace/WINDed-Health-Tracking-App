@@ -1,4 +1,4 @@
-package seng202.group8.Services.goals_service;
+package seng202.group8.Services.goals_service.goal_types;
 
 import seng202.group8.Services.goals_service.goal_types.GoalType;
 import seng202.group8.User.User;
@@ -7,15 +7,34 @@ import java.util.Date;
 
 public abstract class Goal {
 
+    private String description;
     private Date startDate;
     private GoalType goalType;
     private User user;
     private boolean isCompleted;
 
 
-    public Goal(User user) {
+    public Goal(User user, String description, GoalType goalType) {
         this.user = user;
+        this.description = description;
         this.startDate = new Date();
+        this.goalType = goalType;
+    }
+
+    /**
+     *
+     * @return the description parameter
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     *
+     * @param description a new String value for description parameter
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**

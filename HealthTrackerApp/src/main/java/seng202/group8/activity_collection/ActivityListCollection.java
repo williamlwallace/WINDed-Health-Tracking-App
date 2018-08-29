@@ -1,8 +1,5 @@
 package seng202.group8.activity_collection;
 
-import seng202.group8.dataEntries.Data;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,6 +7,7 @@ public class ActivityListCollection {
 
     private String title;
     private ArrayList<ActivityList> activityListCollection;
+    private ArrayList<ActivityListCollectionObserver> observers;
 
     /**
      * Initialises the activityListCollection attribute to an empty ArrayList<ActivityList> object
@@ -17,6 +15,7 @@ public class ActivityListCollection {
     public ActivityListCollection(String title) {
         this.title = title;
         activityListCollection = new ArrayList<ActivityList>();
+        this.observers = new ArrayList<ActivityListCollectionObserver>();
     }
 
     /**
@@ -32,12 +31,32 @@ public class ActivityListCollection {
             Date selectedActivityListDate = activityListCollection.get(i).getCreationDate();
             if (activityListDate.before(selectedActivityListDate)) {
                 activityListCollection.add(i, activityList);
+                notifyAllObservers();
                 return true;
             }
         }
         activityListCollection.add(activityList);
         int afterAddingCollectionSize = activityListCollection.size();
+        notifyAllObservers();
         return beforeAddingCollectionSize == (afterAddingCollectionSize - 1);
+    }
+
+
+    public void insertActivityInGivenList(int index, Activity activity) {
+        ActivityList activityList = activityListCollection.get(index);
+        activityList.insertActivity(activity);
+        notifyAllObservers();
+    }
+
+
+    public void notifyAllObservers() {
+        for (ActivityListCollectionObserver observer : observers) {
+            observer.update();
+        }
+    }
+
+    public void attach(ActivityListCollectionObserver observer) {
+        observers.add(observer);
     }
 
     /**

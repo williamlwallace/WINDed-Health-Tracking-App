@@ -27,7 +27,7 @@ public class WeightLossGoalTest {
     public void constructorExceptionTest() {
         boolean thrown = false;
         try {
-            WeightLossGoal weightLossGoal = new WeightLossGoal(user, 170.0);
+            WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 170.0);
         } catch (NotCoherentWeightLossGoalException e) {
             thrown = true;
         }
@@ -39,7 +39,7 @@ public class WeightLossGoalTest {
     public void constructorWorkingTest() {
         boolean thrown = false;
         try {
-            WeightLossGoal weightLossGoal = new WeightLossGoal(user, 78.0);
+            WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 78.0);
         } catch (NotCoherentWeightLossGoalException e) {
             thrown = true;
         }
@@ -51,7 +51,7 @@ public class WeightLossGoalTest {
     public void checkIsCompletedTrueTest1() {
         WeightLossGoal weightLossGoal;
         try {
-            weightLossGoal = new WeightLossGoal(user, 73.0);
+            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
 //            user.setWeight(83.0);
 //            weightLossGoal.checkIsCompleted();
 //            assertTrue(weightLossGoal.getIsCompleted());
@@ -59,7 +59,6 @@ public class WeightLossGoalTest {
             e.printStackTrace();
         }
 
-        assertFalse(true);//Just as a reminder that this test has to be run once the setters for User are created
 
     }
 
@@ -67,7 +66,7 @@ public class WeightLossGoalTest {
     public void checkIsCompletedTrueTest2() {
         WeightLossGoal weightLossGoal;
         try {
-            weightLossGoal = new WeightLossGoal(user, 73.0);
+            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
 //            user.setWeight(73.0);
 //            weightLossGoal.checkIsCompleted();
 //            assertTrue(weightLossGoal.getIsCompleted());
@@ -75,7 +74,6 @@ public class WeightLossGoalTest {
             e.printStackTrace();
         }
 
-        assertFalse(true);//Just as a reminder that this test has to be run once the setters for User are created
 
     }
 
@@ -83,15 +81,15 @@ public class WeightLossGoalTest {
     public void checkIsCompletedFalseTest1() {
         WeightLossGoal weightLossGoal;
         try {
-            weightLossGoal = new WeightLossGoal(user, 73.0);
-//            user.setWeight(83.1);
-//            weightLossGoal.checkIsCompleted();
-//            assertTrue(weightLossGoal.getIsCompleted());
+            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
+            user.setWeight(83.1);
+            weightLossGoal.checkIsCompleted();
+            assertFalse(weightLossGoal.getIsCompleted());
         } catch (NotCoherentWeightLossGoalException e) {
             e.printStackTrace();
         }
 
-        assertFalse(true);//Just as a reminder that this test has to be run once the setters for User are created
+
 
     }
 
@@ -99,15 +97,13 @@ public class WeightLossGoalTest {
     public void checkIsCompletedFalseTest2() {
         WeightLossGoal weightLossGoal;
         try {
-            weightLossGoal = new WeightLossGoal(user, 73.0);
-//            user.setWeight(120.1);
-//            weightLossGoal.checkIsCompleted();
-//            assertTrue(weightLossGoal.getIsCompleted());
+            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
+            user.setWeight(120.1);
+            weightLossGoal.checkIsCompleted();
+            assertFalse(weightLossGoal.getIsCompleted());
         } catch (NotCoherentWeightLossGoalException e) {
             e.printStackTrace();
         }
-
-        assertFalse(true);//Just as a reminder that this test has to be run once the setters for User are created
 
     }
 

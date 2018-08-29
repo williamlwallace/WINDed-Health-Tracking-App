@@ -1,7 +1,5 @@
 package seng202.group8.activity_collection;
 
-import org.omg.CORBA.Current;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -46,6 +44,7 @@ public class ActivityList {
 
         return (finalSize == (initialSize + 1));
     }
+
 
     /**
      *

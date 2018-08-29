@@ -1,28 +1,40 @@
 package seng202.group8.Services.goals_service.goal_types;
 
-import seng202.group8.Services.goals_service.Goal;
 import seng202.group8.User.User;
-import seng202.group8.dataEntries.Data;
-
-import java.util.ArrayList;
 
 public class ActivityGoal extends Goal {
 
 //    private DataType dataType; implement once Data classes will be ready
-    private Double distanceToCover;
+    private Double distanceToCoverKm;
 
-    public ActivityGoal(User user, Double distanceToCover) {
-        super(user);
-        this.distanceToCover = distanceToCover;
+    public ActivityGoal(User user, String description, GoalType goalType, Double distanceToCover) {
+        super(user, description, goalType);
+        this.distanceToCoverKm = distanceToCover;
     }
+
 
     public void checkIsCompleted() {
         //JUST CREATED TO MAKE THE COMPILER HAPPY, ONCE i CAN
         //UNCOMMENT I WILL ELIMINATE IT
     }
 
+    /**
+     *
+     * @return the distanceCovered parameter
+     */
+    public Double getDistanceToCoverKm() {
+        return distanceToCoverKm;
+    }
 
-// Uncomment to see what is failing, I mainly need a DataType and a function in each Data subclass to retrieve the distance covered
+    /**
+     *
+     * @param distanceToCover a new Double value for the distanceCovered parameter
+     */
+    public void setDistanceToCoverKm(Double distanceToCover) {
+        this.distanceToCoverKm = distanceToCover;
+    }
+
+    // Uncomment to see what is failing, I mainly need a DataType and a function in each Data subclass to retrieve the distance covered
 //    /**
 //     *
 //     * Sieves through the data logged by the user until a given date and it adds
@@ -36,7 +48,7 @@ public class ActivityGoal extends Goal {
 //            distanceCovered += data.getDistanceCovered();
 //        }
 //
-//        if (distanceCovered >= distanceToCover) {
+//        if (distanceCovered >= distanceToCoverKm) {
 //            setIsCompleted(true);
 //        }
 //    }
