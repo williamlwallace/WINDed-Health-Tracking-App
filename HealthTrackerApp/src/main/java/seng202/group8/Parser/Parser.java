@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Parser {
@@ -62,6 +63,24 @@ public class Parser {
                     activityType = acceptedValues.get(place).get(0);
                 }
             }
+        }
+        if (activityType.equals("")) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("This activity, '"+line[1]+"', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
+            String selection = scanner.next();
+            while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4") && !selection.equals("5") && !selection.equals("6") && !selection.equals("7")) {
+                System.out.print("You must enter a number between 1 and 7\n");
+                selection = scanner.next();
+            }
+            int activityNum = Integer.parseInt(selection) - 1;
+            System.out.print("Please enter a phrase from '"+line[1]+"' so we can recognise this activities category next time\n");
+            String phrase = scanner.next();
+            while (!activityName.contains(phrase.toLowerCase())) {
+                System.out.print("You must enter a phrase from '"+line[1]+"'\n");
+                phrase = scanner.next();
+            }
+            acceptedValues.get(activityNum).add(phrase.toLowerCase());
+            activityType = acceptedValues.get(activityNum).get(0);
         }
         System.out.println(activityType);
         line = readLine(csvReader);
