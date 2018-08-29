@@ -9,7 +9,7 @@ import seng202.group8.User.StressLevelType;
 import seng202.group8.User.User_Stats.*;
 
 import static org.junit.Assert.*;
-import static seng202.group8.User.BMIType.FIT;
+import static seng202.group8.User.BMIType.NORMAL;
 import static seng202.group8.User.BMIType.LIGHT;
 import static seng202.group8.User.StressLevelType.NOTPERCEIVED;
 import static seng202.group8.User.StressLevelType.PERCEIVED;
@@ -28,7 +28,7 @@ public class RecordsTest {
     @Before
     public void recordsSetup() {
         weightRecord = new WeightRecord(10.5);
-        bmiRecord = new BMITypeRecord(FIT);
+        bmiRecord = new BMITypeRecord(NORMAL);
         fatRecord = new FatToMuscleRecord(55.99);
         stressRecord = new StressLevelRecord(PERCEIVED);
     }
@@ -83,7 +83,7 @@ public class RecordsTest {
 
     @Test
     public void correctBMIRecord(){
-        assertEquals(bmiRecord.getBmi(), FIT);
+        assertEquals(bmiRecord.getBmi(), NORMAL);
     }
 
     @Test
@@ -127,9 +127,9 @@ public class RecordsTest {
 
     @Test
     public void checkBMIList() {
-        UserStats.addUserBMITypeRecords(FIT);
+        UserStats.addUserBMITypeRecords(NORMAL);
         ArrayList<BMITypeRecord> list = UserStats.getUserBMITypeRecords();
-        assertEquals(list.get(0).getBmi(), FIT);
+        assertEquals(list.get(0).getBmi(), NORMAL);
     }
 
     @Test
