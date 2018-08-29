@@ -139,5 +139,15 @@ public class User {
         return stressLevel;
     }
 
+    /**
+     * Calculates the BMI of the user and parses it into the BMIType Enum to get a value for what BMI category they are in
+     * @return The BMIType enum value of the user based on their weight and height
+     */
+    public BMIType calculateBMI() {
+        double heightMetres = height * 0.01;
+        double numericalBMI = weight/(heightMetres * heightMetres);
+        return BMIType.parseBMI(numericalBMI);
+    }
+
 
 }
