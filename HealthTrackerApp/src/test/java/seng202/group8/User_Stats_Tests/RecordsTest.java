@@ -4,15 +4,13 @@ package seng202.group8.User_Stats_Tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import seng202.group8.User.BMIType;
-import seng202.group8.User.StressLevelType;
-import seng202.group8.User.User_Stats.*;
+import seng202.group8.user.user_stats.*;
 
 import static org.junit.Assert.*;
-import static seng202.group8.User.BMIType.NORMAL;
-import static seng202.group8.User.BMIType.LIGHT;
-import static seng202.group8.User.StressLevelType.NOTPERCEIVED;
-import static seng202.group8.User.StressLevelType.PERCEIVED;
+import static seng202.group8.user.BMIType.NORMAL;
+import static seng202.group8.user.BMIType.LIGHT;
+import static seng202.group8.user.StressLevelType.NOTPERCEIVED;
+import static seng202.group8.user.StressLevelType.PERCEIVED;
 
 import java.util.Date;
 import java.util.ArrayList;
