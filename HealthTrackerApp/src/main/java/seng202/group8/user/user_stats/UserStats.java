@@ -10,19 +10,19 @@ public class UserStats {
      *Getters for arrayLists for records
      */
 
-    public static ArrayList getUserWeightRecords() {
+    public static ArrayList<WeightRecord> getUserWeightRecords() {
         return userWeightRecords;
     }
 
-    public static ArrayList getUserFatToMuscleRecords() {
+    public static ArrayList<FatToMuscleRecord> getUserFatToMuscleRecords() {
         return userFatToMuscleRecords;
     }
 
-    public static ArrayList getUserBMITypeRecords() {
+    public static ArrayList<BMITypeRecord> getUserBMITypeRecords() {
         return userBMITypeRecords;
     }
 
-    public static ArrayList getUserStressLevelRecords() {
+    public static ArrayList<StressLevelRecord> getUserStressLevelRecords() {
         return userStressLevelRecords;
     }
 
