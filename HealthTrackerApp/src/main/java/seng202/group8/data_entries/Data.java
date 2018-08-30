@@ -10,7 +10,7 @@ public abstract class Data {
     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
-    private DataType = new DataType();
+//    private DataType = new DataType();
     private Date creationDate;
     private ArrayList<Double> coordinatesList;
     private ArrayList<Integer> heartRateList;
@@ -20,9 +20,9 @@ public abstract class Data {
         return title;
     }
 
-    public String getDataType() {
-        return DataType;
-    }
+//    public String getDataType() {
+//        return DataType;
+//    }
 
     public Date getCreationDate() {
         return creationDate;
@@ -53,7 +53,7 @@ public abstract class Data {
 
 //        double inputData = getCSVActivities();
         this.title = newTitle;
-        this.DataType = new DataType(activityType);
+//        this.DataType = new DataType(activityType);
         this.heartRateList = newHeartRateList;
         this.coordinatesList = newCoordinatesList;
 //        this.consumedCalories = getConsumedCalories();
