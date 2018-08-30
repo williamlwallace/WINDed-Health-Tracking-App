@@ -14,7 +14,8 @@ public class User {
     private Double weight;
     private Double height;
     //private ArrayList<ActivityType> favouriteActivities;
-    private BMIType BMI;
+    private BMIType BMICategory;
+    private Double BMIValue;
     private UserStats userStats;
     private StressLevelType stressLevel;
     private ActivityListCollection userActivities;
@@ -69,11 +70,12 @@ public class User {
     }
 
     /**
-     * Set the BMI of the user to a given BMI type enumeration value
-     * @param BMI the new BMI type of the user
+     * Set the BMICategory of the user to a given BMI type enumeration value and the BMIValue double to its value kg/m**2
+     * @param BMI the new BMI value of the user
      */
-    public void setBMI(BMIType BMI) {
-        this.BMI = BMI;
+    public void setBMI(double BMI) {
+        this.BMIValue = BMI;
+        BMICategory = BMIType.parseBMI(BMI);
     }
 
     /**
@@ -122,8 +124,8 @@ public class User {
      *
      * @return The BMI type of the user
      */
-    public BMIType getBMI() {
-        return BMI;
+    public BMIType getBMICategory() {
+        return BMICategory;
     }
 
     /**
@@ -161,10 +163,10 @@ public class User {
      * Calculates the BMI of the user and parses it into the BMIType Enum to get a value for what BMI category they are in
      * @return The BMIType enum value of the user based on their weight and height
      */
-    public BMIType calculateBMI() {
+    public double calculateBMI() {
         double heightMetres = height * 0.01;
         double numericalBMI = weight/(heightMetres * heightMetres);
-        return BMIType.parseBMI(numericalBMI);
+        return numericalBMI;
     }
 
 

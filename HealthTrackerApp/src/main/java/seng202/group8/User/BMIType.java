@@ -5,6 +5,7 @@ public enum BMIType {
 
     private final double BMILowerLimit;
 
+
     BMIType(final double BMILimit) {
         this.BMILowerLimit = BMILimit;
     }
