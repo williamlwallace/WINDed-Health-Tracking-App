@@ -1,4 +1,4 @@
-package seng202.group8.dataEntries;
+package seng202.group8.data_entries;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +10,7 @@ public abstract class Data {
     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
-    private String activityType;
+    private DataType = new DataType();
     private Date creationDate;
     private ArrayList<Double> coordinatesList;
     private ArrayList<Integer> heartRateList;
@@ -20,8 +20,8 @@ public abstract class Data {
         return title;
     }
 
-    public String getActivityType() {
-        return activityType;
+    public String getDataType() {
+        return DataType;
     }
 
     public Date getCreationDate() {
@@ -38,7 +38,7 @@ public abstract class Data {
     abstract double getConsumedCalories(String activityType);
 
     public void setTitle(String newTitle) { this.title = newTitle; }
-    public void setActivityType(String newActivityType) { this.activityType = newActivityType; }
+//    public void setActivityType(String newActivityType) { this.DataType = newActivityType; }
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
@@ -53,7 +53,7 @@ public abstract class Data {
 
 //        double inputData = getCSVActivities();
         this.title = newTitle;
-        this.activityType = activityType;
+        this.DataType = new DataType(activityType);
         this.heartRateList = newHeartRateList;
         this.coordinatesList = newCoordinatesList;
 //        this.consumedCalories = getConsumedCalories();
