@@ -10,6 +10,7 @@ public abstract class Data {
     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
+//    private DataType = new DataType();
     private Date creationDate;
     private DataType dataSubType;
     private DataType dataSuperType;

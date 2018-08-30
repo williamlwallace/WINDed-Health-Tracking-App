@@ -41,19 +41,44 @@ public class ActivityListCollection {
         return beforeAddingCollectionSize == (afterAddingCollectionSize - 1);
     }
 
-
-    public void insertActivityInGivenList(int index, Activity activity) {
-        ActivityList activityList = activityListCollection.get(index);
-        activityList.insertActivity(activity);
-        notifyAllObservers();
+    public boolean deleteActivityList(int activityListIndex) {
+        try {
+            activityListCollection.remove(activityListIndex);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Trying to index a value that does not exist.");
+            return false;
+        }
+        return true;
     }
 
+
+    public void insertActivityInGivenList(int index, Activity activity) {
+        try {
+            ActivityList activityList = activityListCollection.get(index);
+            activityList.insertActivity(activity);
+            notifyAllObservers();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Trying to index a value that does not exist.");
+        }
+    }
+
+    public boolean deleteActivityInGivenList(int activityListIndex, int dataValueIndex) {
+        try {
+            ActivityList activityList = activityListCollection.get(activityListIndex);
+            activityList.getActivityList().remove(dataValueIndex);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Trying to index a value that does not exist.");
+            return false;
+        }
+        return true;
+    }
 
     public void notifyAllObservers() {
         for (ActivityListCollectionObserver observer : observers) {
             observer.update();
         }
     }
+
 
     public void attach(ActivityListCollectionObserver observer) {
         observers.add(observer);
