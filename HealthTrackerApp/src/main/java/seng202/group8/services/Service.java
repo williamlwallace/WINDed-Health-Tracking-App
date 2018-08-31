@@ -12,6 +12,19 @@ public class Service {
         this.currentlyInUse = false;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public boolean isCurrentlyInUse() {
+        return currentlyInUse;
+    }
+
+    public void setCurrentlyInUse(boolean currentlyInUse) {
+        this.currentlyInUse = currentlyInUse;
+    }
 }
