@@ -1,6 +1,6 @@
 package seng202.group8;
 
-import seng202.group8.Services.goals_service.GoalsService;
+import seng202.group8.services.goals_service.GoalsService;
 import seng202.group8.activity_collection.Activity;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;

@@ -2,9 +2,8 @@ package seng202.group8.Parser_Tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
-import seng202.group8.Parser.Parser;
+import seng202.group8.parser.Parser;
 
 public class ParserTest {
     private Parser parserTest;

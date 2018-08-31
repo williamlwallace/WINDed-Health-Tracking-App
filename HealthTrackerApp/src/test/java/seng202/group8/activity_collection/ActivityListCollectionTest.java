@@ -61,14 +61,44 @@ public class ActivityListCollectionTest {
         activityListCollection.insertActivityList(activityListFastWalks);
         activityListCollection.insertActivityList(activityListJog);
 
-        for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
-            System.out.println(activityList.getCreationDate());
-            System.out.println(activityList.getTitle());
-        }
-
         String titleZerothPosActivityList = activityListCollection.getActivityListCollection().get(0).getTitle();
         assertEquals(titleZerothPosActivityList, "Intense runs");
 
     }
+
+    @Test
+    public void deleteActivityListFailureTest() {
+        activityListCollection.insertActivityList(activityListFastWalks);
+        activityListCollection.insertActivityList(activityListJog);
+        boolean failureInDeleting = activityListCollection.deleteActivityList(4);
+        assertFalse(failureInDeleting);
+    }
+
+    @Test
+    public void deleteActivityListSuccessTest() {
+        activityListCollection.insertActivityList(activityListFastWalks);
+        activityListCollection.insertActivityList(activityListJog);
+        boolean successedInDeleting = activityListCollection.deleteActivityList(0);
+        assertTrue(successedInDeleting);
+    }
+
+    @Test
+    public void deleteDataInActivityListSuccessTest() {
+        activityListCollection.insertActivityList(activityListFastWalks);
+        activityListCollection.insertActivityList(activityListJog);
+        boolean deleted = activityListCollection.deleteActivityInGivenList(0, 0);
+        assertTrue(deleted);
+    }
+
+    @Test
+    public void deleteDataInActivityListFailureTest() {
+        activityListCollection.insertActivityList(activityListFastWalks);
+        activityListCollection.insertActivityList(activityListJog);
+        boolean deleted = activityListCollection.deleteActivityInGivenList(0, 7);
+        assertTrue(deleted);
+    }
+
+
+
 
 }
