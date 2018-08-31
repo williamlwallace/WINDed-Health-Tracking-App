@@ -33,6 +33,7 @@ public class User {
         this.age = age;
         this.weight = weight;
         this.height = height;
+        this.userStats = new UserStats();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
         setBMI(calculateBMI());
     }
