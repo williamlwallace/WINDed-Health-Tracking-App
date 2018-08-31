@@ -6,10 +6,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.time.LocalTime;
 
 
 public class Parser {
@@ -38,9 +40,16 @@ public class Parser {
         acceptedValues.add(waterSports);
         CSVReader csvReader = new CSVReader(new FileReader(filename));
         String[] line = readLine(csvReader);
+        ArrayList<LocalDateTime> activityDateTime = new ArrayList<LocalDateTime>();
+        ArrayList<Integer> activityHeartRate = new ArrayList<Integer>();
+        ArrayList<Distance> activityDistance = new ArrayList<Distance>();
         //String[] myEntries = csvReader.readAll();
         while (line != null) {
-            line = parseActivity(line, csvReader);
+            line = parseActivity(line, csvReader, activityDateTime, activityHeartRate, activityDistance);
+            // Send the ArrayLists here.
+            activityDateTime.clear();
+            activityHeartRate.clear();
+            activityDistance.clear();
             //line = readLine(csvReader);
         }
         csvReader.close();
@@ -50,7 +59,7 @@ public class Parser {
      * @param line
      * @throws Exception
      */
-    private String[] parseActivity(String[] line, CSVReader csvReader) throws Exception {
+    private String[] parseActivity(String[] line, CSVReader csvReader, ArrayList<LocalDateTime> activityDateTime, ArrayList<Integer> activityHeartRate, ArrayList<Distance> activityDistance) throws Exception {
         //System.out.print(line[0]);
         String activityName = line[1];
         System.out.println(activityName);
@@ -84,8 +93,22 @@ public class Parser {
         }
         System.out.println(activityType);
         line = readLine(csvReader);
+        Calendar dateActivity;
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy;HH:mm:ss");
+        LocalDateTime lineDate;
+        int lineHeart;
+        Distance lineDistance;
         while (!(line[0].equals("#start"))) {
-            System.out.println(line[1]);
+            //System.out.println(line[1]);
+            String toFormat = line[0] + ";" + line[1];
+            lineDate = LocalDateTime.parse(toFormat, timeFormat);
+            lineHeart = Integer.parseInt(line[2]);
+            lineDistance = new Distance(Integer.parseInt(line[3]), Integer.parseInt(line[4]), Integer.parseInt(line[5]));
+            activityDateTime.add(lineDate);
+            activityHeartRate.add(lineHeart);
+            activityDistance.add(lineDistance);
+            //System.out.println(date.getHour());
             line = readLine(csvReader);
         }
         return line;
