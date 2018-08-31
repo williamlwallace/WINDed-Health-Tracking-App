@@ -1,4 +1,4 @@
-package seng202.group8.Parser;
+package seng202.group8.parser;
 
 import com.opencsv.CSVReader;
 
