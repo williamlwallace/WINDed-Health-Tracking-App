@@ -14,8 +14,7 @@ public class User {
     private Double weight;
     private Double height;
     //private ArrayList<ActivityType> favouriteActivities;
-    private BMIType BMICategory;
-    private Double BMIValue;
+    private BMI bmi;
     private UserStats userStats;
     private StressLevelType stressLevel;
     private ActivityListCollection userActivities;
@@ -36,7 +35,7 @@ public class User {
         this.userStats = new UserStats();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
         setBMI(calculateBMI());
-        userStats.addUserBMITypeRecords(BMICategory);
+        //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord holds BMI object
         userStats.addUserWeightRecords(weight);
     }
 
@@ -77,8 +76,7 @@ public class User {
      * @param BMI the new BMI value of the user
      */
     public void setBMI(Double BMI) {
-        this.BMIValue = BMI;
-        BMICategory = BMIType.parseBMI(BMI);
+        bmi.setBMI(BMI);
     }
 
     /**
@@ -127,8 +125,8 @@ public class User {
      *
      * @return The BMI type of the user
      */
-    public BMIType getBMICategory() {
-        return BMICategory;
+    public BMI getBMI() {
+        return bmi;
     }
 
     /**
@@ -163,8 +161,8 @@ public class User {
     }
 
     /**
-     * Calculates the BMI of the user and parses it into the BMIType Enum to get a value for what BMI category they are in
-     * @return The BMIType enum value of the user based on their weight and height
+     * Calculates the BMI of the user based on current weight and height
+     * @return The BMI value of the user based on their weight and height
      */
     public Double calculateBMI() {
         Double heightMetres = height * 0.01;
@@ -189,7 +187,7 @@ public class User {
      */
     public void updateBMI(Double newBMI) {
         setBMI(newBMI);
-        userStats.addUserBMITypeRecords(BMICategory);
+        //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord updated to hold BMI object
         //Update observers here
     }
 
