@@ -36,6 +36,8 @@ public class User {
         this.userStats = new UserStats();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
         setBMI(calculateBMI());
+        userStats.addUserBMITypeRecords(BMICategory);
+        userStats.addUserWeightRecords(weight);
     }
 
     /**
@@ -74,7 +76,7 @@ public class User {
      * Set the BMICategory of the user to a given BMI type enumeration value and the BMIValue double to its value kg/m**2
      * @param BMI the new BMI value of the user
      */
-    public void setBMI(double BMI) {
+    public void setBMI(Double BMI) {
         this.BMIValue = BMI;
         BMICategory = BMIType.parseBMI(BMI);
     }
@@ -164,11 +166,43 @@ public class User {
      * Calculates the BMI of the user and parses it into the BMIType Enum to get a value for what BMI category they are in
      * @return The BMIType enum value of the user based on their weight and height
      */
-    public double calculateBMI() {
-        double heightMetres = height * 0.01;
-        double numericalBMI = weight/(heightMetres * heightMetres);
+    public Double calculateBMI() {
+        Double heightMetres = height * 0.01;
+        Double numericalBMI = weight/(heightMetres * heightMetres);
         return numericalBMI;
     }
+
+    /**
+     * Update the weight of the user, notifying observers and updating records.
+     * @param newWeight the new weight of the user (kg)
+     */
+    public void updateWeight(Double newWeight) {
+        setWeight(newWeight);
+        userStats.addUserWeightRecords(newWeight);
+        //Update observers here
+        updateBMI(calculateBMI());
+    }
+
+    /**
+     * Update the BMI of the user, notifying observers and updating records.
+     * @param newBMI the new BMI of the user (kg/m**2)
+     */
+    public void updateBMI(Double newBMI) {
+        setBMI(newBMI);
+        userStats.addUserBMITypeRecords(BMICategory);
+        //Update observers here
+    }
+
+    /**
+     * Update the Stress Level of the user, notifying observers and updating records.
+     * @param newStressLevel the new StressLevelType of the user
+     */
+    public void updateStressLevel(StressLevelType newStressLevel) {
+        setStressLevel(newStressLevel);
+        userStats.addUserStressLevelRecords(newStressLevel);
+        //Update observers here
+    }
+
 
 
 }
