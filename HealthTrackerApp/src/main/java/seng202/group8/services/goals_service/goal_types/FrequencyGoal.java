@@ -66,4 +66,6 @@ public class FrequencyGoal extends Goal {
     public void setDataType(DataType dataType) {
         this.dataType = dataType;
     }
+
+
 }

@@ -18,6 +18,8 @@ public abstract class Data {
     private ArrayList<Integer> heartRateList;
     private double consumedCalories;
 
+    private Double distanceCovered;
+
     public String getTitle() {
         return title;
     }
@@ -60,7 +62,7 @@ public abstract class Data {
         this.heartRateList = newHeartRateList;
         this.coordinatesList = newCoordinatesList;
         this.creationDate = new Date();
-
+//        this.distanceCovered = calculateDistanceCovered();
 //        this.consumedCalories = getConsumedCalories();
 
     }
@@ -71,5 +73,13 @@ public abstract class Data {
 
     public void setDataType(DataType dataSubType) {
         this.dataType = dataSubType;
+    }
+
+    public Double getDistanceCovered() {
+        return distanceCovered;
+    }
+
+    public void setDistanceCovered(Double distanceCovered) {
+        this.distanceCovered = distanceCovered;
     }
 }
