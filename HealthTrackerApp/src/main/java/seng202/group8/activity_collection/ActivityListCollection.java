@@ -90,6 +90,19 @@ public class ActivityListCollection {
         return sameTypeData;
     }
 
+    public ArrayList<Data> retrieveActivititesBeforeDate(Date startDate) {
+
+        ArrayList<Data> activitiesAfterDate = new ArrayList<Data>();
+        for (ActivityList activityList : activityListCollection) {
+            for (Data data : activityList.getActivityList()) {
+                if (!data.getCreationDate().before(startDate)) {
+                    activitiesAfterDate.add(data);
+                }
+            }
+        }
+        return activitiesAfterDate;
+    }
+
     public void notifyAllObservers() {
         for (ActivityListCollectionObserver observer : observers) {
             observer.update();
@@ -136,19 +149,5 @@ public class ActivityListCollection {
         this.activityListCollection = activityListCollection;
     }
 
-    /* Can use or test once the Data class and subclasses will be ready
-    public ArrayList<Activity> retrieveSameTypeActivities(DataType dataType, Date minDate) {
-        ArrayList<Activity> retrievedData = new ArrayList<Activity>();
-        for (ActivityList activityList : activityListCollection) {
-            for (Activity data : activityList.getActivityList()) {
-                if (!(data.getCreationDate().before(minDate)) {
-                    retrievedData.add(data);
-                }
-            }
-        }
-
-        return retrievedData;
-    }
-    */
 
 }

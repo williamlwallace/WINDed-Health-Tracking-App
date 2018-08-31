@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f076a86-6c3e-4a8b-af1a-2c44acffdcbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java" afterDir="false" />
+    <list default="true" id="9f076a86-6c3e-4a8b-af1a-2c44acffdcbf" name="Default Changelist" comment="Finsihed an tested ActivityGoal and FrequencyGoal classes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/ActivityGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/ActivityGoal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,25 +29,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="52" />
+          <entry key="java" value="56" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="52" />
+          <entry key="JAVA" value="56" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1875" />
+          <entry key="java" value="5587" />
           <entry key="txt" value="116" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1875" />
+          <entry key="JAVA" value="5587" />
           <entry key="PLAIN_TEXT" value="116" />
         </counts>
       </usages-collector>
@@ -60,13 +60,73 @@
     <splitter split-orientation="horizontal" split-proportion="0.6416521">
       <split-first>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="448">
-                  <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
+                  <caret line="72" selection-start-line="72" selection-end-line="72" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="418">
+                  <caret line="247" column="29" lean-forward="true" selection-start-line="247" selection-start-column="29" selection-end-line="247" selection-end-column="29" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1811#1817#0" expanded="true" />
+                    <element signature="e#2622#2628#0" expanded="true" />
+                    <element signature="e#2684#2690#0" expanded="true" />
+                    <element signature="e#3704#3710#0" expanded="true" />
+                    <element signature="e#4516#4522#0" expanded="true" />
+                    <element signature="e#4554#4560#0" expanded="true" />
+                    <element signature="e#4756#4762#0" expanded="true" />
+                    <element signature="e#5855#5856#0" expanded="true" />
+                    <element signature="e#5891#5892#0" expanded="true" />
+                    <element signature="e#6057#6058#0" expanded="true" />
+                    <element signature="e#6100#6101#0" expanded="true" />
+                    <element signature="e#6265#6266#0" expanded="true" />
+                    <element signature="e#6301#6302#0" expanded="true" />
+                    <element signature="e#6229#6230#0" expanded="true" />
+                    <element signature="e#6272#6273#0" expanded="true" />
+                    <element signature="e#6323#6324#0" expanded="true" />
+                    <element signature="e#6372#6373#0" expanded="true" />
+                    <element signature="e#7056#7057#0" expanded="true" />
+                    <element signature="e#7098#7099#0" expanded="true" />
+                    <element signature="e#7165#7166#0" expanded="true" />
+                    <element signature="e#7220#7221#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/Service.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#307#308#0" expanded="true" />
+                    <element signature="e#345#346#0" expanded="true" />
+                    <element signature="e#377#378#0" expanded="true" />
+                    <element signature="e#418#419#0" expanded="true" />
+                    <element signature="e#455#456#0" expanded="true" />
+                    <element signature="e#516#517#0" expanded="true" />
+                    <element signature="e#568#569#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -93,8 +153,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+                <state relative-caret-position="345">
+                  <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -120,25 +189,13 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+                <state relative-caret-position="343">
+                  <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
                   <folding>
+                    <element signature="e#3126#3132#0" expanded="true" />
+                    <element signature="e#3622#3628#0" expanded="true" />
                     <element signature="e#3707#3708#0" expanded="true" />
                     <element signature="e#3746#3747#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="494">
-                  <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
-                  <folding>
-                    <element signature="e#2580#2581#0" expanded="true" />
-                    <element signature="e#2642#2643#0" expanded="true" />
-                    <element signature="e#2696#2697#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -186,6 +243,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -210,14 +268,17 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/App.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/activity_collection/ActivityListTest.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/Goal.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/ActivityGoal.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/Service.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java" />
       </list>
     </option>
   </component>
@@ -327,8 +388,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="goals_service" type="462c0819:PsiDirectoryNode" />
-              <item name="goal_types" type="462c0819:PsiDirectoryNode" />
+              <item name="health_service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="statistics_service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -378,7 +448,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535687892658" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535694046735" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
   </component>
@@ -479,7 +549,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1535681008455</updated>
-      <workItem from="1535681011083" duration="6871000" />
+      <workItem from="1535681011083" duration="12620000" />
     </task>
     <task id="LOCAL-00001" summary="Made functional changes to data_entries to work on the services package">
       <created>1535685953378</created>
@@ -488,13 +558,17 @@
       <option name="project" value="LOCAL" />
       <updated>1535685953378</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finsihed an tested ActivityGoal and FrequencyGoal classes.">
+      <created>1535687971854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535687971854</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_HealthTrackerApp - 2018.08.30 at 20h 35m 57s.xml">
-      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_HealthTrackerApp - 2018.08.30 at 20h 35m 58s.xml">
       <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
     </history-entry>
@@ -522,9 +596,12 @@
     <history-entry file="All_in_HealthTrackerApp - 2018.08.30 at 20h 57m 24s.xml">
       <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_HealthTrackerApp - 2018.08.30 at 20h 58m 14s.xml">
+      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6871000" />
+    <option name="totallyTimeSpent" value="12620000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -535,7 +612,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1931378" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18760376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" weight="0.32972974" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -544,12 +621,13 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32982844" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="Palette&#9;" />
@@ -568,7 +646,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made functional changes to data_entries to work on the services package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made functional changes to data_entries to work on the services package" />
+    <MESSAGE value="Finsihed an tested ActivityGoal and FrequencyGoal classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finsihed an tested ActivityGoal and FrequencyGoal classes." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/event/EventHandler.java">
@@ -704,13 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -754,17 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
-          <folding>
-            <element signature="e#3707#3708#0" expanded="true" />
-            <element signature="e#3746#3747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/Goal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
@@ -772,10 +833,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="448">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -795,12 +866,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
+        <state relative-caret-position="345">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding>
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <element signature="e#3126#3132#0" expanded="true" />
+            <element signature="e#3622#3628#0" expanded="true" />
+            <element signature="e#3707#3708#0" expanded="true" />
+            <element signature="e#3746#3747#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="247" column="29" lean-forward="true" selection-start-line="247" selection-start-column="29" selection-end-line="247" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1811#1817#0" expanded="true" />
+            <element signature="e#2622#2628#0" expanded="true" />
+            <element signature="e#2684#2690#0" expanded="true" />
+            <element signature="e#3704#3710#0" expanded="true" />
+            <element signature="e#4516#4522#0" expanded="true" />
+            <element signature="e#4554#4560#0" expanded="true" />
+            <element signature="e#4756#4762#0" expanded="true" />
+            <element signature="e#5855#5856#0" expanded="true" />
+            <element signature="e#5891#5892#0" expanded="true" />
+            <element signature="e#6057#6058#0" expanded="true" />
+            <element signature="e#6100#6101#0" expanded="true" />
+            <element signature="e#6265#6266#0" expanded="true" />
+            <element signature="e#6301#6302#0" expanded="true" />
+            <element signature="e#6229#6230#0" expanded="true" />
+            <element signature="e#6272#6273#0" expanded="true" />
+            <element signature="e#6323#6324#0" expanded="true" />
+            <element signature="e#6372#6373#0" expanded="true" />
+            <element signature="e#7056#7057#0" expanded="true" />
+            <element signature="e#7098#7099#0" expanded="true" />
+            <element signature="e#7165#7166#0" expanded="true" />
+            <element signature="e#7220#7221#0" expanded="true" />
           </folding>
         </state>
       </provider>

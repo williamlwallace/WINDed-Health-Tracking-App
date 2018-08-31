@@ -1,12 +1,17 @@
 package seng202.group8.services.goals_service;
 
 import seng202.group8.activity_collection.ActivityListCollectionObserver;
+import seng202.group8.services.Service;
 import seng202.group8.services.goals_service.goal_types.Goal;
 import seng202.group8.activity_collection.ActivityListCollection;
+import seng202.group8.user.User;
 
+import javax.naming.ServiceUnavailableException;
 import java.util.ArrayList;
 
-public class GoalsService extends ActivityListCollectionObserver {
+public class GoalsService extends Service implements ActivityListCollectionObserver {
+
+
 
     private ArrayList<Goal> currentActivityGoals;
     private ArrayList<Goal> previousActivityGoals;
@@ -17,10 +22,12 @@ public class GoalsService extends ActivityListCollectionObserver {
     private ArrayList<Goal> currentTimesPerformedGoals;
     private ArrayList<Goal> previousTimesPerformedGoals;
 
-    private ActivityListCollection activityListCollectionObserved;
 
 
-    public GoalsService(ActivityListCollection activityListCollectionObserved) {
+
+    public GoalsService(User user, ActivityListCollection activityListCollectionObserved) {
+        super(user);
+
         this.currentActivityGoals = new ArrayList<Goal>();
         this.previousActivityGoals = new ArrayList<Goal>();
 
@@ -29,8 +36,7 @@ public class GoalsService extends ActivityListCollectionObserver {
 
         this.currentTimesPerformedGoals = new ArrayList<Goal>();
         this.currentTimesPerformedGoals = new ArrayList<Goal>();
-        this.activityListCollectionObserved = activityListCollectionObserved;
-        this.activityListCollectionObserved.attach(this);
+        activityListCollectionObserved.attach(this);
     }
 
 
