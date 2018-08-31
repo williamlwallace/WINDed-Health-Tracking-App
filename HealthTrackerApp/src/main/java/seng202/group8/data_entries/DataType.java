@@ -11,7 +11,8 @@ public enum DataType {
     SWIM,
     GENERAL,
     ASSISTED_SPORTS_DATA,
-    NOT_ASSISTED_SPORTS_DATA;
+    NOT_ASSISTED_SPORTS_DATA,
+    ALL;
 
 //    private String activityType;
 //    private DataType superDataType;
