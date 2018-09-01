@@ -22,8 +22,8 @@ public class UserTest {
         newUser = null;
     }
 
-    @Test
-    public void calculateBMI() {
-        assertEquals(BMIType.NORMAL, newUser.getBMICategory());
-    }
+//    @Test
+//    public void calculateBMI() {
+//        assertEquals(BMIType.NORMAL, newUser.getBMICategory());
+//    }
 }
