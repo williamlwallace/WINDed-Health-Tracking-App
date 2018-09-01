@@ -3,6 +3,8 @@ package seng202.group8.user;
 import seng202.group8.user.user_stats.UserStats;
 import seng202.group8.activity_collection.ActivityListCollection;
 
+import java.util.ArrayList;
+
 /**
  * user is the class which stores the user data for a user of the Winded App
  * @author jco165
@@ -18,6 +20,8 @@ public class User {
     private UserStats userStats;
     private StressLevelType stressLevel;
     private ActivityListCollection userActivities;
+    private ArrayList<UserObserver> observers;
+
 
 
     /**
@@ -33,6 +37,7 @@ public class User {
         this.weight = weight;
         this.height = height;
         this.userStats = new UserStats();
+        this.observers = new ArrayList<UserObserver>();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
 //        setBMI(calculateBMI());
         //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord holds BMI object
@@ -177,8 +182,8 @@ public class User {
     public void updateWeight(Double newWeight) {
         setWeight(newWeight);
         userStats.addUserWeightRecords(newWeight);
-        //Update observers here
         updateBMI(calculateBMI());
+        notifyAllObservers();
     }
 
     /**
@@ -188,7 +193,7 @@ public class User {
     public void updateBMI(Double newBMI) {
         setBMI(newBMI);
         //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord updated to hold BMI object
-        //Update observers here
+        notifyAllObservers();
     }
 
     /**
@@ -198,7 +203,24 @@ public class User {
     public void updateStressLevel(StressLevelType newStressLevel) {
         setStressLevel(newStressLevel);
         userStats.addUserStressLevelRecords(newStressLevel);
-        //Update observers here
+        notifyAllObservers();
+    }
+
+    /**
+     * Add an observer to be updated when User's attributes change
+     * @param observer the new UserObserver to be notified of changes
+     */
+    public void attach(UserObserver observer) {
+        observers.add(observer);
+    }
+
+    /**
+     * Update all observers
+     */
+    public void notifyAllObservers() {
+        for (UserObserver observer : observers) {
+            observer.update();
+        }
     }
 
 

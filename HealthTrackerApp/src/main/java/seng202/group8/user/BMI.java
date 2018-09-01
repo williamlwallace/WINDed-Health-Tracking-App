@@ -30,7 +30,7 @@ public class BMI {
 
     /**
      * Sets the BMI to a new double value in kg/m**2, and updates the category
-     * @param newBMIValue
+     * @param newBMIValue the new Double of the BMI value
      */
     public void setBMI(Double newBMIValue) {
         BMIValue = newBMIValue;
