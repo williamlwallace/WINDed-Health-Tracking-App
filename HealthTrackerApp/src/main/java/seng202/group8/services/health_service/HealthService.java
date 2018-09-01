@@ -1,8 +1,6 @@
 package seng202.group8.services.health_service;
 
 
-import seng202.group8.activity_collection.ActivityList;
-import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.activity_collection.ActivityListCollectionObserver;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
