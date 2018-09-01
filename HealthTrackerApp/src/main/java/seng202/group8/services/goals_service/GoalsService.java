@@ -5,12 +5,13 @@ import seng202.group8.services.Service;
 import seng202.group8.services.goals_service.goal_types.Goal;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.user.User;
+import seng202.group8.user.UserObserver;
 
 import javax.naming.ServiceUnavailableException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class GoalsService extends Service implements ActivityListCollectionObserver {
+public class GoalsService extends Service implements ActivityListCollectionObserver, UserObserver {
 
 
 
@@ -38,6 +39,7 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         this.currentTimesPerformedGoals = new ArrayList<Goal>();
         this.previousTimesPerformedGoals = new ArrayList<Goal>();
         user.getUserActivities().attach(this);
+        user.attach(this);
     }
 
 
