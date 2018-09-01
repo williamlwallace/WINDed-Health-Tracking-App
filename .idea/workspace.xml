@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f076a86-6c3e-4a8b-af1a-2c44acffdcbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,10 +19,11 @@
     <session id="1351477956">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -44,15 +42,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7573" />
-          <entry key="txt" value="234" />
+          <entry key="java" value="8005" />
+          <entry key="txt" value="278" />
           <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7573" />
-          <entry key="PLAIN_TEXT" value="234" />
+          <entry key="JAVA" value="8005" />
+          <entry key="PLAIN_TEXT" value="278" />
           <entry key="XML" value="5" />
         </counts>
       </usages-collector>
@@ -62,13 +60,13 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.15614156">
+    <splitter split-orientation="horizontal" split-proportion="0.4423623">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="941">
+                <state relative-caret-position="-260">
                   <caret line="83" selection-start-line="83" selection-end-line="83" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -84,10 +82,18 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="201">
-                  <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+                <state relative-caret-position="463">
+                  <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
                   <folding>
-                    <element signature="e#1390#1399#0" expanded="true" />
+                    <element signature="e#2026#2035#0" expanded="true" />
+                    <element signature="e#2419#2428#0" expanded="true" />
+                    <element signature="e#3062#3071#0" expanded="true" />
+                    <element signature="e#3067#3076#0" expanded="true" />
+                    <element signature="e#3713#3722#0" expanded="true" />
+                    <element signature="e#5033#5042#0" expanded="true" />
+                    <element signature="e#5672#5681#0" expanded="true" />
+                    <element signature="e#6250#6259#0" expanded="true" />
+                    <element signature="e#6838#6847#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -96,7 +102,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="720">
+                <state relative-caret-position="645">
                   <caret line="48" column="59" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -108,7 +114,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="701">
+                <state relative-caret-position="1005">
                   <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
                 </state>
               </provider>
@@ -209,6 +215,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -357,6 +366,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="health_service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
               <item name="statistics_service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -381,15 +400,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535776720530" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535778100079" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
   </component>
@@ -512,7 +528,8 @@
       <option name="presentableId" value="Default" />
       <updated>1535681008455</updated>
       <workItem from="1535681011083" duration="20342000" />
-      <workItem from="1535776246694" duration="474000" />
+      <workItem from="1535776246694" duration="548000" />
+      <workItem from="1535776986039" duration="1113000" />
     </task>
     <task id="LOCAL-00001" summary="Made functional changes to data_entries to work on the services package">
       <created>1535685953378</created>
@@ -542,49 +559,56 @@
       <option name="project" value="LOCAL" />
       <updated>1535761624679</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Started working on HealthService tests">
+      <created>1535776784700</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1535776784700</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GoalsServiceTest - 2018.08.31 at 17h 16m 15s.xml">
-      <configuration name="GoalsServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoalsServiceTest - 2018.08.31 at 17h 20m 40s.xml">
-      <configuration name="GoalsServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoalsServiceTest - 2018.08.31 at 17h 24m 03s.xml">
-      <configuration name="GoalsServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoalsServiceTest - 2018.08.31 at 17h 24m 06s.xml">
-      <configuration name="GoalsServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoalsServiceTest - 2018.08.31 at 17h 24m 11s.xml">
-      <configuration name="GoalsServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoalsServiceTest - 2018.08.31 at 17h 24m 56s.xml">
-      <configuration name="GoalsServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 33m 41s.xml">
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 54m 00s.xml">
       <configuration name="HealthServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 35m 08s.xml">
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 54m 12s.xml">
       <configuration name="HealthServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 35m 56s.xml">
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 54m 51s.xml">
       <configuration name="HealthServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 36m 51s.xml">
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 55m 54s.xml">
+      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 56m 21s.xml">
+      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 56m 30s.xml">
+      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 57m 14s.xml">
+      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 58m 07s.xml">
+      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HealthServiceTest - 2018.08.31 at 22h 00m 58s.xml">
+      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HealthServiceTest - 2018.08.31 at 22h 01m 32s.xml">
       <configuration name="HealthServiceTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20816000" />
+    <option name="totallyTimeSpent" value="22003000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="958" extended-state="6" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20254566" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.025456557" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -593,7 +617,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31400967" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31351352" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -602,10 +626,10 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32850242" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32756758" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958494" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Database" order="5" />
@@ -626,7 +650,8 @@
     <MESSAGE value="Finsihed an tested ActivityGoal and FrequencyGoal classes." />
     <MESSAGE value="Created, populated and documented HeatlService class" />
     <MESSAGE value="Tested GoalsService, fixed few related bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested GoalsService, fixed few related bugs." />
+    <MESSAGE value="Started working on HealthService tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on HealthService tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -751,9 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="72" selection-start-line="72" selection-end-line="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -782,15 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="491">
           <caret line="64" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1401#1402#0" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
-            <element signature="e#1482#1483#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,11 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
           <caret line="92" selection-start-line="92" selection-end-line="92" />
-          <folding>
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1243#1244#0" expanded="true" />
-            <element signature="e#1868#1869#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,9 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="69" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -843,10 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#2478#2479#0" expanded="true" />
-            <element signature="e#2513#2514#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,12 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="107" selection-start-line="107" selection-end-line="107" />
-          <folding>
-            <element signature="e#3126#3132#0" expanded="true" />
-            <element signature="e#3622#3628#0" expanded="true" />
-            <element signature="e#3707#3708#0" expanded="true" />
-            <element signature="e#3746#3747#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -900,9 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="151" selection-start-line="151" selection-end-line="151" />
-          <folding>
-            <element signature="e#3563#3564#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -910,28 +902,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1600">
           <caret line="117" column="88" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1828#1829#0" expanded="true" />
-            <element signature="e#1856#1857#0" expanded="true" />
-            <element signature="e#1979#1980#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2170#2171#0" expanded="true" />
-            <element signature="e#2206#2207#0" expanded="true" />
-            <element signature="e#2315#2316#0" expanded="true" />
-            <element signature="e#2352#2353#0" expanded="true" />
-            <element signature="e#2505#2506#0" expanded="true" />
-            <element signature="e#2553#2554#0" expanded="true" />
-            <element signature="e#2831#2839#0" expanded="true" />
-            <element signature="e#4174#4175#0" expanded="true" />
-            <element signature="e#4227#4228#0" expanded="true" />
-            <element signature="e#2542#2543#0" expanded="true" />
-            <element signature="e#2580#2581#0" expanded="true" />
-            <element signature="e#2642#2643#0" expanded="true" />
-            <element signature="e#2696#2697#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+          <folding>
+            <element signature="e#2026#2035#0" expanded="true" />
+            <element signature="e#2419#2428#0" expanded="true" />
+            <element signature="e#3062#3071#0" expanded="true" />
+            <element signature="e#3067#3076#0" expanded="true" />
+            <element signature="e#3713#3722#0" expanded="true" />
+            <element signature="e#5033#5042#0" expanded="true" />
+            <element signature="e#5672#5681#0" expanded="true" />
+            <element signature="e#6250#6259#0" expanded="true" />
+            <element signature="e#6838#6847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="48" column="59" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -942,47 +957,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="941">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="59" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-          <folding>
-            <element signature="e#1390#1399#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
