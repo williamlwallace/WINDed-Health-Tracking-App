@@ -1,20 +1,43 @@
 package seng202.group8.data_entries;
 
+//import seng202.group8.parser.Distance;
+
 import java.util.ArrayList;
 import java.util.Date;
+//import java.time.Duration;
 
 public abstract class Data {
 
     /*This structure uses the coordinates list, and heart rate list as arguments to calculate the calories consumed in
-    * an activity
-    * XX TESTS NOT WRITTEN JUST YET*/
+     * an activity
+     * Note:
+     * Added a CoordinateData class for the Data abstract class to manage
+        incoming coordinate info. It makes each set of three coordinates into
+        a coordinate object, and adds them to a list of such objects which are
+        stored as a variable of the data class. The data class now has an
+        appropriate setter to do this.
+
+        That list of coordinate objects will then be used for
+        calorie calculation. Similarly, the next thing to do will be to store
+        time values as temporal objects in order to calculate time differences
+        between coordinate values, for the purpose of calorie calculation.
+        To do this, a list of time values will be passed
+        into the Data object.
+
+        This information will then be compared with the heart rate during that
+        period to estimate calories burned.
+
+        When there are times that are to difficult to calculate the calories
+        using the coordinates, an attempt will be made to give an
+        estimation purely based on the heart rate over that time period.
+     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
-//    private DataType = new DataType();
+    //    private DataType = new DataType();
     private Date creationDate;
     private DataType dataType;
     private DataType dataSuperType;
-    private ArrayList<Double> coordinatesList;
+    private ArrayList<CoordinateData> coordinatesArrayList;
     private ArrayList<Integer> heartRateList;
     private double consumedCalories;
 
@@ -32,22 +55,61 @@ public abstract class Data {
         return creationDate;
     }
 
-    public ArrayList<Double> getCoordinatesList() {
-        return coordinatesList;
+    public ArrayList<CoordinateData> getCoordinatesList() {
+        return coordinatesArrayList;
     }
+
     public ArrayList<Integer> getHeartRateList() {
         return heartRateList;
     }
 
     abstract double getConsumedCalories(String activityType);
 
-    public void setTitle(String newTitle) { this.title = newTitle; }
-//    public void setActivityType(String newActivityType) { this.DataType = newActivityType; }
+
+    public void setTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
+    //    public void setActivityType(String newActivityType) { this.DataType = newActivityType; }
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-    public void setCoordinatesList(ArrayList<Double> newCoordinatesList) { this.coordinatesList = newCoordinatesList; }
-    public void setHeartRateList(ArrayList<Integer> newHeartRateList)  { this.heartRateList = newHeartRateList; }
+
+    public void setCoordinatesArrayList(ArrayList<Double> newCoordinatesList) {
+        this.coordinatesArrayList = new ArrayList<CoordinateData>();
+        for (int i = 3; i < newCoordinatesList.size(); i += 3) {
+            ArrayList<Double> tempInitialList = new ArrayList<Double>();
+            tempInitialList.add(0.0);
+            tempInitialList.add(0.0);
+            tempInitialList.add(0.0);
+
+            CoordinateData tempCoordinateData = new CoordinateData(tempInitialList);
+            tempCoordinateData.setLatitude(newCoordinatesList.get(i - 3));
+            tempCoordinateData.setLongitude(newCoordinatesList.get(i - 2));
+            tempCoordinateData.setAltitude(newCoordinatesList.get(i - 1));
+            this.coordinatesArrayList.add(tempCoordinateData);
+        }
+        //        ArrayList<Integer> latitudeIndices = new ArrayList<Integer>();
+//        ArrayList<Integer> longitudeIndices = new ArrayList<Integer>();
+//        ArrayList<Integer> altitudeIndices = new ArrayList<Integer>();
+
+//        for (int i = 0; i < newCoordinatesList.size(); i++) {
+//            latitudeIndices.set(0, 0);
+//            longitudeIndices.set(0, 1);
+//            altitudeIndices.set(0, 2);
+//            if (latitudeIndices.size() == (int) (i / 3)) {
+//                latitudeIndices.add(i);
+//            } else if (longitudeIndices.size() == (int) (i / 3)) {
+//                longitudeIndices.add(i);
+//            } else if (altitudeIndices.size() == (int) (i / 3))
+//                altitudeIndices.add(i);
+//        }
+//
+    }
+
+    public void setHeartRateList(ArrayList<Integer> newHeartRateList) {
+        this.heartRateList = newHeartRateList;
+    }
 //    public void setConsumedCalories(double consumedCalories) {
 //        this.consumedCalories = consumedCalories;
 //    }
@@ -60,7 +122,7 @@ public abstract class Data {
 //        this.dataSubType = DataType.parseSubDataType(activityType);
         this.dataType = dataType;
         this.heartRateList = newHeartRateList;
-        this.coordinatesList = newCoordinatesList;
+        setCoordinatesArrayList(newCoordinatesList);
         this.creationDate = new Date();
 //        this.distanceCovered = calculateDistanceCovered();
 //        this.consumedCalories = getConsumedCalories();
