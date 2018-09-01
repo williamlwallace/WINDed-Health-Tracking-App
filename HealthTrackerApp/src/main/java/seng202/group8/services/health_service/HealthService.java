@@ -36,9 +36,9 @@ public class HealthService extends Service implements ActivityListCollectionObse
 
     private int maxAcceptableHeartRate;
 
-    public HealthService(User user, ActivityListCollection activityListCollectionObserved) {
+    public HealthService(User user) {
         super(user);
-        activityListCollectionObserved.attach(this);
+        user.getUserActivities().attach(this);
         isTachicardic = false;
         isBradicardic = false;
         isAtCardiovasMortalityRisk = false;

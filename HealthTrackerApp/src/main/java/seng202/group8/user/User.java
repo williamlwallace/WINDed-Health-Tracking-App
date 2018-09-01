@@ -34,7 +34,7 @@ public class User {
         this.height = height;
         this.userStats = new UserStats();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
-        setBMI(calculateBMI());
+//        setBMI(calculateBMI());
         //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord holds BMI object
         userStats.addUserWeightRecords(weight);
     }
