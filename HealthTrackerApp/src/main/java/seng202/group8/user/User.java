@@ -39,8 +39,8 @@ public class User {
         this.userStats = new UserStats();
         this.observers = new ArrayList<UserObserver>();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
-//        setBMI(calculateBMI());
-        //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord holds BMI object
+        this.bmi = new BMI(calculateBMI());
+        userStats.addUserBMITypeRecords(bmi);
         userStats.addUserWeightRecords(weight);
     }
 
@@ -192,7 +192,7 @@ public class User {
      */
     public void updateBMI(Double newBMI) {
         setBMI(newBMI);
-        //userStats.addUserBMITypeRecords(bmi); uncomment when BMITypeRecord updated to hold BMI object
+        userStats.addUserBMITypeRecords(bmi);
         notifyAllObservers();
     }
 

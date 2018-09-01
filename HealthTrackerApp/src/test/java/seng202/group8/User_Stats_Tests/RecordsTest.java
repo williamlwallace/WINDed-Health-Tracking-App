@@ -4,6 +4,7 @@ package seng202.group8.User_Stats_Tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import seng202.group8.user.BMI;
 import seng202.group8.user.user_stats.*;
 
 import static org.junit.Assert.*;
@@ -28,7 +29,8 @@ public class RecordsTest {
     @Before
     public void recordsSetup() {
         weightRecord = new WeightRecord(10.5);
-        bmiRecord = new BMITypeRecord(NORMAL);
+        BMI bmi = new BMI(20.0);
+        bmiRecord = new BMITypeRecord(bmi);
         fatRecord = new FatToMuscleRecord(55.99);
         stressRecord = new StressLevelRecord(PERCEIVED);
     }
@@ -85,13 +87,14 @@ public class RecordsTest {
 
     @Test
     public void correctBMIRecord(){
-        assertEquals(bmiRecord.getBmi(), NORMAL);
+        assertEquals(bmiRecord.getBmi().getBMICategory(), NORMAL);
     }
 
     @Test
     public void changeBMIRecord()  {
-        bmiRecord.setBmi(LIGHT);
-        assertEquals(bmiRecord.getBmi(), LIGHT);
+        BMI newBMI = new BMI(17.0);
+        bmiRecord.setBmi(newBMI);
+        assertEquals(LIGHT, bmiRecord.getBmi().getBMICategory());
     }
 
     @Test
@@ -131,9 +134,10 @@ public class RecordsTest {
 
     @Test
     public void checkBMIList() {
-        userStats.addUserBMITypeRecords(NORMAL);
+        BMI bmi = new BMI(20.0);
+        userStats.addUserBMITypeRecords(bmi);
         ArrayList<BMITypeRecord> list = userStats.getUserBMITypeRecords();
-        assertEquals(list.get(0).getBmi(), NORMAL);
+        assertEquals(NORMAL, list.get(0).getBmi().getBMICategory());
     }
 
     @Test

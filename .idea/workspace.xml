@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f076a86-6c3e-4a8b-af1a-2c44acffdcbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java" afterDir="false" />
+    <list default="true" id="9f076a86-6c3e-4a8b-af1a-2c44acffdcbf" name="Default Changelist" comment="Updated BMITypeRecord to hold a BMI rather than a BMIType enum. Changed user&#10;and records tests to reflect this.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/BMITypeRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/BMITypeRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/UserStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/UserStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Stats_Tests/RecordsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Stats_Tests/RecordsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,12 +65,24 @@
     <session id="1071563978">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="1" />
+          <entry key="java" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="1" />
+          <entry key="JAVA" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="626" />
+          <entry key="txt" value="253" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="626" />
+          <entry key="PLAIN_TEXT" value="253" />
         </counts>
       </usages-collector>
     </session>
@@ -74,36 +90,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMIType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="17" column="49" lean-forward="true" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+            <state relative-caret-position="30">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1611">
-              <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+            <state relative-caret-position="465">
+              <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/GoalsServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1005">
@@ -112,20 +116,74 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/UserStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-285">
-              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            <state relative-caret-position="153">
+              <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#292#293#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/WeightLossGoalTest.java">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/BMITypeRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1223">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="405">
+              <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/Records.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-46">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+              <folding>
+                <element signature="e#301#302#0" expanded="true" />
+                <element signature="e#360#361#0" expanded="true" />
+                <element signature="e#480#481#0" expanded="true" />
+                <element signature="e#555#556#0" expanded="true" />
+                <element signature="e#611#612#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-165">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Stats_Tests/RecordsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1061">
+              <caret line="137" column="45" lean-forward="true" selection-start-line="137" selection-start-column="45" selection-end-line="137" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,47 +191,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
-              <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+            <state relative-caret-position="63">
+              <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2224#2225#0" expanded="true" />
+                <element signature="e#2255#2256#0" expanded="true" />
                 <element signature="e#3526#3527#0" expanded="true" />
                 <element signature="e#3563#3564#0" expanded="true" />
                 <element signature="e#5477#5478#0" expanded="true" />
                 <element signature="e#5516#5517#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/WeightLossGoal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="21" column="73" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3126#3132#0" expanded="true" />
-                <element signature="e#3622#3628#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollectionObserver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -218,14 +246,17 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/Service.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/App.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/GoalsServiceTest.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/health_service/HealthService.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/pom.xml" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/BMITypeRecord.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/UserStats.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Stats_Tests/RecordsTest.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" />
       </list>
     </option>
   </component>
@@ -285,6 +316,23 @@
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -329,7 +377,36 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="goals_service" type="462c0819:PsiDirectoryNode" />
+              <item name="goal_types" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
               <item name="health_service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="User_Stats_Tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="User_Tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -340,7 +417,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535778728888" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535780979997" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
   </component>
@@ -480,41 +557,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.HealthServiceTest">
+  <component name="RunManager" selected="JUnit.All in HealthTrackerApp">
     <configuration name="All in HealthTrackerApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FrequencyGoalTest.checkIsCompleteTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthTrackerApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="seng202.group8.services.goals_service.goal_types.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="seng202.group8.services.goals_service.goal_types" />
-      <option name="MAIN_CLASS_NAME" value="seng202.group8.services.goals_service.goal_types.FrequencyGoalTest" />
-      <option name="METHOD_NAME" value="checkIsCompleteTest2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GoalsServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthTrackerApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="seng202.group8.services.goals_service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="seng202.group8.services.goals_service" />
-      <option name="MAIN_CLASS_NAME" value="seng202.group8.services.goals_service.GoalsServiceTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -549,20 +596,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RecordsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthTrackerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="seng202.group8.User_Stats_Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="seng202.group8.User_Stats_Tests" />
+      <option name="MAIN_CLASS_NAME" value="seng202.group8.User_Stats_Tests.RecordsTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthTrackerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="seng202.group8.User_Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="seng202.group8.User_Tests" />
+      <option name="MAIN_CLASS_NAME" value="seng202.group8.User_Tests.UserTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.All in HealthTrackerApp" />
-      <item itemvalue="JUnit.FrequencyGoalTest.checkIsCompleteTest2" />
-      <item itemvalue="JUnit.GoalsServiceTest" />
       <item itemvalue="JUnit.HealthServiceTest.checkIsTachicardicTrue" />
       <item itemvalue="JUnit.HealthServiceTest" />
+      <item itemvalue="JUnit.UserTest" />
+      <item itemvalue="JUnit.RecordsTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in HealthTrackerApp" />
+        <item itemvalue="JUnit.RecordsTest" />
+        <item itemvalue="JUnit.UserTest" />
         <item itemvalue="JUnit.HealthServiceTest" />
         <item itemvalue="JUnit.HealthServiceTest.checkIsTachicardicTrue" />
-        <item itemvalue="JUnit.GoalsServiceTest" />
-        <item itemvalue="JUnit.All in HealthTrackerApp" />
-        <item itemvalue="JUnit.FrequencyGoalTest.checkIsCompleteTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -615,39 +690,46 @@
       <option name="project" value="LOCAL" />
       <updated>1535776784700</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Made GoalsService Observe User so goals can be updated when user attributes&#10;are changed">
+      <created>1535778815403</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1535778815403</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 54m 00s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="UserTest - 2018.09.01 at 17h 27m 25s.xml">
+      <configuration name="UserTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 54m 12s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="UserTest - 2018.09.01 at 17h 29m 18s.xml">
+      <configuration name="UserTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 54m 51s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="UserTest - 2018.09.01 at 17h 31m 22s.xml">
+      <configuration name="UserTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 55m 54s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="UserTest - 2018.09.01 at 17h 34m 31s.xml">
+      <configuration name="UserTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 56m 21s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="UserTest - 2018.09.01 at 17h 34m 46s.xml">
+      <configuration name="UserTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 56m 30s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="UserTest - 2018.09.01 at 17h 45m 58s.xml">
+      <configuration name="UserTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 57m 14s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="RecordsTest - 2018.09.01 at 17h 46m 03s.xml">
+      <configuration name="RecordsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 21h 58m 07s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="RecordsTest - 2018.09.01 at 17h 47m 29s.xml">
+      <configuration name="RecordsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 22h 00m 58s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="RecordsTest - 2018.09.01 at 17h 48m 17s.xml">
+      <configuration name="RecordsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HealthServiceTest - 2018.08.31 at 22h 01m 32s.xml">
-      <configuration name="HealthServiceTest" configurationId="JUnit" />
+    <history-entry file="All_in_HealthTrackerApp - 2018.09.01 at 17h 49m 36s.xml">
+      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -657,7 +739,7 @@
     <frame x="-1" y="0" width="1362" height="638" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21461187" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21461187" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -666,16 +748,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31351352" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27237353" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.34541062" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.34541062" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32756758" />
+      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.52723736" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958494" />
@@ -700,7 +782,9 @@
     <MESSAGE value="Created, populated and documented HeatlService class" />
     <MESSAGE value="Tested GoalsService, fixed few related bugs." />
     <MESSAGE value="Started working on HealthService tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started working on HealthService tests" />
+    <MESSAGE value="Made GoalsService Observe User so goals can be updated when user attributes&#10;are changed" />
+    <MESSAGE value="Updated BMITypeRecord to hold a BMI rather than a BMIType enum. Changed user&#10;and records tests to reflect this." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated BMITypeRecord to hold a BMI rather than a BMIType enum. Changed user&#10;and records tests to reflect this." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,13 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -912,44 +989,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="17" column="49" lean-forward="true" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/CoordinateData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Stats_Tests/RecordsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3526#3527#0" expanded="true" />
-            <element signature="e#3563#3564#0" expanded="true" />
-            <element signature="e#5477#5478#0" expanded="true" />
-            <element signature="e#5516#5517#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
@@ -1004,10 +1046,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/WeightLossGoalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="56" column="58" lean-forward="true" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1611">
-          <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+          <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
@@ -1015,6 +1078,89 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1005">
           <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/Records.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMIType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Stats_Tests/RecordsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1061">
+          <caret line="137" column="45" lean-forward="true" selection-start-line="137" selection-start-column="45" selection-end-line="137" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/BMITypeRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2224#2225#0" expanded="true" />
+            <element signature="e#2255#2256#0" expanded="true" />
+            <element signature="e#3526#3527#0" expanded="true" />
+            <element signature="e#3563#3564#0" expanded="true" />
+            <element signature="e#5477#5478#0" expanded="true" />
+            <element signature="e#5516#5517#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/UserStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

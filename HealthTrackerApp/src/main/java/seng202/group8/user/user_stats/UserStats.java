@@ -1,6 +1,6 @@
 package seng202.group8.user.user_stats;
 
-import seng202.group8.user.BMIType;
+import seng202.group8.user.BMI;
 import seng202.group8.user.StressLevelType;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class UserStats {
         userWeightRecords.add(record);
     }
 
-    public void addUserBMITypeRecords(BMIType bmi) {
+    public void addUserBMITypeRecords(BMI bmi) {
         BMITypeRecord record = new BMITypeRecord(bmi);
         userBMITypeRecords.add(record);
     }
