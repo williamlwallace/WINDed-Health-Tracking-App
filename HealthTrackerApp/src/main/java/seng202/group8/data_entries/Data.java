@@ -2,6 +2,7 @@ package seng202.group8.data_entries;
 
 //import seng202.group8.parser.Distance;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 //import java.time.Duration;
@@ -37,10 +38,10 @@ public abstract class Data {
     private Date creationDate;
     private DataType dataType;
     private DataType dataSuperType;
+    private ArrayList<LocalDateTime> allDateTimes;
     private ArrayList<CoordinateData> coordinatesArrayList;
     private ArrayList<Integer> heartRateList;
     private double consumedCalories;
-
     private Double distanceCovered;
 
     public String getTitle() {
@@ -55,7 +56,9 @@ public abstract class Data {
         return creationDate;
     }
 
-    public ArrayList<CoordinateData> getCoordinatesList() {
+
+
+    public ArrayList<CoordinateData> getCoordinatesArrayList() {
         return coordinatesArrayList;
     }
 
@@ -75,20 +78,22 @@ public abstract class Data {
         this.creationDate = creationDate;
     }
 
-    public void setCoordinatesArrayList(ArrayList<Double> newCoordinatesList) {
+    public void setCoordinatesArrayList(ArrayList<CoordinateData> newCoordinatesList) {
         this.coordinatesArrayList = new ArrayList<CoordinateData>();
-        for (int i = 3; i < newCoordinatesList.size(); i += 3) {
-            ArrayList<Double> tempInitialList = new ArrayList<Double>();
-            tempInitialList.add(0.0);
-            tempInitialList.add(0.0);
-            tempInitialList.add(0.0);
 
-            CoordinateData tempCoordinateData = new CoordinateData(tempInitialList);
-            tempCoordinateData.setLatitude(newCoordinatesList.get(i - 3));
-            tempCoordinateData.setLongitude(newCoordinatesList.get(i - 2));
-            tempCoordinateData.setAltitude(newCoordinatesList.get(i - 1));
-            this.coordinatesArrayList.add(tempCoordinateData);
-        }
+    }
+//        for (int i = 3; i < newCoordinatesList.size(); i += 3) {
+//            ArrayList<Double> tempInitialList = new ArrayList<Double>();
+//            tempInitialList.add(0.0);
+//            tempInitialList.add(0.0);
+//            tempInitialList.add(0.0);
+//
+//            CoordinateData tempCoordinateData = new CoordinateData(tempInitialList);
+//            tempCoordinateData.setLatitude(newCoordinatesList.get(i - 3));
+//            tempCoordinateData.setLongitude(newCoordinatesList.get(i - 2));
+//            tempCoordinateData.setAltitude(newCoordinatesList.get(i - 1));
+//            this.coordinatesArrayList.add(tempCoordinateData);
+
         //        ArrayList<Integer> latitudeIndices = new ArrayList<Integer>();
 //        ArrayList<Integer> longitudeIndices = new ArrayList<Integer>();
 //        ArrayList<Integer> altitudeIndices = new ArrayList<Integer>();
@@ -105,7 +110,7 @@ public abstract class Data {
 //                altitudeIndices.add(i);
 //        }
 //
-    }
+
 
     public void setHeartRateList(ArrayList<Integer> newHeartRateList) {
         this.heartRateList = newHeartRateList;
@@ -115,15 +120,16 @@ public abstract class Data {
 //    }
 //    private ArrayList<CSVDataLine> inputData;
 
-    public Data(String newTitle, DataType dataType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
+    public Data(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 
 //        double inputData = getCSVActivities();
         this.title = newTitle;
+        this.creationDate = new Date(newDateTimes.get(0).getYear(), newDateTimes.get(0).getMonthValue(), newDateTimes.get(0).getDayOfMonth());
 //        this.dataSubType = DataType.parseSubDataType(activityType);
         this.dataType = dataType;
+        this.allDateTimes = newDateTimes;
         this.heartRateList = newHeartRateList;
         setCoordinatesArrayList(newCoordinatesList);
-        this.creationDate = new Date();
 //        this.distanceCovered = calculateDistanceCovered();
 //        this.consumedCalories = getConsumedCalories();
 
