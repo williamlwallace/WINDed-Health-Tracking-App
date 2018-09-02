@@ -12,7 +12,7 @@ public abstract class Data {
     private String title;
 //    private DataType = new DataType();
     private Date creationDate;
-    private DataType dataSubType;
+    private DataType dataType;
     private DataType dataSuperType;
     private ArrayList<Double> coordinatesList;
     private ArrayList<Integer> heartRateList;
@@ -51,16 +51,25 @@ public abstract class Data {
 //    }
 //    private ArrayList<CSVDataLine> inputData;
 
-    private Data(String newTitle, String activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
+    public Data(String newTitle, DataType dataType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 
 //        double inputData = getCSVActivities();
         this.title = newTitle;
-        this.dataSubType = DataType.parseSubDataType(activityType);
+//        this.dataSubType = DataType.parseSubDataType(activityType);
+        this.dataType = dataType;
         this.heartRateList = newHeartRateList;
         this.coordinatesList = newCoordinatesList;
-        this.dataSuperType = DataType.getSuperDataType(this.dataSubType);
+        this.creationDate = new Date();
+
 //        this.consumedCalories = getConsumedCalories();
 
     }
 
+    public DataType getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(DataType dataSubType) {
+        this.dataType = dataSubType;
+    }
 }

@@ -1,5 +1,7 @@
 package seng202.group8.activity_collection;
 
+import seng202.group8.data_entries.Data;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,7 +10,7 @@ public class ActivityList {
 
     private String title;
     private Date creationDate;
-    private ArrayList<Activity> activityList;
+    private ArrayList<Data> activityList;
 
     /**
      * Structure containing Activity object, offers storage, sort and retrieval of this objects.
@@ -16,14 +18,14 @@ public class ActivityList {
     public ActivityList(String title) {
         this.title = title;
         creationDate = new Date();
-        activityList= new ArrayList<Activity>();
+        activityList= new ArrayList<Data>();
     }
 
     /**
      * @param index index of Activity object to retrieve
      * @return Activity object at specified index
      */
-    public Activity getActivity(int index) {
+    public Data getActivity(int index) {
         return activityList.get(index);
     }
 
@@ -31,7 +33,7 @@ public class ActivityList {
      * @param activity a new Activity object to add to the activityList attribute
      * @return a boolean value
      */
-    public boolean insertActivity(Activity activity) {
+    public boolean insertActivity(Data activity) {
         int initialSize = activityList.size();
         for (int i = 0; i < activityList.size(); i++) {
             if (activity.getCreationDate().before(activityList.get(i).getCreationDate())) {
@@ -88,14 +90,14 @@ public class ActivityList {
     /**
      * @return the ArrayList<Activity> attribute
      */
-    public ArrayList<Activity> getActivityList() {
+    public ArrayList<Data> getActivityList() {
         return activityList;
     }
 
     /**
      * @param activityList an ArrayList<Activity> object
      */
-    public void setActivityList(ArrayList<Activity> activityList) {
+    public void setActivityList(ArrayList<Data> activityList) {
         this.activityList = activityList;
     }
 

@@ -1,5 +1,9 @@
 package seng202.group8.activity_collection;
 
+import javafx.scene.chart.PieChart;
+import seng202.group8.data_entries.Data;
+import seng202.group8.data_entries.DataType;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -52,7 +56,7 @@ public class ActivityListCollection {
     }
 
 
-    public void insertActivityInGivenList(int index, Activity activity) {
+    public void insertActivityInGivenList(int index, Data activity) {
         try {
             ActivityList activityList = activityListCollection.get(index);
             activityList.insertActivity(activity);
@@ -71,6 +75,19 @@ public class ActivityListCollection {
             return false;
         }
         return true;
+    }
+
+    public ArrayList<Data> retrieveSameTypeActivities(DataType dataType, Date startDate) {
+
+        ArrayList<Data> sameTypeData = new ArrayList<Data>();
+        for (ActivityList activityList : activityListCollection) {
+            for (Data data : activityList.getActivityList()) {
+                if (!data.getCreationDate().before(startDate) && data.getDataType() == dataType) {
+                    sameTypeData.add(data);
+                }
+            }
+        }
+        return sameTypeData;
     }
 
     public void notifyAllObservers() {

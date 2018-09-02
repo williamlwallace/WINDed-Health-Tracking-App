@@ -3,7 +3,12 @@ package seng202.group8.activity_collection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import seng202.group8.data_entries.Data;
+import seng202.group8.data_entries.DataType;
+import seng202.group8.data_entries.RunData;
+import seng202.group8.data_entries.WalkData;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -11,15 +16,15 @@ import static org.junit.Assert.*;
 public class ActivityListTest {
 
     private ActivityList activityList;
-    private Activity jog;
-    private Activity fastWalk;
+    private RunData jog;
+    private WalkData fastWalk;
 
     @Before
     public void setUp() throws Exception {
         activityList = new ActivityList("Jog with friends");
         activityList.setTitle("Intense runs");
-        jog = new Activity("Morning jog");
-        fastWalk = new Activity("Fast Walk");
+        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<Double>(), new ArrayList<Integer>());
+        fastWalk = new WalkData("Fast Walk", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<Double>(), new ArrayList<Integer>());
     }
 
     @After
@@ -34,7 +39,7 @@ public class ActivityListTest {
     public void insertActivityOneVal() {
         activityList.insertActivity(fastWalk);
 
-        Activity posOneActivity = activityList.getActivity(0);
+        Data posOneActivity = activityList.getActivity(0);
         assertEquals(posOneActivity.getTitle(), "Fast Walk");
     }
 
@@ -44,7 +49,7 @@ public class ActivityListTest {
         fastWalk.setCreationDate(new Date(1234));
         activityList.insertActivity(jog);
         activityList.insertActivity(fastWalk);
-        Activity activityAtZero = activityList.getActivity(0);
+        Data activityAtZero = activityList.getActivity(0);
 
         assertEquals(activityAtZero.getTitle(), "Fast Walk");
     }
