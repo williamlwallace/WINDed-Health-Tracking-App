@@ -40,13 +40,19 @@ public class Parser {
         acceptedValues.add(waterSports);
         CSVReader csvReader = new CSVReader(new FileReader(filename));
         String[] line = readLine(csvReader);
+        String activityName = "";
+        String activityType = "";
         ArrayList<LocalDateTime> activityDateTime = new ArrayList<LocalDateTime>();
         ArrayList<Integer> activityHeartRate = new ArrayList<Integer>();
         ArrayList<Distance> activityDistance = new ArrayList<Distance>();
         //String[] myEntries = csvReader.readAll();
         while (line != null) {
-            line = parseActivity(line, csvReader, activityDateTime, activityHeartRate, activityDistance);
+            line = parseActivity(line, csvReader, activityName, activityType, activityDateTime, activityHeartRate, activityDistance);
+            System.out.println(activityName + "\n");
+            System.out.println(activityType);
             // Send the ArrayLists here.
+            activityName = "";
+            activityType = "";
             activityDateTime.clear();
             activityHeartRate.clear();
             activityDistance.clear();
@@ -59,11 +65,11 @@ public class Parser {
      * @param line
      * @throws Exception
      */
-    private String[] parseActivity(String[] line, CSVReader csvReader, ArrayList<LocalDateTime> activityDateTime, ArrayList<Integer> activityHeartRate, ArrayList<Distance> activityDistance) throws Exception {
+    private String[] parseActivity(String[] line, CSVReader csvReader, String activityName, String activityType, ArrayList<LocalDateTime> activityDateTime, ArrayList<Integer> activityHeartRate, ArrayList<Distance> activityDistance) throws Exception {
         //System.out.print(line[0]);
-        String activityName = line[1];
+        activityName = line[1];
         System.out.println(activityName);
-        String activityType = "";
+        activityType = "";
         activityName = activityName.toLowerCase();
         // Check if it is a walk
         for (int place = 0; place < acceptedValues.size(); place++) {
@@ -91,7 +97,7 @@ public class Parser {
             acceptedValues.get(activityNum).add(phrase.toLowerCase());
             activityType = acceptedValues.get(activityNum).get(0);
         }
-        System.out.println(activityType);
+        //System.out.println(activityType);
         line = readLine(csvReader);
         Calendar dateActivity;
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
