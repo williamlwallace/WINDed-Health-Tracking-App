@@ -1,12 +1,11 @@
 package seng202.group8.data_entries;
 
-//import seng202.group8.parser.Distance;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.Date;
-//import java.time.Duration;
 
 public abstract class Data {
 
@@ -48,19 +47,19 @@ public abstract class Data {
     private double consumedCalories;
 
     private Double distanceCovered;
+    private long millisecondsOfExercise;
 
 
     public Data(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 
-//        double inputData = getCSVActivities();
         this.title = newTitle;
         this.creationDate = new Date(newDateTimes.get(0).getYear(), newDateTimes.get(0).getMonthValue(), newDateTimes.get(0).getDayOfMonth());
-//        this.dataSubType = DataType.parseSubDataType(activityType);
         this.dataType = dataType;
         this.allDateTimes = newDateTimes;
         this.heartRateData = new HeartRateData(newHeartRateList);
         setCoordinatesArrayList(newCoordinatesList);
         this.distanceCovered = calculateDistanceCovered();
+        this.millisecondsOfExercise = calculateMillisecondsOfExercise();
 //        this.consumedCalories = getConsumedCalories();
 
     }
@@ -87,6 +86,23 @@ public abstract class Data {
 
         return distanceCovered;
     }
+
+    private long calculateMillisecondsOfExercise() {
+        long millisecondsTrained = 0;
+
+        if (this.allDateTimes.size() < 2) {
+            return millisecondsTrained;
+        }
+
+        for (int i = 0; i < this.allDateTimes.size() - 1; i++) {
+            long msTimeOne = this.allDateTimes.get(i).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+            long msTimeTwo = this.allDateTimes.get(i + 1).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+            millisecondsTrained += msTimeTwo - msTimeOne;
+        }
+
+        return millisecondsTrained;
+    }
+
 
     public String getTitle() {
         return title;
@@ -148,14 +164,6 @@ public abstract class Data {
         this.heartRateData = heartRateData;
     }
 
-    public double getConsumedCalories() {
-        return consumedCalories;
-    }
-
-    public void setConsumedCalories(double consumedCalories) {
-        this.consumedCalories = consumedCalories;
-    }
-
     public Double getDistanceCovered() {
         return distanceCovered;
     }
@@ -163,5 +171,15 @@ public abstract class Data {
     public void setDistanceCovered(Double distanceCovered) {
         this.distanceCovered = distanceCovered;
     }
+
+    public long getMillisecondsOfExercise() {
+        return millisecondsOfExercise;
+    }
+
+    public void setMillisecondsOfExercise(long millisecondsOfExercise) {
+        this.millisecondsOfExercise = millisecondsOfExercise;
+    }
+
+    public abstract void getConsumedCalories();
 }
 
