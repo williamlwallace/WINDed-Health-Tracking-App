@@ -4,13 +4,15 @@ import static java.lang.Math.PI;
 
 public class CoordinateDataDifference {
 
-    private double gradient;
-    private double angle;
     private double latitudeDifference;
     private double longitudeDifference;
     private double haversineDistance;
     private double altitudeDifference;
     private double distanceDifference;
+    private double gradient;
+    private double angle;
+
+
 
     public double getGradient() {
         return gradient;
@@ -24,8 +26,11 @@ public class CoordinateDataDifference {
         return angle;
     }
 
-    public void setAngle(double angle) {
-        this.angle = angle;
+    public void setAngle() {
+        /** The angle of the slope compared to flat ground. Will always be
+         * an acute angle in degrees.
+         */
+        this.angle = Math.asin(this.altitudeDifference / this.distanceDifference);
     }
 
     public double getHaversineDistance() {
@@ -79,5 +84,10 @@ public class CoordinateDataDifference {
 
     public CoordinateDataDifference(CoordinateData pointOne, CoordinateData pointTwo) {
 
+        setHaversineDistance(pointOne, pointTwo);
+        setAltitudeDifference(pointOne, pointTwo);
+        setDistanceDifference();
+        setGradient();
+        setAngle();
     }
 }
