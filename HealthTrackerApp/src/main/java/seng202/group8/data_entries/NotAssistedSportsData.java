@@ -8,7 +8,7 @@ public abstract class NotAssistedSportsData extends Data {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList);
     }
 
-    abstract double getConsumedCalories(String activityType);
+    public abstract double getConsumedCalories(String activityType);
 
 }
 //    public NotAssistedSportsData(String newTitle, DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {

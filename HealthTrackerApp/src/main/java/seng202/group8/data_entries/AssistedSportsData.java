@@ -9,7 +9,7 @@ public abstract class AssistedSportsData extends Data {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList);
     }
 
-    abstract double getConsumedCalories(String activityType);
+    public abstract double getConsumedCalories(String activityType);
 }
 //
 //

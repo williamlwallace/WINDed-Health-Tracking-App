@@ -180,6 +180,6 @@ public abstract class Data {
         this.millisecondsOfExercise = millisecondsOfExercise;
     }
 
-    public abstract void getConsumedCalories();
+    public abstract double getConsumedCalories(String activityType);
 }
 

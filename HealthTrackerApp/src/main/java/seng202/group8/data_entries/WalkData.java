@@ -8,7 +8,7 @@ public class WalkData extends NotAssistedSportsData {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList);
     }
 
-    double getConsumedCalories(String activityType) {
+    public double getConsumedCalories(String activityType) {
 
         return 0;
         //if (this.getHeartRateList() == 0);
