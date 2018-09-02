@@ -4,13 +4,15 @@ import static java.lang.Math.PI;
 
 public class CoordinateDataDifference {
 
-    private double haversineDistance;
-    private double gradient;
-    private double angle;
     private double latitudeDifference;
     private double longitudeDifference;
+    private double haversineDistance;
     private double altitudeDifference;
     private double distanceDifference;
+    private double gradient;
+    private double angle;
+
+
 
     public double getGradient() {
         return gradient;
@@ -83,12 +85,9 @@ public class CoordinateDataDifference {
     public CoordinateDataDifference(CoordinateData pointOne, CoordinateData pointTwo) {
 
         setHaversineDistance(pointOne, pointTwo);
-        private double angle;
-        private double latitudeDifference;
-        private double longitudeDifference;
-        private double haversineDistance;
-        private double altitudeDifference;
-        private double distanceDifference;
-
+        setAltitudeDifference(pointOne, pointTwo);
+        setDistanceDifference();
+        setGradient();
+        setAngle();
     }
 }
