@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
+import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.RunData;
 import seng202.group8.data_entries.WalkData;
@@ -14,6 +15,7 @@ import seng202.group8.services.goals_service.goal_types.GoalType;
 import seng202.group8.user.User;
 
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -39,8 +41,8 @@ public class GoalsServiceTest {
         activityList1 = new ActivityList("Runs in bush");
         activityList1.setCreationDate(new Date(0));
 
-        walkData = new WalkData("walk ciao", DataType.WALK, new ArrayList<Double>(), new ArrayList<Integer>());
-        runData = new RunData("Run ciao", DataType.RUN, new ArrayList<Double>(), new ArrayList<Integer>());
+        walkData = new WalkData("walk ciao", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        runData = new RunData("Run ciao", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
         user = new User("Lorenzo", 22, 82.0, 183.0);
 
         goalsService = new GoalsService(user);

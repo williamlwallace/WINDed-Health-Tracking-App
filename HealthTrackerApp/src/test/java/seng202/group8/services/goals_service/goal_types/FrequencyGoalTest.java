@@ -4,10 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.activity_collection.ActivityList;
+import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.HikeData;
 import seng202.group8.user.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -26,8 +28,8 @@ public class FrequencyGoalTest {
         user.getUserActivities().insertActivityList(new ActivityList("Hikes"));
         frequencyGoal = new FrequencyGoal(user, "Gotta go running more!",
                         GoalType.TimePerformedGoal, DataType.HIKE, 2);
-        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<Double>(), new ArrayList<Integer>());
-        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<Double>(), new ArrayList<Integer>());
+        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
         user.getUserActivities().insertActivityInGivenList(0, hikeData1);
     }
 

@@ -6,10 +6,14 @@ import java.util.Collections;
 public class HeartRateData {
 
     private ArrayList<Integer> heartRateList;
+    private ArrayList<Integer> sortedHeartRateList;
     private int meanAverageHeartRate;
     private int medianIndex;
     private int medianHeartRate;
     private int standardDeviation;
+
+    private int highestHeartRate;
+    private int lowestHeartRate;
 
 
     public int getMeanAverageHeartRate() {
@@ -26,7 +30,7 @@ public class HeartRateData {
     public HeartRateData(ArrayList<Integer> heartRateList) {
         this.heartRateList = heartRateList;
 
-        ArrayList<Integer> sortedHeartRateList = new ArrayList<Integer>(this.heartRateList);
+        sortedHeartRateList = new ArrayList<>(this.heartRateList);
         Collections.sort(sortedHeartRateList);
         if (this.heartRateList.size() > 1) {
             /**Calculate the median heart rate and standard deviation **/
@@ -46,9 +50,11 @@ public class HeartRateData {
             this.medianIndex = 0;
             this.medianHeartRate = 0;
             this.standardDeviation = 0;
-
         }
     }
+
+
+
 
     public ArrayList<Integer> getHeartRateList() {
         return heartRateList;
@@ -86,6 +92,29 @@ public class HeartRateData {
         this.standardDeviation = standardDeviation;
     }
 
+    public int getHighestHeartRate() {
+        return highestHeartRate;
+    }
+
+    private void setHighestHeartRate() {
+        if (this.sortedHeartRateList.size() == 0) {
+            this.highestHeartRate = 0;
+        } else {
+            this.highestHeartRate = sortedHeartRateList.get(sortedHeartRateList.size() - 1);
+        }
+    }
+
+    public int getLowestHeartRate() {
+        return lowestHeartRate;
+    }
+
+    private void setLowestHeartRate() {
+        if (this.sortedHeartRateList.size() == 0) {
+            this.lowestHeartRate = 0;
+        } else {
+            this.lowestHeartRate = sortedHeartRateList.get(0);
+        }
+    }
 }
 //}
 //}

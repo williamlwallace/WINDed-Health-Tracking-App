@@ -79,6 +79,5 @@ public class CoordinateDataDifference {
 
     public CoordinateDataDifference(CoordinateData pointOne, CoordinateData pointTwo) {
 
-
     }
 }

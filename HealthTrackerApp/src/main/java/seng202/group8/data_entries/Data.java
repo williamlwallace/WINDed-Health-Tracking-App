@@ -43,76 +43,12 @@ public abstract class Data {
     private ArrayList<CoordinateData> coordinatesArrayList;
     private ArrayList<Integer> heartRateList;
     private HeartRateData heartRateData;
+
+
     private double consumedCalories;
+
     private Double distanceCovered;
 
-    public String getTitle() {
-        return title;
-    }
-
-//    public String getDataType() {
-//        return DataType.getDataType();
-//    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-
-
-    public ArrayList<CoordinateData> getCoordinatesArrayList() {
-        return coordinatesArrayList;
-    }
-
-    abstract double getConsumedCalories(String activityType);
-
-
-    public void setTitle(String newTitle) {
-        this.title = newTitle;
-    }
-
-    //    public void setActivityType(String newActivityType) { this.DataType = newActivityType; }
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public void setCoordinatesArrayList(ArrayList<CoordinateData> newCoordinatesList) {
-        this.coordinatesArrayList = new ArrayList<CoordinateData>();
-
-    }
-//        for (int i = 3; i < newCoordinatesList.size(); i += 3) {
-//            ArrayList<Double> tempInitialList = new ArrayList<Double>();
-//            tempInitialList.add(0.0);
-//            tempInitialList.add(0.0);
-//            tempInitialList.add(0.0);
-//
-//            CoordinateData tempCoordinateData = new CoordinateData(tempInitialList);
-//            tempCoordinateData.setLatitude(newCoordinatesList.get(i - 3));
-//            tempCoordinateData.setLongitude(newCoordinatesList.get(i - 2));
-//            tempCoordinateData.setAltitude(newCoordinatesList.get(i - 1));
-//            this.coordinatesArrayList.add(tempCoordinateData);
-
-        //        ArrayList<Integer> latitudeIndices = new ArrayList<Integer>();
-//        ArrayList<Integer> longitudeIndices = new ArrayList<Integer>();
-//        ArrayList<Integer> altitudeIndices = new ArrayList<Integer>();
-
-//        for (int i = 0; i < newCoordinatesList.size(); i++) {
-//            latitudeIndices.set(0, 0);
-//            longitudeIndices.set(0, 1);
-//            altitudeIndices.set(0, 2);
-//            if (latitudeIndices.size() == (int) (i / 3)) {
-//                latitudeIndices.add(i);
-//            } else if (longitudeIndices.size() == (int) (i / 3)) {
-//                longitudeIndices.add(i);
-//            } else if (altitudeIndices.size() == (int) (i / 3))
-//                altitudeIndices.add(i);
-//        }
-//
-
-//    public void setConsumedCalories(double consumedCalories) {
-//        this.consumedCalories = consumedCalories;
-//    }
-//    private ArrayList<CSVDataLine> inputData;
 
     public Data(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 
@@ -124,49 +60,34 @@ public abstract class Data {
         this.allDateTimes = newDateTimes;
         this.heartRateData = new HeartRateData(newHeartRateList);
         setCoordinatesArrayList(newCoordinatesList);
-//        this.distanceCovered = calculateDistanceCovered();
+        this.distanceCovered = calculateDistanceCovered();
 //        this.consumedCalories = getConsumedCalories();
 
     }
 
 
-//    public ArrayList<Integer> quicksort(ArrayList<Integer> toSort) {
-//
-//        ArrayList<Integer> sorted = new ArrayList<Integer>;
-//        for (int i = 0; i < toSort.size(); i += 1) {
-//            if (toSort.get(toSort.size() - 1) < toSort.get(i)) {
-//                int copyValue = toSort.get(i);
-//                toSort.set(i, toSort.size();
-//
-//                }
-//            if (toSort.size() < 2) {
-//                return sorted;
-//            } else
-//        } Math.hypot(x2 - x1, y2 - y1);
-//    }
+    public void setCoordinatesArrayList(ArrayList<CoordinateData> newCoordinatesList) {
+        this.coordinatesArrayList = new ArrayList<CoordinateData>();
 
-    public HeartRateData getHeartRateData() {
-        return heartRateData;
     }
 
-    public void setHeartRateData(HeartRateData heartRateData) {
-        this.heartRateData = heartRateData;
-    }
 
-    public DataType getDataType() {
-        return dataType;
-    }
+    private Double calculateDistanceCovered() {
+        Double distanceCovered = 0.0;
 
-    public void setDataType(DataType dataSubType) {
-        this.dataType = dataSubType;
-    }
+        if (coordinatesArrayList.size() < 2) {
+            return distanceCovered;
+        }
 
-    public Double getDistanceCovered() {
+        for (int i = 0; i < coordinatesArrayList.size() - 1; i++) {
+            CoordinateDataDifference coordinateDataDifference =
+                    new CoordinateDataDifference(coordinatesArrayList.get(i), coordinatesArrayList.get(i + 1));
+            distanceCovered += coordinateDataDifference.getDistanceDifference();
+        }
+
         return distanceCovered;
     }
 
-    public void setDistanceCovered(Double distanceCovered) {
-        this.distanceCovered = distanceCovered;
-    }
+
 }
 

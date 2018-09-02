@@ -3,11 +3,9 @@ package seng202.group8.activity_collection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.DataType;
-import seng202.group8.data_entries.RunData;
-import seng202.group8.data_entries.WalkData;
+import seng202.group8.data_entries.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -27,8 +25,8 @@ public class ActivityListCollectionTest {
         activityListJog = new ActivityList("Jog with friends");
         activityListFastWalks = new ActivityList("Fast Walks with friends");
         activityListJog.setTitle("Intense runs");
-        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<Double>(), new ArrayList<Integer>());
-        fastWalk = new WalkData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<Double>(), new ArrayList<Integer>());
+        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        fastWalk = new WalkData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
 
         activityListFastWalks.insertActivity(fastWalk);
         activityListJog.insertActivity(jog);
