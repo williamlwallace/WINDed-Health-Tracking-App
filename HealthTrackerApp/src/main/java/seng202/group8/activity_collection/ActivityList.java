@@ -18,7 +18,7 @@ public class ActivityList {
     public ActivityList(String title) {
         this.title = title;
         creationDate = new Date();
-        activityList= new ArrayList<Data>();
+        activityList = new ArrayList<Data>();
     }
 
     /**

@@ -23,7 +23,19 @@ public class UserTest {
     }
 
     @Test
-    public void calculateBMI() {
-        assertEquals(BMIType.NORMAL, newUser.getBMICategory());
+    public void constructBMIValue() {
+        assertEquals(20.937, newUser.getBMI().getBMIValue(), 0.001);
     }
+
+    @Test
+    public void constructBMICategory() {
+        assertEquals(newUser.getBMI().getBMICategory(), BMIType.NORMAL);
+    }
+
+    @Test
+    public void updateBMI() {
+        newUser.updateWeight(120.0); //Calls updateBMI() for new Weight
+        assertEquals(newUser.getBMI().getBMICategory(), BMIType.OBESE);
+    }
+
 }

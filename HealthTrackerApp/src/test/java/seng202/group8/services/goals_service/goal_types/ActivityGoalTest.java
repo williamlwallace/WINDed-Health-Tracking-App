@@ -12,9 +12,10 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class FrequencyGoalTest {
+public class ActivityGoalTest {
 
-    private FrequencyGoal frequencyGoal;
+
+    private ActivityGoal activityGoal;
     private User user;
     private HikeData hikeData1;
     private HikeData hikeData2;
@@ -24,52 +25,49 @@ public class FrequencyGoalTest {
     public void setUp() throws Exception {
         user = new User("Lorenzo", 22, 83.0, 183.0);
         user.getUserActivities().insertActivityList(new ActivityList("Hikes"));
-        frequencyGoal = new FrequencyGoal(user, "Gotta go running more!",
-                        GoalType.TimePerformedGoal, DataType.HIKE, 2);
+        activityGoal = new ActivityGoal(user, "Gotta go running more!",
+                GoalType.ActivityGoal, DataType.HIKE, 250.0);
         hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<Double>(), new ArrayList<Integer>());
+        hikeData1.setDistanceCovered(200.0);
         hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<Double>(), new ArrayList<Integer>());
+        hikeData2.setDistanceCovered(100.0);
         user.getUserActivities().insertActivityInGivenList(0, hikeData1);
     }
 
     @After
     public void tearDown() throws Exception {
-        frequencyGoal = null;
+        activityGoal = null;
         user = null;
         hikeData1 = null;
         hikeData2 = null;
     }
 
-    //This test should show the goal is not complete
     @Test
     public void checkIsCompleteTest1() {
-        frequencyGoal.checkIsCompleted();
-        assertFalse(frequencyGoal.getIsCompleted());
+        activityGoal.checkIsCompleted();
+        assertFalse(activityGoal.getIsCompleted());
     }
 
-    //This test shows the goal is not completed but also that frequencyGoal.timesCurrentlyPerformedActivity
-    // has been updated to 1
+
     @Test
     public void checkIsCompleteTest2() {
-        frequencyGoal.checkIsCompleted();
-        assertEquals(frequencyGoal.getTimesCurrentlyPerformedActivity().intValue(), 1);
+        activityGoal.checkIsCompleted();
+        assertEquals(activityGoal.getDistanceCurrentlyCovered(), 200.0, 10e-2);
     }
 
-    //This test should show the goal is complete
     @Test
     public void checkIsCompleteTest3() {
         user.getUserActivities().insertActivityInGivenList(0, hikeData2);
-        frequencyGoal.checkIsCompleted();
-        assertTrue(frequencyGoal.getIsCompleted());
+        activityGoal.checkIsCompleted();
+        assertTrue(activityGoal.getIsCompleted());
     }
 
-    //This test shows the goal is completed but also that frequencyGoal.timesCurrentlyPerformedActivity
-    // has been updated to 1
+
     @Test
     public void checkIsCompleteTest4() {
         user.getUserActivities().insertActivityInGivenList(0, hikeData2);
-        frequencyGoal.checkIsCompleted();
-        assertEquals(frequencyGoal.getTimesCurrentlyPerformedActivity().intValue(), 2);
+        activityGoal.checkIsCompleted();
+        assertEquals(activityGoal.getDistanceCurrentlyCovered(), 300.0, 10e-2);
     }
-
 
 }

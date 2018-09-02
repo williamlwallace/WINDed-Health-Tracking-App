@@ -1,12 +1,19 @@
 package seng202.group8.services.goals_service;
 
 import seng202.group8.activity_collection.ActivityListCollectionObserver;
+import seng202.group8.services.Service;
 import seng202.group8.services.goals_service.goal_types.Goal;
 import seng202.group8.activity_collection.ActivityListCollection;
+import seng202.group8.user.User;
+import seng202.group8.user.UserObserver;
 
+import javax.naming.ServiceUnavailableException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class GoalsService extends ActivityListCollectionObserver {
+public class GoalsService extends Service implements ActivityListCollectionObserver, UserObserver {
+
+
 
     private ArrayList<Goal> currentActivityGoals;
     private ArrayList<Goal> previousActivityGoals;
@@ -17,10 +24,12 @@ public class GoalsService extends ActivityListCollectionObserver {
     private ArrayList<Goal> currentTimesPerformedGoals;
     private ArrayList<Goal> previousTimesPerformedGoals;
 
-    private ActivityListCollection activityListCollectionObserved;
 
 
-    public GoalsService(ActivityListCollection activityListCollectionObserved) {
+
+    public GoalsService(User user) {
+        super(user);
+
         this.currentActivityGoals = new ArrayList<Goal>();
         this.previousActivityGoals = new ArrayList<Goal>();
 
@@ -28,9 +37,9 @@ public class GoalsService extends ActivityListCollectionObserver {
         this.previousWeightLossGoals = new ArrayList<Goal>();
 
         this.currentTimesPerformedGoals = new ArrayList<Goal>();
-        this.currentTimesPerformedGoals = new ArrayList<Goal>();
-        this.activityListCollectionObserved = activityListCollectionObserved;
-        this.activityListCollectionObserved.attach(this);
+        this.previousTimesPerformedGoals = new ArrayList<Goal>();
+        user.getUserActivities().attach(this);
+        user.attach(this);
     }
 
 
@@ -42,31 +51,37 @@ public class GoalsService extends ActivityListCollectionObserver {
     }
 
     private void tidyUpActivityGoals() {
-        for (Goal goal : currentActivityGoals) {
+        Iterator<Goal> it = currentActivityGoals.iterator();
+        while (it.hasNext()) {
+            Goal goal = it.next();
             goal.checkIsCompleted();
             if (goal.getIsCompleted()) {
                 previousActivityGoals.add(goal);
-                currentActivityGoals.remove(goal);
+                it.remove();
             }
         }
     }
 
     private void tidyUpWeightLossGoals() {
-        for (Goal goal : currentWeightLossGoals) {
+        Iterator<Goal> it = currentWeightLossGoals.iterator();
+        while (it.hasNext()) {
+            Goal goal = it.next();
             goal.checkIsCompleted();
             if (goal.getIsCompleted()) {
-                currentWeightLossGoals.add(goal);
-                previousWeightLossGoals.remove(goal);
+                previousWeightLossGoals.add(goal);
+                it.remove();
             }
         }
     }
 
     private void tidyUpTimesPerformedGoals() {
-        for (Goal goal : currentTimesPerformedGoals) {
+        Iterator<Goal> it = currentTimesPerformedGoals.iterator();
+        while (it.hasNext()) {
+            Goal goal = it.next();
             goal.checkIsCompleted();
             if (goal.getIsCompleted()) {
-                currentTimesPerformedGoals.add(goal);
-                previousTimesPerformedGoals.remove(goal);
+                previousTimesPerformedGoals.add(goal);
+                it.remove();
             }
         }
     }

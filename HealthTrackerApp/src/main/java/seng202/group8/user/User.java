@@ -3,6 +3,8 @@ package seng202.group8.user;
 import seng202.group8.user.user_stats.UserStats;
 import seng202.group8.activity_collection.ActivityListCollection;
 
+import java.util.ArrayList;
+
 /**
  * user is the class which stores the user data for a user of the Winded App
  * @author jco165
@@ -14,11 +16,12 @@ public class User {
     private Double weight;
     private Double height;
     //private ArrayList<ActivityType> favouriteActivities;
-    private BMIType BMICategory;
-    private Double BMIValue;
+    private BMI bmi;
     private UserStats userStats;
     private StressLevelType stressLevel;
     private ActivityListCollection userActivities;
+    private ArrayList<UserObserver> observers;
+
 
 
     /**
@@ -33,8 +36,12 @@ public class User {
         this.age = age;
         this.weight = weight;
         this.height = height;
+        this.userStats = new UserStats();
+        this.observers = new ArrayList<UserObserver>();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
-        setBMI(calculateBMI());
+        this.bmi = new BMI(calculateBMI());
+        userStats.addUserBMITypeRecords(bmi);
+        userStats.addUserWeightRecords(weight);
     }
 
     /**
@@ -73,9 +80,8 @@ public class User {
      * Set the BMICategory of the user to a given BMI type enumeration value and the BMIValue double to its value kg/m**2
      * @param BMI the new BMI value of the user
      */
-    public void setBMI(double BMI) {
-        this.BMIValue = BMI;
-        BMICategory = BMIType.parseBMI(BMI);
+    public void setBMI(Double BMI) {
+        bmi.setBMI(BMI);
     }
 
     /**
@@ -124,8 +130,8 @@ public class User {
      *
      * @return The BMI type of the user
      */
-    public BMIType getBMICategory() {
-        return BMICategory;
+    public BMI getBMI() {
+        return bmi;
     }
 
     /**
@@ -160,14 +166,63 @@ public class User {
     }
 
     /**
-     * Calculates the BMI of the user and parses it into the BMIType Enum to get a value for what BMI category they are in
-     * @return The BMIType enum value of the user based on their weight and height
+     * Calculates the BMI of the user based on current weight and height
+     * @return The BMI value of the user based on their weight and height
      */
-    public double calculateBMI() {
-        double heightMetres = height * 0.01;
-        double numericalBMI = weight/(heightMetres * heightMetres);
+    public Double calculateBMI() {
+        Double heightMetres = height * 0.01;
+        Double numericalBMI = weight/(heightMetres * heightMetres);
         return numericalBMI;
     }
+
+    /**
+     * Update the weight of the user, notifying observers and updating records.
+     * @param newWeight the new weight of the user (kg)
+     */
+    public void updateWeight(Double newWeight) {
+        setWeight(newWeight);
+        userStats.addUserWeightRecords(newWeight);
+        updateBMI(calculateBMI());
+        notifyAllObservers();
+    }
+
+    /**
+     * Update the BMI of the user, notifying observers and updating records.
+     * @param newBMI the new BMI of the user (kg/m**2)
+     */
+    public void updateBMI(Double newBMI) {
+        setBMI(newBMI);
+        userStats.addUserBMITypeRecords(bmi);
+        notifyAllObservers();
+    }
+
+    /**
+     * Update the Stress Level of the user, notifying observers and updating records.
+     * @param newStressLevel the new StressLevelType of the user
+     */
+    public void updateStressLevel(StressLevelType newStressLevel) {
+        setStressLevel(newStressLevel);
+        userStats.addUserStressLevelRecords(newStressLevel);
+        notifyAllObservers();
+    }
+
+    /**
+     * Add an observer to be updated when User's attributes change
+     * @param observer the new UserObserver to be notified of changes
+     */
+    public void attach(UserObserver observer) {
+        observers.add(observer);
+    }
+
+    /**
+     * Update all observers
+     */
+    public void notifyAllObservers() {
+        for (UserObserver observer : observers) {
+            observer.update();
+        }
+    }
+
 
 
 }

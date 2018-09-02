@@ -1,12 +1,12 @@
 package seng202.group8.user;
 
 public enum BMIType {
-    OBESE(30), OVERWEIGHT(25), NORMAL(18.5), LIGHT(16), ANOREXIC(1);
+    OBESE(30.0), OVERWEIGHT(25.0), NORMAL(18.5), LIGHT(16.0), ANOREXIC(1.0);
 
-    private final double BMILowerLimit;
+    private final Double BMILowerLimit;
 
 
-    BMIType(final double BMILimit) {
+    BMIType(final Double BMILimit) {
         this.BMILowerLimit = BMILimit;
     }
 
@@ -15,7 +15,7 @@ public enum BMIType {
      * @return the BMIType value showing the category that the user with given BMI falls in. If the BMI is not in any categories
      * range then null is returned.
      */
-    public static BMIType parseBMI(double userBMI) {
+    public static BMIType parseBMI(Double userBMI) {
         BMIType userBMIType = null;
         for (BMIType type: values()) {
             if (userBMI >= type.BMILowerLimit) {

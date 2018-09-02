@@ -4,6 +4,7 @@ package seng202.group8.User_Stats_Tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import seng202.group8.user.BMI;
 import seng202.group8.user.user_stats.*;
 
 import static org.junit.Assert.*;
@@ -12,6 +13,7 @@ import static seng202.group8.user.BMIType.LIGHT;
 import static seng202.group8.user.StressLevelType.NOTPERCEIVED;
 import static seng202.group8.user.StressLevelType.PERCEIVED;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -21,12 +23,14 @@ public class RecordsTest {
     private BMITypeRecord bmiRecord;
     private FatToMuscleRecord fatRecord;
     private StressLevelRecord stressRecord;
+    private UserStats userStats = new UserStats();
 
 
     @Before
     public void recordsSetup() {
         weightRecord = new WeightRecord(10.5);
-        bmiRecord = new BMITypeRecord(NORMAL);
+        BMI bmi = new BMI(20.0);
+        bmiRecord = new BMITypeRecord(bmi);
         fatRecord = new FatToMuscleRecord(55.99);
         stressRecord = new StressLevelRecord(PERCEIVED);
     }
@@ -55,7 +59,8 @@ public class RecordsTest {
     @Test
     public void checkDateOfWeightRecord(){
         weightRecord.createDate();
-        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
+        String date = format.format( new Date());
         assertEquals(weightRecord.getDate(), date);
     }
 
@@ -75,25 +80,28 @@ public class RecordsTest {
     @Test
     public void checkDateOfFatRecord(){
         fatRecord.createDate();
-        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
+        String date = format.format( new Date());
         assertEquals(fatRecord.getDate(), date);
     }
 
     @Test
     public void correctBMIRecord(){
-        assertEquals(bmiRecord.getBmi(), NORMAL);
+        assertEquals(bmiRecord.getBmi().getBMICategory(), NORMAL);
     }
 
     @Test
     public void changeBMIRecord()  {
-        bmiRecord.setBmi(LIGHT);
-        assertEquals(bmiRecord.getBmi(), LIGHT);
+        BMI newBMI = new BMI(17.0);
+        bmiRecord.setBmi(newBMI);
+        assertEquals(LIGHT, bmiRecord.getBmi().getBMICategory());
     }
 
     @Test
     public void checkDateOfBMIRecord(){
         bmiRecord.createDate();
-        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
+        String date = format.format( new Date());
         assertEquals(bmiRecord.getDate(), date);
     }
 
@@ -111,37 +119,39 @@ public class RecordsTest {
     @Test
     public void checkDateOfStressRecord() {
         stressRecord.createDate();
-        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
+        String date = format.format( new Date());
         assertEquals(stressRecord.getDate(), date);
     }
 
     @Test
     public void checkWeightList() {
         Double weight = 12.9;
-        UserStats.addUserWeightRecords(weight);
-        ArrayList<WeightRecord> list = UserStats.getUserWeightRecords();
+        userStats.addUserWeightRecords(weight);
+        ArrayList<WeightRecord> list = userStats.getUserWeightRecords();
         assertEquals(list.get(0).getWeight(), weight);
     }
 
     @Test
     public void checkBMIList() {
-        UserStats.addUserBMITypeRecords(NORMAL);
-        ArrayList<BMITypeRecord> list = UserStats.getUserBMITypeRecords();
-        assertEquals(list.get(0).getBmi(), NORMAL);
+        BMI bmi = new BMI(20.0);
+        userStats.addUserBMITypeRecords(bmi);
+        ArrayList<BMITypeRecord> list = userStats.getUserBMITypeRecords();
+        assertEquals(NORMAL, list.get(0).getBmi().getBMICategory());
     }
 
     @Test
     public void checkFatList() {
         Double fat = 16.75;
-        UserStats.addUserFatToMuscleRecords(fat);
-        ArrayList<FatToMuscleRecord> list = UserStats.getUserFatToMuscleRecords();
+        userStats.addUserFatToMuscleRecords(fat);
+        ArrayList<FatToMuscleRecord> list = userStats.getUserFatToMuscleRecords();
         assertEquals(list.get(0).getFatToMuscle(), fat);
     }
 
     @Test
     public void checkStressList() {
-        UserStats.addUserStressLevelRecords(PERCEIVED);
-        ArrayList<StressLevelRecord> list = UserStats.getUserStressLevelRecords();
+        userStats.addUserStressLevelRecords(PERCEIVED);
+        ArrayList<StressLevelRecord> list = userStats.getUserStressLevelRecords();
         assertEquals(list.get(0).getStress(), PERCEIVED);
     }
 }
