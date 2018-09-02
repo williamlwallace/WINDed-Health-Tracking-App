@@ -4,6 +4,7 @@ package seng202.group8.data_entries;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 //import java.time.Duration;
 
@@ -41,6 +42,7 @@ public abstract class Data {
     private ArrayList<LocalDateTime> allDateTimes;
     private ArrayList<CoordinateData> coordinatesArrayList;
     private ArrayList<Integer> heartRateList;
+    private HeartRateData heartRateData;
     private double consumedCalories;
     private Double distanceCovered;
 
@@ -60,10 +62,6 @@ public abstract class Data {
 
     public ArrayList<CoordinateData> getCoordinatesArrayList() {
         return coordinatesArrayList;
-    }
-
-    public ArrayList<Integer> getHeartRateList() {
-        return heartRateList;
     }
 
     abstract double getConsumedCalories(String activityType);
@@ -111,10 +109,6 @@ public abstract class Data {
 //        }
 //
 
-
-    public void setHeartRateList(ArrayList<Integer> newHeartRateList) {
-        this.heartRateList = newHeartRateList;
-    }
 //    public void setConsumedCalories(double consumedCalories) {
 //        this.consumedCalories = consumedCalories;
 //    }
@@ -128,11 +122,35 @@ public abstract class Data {
 //        this.dataSubType = DataType.parseSubDataType(activityType);
         this.dataType = dataType;
         this.allDateTimes = newDateTimes;
-        this.heartRateList = newHeartRateList;
+        this.heartRateData = new HeartRateData(newHeartRateList);
         setCoordinatesArrayList(newCoordinatesList);
 //        this.distanceCovered = calculateDistanceCovered();
 //        this.consumedCalories = getConsumedCalories();
 
+    }
+
+
+//    public ArrayList<Integer> quicksort(ArrayList<Integer> toSort) {
+//
+//        ArrayList<Integer> sorted = new ArrayList<Integer>;
+//        for (int i = 0; i < toSort.size(); i += 1) {
+//            if (toSort.get(toSort.size() - 1) < toSort.get(i)) {
+//                int copyValue = toSort.get(i);
+//                toSort.set(i, toSort.size();
+//
+//                }
+//            if (toSort.size() < 2) {
+//                return sorted;
+//            } else
+//        } Math.hypot(x2 - x1, y2 - y1);
+//    }
+
+    public HeartRateData getHeartRateData() {
+        return heartRateData;
+    }
+
+    public void setHeartRateData(HeartRateData heartRateData) {
+        this.heartRateData = heartRateData;
     }
 
     public DataType getDataType() {
@@ -151,3 +169,4 @@ public abstract class Data {
         this.distanceCovered = distanceCovered;
     }
 }
+

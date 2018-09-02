@@ -40,10 +40,10 @@ public class CoordinateData {
         this.altitude = altitude;
     }
 
-    public CoordinateData(double temp_lat, double temp_long, double temp_alt) {
-        this.latitude = temp_lat;
-        this.longitude = temp_long;
-        this.altitude = temp_alt;
+    public CoordinateData(double tempLatitude, double tempLongitude, double tempAltitude) {
+        this.latitude = tempLatitude;
+        this.longitude = tempLongitude;
+        this.altitude = tempAltitude;
     }
 
 
