@@ -88,6 +88,80 @@ public abstract class Data {
         return distanceCovered;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public DataType getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(DataType dataType) {
+        this.dataType = dataType;
+    }
+
+    public DataType getDataSuperType() {
+        return dataSuperType;
+    }
+
+    public void setDataSuperType(DataType dataSuperType) {
+        this.dataSuperType = dataSuperType;
+    }
+
+    public ArrayList<LocalDateTime> getAllDateTimes() {
+        return allDateTimes;
+    }
+
+    public void setAllDateTimes(ArrayList<LocalDateTime> allDateTimes) {
+        this.allDateTimes = allDateTimes;
+    }
+
+    public ArrayList<CoordinateData> getCoordinatesArrayList() {
+        return coordinatesArrayList;
+    }
+
+    public ArrayList<Integer> getHeartRateList() {
+        return heartRateList;
+    }
+
+    public void setHeartRateList(ArrayList<Integer> heartRateList) {
+        this.heartRateList = heartRateList;
+    }
+
+    public HeartRateData getHeartRateData() {
+        return heartRateData;
+    }
+
+    public void setHeartRateData(HeartRateData heartRateData) {
+        this.heartRateData = heartRateData;
+    }
+
+    public double getConsumedCalories() {
+        return consumedCalories;
+    }
+
+    public void setConsumedCalories(double consumedCalories) {
+        this.consumedCalories = consumedCalories;
+    }
+
+    public Double getDistanceCovered() {
+        return distanceCovered;
+    }
+
+    public void setDistanceCovered(Double distanceCovered) {
+        this.distanceCovered = distanceCovered;
+    }
 }
 

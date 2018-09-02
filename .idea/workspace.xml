@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e4e7655-606b-413c-b487-984a1e466abb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/CoordinateDataDifference.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/CoordinateDataDifference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/HeartRateData.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/HeartRateData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/activity_collection/ActivityListCollectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/activity_collection/ActivityListCollectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/activity_collection/ActivityListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/activity_collection/ActivityListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/GoalsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/GoalsServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/ActivityGoalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/goals_service/goal_types/FrequencyGoalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/services/health_service/HealthServiceTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,12 +40,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="662" />
+          <entry key="java" value="673" />
+          <entry key="txt" value="104" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="662" />
+          <entry key="JAVA" value="673" />
+          <entry key="PLAIN_TEXT" value="104" />
         </counts>
       </usages-collector>
     </session>
@@ -64,10 +57,47 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+            <state relative-caret-position="630">
+              <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3525#3526#0" expanded="true" />
+                <element signature="e#3567#3568#0" expanded="true" />
+                <element signature="e#3601#3602#0" expanded="true" />
+                <element signature="e#3638#3639#0" expanded="true" />
+                <element signature="e#3673#3674#0" expanded="true" />
+                <element signature="e#3727#3728#0" expanded="true" />
+                <element signature="e#3775#3776#0" expanded="true" />
+                <element signature="e#3812#3813#0" expanded="true" />
+                <element signature="e#3843#3844#0" expanded="true" />
+                <element signature="e#3893#3894#0" expanded="true" />
+                <element signature="e#3933#3934#0" expanded="true" />
+                <element signature="e#3975#3976#0" expanded="true" />
+                <element signature="e#4011#4012#0" expanded="true" />
+                <element signature="e#4071#4072#0" expanded="true" />
+                <element signature="e#4121#4122#0" expanded="true" />
+                <element signature="e#4178#4179#0" expanded="true" />
+                <element signature="e#4213#4214#0" expanded="true" />
+                <element signature="e#4287#4288#0" expanded="true" />
+                <element signature="e#4335#4336#0" expanded="true" />
+                <element signature="e#4401#4402#0" expanded="true" />
+                <element signature="e#4444#4445#0" expanded="true" />
+                <element signature="e#4496#4497#0" expanded="true" />
+                <element signature="e#4532#4533#0" expanded="true" />
+                <element signature="e#4602#4603#0" expanded="true" />
+                <element signature="e#4652#4653#0" expanded="true" />
+                <element signature="e#4699#4700#0" expanded="true" />
+                <element signature="e#4735#4736#0" expanded="true" />
+                <element signature="e#4800#4801#0" expanded="true" />
+                <element signature="e#4850#4851#0" expanded="true" />
+                <element signature="e#4893#4894#0" expanded="true" />
+                <element signature="e#4932#4933#0" expanded="true" />
+                <element signature="e#4996#4997#0" expanded="true" />
+                <element signature="e#5052#5053#0" expanded="true" />
+                <element signature="e#5094#5095#0" expanded="true" />
+                <element signature="e#5132#5133#0" expanded="true" />
+                <element signature="e#5194#5195#0" expanded="true" />
+                <element signature="e#5248#5249#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -276,7 +306,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535923954269" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535924045712" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -451,6 +481,14 @@
       <option name="presentableId" value="Default" />
       <updated>1535837916599</updated>
     </task>
+    <task id="LOCAL-00001" summary="Helping Clarke on his Data class further insights creation.">
+      <created>1535924014482</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535924014482</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -502,6 +540,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Helping Clarke on his Data class further insights creation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Helping Clarke on his Data class further insights creation." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/User_Tests/UserTest.java">
@@ -659,10 +701,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+        <state relative-caret-position="630">
+          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3567#3568#0" expanded="true" />
+            <element signature="e#3601#3602#0" expanded="true" />
+            <element signature="e#3638#3639#0" expanded="true" />
+            <element signature="e#3673#3674#0" expanded="true" />
+            <element signature="e#3727#3728#0" expanded="true" />
+            <element signature="e#3775#3776#0" expanded="true" />
+            <element signature="e#3812#3813#0" expanded="true" />
+            <element signature="e#3843#3844#0" expanded="true" />
+            <element signature="e#3893#3894#0" expanded="true" />
+            <element signature="e#3933#3934#0" expanded="true" />
+            <element signature="e#3975#3976#0" expanded="true" />
+            <element signature="e#4011#4012#0" expanded="true" />
+            <element signature="e#4071#4072#0" expanded="true" />
+            <element signature="e#4121#4122#0" expanded="true" />
+            <element signature="e#4178#4179#0" expanded="true" />
+            <element signature="e#4213#4214#0" expanded="true" />
+            <element signature="e#4287#4288#0" expanded="true" />
+            <element signature="e#4335#4336#0" expanded="true" />
+            <element signature="e#4401#4402#0" expanded="true" />
+            <element signature="e#4444#4445#0" expanded="true" />
+            <element signature="e#4496#4497#0" expanded="true" />
+            <element signature="e#4532#4533#0" expanded="true" />
+            <element signature="e#4602#4603#0" expanded="true" />
+            <element signature="e#4652#4653#0" expanded="true" />
+            <element signature="e#4699#4700#0" expanded="true" />
+            <element signature="e#4735#4736#0" expanded="true" />
+            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#4850#4851#0" expanded="true" />
+            <element signature="e#4893#4894#0" expanded="true" />
+            <element signature="e#4932#4933#0" expanded="true" />
+            <element signature="e#4996#4997#0" expanded="true" />
+            <element signature="e#5052#5053#0" expanded="true" />
+            <element signature="e#5094#5095#0" expanded="true" />
+            <element signature="e#5132#5133#0" expanded="true" />
+            <element signature="e#5194#5195#0" expanded="true" />
+            <element signature="e#5248#5249#0" expanded="true" />
           </folding>
         </state>
       </provider>
