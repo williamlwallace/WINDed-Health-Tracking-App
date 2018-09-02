@@ -2,6 +2,7 @@ package seng202.group8.parser;
 
 import com.opencsv.CSVReader;
 import seng202.group8.data_entries.*;
+import seng202.group8.user.*;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.io.*;
@@ -56,7 +57,39 @@ public class Parser {
                     System.out.println(activityName + "\n");
                     System.out.println(activityType + "\n");
                     if (!isCorrupt) {
-                        // Send the ArrayLists here.
+                        Data activityToSend;
+                        DataType activityEnum;
+                        switch (activityType) {
+                            case "walk":
+                                activityEnum = DataType.WALK;
+                                activityToSend = new WalkData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                            case "hike":
+                                activityEnum = DataType.HIKE;
+                                activityToSend = new HikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                            case "run":
+                                activityEnum = DataType.RUN;
+                                activityToSend = new RunData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                            case "climb":
+                                activityEnum = DataType.CLIMB;
+                                activityToSend = new ClimbData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                            case "bike":
+                                activityEnum = DataType.BIKE;
+                                activityToSend = new BikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                            case "swim":
+                                activityEnum = DataType.SWIM;
+                                activityToSend = new SwimData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                            case "water sport":
+                                activityEnum = DataType.WATER_SPORTS;
+                                activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                break;
+                        }
+
                     }
                     isCorrupt = Boolean.FALSE;
                     activityName = "";
