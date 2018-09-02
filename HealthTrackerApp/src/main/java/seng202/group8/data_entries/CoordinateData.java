@@ -40,10 +40,10 @@ public class CoordinateData {
         this.altitude = altitude;
     }
 
-    public CoordinateData(ArrayList<Double> newCoordinatesList) {
-        this.latitude = newCoordinatesList.get(0);
-        this.longitude = newCoordinatesList.get(1);
-        this.altitude = newCoordinatesList.get(2);
+    public CoordinateData(double temp_lat, double temp_long, double temp_alt) {
+        this.latitude = temp_lat;
+        this.longitude = temp_long;
+        this.altitude = temp_alt;
     }
 
 
