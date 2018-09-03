@@ -75,23 +75,23 @@ public class GUI extends Application {
         Pane paneIndicator = new Pane();
         paneIndicator.setPrefSize(5, 256);
         paneIndicator.setStyle("-fx-background-color:#212121");
-//        menuDecorator(btn, paneIndicator);
+        menuDecorator(btn, paneIndicator);
         HBox hbox = new HBox(paneIndicator, btn);
 
         return hbox;
     }
 
 
-//    private void menuDecorator(Button btn, Pane pane) {
-//        btn.setOnMouseEntered(value -> {
-//            btn.setStyle("-fx-background-color:black");
-//            pane.setStyle("-fx-background-color:white");
-//        });
-//        btn.setOnMouseExited(value -> {
-//            btn.setStyle("-fx-background-color:#212121");
-//            pane.setStyle("-fx-background-color:#212121");
-//        });
-//    }
+    private void menuDecorator(Button btn, Pane pane) {
+        btn.setOnMouseEntered(value -> {
+            btn.setStyle("-fx-background-color:black");
+            pane.setStyle("-fx-background-color:white");
+        });
+        btn.setOnMouseExited(value -> {
+            btn.setStyle("-fx-background-color:#212121");
+            pane.setStyle("-fx-background-color:#212121");
+        });
+    }
 
 
     public static void main(String[] args) {
