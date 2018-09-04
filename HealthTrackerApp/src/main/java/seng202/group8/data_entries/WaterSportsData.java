@@ -8,7 +8,7 @@ public class WaterSportsData extends AssistedSportsData{
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList);
     }
 
-    public double getConsumedCalories(String activityType) {
+    public double getConsumedCalories() {
 
         return 0;
         //if (this.getHeartRateList() == 0);

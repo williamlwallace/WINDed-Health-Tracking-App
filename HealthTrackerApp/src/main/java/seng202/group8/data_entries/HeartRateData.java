@@ -54,8 +54,6 @@ public class HeartRateData {
     }
 
 
-
-
     public ArrayList<Integer> getHeartRateList() {
         return heartRateList;
     }

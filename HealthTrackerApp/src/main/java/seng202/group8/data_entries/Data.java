@@ -1,6 +1,8 @@
 package seng202.group8.data_entries;
 
 
+import org.apache.commons.lang3.ObjectUtils;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -42,10 +44,10 @@ public abstract class Data {
     private ArrayList<CoordinateData> coordinatesArrayList;
     private ArrayList<Integer> heartRateList;
     private HeartRateData heartRateData;
-    private double consumedCalories;
 
     private Double distanceCovered;
     private long millisecondsOfExercise;
+    public double consumedCalories;
 
 
     public Data(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
@@ -99,6 +101,24 @@ public abstract class Data {
         }
 
         return millisecondsTrained;
+    }
+
+    private Double calculateDataSpeedKilometresPerHour() {
+        Double dataSpeedKilometresPerHour = 0.0;
+        if (calculateMillisecondsOfExercise() == 0.0) {
+            System.out.println("Error: To calculate speed, a value for time is needed. \n" +
+                    "       The time value for this data set is corrupt. \n" +
+                    "       Therefore 0.0 will be returned.\n");
+        } else {
+            dataSpeedKilometresPerHour = calculateDistanceCovered() / ((calculateMillisecondsOfExercise()) / 1000 / 60 / 60);
+        }
+        return dataSpeedKilometresPerHour;
+    }
+
+    private Double calculateDataSpeedMilesPerHour() {
+        final double kmToMilesConstant = 0.62137119223733;
+        return (calculateDistanceCovered() * kmToMilesConstant) /
+                ((calculateMillisecondsOfExercise()) / 1000 / 60 / 60);
     }
 
 
@@ -178,6 +198,6 @@ public abstract class Data {
         this.millisecondsOfExercise = millisecondsOfExercise;
     }
 
-    public abstract double getConsumedCalories(String activityType);
+    public abstract double getConsumedCalories();
 }
 
