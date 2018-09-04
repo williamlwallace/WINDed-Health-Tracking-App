@@ -26,11 +26,11 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        BorderPane root = new BorderPane();
-        root.setTop(topPane());
-        root.setLeft(sidePane());
-        primaryStage.setTitle("Winded");
+        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+//        BorderPane root = new BorderPane();
+//        root.setTop(topPane());
+//        root.setLeft(sidePane());
+        primaryStage.setTitle("WINded");
         primaryStage.setScene(new Scene(root, 1024, 768));
         primaryStage.show();
     }
