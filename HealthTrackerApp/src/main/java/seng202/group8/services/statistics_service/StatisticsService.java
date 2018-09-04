@@ -4,6 +4,7 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
+import seng202.group8.services.health_service.HealthService;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.*;
 
@@ -100,7 +101,26 @@ public class StatisticsService {
      * Checks the health service class to determine the users health risks and displays them in a readable way
      */
     public void setHealthStatus() {
-        this.healthStatus = healthStatus; //NEEDS TO BE IMPLEMENTED
+        String healthStatus = "Current Health Status:\n";
+        Boolean hasRisk = Boolean.FALSE;
+        if (healthService.isAtCardiovasMortalityRisk()) {
+            healthStatus += "You are at risk of Cardiovas Mortality\n";
+            hasRisk = Boolean.TRUE;
+        }
+        if (healthService.isBradicardic()) {
+            healthStatus += "You are at risk of Bradicardic\n";
+            hasRisk = Boolean.TRUE;
+        }
+        if (healthService.isTachicardic()) {
+            healthStatus += "You are at risk of Tachicardic\n";
+            hasRisk = Boolean.TRUE;
+        }
+        if (!hasRisk) {
+            healthStatus += "You currently have no health risks\n Nice work!";
+        } else {
+            healthStatus += "Use the search bar to find out more about your risks";
+        }
+        this.healthStatus = healthStatus;
     }
 
     /**
@@ -122,7 +142,7 @@ public class StatisticsService {
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
                 if (inLastWeek(data.getCreationDate())) {
-                    //calories += data.getCaloriesBurned();
+                    calories += data.getConsumedCalories(data.getTitle()); // NEEDS TO CHANGE AND BE UPDATED WHEN CALORIES COMPLETED
                 }
             }
 
@@ -143,7 +163,18 @@ public class StatisticsService {
      * Looks back 1 week to see the weight of the user and compares it with today's weight
      */
     public void setWeightLossWeek() {
-        this.weightLossWeek = weightLossWeek; // NEEDS TO BE IMPLEMENTED
+        Double lastWeekWeight = 0.0;
+        ArrayList<WeightRecord> weightRecords = userStats.getUserWeightRecords();
+        for (int i = weightRecords.size() - 1; i >= 0; i--) {
+            if (!inLastWeek(weightRecords.get(i).getDate())) {
+                lastWeekWeight = weightRecords.get(i).getWeight();
+                break;
+            }
+        }
+        this.weightLossWeek = lastWeekWeight - weightRecords.get(weightRecords.size() - 1).getWeight();
+        if (this.weightLossWeek < 0) {
+            this.weightLossWeek = 0.0;
+        }
     }
 
     /**
@@ -230,6 +261,7 @@ public class StatisticsService {
     public Double caloriesBurnedWeek;
     public Double weightLossWeek;
     public Double totalKmWeek;
+    public HealthService healthService;
 
     public UserStats userStats;
     public ActivityListCollection collection;
@@ -237,6 +269,7 @@ public class StatisticsService {
     public Date dateWeek;
 
     public StatisticsService(User user) {
+        healthService = user.getUserHealth();
         userStats = user.getUserStats();
         arrayCollection = collection.getActivityListCollection();
     }
@@ -255,7 +288,7 @@ public class StatisticsService {
         ArrayList<WeightRecord> record = userStats.getUserWeightRecords();
         for (int i = 0; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()).toString());
-            graph.addXAxis((record.get(i).getDate()));
+            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -270,7 +303,7 @@ public class StatisticsService {
         ArrayList<FatToMuscleRecord> record = userStats.getUserFatToMuscleRecords();
         for (int i = 0; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getFatToMuscle()).toString());
-            graph.addXAxis((record.get(i).getDate()));
+            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -284,8 +317,8 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
         for (int i = 0; i < record.size(); i++) {
-            graph.addYAxis((record.get(i).getBmi()).toString());
-            graph.addXAxis((record.get(i).getDate()));
+            graph.addYAxis((record.get(i).getBmi().getBMIValue()).toString());
+            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -295,13 +328,28 @@ public class StatisticsService {
      * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
      * @return a graphXY object that contains the x and y axis arrayLists
      */
-    public GraphXY getGraphDataStressLevel() {
+    public GraphXY getStressLevelOverTimeGraph() {
         GraphXY graph = new GraphXY();
         ArrayList<StressLevelRecord> record = userStats.getUserStressLevelRecords();
         for (int i = 0; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getStress()).toString());
-            graph.addXAxis((record.get(i).getDate()));
+            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
         }
+        return graph;
+    }
+
+    public GraphXY getDistanceOverTimeGraph() {
+        GraphXY graph = new GraphXY();
+        return graph;
+    }
+
+    public GraphXY getHeartRateOverTimeGraph() {
+        GraphXY graph = new GraphXY();
+        return graph;
+    }
+
+    public GraphXY getCaloriesBurnedOverTimeGraph() {
+        GraphXY graph = new GraphXY();
         return graph;
     }
 }
