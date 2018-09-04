@@ -23,8 +23,8 @@ public class User {
     private StressLevelType stressLevel;
     private ActivityListCollection userActivities;
     private ArrayList<UserObserver> observers;
-    private HealthService userHealth;
-    private StatisticsService statsService;
+    //private HealthService userHealth;
+    //private StatisticsService statsService;
 
 
 
@@ -44,8 +44,8 @@ public class User {
         this.observers = new ArrayList<UserObserver>();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
         this.bmi = new BMI(calculateBMI());
-        this.userHealth = new HealthService(this);
-        this.statsService = new StatisticsService(this);
+        //this.userHealth = new HealthService(this);
+        //this.statsService = new StatisticsService(this);
         userStats.addUserBMITypeRecords(bmi);
         userStats.addUserWeightRecords(weight);
     }
@@ -54,17 +54,17 @@ public class User {
      * Get the users Stats Service Data
      * @return a Statistics Service object which holds valuable user data
      */
-    public StatisticsService getStatsService() {
-        return statsService;
-    }
+    //public StatisticsService getStatsService() {
+        //return statsService;
+    //}
 
     /**
      * Get the users Health Service data
      * @return a Health Service object which contains all health risk information
      */
-    public HealthService getUserHealth() {
-        return userHealth;
-    }
+    //public HealthService getUserHealth() {
+        //return userHealth;
+    //}
 
     /**
      * Set the Name of the user

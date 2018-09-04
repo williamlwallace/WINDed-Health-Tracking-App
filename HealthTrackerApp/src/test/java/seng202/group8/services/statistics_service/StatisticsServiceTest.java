@@ -1,24 +1,15 @@
 package seng202.group8.services.statistics_service;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class StatisticsServiceTest {
 
-    @Test
-    public void getGraphDataWeight() {
+    @Before
+    public void start() throws Exception {
+
     }
 
-    @Test
-    public void getGraphDataFatToMuscle() {
-    }
-
-    @Test
-    public void getGraphDataBMIType() {
-    }
-
-    @Test
-    public void getGraphDataStressLevel() {
-    }
 }
