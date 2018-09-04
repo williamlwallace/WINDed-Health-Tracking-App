@@ -2,13 +2,14 @@ package seng202.group8.services.statistics_service;
 
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.DataType;
+import seng202.group8.data_entries.*;
 import seng202.group8.services.health_service.HealthService;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.*;
+import sun.security.pkcs11.wrapper.Functions;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -253,30 +254,28 @@ public class StatisticsService {
      * Variables used for the main statistics display screen/tab
      */
 
-    public Integer averageHeartRate;
-    public Double kmRunWeek;
-    public Double mSwamWeek;
-    public Double kmBikedWeek;
-    public String healthStatus;
-    public Double caloriesBurnedWeek;
-    public Double weightLossWeek;
-    public Double totalKmWeek;
-    public HealthService healthService;
+    private Integer averageHeartRate;
+    private Double kmRunWeek;
+    private Double mSwamWeek;
+    private Double kmBikedWeek;
+    private String healthStatus;
+    private Double caloriesBurnedWeek;
+    private Double weightLossWeek;
+    private Double totalKmWeek;
+    private HealthService healthService;
 
-    public UserStats userStats;
-    public ActivityListCollection collection;
-    public ArrayList<ActivityList> arrayCollection;
-    public Date dateWeek;
+    private UserStats userStats;
+    private ActivityListCollection collection;
+    private ArrayList<ActivityList> arrayCollection;
+    private Date dateWeek;
 
     public StatisticsService(User user) {
-        healthService = user.getUserHealth();
+        healthService = new HealthService(user);
         userStats = user.getUserStats();
         arrayCollection = collection.getActivityListCollection();
     }
 
-    /**
-     * Functions for graphs
-     */
+    //Functions for graphs
 
     /**
      * Grabs the record for weight records and grabs each date and weight and assigns them to an x or y axis arrayList
@@ -313,7 +312,7 @@ public class StatisticsService {
      * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
      * @return a graphXY object that contains the x and y axis arrayLists
      */
-    public GraphXY getGraphDataBMIType() { //CHANGE TO BE VALUE NOT OVERALL NAME
+    public GraphXY getGraphDataBMIType() {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
         for (int i = 0; i < record.size(); i++) {
@@ -338,18 +337,56 @@ public class StatisticsService {
         return graph;
     }
 
-    public GraphXY getDistanceOverTimeGraph() {
+    /**
+     * Grabs the data for an activity, then it gets from that activity data the coordinates list and the times
+     * From there it creates both the x and y axis objects to be able to be graphed using coordinate data difference to get the distance calculations
+     * @param data the activity that the user wants to plot
+     * @return a graph type object that contains x and y axis array Lists
+     */
+    public GraphXY getDistanceOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
+        ArrayList<CoordinateData> coordinatesArrayList = data.getCoordinatesArrayList();
+        ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        for (int i = 0; i < coordinatesArrayList.size() - 1; i++) {
+            CoordinateDataDifference coordinateDataDifference =
+                    new CoordinateDataDifference(coordinatesArrayList.get(i), coordinatesArrayList.get(i + 1));
+            graph.addYAxis(Double.toString(coordinateDataDifference.getDistanceDifference()));
+            graph.addXAxis(time.get(i).toString());
+        }
         return graph;
     }
 
-    public GraphXY getHeartRateOverTimeGraph() {
+    /**
+     * Grabs the data for an activity, then it gets from that activity data the heart rate and the times
+     * From there is adds to both the x and y axis of the graph object from the heart rate List and the times List
+     * @param data the activity that the user wants to plot
+     * @return a graph type object that contains x and y axis array Lists
+     */
+    public GraphXY getHeartRateOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
+        ArrayList<Integer> heartRates = data.getHeartRateList();
+        ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        for (int i = 0; i < heartRates.size() - 1; i++) {
+            graph.addXAxis(time.get(i).toString());
+            graph.addYAxis(heartRates.get(i).toString());
+        }
         return graph;
     }
 
-    public GraphXY getCaloriesBurnedOverTimeGraph() {
+    /**
+     * Grabs the data for an activity, then it gets from that activity data the calories burned and the times
+     * From there is adds to both the x and y axis of the graph object from the calories burned List and the times List
+     * @param data the activity that the user wants to plot
+     * @return a graph type object that contains x and y axis array Lists
+     */
+    public GraphXY getCaloriesBurnedOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
+        //ArrayList<Double> calories = data.getConsumedCalories();
+        ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        for (int i = 0; i < time.size() - 1; i++) {
+            graph.addXAxis(time.get(i).toString());
+            //graph.addYAxis(calories.get(i).toString()); // WAITING FOR CALORIES CALCULATOR
+        }
         return graph;
     }
 }

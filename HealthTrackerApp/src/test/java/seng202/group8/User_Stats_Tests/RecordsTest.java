@@ -59,8 +59,7 @@ public class RecordsTest {
     @Test
     public void checkDateOfWeightRecord(){
         weightRecord.createDate();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
-        String date = format.format( new Date());
+        Date date = new Date();
         assertEquals(weightRecord.getDate(), date);
     }
 
@@ -80,8 +79,7 @@ public class RecordsTest {
     @Test
     public void checkDateOfFatRecord(){
         fatRecord.createDate();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
-        String date = format.format( new Date());
+        Date date = new Date();
         assertEquals(fatRecord.getDate(), date);
     }
 
@@ -100,8 +98,7 @@ public class RecordsTest {
     @Test
     public void checkDateOfBMIRecord(){
         bmiRecord.createDate();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
-        String date = format.format( new Date());
+        Date date = new Date();
         assertEquals(bmiRecord.getDate(), date);
     }
 
@@ -119,8 +116,7 @@ public class RecordsTest {
     @Test
     public void checkDateOfStressRecord() {
         stressRecord.createDate();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ");
-        String date = format.format( new Date());
+        Date date = new Date();
         assertEquals(stressRecord.getDate(), date);
     }
 

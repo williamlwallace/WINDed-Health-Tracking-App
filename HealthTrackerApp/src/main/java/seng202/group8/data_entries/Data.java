@@ -42,8 +42,6 @@ public abstract class Data {
     private ArrayList<CoordinateData> coordinatesArrayList;
     private ArrayList<Integer> heartRateList;
     private HeartRateData heartRateData;
-
-
     private double consumedCalories;
 
     private Double distanceCovered;
