@@ -32,6 +32,8 @@ public class Parser {
     private ArrayList<Integer> activityHeartRate = new ArrayList<Integer>();
     private ArrayList<CoordinateData> activityCoordinates = new ArrayList<CoordinateData>();
 
+    private ArrayList<Data> dataList;
+
     private Boolean isCorrupt = Boolean.FALSE;
 
     /**
@@ -47,6 +49,7 @@ public class Parser {
         acceptedValues.add(bike);
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
+        ArrayList<Data> data = new ArrayList<Data>();
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
             try {
                 CSVReader csvReader = new CSVReader(new FileReader(filename));
@@ -84,11 +87,14 @@ public class Parser {
                                 activityEnum = DataType.SWIM;
                                 activityToSend = new SwimData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
                                 break;
-                            case "water sport":
+                            default: //case "water sport": fixer for now
                                 activityEnum = DataType.WATER_SPORTS;
                                 activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
                                 break;
                         }
+                        data.add(activityToSend);
+
+
 
                     }
                     isCorrupt = Boolean.FALSE;
@@ -106,6 +112,8 @@ public class Parser {
         } else {
             System.out.println("The file '" + filename + "' must be a .csv file");
         }
+
+        this.dataList = data;
     }
     /**
      * Receives a activity and collates the data from it
@@ -135,6 +143,7 @@ public class Parser {
                 }
             }
             if (activityType.equals("")) {
+
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
                 String selection = scanner.next();
@@ -214,8 +223,20 @@ public class Parser {
         return line;
     }
 
+    public ArrayList<Data> getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(ArrayList<Data> dataList) {
+        this.dataList = dataList;
+    }
+
     public static void main(String[] args) throws Exception {
         Parser parserTest =  new Parser("seng202_2018_example_data.csv");
+        ArrayList<Data> data = parserTest.getDataList();
+        for (Data d : data) {
+            System.out.println(d.getTitle());
+        }
     }
 
 }

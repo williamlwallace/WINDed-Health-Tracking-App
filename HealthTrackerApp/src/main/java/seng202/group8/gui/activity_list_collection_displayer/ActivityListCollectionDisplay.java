@@ -1,7 +1,6 @@
 package seng202.group8.gui.activity_list_collection_displayer;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,10 +19,8 @@ public class ActivityListCollectionDisplay extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("activity_list_collection.fxml"));
 
-        Parent root= loader.load();;
+        Parent root= loader.load();
         Scene scene = new Scene(root, 1000, 800);
-
-
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Ciao");
