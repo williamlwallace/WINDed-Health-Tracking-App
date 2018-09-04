@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
    <left>
-      <TreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="291.0" prefWidth="134.0" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#showNewInsightsAndMap" prefHeight="324.0" prefWidth="173.0" BorderPane.alignment="CENTER" />
    </left>
    <center>
       <WebView fx:id="googleMapsWebView" prefHeight="324.0" prefWidth="323.0" BorderPane.alignment="CENTER" />
@@ -21,38 +21,73 @@
    <right>
       <AnchorPane fx:id="acticvityInsightsAnchorPane" prefHeight="324.0" prefWidth="139.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="43.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insights" />
+            <Text layoutX="53.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insights" />
             <Text layoutX="8.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="106.23828125" AnchorPane.topAnchor="56.0">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="8.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Heart Rate" wrappingWidth="69.76171875">
+            <Text layoutX="8.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Heart Rate" wrappingWidth="69.76171875" AnchorPane.leftAnchor="8.0">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="8.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avearge Speed" wrappingWidth="69.76171875">
+            <Text layoutX="8.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avearge Speed" wrappingWidth="69.76171875" AnchorPane.leftAnchor="8.0">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="8.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Heart Rate" wrappingWidth="69.76171875">
+            <Text layoutX="8.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Heart Rate" wrappingWidth="69.76171875" AnchorPane.leftAnchor="8.0">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="8.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Heart Rate" wrappingWidth="69.76171875">
+            <Text layoutX="8.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Heart Rate" wrappingWidth="69.76171875" AnchorPane.leftAnchor="8.0">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="9.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Speed" wrappingWidth="67.76171875">
+            <Text layoutX="9.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Speed" wrappingWidth="67.76171875" AnchorPane.leftAnchor="8.0">
                <font>
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="11.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Speed" wrappingWidth="62.76171875">
+            <Text layoutX="11.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Speed" wrappingWidth="62.76171875" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="distanceCovered" layoutX="119.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="averageHeartRate" layoutX="119.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="maxHeartRate" layoutX="119.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="minHeartRate" layoutX="119.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="averageSpeed" layoutX="119.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="maxSpeed" layoutX="119.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Text>
+            <Text fx:id="minSpeed" layoutX="119.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <font>
                   <Font size="8.0" />
                </font>

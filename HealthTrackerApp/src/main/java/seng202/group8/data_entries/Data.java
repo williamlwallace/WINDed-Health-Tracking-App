@@ -102,6 +102,7 @@ public abstract class Data {
     }
 
 
+
     public String getTitle() {
         return title;
     }

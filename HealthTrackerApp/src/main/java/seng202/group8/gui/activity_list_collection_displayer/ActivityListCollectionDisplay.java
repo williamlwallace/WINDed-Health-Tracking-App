@@ -5,8 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import seng202.group8.activity_collection.ActivityList;
+import seng202.group8.data_entries.CoordinateData;
+import seng202.group8.data_entries.DataType;
+import seng202.group8.data_entries.WalkData;
+import seng202.group8.user.User;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
 
 public class ActivityListCollectionDisplay extends Application {
 
@@ -14,12 +22,56 @@ public class ActivityListCollectionDisplay extends Application {
         launch(args);
     }
 
+    private User user;
+
+    private void setUpMockUser() {
+        user = new User("Lorenzo", 22, 83.0, 184.0);
+        ArrayList<LocalDateTime> localDateTimes = new ArrayList<>();
+        localDateTimes.add(LocalDateTime.now());
+        ArrayList<Integer> heartRateList = new ArrayList<>();
+        heartRateList.add(45);
+        heartRateList.add(48);
+        heartRateList.add(55);
+        WalkData data =
+                new WalkData("Ciao", DataType.WALK, localDateTimes, new ArrayList<CoordinateData>(), heartRateList);
+        WalkData data1 =
+                new WalkData("Ciao1", DataType.WALK, localDateTimes, new ArrayList<CoordinateData>(), heartRateList);
+        WalkData data2 =
+                new WalkData("Ciao2", DataType.WALK, localDateTimes, new ArrayList<CoordinateData>(), heartRateList);
+        user.getUserActivities().insertActivityList(new ActivityList("Ciaos"));
+        user.getUserActivities().insertActivityInGivenList(0, data);
+        user.getUserActivities().insertActivityInGivenList(0, data1);
+        user.getUserActivities().insertActivityInGivenList(0, data2);
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
+
+        User user = new User("Lorenzo", 22, 83.0, 184.0);
+        ArrayList<LocalDateTime> localDateTimes = new ArrayList<>();
+        localDateTimes.add(LocalDateTime.now());
+        ArrayList<Integer> heartRateList = new ArrayList<>();
+        heartRateList.add(45);
+        heartRateList.add(48);
+        heartRateList.add(55);
+        WalkData data =
+                new WalkData("Ciao", DataType.WALK, localDateTimes, new ArrayList<CoordinateData>(), heartRateList);
+        WalkData data1 =
+                new WalkData("Ciao1", DataType.WALK, localDateTimes, new ArrayList<CoordinateData>(), heartRateList);
+        WalkData data2 =
+                new WalkData("Ciao2", DataType.WALK, localDateTimes, new ArrayList<CoordinateData>(), heartRateList);
+        user.getUserActivities().insertActivityList(new ActivityList("Ciaos"));
+        user.getUserActivities().insertActivityInGivenList(0, data);
+        user.getUserActivities().insertActivityInGivenList(0, data1);
+        user.getUserActivities().insertActivityInGivenList(0, data2);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("activity_list_collection.fxml"));
 
         Parent root= loader.load();
+        ActivitiesCollectionController controller = (ActivitiesCollectionController) loader.getController();
+
+        controller.setInsights(user, 0, 0);
+        controller.setUpTreeView(user);
         Scene scene = new Scene(root, 1000, 800);
 
         primaryStage.setScene(scene);

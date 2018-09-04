@@ -29,8 +29,6 @@ public class GUI extends Application {
         primaryStage.setTitle("WINded");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-
     }
 
 
