@@ -55,7 +55,8 @@ public abstract class Data {
         this.dataType = dataType;
         this.allDateTimes = newDateTimes;
         this.heartRateData = new HeartRateData(newHeartRateList);
-        setCoordinatesArrayList(newCoordinatesList);
+//        setCoordinatesArrayList(newCoordinatesList);
+        this.coordinatesArrayList = newCoordinatesList;
         this.distanceCovered = calculateDistanceCovered();
         this.millisecondsOfExercise = calculateMillisecondsOfExercise();
 //        this.consumedCalories = getConsumedCalories();
@@ -63,10 +64,10 @@ public abstract class Data {
     }
 
 
-    public void setCoordinatesArrayList(ArrayList<CoordinateData> newCoordinatesList) {
-        this.coordinatesArrayList = new ArrayList<CoordinateData>();
-
-    }
+//    public void setCoordinatesArrayList(ArrayList<CoordinateData> newCoordinatesList) {
+//        this.coordinatesArrayList = new ArrayList<CoordinateData>();
+//
+//    }
 
 
     private Double calculateDistanceCovered() {
