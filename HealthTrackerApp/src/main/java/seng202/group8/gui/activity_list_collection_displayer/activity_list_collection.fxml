@@ -95,7 +95,7 @@
          </children></AnchorPane>
    </right>
    <bottom>
-      <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="165.0" prefWidth="812.0" BorderPane.alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" text="No file uploaded at the moment">
                <VBox.margin>
