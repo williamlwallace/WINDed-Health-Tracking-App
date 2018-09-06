@@ -143,7 +143,7 @@ public class StatisticsService {
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
                 if (inLastWeek(data.getCreationDate())) {
-                    calories += data.getConsumedCalories(data.getTitle()); // NEEDS TO CHANGE AND BE UPDATED WHEN CALORIES COMPLETED
+                    //calories += data.getConsumedCalories(data.getTitle()); // NEEDS TO CHANGE AND BE UPDATED WHEN CALORIES COMPLETED
                 }
             }
 
@@ -272,6 +272,7 @@ public class StatisticsService {
     public StatisticsService(User user) {
         healthService = new HealthService(user);
         userStats = user.getUserStats();
+        collection = user.getUserActivities();
         arrayCollection = collection.getActivityListCollection();
     }
 
