@@ -7,12 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.CoordinateData;
+import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.WalkData;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.user.User;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -52,19 +54,23 @@ public class CalendarView extends Application {
         user.getUserActivities().insertActivityInGivenList(0, data);
         user.getUserActivities().insertActivityInGivenList(0, data1);
         user.getUserActivities().insertActivityInGivenList(0, data2);
+        for (Data datissima : user.getUserActivities().getActivityListCollection().get(0).getActivityList()) {
+            System.out.println(datissima.getCreationDate());
+        }
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("calendarView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("calendar_view.fxml"));
 
         Parent root = loader.load();
         CalendarViewController controller = (CalendarViewController) loader.getController();
         controller.setUser(user);
         controller.setCurrentStage(primaryStage);
 
+        controller.setDatePickerListener();
 
         Scene scene = new Scene(root, 1000, 800);
 
