@@ -4,6 +4,7 @@ import javafx.scene.chart.PieChart;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -96,6 +97,19 @@ public class ActivityListCollection {
         for (ActivityList activityList : activityListCollection) {
             for (Data data : activityList.getActivityList()) {
                 if (!data.getCreationDate().before(startDate)) {
+                    activitiesAfterDate.add(data);
+                }
+            }
+        }
+        return activitiesAfterDate;
+    }
+
+    public ArrayList<Data> retrieveActivititesBtwDates(Date startDate, Date endDate) {
+
+        ArrayList<Data> activitiesAfterDate = new ArrayList<Data>();
+        for (ActivityList activityList : activityListCollection) {
+            for (Data data : activityList.getActivityList()) {
+                if (!(data.getCreationDate().before(startDate)) && !(data.getCreationDate().after(endDate))) {
                     activitiesAfterDate.add(data);
                 }
             }
