@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d43e8fc5-dd62-4651-a9a3-d6624b65cf0a" name="Default" comment="Added the GUI display components for the User Entry">
-      <change beforePath="" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_entry_displayer/UserEntryController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_entry_displayer/UserEntryDisplay.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_entry_displayer/user_entry.fxml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="d43e8fc5-dd62-4651-a9a3-d6624b65cf0a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
@@ -440,12 +436,20 @@
       <updated>1536378424021</updated>
       <workItem from="1536378425310" duration="218000" />
       <workItem from="1536378676668" duration="3464000" />
-      <workItem from="1536383394370" duration="805000" />
+      <workItem from="1536383394370" duration="822000" />
     </task>
+    <task id="LOCAL-00001" summary="Added the GUI display components for the User Entry">
+      <created>1536384205068</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1536384205068</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4487000" />
+    <option name="totallyTimeSpent" value="4517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-40" y="62" width="1682" height="1023" extended-state="6" />
