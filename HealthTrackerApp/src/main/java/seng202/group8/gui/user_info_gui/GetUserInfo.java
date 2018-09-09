@@ -17,10 +17,6 @@ public class GetUserInfo extends Application {
         primaryStage.show();
     }
 
-    public void enterDetails(ActionEvent event) {
-        System.out.printf("hello");
-    }
-
     public static void main(String[] args) {
         launch(args);
     }

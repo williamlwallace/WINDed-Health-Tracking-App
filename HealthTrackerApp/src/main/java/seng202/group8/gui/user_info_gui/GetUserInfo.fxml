@@ -41,12 +41,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height (cm):" />
-                  <TextField GridPane.columnIndex="1" />
+                  <Text fx:id="heightText" strokeType="OUTSIDE" strokeWidth="0.0" text="Height (cm):" />
+                  <TextField fx:id="heightField" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <Button fx:id="enterDetailsButton" mnemonicParsing="false" onAction="#enterDetails" text="Enter" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Errors" GridPane.rowIndex="1" />
+            <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Errors" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="1">
@@ -60,12 +60,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
-            <TextField GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weight (kg):" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+            <TextField fx:id="nameField" GridPane.columnIndex="1" />
+            <Text fx:id="ageText" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" GridPane.rowIndex="1" />
+            <TextField fx:id="ageField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="weightText" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight (kg):" GridPane.rowIndex="2" />
+            <TextField fx:id="weightField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <GridPane.margin>
             <Insets />
