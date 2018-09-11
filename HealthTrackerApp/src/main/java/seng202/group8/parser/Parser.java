@@ -35,7 +35,6 @@ public class Parser {
     private ArrayList<Data> dataList;
 
     private Boolean isCorrupt = Boolean.FALSE;
-
     /**
      * Receives a filename and starts reading the data activity by activity
      * @param filename
@@ -98,6 +97,8 @@ public class Parser {
 
                     }
                     isCorrupt = Boolean.FALSE;
+                    //numErrors = 0;
+                    //numLines = 0;
                     activityName = "";
                     activityType = "";
                     activityDateTime.clear();
@@ -168,8 +169,12 @@ public class Parser {
         LocalDateTime lineDate;
         int lineHeart;
         CoordinateData lineCoordinate;
-        try {
-            while (!(line[0].equals("#start")) && (line != null) && (!isCorrupt)) {
+        int numErrors = 0;
+        int numLines = 0;
+            //line = readActivityLine(line, csvReader);
+        while (!(line[0].equals("#start")) && (line != null) && (!isCorrupt)) {
+            try {
+                numLines =+ 1;
                 //System.out.println(line[1]);
                 String toFormat = line[0] + ";" + line[1];
                 lineDate = LocalDateTime.parse(toFormat, timeFormat);
@@ -180,21 +185,27 @@ public class Parser {
                 activityHeartRate.add(lineHeart);
                 activityCoordinates.add(lineCoordinate);
                 line = readLine(csvReader);
+            } catch (NullPointerException e) {
+                System.out.println("No more activities");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
+                numErrors += 1;
+                //isCorrupt = Boolean.TRUE;
+                line = nextActivity(csvReader, line);
+            } catch (NumberFormatException e) {
+                System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has incorrect data");
+                numErrors += 1;
+                //isCorrupt = Boolean.TRUE;
+                line = nextActivity(csvReader, line);
+            } catch (DateTimeParseException e) {
+                System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has an incorrectly stored date");
+                numErrors += 1;
+                //isCorrupt = Boolean.TRUE;
+                line = nextActivity(csvReader, line);
             }
-        } catch (NullPointerException e) {
-            System.out.println("No more activities");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Corrupt activity '" + activityName + "' is missing data.");
+        }
+        if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
-            line = nextActivity(csvReader, line);
-        } catch (NumberFormatException e) {
-            System.out.println("Corrupt activity '" + activityName + "' has incorrect data");
-            isCorrupt = Boolean.TRUE;
-            line = nextActivity(csvReader, line);
-        } catch (DateTimeParseException e) {
-            System.out.println("Corrupt activity '" + activityName + "' has an incorrectly stored date");
-            isCorrupt = Boolean.TRUE;
-            line = nextActivity(csvReader, line);
         }
         return line;
     }

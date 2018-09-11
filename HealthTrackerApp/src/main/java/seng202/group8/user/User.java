@@ -24,7 +24,7 @@ public class User {
     private ActivityListCollection userActivities;
     private ArrayList<UserObserver> observers;
     //private HealthService userHealth;
-    //private StatisticsService statsService;
+    private StatisticsService statsService;
 
 
 
@@ -54,9 +54,9 @@ public class User {
      * Get the users Stats Service Data
      * @return a Statistics Service object which holds valuable user data
      */
-    //public StatisticsService getStatsService() {
-        //return statsService;
-    //}
+    public StatisticsService getStatsService() {
+        return statsService;
+    }
 
     /**
      * Get the users Health Service data
