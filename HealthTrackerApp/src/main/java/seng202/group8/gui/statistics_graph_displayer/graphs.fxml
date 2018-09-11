@@ -84,8 +84,8 @@
                 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1106.0">
                     <children>
                         <Label fx:id="dataName" alignment="CENTER" prefHeight="305.0" prefWidth="503.0" text="&lt;Data Name&gt;" textFill="#abaaaa" translateY="25.0" />
-                  <Button fx:id="next" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="43.0" prefWidth="84.0" stylesheets="@stylesheet.css" text="  NEXT ACTIVITY" textAlignment="CENTER" translateX="475.0" wrapText="true" />
-                  <Button fx:id="previous" alignment="TOP_LEFT" layoutX="521.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="43.0" prefWidth="84.0" stylesheets="@stylesheet.css" text="PREVIOUSACTIVITY" textAlignment="CENTER" translateX="-475.0" translateY="-40.0" wrapText="true" />
+                  <Button fx:id="next" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextData" prefHeight="43.0" prefWidth="84.0" stylesheets="@stylesheet.css" text="  NEXT ACTIVITY" textAlignment="CENTER" translateX="475.0" wrapText="true" />
+                  <Button fx:id="previous" alignment="TOP_LEFT" layoutX="521.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousData" prefHeight="43.0" prefWidth="84.0" stylesheets="@stylesheet.css" text="PREVIOUSACTIVITY" textAlignment="CENTER" translateX="-475.0" translateY="-40.0" wrapText="true" />
                     </children>
                 </VBox>
             <Pane prefHeight="545.0" prefWidth="1108.0">

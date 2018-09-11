@@ -65,6 +65,7 @@ public class Graphs extends Application {
 
         controller.setUser(user);
         controller.setPrimaryStage(primaryStage);
+        controller.setup();
 
         Scene scene = new Scene(root, 1000, 800);
         primaryStage.setScene(scene);

@@ -117,6 +117,17 @@ public class ActivityListCollection {
         return activitiesAfterDate;
     }
 
+    public ArrayList<Data> getAllData() {
+
+        ArrayList<Data> activities = new ArrayList<Data>();
+        for (ActivityList activityList : activityListCollection) {
+            for (Data data : activityList.getActivityList()) {
+                activities.add(data);
+            }
+        }
+        return activities;
+    }
+
     public void notifyAllObservers() {
         for (ActivityListCollectionObserver observer : observers) {
             observer.update();
