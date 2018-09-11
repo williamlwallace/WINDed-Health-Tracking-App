@@ -24,7 +24,7 @@ public class Graphs extends Application {
     }
 
     private void setUpMockUser() {
-        user = new User("Lorenzo", 22, 83.0, 184.0);
+        user = new User("Joel", 19, 72.0, 167.0);
         ArrayList<LocalDateTime> localDateTimes = new ArrayList<>();
         localDateTimes.add(LocalDateTime.now());
         ArrayList<Integer> heartRateList = new ArrayList<>();
@@ -56,7 +56,7 @@ public class Graphs extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        setUpMockUser();
+        //setUpMockUser();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("graphs.fxml"));
 

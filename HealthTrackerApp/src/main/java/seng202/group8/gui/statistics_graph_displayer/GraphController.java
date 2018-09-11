@@ -2,6 +2,7 @@ package seng202.group8.gui.statistics_graph_displayer;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
@@ -41,25 +42,46 @@ public class GraphController {
     private Button previous;
 
     @FXML
-    private Text dataName;
+    private Text dataname;
 
     @FXML
     private LineChart graph;
 
     public void showDistance() {
         //CREATES GRAPH FOR DISTANCE OVER TIME
+        selectedButton = distance;
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Distance");
+        graph = new LineChart<>(xAxis,yAxis);
         graph.setTitle("Distance over Time");
         XYChart.Series series = new XYChart.Series();
         StatisticsService graphData = user.getStatsService();
         GraphXY xyData = graphData.getDistanceOverTimeGraph(currentdata);
         displayOnGraph(xyData, series);
+    }
 
+    public void showHeartRate() {
+        //CREATES GRAPH FOR HEART RATE OVER TIME
+        selectedButton = heart;
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Heart Rate");
+        graph = new LineChart<>(xAxis,yAxis);
+        graph.setTitle("Heart Rate over Time");
+        XYChart.Series series = new XYChart.Series();
+        StatisticsService graphData = user.getStatsService();
+        GraphXY xyData = graphData.getHeartRateOverTimeGraph(currentdata);
+        displayOnGraph(xyData, series);
     }
 
     public void displayOnGraph(GraphXY xyData, XYChart.Series series) {
         for(int i = 0; i < xyData.getXAxis().size(); i++) {
             series.getData().add(new XYChart.Data(xyData.getXAxis(), xyData.getYAxis()));
         }
+        graph.getData().add(series);
     }
 
     public void nextData() {
@@ -88,11 +110,11 @@ public class GraphController {
 
     public void setCurrentdata(Data currentdata) {
         this.currentdata = currentdata;
-        dataName.setText(currentdata.getTitle());
+        dataname.setText(currentdata.getTitle());
     }
 
     public void updateData() {
-        dataName.setText(currentdata.getTitle());
+        dataname.setText(currentdata.getTitle());
         selectedButton.fire();
     }
 
