@@ -1,0 +1,23 @@
+.parent{
+    -fx-background-color:  #ffff;
+}
+
+.sidebar{
+    -fx-background-color: #2e86c1;
+}
+
+.btns{
+    -fx-background-color: transparent;
+}
+
+.btns:hover{
+    -fx-background-color:  #2874a6  ;
+}
+
+.round-box{
+    -fx-background-radius: 100%;
+    -fx-border-radius: 100%;
+    -fx-border-image-width: 5px;
+}
+
+
