@@ -9,6 +9,7 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.WalkData;
+import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.user.User;
 
 import java.io.IOException;
@@ -42,11 +43,11 @@ public class Graphs extends Application {
         coordinatesList1.add(new CoordinateData(44.8005, 10.3273, 1.0));
         coordinatesList1.add(new CoordinateData(44.8016, 10.3284, 1.0));
         WalkData data =
-                new WalkData("test1", DataType.WALK, localDateTimes, coordinatesList, heartRateList);
+                new WalkData("test1", DataType.WALK, localDateTimes, coordinatesList, heartRateList, user);
         WalkData data1 =
-                new WalkData("test2", DataType.WALK, localDateTimes, coordinatesList1, heartRateList);
+                new WalkData("test2", DataType.WALK, localDateTimes, coordinatesList1, heartRateList, user);
         WalkData data2 =
-                new WalkData("test3", DataType.WALK, localDateTimes, coordinatesList, heartRateList);
+                new WalkData("test3", DataType.WALK, localDateTimes, coordinatesList, heartRateList, user);
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
         user.getUserActivities().insertActivityInGivenList(0, data);
         user.getUserActivities().insertActivityInGivenList(0, data1);
@@ -61,7 +62,7 @@ public class Graphs extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("graphs.fxml"));
 
         Parent root = loader.load();
-        GraphController controller = loader.getController();
+        GraphController controller = (GraphController) loader.getController();
 
         controller.setUser(user);
         controller.setPrimaryStage(primaryStage);

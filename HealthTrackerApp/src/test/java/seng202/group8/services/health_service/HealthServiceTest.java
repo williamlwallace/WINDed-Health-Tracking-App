@@ -45,7 +45,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(169);//Minimum for tachicardia (220 - 22) * 0.85 = 168.7
         heartRateList.add(21);
-        runData = new RunData("Run forrest run!", DataType.RUN,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        runData = new RunData("Run forrest run!", DataType.RUN,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, runData);
         user.getUserActivities().insertActivityInGivenList(0, runData);
@@ -58,7 +58,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(169);
         heartRateList.add(21);
-        runData = new RunData("Run forrest run!", DataType.RUN,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        runData = new RunData("Run forrest run!", DataType.RUN,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, runData);
         user.getUserActivities().insertActivityInGivenList(0, runData);
@@ -70,7 +70,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(101);
         heartRateList.add(21);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -83,8 +83,8 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(169);
         heartRateList.add(21);
-        runData = new RunData("Run forrest run!", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        runData = new RunData("Run forrest run!", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, runData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -98,7 +98,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(99);
         heartRateList.add(21);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -111,7 +111,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(101);
         heartRateList.add(21);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -124,7 +124,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(101);
         heartRateList.add(59);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -137,7 +137,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(101);
         heartRateList.add(59);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -151,7 +151,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(101);
         heartRateList.add(59);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
@@ -164,7 +164,7 @@ public class HealthServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList<Integer>();
         heartRateList.add(101);
         heartRateList.add(59);
-        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        walkData = new WalkData("Walk forrest walk!", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, walkData);
         user.getUserActivities().insertActivityInGivenList(0, walkData);

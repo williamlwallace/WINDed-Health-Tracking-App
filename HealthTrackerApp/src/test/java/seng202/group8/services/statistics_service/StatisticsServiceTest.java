@@ -30,7 +30,7 @@ public class StatisticsServiceTest {
         ArrayList<Integer> heartRateList = new ArrayList();
         heartRateList.add(100);
         heartRateList.add(50);
-        runData = new RunData("Running", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList);
+        runData = new RunData("Running", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), heartRateList, user);
         user.getUserActivities().insertActivityList(activityList);
         user.getUserActivities().insertActivityInGivenList(0, runData);
     }

@@ -29,9 +29,9 @@ public class ActivityGoalTest {
         user.getUserActivities().insertActivityList(new ActivityList("Hikes"));
         activityGoal = new ActivityGoal(user, "Gotta go running more!",
                 GoalType.ActivityGoal, DataType.HIKE, 250.0);
-        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
         hikeData1.setDistanceCovered(200.0);
-        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
         hikeData2.setDistanceCovered(100.0);
         user.getUserActivities().insertActivityInGivenList(0, hikeData1);
     }

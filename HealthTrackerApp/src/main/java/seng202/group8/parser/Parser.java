@@ -61,34 +61,35 @@ public class Parser {
                     if (!isCorrupt) {
                         Data activityToSend;
                         DataType activityEnum;
+                        User user= new User("A", 12, 13.0, 56.9);
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
-                                activityToSend = new WalkData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new WalkData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                             case "hike":
                                 activityEnum = DataType.HIKE;
-                                activityToSend = new HikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new HikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                             case "run":
                                 activityEnum = DataType.RUN;
-                                activityToSend = new RunData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new RunData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                             case "climb":
                                 activityEnum = DataType.CLIMB;
-                                activityToSend = new ClimbData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new ClimbData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                             case "bike":
                                 activityEnum = DataType.BIKE;
-                                activityToSend = new BikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new BikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                             case "swim":
                                 activityEnum = DataType.SWIM;
-                                activityToSend = new SwimData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new SwimData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                             default: //case "water sport": fixer for now
                                 activityEnum = DataType.WATER_SPORTS;
-                                activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate);
+                                activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
                                 break;
                         }
                         data.add(activityToSend);

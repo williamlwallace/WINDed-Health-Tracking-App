@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.data_entries.*;
+import seng202.group8.user.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,12 +22,13 @@ public class ActivityListCollectionTest {
 
     @Before
     public void setUp() throws Exception {
+        User user = new User("Lorenzo", 22, 83.0, 183.0);
         activityListCollection = new ActivityListCollection("Great Collection");
         activityListJog = new ActivityList("Jog with friends");
         activityListFastWalks = new ActivityList("Fast Walks with friends");
         activityListJog.setTitle("Intense runs");
-        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
-        fastWalk = new WalkData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
+        fastWalk = new WalkData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
 
         activityListFastWalks.insertActivity(fastWalk);
         activityListJog.insertActivity(jog);

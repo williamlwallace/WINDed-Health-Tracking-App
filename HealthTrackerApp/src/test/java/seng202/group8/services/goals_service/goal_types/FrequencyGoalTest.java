@@ -28,8 +28,8 @@ public class FrequencyGoalTest {
         user.getUserActivities().insertActivityList(new ActivityList("Hikes"));
         frequencyGoal = new FrequencyGoal(user, "Gotta go running more!",
                         GoalType.TimePerformedGoal, DataType.HIKE, 2);
-        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
-        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
+        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
         user.getUserActivities().insertActivityInGivenList(0, hikeData1);
     }
 

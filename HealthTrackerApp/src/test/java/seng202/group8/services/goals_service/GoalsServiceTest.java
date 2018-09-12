@@ -41,8 +41,8 @@ public class GoalsServiceTest {
         activityList1 = new ActivityList("Runs in bush");
         activityList1.setCreationDate(new Date(0));
 
-        walkData = new WalkData("walk ciao", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
-        runData = new RunData("Run ciao", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>());
+        walkData = new WalkData("walk ciao", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
+        runData = new RunData("Run ciao", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
         user = new User("Lorenzo", 22, 82.0, 183.0);
 
         goalsService = new GoalsService(user);
