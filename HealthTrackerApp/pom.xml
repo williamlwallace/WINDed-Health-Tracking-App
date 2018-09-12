@@ -61,5 +61,16 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.fxml</include>
+          <include>**/*.html</include>
+          <include>**/*.css</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
 </project>

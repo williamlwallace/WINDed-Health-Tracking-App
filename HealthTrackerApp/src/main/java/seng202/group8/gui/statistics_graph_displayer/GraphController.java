@@ -5,6 +5,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityListCollection;
@@ -42,7 +43,7 @@ public class GraphController {
     private Button previous;
 
     @FXML
-    private Text dataname;
+    private Label dataname;
 
     @FXML
     private LineChart graph;
