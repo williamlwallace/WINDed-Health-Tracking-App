@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 
+import java.util.Collections;
 import java.util.Date;
 
 public abstract class Data {
@@ -32,9 +33,16 @@ public abstract class Data {
     private ArrayList<Double> mphSpeedsBetweenPoints;
     private ArrayList<Double> kphSpeedsBetweenPoints;
     private ArrayList<Double> gradientsBetweenPoints;
+    private ArrayList<Double> kmDistancesBetweenPoints;
+    private ArrayList<Double> milesDistancesBetweenPoints;
     private ArrayList<Long> millisecondsOfExerciseBetweenPoints;
-    private HeartRateData heartRateData;
+    private ArrayList<Double> consumedCaloriesBetweenPoints;
+    private ArrayList<Integer> stressLevelsBetweenPoints;
+    private ArrayList<Double> stressProportionsBetweenPoints;
 
+    private Integer stressLevelMax;
+    private Integer stressLevelMin;
+    private HeartRateData heartRateData;
     private Double dataSpeedKph;
     private Double dataSpeedMph;
     private Double distanceCovered;
@@ -60,7 +68,14 @@ public abstract class Data {
         this.kphSpeedsBetweenPoints = calculateKphSpeedsBetweenPoints();
         this.gradientsBetweenPoints = calculateGradientsBetweenPoints();
         this.millisecondsOfExerciseBetweenPoints = calculateMillisecondsOfExerciseBetweenPoints();
-//        this.consumedCalories = getConsumedCalories();
+        this.kmDistancesBetweenPoints = calculateKmDistancesBetweenPoints();
+        this.milesDistancesBetweenPoints = calculateMilesDistancesBetweenPoints();
+        this.consumedCalories = getConsumedCalories();
+        this.consumedCaloriesBetweenPoints = getConsumedCaloriesBetweenPoints();
+        this.stressLevelsBetweenPoints = calculateStressLevelsBetweenPoints();
+        this.stressLevelMax = calculateStressLevelMax();
+        this.stressLevelMin = calculateStressLevelMin();
+        this.stressProportionsBetweenPoints = calculateStressProportionsBetweenPoints();
 
     }
 
@@ -150,8 +165,9 @@ public abstract class Data {
             return speedsArrayList;
         }
 
+        final double kmToMilesConstant = 0.62137119223733;
         for (int i = 0; i < (localCoordinatesArrayList.size()) - 1; i++) {
-            final double kmToMilesConstant = 0.62137119223733;
+
             long msTrained = 0;
             Double hoursTrained = 0.0;
             Double milesTrained = 0.0;
@@ -215,6 +231,69 @@ public abstract class Data {
         return speedsArrayList;
     }
 
+    private ArrayList<Double> calculateKmDistancesBetweenPoints() {
+
+        ArrayList<CoordinateData> localCoordinatesArrayList = this.getCoordinatesArrayList();
+        ArrayList<LocalDateTime> localDateTimes = this.getAllDateTimes();
+
+        ArrayList<Double> kilometresTrained = new ArrayList<Double>();
+
+
+        if (localCoordinatesArrayList.size() < 2) {
+            kilometresTrained.set(0, 0.0);
+            return kilometresTrained;
+        } else if (localDateTimes.size() < 2) {
+            kilometresTrained.set(0, 0.0);
+            return kilometresTrained;
+        } else if (localDateTimes.size() != localCoordinatesArrayList.size()) {
+//            speedsArrayList.set(0, 0.0);
+            return kilometresTrained;
+        }
+
+        for (int i = 0; i < (localCoordinatesArrayList.size()) - 1; i++) {
+
+            CoordinateDataDifference coordinateDataDifference =
+                    new CoordinateDataDifference(localCoordinatesArrayList.get(i), localCoordinatesArrayList.get(i + 1));
+
+            kilometresTrained.add((coordinateDataDifference.getDistanceDifference() / 1000));
+
+        }
+
+        return kilometresTrained;
+    }
+
+    private ArrayList<Double> calculateMilesDistancesBetweenPoints() {
+
+        ArrayList<CoordinateData> localCoordinatesArrayList = this.getCoordinatesArrayList();
+        ArrayList<LocalDateTime> localDateTimes = this.getAllDateTimes();
+
+        ArrayList<Double> milesTrained = new ArrayList<Double>();
+
+
+        if (localCoordinatesArrayList.size() < 2) {
+            milesTrained.set(0, 0.0);
+            return milesTrained;
+        } else if (localDateTimes.size() < 2) {
+            milesTrained.set(0, 0.0);
+            return milesTrained;
+        } else if (localDateTimes.size() != localCoordinatesArrayList.size()) {
+//            speedsArrayList.set(0, 0.0);
+            return milesTrained;
+        }
+
+        final double kmToMilesConstant = 0.62137119223733;
+        for (int i = 0; i < (localCoordinatesArrayList.size()) - 1; i++) {
+
+            CoordinateDataDifference coordinateDataDifference =
+                    new CoordinateDataDifference(localCoordinatesArrayList.get(i), localCoordinatesArrayList.get(i + 1));
+
+            milesTrained.add(((coordinateDataDifference.getDistanceDifference() / 1000) * kmToMilesConstant));
+
+        }
+
+        return milesTrained;
+    }
+
     private ArrayList<Double> calculateGradientsBetweenPoints() {
 
         ArrayList<Double> gradients = new ArrayList<Double>();
@@ -243,6 +322,46 @@ public abstract class Data {
         }
 
         return millisecondsTrained;
+    }
+
+    private Integer calculateStressLevelMax() {
+        ArrayList<Integer> stressLevelsCopy = getStressLevelsBetweenPoints();
+
+        Collections.sort(stressLevelsCopy);
+
+        return stressLevelsCopy.get(0);
+    }
+
+    private Integer calculateStressLevelMin() {
+        ArrayList<Integer> stressLevelsCopy = getStressLevelsBetweenPoints();
+
+        Collections.sort(stressLevelsCopy);
+
+        return stressLevelsCopy.get((stressLevelsCopy.size() - 1));
+    }
+
+    private ArrayList<Integer> calculateStressLevelsBetweenPoints() {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < this.heartRateList.size(); i++) {
+            result.add(Math.abs(this.heartRateList.get(i) - this.heartRateList.get(i + 1)));
+        }
+
+        return result;
+    }
+
+    private ArrayList<Double> calculateStressProportionsBetweenPoints() {
+        ArrayList<Integer> stressLevels = getStressLevelsBetweenPoints();
+        Integer stressMax = getStressLevelMax();
+        Integer stressMin = getStressLevelMin();
+        ArrayList<Double> result = new ArrayList<>();
+
+        for (int i = 0; i < stressLevels.size(); i++) {
+            double stressProportionRatio = (((double)(stressLevels.get(i) - stressMin)) /
+                    ((double)(stressMax - stressMin)));
+            result.add((100 - (stressProportionRatio * 100.0)));
+        }
+        return result;
     }
 
     public ArrayList<Double> calorieCalculationSetup(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
@@ -339,6 +458,51 @@ public abstract class Data {
         }
         return calories;
     }
+
+    public ArrayList<Double> calculateCaloriesBurnedBetweenPointsFromStats(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
+
+        ArrayList<Double> localMphSpeedsBetweenPoints = this.getMphSpeedsBetweenPoints();
+        ArrayList<Double> localGradientsBetweenPoints = this.getGradientsBetweenPoints();
+        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = this.getMillisecondsOfExerciseBetweenPoints();
+
+        ArrayList<Double> calorieSpeedMets = calorieCalculationSetup(metValues, speedDivisions);
+        ArrayList<Double> calories = new ArrayList<Double>();
+
+        for(int i = 0; i<(calorieSpeedMets.size());i++) {
+            double caloriesBurned = ((calorieSpeedMets.get(i) * this.currentUser.getWeight()) * ((double) (localMillisecondsOfExerciseBetweenPoints.get(i)) / 1000 / 60 / 60));
+            double caloriesBurnedWithIncline = caloriesBurned + (caloriesBurned * ((localGradientsBetweenPoints.get(i) / 100) * 0.12));
+            calories.add(caloriesBurnedWithIncline);
+        }
+
+        return calories;
+    }
+
+    public ArrayList<Double> calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime() {
+        //NOTE JACK NEEDS TO ADD BIOLOGICAL SEX TO USER STATS for this to work.
+        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = this.getMillisecondsOfExerciseBetweenPoints();
+        ArrayList<Integer> localHeartRateList = this.getHeartRateList();
+        ArrayList<Integer> averageHeartRateBetweenPoints = new ArrayList<Integer>();
+        User localCurrentUser = getCurrentUser();
+        ArrayList<Double> calories = new ArrayList<Double>();
+
+        for (int i = 0; i < (localHeartRateList.size() - 1); i++) {
+            averageHeartRateBetweenPoints.add((int)((((double)localHeartRateList.get(i)) +
+                    ((double)localHeartRateList.get(i + 1)) / 2)));
+        }
+        //Uncomment the three lines here once biological sex is added.
+        for (int i = 0; i < (localMillisecondsOfExerciseBetweenPoints.size()); i += 1) {
+            //if (localCurrentUser.getSex() == MALE) {
+            calories.add(((-55.0969 + (0.6309 * averageHeartRateBetweenPoints.get(i)) + (0.1988 * localCurrentUser.getWeight())
+                    + (0.2017 * localCurrentUser.getAge()))/4.184) * 60 * localMillisecondsOfExerciseBetweenPoints.get(i));
+            //} else if (localCurrentUser.getSex() == FEMALE) {
+            calories.add(((-20.4022 + (0.4472 * averageHeartRateBetweenPoints.get(i)) - (0.1263 * localCurrentUser.getWeight()) +
+                    (0.074 * localCurrentUser.getAge()))/4.184) * 60 * localMillisecondsOfExerciseBetweenPoints.get(i));
+            //}
+        }
+        return calories;
+    }
+
+
 
     public String getTitle() {
         return title;
@@ -448,9 +612,34 @@ public abstract class Data {
         this.currentUser = currentUser;
     }
 
+    public ArrayList<Double> getKmDistancesBetweenPoints() {
+        return kmDistancesBetweenPoints;
+    }
+
+    public ArrayList<Double> getMilesDistancesBetweenPoints() {
+        return milesDistancesBetweenPoints;
+    }
+
+    public ArrayList<Integer> getStressLevelsBetweenPoints() {
+        return stressLevelsBetweenPoints;
+    }
+
+    public Integer getStressLevelMax() {
+        return stressLevelMax;
+    }
+
+    public Integer getStressLevelMin() {
+        return stressLevelMin;
+    }
+
+    public ArrayList<Double> getStressProportionsBetweenPoints() {
+        return stressProportionsBetweenPoints;
+    }
+
     public abstract double getConsumedCalories();
     //Note: The two arrays in each activity data child read as follows: the MET value at index
     //x of the mets array is valid for calculation for speeds up to the value x of the speeds
     //array.
+    public abstract ArrayList<Double> getConsumedCaloriesBetweenPoints();
 }
 

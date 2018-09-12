@@ -25,8 +25,20 @@ public class WalkData extends NotAssistedSportsData {
         return calorieTotal;
         //if (this.getHeartRateList() == 0);
     }
-}
 
+    public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
+
+        Double[] metValuesArray = {2.8, 3.0, 3.5, 4.3, 5.0, 7.0, 8.3};
+        Double[] speedDivisionsArray = {2.0, 2.5, 3.2, 3.5, 4.0, 4.5, 5.0};
+
+        ArrayList<Double> metValues = new ArrayList<Double>(Arrays.asList(metValuesArray));
+        ArrayList<Double> speedDivisions = new ArrayList<Double>(Arrays.asList(speedDivisionsArray));
+        ArrayList<Double> caloriesList;
+
+        caloriesList = calculateCaloriesBurnedBetweenPointsFromStats(metValues, speedDivisions);
+        return caloriesList;
+    }
+}
 //    public WalkData(String newTitle, DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 //        super(newTitle, activityType, newCoordinatesList, newHeartRateList);
 //    }

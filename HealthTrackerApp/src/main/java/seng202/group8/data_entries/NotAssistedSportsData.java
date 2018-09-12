@@ -12,6 +12,8 @@ public abstract class NotAssistedSportsData extends Data {
 
     public abstract double getConsumedCalories();
 
+    public abstract ArrayList<Double> getConsumedCaloriesBetweenPoints();
+
 }
 //    public NotAssistedSportsData(String newTitle, DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 //        super(newTitle, activityType, newCoordinatesList, newHeartRateList);

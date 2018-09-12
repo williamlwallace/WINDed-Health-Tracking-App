@@ -17,6 +17,14 @@ public class HikeData extends NotAssistedSportsData{
         return calories;
         //if (this.getHeartRateList() == 0);
     }
+
+    public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
+        ArrayList<Double> caloriesList = new ArrayList<Double>();
+
+        caloriesList = calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
+
+        return caloriesList;
+    }
 }
 //    public HikeData(String newTitle,DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
 //        super(newTitle, activityType, newCoordinatesList, newHeartRateList);
