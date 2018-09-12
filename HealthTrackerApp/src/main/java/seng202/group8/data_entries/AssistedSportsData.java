@@ -12,6 +12,8 @@ public abstract class AssistedSportsData extends Data {
     }
 
     public abstract double getConsumedCalories();
+
+    public abstract ArrayList<Double> getConsumedCaloriesBetweenPoints();
 }
 //
 //

@@ -37,4 +37,17 @@ public class BikeData extends AssistedSportsData{
         return calorieTotal;
     }
 
+    public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
+
+        Double[] metValuesArray = {3.5, 5.8, 6.8, 8.0, 10.0};
+        Double[] speedDivisionsArray = {5.5, 9.4, 11.9, 13.9, 15.9};
+
+        ArrayList<Double> metValues = new ArrayList<Double>(Arrays.asList(metValuesArray));
+        ArrayList<Double> speedDivisions = new ArrayList<Double>(Arrays.asList(speedDivisionsArray));
+        ArrayList<Double> caloriesList;
+
+        caloriesList = calculateCaloriesBurnedBetweenPointsFromStats(metValues, speedDivisions);
+        return caloriesList;
+    }
+
 }

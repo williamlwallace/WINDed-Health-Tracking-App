@@ -33,6 +33,19 @@ public class RunData extends NotAssistedSportsData{
         return calorieTotal;
     }
 
+    public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
+
+        Double[] metValuesArray = {6.0, 8.3, 9.8, 11.0, 11.8, 12.8, 14.5, 16.0, 19.0, 19.8, 23.0};
+        Double[] speedDivisionsArray = {4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0};
+
+        ArrayList<Double> metValues = new ArrayList<Double>(Arrays.asList(metValuesArray));
+        ArrayList<Double> speedDivisions = new ArrayList<Double>(Arrays.asList(speedDivisionsArray));
+        ArrayList<Double> caloriesList;
+
+        caloriesList = calculateCaloriesBurnedBetweenPointsFromStats(metValues, speedDivisions);
+        return caloriesList;
+    }
+
 //        ArrayList<Double> localMphSpeedsBetweenPoints = this.getMphSpeedsBetweenPoints();
 //        ArrayList<Double> localGradientsBetweenPoints = this.getGradientsBetweenPoints();
 //        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = this.getMillisecondsOfExerciseBetweenPoints();
