@@ -14,27 +14,14 @@ public class UserStats {
         return userWeightRecords;
     }
 
-    public ArrayList<FatToMuscleRecord> getUserFatToMuscleRecords() {
-        return userFatToMuscleRecords;
-    }
-
     public ArrayList<BMITypeRecord> getUserBMITypeRecords() {
         return userBMITypeRecords;
-    }
-
-    public ArrayList<StressLevelRecord> getUserStressLevelRecords() {
-        return userStressLevelRecords;
     }
 
     /**
      *Adders for each arrayList to create the records and add them to the arrayLists
      * Each function takes the input needed for the record specified
      */
-
-    public void addUserFatToMuscleRecords(Double fatToMuscle) {
-        FatToMuscleRecord record = new FatToMuscleRecord(fatToMuscle);
-        userFatToMuscleRecords.add(record);
-    }
 
     public void addUserWeightRecords(Double weight) {
         WeightRecord record = new WeightRecord(weight);
@@ -46,17 +33,9 @@ public class UserStats {
         userBMITypeRecords.add(record);
     }
 
-    public void addUserStressLevelRecords(StressLevelType stress) {
-        StressLevelRecord record = new StressLevelRecord(stress);
-        userStressLevelRecords.add(record);
-    }
-
-
     /**
      *Initial Variables
      */
     private ArrayList userWeightRecords = new ArrayList<WeightRecord>();
-    private ArrayList userFatToMuscleRecords = new ArrayList<FatToMuscleRecord>();
     private ArrayList userBMITypeRecords = new ArrayList<BMITypeRecord>();
-    private ArrayList userStressLevelRecords = new ArrayList<StressLevelRecord>();
 }

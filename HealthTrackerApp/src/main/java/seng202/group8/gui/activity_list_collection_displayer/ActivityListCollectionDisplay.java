@@ -45,11 +45,11 @@ public class ActivityListCollectionDisplay extends Application {
         coordinatesList1.add(new CoordinateData(44.8005, 10.3273, 1.0));
         coordinatesList1.add(new CoordinateData(44.8016, 10.3284, 1.0));
         WalkData data =
-                new WalkData("Ciao", DataType.WALK, localDateTimes, coordinatesList, heartRateList);
+                new WalkData("Ciao", DataType.WALK, localDateTimes, coordinatesList, heartRateList, user);
         WalkData data1 =
-                new WalkData("Ciao1", DataType.WALK, localDateTimes, coordinatesList1, heartRateList);
+                new WalkData("Ciao1", DataType.WALK, localDateTimes, coordinatesList1, heartRateList, user);
         WalkData data2 =
-                new WalkData("Ciao2", DataType.WALK, localDateTimes, coordinatesList, heartRateList);
+                new WalkData("Ciao2", DataType.WALK, localDateTimes, coordinatesList, heartRateList, user);
         user.getUserActivities().insertActivityList(new ActivityList("Ciaos"));
         user.getUserActivities().insertActivityInGivenList(0, data);
         user.getUserActivities().insertActivityInGivenList(0, data1);

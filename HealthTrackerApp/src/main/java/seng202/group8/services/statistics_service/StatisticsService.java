@@ -288,22 +288,7 @@ public class StatisticsService {
         ArrayList<WeightRecord> record = userStats.getUserWeightRecords();
         for (int i = 0; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()).toString());
-            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
-        }
-        return graph;
-    }
-
-    /**
-     * Grabs the record for fat to muscle records and grabs each date and fat to muscle data and assigns them to an x or y axis arrayList
-     * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
-     * @return a graphXY object that contains the x and y axis arrayLists
-     */
-    public GraphXY getGraphDataFatToMuscle() {
-        GraphXY graph = new GraphXY();
-        ArrayList<FatToMuscleRecord> record = userStats.getUserFatToMuscleRecords();
-        for (int i = 0; i < record.size(); i++) {
-            graph.addYAxis((record.get(i).getFatToMuscle()).toString());
-            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
+            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -318,7 +303,7 @@ public class StatisticsService {
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
         for (int i = 0; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getBmi().getBMIValue()).toString());
-            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
+            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -330,11 +315,6 @@ public class StatisticsService {
      */
     public GraphXY getStressLevelOverTimeGraph() {
         GraphXY graph = new GraphXY();
-        ArrayList<StressLevelRecord> record = userStats.getUserStressLevelRecords();
-        for (int i = 0; i < record.size(); i++) {
-            graph.addYAxis((record.get(i).getStress()).toString());
-            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH:mm:ss ").format(record.get(i).getDate()));
-        }
         return graph;
     }
 

@@ -20,7 +20,6 @@ public class User {
     //private ArrayList<ActivityType> favouriteActivities;
     private BMI bmi;
     private UserStats userStats;
-    private StressLevelType stressLevel;
     private ActivityListCollection userActivities;
     private ArrayList<UserObserver> observers;
     //private HealthService userHealth;
@@ -106,14 +105,6 @@ public class User {
         bmi.setBMI(BMI);
     }
 
-    /**
-     * Set the StressLevel of the user
-     * @param stressLevel the new StressLevelType of the user
-     */
-    public void setStressLevel(StressLevelType stressLevel) {
-        this.stressLevel = stressLevel;
-    }
-
 
     /**
      *
@@ -165,14 +156,6 @@ public class User {
     }
 
     /**
-     *
-     * @return the Stress Level Type of the user
-     */
-    public StressLevelType getStressLevel() {
-        return stressLevel;
-    }
-
-    /**
      * @return The activity list collection of all the users activities
      */
     public ActivityListCollection getUserActivities() {
@@ -215,16 +198,6 @@ public class User {
     public void updateBMI(Double newBMI) {
         setBMI(newBMI);
         userStats.addUserBMITypeRecords(bmi);
-        notifyAllObservers();
-    }
-
-    /**
-     * Update the Stress Level of the user, notifying observers and updating records.
-     * @param newStressLevel the new StressLevelType of the user
-     */
-    public void updateStressLevel(StressLevelType newStressLevel) {
-        setStressLevel(newStressLevel);
-        userStats.addUserStressLevelRecords(newStressLevel);
         notifyAllObservers();
     }
 
