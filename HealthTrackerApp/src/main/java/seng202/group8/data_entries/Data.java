@@ -343,7 +343,7 @@ public abstract class Data {
     private ArrayList<Integer> calculateStressLevelsBetweenPoints() {
         ArrayList<Integer> result = new ArrayList<>();
 
-        for (int i = 0; i < this.heartRateList.size(); i++) {
+        for (int i = 0; i < (this.heartRateList.size() - 1); i++) {
             result.add(Math.abs(this.heartRateList.get(i) - this.heartRateList.get(i + 1)));
         }
 
@@ -397,8 +397,10 @@ public abstract class Data {
                     double changeInMet = metValues.get(mets + 1) - metValues.get(mets);
                     resultantMet = changeInMet * thisSpeedRatioWithChangeInSpeedDivision;
                     resultantMet += metValues.get(mets);
-                } else {
+                } else if (((mets) < metValues.size())){
                     resultantMet = metValues.get(mets);
+                } else {
+                    resultantMet = metValues.get(metValues.size() - 1);
                 }
                 divs += 1;
                 if (divs < speedDivisions.size()) {

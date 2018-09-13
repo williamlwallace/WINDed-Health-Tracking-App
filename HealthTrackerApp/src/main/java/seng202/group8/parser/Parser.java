@@ -35,12 +35,14 @@ public class Parser {
     private ArrayList<Data> dataList;
 
     private Boolean isCorrupt = Boolean.FALSE;
+    private User user;
     /**
      * Receives a filename and starts reading the data activity by activity
      * @param filename
      * @throws Exception
      */
-    public Parser(String filename) throws Exception {
+    public Parser(String filename, User user1) throws Exception {
+        user = user1;
         acceptedValues.add(walk);
         acceptedValues.add(hike);
         acceptedValues.add(run);
@@ -61,7 +63,7 @@ public class Parser {
                     if (!isCorrupt) {
                         Data activityToSend;
                         DataType activityEnum;
-                        User user= new User("A", 12, 13.0, 56.9);
+                        //User user= new User("A", 12, 13.0, 56.9);
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
@@ -244,7 +246,8 @@ public class Parser {
     }
 
     public static void main(String[] args) throws Exception {
-        Parser parserTest =  new Parser("seng202_2018_example_data.csv");
+        User userTest = new User("Joel", 19, 72.0, 167.0);
+        Parser parserTest =  new Parser("seng202_2018_example_data.csv", userTest);
         ArrayList<Data> data = parserTest.getDataList();
         for (Data d : data) {
             System.out.println(d.getTitle());
