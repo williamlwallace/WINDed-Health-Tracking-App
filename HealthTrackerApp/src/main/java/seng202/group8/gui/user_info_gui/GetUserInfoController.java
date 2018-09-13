@@ -32,27 +32,38 @@ public class GetUserInfoController {
     @FXML
     private Text errorText;
 
+    private User user;
+
     public void enterDetails(ActionEvent event) {
+        System.out.println("Pressed");
         String name = null;
         int age = 0;
         double weight = 0.0;
         double height = 0.0;
         String errorMessage = "";
+        errorText.setText("");
         if (nameField.getText() != null && !nameField.getText().isEmpty() && !nameField.getText().matches(".*\\d+.*")) {
             name = nameField.getText();
-        } else if (ageField.getText() != null && !ageField.getText().isEmpty()) {
+        }
+        //System.out.println("hello: " + ageField.getText());
+        if (ageField.getText() != null && !ageField.getText().isEmpty()) {
+            System.out.println("hello: " + ageField.getText());
             try {
                 age = Integer.parseInt(ageField.getText());
+                System.out.println(age);
             } catch(NumberFormatException e) {
                 age = 0;
+                System.out.println("the age is: " + ageField.getText());
             }
-        } else if (weightField.getText() != null && !weightField.getText().isEmpty()) {
+        }
+        if (weightField.getText() != null && !weightField.getText().isEmpty()) {
             try {
                 weight = Double.parseDouble(weightField.getText());
             } catch(NumberFormatException e) {
                 weight = 0.0;
             }
-        } else if (heightField.getText() != null && !heightField.getText().isEmpty()) {
+        }
+        if (heightField.getText() != null && !heightField.getText().isEmpty()) {
             try {
                 height = Double.parseDouble(heightField.getText());
             } catch (NumberFormatException e) {
@@ -61,19 +72,22 @@ public class GetUserInfoController {
         }
         if (name == null) {
             errorMessage += "You must enter a name to proceed.";
-        } else if (age == 0) {
+        }
+        if (age == 0) {
             if (errorMessage.length() > 0) {
                 errorMessage += " Your age must be a number.";
             } else {
                 errorMessage += "Your age must be a number.";
             }
-        } else if (weight == 0.0){
+        }
+        if (weight == 0.0){
             if (errorMessage.length() > 0) {
                 errorMessage += " Your weight must be a number.";
             } else {
                 errorMessage += "Your weight must be a number.";
             }
-        } else if (height == 0.0) {
+        }
+        if (height == 0.0) {
             if (errorMessage.length() > 0) {
                 errorMessage += " Your height must be a number.";
             } else {
@@ -83,7 +97,10 @@ public class GetUserInfoController {
         if (errorMessage.length() > 0) {
             errorText.setText(errorMessage);
         } else {
-            User user = new User(name, age, weight, height);
+            user = new User(name, age, weight, height);
         }
+    }
+    public User getUser() {
+        return user;
     }
 }
