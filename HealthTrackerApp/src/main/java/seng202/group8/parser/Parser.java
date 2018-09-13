@@ -32,6 +32,7 @@ public class Parser {
     private ArrayList<LocalDateTime> activityDateTime = new ArrayList<LocalDateTime>();
     private ArrayList<Integer> activityHeartRate = new ArrayList<Integer>();
     private ArrayList<CoordinateData> activityCoordinates = new ArrayList<CoordinateData>();
+    private User user;
 
     private ArrayList<Data> dataList;
 
@@ -41,7 +42,8 @@ public class Parser {
      * @param filename
      * @throws Exception
      */
-    public Parser(String filename) throws Exception {
+    public Parser(String filename, User user) throws Exception {
+        this.user = user;
         acceptedValues.add(walk);
         acceptedValues.add(hike);
         acceptedValues.add(run);
@@ -62,7 +64,6 @@ public class Parser {
                     if (!isCorrupt) {
                         Data activityToSend;
                         DataType activityEnum;
-                        User user= new User("A", 12, 13.0, 56.9, Sex.MALE);
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;

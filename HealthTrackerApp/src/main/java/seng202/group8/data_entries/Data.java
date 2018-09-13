@@ -347,7 +347,7 @@ public abstract class Data {
         return result;
     }
 
-    private ArrayList<Double> calculateStressProportionsBetweenPoints() {
+    public ArrayList<Double> calculateStressProportionsBetweenPoints() {
         ArrayList<Integer> stressLevels = getStressLevelsBetweenPoints();
         Integer stressMax = getStressLevelMax();
         Integer stressMin = getStressLevelMin();

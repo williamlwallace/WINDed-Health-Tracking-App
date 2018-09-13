@@ -13,6 +13,7 @@ import seng202.group8.data_entries.WalkData;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -27,8 +28,8 @@ public class Graphs extends Application {
     }
 
     private void setUpMockUser() throws Exception {
-        user = new User("Joel", 19, 72.0, 167.0);
-        Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
+        user = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
+        Parser parserTest = new Parser("seng202_2018_example_data_clean.csv");
         ArrayList<Data> dataList = parserTest.getDataList();
 
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));

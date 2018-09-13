@@ -313,8 +313,14 @@ public class StatisticsService {
      * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
      * @return a graphXY object that contains the x and y axis arrayLists
      */
-    public GraphXY getStressLevelOverTimeGraph() {
+    public GraphXY getStressLevelOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
+        ArrayList<Double> stressLevelList = data.calculateStressProportionsBetweenPoints();
+        ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        for (int i = 0; i < stressLevelList.size() - 1; i++) {
+            graph.addYAxis(Double.toString(stressLevelList.get(i)));
+            graph.addXAxis(time.get(i).toString());
+        }
         return graph;
     }
 
@@ -362,11 +368,11 @@ public class StatisticsService {
      */
     public GraphXY getCaloriesBurnedOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
-        //ArrayList<Double> calories = data.getConsumedCalories();
+        ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         for (int i = 0; i < time.size() - 1; i++) {
             graph.addXAxis(time.get(i).toString());
-            //graph.addYAxis(calories.get(i).toString()); // WAITING FOR CALORIES CALCULATOR
+            graph.addYAxis(calories.get(i).toString());
         }
         return graph;
     }
