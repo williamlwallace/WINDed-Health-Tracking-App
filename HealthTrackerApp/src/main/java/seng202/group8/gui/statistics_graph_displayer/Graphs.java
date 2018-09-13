@@ -32,9 +32,10 @@ public class Graphs extends Application {
         ArrayList<Data> dataList = parserTest.getDataList();
 
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
-        for (int i = 0; i < dataList.size(); i++) {
-            user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
-        }
+        user.getUserActivities().insertActivityInGivenList(0, dataList.get(1));
+//        for (int i = 0; i < dataList.size(); i++) {
+//            user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
+//        }
 
 
 //        ArrayList<LocalDateTime> localDateTimes = new ArrayList<>();

@@ -342,9 +342,14 @@ public abstract class Data {
 
     private ArrayList<Integer> calculateStressLevelsBetweenPoints() {
         ArrayList<Integer> result = new ArrayList<>();
+        ArrayList<Integer> localHeartRates = this.heartRateData.getHeartRateList();
 
-        for (int i = 0; i < (this.heartRateList.size() - 1); i++) {
-            result.add(Math.abs(this.heartRateList.get(i) - this.heartRateList.get(i + 1)));
+        if (localHeartRates.size() > 1) {
+            for (int i = 0; i < (localHeartRates.size() - 1); i++) {
+                result.add(Math.abs(localHeartRates.get(i) - localHeartRates.get(i + 1)));
+            }
+        } else {
+            result.add(Math.abs(localHeartRates.get(0) - localHeartRates.get(0)));
         }
 
         return result;
@@ -439,7 +444,7 @@ public abstract class Data {
     public Double calculateCaloriesFromUserStatsAndHeartRateAndTime() {
         //NOTE JACK NEEDS TO ADD BIOLOGICAL SEX TO USER STATS for this to work.
         ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = this.getMillisecondsOfExerciseBetweenPoints();
-        ArrayList<Integer> localHeartRateList = this.getHeartRateList();
+        ArrayList<Integer> localHeartRateList = this.heartRateData.getHeartRateList();
         ArrayList<Integer> averageHeartRateBetweenPoints = new ArrayList<Integer>();
         User localCurrentUser = getCurrentUser();
         double calories = 0.0;
@@ -482,7 +487,7 @@ public abstract class Data {
     public ArrayList<Double> calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime() {
         //NOTE JACK NEEDS TO ADD BIOLOGICAL SEX TO USER STATS for this to work.
         ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = this.getMillisecondsOfExerciseBetweenPoints();
-        ArrayList<Integer> localHeartRateList = this.getHeartRateList();
+        ArrayList<Integer> localHeartRateList = this.heartRateData.getHeartRateList();
         ArrayList<Integer> averageHeartRateBetweenPoints = new ArrayList<Integer>();
         User localCurrentUser = getCurrentUser();
         ArrayList<Double> calories = new ArrayList<Double>();

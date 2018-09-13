@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c7cb73c-42d0-4f64-b021-e85b3f392bec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" afterPath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/Parser_Tests/ParserTest.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/Parser_Tests/ParserTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,11 +29,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="175" column="0" lean-forward="false" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+              <folding>
+                <element signature="e#11641#11642#0" expanded="true" />
+                <element signature="e#11672#11673#0" expanded="true" />
+                <element signature="e#11729#11730#0" expanded="true" />
+                <element signature="e#11769#11770#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seng202_2018_example_data_clean.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seng202_2018_example_data_clean.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="587">
+              <caret line="1146" column="9" lean-forward="true" selection-start-line="1146" selection-start-column="9" selection-end-line="1146" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Graphs.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+            <state relative-caret-position="308">
+              <caret line="34" column="76" lean-forward="false" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#809#810#0" expanded="true" />
@@ -56,41 +78,116 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seng202_2018_example_data_clean.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seng202_2018_example_data_clean.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16378">
-              <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="248" column="8" lean-forward="false" selection-start-line="248" selection-start-column="8" selection-end-line="249" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="345" column="67" lean-forward="true" selection-start-line="345" selection-start-column="67" selection-end-line="345" selection-end-column="67" />
+            <state relative-caret-position="193">
+              <caret line="345" column="0" lean-forward="false" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+              <folding>
+                <element signature="e#23918#23919#0" expanded="true" />
+                <element signature="e#23946#23947#0" expanded="true" />
+                <element signature="e#23988#23989#0" expanded="true" />
+                <element signature="e#24022#24023#0" expanded="true" />
+                <element signature="e#24059#24060#0" expanded="true" />
+                <element signature="e#24094#24095#0" expanded="true" />
+                <element signature="e#24148#24149#0" expanded="true" />
+                <element signature="e#24196#24197#0" expanded="true" />
+                <element signature="e#24233#24234#0" expanded="true" />
+                <element signature="e#24264#24265#0" expanded="true" />
+                <element signature="e#24314#24315#0" expanded="true" />
+                <element signature="e#24354#24355#0" expanded="true" />
+                <element signature="e#24396#24397#0" expanded="true" />
+                <element signature="e#24432#24433#0" expanded="true" />
+                <element signature="e#24492#24493#0" expanded="true" />
+                <element signature="e#24542#24543#0" expanded="true" />
+                <element signature="e#24599#24600#0" expanded="true" />
+                <element signature="e#24634#24635#0" expanded="true" />
+                <element signature="e#24708#24709#0" expanded="true" />
+                <element signature="e#24756#24757#0" expanded="true" />
+                <element signature="e#24822#24823#0" expanded="true" />
+                <element signature="e#24865#24866#0" expanded="true" />
+                <element signature="e#24917#24918#0" expanded="true" />
+                <element signature="e#24953#24954#0" expanded="true" />
+                <element signature="e#25023#25024#0" expanded="true" />
+                <element signature="e#25073#25074#0" expanded="true" />
+                <element signature="e#25120#25121#0" expanded="true" />
+                <element signature="e#25156#25157#0" expanded="true" />
+                <element signature="e#25221#25222#0" expanded="true" />
+                <element signature="e#25271#25272#0" expanded="true" />
+                <element signature="e#25313#25314#0" expanded="true" />
+                <element signature="e#25351#25352#0" expanded="true" />
+                <element signature="e#25413#25414#0" expanded="true" />
+                <element signature="e#25467#25468#0" expanded="true" />
+                <element signature="e#25514#25515#0" expanded="true" />
+                <element signature="e#25559#25560#0" expanded="true" />
+                <element signature="e#25740#25741#0" expanded="true" />
+                <element signature="e#25775#25776#0" expanded="true" />
+                <element signature="e#25814#25815#0" expanded="true" />
+                <element signature="e#25849#25850#0" expanded="true" />
+                <element signature="e#25909#25910#0" expanded="true" />
+                <element signature="e#25954#25955#0" expanded="true" />
+                <element signature="e#26014#26015#0" expanded="true" />
+                <element signature="e#26059#26060#0" expanded="true" />
+                <element signature="e#26119#26120#0" expanded="true" />
+                <element signature="e#26164#26165#0" expanded="true" />
+                <element signature="e#26235#26236#0" expanded="true" />
+                <element signature="e#26293#26294#0" expanded="true" />
+                <element signature="e#26329#26330#0" expanded="true" />
+                <element signature="e#26363#26364#0" expanded="true" />
+                <element signature="e#26415#26416#0" expanded="true" />
+                <element signature="e#26461#26462#0" expanded="true" />
+                <element signature="e#26523#26524#0" expanded="true" />
+                <element signature="e#26570#26571#0" expanded="true" />
+                <element signature="e#26635#26636#0" expanded="true" />
+                <element signature="e#26685#26686#0" expanded="true" />
+                <element signature="e#26749#26750#0" expanded="true" />
+                <element signature="e#26797#26798#0" expanded="true" />
+                <element signature="e#26839#26840#0" expanded="true" />
+                <element signature="e#26876#26877#0" expanded="true" />
+                <element signature="e#26918#26919#0" expanded="true" />
+                <element signature="e#26955#26956#0" expanded="true" />
+                <element signature="e#27023#27024#0" expanded="true" />
+                <element signature="e#27076#27077#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LauncherImpl.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="388" column="0" lean-forward="false" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/GraphController.java">
+      <file leaf-file-name="HeartRateData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/HeartRateData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="122" column="53" lean-forward="false" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
+            <state relative-caret-position="-247">
+              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NotAssistedSportsData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/NotAssistedSportsData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WalkData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/WalkData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -114,6 +211,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>l</find>
+      <find>system.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,10 +243,10 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/GraphController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/graphs.fxml" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/pom.xml" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/test/java/seng202/group8/Parser_Tests/ParserTest.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java" />
       </list>
     </option>
   </component>
@@ -236,6 +334,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="data_entries" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,7 +397,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Graphs">
+  <component name="RunManager" selected="Application.Parser">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -362,6 +469,25 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="seng202.group8.gui.statistics_graph_displayer.Graphs" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="HealthTrackerApp" />
+      <envs />
+    </configuration>
+    <configuration name="Parser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="seng202.group8.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="seng202.group8.parser.Parser" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -447,18 +573,20 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.ActivityListCollectionDisplay" />
       <item index="1" class="java.lang.String" itemvalue="Application.Graphs" />
       <item index="2" class="java.lang.String" itemvalue="Application.GUI" />
       <item index="3" class="java.lang.String" itemvalue="Application.CalendarView" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Parser" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.Graphs" />
-        <item index="1" class="java.lang.String" itemvalue="Application.GUI" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CalendarView" />
-        <item index="3" class="java.lang.String" itemvalue="Application.ActivityListCollectionDisplay" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.Parser" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Graphs" />
+        <item index="2" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="3" class="java.lang.String" itemvalue="Application.CalendarView" />
+        <item index="4" class="java.lang.String" itemvalue="Application.ActivityListCollectionDisplay" />
       </list>
     </recent_temporary>
   </component>
@@ -482,7 +610,7 @@
       <workItem from="1536706877666" duration="4017000" />
       <workItem from="1536715004896" duration="10000" />
       <workItem from="1536715819461" duration="5678000" />
-      <workItem from="1536793054930" duration="3450000" />
+      <workItem from="1536793054930" duration="5440000" />
     </task>
     <task id="LOCAL-00001" summary="Graph controller setup, with buttons and their actions for next data previous data and loading of graphs">
       <created>1536633719854</created>
@@ -540,11 +668,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536794021945</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Creating test data with the clean csv file for the graph gui, minor changes in parser class for passing through a User in parameters">
+      <created>1536797910397</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1536797910397</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23324000" />
+    <option name="totallyTimeSpent" value="25314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1922" height="1173" extended-state="6" />
@@ -559,7 +694,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27073404" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32983795" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32983795" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -592,7 +727,8 @@
     <MESSAGE value="Changing stress level around to be part of the data class instead of a record so it can be graphable, fixing some issues in some GUI classes when the new data class files were committed" />
     <MESSAGE value="Fixing changes for data type user parameter to stop ERRORS NOTE: Please investigate your class changes" />
     <MESSAGE value="Fixed Null pointer when loading gui classes. Fixed pom.xml file to also copy the fxml files and css so that we no longer get null pointers when loading for our gui classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Null pointer when loading gui classes. Fixed pom.xml file to also copy the fxml files and css so that we no longer get null pointers when loading for our gui classes" />
+    <MESSAGE value="Creating test data with the clean csv file for the graph gui, minor changes in parser class for passing through a User in parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating test data with the clean csv file for the graph gui, minor changes in parser class for passing through a User in parameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -601,21 +737,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
-          <caret line="139" column="19" lean-forward="false" selection-start-line="139" selection-start-column="19" selection-end-line="139" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/statistics_service/StatisticsService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -701,13 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="388" column="0" lean-forward="false" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activity_list_collection.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -744,14 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/WalkData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="191" lean-forward="false" selection-start-line="9" selection-start-column="191" selection-end-line="9" selection-end-column="191" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,18 +1081,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seng202_2018_example_data_clean.csv">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/WalkData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16378">
-          <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        <state relative-caret-position="90">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/HeartRateData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="248" column="8" lean-forward="false" selection-start-line="248" selection-start-column="8" selection-end-line="249" selection-end-column="83" />
+        <state relative-caret-position="-247">
+          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="388" column="0" lean-forward="false" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="345" column="0" lean-forward="false" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+          <folding>
+            <element signature="e#23918#23919#0" expanded="true" />
+            <element signature="e#23946#23947#0" expanded="true" />
+            <element signature="e#23988#23989#0" expanded="true" />
+            <element signature="e#24022#24023#0" expanded="true" />
+            <element signature="e#24059#24060#0" expanded="true" />
+            <element signature="e#24094#24095#0" expanded="true" />
+            <element signature="e#24148#24149#0" expanded="true" />
+            <element signature="e#24196#24197#0" expanded="true" />
+            <element signature="e#24233#24234#0" expanded="true" />
+            <element signature="e#24264#24265#0" expanded="true" />
+            <element signature="e#24314#24315#0" expanded="true" />
+            <element signature="e#24354#24355#0" expanded="true" />
+            <element signature="e#24396#24397#0" expanded="true" />
+            <element signature="e#24432#24433#0" expanded="true" />
+            <element signature="e#24492#24493#0" expanded="true" />
+            <element signature="e#24542#24543#0" expanded="true" />
+            <element signature="e#24599#24600#0" expanded="true" />
+            <element signature="e#24634#24635#0" expanded="true" />
+            <element signature="e#24708#24709#0" expanded="true" />
+            <element signature="e#24756#24757#0" expanded="true" />
+            <element signature="e#24822#24823#0" expanded="true" />
+            <element signature="e#24865#24866#0" expanded="true" />
+            <element signature="e#24917#24918#0" expanded="true" />
+            <element signature="e#24953#24954#0" expanded="true" />
+            <element signature="e#25023#25024#0" expanded="true" />
+            <element signature="e#25073#25074#0" expanded="true" />
+            <element signature="e#25120#25121#0" expanded="true" />
+            <element signature="e#25156#25157#0" expanded="true" />
+            <element signature="e#25221#25222#0" expanded="true" />
+            <element signature="e#25271#25272#0" expanded="true" />
+            <element signature="e#25313#25314#0" expanded="true" />
+            <element signature="e#25351#25352#0" expanded="true" />
+            <element signature="e#25413#25414#0" expanded="true" />
+            <element signature="e#25467#25468#0" expanded="true" />
+            <element signature="e#25514#25515#0" expanded="true" />
+            <element signature="e#25559#25560#0" expanded="true" />
+            <element signature="e#25740#25741#0" expanded="true" />
+            <element signature="e#25775#25776#0" expanded="true" />
+            <element signature="e#25814#25815#0" expanded="true" />
+            <element signature="e#25849#25850#0" expanded="true" />
+            <element signature="e#25909#25910#0" expanded="true" />
+            <element signature="e#25954#25955#0" expanded="true" />
+            <element signature="e#26014#26015#0" expanded="true" />
+            <element signature="e#26059#26060#0" expanded="true" />
+            <element signature="e#26119#26120#0" expanded="true" />
+            <element signature="e#26164#26165#0" expanded="true" />
+            <element signature="e#26235#26236#0" expanded="true" />
+            <element signature="e#26293#26294#0" expanded="true" />
+            <element signature="e#26329#26330#0" expanded="true" />
+            <element signature="e#26363#26364#0" expanded="true" />
+            <element signature="e#26415#26416#0" expanded="true" />
+            <element signature="e#26461#26462#0" expanded="true" />
+            <element signature="e#26523#26524#0" expanded="true" />
+            <element signature="e#26570#26571#0" expanded="true" />
+            <element signature="e#26635#26636#0" expanded="true" />
+            <element signature="e#26685#26686#0" expanded="true" />
+            <element signature="e#26749#26750#0" expanded="true" />
+            <element signature="e#26797#26798#0" expanded="true" />
+            <element signature="e#26839#26840#0" expanded="true" />
+            <element signature="e#26876#26877#0" expanded="true" />
+            <element signature="e#26918#26919#0" expanded="true" />
+            <element signature="e#26955#26956#0" expanded="true" />
+            <element signature="e#27023#27024#0" expanded="true" />
+            <element signature="e#27076#27077#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/NotAssistedSportsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1001,8 +1196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        <state relative-caret-position="308">
+          <caret line="34" column="76" lean-forward="false" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#809#810#0" expanded="true" />
@@ -1011,11 +1206,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
+    <entry file="file://$PROJECT_DIR$/seng202_2018_example_data_clean.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="1146" column="9" lean-forward="true" selection-start-line="1146" selection-start-column="9" selection-end-line="1146" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
-          <caret line="345" column="67" lean-forward="true" selection-start-line="345" selection-start-column="67" selection-end-line="345" selection-end-column="67" />
-          <folding />
+          <caret line="175" column="0" lean-forward="false" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+          <folding>
+            <element signature="e#11641#11642#0" expanded="true" />
+            <element signature="e#11672#11673#0" expanded="true" />
+            <element signature="e#11729#11730#0" expanded="true" />
+            <element signature="e#11769#11770#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

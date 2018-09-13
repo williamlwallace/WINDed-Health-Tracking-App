@@ -67,37 +67,34 @@ public class Parser {
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
-                                activityToSend = new WalkData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new WalkData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                             case "hike":
                                 activityEnum = DataType.HIKE;
-                                activityToSend = new HikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new HikeData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                             case "run":
                                 activityEnum = DataType.RUN;
-                                activityToSend = new RunData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new RunData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                             case "climb":
                                 activityEnum = DataType.CLIMB;
-                                activityToSend = new ClimbData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new ClimbData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                             case "bike":
                                 activityEnum = DataType.BIKE;
-                                activityToSend = new BikeData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new BikeData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                             case "swim":
                                 activityEnum = DataType.SWIM;
-                                activityToSend = new SwimData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new SwimData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                             default: //case "water sport": fixer for now
                                 activityEnum = DataType.WATER_SPORTS;
-                                activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates,activityHeartRate, user);
+                                activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                         }
                         data.add(activityToSend);
-
-
-
                     }
                     isCorrupt = Boolean.FALSE;
                     //numErrors = 0;
@@ -175,8 +172,10 @@ public class Parser {
         int numErrors = 0;
         int numLines = 0;
             //line = readActivityLine(line, csvReader);
+        //System.out.println("line: " + line[1]);
         while (!(line[0].equals("#start")) && (line != null) && (!isCorrupt)) {
             try {
+                //System.out.println("line: " + line[1]);
                 numLines =+ 1;
                 //System.out.println(line[1]);
                 String toFormat = line[0] + ";" + line[1];
