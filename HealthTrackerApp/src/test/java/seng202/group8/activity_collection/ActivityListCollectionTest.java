@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.data_entries.*;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ActivityListCollectionTest {
 
     @Before
     public void setUp() throws Exception {
-        User user = new User("Lorenzo", 22, 83.0, 183.0);
+        User user = new User("Lorenzo", 22, 83.0, 183.0, Sex.MALE);
         activityListCollection = new ActivityListCollection("Great Collection");
         activityListJog = new ActivityList("Jog with friends");
         activityListFastWalks = new ActivityList("Fast Walks with friends");

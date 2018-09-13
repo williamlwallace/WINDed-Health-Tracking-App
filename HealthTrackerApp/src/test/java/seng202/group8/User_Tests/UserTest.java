@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.user.BMIType;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import static org.junit.Assert.*;
 
@@ -14,7 +15,7 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        newUser = new User("Jack", 19, 70.5, 183.5);
+        newUser = new User("Jack", 19, 70.5, 183.5, Sex.MALE);
     }
 
     @After

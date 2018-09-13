@@ -8,6 +8,7 @@ import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.HikeData;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class FrequencyGoalTest {
 
     @Before
     public void setUp() throws Exception {
-        user = new User("Lorenzo", 22, 83.0, 183.0);
+        user = new User("Lorenzo", 22, 83.0, 183.0, Sex.MALE);
         user.getUserActivities().insertActivityList(new ActivityList("Hikes"));
         frequencyGoal = new FrequencyGoal(user, "Gotta go running more!",
                         GoalType.TimePerformedGoal, DataType.HIKE, 2);

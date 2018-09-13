@@ -8,6 +8,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import seng202.group8.user.user_stats.Sex;
 
 //import javax.xml.soap.Text;
 import java.awt.*;
@@ -97,7 +98,7 @@ public class GetUserInfoController {
         if (errorMessage.length() > 0) {
             errorText.setText(errorMessage);
         } else {
-            user = new User(name, age, weight, height);
+            user = new User(name, age, weight, height, Sex.MALE);
         }
     }
     public User getUser() {

@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
 import static org.junit.Assert.*;
@@ -14,7 +15,7 @@ public class WeightLossGoalTest {
 
     @Before
     public void setUp() throws Exception {
-        user = new User("Lorenzo", 22, 83.0, 185.0);
+        user = new User("Lorenzo", 22, 83.0, 185.0, Sex.MALE);
 
     }
 

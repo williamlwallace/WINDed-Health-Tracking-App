@@ -1,7 +1,7 @@
 package seng202.group8.user;
 
-import seng202.group8.services.health_service.HealthService;
 import seng202.group8.services.statistics_service.StatisticsService;
+import seng202.group8.user.user_stats.Sex;
 import seng202.group8.user.user_stats.UserStats;
 import seng202.group8.activity_collection.ActivityListCollection;
 
@@ -17,6 +17,7 @@ public class User {
     private Integer age;
     private Double weight;
     private Double height;
+    private Sex sex;
     //private ArrayList<ActivityType> favouriteActivities;
     private BMI bmi;
     private UserStats userStats;
@@ -34,7 +35,7 @@ public class User {
      * @param weight the weight of the new user in kg
      * @param height the height of the new user in cm
      */
-    public User(String name, Integer age, Double weight, Double height) {
+    public User(String name, Integer age, Double weight, Double height, Sex sex) {
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -43,6 +44,7 @@ public class User {
         this.observers = new ArrayList<UserObserver>();
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
         this.bmi = new BMI(calculateBMI());
+        this.sex = sex;
         //this.userHealth = new HealthService(this);
         //this.statsService = new StatisticsService(this);
         userStats.addUserBMITypeRecords(bmi);
@@ -145,6 +147,22 @@ public class User {
      */
     public BMI getBMI() {
         return bmi;
+    }
+
+    /**
+     *
+     * @return The Sex of the user Male or Female
+     */
+    public Sex getSex() {
+        return sex;
+    }
+
+    /**
+     * Set the sex of the user to a passed Sex enum value
+     * @param sex the new Sex constant of the User
+     */
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     /**
