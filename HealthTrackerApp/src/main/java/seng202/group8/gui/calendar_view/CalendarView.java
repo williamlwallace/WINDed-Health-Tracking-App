@@ -12,6 +12,7 @@ import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.WalkData;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -27,7 +28,7 @@ public class CalendarView extends Application {
     private User user;
 
     private void setUpMockUser() {
-        user = new User("Lorenzo", 22, 83.0, 184.0);
+        user = new User("Lorenzo", 22, 83.0, 184.0, Sex.MALE);
         ArrayList<LocalDateTime> localDateTimes = new ArrayList<>();
         localDateTimes.add(LocalDateTime.now());
         ArrayList<Integer> heartRateList = new ArrayList<>();

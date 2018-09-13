@@ -9,6 +9,7 @@ import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.RunData;
 import seng202.group8.data_entries.WalkData;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class HealthServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        user = new User("Lorenzo", 22, 83.0, 183.0);
+        user = new User("Lorenzo", 22, 83.0, 183.0, Sex.MALE);
         healthService = new HealthService(user);
         activityList = new ActivityList("Bad forrest gump imitation");
     }

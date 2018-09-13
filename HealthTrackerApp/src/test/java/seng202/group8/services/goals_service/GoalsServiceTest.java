@@ -13,6 +13,7 @@ import seng202.group8.services.goals_service.goal_types.ActivityGoal;
 import seng202.group8.services.goals_service.goal_types.FrequencyGoal;
 import seng202.group8.services.goals_service.goal_types.GoalType;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
 
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
@@ -43,7 +44,7 @@ public class GoalsServiceTest {
 
         walkData = new WalkData("walk ciao", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
         runData = new RunData("Run ciao", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
-        user = new User("Lorenzo", 22, 82.0, 183.0);
+        user = new User("Lorenzo", 22, 82.0, 183.0, Sex.MALE);
 
         goalsService = new GoalsService(user);
 
