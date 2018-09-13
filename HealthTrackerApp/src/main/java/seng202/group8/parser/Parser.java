@@ -56,11 +56,18 @@ public class Parser {
             try {
                 CSVReader csvReader = new CSVReader(new FileReader(filename));
                 String[] line = readLine(csvReader);
+                int finished = 0;
                 //String[] myEntries = csvReader.readAll();
-                while (line != null) {
+                int length = 0;
+                try {
+                    length = line.length;
+                } catch (NullPointerException e) {
+                    finished = 1;
+                }
+                while (line != null && (finished == 0)) {
                     line = parseActivity(line, csvReader);
-                    System.out.println(activityName + "\n");
-                    System.out.println(activityType + "\n");
+                    //System.out.println(activityName + "\n");
+                    //System.out.println(activityType + "\n");
                     if (!isCorrupt) {
                         Data activityToSend;
                         DataType activityEnum;
@@ -94,6 +101,12 @@ public class Parser {
                                 activityToSend = new WaterSportsData(activityName, activityEnum, activityDateTime, activityCoordinates, activityHeartRate, user);
                                 break;
                         }
+                        try {
+                            length = line.length;
+                        } catch (NullPointerException e) {
+                            finished = 1;
+                        }
+                        //System.out.println(activityToSend);
                         data.add(activityToSend);
                     }
                     isCorrupt = Boolean.FALSE;
@@ -123,7 +136,6 @@ public class Parser {
      * @throws Exception
      */
     private String[] parseActivity(String[] line, CSVReader csvReader) throws Exception {
-        //System.out.print(line[0]);
         int numErrors = 0;
         int numLines = 0;
         try {
@@ -131,14 +143,9 @@ public class Parser {
             activityName = line[1];
         } catch (ArrayIndexOutOfBoundsException e) {
             numErrors =+ 1;
-            //System.out.println("The file is incorrect or formatted incorrectly");
-            //isCorrupt = Boolean.TRUE;
             activityName = "";
         }
         activityType = "";
-        // Check if it is a walk
-        //if (activityName.equals("") && (!isCorrupt)) {
-        //    System.out.println("Will ask for a title and activity type");
         if (!isCorrupt) {
             activityName = activityName.toLowerCase();
             for (int place = 0; place < acceptedValues.size(); place++) {
@@ -168,51 +175,42 @@ public class Parser {
 //                activityType = acceptedValues.get(activityNum).get(0);
             }
         }
-        //System.out.println(activityType);
         line = readLine(csvReader);
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy;HH:mm:ss");
         LocalDateTime lineDate;
         int lineHeart;
         CoordinateData lineCoordinate;
         int finished = 0;
-            //line = readActivityLine(line, csvReader);
-        //System.out.println("line: " + line[1]);
-        System.out.println(line[1]);
-        while ((finished == 0) && (line.length > 0) && (!isCorrupt) && !(line[0].equals("#start"))) {
-            try {
-                //System.out.println("line: " + line[1]);
-                numLines =+ 1;
-                //System.out.println(line[1]);
-                String toFormat = line[0] + ";" + line[1];
-                lineDate = LocalDateTime.parse(toFormat, timeFormat);
-                lineHeart = Integer.parseInt(line[2]);
-                lineCoordinate = new CoordinateData(Double.valueOf(line[3]), Double.valueOf(line[4]), Double.valueOf(line[5]));
-                //System.out.println("hi: " + lineDistance.getAltitude() + "\n");
-                activityDateTime.add(lineDate);
-                activityHeartRate.add(lineHeart);
-                activityCoordinates.add(lineCoordinate);
-                line = readLine(csvReader);
-                System.out.println(line[1]);
-            } catch (NullPointerException e) {
-                //System.out.println("No more activities");
-                finished = 1;
-            } catch (ArrayIndexOutOfBoundsException e) {
-                //throw new WordContainsException("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
-                //System.out.println();
-                //isCorrupt = Boolean.TRUE;
-                numErrors += 1;
-                line = nextActivity(csvReader, line);
-            } catch (NumberFormatException e) {
-                //System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has incorrect data");
-                numErrors += 1;
-                //isCorrupt = Boolean.TRUE;
-                line = nextActivity(csvReader, line);
-            } catch (DateTimeParseException e) {
-                //System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has an incorrectly stored date");
-                numErrors += 1;
-                //isCorrupt = Boolean.TRUE;
-                line = nextActivity(csvReader, line);
+        try {
+            while ((finished == 0) && (line.length > 0) && (!isCorrupt) && (!line[0].equals("#start"))) {
+                try {
+                    numLines = +1;
+                    String toFormat = line[0] + ";" + line[1];
+                    lineDate = LocalDateTime.parse(toFormat, timeFormat);
+                    lineHeart = Integer.parseInt(line[2]);
+                    lineCoordinate = new CoordinateData(Double.valueOf(line[3]), Double.valueOf(line[4]), Double.valueOf(line[5]));
+                    activityDateTime.add(lineDate);
+                    activityHeartRate.add(lineHeart);
+                    activityCoordinates.add(lineCoordinate);
+                    line = readLine(csvReader);
+                } catch (NullPointerException e) {
+                    //System.out.println("No more activities");
+                    finished = 1;
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    //throw new WordContainsException("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
+                    numErrors += 1;
+                    line = nextActivity(csvReader, line);
+                } catch (NumberFormatException e) {
+                    //System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has incorrect data");
+                    numErrors += 1;
+                    line = nextActivity(csvReader, line);
+                } catch (DateTimeParseException e) {
+                    numErrors += 1;
+                    line = nextActivity(csvReader, line);
+                }
             }
+        } catch (NullPointerException e) {
+
         }
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
@@ -236,7 +234,7 @@ public class Parser {
     private String[] nextActivity(CSVReader csvReader, String[] line) throws Exception {
         //ArrayList<String> list = new ArrayList<String>();
         try {
-            while (!(line[0].equals("#start")) && (line != null)) {
+            while ((line != null) && !(line[0].equals("#start"))) {
                 line = readLine(csvReader);
             }
         } catch (NullPointerException e) {
@@ -247,10 +245,6 @@ public class Parser {
 
     public ArrayList<Data> getDataList() {
         return dataList;
-    }
-
-    public void setDataList(ArrayList<Data> dataList) {
-        this.dataList = dataList;
     }
 
     public static void main(String[] args) throws Exception {

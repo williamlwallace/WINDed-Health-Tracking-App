@@ -13,7 +13,7 @@ public class ParserTest {
     @Before
     public void setUp() throws Exception {
         User userTest = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
-        Parser parserTest =  new Parser("seng202_2018_example_data.csv", userTest);
+        Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
     }
 
     @After
