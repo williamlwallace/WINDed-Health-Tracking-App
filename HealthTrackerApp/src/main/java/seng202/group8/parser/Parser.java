@@ -171,9 +171,11 @@ public class Parser {
         CoordinateData lineCoordinate;
         int numErrors = 0;
         int numLines = 0;
+        int finished = 0;
             //line = readActivityLine(line, csvReader);
         //System.out.println("line: " + line[1]);
-        while (!(line[0].equals("#start")) && (line != null) && (!isCorrupt)) {
+        System.out.println(line[1]);
+        while ((finished == 0) && (line.length > 0) && (!isCorrupt) && !(line[0].equals("#start"))) {
             try {
                 //System.out.println("line: " + line[1]);
                 numLines =+ 1;
@@ -187,8 +189,10 @@ public class Parser {
                 activityHeartRate.add(lineHeart);
                 activityCoordinates.add(lineCoordinate);
                 line = readLine(csvReader);
+                System.out.println(line[1]);
             } catch (NullPointerException e) {
                 System.out.println("No more activities");
+                finished = 1;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
                 numErrors += 1;
@@ -245,7 +249,8 @@ public class Parser {
     }
 
     public static void main(String[] args) throws Exception {
-        Parser parserTest =  new Parser("seng202_2018_example_data.csv");
+        User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
+        Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
         ArrayList<Data> data = parserTest.getDataList();
         for (Data d : data) {
             System.out.println(d.getTitle());

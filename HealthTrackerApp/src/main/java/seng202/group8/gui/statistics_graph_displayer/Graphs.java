@@ -29,7 +29,7 @@ public class Graphs extends Application {
 
     private void setUpMockUser() throws Exception {
         user = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
-        Parser parserTest = new Parser("seng202_2018_example_data_clean.csv");
+        Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
         ArrayList<Data> dataList = parserTest.getDataList();
 
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
