@@ -154,14 +154,12 @@ public abstract class Data {
         ArrayList<LocalDateTime> localDateTimes = this.getAllDateTimes();
         ArrayList<Double> gradientsPerPairOfPoints = new ArrayList<Double>();
 
-        if (localCoordinatesArrayList.size() < 2) {
-            speedsArrayList.set(0, 0.0);
+        if ((localCoordinatesArrayList.size() < 2) || (localDateTimes.size() < 2)) {
+            speedsArrayList.add(0.0);
             return speedsArrayList;
-        } else if (localDateTimes.size() < 2) {
-            speedsArrayList.set(0, 0.0);
-            return speedsArrayList;
+
         } else if (localDateTimes.size() != localCoordinatesArrayList.size()) {
-//            speedsArrayList.set(0, 0.0);
+            speedsArrayList.add(0.0);
             return speedsArrayList;
         }
 
@@ -197,14 +195,12 @@ public abstract class Data {
         ArrayList<LocalDateTime> localDateTimes = this.getAllDateTimes();
         ArrayList<Double> gradientsPerPairOfPoints = new ArrayList<Double>();
 
-        if (localCoordinatesArrayList.size() < 2) {
-            speedsArrayList.set(0, 0.0);
+        if ((localCoordinatesArrayList.size() < 2) || (localDateTimes.size() < 2)) {
+            speedsArrayList.add(0.0);
             return speedsArrayList;
-        } else if (localDateTimes.size() < 2) {
-            speedsArrayList.set(0, 0.0);
-            return speedsArrayList;
+
         } else if (localDateTimes.size() != localCoordinatesArrayList.size()) {
-//            speedsArrayList.set(0, 0.0);
+            speedsArrayList.add(0.0);
             return speedsArrayList;
         }
 
@@ -239,14 +235,12 @@ public abstract class Data {
         ArrayList<Double> kilometresTrained = new ArrayList<Double>();
 
 
-        if (localCoordinatesArrayList.size() < 2) {
-            kilometresTrained.set(0, 0.0);
+        if ((localCoordinatesArrayList.size() < 2) || (localDateTimes.size() < 2)) {
+            kilometresTrained.add(0.0);
             return kilometresTrained;
-        } else if (localDateTimes.size() < 2) {
-            kilometresTrained.set(0, 0.0);
-            return kilometresTrained;
+
         } else if (localDateTimes.size() != localCoordinatesArrayList.size()) {
-//            speedsArrayList.set(0, 0.0);
+            kilometresTrained.add(0.0);
             return kilometresTrained;
         }
 
@@ -270,14 +264,12 @@ public abstract class Data {
         ArrayList<Double> milesTrained = new ArrayList<Double>();
 
 
-        if (localCoordinatesArrayList.size() < 2) {
-            milesTrained.set(0, 0.0);
+        if ((localCoordinatesArrayList.size() < 2) || (localDateTimes.size() < 2)) {
+            milesTrained.add(0.0);
             return milesTrained;
-        } else if (localDateTimes.size() < 2) {
-            milesTrained.set(0, 0.0);
-            return milesTrained;
+
         } else if (localDateTimes.size() != localCoordinatesArrayList.size()) {
-//            speedsArrayList.set(0, 0.0);
+            milesTrained.add(0.0);
             return milesTrained;
         }
 
