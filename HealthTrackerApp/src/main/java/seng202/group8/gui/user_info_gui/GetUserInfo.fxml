@@ -46,7 +46,7 @@
                </children>
             </GridPane>
             <Button fx:id="enterDetailsButton" mnemonicParsing="false" onAction="#enterDetails" text="Enter" GridPane.rowIndex="2" />
-            <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Errors" GridPane.rowIndex="1" />
+            <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="1">
