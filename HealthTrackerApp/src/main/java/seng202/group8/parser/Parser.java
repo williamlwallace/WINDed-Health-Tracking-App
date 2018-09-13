@@ -124,17 +124,22 @@ public class Parser {
      */
     private String[] parseActivity(String[] line, CSVReader csvReader) throws Exception {
         //System.out.print(line[0]);
+        int numErrors = 0;
+        int numLines = 0;
         try {
+            numLines =+ 1;
             activityName = line[1];
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("The file is incorrect or formatted incorrectly");
-            isCorrupt = Boolean.TRUE;
+            numErrors =+ 1;
+            //System.out.println("The file is incorrect or formatted incorrectly");
+            //isCorrupt = Boolean.TRUE;
+            activityName = "";
         }
         activityType = "";
         // Check if it is a walk
-        if (activityName.equals("") && (!isCorrupt)) {
-            System.out.println("Will ask for a title and activity type");
-        } else if (!isCorrupt) {
+        //if (activityName.equals("") && (!isCorrupt)) {
+        //    System.out.println("Will ask for a title and activity type");
+        if (!isCorrupt) {
             activityName = activityName.toLowerCase();
             for (int place = 0; place < acceptedValues.size(); place++) {
                 for (int i = 0; i < acceptedValues.get(place).size(); i++) {
@@ -144,23 +149,23 @@ public class Parser {
                 }
             }
             if (activityType.equals("")) {
-
-                Scanner scanner = new Scanner(System.in);
-                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
-                String selection = scanner.next();
-                while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4") && !selection.equals("5") && !selection.equals("6") && !selection.equals("7")) {
-                    System.out.print("You must enter a number between 1 and 7\n");
-                    selection = scanner.next();
-                }
-                int activityNum = Integer.parseInt(selection) - 1;
-                System.out.print("Please enter a phrase from '" + line[1] + "' so we can recognise this activities category next time\n");
-                String phrase = scanner.next();
-                while (!activityName.contains(phrase.toLowerCase())) {
-                    System.out.print("You must enter a phrase from '" + line[1] + "'\n");
-                    phrase = scanner.next();
-                }
-                acceptedValues.get(activityNum).add(phrase.toLowerCase());
-                activityType = acceptedValues.get(activityNum).get(0);
+                throw new NoTypeError("");
+//                Scanner scanner = new Scanner(System.in);
+//                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
+//                String selection = scanner.next();
+//                while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4") && !selection.equals("5") && !selection.equals("6") && !selection.equals("7")) {
+//                    System.out.print("You must enter a number between 1 and 7\n");
+//                    selection = scanner.next();
+//                }
+//                int activityNum = Integer.parseInt(selection) - 1;
+//                System.out.print("Please enter a phrase from '" + line[1] + "' so we can recognise this activities category next time\n");
+//                String phrase = scanner.next();
+//                while (!activityName.contains(phrase.toLowerCase())) {
+//                    System.out.print("You must enter a phrase from '" + line[1] + "'\n");
+//                    phrase = scanner.next();
+//                }
+//                acceptedValues.get(activityNum).add(phrase.toLowerCase());
+//                activityType = acceptedValues.get(activityNum).get(0);
             }
         }
         //System.out.println(activityType);
@@ -169,8 +174,6 @@ public class Parser {
         LocalDateTime lineDate;
         int lineHeart;
         CoordinateData lineCoordinate;
-        int numErrors = 0;
-        int numLines = 0;
         int finished = 0;
             //line = readActivityLine(line, csvReader);
         //System.out.println("line: " + line[1]);
@@ -191,20 +194,21 @@ public class Parser {
                 line = readLine(csvReader);
                 System.out.println(line[1]);
             } catch (NullPointerException e) {
-                System.out.println("No more activities");
+                //System.out.println("No more activities");
                 finished = 1;
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
-                numErrors += 1;
+                //throw new WordContainsException("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
+                //System.out.println();
                 //isCorrupt = Boolean.TRUE;
+                numErrors += 1;
                 line = nextActivity(csvReader, line);
             } catch (NumberFormatException e) {
-                System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has incorrect data");
+                //System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has incorrect data");
                 numErrors += 1;
                 //isCorrupt = Boolean.TRUE;
                 line = nextActivity(csvReader, line);
             } catch (DateTimeParseException e) {
-                System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has an incorrectly stored date");
+                //System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has an incorrectly stored date");
                 numErrors += 1;
                 //isCorrupt = Boolean.TRUE;
                 line = nextActivity(csvReader, line);
@@ -212,6 +216,7 @@ public class Parser {
         }
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
+            throw new DataMissingError("Activity '" + activityName + "' is corrupt.");
         }
         return line;
     }
