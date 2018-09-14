@@ -121,12 +121,11 @@ public class Parser {
                 }
                 csvReader.close();
             } catch (FileNotFoundException e) {
-                System.out.println("The file '" + filename + "' doesn't exist.");
+                throw new FileNotFoundError("The file '" + filename + "' doesn't exist.");
             }
         } else {
-            System.out.println("The file '" + filename + "' must be a .csv file");
+            throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
-
         this.dataList = data;
     }
     /**
@@ -156,7 +155,7 @@ public class Parser {
                 }
             }
             if (activityType.equals("")) {
-                throw new NoTypeError("");
+                throw new noTypeError();
 //                Scanner scanner = new Scanner(System.in);
 //                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
 //                String selection = scanner.next();

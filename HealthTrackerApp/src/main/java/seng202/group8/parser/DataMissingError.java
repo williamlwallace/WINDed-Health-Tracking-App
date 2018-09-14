@@ -1,6 +1,6 @@
 package seng202.group8.parser;
 
-class DataMissingError extends Exception
+public class DataMissingError extends Exception
 {
     public DataMissingError() {}
 
