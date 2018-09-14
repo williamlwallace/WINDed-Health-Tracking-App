@@ -46,7 +46,7 @@ public class User {
         this.bmi = new BMI(calculateBMI());
         this.sex = sex;
         //this.userHealth = new HealthService(this);
-        //this.statsService = new StatisticsService(this);
+        this.statsService = new StatisticsService(this);
         userStats.addUserBMITypeRecords(bmi);
         userStats.addUserWeightRecords(weight);
     }

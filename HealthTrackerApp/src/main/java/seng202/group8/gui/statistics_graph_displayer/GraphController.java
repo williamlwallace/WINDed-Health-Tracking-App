@@ -1,6 +1,9 @@
 package seng202.group8.gui.statistics_graph_displayer;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -14,6 +17,7 @@ import seng202.group8.services.statistics_service.GraphXY;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class GraphController {
@@ -46,51 +50,83 @@ public class GraphController {
     private Label dataname;
 
     @FXML
-    private LineChart graph;
+    private LineChart<Double,Double> graph;
+
+    @FXML
+    private NumberAxis xAxis;
+
+    @FXML
+    private NumberAxis yAxis;
+
+    public ArrayList<Data> getAllData() {
+        return allData;
+    }
 
     public void showDistance() {
         //CREATES GRAPH FOR DISTANCE OVER TIME
-        selectedButton = distance;
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
+//        final NumberAxis xAxis = new NumberAxis();
+//        final NumberAxis yAxis = new NumberAxis();
+//        xAxis.setLabel("Time");
+//        yAxis.setLabel("Distance");
+//        graph = new LineChart<>(xAxis,yAxis);
+//        graph.setTitle("Distance over Time");
+//        XYChart.Series series = new XYChart.Series();
+//        StatisticsService graphData = user.getStatsService();
+//        //GraphXY xyData = graphData.getDistanceOverTimeGraph(currentdata);
+//        GraphXY graphLists = new GraphXY();
+//        //graphData.testGraph(graphLists);
+//        graphLists.addYAxis(10.0);
+//        graphLists.addXAxis(100.0);
+//        displayOnGraph(graphLists, series);
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
+
+        StatisticsService graphData = user.getStatsService();
+        System.out.println(graphData.getAverageHeartRate());
+        GraphXY xyData = graphData.getDistanceOverTimeGraph(currentdata);
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+        //series.getData().add(new XYChart.Data<Double, Double>(1.0, 15.0));
+        //series.getData().add(new XYChart.Data<Double, Double>(4.0, 7.0));
         xAxis.setLabel("Time");
         yAxis.setLabel("Distance");
-        graph = new LineChart<>(xAxis,yAxis);
-        graph.setTitle("Distance over Time");
-        XYChart.Series series = new XYChart.Series();
-        StatisticsService graphData = user.getStatsService();
-        GraphXY xyData = graphData.getDistanceOverTimeGraph(currentdata);
-        displayOnGraph(xyData, series);
+//        xAxis.setLowerBound(0.5);
+//        xAxis.setUpperBound(10.0);
+//        xAxis.setTickUnit(0.25);
+        series.setName("Distance Over Time");
+        lineChartData.add(series);
+
+        graph.setData(lineChartData);
+        graph.createSymbolsProperty();
     }
 
     public void showHeartRate() {
-        //CREATES GRAPH FOR HEART RATE OVER TIME
-        selectedButton = heart;
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Time");
-        yAxis.setLabel("Heart Rate");
-        graph = new LineChart<>(xAxis,yAxis);
-        graph.setTitle("Heart Rate over Time");
-        XYChart.Series series = new XYChart.Series();
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
         StatisticsService graphData = user.getStatsService();
         GraphXY xyData = graphData.getHeartRateOverTimeGraph(currentdata);
-        displayOnGraph(xyData, series);
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Heart Rate");
+        series.setName("Heart Rate Over Time");
+        lineChartData.add(series);
+
+        graph.setData(lineChartData);
+        graph.createSymbolsProperty();
     }
 
-    public void displayOnGraph(GraphXY xyData, XYChart.Series series) {
-        for(int i = 0; i < xyData.getXAxis().size(); i++) {
-            series.getData().add(new XYChart.Data(xyData.getXAxis(), xyData.getYAxis()));
+    public LineChart.Series<Double, Double> generateSeries(GraphXY xyData) {
+        LineChart.Series<Double, Double> series = new LineChart.Series<Double, Double>();
+        for (int i = 0; i < xyData.getXAxis().size(); i++) {
+            series.getData().add(new XYChart.Data<Double, Double>(xyData.getXAxis().get(i), xyData.getYAxis().get(i)));
         }
-        graph.getData().add(series);
+        return series;
     }
 
     public void nextData() {
-        if (currentDataIndex == dataSize) {
+        if (currentDataIndex == dataSize - 1) {
             //END OF LIST
             System.out.println("END OF LIST");
         } else {
-            setCurrentdata(allData.get(currentDataIndex + 1));
+            currentDataIndex++;
+            setCurrentdata(allData.get(currentDataIndex));
             updateData();
         }
     }
@@ -100,7 +136,8 @@ public class GraphController {
             //END OF LIST
             System.out.println("END OF LIST");
         } else {
-            setCurrentdata(allData.get(currentDataIndex - 1));
+            currentDataIndex--;
+            setCurrentdata(allData.get(currentDataIndex));
             updateData();
         }
     }
@@ -116,18 +153,21 @@ public class GraphController {
 
     public void updateData() {
         dataname.setText(currentdata.getTitle());
-        selectedButton.fire();
+        showDistance();
+
     }
 
     public void setup() {
         ActivityListCollection activities = user.getUserActivities();
-        ArrayList<Data> allData = activities.getAllData();
+        this.allData = activities.getAllData();
         dataSize = allData.size();
+        System.out.println(dataSize);
         setCurrentdata(allData.get(dataSize - 1));
         currentDataIndex = dataSize - 1;
-        selectedButton = distance;
         updateData();
     }
+
+
 
     private ArrayList<Data> allData;
     private Data currentdata;
@@ -135,7 +175,6 @@ public class GraphController {
     private Integer dataSize;
     private User user;
     private Stage primaryStage;
-    private Button selectedButton;
 
     public User getUser() {
         return user;

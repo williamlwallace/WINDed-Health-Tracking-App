@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
-import seng202.group8.data_entries.CoordinateData;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.DataType;
-import seng202.group8.data_entries.WalkData;
+import seng202.group8.data_entries.*;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
@@ -18,6 +15,7 @@ import seng202.group8.user.user_stats.Sex;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Graphs extends Application {
 
@@ -29,42 +27,28 @@ public class Graphs extends Application {
 
     private void setUpMockUser() throws Exception {
         user = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
-        Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
-        ArrayList<Data> dataList = parserTest.getDataList();
-
+        //Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
+        //ArrayList<Data> dataList = parserTest.getDataList();
+        ArrayList<Integer> heartRates = new ArrayList<Integer>();
+        heartRates.add(100);
+        heartRates.add(115);
+        heartRates.add(120);
+        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
+        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 10));
+        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 15));
+        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 25));
+        //30.26881985,-97.83246599,204.4
+        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
+        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
+        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
+        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
+        RunData testData = new RunData("testDistance", DataType.RUN, localTimes, coordinateList, heartRates, user);
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
-        user.getUserActivities().insertActivityInGivenList(0, dataList.get(1));
+        user.getUserActivities().insertActivityInGivenList(0, testData);
 //        for (int i = 0; i < dataList.size(); i++) {
 //            user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
+//            System.out.println(dataList.get(i).getHeartRateList());
 //        }
-
-
-//        ArrayList<LocalDateTime> localDateTimes = new ArrayList<>();
-//        localDateTimes.add(LocalDateTime.now());
-//        ArrayList<Integer> heartRateList = new ArrayList<>();
-//        heartRateList.add(45);
-//        heartRateList.add(48);
-//        heartRateList.add(55);
-//
-//        ArrayList<CoordinateData> coordinatesList = new ArrayList<>();
-//        coordinatesList.add(new CoordinateData(40.7316, -73.9352, 56.0));
-//        coordinatesList.add(new CoordinateData(40.7326, -73.9362, 56.0));
-//        coordinatesList.add(new CoordinateData(40.7336, -73.9372, 56.0));
-//
-//        ArrayList<CoordinateData> coordinatesList1 = new ArrayList<>();
-//        coordinatesList1.add(new CoordinateData(44.7994, 10.3262, 1.0));
-//        coordinatesList1.add(new CoordinateData(44.8005, 10.3273, 1.0));
-//        coordinatesList1.add(new CoordinateData(44.8016, 10.3284, 1.0));
-//        WalkData data =
-//                new WalkData("test1", DataType.WALK, localDateTimes, coordinatesList, heartRateList, user);
-//        WalkData data1 =
-//                new WalkData("test2", DataType.WALK, localDateTimes, coordinatesList1, heartRateList, user);
-//        WalkData data2 =
-//                new WalkData("test3", DataType.WALK, localDateTimes, coordinatesList, heartRateList, user);
-//        user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
-//        user.getUserActivities().insertActivityInGivenList(0, data);
-//        user.getUserActivities().insertActivityInGivenList(0, data1);
-//        user.getUserActivities().insertActivityInGivenList(0, data2);
     }
 
     @Override
@@ -81,7 +65,7 @@ public class Graphs extends Application {
         controller.setPrimaryStage(primaryStage);
         controller.setup();
 
-        Scene scene = new Scene(root, 1000, 800);
+        Scene scene = new Scene(root, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Statistics");
         primaryStage.show();

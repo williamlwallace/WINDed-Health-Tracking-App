@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -101,12 +100,8 @@
                      </children>
                   </Pane>
                   <LineChart fx:id="graph" layoutX="301.0" layoutY="14.0" title="test">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
+                      <xAxis><NumberAxis label="" lowerBound="0" tickUnit="1" upperBound="100" fx:id="xAxis" /></xAxis>
+                      <yAxis><NumberAxis fx:id="yAxis" label="" lowerBound="0" tickUnit="1" upperBound="100" /></yAxis>
                   </LineChart>
                </children>
             </Pane>

@@ -58,6 +58,7 @@ public abstract class Data {
         this.dataType = dataType;
         this.allDateTimes = newDateTimes;
         this.heartRateData = new HeartRateData(newHeartRateList);
+        this.heartRateList = heartRateData.getHeartRateList();
 //        setCoordinatesArrayList(newCoordinatesList);
         this.coordinatesArrayList = newCoordinatesList;
         this.distanceCovered = calculateDistanceCovered();

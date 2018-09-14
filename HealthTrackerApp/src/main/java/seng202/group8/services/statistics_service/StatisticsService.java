@@ -10,6 +10,7 @@ import sun.security.pkcs11.wrapper.Functions;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -37,12 +38,13 @@ public class StatisticsService {
                 ArrayList<Integer> heartRateList = data.getHeartRateList();
                 for(int k = 0; k < heartRateList.size(); k++){
                     averageHeartRate += heartRateList.get(k);
+                    System.out.println(heartRateList.get(k));
                 }
                 heartRateValues += heartRateList.size();
             }
 
         }
-        averageHeartRate = averageHeartRate / heartRateValues;
+        this.averageHeartRate = averageHeartRate / heartRateValues;
     }
 
     /**
@@ -143,7 +145,7 @@ public class StatisticsService {
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
                 if (inLastWeek(data.getCreationDate())) {
-                    //calories += data.getConsumedCalories(data.getTitle()); // NEEDS TO CHANGE AND BE UPDATED WHEN CALORIES COMPLETED
+                    calories += data.getConsumedCalories();
                 }
             }
 
@@ -270,7 +272,7 @@ public class StatisticsService {
     private Date dateWeek;
 
     public StatisticsService(User user) {
-        healthService = new HealthService(user);
+        //healthService = new HealthService(user);
         userStats = user.getUserStats();
         collection = user.getUserActivities();
         arrayCollection = collection.getActivityListCollection();
@@ -287,8 +289,8 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<WeightRecord> record = userStats.getUserWeightRecords();
         for (int i = 0; i < record.size(); i++) {
-            graph.addYAxis((record.get(i).getWeight()).toString());
-            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
+            graph.addYAxis((record.get(i).getWeight()));
+            //graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -302,8 +304,8 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
         for (int i = 0; i < record.size(); i++) {
-            graph.addYAxis((record.get(i).getBmi().getBMIValue()).toString());
-            graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
+            graph.addYAxis((record.get(i).getBmi().getBMIValue()));
+            //graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
         }
         return graph;
     }
@@ -318,8 +320,8 @@ public class StatisticsService {
         ArrayList<Double> stressLevelList = data.calculateStressProportionsBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         for (int i = 0; i < stressLevelList.size() - 1; i++) {
-            graph.addYAxis(Double.toString(stressLevelList.get(i)));
-            graph.addXAxis(time.get(i).toString());
+            graph.addYAxis((stressLevelList.get(i)));
+            //graph.addXAxis(time.get(i));
         }
         return graph;
     }
@@ -334,13 +336,61 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<CoordinateData> coordinatesArrayList = data.getCoordinatesArrayList();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        ArrayList<Double> times = createTimes(time);
         for (int i = 0; i < coordinatesArrayList.size() - 1; i++) {
             CoordinateDataDifference coordinateDataDifference =
                     new CoordinateDataDifference(coordinatesArrayList.get(i), coordinatesArrayList.get(i + 1));
-            graph.addYAxis(Double.toString(coordinateDataDifference.getDistanceDifference()));
-            graph.addXAxis(time.get(i).toString());
+            graph.addYAxis((coordinateDataDifference.getDistanceDifference()));
+            graph.addXAxis(times.get(i));
         }
         return graph;
+    }
+
+    /**
+     * Creates a Double list of seconds between each of the local date times for the graphing functions
+     * @param timeList a list full of local date times to be converted to doubles in seconds
+     * @return an arrayList of doubles which contains starting from 0 the time in seconds after the start point
+     */
+    public ArrayList<Double> createTimes(ArrayList<LocalDateTime> timeList) {
+        ArrayList<Double> newTimes = new ArrayList<Double>();
+        for(int i = 0; i < timeList.size(); i++) {
+            if (i != 0) {
+                newTimes.add(i, getDifference(timeList.get(i), timeList.get(0)));
+            } else {
+                newTimes.add(0.0);
+            }
+        }
+        return newTimes;
+    }
+
+    /**
+     * Returns the amount of seconds in between 2 data points by comparing all available information in local date time
+     * Has to sadly compare years too as we could be going from 2018 december to 2019 January on new years eve even if it was
+     * only for a few seconds
+     * @param toDateTime starting date value
+     * @param fromDateTime current date value
+     * @return a double of seconds between both dates
+     */
+    public Double getDifference(LocalDateTime toDateTime, LocalDateTime fromDateTime) {
+        LocalDateTime tempDateTime = LocalDateTime.from( fromDateTime );
+        long years = tempDateTime.until( toDateTime, ChronoUnit.YEARS);
+        tempDateTime = tempDateTime.plusYears( years );
+        long months = tempDateTime.until( toDateTime, ChronoUnit.MONTHS);
+        tempDateTime = tempDateTime.plusMonths( months );
+        long days = tempDateTime.until( toDateTime, ChronoUnit.DAYS);
+        tempDateTime = tempDateTime.plusDays( days );
+        long hours = tempDateTime.until( toDateTime, ChronoUnit.HOURS);
+        tempDateTime = tempDateTime.plusHours( hours );
+        long minutes = tempDateTime.until( toDateTime, ChronoUnit.MINUTES);
+        tempDateTime = tempDateTime.plusMinutes( minutes );
+        long seconds = tempDateTime.until( toDateTime, ChronoUnit.SECONDS);
+        Double doubleReturn = Long.valueOf(seconds).doubleValue();
+        doubleReturn += minutes * 60;
+        doubleReturn += hours * 60 * 60;
+        doubleReturn += days * 60 * 60 * 24;
+        doubleReturn += months * 60 * 60 * 24 * 30;
+        doubleReturn += years * 60 * 60 * 24 * 30 * 365;
+        return doubleReturn;
     }
 
     /**
@@ -353,9 +403,12 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<Integer> heartRates = data.getHeartRateList();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        ArrayList<Double> times = createTimes(time);
+
+        System.out.println(heartRates.size());
         for (int i = 0; i < heartRates.size() - 1; i++) {
-            graph.addXAxis(time.get(i).toString());
-            graph.addYAxis(heartRates.get(i).toString());
+            graph.addXAxis(times.get(i));
+            graph.addYAxis(Double.valueOf(heartRates.get(i)));
         }
         return graph;
     }
@@ -371,8 +424,8 @@ public class StatisticsService {
         ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         for (int i = 0; i < time.size() - 1; i++) {
-            graph.addXAxis(time.get(i).toString());
-            graph.addYAxis(calories.get(i).toString());
+            //graph.addXAxis(time.get(i).toString());
+            graph.addYAxis(calories.get(i));
         }
         return graph;
     }
