@@ -109,7 +109,7 @@
                         <Insets bottom="50.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Load the activities">
+                  <Button mnemonicParsing="false" onMouseClicked="#uploadFile" text="Load the activities">
                      <HBox.margin>
                         <Insets bottom="50.0" left="10.0" />
                      </HBox.margin>

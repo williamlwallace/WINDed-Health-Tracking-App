@@ -2,6 +2,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
+import com.opencsv.CSVReader;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -18,13 +19,12 @@ import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 
 public class ActivitiesCollectionController {
@@ -68,6 +68,7 @@ public class ActivitiesCollectionController {
 
     private static Stage primaryStage;
     private static User user;
+    private String csvToParse;
 
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
@@ -157,9 +158,36 @@ public class ActivitiesCollectionController {
 
     public void searchForFile(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV File", "*.csv");
+        fileChooser.getExtensionFilters().add(extFilter);
         fileChooser.setTitle("File Chooser");
-        fileChooser.showOpenDialog(primaryStage);
+
+        File csvDirectory = fileChooser.showOpenDialog(getPrimaryStage());
+        if (csvDirectory != null) {
+            csvToParse = csvDirectory.toPath().toString();
+        } else {
+            //Tell user the file was not found
+        }
+
     }
+
+    //NEED TO UNDERSTAND WHAT IS GOING ON IN THE PARSER
+    public void uploadFile(MouseEvent event) {
+        System.out.println("Ciao");
+        if (csvToParse != null) {
+            try {
+                Parser parser = new Parser(csvToParse, user);
+                for (Data data : parser.getDataList()) {
+                    System.out.println(data.getTitle());
+                }
+            } catch (Exception e) {
+
+            }
+        } else {
+            System.out.println("csvToParse empty");
+        }
+    }
+
 
     public User getUser() {
         return user;
