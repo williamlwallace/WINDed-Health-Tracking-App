@@ -1,8 +1,16 @@
 package seng202.group8.gui.calendar_view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import seng202.group8.data_entries.Data;
 import seng202.group8.user.User;
 
@@ -18,7 +26,18 @@ public class CalendarViewController {
     @FXML
     private DatePicker datePicker;
 
+    @FXML
+    private ListView<Data> activitiesListView;
+
+    @FXML
+    private Text noActivitiesText;
+
+
+
     public void setDatePickerListener() {
+
+        noActivitiesText.setText("Click on a day to find the activities performed or the goals due");
+
         datePicker.valueProperty().addListener((ov, oldValue, newValue) -> {
             System.out.println(datePicker.getValue());
             LocalDate selectedDate = datePicker.getValue();
@@ -30,7 +49,7 @@ public class CalendarViewController {
 //            System.out.println("From " + zoneStartDateTime.getHour()+ " to " + zoneEndDateTime.toLocalDate().toString());
             Date end = new Date(zoneEndDateTime.toInstant().toEpochMilli());
 
-            ArrayList<Data> userData = user.getUserActivities().getAllData();
+            ArrayList<Data> userData = user.getUserActivities().retrieveActivititesBtwDates(start, end);
             if (userData.size() == 0) {
                 System.out.println("Nothing");
             }
@@ -40,8 +59,49 @@ public class CalendarViewController {
                 System.out.println("END: " + end.getTime());
             }
 
+            if (userData.size() != 0) {
+                displayActivitiesForTheSelectedDay(userData);
+                noActivitiesText.setVisible(false);
+            } else {
+                noActivitiesText.setVisible(true);
+                noActivitiesText.setText("No activities on this day.");
+                activitiesListView.getItems().clear();
+            }
+
         });
     }
+
+    private void displayActivitiesForTheSelectedDay(ArrayList<Data> userData) {
+        ObservableList<Data> dataObservableList = FXCollections.observableList(userData);
+        activitiesListView.setItems(dataObservableList);
+
+        activitiesListView.setCellFactory(new Callback<ListView<Data>, ListCell<Data>>() {
+            @Override
+            public ListCell<Data> call(ListView<Data> param) {
+                ListCell<Data> cell = new ListCell<Data>(){
+
+                    @Override
+                    protected void updateItem(Data data, boolean bln) {
+                        super.updateItem(data, bln);
+
+                        if (data != null) {
+                            VBox vBox = new VBox();
+                            Text title = new Text(data.getTitle());
+                            Text distanceCovered = new Text("Distance covered: " + data.getDistanceCovered().toString());
+                            Text burntCalories = new Text("Burnt calories: " + String.valueOf(data.getConsumedCalories()));
+                            vBox.getChildren().addAll(title, distanceCovered, burntCalories);
+                            vBox.setPadding(new Insets(5));
+                            setGraphic(vBox);
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+
+    }
+
 
     public User getUser() {
         return user;
