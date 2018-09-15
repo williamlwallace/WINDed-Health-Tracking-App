@@ -58,11 +58,12 @@ public abstract class Data {
         this.creationDate = Date.from(newDateTimes.get(0).atZone(ZoneId.systemDefault()).toInstant());
         //
         this.dataType = dataType;
-        this.allDateTimes = newDateTimes;
-        this.heartRateData = new HeartRateData(newHeartRateList);
+        this.allDateTimes = new ArrayList<>(newDateTimes);
+        ArrayList<Integer> toSendHeartRateList = new ArrayList<Integer>(newHeartRateList);
+        this.heartRateData = new HeartRateData(toSendHeartRateList);
         this.heartRateList = heartRateData.getHeartRateList();
 //        setCoordinatesArrayList(newCoordinatesList);
-        this.coordinatesArrayList = newCoordinatesList;
+        this.coordinatesArrayList = new ArrayList<>(newCoordinatesList);
         this.distanceCovered = calculateDistanceCovered();
         this.millisecondsOfExercise = calculateMillisecondsOfExercise();
         this.dataSpeedKph = calculateDataSpeedKilometresPerHour();

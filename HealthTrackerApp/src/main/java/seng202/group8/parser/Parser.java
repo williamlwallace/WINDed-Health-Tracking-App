@@ -34,7 +34,7 @@ public class Parser {
     private ArrayList<CoordinateData> activityCoordinates = new ArrayList<CoordinateData>();
     private User user;
 
-    private ArrayList<Data> dataList;
+    private ArrayList<Data> dataList = new ArrayList<Data>();
 
     private Boolean isCorrupt = Boolean.FALSE;
     /**
@@ -51,7 +51,7 @@ public class Parser {
         acceptedValues.add(bike);
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
-        ArrayList<Data> data = new ArrayList<Data>();
+        //ArrayList<Data> data = new ArrayList<Data>();
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
             try {
                 CSVReader csvReader = new CSVReader(new FileReader(filename));
@@ -76,10 +76,11 @@ public class Parser {
                         ArrayList<LocalDateTime> newActivityDateTime = activityDateTime;
                         ArrayList<CoordinateData> newActivityCoordinates = activityCoordinates;
                         ArrayList<Integer> newActivityHeartRate = activityHeartRate;
+                        //System.out.println(newActivityDateTime.get(0));
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
-                                //System.out.println(activityCoordinates.get(1).getLatitude());
+                                //System.out.println(newActivityCoordinates.size());
                                 activityToSend = new WalkData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                             case "hike":
@@ -107,14 +108,17 @@ public class Parser {
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                         }
+                        //System.out.println("title: " + activityToSend.getTitle());
                         try {
                             length = line.length;
                         } catch (NullPointerException e) {
                             finished = 1;
                         }
                         //System.out.println(activityToSend);
-                        data.add(activityToSend);
+                        this.dataList.add(activityToSend);
+                        //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     }
+                    //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     isCorrupt = Boolean.FALSE;
                     //numErrors = 0;
                     //numLines = 0;
@@ -122,6 +126,7 @@ public class Parser {
                     activityType = "";
                     activityDateTime.clear();
                     activityHeartRate.clear();
+                    //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     activityCoordinates.clear();
                     //line = readLine(csvReader);
                 }
@@ -132,7 +137,8 @@ public class Parser {
         } else {
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
-        this.dataList = data;
+        //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
+        //this.dataList = data;
     }
     /**
      * Receives a activity and collates the data from it
@@ -249,16 +255,17 @@ public class Parser {
     }
 
     public ArrayList<Data> getDataList() {
+        //System.out.println(dataList.get(2).getCoordinatesArrayList().size());
         return dataList;
     }
 
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
         Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
-        ArrayList<Data> data = parserTest.getDataList();
+        ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
         for (Data d : data) {
             System.out.println(d.getCoordinatesArrayList().size());
-            System.out.println(d.getTitle());
+            //System.out.println(d.getTitle());
         }
     }
 

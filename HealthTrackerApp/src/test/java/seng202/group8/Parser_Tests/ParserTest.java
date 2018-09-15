@@ -41,9 +41,10 @@ public class ParserTest {
     public void noErrors() {
         List<String> testListTitle = Stream.of("walk in the woods", "run around the block", "walk in the woods", "longer run", "walk with dog", "hike in the mountains", "run in the city", "walk in the mountains", "walk in the city", "hiking with friends", "some outdoor exercise running", "exercising with friends bike").collect(Collectors.toList());
         List<DataType> testListType = Stream.of(DataType.WALK, DataType.RUN, DataType.WALK, DataType.RUN, DataType.WALK, DataType.HIKE, DataType.RUN, DataType.WALK, DataType.WALK, DataType.HIKE, DataType.RUN, DataType.BIKE).collect(Collectors.toList());
-        List<Integer> testListNum = Stream.of(33, 7, 33, 294, 4, 34, 5, 8, 8, 318, 291, 101).collect(Collectors.toList());
-        ArrayList<Data> dataTest = parserTest1.getDataList();
+        List<Integer> testListNum = Stream.of(33, 7, 33, 294, 4, 33, 5, 8, 8, 318, 291, 101).collect(Collectors.toList());
+        ArrayList<Data> dataTest = new ArrayList<>(parserTest1.getDataList());
         for (int i = 0; i < dataTest.size(); i++) {
+            //System.out.println(dataTest.get(i).getCoordinatesArrayList().size());
             //System.out.println(dataTest.get(i).getTitle());
             assertEquals(dataTest.get(i).getTitle(), testListTitle.get(i));
             assertEquals(dataTest.get(i).getDataType(), testListType.get(i));
