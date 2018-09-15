@@ -54,7 +54,9 @@ public abstract class Data {
 
         this.title = newTitle;
         this.currentUser = theCurrentUser;
-        this.creationDate = new Date(newDateTimes.get(0).getYear(), newDateTimes.get(0).getMonthValue(), newDateTimes.get(0).getDayOfMonth());
+        //From Lorenzo: not the prettiest but now it works;)
+        this.creationDate = Date.from(newDateTimes.get(0).atZone(ZoneId.systemDefault()).toInstant());
+        //
         this.dataType = dataType;
         this.allDateTimes = newDateTimes;
         this.heartRateData = new HeartRateData(newHeartRateList);
