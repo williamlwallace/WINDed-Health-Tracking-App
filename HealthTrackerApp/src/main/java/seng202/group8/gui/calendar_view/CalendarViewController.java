@@ -26,15 +26,18 @@ public class CalendarViewController {
             LocalDateTime endDate = LocalDateTime.of(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDayOfMonth(), 23, 59, 59);
             ZonedDateTime zoneStartDateTime = startDate.atZone(ZoneId.systemDefault());
             ZonedDateTime zoneEndDateTime = endDate.atZone(ZoneId.systemDefault());
-            Date dateStart = new Date(zoneStartDateTime.toInstant().toEpochMilli());
+            Date start = new Date(zoneStartDateTime.toInstant().toEpochMilli());
 //            System.out.println("From " + zoneStartDateTime.getHour()+ " to " + zoneEndDateTime.toLocalDate().toString());
-            Date dateEnd = new Date(zoneEndDateTime.toInstant().toEpochMilli());
-            ArrayList<Data> userData = user.getUserActivities().retrieveActivititesBtwDates(dateStart, dateEnd);
+            Date end = new Date(zoneEndDateTime.toInstant().toEpochMilli());
+
+            ArrayList<Data> userData = user.getUserActivities().getAllData();
             if (userData.size() == 0) {
                 System.out.println("Nothing");
             }
             for (Data data : userData) {
-                System.out.println(data.getTitle());
+                System.out.println("START: " + start.getTime());
+                System.out.println("TO CHECK: " + data.getCreationDate().getTime());
+                System.out.println("END: " + end.getTime());
             }
 
         });
