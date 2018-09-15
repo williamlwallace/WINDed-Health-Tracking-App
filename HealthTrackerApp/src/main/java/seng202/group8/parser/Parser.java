@@ -34,7 +34,7 @@ public class Parser {
     private ArrayList<CoordinateData> activityCoordinates = new ArrayList<CoordinateData>();
     private User user;
 
-    private ArrayList<Data> dataList;
+    private ArrayList<Data> dataList = new ArrayList<Data>();
 
     private Boolean isCorrupt = Boolean.FALSE;
     /**
@@ -51,7 +51,7 @@ public class Parser {
         acceptedValues.add(bike);
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
-        ArrayList<Data> data = new ArrayList<Data>();
+        //ArrayList<Data> data = new ArrayList<Data>();
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
             try {
                 CSVReader csvReader = new CSVReader(new FileReader(filename));
@@ -76,6 +76,7 @@ public class Parser {
                         ArrayList<LocalDateTime> newActivityDateTime = activityDateTime;
                         ArrayList<CoordinateData> newActivityCoordinates = activityCoordinates;
                         ArrayList<Integer> newActivityHeartRate = activityHeartRate;
+                        //System.out.println(newActivityDateTime.get(0));
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
@@ -107,13 +108,14 @@ public class Parser {
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                         }
+                        //System.out.println(activityToSend.getAllDateTimes().get(0));
                         try {
                             length = line.length;
                         } catch (NullPointerException e) {
                             finished = 1;
                         }
                         //System.out.println(activityToSend);
-                        data.add(activityToSend);
+                        dataList.add(activityToSend);
                     }
                     isCorrupt = Boolean.FALSE;
                     //numErrors = 0;
@@ -132,7 +134,7 @@ public class Parser {
         } else {
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
-        this.dataList = data;
+        //this.dataList = data;
     }
     /**
      * Receives a activity and collates the data from it
