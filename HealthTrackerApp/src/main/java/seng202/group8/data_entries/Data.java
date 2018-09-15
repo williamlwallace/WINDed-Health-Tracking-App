@@ -56,11 +56,12 @@ public abstract class Data {
         this.currentUser = theCurrentUser;
         this.creationDate = new Date(newDateTimes.get(0).getYear(), newDateTimes.get(0).getMonthValue(), newDateTimes.get(0).getDayOfMonth());
         this.dataType = dataType;
-        this.allDateTimes = newDateTimes;
-        this.heartRateData = new HeartRateData(newHeartRateList);
+        this.allDateTimes = new ArrayList<>(newDateTimes);
+        ArrayList<Integer> toSendHeartRateList = new ArrayList<Integer>(newHeartRateList);
+        this.heartRateData = new HeartRateData(toSendHeartRateList);
         this.heartRateList = heartRateData.getHeartRateList();
 //        setCoordinatesArrayList(newCoordinatesList);
-        this.coordinatesArrayList = newCoordinatesList;
+        this.coordinatesArrayList = new ArrayList<>(newCoordinatesList);
         this.distanceCovered = calculateDistanceCovered();
         this.millisecondsOfExercise = calculateMillisecondsOfExercise();
         this.dataSpeedKph = calculateDataSpeedKilometresPerHour();

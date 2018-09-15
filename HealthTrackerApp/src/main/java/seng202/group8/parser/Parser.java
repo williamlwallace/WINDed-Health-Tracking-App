@@ -80,7 +80,7 @@ public class Parser {
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
-                                //System.out.println(activityCoordinates.get(1).getLatitude());
+                                //System.out.println(newActivityCoordinates.size());
                                 activityToSend = new WalkData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                             case "hike":
@@ -108,15 +108,17 @@ public class Parser {
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                         }
-                        //System.out.println(activityToSend.getAllDateTimes().get(0));
+                        //System.out.println("title: " + activityToSend.getTitle());
                         try {
                             length = line.length;
                         } catch (NullPointerException e) {
                             finished = 1;
                         }
                         //System.out.println(activityToSend);
-                        dataList.add(activityToSend);
+                        this.dataList.add(activityToSend);
+                        //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     }
+                    //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     isCorrupt = Boolean.FALSE;
                     //numErrors = 0;
                     //numLines = 0;
@@ -124,6 +126,7 @@ public class Parser {
                     activityType = "";
                     activityDateTime.clear();
                     activityHeartRate.clear();
+                    //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     activityCoordinates.clear();
                     //line = readLine(csvReader);
                 }
@@ -134,6 +137,7 @@ public class Parser {
         } else {
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
+        //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
         //this.dataList = data;
     }
     /**
@@ -251,16 +255,17 @@ public class Parser {
     }
 
     public ArrayList<Data> getDataList() {
+        //System.out.println(dataList.get(2).getCoordinatesArrayList().size());
         return dataList;
     }
 
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
         Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
-        ArrayList<Data> data = parserTest.getDataList();
+        ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
         for (Data d : data) {
             System.out.println(d.getCoordinatesArrayList().size());
-            System.out.println(d.getTitle());
+            //System.out.println(d.getTitle());
         }
     }
 
