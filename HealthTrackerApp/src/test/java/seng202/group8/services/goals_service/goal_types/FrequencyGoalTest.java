@@ -12,6 +12,7 @@ import seng202.group8.user.user_stats.Sex;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -27,10 +28,27 @@ public class FrequencyGoalTest {
     public void setUp() throws Exception {
         user = new User("Lorenzo", 22, 83.0, 183.0, Sex.MALE);
         user.getUserActivities().insertActivityList(new ActivityList("Hikes"));
+
+        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 10));
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 15));
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 25));
+
+        ArrayList<Integer> heartRates = new ArrayList<Integer>();
+        heartRates.add(100);
+        heartRates.add(115);
+        heartRates.add(120);
+
+        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
+        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
+        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
+        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
+
         frequencyGoal = new FrequencyGoal(user, "Gotta go running more!",
                         GoalType.TimePerformedGoal, DataType.HIKE, 2);
-        hikeData1 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
-        hikeData2 = new HikeData("Hike", DataType.HIKE, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
+        frequencyGoal.setStartDate(new Date(0));
+        hikeData1 = new HikeData("Hike", DataType.HIKE, localTimes, coordinateList, heartRates, user);
+        hikeData2 = new HikeData("Hike", DataType.HIKE, localTimes, coordinateList, heartRates, user);
         user.getUserActivities().insertActivityInGivenList(0, hikeData1);
     }
 

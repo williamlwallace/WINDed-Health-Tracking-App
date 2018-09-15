@@ -69,7 +69,7 @@ public class ActivityGoal extends Goal {
         if (distanceCovered >= distanceToCoverKm) {
             setIsCompleted(true);
         }
-        distanceCurrentlyCovered = distanceCovered;
+        setDistanceCurrentlyCovered(distanceCovered);
     }
 
 }

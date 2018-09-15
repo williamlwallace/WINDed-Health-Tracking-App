@@ -24,8 +24,24 @@ public class ActivityListTest {
         User user = new User("A", 12, 34.9, 56.9, Sex.MALE);
         activityList = new ActivityList("Jog with friends");
         activityList.setTitle("Intense runs");
-        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
-        fastWalk = new WalkData("Fast Walk", DataType.NOT_ASSISTED_SPORTS_DATA, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
+
+        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 10));
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 15));
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 25));
+
+        ArrayList<Integer> heartRates = new ArrayList<Integer>();
+        heartRates.add(100);
+        heartRates.add(115);
+        heartRates.add(120);
+
+        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
+        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
+        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
+        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
+
+        jog = new RunData("Morning jog", DataType.NOT_ASSISTED_SPORTS_DATA, localTimes, coordinateList, heartRates, user);
+        fastWalk = new WalkData("Fast Walk", DataType.NOT_ASSISTED_SPORTS_DATA, localTimes, coordinateList, heartRates, user);
     }
 
     @After

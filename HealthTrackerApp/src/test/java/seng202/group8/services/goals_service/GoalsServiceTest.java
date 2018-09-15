@@ -37,14 +37,31 @@ public class GoalsServiceTest {
 
     @Before
     public void setUp() throws Exception {
+
+        user = new User("Lorenzo", 22, 82.0, 183.0, Sex.MALE);
+
         activityList = new ActivityList("Walks in park");
         activityList.setCreationDate(new Date(0));
         activityList1 = new ActivityList("Runs in bush");
         activityList1.setCreationDate(new Date(0));
 
-        walkData = new WalkData("walk ciao", DataType.WALK,new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
-        runData = new RunData("Run ciao", DataType.RUN, new ArrayList<LocalDateTime>(), new ArrayList<CoordinateData>(), new ArrayList<Integer>(), user);
-        user = new User("Lorenzo", 22, 82.0, 183.0, Sex.MALE);
+        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 10));
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 15));
+        localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 25));
+
+        ArrayList<Integer> heartRates = new ArrayList<Integer>();
+        heartRates.add(100);
+        heartRates.add(115);
+        heartRates.add(120);
+
+        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
+        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
+        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
+        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
+
+        walkData = new WalkData("walk ciao", DataType.WALK, localTimes, coordinateList, heartRates, user);
+        runData = new RunData("Run ciao", DataType.RUN, localTimes, coordinateList, heartRates, user);
 
         goalsService = new GoalsService(user);
 
