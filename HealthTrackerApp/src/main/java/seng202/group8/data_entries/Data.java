@@ -336,7 +336,7 @@ public abstract class Data {
         return stressLevelsCopy.get((stressLevelsCopy.size() - 1));
     }
 
-    private ArrayList<Integer> calculateStressLevelsBetweenPoints() {
+    public ArrayList<Integer> calculateStressLevelsBetweenPoints() {
         ArrayList<Integer> result = new ArrayList<>();
         ArrayList<Integer> localHeartRates = this.heartRateData.getHeartRateList();
 

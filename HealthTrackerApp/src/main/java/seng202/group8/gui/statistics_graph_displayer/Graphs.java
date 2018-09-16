@@ -25,32 +25,39 @@ public class Graphs extends Application {
         launch(args);
     }
 
+    /**
+     * Temporary mock user until combination with other gui classes
+     * @throws Exception for when the parser could get errors
+     */
     private void setUpMockUser() throws Exception {
         user = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
-        //Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
-        //ArrayList<Data> dataList = parserTest.getDataList();
-        ArrayList<Integer> heartRates = new ArrayList<Integer>();
-        heartRates.add(100);
-        heartRates.add(115);
-        heartRates.add(120);
-        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
-        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 10));
-        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 15));
-        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 25));
-        //30.26881985,-97.83246599,204.4
-        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
-        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
-        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
-        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
-        RunData testData = new RunData("testDistance", DataType.RUN, localTimes, coordinateList, heartRates, user);
+        Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
+        ArrayList<Data> dataList = parserTest.getDataList();
+//        ArrayList<Integer> heartRates = new ArrayList<Integer>();
+//        heartRates.add(100);
+//        heartRates.add(115);
+//        heartRates.add(120);
+//        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
+//        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 10));
+//        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 15));
+//        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 25));
+//        //30.26881985,-97.83246599,204.4
+//        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
+//        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
+//        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
+//        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
+//        RunData testData = new RunData("testDistance", DataType.RUN, localTimes, coordinateList, heartRates, user);
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
-        user.getUserActivities().insertActivityInGivenList(0, testData);
-//        for (int i = 0; i < dataList.size(); i++) {
-//            user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
-//            System.out.println(dataList.get(i).getHeartRateList());
-//        }
+        for (int i = 0; i < dataList.size(); i++) {
+            user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
+        }
     }
 
+    /**
+     * Starts the Statistics page
+     * @param primaryStage the stage at which to put the statistics page onto
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 

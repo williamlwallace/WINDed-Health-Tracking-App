@@ -317,11 +317,12 @@ public class StatisticsService {
      */
     public GraphXY getStressLevelOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
-        ArrayList<Double> stressLevelList = data.calculateStressProportionsBetweenPoints();
+        ArrayList<Integer> stressLevelList = data.calculateStressLevelsBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        ArrayList<Double> times = createTimes(time);
         for (int i = 0; i < stressLevelList.size() - 1; i++) {
-            graph.addYAxis((stressLevelList.get(i)));
-            //graph.addXAxis(time.get(i));
+            graph.addYAxis((double) stressLevelList.get(i));
+            graph.addXAxis(times.get(i));
         }
         return graph;
     }
@@ -337,10 +338,12 @@ public class StatisticsService {
         ArrayList<CoordinateData> coordinatesArrayList = data.getCoordinatesArrayList();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
+        Double summary = 0.0;
         for (int i = 0; i < coordinatesArrayList.size() - 1; i++) {
             CoordinateDataDifference coordinateDataDifference =
                     new CoordinateDataDifference(coordinatesArrayList.get(i), coordinatesArrayList.get(i + 1));
-            graph.addYAxis((coordinateDataDifference.getDistanceDifference()));
+            summary += coordinateDataDifference.getDistanceDifference();
+            graph.addYAxis(summary);
             graph.addXAxis(times.get(i));
         }
         return graph;
@@ -404,8 +407,6 @@ public class StatisticsService {
         ArrayList<Integer> heartRates = data.getHeartRateList();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
-
-        System.out.println(heartRates.size());
         for (int i = 0; i < heartRates.size() - 1; i++) {
             graph.addXAxis(times.get(i));
             graph.addYAxis(Double.valueOf(heartRates.get(i)));
@@ -423,9 +424,12 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        ArrayList<Double> times = createTimes(time);
+        Double summary = 0.0;
         for (int i = 0; i < time.size() - 1; i++) {
-            //graph.addXAxis(time.get(i).toString());
-            graph.addYAxis(calories.get(i));
+            graph.addXAxis(times.get(i));
+            summary += calories.get(i);
+            graph.addYAxis(summary);
         }
         return graph;
     }

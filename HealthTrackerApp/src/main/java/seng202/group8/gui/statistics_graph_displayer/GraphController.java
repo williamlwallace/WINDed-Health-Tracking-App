@@ -58,60 +58,120 @@ public class GraphController {
     @FXML
     private NumberAxis yAxis;
 
-    public ArrayList<Data> getAllData() {
-        return allData;
-    }
-
+    /**
+     * The function that runs when you hit the "Distance over time" button
+     * Grabs the distance data for the currently data activity selected
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
     public void showDistance() {
-        //CREATES GRAPH FOR DISTANCE OVER TIME
-//        final NumberAxis xAxis = new NumberAxis();
-//        final NumberAxis yAxis = new NumberAxis();
-//        xAxis.setLabel("Time");
-//        yAxis.setLabel("Distance");
-//        graph = new LineChart<>(xAxis,yAxis);
-//        graph.setTitle("Distance over Time");
-//        XYChart.Series series = new XYChart.Series();
-//        StatisticsService graphData = user.getStatsService();
-//        //GraphXY xyData = graphData.getDistanceOverTimeGraph(currentdata);
-//        GraphXY graphLists = new GraphXY();
-//        //graphData.testGraph(graphLists);
-//        graphLists.addYAxis(10.0);
-//        graphLists.addXAxis(100.0);
-//        displayOnGraph(graphLists, series);
         ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
-
         StatisticsService graphData = user.getStatsService();
-        System.out.println(graphData.getAverageHeartRate());
-        GraphXY xyData = graphData.getDistanceOverTimeGraph(currentdata);
+        GraphXY xyData = graphData.getDistanceOverTimeGraph(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
-        //series.getData().add(new XYChart.Data<Double, Double>(1.0, 15.0));
-        //series.getData().add(new XYChart.Data<Double, Double>(4.0, 7.0));
+
+        graph.getXAxis().setTickLabelsVisible(false);
+        Double maxDistance = xyData.getXAxis().get(xyData.getXAxis().size() - 1);
+        yAxis.setUpperBound(maxDistance + (maxDistance * 0.1));
+        yAxis.setLowerBound(xyData.getYAxis().get(0));
+
         xAxis.setLabel("Time");
         yAxis.setLabel("Distance");
-//        xAxis.setLowerBound(0.5);
-//        xAxis.setUpperBound(10.0);
-//        xAxis.setTickUnit(0.25);
         series.setName("Distance Over Time");
-        lineChartData.add(series);
+        graph.setTitle("Distance Visualization");
 
+        graph.setCreateSymbols(false);
+        lineChartData.add(series);
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }
 
+    /**
+     * The function that runs when you hit the "Heart Rate over time" button
+     * Grabs the heart rate data for the currently data activity selected
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
     public void showHeartRate() {
         ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
         StatisticsService graphData = user.getStatsService();
-        GraphXY xyData = graphData.getHeartRateOverTimeGraph(currentdata);
+        GraphXY xyData = graphData.getHeartRateOverTimeGraph(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
+
+        graph.getXAxis().setTickLabelsVisible(false);
+        Double maxHeartRate = (double) currentData.getHeartRateData().getHighestHeartRate();
+        yAxis.setUpperBound(maxHeartRate + (maxHeartRate * 0.1));
+        yAxis.setLowerBound(xyData.getYAxis().get(0));
+
         xAxis.setLabel("Time");
         yAxis.setLabel("Heart Rate");
         series.setName("Heart Rate Over Time");
-        lineChartData.add(series);
+        graph.setTitle("Heart Rate Visualization");
 
+        graph.setCreateSymbols(false);
+        lineChartData.add(series);
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }
 
+    /**
+     * The function that runs when you hit the "Calories over time" button
+     * Grabs the calories data for the currently data activity selected
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
+    public void showCalories() {
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
+        StatisticsService graphData = user.getStatsService();
+        GraphXY xyData = graphData.getCaloriesBurnedOverTimeGraph(currentData);
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+
+        graph.getXAxis().setTickLabelsVisible(false);
+        Double maxCalories = xyData.getYAxis().get(xyData.getYAxis().size() - 1);
+        yAxis.setUpperBound(maxCalories + (maxCalories * 0.1));
+        yAxis.setLowerBound(xyData.getYAxis().get(0));
+
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Calories Burned");
+        series.setName("Calories Burned Over Time");
+        graph.setTitle("Calories Burned Visualization");
+
+        graph.setCreateSymbols(false);
+        lineChartData.add(series);
+        graph.setData(lineChartData);
+        graph.createSymbolsProperty();
+    }
+
+    /**
+     * The function that runs when you hit the "Stress Level over time" button
+     * Grabs the Stress Level data for the currently data activity selected
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
+    public void showStress() {
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
+        StatisticsService graphData = user.getStatsService();
+        GraphXY xyData = graphData.getStressLevelOverTimeGraph(currentData);
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+
+        graph.getXAxis().setTickLabelsVisible(false);
+        Double maxStress = (double) currentData.getStressLevelMax();
+        this.yAxis.setUpperBound(maxStress);
+        yAxis.setLowerBound((double) currentData.getStressLevelMin());
+
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Stress %");
+        series.setName("Stress Over Time");
+        graph.setTitle("Stress Visualization");
+
+        graph.setCreateSymbols(false);
+        lineChartData.add(series);
+        graph.setData(lineChartData);
+        graph.createSymbolsProperty();
+    }
+
+    /**
+     * Generates the series needed for the graphs to show, adds the graphXY axis arrayLists to
+     * a series object which can be added to a graph to be shown to the user
+     * @param xyData a GraphXY object type with the x and y arrayLists of doubles to be added to the graph
+     * @return A series object to be added to a line chart
+     */
     public LineChart.Series<Double, Double> generateSeries(GraphXY xyData) {
         LineChart.Series<Double, Double> series = new LineChart.Series<Double, Double>();
         for (int i = 0; i < xyData.getXAxis().size(); i++) {
@@ -120,74 +180,107 @@ public class GraphController {
         return series;
     }
 
+    /**
+     * The function that runs when the user clicks next activity and will travel through the allData arrayList
+     * to a more recent data activity, unless at the end of the list then it won't go any further
+     */
     public void nextData() {
-        if (currentDataIndex == dataSize - 1) {
-            //END OF LIST
-            System.out.println("END OF LIST");
-        } else {
+        if (currentDataIndex != dataSize - 1) {
             currentDataIndex++;
-            setCurrentdata(allData.get(currentDataIndex));
+            setCurrentData(allData.get(currentDataIndex));
             updateData();
         }
     }
 
+    /**
+     * The function that runs when the user clicks on the button previous activity which will travel through the allData
+     * arrayList to a previous done activity to the current one selected, unless at the first activity that the user ever
+     * inputted into the system
+     */
     public void previousData() {
-        if (currentDataIndex == 0) {
-            //END OF LIST
-            System.out.println("END OF LIST");
-        } else {
+        if (currentDataIndex != 0) {
             currentDataIndex--;
-            setCurrentdata(allData.get(currentDataIndex));
+            setCurrentData(allData.get(currentDataIndex));
             updateData();
         }
     }
 
+    /**
+     * Gets the current data activity that is selected by the user
+     * @return the data object that the user has currently selected
+     */
     public Data getCurrentdata() {
-        return currentdata;
+        return currentData;
     }
 
-    public void setCurrentdata(Data currentdata) {
-        this.currentdata = currentdata;
-        dataname.setText(currentdata.getTitle());
+    /**
+     * sets the current data to a new data object that the user has selected
+     * @param currentData the new data that current data will be set to
+     */
+    public void setCurrentData(Data currentData) {
+        this.currentData = currentData;
+        dataname.setText(currentData.getTitle());
     }
 
+    /**
+     * Updates the information on the page when the used changes the data activity selected and when first loaded
+     */
     public void updateData() {
-        dataname.setText(currentdata.getTitle());
+        dataname.setText(currentData.getTitle());
         showDistance();
 
     }
 
+    /**
+     * Sets the page up when the user first goes into the Statistics page
+     */
     public void setup() {
         ActivityListCollection activities = user.getUserActivities();
         this.allData = activities.getAllData();
         dataSize = allData.size();
-        System.out.println(dataSize);
-        setCurrentdata(allData.get(dataSize - 1));
+        setCurrentData(allData.get(dataSize - 1));
         currentDataIndex = dataSize - 1;
         updateData();
     }
 
-
-
+    /**
+     * Variables used for navigation of data and the stage object
+     */
     private ArrayList<Data> allData;
-    private Data currentdata;
+    private Data currentData;
     private Integer currentDataIndex;
     private Integer dataSize;
     private User user;
     private Stage primaryStage;
 
+    /**
+     * Gets the current user using the page
+     * @return
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets the user for the page
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Gets the primary stage
+     * @return the primary stage object
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    /**
+     * Sets the primary Stage variable
+     * @param primaryStage a stage variable to be passed in
+     */
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
