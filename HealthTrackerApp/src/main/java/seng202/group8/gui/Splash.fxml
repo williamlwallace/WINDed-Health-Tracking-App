@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<!--<?import de.jensd.fx.glyphs.fontawesome.*?>-->
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.SplashController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #21618c;" stylesheets="@stylesheet.css" />
+      <ImageView fitHeight="312.0" fitWidth="623.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/WINdedLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</StackPane>

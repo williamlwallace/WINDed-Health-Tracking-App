@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 import javax.swing.event.ChangeListener;
 import java.io.File;
 import java.net.URL;
@@ -16,7 +17,8 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));//"GUI.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getResource("splash.fxml"));
         primaryStage.setTitle("WINded");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
