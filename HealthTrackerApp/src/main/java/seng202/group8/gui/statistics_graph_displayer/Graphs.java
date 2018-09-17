@@ -32,6 +32,7 @@ public class Graphs extends Application {
     private void setUpMockUser() throws Exception {
         user = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
         Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
+        parserTest.parseFile();
         ArrayList<Data> dataList = parserTest.getDataList();
 //        ArrayList<Integer> heartRates = new ArrayList<Integer>();
 //        heartRates.add(100);

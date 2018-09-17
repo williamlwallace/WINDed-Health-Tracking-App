@@ -19,7 +19,7 @@ import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.HeartRateData;
-import seng202.group8.parser.Parser;
+import seng202.group8.parser.*;
 import seng202.group8.user.User;
 
 import java.io.*;
@@ -172,16 +172,23 @@ public class ActivitiesCollectionController {
     }
 
     //NEED TO UNDERSTAND WHAT IS GOING ON IN THE PARSER
-    public void uploadFile(MouseEvent event) {
+    public void uploadFile(MouseEvent event) throws Exception {
         System.out.println("Ciao");
         if (csvToParse != null) {
             try {
                 Parser parser = new Parser(csvToParse, user);
+                parser.parseFile();
                 for (Data data : parser.getDataList()) {
                     System.out.println(data.getTitle());
                 }
-            } catch (Exception e) {
-
+            } catch (FileNotFoundError e) {
+                //the file sent in wasnt found
+            } catch (NotCSVError e) {
+                // the file sent in wasnt a CSV file
+            } catch (DataMissingError e) {
+                // the file sent in has missing data or it was corrupt
+            } catch (noTypeError e) {
+                // name of an activity doesnt fit into any of the types
             }
         } else {
             System.out.println("csvToParse empty");

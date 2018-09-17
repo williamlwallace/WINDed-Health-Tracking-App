@@ -37,12 +37,13 @@ public class Parser {
     private ArrayList<Data> dataList = new ArrayList<Data>();
 
     private Boolean isCorrupt = Boolean.FALSE;
+    private String filename;
     /**
      * Receives a filename and starts reading the data activity by activity
-     * @param filename
+     * @param newFilename
      * @throws Exception
      */
-    public Parser(String filename, User newUser) throws Exception {
+    public Parser(String newFilename, User newUser) throws Exception {
         this.user = newUser;
         acceptedValues.add(walk);
         acceptedValues.add(hike);
@@ -51,7 +52,47 @@ public class Parser {
         acceptedValues.add(bike);
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
-        //ArrayList<Data> data = new ArrayList<Data>();
+        filename = newFilename;
+    }
+
+    public Parser(String newFilename, User newUser, String keyWord, int type) throws Exception {
+        this.user = newUser;
+        switch (type) {
+            case 1:
+                walk.add(keyWord);
+                break;
+            case 2:
+                hike.add(keyWord);
+                break;
+            case 3:
+                run.add(keyWord);
+                break;
+            case 4:
+                climb.add(keyWord);
+                break;
+            case 5:
+                bike.add(keyWord);
+                break;
+            case 6:
+                swim.add(keyWord);
+                break;
+            case 7:
+                waterSports.add(keyWord);
+                break;
+            default:
+                break;
+        }
+        acceptedValues.add(walk);
+        acceptedValues.add(hike);
+        acceptedValues.add(run);
+        acceptedValues.add(climb);
+        acceptedValues.add(bike);
+        acceptedValues.add(swim);
+        acceptedValues.add(waterSports);
+        filename = newFilename;
+    }
+
+    public void parseFile() throws Exception {
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
             try {
                 CSVReader csvReader = new CSVReader(new FileReader(filename));
@@ -66,21 +107,16 @@ public class Parser {
                 }
                 while (line != null && (finished == 0)) {
                     line = parseActivity(line, csvReader);
-                    //System.out.println(activityName + "\n");
-                    //System.out.println(activityType + "\n");
                     if (!isCorrupt) {
-                        //System.out.println(activityCoordinates.get(5));
                         Data activityToSend;
                         DataType activityEnum;
                         String newActivityName = activityName;
                         ArrayList<LocalDateTime> newActivityDateTime = activityDateTime;
                         ArrayList<CoordinateData> newActivityCoordinates = activityCoordinates;
                         ArrayList<Integer> newActivityHeartRate = activityHeartRate;
-                        //System.out.println(newActivityDateTime.get(0));
                         switch (activityType) {
                             case "walk":
                                 activityEnum = DataType.WALK;
-                                //System.out.println(newActivityCoordinates.size());
                                 activityToSend = new WalkData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                             case "hike":
@@ -103,32 +139,24 @@ public class Parser {
                                 activityEnum = DataType.SWIM;
                                 activityToSend = new SwimData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
-                            default: //case "water sport": fixer for now
-                                activityEnum = DataType.WATER_SPORTS;
+                            default: //case "Walk": defult for now
+                                activityEnum = DataType.WALK;
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                         }
-                        //System.out.println("title: " + activityToSend.getTitle());
                         try {
                             length = line.length;
                         } catch (NullPointerException e) {
                             finished = 1;
                         }
-                        //System.out.println(activityToSend);
                         this.dataList.add(activityToSend);
-                        //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     }
-                    //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     isCorrupt = Boolean.FALSE;
-                    //numErrors = 0;
-                    //numLines = 0;
                     activityName = "";
                     activityType = "";
                     activityDateTime.clear();
                     activityHeartRate.clear();
-                    //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
                     activityCoordinates.clear();
-                    //line = readLine(csvReader);
                 }
                 csvReader.close();
             } catch (FileNotFoundException e) {
@@ -137,8 +165,6 @@ public class Parser {
         } else {
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
-        //System.out.println(dataList.get(0).getCoordinatesArrayList().size());
-        //this.dataList = data;
     }
     /**
      * Receives a activity and collates the data from it
@@ -167,7 +193,7 @@ public class Parser {
                 }
             }
             if (activityType.equals("")) {
-                throw new noTypeError();
+                throw new noTypeError("The activity '" + activityName+ "' doesnt match any of the activity types.");
 //                Scanner scanner = new Scanner(System.in);
 //                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
 //                String selection = scanner.next();
@@ -205,14 +231,11 @@ public class Parser {
                     activityCoordinates.add(lineCoordinate);
                     line = readLine(csvReader);
                 } catch (NullPointerException e) {
-                    //System.out.println("No more activities");
                     finished = 1;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    //throw new WordContainsException("Corrupt line '" + numLines + "' in activity '" + activityName + "' is missing data.");
                     numErrors += 1;
                     line = nextActivity(csvReader, line);
                 } catch (NumberFormatException e) {
-                    //System.out.println("Corrupt line '" + numLines + "' in activity '" + activityName + "' has incorrect data");
                     numErrors += 1;
                     line = nextActivity(csvReader, line);
                 } catch (DateTimeParseException e) {
@@ -231,19 +254,24 @@ public class Parser {
     }
 
     /**
-     * Receives a single line and returns it.
+     * Parses the next line and returns it.
      * @param csvReader
      * @throws Exception
      */
     private String[] readLine(CSVReader csvReader) throws Exception {
-        //ArrayList<String> list = new ArrayList<String>();
         String[] line;
         line = csvReader.readNext();
         return line;
     }
 
+    /**
+     * Scrolls through the lines until the next activity is reached.
+     * @param csvReader
+     * @param line
+     * @return line
+     * @throws Exception
+     */
     private String[] nextActivity(CSVReader csvReader, String[] line) throws Exception {
-        //ArrayList<String> list = new ArrayList<String>();
         try {
             while ((line != null) && !(line[0].equals("#start"))) {
                 line = readLine(csvReader);
@@ -254,18 +282,22 @@ public class Parser {
         return line;
     }
 
+    /**
+     * Returns a list of the data it parsed
+     * @return dataList
+     */
     public ArrayList<Data> getDataList() {
-        //System.out.println(dataList.get(2).getCoordinatesArrayList().size());
         return dataList;
     }
 
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
         Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
+        parserTest.parseFile();
         ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
         for (Data d : data) {
+            System.out.println(d.getTitle());
             System.out.println(d.getCoordinatesArrayList().size());
-            //System.out.println(d.getTitle());
         }
     }
 
