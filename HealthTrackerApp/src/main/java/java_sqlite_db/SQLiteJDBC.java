@@ -1,9 +1,21 @@
 package java_sqlite_db;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import seng202.group8.activity_collection.ActivityList;
+import seng202.group8.activity_collection.ActivityListCollection;
+import seng202.group8.data_entries.CoordinateData;
+import seng202.group8.data_entries.Data;
+import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.user.User;
+import seng202.group8.user.user_stats.Sex;
+
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class SQLiteJDBC {
 
+
+    private Integer dataId = 0; // Placeholder
 
     /**
      * Connect to a sample database
@@ -162,8 +174,9 @@ public class SQLiteJDBC {
         }
     }
 
-    public void insertData(Connection connection, Integer dataId, Integer userId, String dataType, String parentListTitle, String parentListDatetime) {
+    public Boolean insertData(Connection connection, Integer dataId, Integer userId, String dataType, String parentListTitle, String parentListDatetime) {
         String sql = "INSERT INTO Data VALUES(?,?,?,?,?)";
+        Boolean isInserted = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, dataId);
@@ -180,12 +193,15 @@ public class SQLiteJDBC {
             ResultSet results = findStatement.executeQuery();
             if (results.next()) {
                 System.out.println("Data Tuple already exists");
+                isInserted = false;
             } else {
-                // Print out the result of the insert statement, 0 means nothing has been inserted
                 System.out.println("Rows added to Data:" + preparedStatement.executeUpdate());
+                isInserted = true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            return isInserted;
         }
     }
 
@@ -258,10 +274,66 @@ public class SQLiteJDBC {
             sql = "DELETE FROM Heartrate";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
+            sql = "DELETE FROM Activity_Time";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    public void saveUser(User user, Integer userId) {
+        Connection conn = connect();
+        insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
+        updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
+
+
+        ActivityListCollection activityListCollection = user.getUserActivities();
+        insertActivityCollection(conn, userId, activityListCollection.getTitle());
+
+        for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
+            insertActivityList(conn, activityList.getTitle(), activityList.getCreationDate().toString(), userId);
+            for (Data activity : activityList.getActivityList()) {
+                //Need to add data Id
+                //!!!!!!!!!!!!!!!!!!
+                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), activityList.getCreationDate().toString())) {
+                    //NOTE The placeholder += 1
+                    dataId += 1;
+                    for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
+                        insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
+                    }
+                    for (Integer heartRate : activity.getHeartRateList()) {
+                        insertHeartRate(conn, heartRate, dataId);
+                    }
+                    for (LocalDateTime localDateTime: activity.getAllDateTimes()) {
+                        insertActivityTime(conn, dataId, localDateTime.toString());
+                }
+            }
+
+            }
+        }
+
+    }
+
+    /*public User retrieveUser(Integer userId) {
+        Connection conn = connect();
+        ResultSet result = getUser(conn, userId);
+        User user;
+        try {
+            result.next();
+            String name = result.getString("name");
+            Double weight = result.getDouble("weight");
+            Double height = result.getDouble("height");
+            Integer age = result.getInt("age");
+            String sex = result.getString("sex");
+            //user = new User(name, age, weight, height, Sex.parseSex(sex);
+            //Code to get ActivityCollection and Data of user (select queries)
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }*/
 
 
 
