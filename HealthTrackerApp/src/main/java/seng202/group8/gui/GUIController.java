@@ -22,7 +22,8 @@ import java.util.ResourceBundle;
 
 public class GUIController {
 
-
+    @FXML
+    private AnchorPane parent;
 
     @FXML
     private void loadSplash() throws IOException
@@ -68,12 +69,14 @@ public class GUIController {
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("ActivityLog.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("activity_list_collection_displayer/activity_list_collection.fxml"));
         Scene activityScene = new Scene(root);
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(activityScene);
-        window.show();
+//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        window.setScene(activityScene);
+//        window.show();
+
+        parent.getChildren().setAll(root);
     }
 
     @FXML

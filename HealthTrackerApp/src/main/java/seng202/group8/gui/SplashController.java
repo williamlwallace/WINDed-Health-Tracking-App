@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
 public class SplashController implements Initializable {
 
     @FXML
-    private AnchorPane parent;
+    private StackPane parent;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,6 +68,7 @@ public class SplashController implements Initializable {
                         Parent root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("home.fxml"));
+                            System.out.println("Done");
                         } catch (IOException ex) {
                             Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -76,6 +78,7 @@ public class SplashController implements Initializable {
                         stage.setTitle("WINded");
                         stage.show();
                         parent.getScene().getWindow().hide();
+
                     }
                 });
             } catch (InterruptedException ex) {

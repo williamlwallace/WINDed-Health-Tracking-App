@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="175.0" text="WINded" textFill="WHITE">
+               <font>
+                  <Font name="Bitstream Vera Sans Bold Oblique" size="30.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+            <Label text="&lt;User&gt;" textFill="WHITE">
+               <font>
+                  <Font name="Lato Light" size="17.0" />
+               </font>
+            </Label>
+         </children></HBox>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <VBox prefHeight="620.0" prefWidth="175.0" styleClass="sidebar" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="155.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet.css">
+               <children>
+                  <JFXButton onAction="#loadHome" prefHeight="176.0" prefWidth="185.0" styleClass="btns" stylesheets="@stylesheet.css" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="155.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet.css">
+               <children>
+                  <JFXButton onAction="#loadActivityLog" prefHeight="176.0" prefWidth="185.0" styleClass="btns" stylesheets="@stylesheet.css" text="Activity Log" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="155.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet.css">
+               <children>
+                  <JFXButton onAction="#loadStatistics" prefHeight="176.0" prefWidth="185.0" styleClass="btns" stylesheets="@stylesheet.css" text="Statistics" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="155.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet.css">
+               <children>
+                  <JFXButton onAction="#loadGoals" prefHeight="176.0" prefWidth="185.0" styleClass="btns" stylesheets="@stylesheet.css" text="Goals" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

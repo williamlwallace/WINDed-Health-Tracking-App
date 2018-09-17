@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 public class ActivityListCollectionDisplay extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 
     private User user;
 
