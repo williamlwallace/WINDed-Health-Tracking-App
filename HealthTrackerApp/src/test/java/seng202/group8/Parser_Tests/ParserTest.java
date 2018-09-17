@@ -27,6 +27,7 @@ public class ParserTest {
     public void setUp() throws Exception {
         userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
         parserTest1 =  new Parser("/home/cosc/student/sgv15/Documents/Seng/Winded_team8/SENG202Team8_2/seng202_2018_example_data_clean.csv", userTest);
+        parserTest1.parseFile();
         //parserTest2 =  new Parser("/home/cosc/student/sgv15/Documents/Seng/Winded_team8/SENG202Team8_2/seng202_2018_example_data.csv", userTest);
     }
 
@@ -61,6 +62,7 @@ public class ParserTest {
         int finished = 0;
         try {
             Parser parserTest = new Parser("seng202_2018_example_data_clean.txt", userTest);
+            parserTest.parseFile();
         } catch (NotCSVError e) {
             finished = 1;
         }
@@ -72,6 +74,7 @@ public class ParserTest {
         int finished = 0;
         try {
             Parser parserTest = new Parser("Fake.csv", userTest);
+            parserTest.parseFile();
         } catch (FileNotFoundError e) {
             finished = 1;
         }
@@ -82,7 +85,8 @@ public class ParserTest {
     public void noType() throws Exception {
         int finished = 0;
         try {
-            parserTest2 =  new Parser("/home/cosc/student/sgv15/Documents/Seng/Winded_team8/SENG202Team8_2/seng202_2018_example_data.csv", userTest);;
+            parserTest2 =  new Parser("/home/cosc/student/sgv15/Documents/Seng/Winded_team8/SENG202Team8_2/seng202_2018_example_data.csv", userTest);
+            parserTest2.parseFile();
         } catch (noTypeError e) {
             finished = 1;
         }
