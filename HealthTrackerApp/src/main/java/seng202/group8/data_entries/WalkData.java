@@ -33,7 +33,7 @@ public class WalkData extends NotAssistedSportsData {
 
         ArrayList<Double> metValues = new ArrayList<Double>(Arrays.asList(metValuesArray));
         ArrayList<Double> speedDivisions = new ArrayList<Double>(Arrays.asList(speedDivisionsArray));
-        ArrayList<Double> caloriesList;
+        ArrayList<Double> caloriesList = new ArrayList<>();
 
         caloriesList = calculateCaloriesBurnedBetweenPointsFromStats(metValues, speedDivisions);
         return caloriesList;
