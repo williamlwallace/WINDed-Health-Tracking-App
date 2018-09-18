@@ -1,5 +1,7 @@
 package seng202.group8.gui.user_info_gui;
 
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.ChoiceBox;
 import seng202.group8.user.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +18,10 @@ import java.awt.*;
 public class GetUserInfoController {
 
     @FXML
-    private Button enterDetailsButton;
+    private ChoiceBox sexChoice;
+
+    @FXML
+    private JFXButton enterDetailsButton;
 
     @FXML
     private TextField nameField;
@@ -34,6 +39,13 @@ public class GetUserInfoController {
     private Text errorText;
 
     private User user;
+
+    @FXML
+    public void initialize() {
+        sexChoice.getItems().removeAll(sexChoice.getItems());
+        sexChoice.getItems().addAll("Female", "Male");
+        sexChoice.getSelectionModel().select("Female");
+    }
 
     public void enterDetails(ActionEvent event) {
         System.out.println("Pressed");
@@ -74,33 +86,41 @@ public class GetUserInfoController {
         if (name == null) {
             errorMessage += "You must enter a name to proceed.";
         }
-        if (age == 0) {
+        else if (age == 0) {
             if (errorMessage.length() > 0) {
                 errorMessage += " Your age must be a number.";
             } else {
                 errorMessage += "Your age must be a number.";
             }
         }
-        if (weight == 0.0){
+        else if (weight == 0.0){
             if (errorMessage.length() > 0) {
                 errorMessage += " Your weight must be a number.";
             } else {
                 errorMessage += "Your weight must be a number.";
             }
         }
-        if (height == 0.0) {
+        else if (height == 0.0) {
             if (errorMessage.length() > 0) {
                 errorMessage += " Your height must be a number.";
             } else {
                 errorMessage += "Your height must be a number.";
             }
         }
+
         if (errorMessage.length() > 0) {
             errorText.setText(errorMessage);
         } else {
-            user = new User(name, age, weight, height, Sex.MALE);
+            String sex = (String) sexChoice.getSelectionModel().getSelectedItem();
+            if (sex.equals("Female")) {
+                user = new User(name, age, weight, height, Sex.FEMALE);
+            } else {
+                user = new User(name, age, weight, height, Sex.MALE);
+            }
         }
+        System.out.println(user);
     }
+
     public User getUser() {
         return user;
     }
