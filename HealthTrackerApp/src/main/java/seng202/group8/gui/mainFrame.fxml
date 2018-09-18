@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -18,20 +19,30 @@
    <top>
       <HBox prefHeight="67.0" prefWidth="600.0" style="-fx-background-color: #21618c;" BorderPane.alignment="CENTER">
          <children>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="175.0" text="WINded" textFill="WHITE">
-               <font>
-                  <Font name="Bitstream Vera Sans Bold Oblique" size="30.0" />
-               </font>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-            <Label text="&lt;User&gt;" textFill="WHITE">
-               <font>
-                  <Font name="Lato Light" size="17.0" />
-               </font>
-            </Label>
-         </children></HBox>
+            <ImageView fitHeight="119.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/windedTitle.png" />
+               </image>
+            </ImageView>
+            <HBox prefHeight="100.0" prefWidth="887.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" styleClass="menu-bar" stylesheets="@stylesheet.css" text="William" textFill="WHITE">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Edit User" />
+                      <MenuItem mnemonicParsing="false" text="Change User" />
+                        <MenuItem mnemonicParsing="false" onAction="#quitApp" text="Quit" />
+                    </items>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </MenuButton>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding></HBox>
    </top>
    <left>
       <VBox prefHeight="620.0" prefWidth="175.0" styleClass="sidebar" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">

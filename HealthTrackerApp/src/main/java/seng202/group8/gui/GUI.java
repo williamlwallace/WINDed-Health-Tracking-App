@@ -36,6 +36,7 @@ public class GUI extends Application {
         stage.setTitle("WINded");
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
 //        guiController.setToHome();
         stage.show();
 

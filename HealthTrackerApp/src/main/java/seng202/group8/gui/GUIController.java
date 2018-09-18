@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import seng202.group8.user.User;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -157,5 +158,10 @@ public class GUIController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    @FXML
+    private void quitApp(ActionEvent event) {
+        stage.close();
     }
 }
