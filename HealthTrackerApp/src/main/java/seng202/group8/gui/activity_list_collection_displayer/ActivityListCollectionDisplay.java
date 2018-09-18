@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.*;
@@ -13,7 +12,6 @@ import seng202.group8.user.user_stats.Sex;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 
 public class ActivityListCollectionDisplay extends Application {
@@ -55,7 +53,7 @@ public class ActivityListCollectionDisplay extends Application {
 
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("activity_list_collection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/activity_list_collection.fxml"));
 
         Parent root = loader.load();
         ActivitiesCollectionController controller = (ActivitiesCollectionController) loader.getController();
