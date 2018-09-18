@@ -6,6 +6,10 @@
     -fx-background-color: #2e86c1;
 }
 
+.top {
+    -fx-background-color: linear-gradient(to left, #2e86c1, #2874a6);
+}
+
 .btns{
     -fx-background-color: transparent;
 }

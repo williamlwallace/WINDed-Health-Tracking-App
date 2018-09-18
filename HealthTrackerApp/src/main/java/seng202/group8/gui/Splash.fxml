@@ -10,9 +10,9 @@
 
 <!--<?import de.jensd.fx.glyphs.fontawesome.*?>-->
 
-<StackPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.SplashController">
+<StackPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="740.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.SplashController">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #21618c;" stylesheets="@stylesheet.css" />
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="top" stylesheets="@stylesheet.css" />
       <ImageView fitHeight="312.0" fitWidth="623.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/WINdedLogo.png" />

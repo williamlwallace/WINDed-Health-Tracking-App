@@ -45,10 +45,12 @@ public class GUI extends Application {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainFrame.fxml"));
 //        Parent root = loader.load();
 //        GUIController guiController = loader.getController();
+//        guiController.setStage(stage);
 //        stage.setTitle("WINded");
 //        Scene scene = new Scene(root);
 //        stage.setScene(scene);
 //        guiController.setToHome();
+//        stage.setResizable(false);
 //        stage.show();
     }
 

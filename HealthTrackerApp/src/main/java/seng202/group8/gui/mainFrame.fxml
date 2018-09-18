@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -17,7 +18,7 @@
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.GUIController">
    <top>
-      <HBox prefHeight="67.0" prefWidth="600.0" style="-fx-background-color: #21618c;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="67.0" prefWidth="600.0" styleClass="top" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="119.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,7 +43,10 @@
          </children>
          <padding>
             <Insets left="15.0" />
-         </padding></HBox>
+         </padding>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" />
+         </effect></HBox>
    </top>
    <left>
       <VBox prefHeight="620.0" prefWidth="175.0" styleClass="sidebar" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
@@ -84,6 +88,9 @@
                </children>
             </HBox>
          </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" offsetY="3.5" />
+         </effect>
       </VBox>
    </left>
    <center>
