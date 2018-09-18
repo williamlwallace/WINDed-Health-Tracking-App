@@ -5,11 +5,14 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import seng202.group8.user.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +40,8 @@ public class GUIController implements Initializable {
     @FXML
     private JFXButton goalsBtn;
 
+    private User user;
+    private Stage stage;
 
 
     @Override
@@ -119,7 +124,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadStatistics(ActionEvent event) throws IOException
     {
-        BorderPane statsScene = FXMLLoader.load(getClass().getResource("../../../resources/views/graphs.fxml"));
+        SplitPane statsScene = FXMLLoader.load(getClass().getResource("../../../resources/views/graphs.fxml"));
         scene.getChildren().setAll(statsScene);
         statsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");
@@ -136,5 +141,21 @@ public class GUIController implements Initializable {
         homeBtn.setStyle("-fx-background-color: transparent");
         activityBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

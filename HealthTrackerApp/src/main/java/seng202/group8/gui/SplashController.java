@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import seng202.group8.gui.user_info_gui.GetUserInfoController;
+import seng202.group8.user.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,34 +27,59 @@ public class SplashController implements Initializable {
     @FXML
     private StackPane parent;
 
+    private User user;
+    private Stage stage;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        new splashScreen().start();
-//        FadeTransition fadeIn = new FadeTransition(javafx.util.Duration.seconds(3), parent);
-//        fadeIn.setFromValue(0);
-//        fadeIn.setToValue(1);
-//        fadeIn.setCycleCount(1);
-//
-//        FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), parent);
-//        fadeIn.setFromValue(1);
-//        fadeIn.setToValue(0);
-//        fadeIn.setCycleCount(1);
-//
-//        fadeIn.play();
-//
-//        fadeIn.setOnFinished((e) -> {
-//            fadeOut.play();
-//        });
-//
-//        fadeOut.setOnFinished((e) -> {
-//            try {
-//                Parent fxml = FXMLLoader.load(getClass().getResource("home.fxml"));
-//                parent.getChildren().removeAll();
-//                parent.getChildren().setAll(fxml);
-//            } catch (IOException ex) {
-//                Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
+        FadeTransition fadeIn = new FadeTransition(javafx.util.Duration.seconds(1.5), parent);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.setCycleCount(1);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1.5), parent);
+        fadeIn.setFromValue(1);
+        fadeIn.setToValue(0);
+        fadeIn.setCycleCount(1);
+
+        fadeIn.play();
+
+
+        fadeIn.setOnFinished((e) -> {
+            fadeOut.play();
+        });
+        //1280
+        //720
+
+        fadeOut.setOnFinished((e) -> {
+            try {
+                // This is where we call the database and try to retrieve the user
+                if (user != null) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("mainFrame.fxml"));
+                    Parent root = loader.load();
+                    GUIController guiController = loader.getController();
+                    guiController.setStage(stage);
+                    guiController.setUser(user);
+                    stage.setTitle("WINded");
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    guiController.setToHome();
+                    stage.show();
+                } else {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("user_info_gui/GetUserInfo.fxml"));
+                    Parent root = loader.load();
+                    GetUserInfoController getUserInfoController = loader.getController();
+                    getUserInfoController.setStage(stage);
+                    stage.setTitle("WINded");
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 
     }
 
@@ -68,7 +96,7 @@ public class SplashController implements Initializable {
 //                        Parent root = null;
 //                        try {
 //                            root = FXMLLoader.load(getClass().getResource("mainFrame.fxml"));
-//                            System.out.println("Done");
+//                         mainFrame   System.out.println("Done");
 //                        } catch (IOException ex) {
 //                            Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
 //                        }
@@ -88,4 +116,19 @@ public class SplashController implements Initializable {
 //    }
 
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }

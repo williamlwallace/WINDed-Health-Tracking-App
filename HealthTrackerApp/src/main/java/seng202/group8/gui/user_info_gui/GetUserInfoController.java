@@ -1,7 +1,12 @@
 package seng202.group8.gui.user_info_gui;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.Stage;
+import seng202.group8.gui.GUIController;
 import seng202.group8.user.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +19,7 @@ import seng202.group8.user.user_stats.Sex;
 
 //import javax.xml.soap.Text;
 import java.awt.*;
+import java.io.IOException;
 
 public class GetUserInfoController {
 
@@ -39,6 +45,7 @@ public class GetUserInfoController {
     private Text errorText;
 
     private User user;
+    private Stage stage;
 
     @FXML
     public void initialize() {
@@ -58,7 +65,6 @@ public class GetUserInfoController {
         if (nameField.getText() != null && !nameField.getText().isEmpty() && !nameField.getText().matches(".*\\d+.*")) {
             name = nameField.getText();
         }
-        //System.out.println("hello: " + ageField.getText());
         if (ageField.getText() != null && !ageField.getText().isEmpty()) {
             System.out.println("hello: " + ageField.getText());
             try {
@@ -117,11 +123,37 @@ public class GetUserInfoController {
             } else {
                 user = new User(name, age, weight, height, Sex.MALE);
             }
+            try {
+                loadMainFrame();
+            } catch (IOException e) {
+                System.out.println("Something wrong in GUI: " + e);
+            }
         }
-        System.out.println(user);
+
+    }
+
+    private void loadMainFrame() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainFrame.fxml"));
+        Parent root = loader.load();
+        GUIController guiController = loader.getController();
+        guiController.setUser(user);
+        guiController.setStage(stage);
+        stage.setTitle("WINded");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        guiController.setToHome();
+        stage.show();
     }
 
     public User getUser() {
         return user;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }
