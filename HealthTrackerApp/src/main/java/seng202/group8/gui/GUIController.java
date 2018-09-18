@@ -3,22 +3,16 @@ package seng202.group8.gui;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class GUIController {
 
@@ -69,7 +63,7 @@ public class GUIController {
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("activity_list_collection_displayer/activity_list_collection.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../../resources/resources/activity_list_collection.fxml"));
         Scene activityScene = new Scene(root);
 
 //        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
