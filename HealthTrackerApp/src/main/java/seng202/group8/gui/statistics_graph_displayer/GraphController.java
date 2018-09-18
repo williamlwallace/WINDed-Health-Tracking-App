@@ -22,35 +22,16 @@ import java.util.ArrayList;
 
 public class GraphController {
 
-    @FXML
-    private Button distance;
 
-    @FXML
-    private Button stress;
-
-    @FXML
-    private Button calories;
-
-    @FXML
-    private Button heart;
-
-    @FXML
-    private Button weight;
-
-    @FXML
-    private Button bmi;
-
-    @FXML
-    private Button next;
-
-    @FXML
-    private Button previous;
 
     @FXML
     private Label dataname;
 
     @FXML
     private LineChart<Double,Double> graph;
+
+    @FXML
+    private LineChart<Double,Double> graph2;
 
     @FXML
     private NumberAxis xAxis;
@@ -74,15 +55,14 @@ public class GraphController {
         yAxis.setUpperBound(maxDistance + (maxDistance * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
-        xAxis.setLabel("Time");
-        yAxis.setLabel("Distance");
+        xAxis.setLabel("Time (S)");
+        yAxis.setLabel("Distance (M)");
         series.setName("Distance Over Time");
         graph.setTitle("Distance Visualization");
 
         graph.setCreateSymbols(false);
 
         lineChartData.add(series);
-//        series.getNode().setStyle();
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }
@@ -103,8 +83,8 @@ public class GraphController {
         yAxis.setUpperBound(maxHeartRate + (maxHeartRate * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
-        xAxis.setLabel("Time");
-        yAxis.setLabel("Heart Rate");
+        xAxis.setLabel("Time (S)");
+        yAxis.setLabel("Heart Rate (BPM)");
         series.setName("Heart Rate Over Time");
         graph.setTitle("Heart Rate Visualization");
 
@@ -130,8 +110,8 @@ public class GraphController {
         yAxis.setUpperBound(maxCalories + (maxCalories * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
-        xAxis.setLabel("Time");
-        yAxis.setLabel("Calories Burned");
+        xAxis.setLabel("Time (S)");
+        yAxis.setLabel("Calories Burned (Calories)");
         series.setName("Calories Burned Over Time");
         graph.setTitle("Calories Burned Visualization");
 
@@ -158,7 +138,7 @@ public class GraphController {
         yAxis.setLowerBound((double) currentData.getStressLevelMin());
 
         xAxis.setLabel("Time");
-        yAxis.setLabel("Stress %");
+        yAxis.setLabel("Stress (%)");
         series.setName("Stress Over Time");
         graph.setTitle("Stress Visualization");
 
@@ -166,6 +146,25 @@ public class GraphController {
         lineChartData.add(series);
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
+    }
+
+    public void showBmi() {
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
+        StatisticsService graphData = user.getStatsService();
+        GraphXY xyData = graphData.getGraphDataBMIType();
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+
+        graph2.getXAxis().setTickLabelsVisible(false);
+
+        xAxis.setLabel("Time");
+        yAxis.setLabel("BMI Value");
+        series.setName("BMI Over Time");
+        graph2.setTitle("BMI Visualization");
+
+        graph2.setCreateSymbols(false);
+        lineChartData.add(series);
+        graph2.setData(lineChartData);
+        graph2.createSymbolsProperty();
     }
 
     /**
@@ -230,7 +229,6 @@ public class GraphController {
     public void updateData() {
         dataname.setText(currentData.getTitle());
         showDistance();
-
     }
 
     /**
