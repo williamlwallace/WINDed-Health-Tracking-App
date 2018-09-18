@@ -186,11 +186,17 @@ public class ActivitiesCollectionController {
                     System.out.println(data.getTitle());
                 }
             } catch (FileNotFoundError e) {
-                //the file sent in wasnt found
+                ParserErrorOther parseError = new ParserErrorOther();
+                parseError.setErrorMess(e.getMessage());
+                parseError.start(ParserErrorOther.classStage);
             } catch (NotCSVError e) {
-                // the file sent in wasnt a CSV file
+                ParserErrorOther parseError = new ParserErrorOther();
+                parseError.setErrorMess(e.getMessage());
+                parseError.start(ParserErrorOther.classStage);
             } catch (DataMissingError e) {
-                // the file sent in has missing data or it was corrupt
+                ParserErrorOther parseError = new ParserErrorOther();
+                parseError.setErrorMess(e.getMessage());
+                parseError.start(ParserErrorOther.classStage);
             } catch (noTypeError e) {
                 ParserErrorType parseError = new ParserErrorType();
                 parseError.setErrorMess(e.getMessage());
