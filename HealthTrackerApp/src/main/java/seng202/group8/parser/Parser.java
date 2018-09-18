@@ -38,6 +38,7 @@ public class Parser {
 
     private Boolean isCorrupt = Boolean.FALSE;
     private String filename;
+    private int lineNum;
     /**
      * Receives a filename and starts reading the data activity by activity
      * @param newFilename
@@ -56,6 +57,7 @@ public class Parser {
     }
 
     public void parseFile() throws Exception {
+        lineNum = 0;
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
             try {
                 CSVReader csvReader = new CSVReader(new FileReader(filename));
@@ -138,6 +140,7 @@ public class Parser {
     private String[] parseActivity(String[] line, CSVReader csvReader) throws Exception {
         int numErrors = 0;
         int numLines = 0;
+        String errorLines = null;
         try {
             numLines =+ 1;
             activityName = line[1];
@@ -196,12 +199,27 @@ public class Parser {
                 } catch (NullPointerException e) {
                     finished = 1;
                 } catch (ArrayIndexOutOfBoundsException e) {
+                    if (errorLines == null) {
+                        errorLines = "(Incorrect number of lines) " + String.valueOf(lineNum);
+                    } else {
+                        errorLines = errorLines + ", (Incorrect number of lines) " + String.valueOf(lineNum);
+                    }
                     numErrors += 1;
                     line = nextActivity(csvReader, line);
                 } catch (NumberFormatException e) {
+                    if (errorLines == null) {
+                        errorLines = "(Heart-rate or Coordinates) " + String.valueOf(lineNum);
+                    } else {
+                        errorLines = errorLines + ", (Heart-rate or Coordinates) " + String.valueOf(lineNum);
+                    }
                     numErrors += 1;
                     line = nextActivity(csvReader, line);
                 } catch (DateTimeParseException e) {
+                    if (errorLines == null) {
+                        errorLines = "(date) " + String.valueOf(lineNum);
+                    } else {
+                        errorLines = errorLines + ", (date) " + String.valueOf(lineNum);
+                    }
                     numErrors += 1;
                     line = nextActivity(csvReader, line);
                 }
@@ -211,7 +229,7 @@ public class Parser {
         }
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
-            throw new DataMissingError("Activity '" + activityName + "' is corrupt.");
+            throw new DataMissingError("Activity '" + activityName + "' is corrupt on line/lines: " + errorLines);
         }
         return line;
     }
@@ -222,6 +240,7 @@ public class Parser {
      * @throws Exception
      */
     private String[] readLine(CSVReader csvReader) throws Exception {
+        lineNum++;
         String[] line;
         line = csvReader.readNext();
         return line;

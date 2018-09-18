@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ParserErrorsController">
+<GridPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ParserErrorTypeController">
 <columnConstraints>
   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 </columnConstraints>
