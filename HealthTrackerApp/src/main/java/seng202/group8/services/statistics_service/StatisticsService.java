@@ -10,6 +10,7 @@ import sun.security.pkcs11.wrapper.Functions;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,7 +39,6 @@ public class StatisticsService {
                 ArrayList<Integer> heartRateList = data.getHeartRateList();
                 for(int k = 0; k < heartRateList.size(); k++){
                     averageHeartRate += heartRateList.get(k);
-                    System.out.println(heartRateList.get(k));
                 }
                 heartRateValues += heartRateList.size();
             }
@@ -169,7 +169,9 @@ public class StatisticsService {
         Double lastWeekWeight = 0.0;
         ArrayList<WeightRecord> weightRecords = userStats.getUserWeightRecords();
         for (int i = weightRecords.size() - 1; i >= 0; i--) {
-            if (!inLastWeek(weightRecords.get(i).getDate())) {
+            LocalDateTime newDateTimes = weightRecords.get(i).getDate();
+            Date date = Date.from(newDateTimes.atZone(ZoneId.systemDefault()).toInstant());
+            if (!inLastWeek(date)) {
                 lastWeekWeight = weightRecords.get(i).getWeight();
                 break;
             }
@@ -272,7 +274,7 @@ public class StatisticsService {
     private Date dateWeek;
 
     public StatisticsService(User user) {
-        //healthService = new HealthService(user);
+        healthService = new HealthService(user);
         userStats = user.getUserStats();
         collection = user.getUserActivities();
         arrayCollection = collection.getActivityListCollection();
@@ -290,7 +292,7 @@ public class StatisticsService {
         ArrayList<WeightRecord> record = userStats.getUserWeightRecords();
         for (int i = 0; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()));
-            //graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
+            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
         }
         return graph;
     }
@@ -303,9 +305,12 @@ public class StatisticsService {
     public GraphXY getGraphDataBMIType() {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
-        for (int i = 0; i < record.size(); i++) {
+        graph.addYAxis((record.get(0).getBmi().getBMIValue()));
+        graph.addXAxis(0.0);
+        for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getBmi().getBMIValue()));
-            //graph.addXAxis(new SimpleDateFormat("dd-MM-YYYY HH ").format(record.get(i).getDate()));
+            //graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
+            graph.addXAxis(1.0);
         }
         return graph;
     }
@@ -317,11 +322,11 @@ public class StatisticsService {
      */
     public GraphXY getStressLevelOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
-        ArrayList<Integer> stressLevelList = data.calculateStressLevelsBetweenPoints();
+        ArrayList<Double> stressLevelList = data.getStressProportionsBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
         for (int i = 0; i < stressLevelList.size() - 1; i++) {
-            graph.addYAxis((double) stressLevelList.get(i));
+            graph.addYAxis(stressLevelList.get(i));
             graph.addXAxis(times.get(i));
         }
         return graph;
@@ -425,11 +430,12 @@ public class StatisticsService {
         ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
-        Double summary = 0.0;
+        //Double summary = 0.0;
         for (int i = 0; i < time.size() - 1; i++) {
             graph.addXAxis(times.get(i));
-            summary += calories.get(i);
-            graph.addYAxis(summary);
+            //summary += calories.get(i);
+            graph.addYAxis(calories.get(i));
+            //System.out.println(calories.get(i));
         }
         return graph;
     }

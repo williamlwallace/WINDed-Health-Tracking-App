@@ -1,76 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.chart.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.statistics_graph_displayer.GraphController">
-   <center>
-      <LineChart fx:id="graph" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/graphs.css" title="test" BorderPane.alignment="CENTER">
-         <xAxis>
-            <NumberAxis label="" lowerBound="0" tickUnit="1" upperBound="100" fx:id="xAxis" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis fx:id="yAxis" label="" lowerBound="0" tickUnit="1" upperBound="100" />
-         </yAxis>
-      </LineChart>
-   </center>
-   <bottom>
-      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.statistics_graph_displayer.GraphController">
+   <items>
+      <VBox>
          <children>
-            <HBox alignment="TOP_CENTER">
+            <HBox alignment="CENTER" prefWidth="200.0">
                <children>
-                  <Button fx:id="calories" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showCalories" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="CALORIES OVER TIME" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="stress" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showStress" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="STRESS OVER TIME" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="distance" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showDistance" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="DISTANCE OVER TIME" textAlignment="CENTER" wrapText="true" />
+                  <Label alignment="CENTER" text="Activity Graphs" textAlignment="CENTER" underline="true">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER">
+            <HBox alignment="CENTER">
                <children>
-                  <Button fx:id="bmi" alignment="TOP_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="BMI OVER TIME" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="weight" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="WEIGHT OVER TIME" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="heart" alignment="TOP_LEFT" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showHeartRate" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="HEART RATE OVER TIME" textAlignment="CENTER" wrapText="true" />
+                  <HBox prefWidth="200.0">
+                     <children>
+                        <Button fx:id="previous" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousData" stylesheets="@stylesheet.css" text="PREVIOUS ACTIVITY" textAlignment="CENTER" wrapText="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="dataname" alignment="CENTER" text="&lt;Data Name&gt;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="next" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextData" stylesheets="@stylesheet.css" text="NEXT ACTIVITY" textAlignment="CENTER" wrapText="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <LineChart fx:id="graph" stylesheets="@graphs.css" title="test">
+               <xAxis>
+                  <NumberAxis label="" lowerBound="0" tickUnit="1" upperBound="100" fx:id="xAxis" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="yAxis" label="" lowerBound="0" tickUnit="1" upperBound="100" />
+               </yAxis>
+            </LineChart>
+            <VBox prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="distance" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showDistance" stylesheets="@stylesheet.css" text="DISTANCE OVER TIME" textAlignment="CENTER" wrapText="true" />
+                        <Button fx:id="calories" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showCalories" stylesheets="@stylesheet.css" text="CALORIES OVER TIME" textAlignment="CENTER" wrapText="true">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="stress" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showStress" stylesheets="@stylesheet.css" text="STRESS OVER TIME" textAlignment="CENTER" wrapText="true">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="heart" alignment="TOP_LEFT" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showHeartRate" stylesheets="@stylesheet.css" text="HEART RATE OVER TIME" textAlignment="CENTER" wrapText="true">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="General Progress Graphs" textAlignment="CENTER" underline="true">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <LineChart fx:id="graph2" title="test2">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </LineChart>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button fx:id="bmi" alignment="TOP_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showBmi" stylesheets="@stylesheet.css" text="BMI OVER TIME" textAlignment="CENTER" wrapText="true" />
+                  <Label prefWidth="10.0" />
+                  <Button fx:id="weight" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@stylesheet.css" text="WEIGHT OVER TIME" textAlignment="CENTER" wrapText="true" />
                </children>
                <opaqueInsets>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </opaqueInsets>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
             </HBox>
          </children>
-         <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </BorderPane.margin>
       </VBox>
-   </bottom>
-   <top>
-      <HBox alignment="CENTER" BorderPane.alignment="TOP_CENTER">
-         <children>
-            <HBox prefWidth="200.0">
-               <children>
-                  <Button fx:id="previous" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousData" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="PREVIOUSACTIVITY" textAlignment="CENTER" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefWidth="200.0">
-               <children>
-                  <Label fx:id="dataname" alignment="CENTER" text="&lt;Data Name&gt;" textFill="#abaaaa" />
-               </children>
-            </HBox>
-            <HBox alignment="TOP_RIGHT" prefWidth="200.0">
-               <children>
-                  <Button fx:id="next" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextData" stylesheets="@../../../java/seng202/group8/gui/statistics_graph_displayer/stylesheet.css" text="  NEXT ACTIVITY" textAlignment="CENTER" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-   </top>
-</BorderPane>
+   </items>
+</SplitPane>

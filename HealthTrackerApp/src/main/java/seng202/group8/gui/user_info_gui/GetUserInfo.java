@@ -13,6 +13,7 @@ public class GetUserInfo extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("GetUserInfo.fxml"));
         primaryStage.setTitle("WINded");
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
