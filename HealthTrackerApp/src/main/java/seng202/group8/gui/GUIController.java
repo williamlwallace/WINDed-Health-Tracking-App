@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,85 +21,92 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class GUIController {
+public class GUIController implements Initializable {
 
     @FXML
-    private AnchorPane parent;
+    private BorderPane root;
 
     @FXML
-    private void loadSplash() throws IOException
+    private BorderPane scene;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Splash.fxml"));
+//        if (!GUI.isSplashLoaded) {
+//            loadSplash();
+//        }
+    }
 
 
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), root);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-        fadeIn.setCycleCount(1);
+    private void loadSplash()
+    {
+        try {
+            GUI.isSplashLoaded = true;
 
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), root);
-        fadeIn.setFromValue(1);
-        fadeIn.setToValue(0);
-        fadeIn.setCycleCount(1);
+            StackPane pane = FXMLLoader.load(getClass().getResource("Splash.fxml"));
+            root.getChildren().setAll(pane);
 
-        fadeIn.play();
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
 
-        fadeIn.setOnFinished((e) -> {
-            fadeOut.play();
-        });
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
+            fadeIn.setFromValue(1);
+            fadeIn.setToValue(0);
+            fadeIn.setCycleCount(1);
 
-        fadeOut.setOnFinished((e) -> {
+            fadeIn.play();
 
-        });
+            fadeIn.setOnFinished((e) -> {
+                fadeOut.play();
+            });
 
+            fadeOut.setOnFinished((e) -> {
+                try {
+                    BorderPane parentContent = FXMLLoader.load(getClass().getResource(("mainFrame.fxml")));
+                    root.getChildren().setAll(parentContent);
 
+                } catch (IOException ex) {
+                    Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
     @FXML
-    private void loadHome(ActionEvent event) throws  IOException
+    private void loadHome(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-        Scene homeScene = new Scene(root);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(homeScene);
-        window.show();
+        BorderPane homeScene = FXMLLoader.load(getClass().getResource("home.fxml"));
+        scene.getChildren().setAll(homeScene);
     }
 
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("activity_list_collection_displayer/activity_list_collection.fxml"));
-        Scene activityScene = new Scene(root);
-
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(activityScene);
-//        window.show();
-
-        parent.getChildren().setAll(root);
+        BorderPane activityScene = FXMLLoader.load(getClass().getResource("activity_list_collection_displayer/activity_list_collection.fxml"));
+        scene.getChildren().setAll(activityScene);
     }
 
     @FXML
     private void loadStatistics(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Statistics.fxml"));
-        Scene activityScene = new Scene(root);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(activityScene);
-        window.show();
+        BorderPane statsScene = FXMLLoader.load(getClass().getResource("statistics_graph_displayer/graphs.fxml"));
+        scene.getChildren().setAll(statsScene);
     }
 
     @FXML
     private void loadGoals(ActionEvent event) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("Goals.fxml"));
-        Scene activityScene = new Scene(root);
-
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(activityScene);
-        window.show();
+        BorderPane goalsScene = FXMLLoader.load(getClass().getResource("Goals.fxml"));
+        scene.getChildren().setAll(goalsScene);
     }
 }

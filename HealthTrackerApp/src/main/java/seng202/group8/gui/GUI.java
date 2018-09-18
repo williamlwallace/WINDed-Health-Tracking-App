@@ -15,13 +15,15 @@ import java.net.URL;
 
 public class GUI extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public static Boolean isSplashLoaded = false;
 
-        Parent root = FXMLLoader.load(getClass().getResource("splash.fxml"));
-        primaryStage.setTitle("WINded");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("mainFrame.fxml"));
+        stage.setTitle("WINded");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 
