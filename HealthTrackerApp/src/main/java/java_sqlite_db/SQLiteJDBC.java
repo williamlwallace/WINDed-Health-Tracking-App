@@ -1,6 +1,7 @@
 package java_sqlite_db;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.*;
@@ -9,13 +10,25 @@ import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SQLiteJDBC {
 
 
     private Integer dataId = 0; // Placeholder
+
+    public LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+    }
 
     /**
      * Connect to a sample database
@@ -252,6 +265,74 @@ public class SQLiteJDBC {
         }
     }
 
+    public String getUsersActivityListCollectionTitle(Connection connection, Integer userId) {
+        assert null != connection && null != userId;
+        String collectionTitle = null;
+        ResultSet resultSet = null;
+        System.out.println("Get Users ActivityListCollection with id: " + userId );
+        String find = "SELECT title FROM Activity_Collection WHERE user_id=?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                collectionTitle = resultSet.getString("title");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return collectionTitle;
+    }
+
+    public Date getDateFromString(String dateString) {
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try {
+            date = dateFormat.parse(dateString);
+            System.out.println(date.toString());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public LocalDateTime getLocalDateTimeFromString(String dateString) {
+        LocalDateTime localDateTime = null;
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        localDateTime = LocalDateTime.parse(dateString, dateTimeFormatter);
+        return localDateTime;
+    }
+
+    public ArrayList<ActivityList> getUsersActivityLists(Connection connection, Integer userId) {
+        assert null != connection && null != userId;
+        ArrayList<ActivityList> listOfActivities= new ArrayList<ActivityList>();
+        ActivityList activityList = null;
+        String title = null;
+        String date = null;
+
+        System.out.println("Get Users Activities with id: " + userId );
+        String find = "SELECT title, date FROM Activity_List WHERE user_id=?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                title = resultSet.getString("title");
+                date = resultSet.getString("date");
+                activityList = new ActivityList(title);
+                activityList.setCreationDate(getDateFromString(date));
+                listOfActivities.add(activityList);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listOfActivities;
+    }
+
 
 
     public void deleteAllData(Connection connection) {
@@ -292,7 +373,7 @@ public class SQLiteJDBC {
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
 
         for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
-            insertActivityList(conn, activityList.getTitle(), activityList.getCreationDate().toString(), userId);
+            insertActivityList(conn, activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString(), userId);
             for (Data activity : activityList.getActivityList()) {
                 //Need to add data Id
                 //!!!!!!!!!!!!!!!!!!
@@ -322,25 +403,35 @@ public class SQLiteJDBC {
 
     }
 
-    /*public User retrieveUser(Integer userId) {
+    public User retrieveUser(Integer userId) {
         Connection conn = connect();
         ResultSet result = getUser(conn, userId);
-        User user;
         try {
-            result.next();
             String name = result.getString("name");
             Double weight = result.getDouble("weight");
             Double height = result.getDouble("height");
             Integer age = result.getInt("age");
             String sex = result.getString("sex");
-            //user = new User(name, age, weight, height, Sex.parseSex(sex);
             //Code to get ActivityCollection and Data of user (select queries)
+            User user = new User(name, age, weight, height, Sex.MALE);
+
+            String title = getUsersActivityListCollectionTitle(conn, userId);
+            ActivityListCollection userCollection = new ActivityListCollection(title);
+            user.setUserActivities(userCollection);
+
+            user.getUserActivities().setActivityListCollection(getUsersActivityLists(conn, userId)); //getUsersActivityList is unfinished: needs date conversion
+
+
+
+            user.setUserActivities(userCollection);
+            return user;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return user;
-    }*/
+        return null;
+
+    }
 
 
 
@@ -371,6 +462,8 @@ public class SQLiteJDBC {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+
 
 
 
