@@ -1,20 +1,13 @@
 package seng202.group8.gui;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
-import javax.swing.*;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
@@ -31,6 +24,19 @@ public class GUIController implements Initializable {
 
     @FXML
     private BorderPane scene;
+
+    @FXML
+    private JFXButton homeBtn;
+
+    @FXML
+    private JFXButton activityBtn;
+
+    @FXML
+    private JFXButton statsBtn;
+
+    @FXML
+    private JFXButton goalsBtn;
+
 
 
     @Override
@@ -82,11 +88,21 @@ public class GUIController implements Initializable {
     }
 
 
+    public void setToHome() throws IOException {
+        BorderPane homeScene = FXMLLoader.load(getClass().getResource("home.fxml"));
+        scene.getChildren().setAll(homeScene);
+        homeBtn.setStyle("-fx-background-color: #2874a6");
+    }
+
     @FXML
     private void loadHome(ActionEvent event) throws IOException
     {
         BorderPane homeScene = FXMLLoader.load(getClass().getResource("home.fxml"));
         scene.getChildren().setAll(homeScene);
+        homeBtn.setStyle("-fx-background-color: #2874a6");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        statsBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -94,13 +110,21 @@ public class GUIController implements Initializable {
     {
         BorderPane activityScene = FXMLLoader.load(getClass().getResource("../../../resources/views/activity_list_collection.fxml"));
         scene.getChildren().setAll(activityScene);
+        activityBtn.setStyle("-fx-background-color: #2874a6");
+        homeBtn.setStyle("-fx-background-color: transparent");
+        statsBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
     private void loadStatistics(ActionEvent event) throws IOException
     {
-        BorderPane statsScene = FXMLLoader.load(getClass().getResource("statistics_graph_displayer/graphs.fxml"));
+        BorderPane statsScene = FXMLLoader.load(getClass().getResource("../../../resources/views/graphs.fxml"));
         scene.getChildren().setAll(statsScene);
+        statsBtn.setStyle("-fx-background-color: #2874a6");
+        homeBtn.setStyle("-fx-background-color: transparent");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -108,5 +132,9 @@ public class GUIController implements Initializable {
     {
         BorderPane goalsScene = FXMLLoader.load(getClass().getResource("Goals.fxml"));
         scene.getChildren().setAll(goalsScene);
+        goalsBtn.setStyle("-fx-background-color: #2874a6");
+        homeBtn.setStyle("-fx-background-color: transparent");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        statsBtn.setStyle("-fx-background-color: transparent");
     }
 }

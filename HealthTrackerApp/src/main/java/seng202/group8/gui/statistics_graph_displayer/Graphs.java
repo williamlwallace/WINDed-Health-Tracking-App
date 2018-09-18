@@ -7,15 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.*;
-import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Graphs extends Application {
 
@@ -64,7 +60,7 @@ public class Graphs extends Application {
 
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("graphs.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/resources/views/graphs.fxml"));
 
         Parent root = loader.load();
         GraphController controller = (GraphController) loader.getController();
