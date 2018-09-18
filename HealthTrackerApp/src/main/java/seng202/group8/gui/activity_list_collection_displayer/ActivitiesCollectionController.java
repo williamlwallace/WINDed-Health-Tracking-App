@@ -72,6 +72,7 @@ public class ActivitiesCollectionController {
     private static User user;
     private String csvToParse;
 
+
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
         insightsTitle.setText(data.getTitle() + " insights:");
@@ -114,7 +115,7 @@ public class ActivitiesCollectionController {
             StringBuilder bldr = new StringBuilder();
             String str;
 
-            URL urlGoogleMaps = getClass().getResource("googleMapsView.html");
+            URL urlGoogleMaps = getClass().getResource("../../../../resources/views/googleMapsView.html");
 
             String strGoogleMaps = "";
             BufferedReader in = new BufferedReader(
@@ -203,6 +204,14 @@ public class ActivitiesCollectionController {
                 parseError.setParser(parser);
                 parseError.start(ParserErrorType.classStage);
             }
+
+            user.getUserActivities().insertActivityList(new ActivityList("Ciao"));
+            for (Data data : parser.getDataList()) {
+                user.getUserActivities().insertActivityInGivenList(0, data);
+                System.out.println("Ciao");
+            }
+            setUpTreeView();
+
         } else {
             System.out.println("csvToParse empty");
         }

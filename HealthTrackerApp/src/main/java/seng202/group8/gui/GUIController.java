@@ -12,6 +12,8 @@ import javafx.scene.layout.StackPane;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
+import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
 
 import java.awt.*;
@@ -103,7 +105,9 @@ public class GUIController implements Initializable {
     @FXML
     private void loadHome(ActionEvent event) throws IOException
     {
-        BorderPane homeScene = FXMLLoader.load(getClass().getResource("home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        BorderPane homeScene = loader.load();
+        //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
         activityBtn.setStyle("-fx-background-color: transparent");
@@ -114,7 +118,12 @@ public class GUIController implements Initializable {
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
-        BorderPane activityScene = FXMLLoader.load(getClass().getResource("../../../resources/views/activity_list_collection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/activity_list_collection.fxml"));
+        BorderPane activityScene = loader.load();
+        ActivitiesCollectionController activitiesCollectionController = loader.getController();
+        activitiesCollectionController.setPrimaryStage(stage);
+        activitiesCollectionController.setUser(user);
+        activitiesCollectionController.setUpTreeView();
         scene.getChildren().setAll(activityScene);
         activityBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");
@@ -125,7 +134,12 @@ public class GUIController implements Initializable {
     @FXML
     private void loadStatistics(ActionEvent event) throws IOException
     {
-        SplitPane statsScene = FXMLLoader.load(getClass().getResource("../../../resources/views/graphs.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/graphs.fxml"));
+        BorderPane statsScene = loader.load();
+        GraphController graphController = loader.getController();
+        graphController.setPrimaryStage(stage);
+        graphController.setUser(user);
+        graphController.setup();
         scene.getChildren().setAll(statsScene);
         statsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");
