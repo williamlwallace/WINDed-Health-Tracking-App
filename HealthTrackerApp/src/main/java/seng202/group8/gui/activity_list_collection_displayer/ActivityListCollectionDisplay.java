@@ -53,7 +53,7 @@ public class ActivityListCollectionDisplay extends Application {
 
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/activity_list_collection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/activity_list_collection.fxml"));
 
         Parent root = loader.load();
         ActivitiesCollectionController controller = (ActivitiesCollectionController) loader.getController();

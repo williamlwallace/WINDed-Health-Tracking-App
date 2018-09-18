@@ -2,7 +2,6 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
-import com.opencsv.CSVReader;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -24,7 +23,6 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 
 public class ActivitiesCollectionController {
@@ -112,7 +110,7 @@ public class ActivitiesCollectionController {
             StringBuilder bldr = new StringBuilder();
             String str;
 
-            URL urlGoogleMaps = getClass().getResource("googleMapsView.html");
+            URL urlGoogleMaps = getClass().getResource("../../../../resources/views/googleMapsView.html");
 
             String strGoogleMaps = "";
             BufferedReader in = new BufferedReader(

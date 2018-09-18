@@ -92,7 +92,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
-        BorderPane activityScene = FXMLLoader.load(getClass().getResource("activity_list_collection_displayer/activity_list_collection.fxml"));
+        BorderPane activityScene = FXMLLoader.load(getClass().getResource("../../../resources/views/activity_list_collection.fxml"));
         scene.getChildren().setAll(activityScene);
     }
 
