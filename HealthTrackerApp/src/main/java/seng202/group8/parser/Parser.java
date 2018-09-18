@@ -55,43 +55,6 @@ public class Parser {
         filename = newFilename;
     }
 
-    public Parser(String newFilename, User newUser, String keyWord, int type) throws Exception {
-        this.user = newUser;
-        switch (type) {
-            case 1:
-                walk.add(keyWord);
-                break;
-            case 2:
-                hike.add(keyWord);
-                break;
-            case 3:
-                run.add(keyWord);
-                break;
-            case 4:
-                climb.add(keyWord);
-                break;
-            case 5:
-                bike.add(keyWord);
-                break;
-            case 6:
-                swim.add(keyWord);
-                break;
-            case 7:
-                waterSports.add(keyWord);
-                break;
-            default:
-                break;
-        }
-        acceptedValues.add(walk);
-        acceptedValues.add(hike);
-        acceptedValues.add(run);
-        acceptedValues.add(climb);
-        acceptedValues.add(bike);
-        acceptedValues.add(swim);
-        acceptedValues.add(waterSports);
-        filename = newFilename;
-    }
-
     public void parseFile() throws Exception {
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
             try {
@@ -299,6 +262,42 @@ public class Parser {
             System.out.println(d.getTitle());
             System.out.println(d.getCoordinatesArrayList().size());
         }
+    }
+
+    public void add(String keyWord, int type) {
+        acceptedValues.clear();
+        switch (type) {
+            case 1:
+                walk.add(keyWord);
+                break;
+            case 2:
+                hike.add(keyWord);
+                break;
+            case 3:
+                run.add(keyWord);
+                break;
+            case 4:
+                climb.add(keyWord);
+                break;
+            case 5:
+                bike.add(keyWord);
+                break;
+            case 6:
+                swim.add(keyWord);
+                break;
+            case 7:
+                waterSports.add(keyWord);
+                break;
+            default:
+                break;
+        }
+        acceptedValues.add(walk);
+        acceptedValues.add(hike);
+        acceptedValues.add(run);
+        acceptedValues.add(climb);
+        acceptedValues.add(bike);
+        acceptedValues.add(swim);
+        acceptedValues.add(waterSports);
     }
 
 }

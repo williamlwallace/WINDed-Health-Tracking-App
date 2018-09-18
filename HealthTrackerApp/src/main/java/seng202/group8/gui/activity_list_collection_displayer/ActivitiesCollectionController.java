@@ -2,6 +2,8 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
+import com.opencsv.CSVReader;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -23,6 +25,7 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 
 public class ActivitiesCollectionController {
@@ -51,6 +54,9 @@ public class ActivitiesCollectionController {
 
     @FXML
     private Text minSpeed;
+
+    @FXML
+    private Text parserInfo;
 
     /* TreeView */
     @FXML
@@ -110,7 +116,7 @@ public class ActivitiesCollectionController {
             StringBuilder bldr = new StringBuilder();
             String str;
 
-            URL urlGoogleMaps = getClass().getResource("../../../../resources/views/googleMapsView.html");
+            URL urlGoogleMaps = getClass().getResource("googleMapsView.html");
 
             String strGoogleMaps = "";
             BufferedReader in = new BufferedReader(
@@ -162,6 +168,7 @@ public class ActivitiesCollectionController {
 
         File csvDirectory = fileChooser.showOpenDialog(getPrimaryStage());
         if (csvDirectory != null) {
+            parserInfo.setText("File '"+csvDirectory.toPath().toString()+"' selected");
             csvToParse = csvDirectory.toPath().toString();
         } else {
             //Tell user the file was not found
@@ -173,8 +180,9 @@ public class ActivitiesCollectionController {
     public void uploadFile(MouseEvent event) throws Exception {
         System.out.println("Ciao");
         if (csvToParse != null) {
+            int error = 0;
+            Parser parser = new Parser(csvToParse, user);
             try {
-                Parser parser = new Parser(csvToParse, user);
                 parser.parseFile();
                 for (Data data : parser.getDataList()) {
                     System.out.println(data.getTitle());
@@ -186,11 +194,18 @@ public class ActivitiesCollectionController {
             } catch (DataMissingError e) {
                 // the file sent in has missing data or it was corrupt
             } catch (noTypeError e) {
-                // name of an activity doesnt fit into any of the types
+                ParserErrors parseError = new ParserErrors();
+                parseError.setErrorMess(e.getMessage());
+                parseError.setParser(parser);
+                parseError.start(ParserErrors.classStage);
             }
         } else {
             System.out.println("csvToParse empty");
         }
+    }
+
+    private static void launchTypeError() {
+        Application.launch(ParserErrors.class);
     }
 
 
