@@ -3,14 +3,14 @@ package java_sqlite_db;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
-import seng202.group8.data_entries.CoordinateData;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.data_entries.*;
+import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class SQLiteJDBC {
 
@@ -298,7 +298,6 @@ public class SQLiteJDBC {
                 //!!!!!!!!!!!!!!!!!!
                 if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), activityList.getCreationDate().toString())) {
                     //NOTE The placeholder += 1
-                    dataId += 1;
                     for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
                         insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
                     }
@@ -307,10 +306,18 @@ public class SQLiteJDBC {
                     }
                     for (LocalDateTime localDateTime: activity.getAllDateTimes()) {
                         insertActivityTime(conn, dataId, localDateTime.toString());
-                }
+                    }
+                    dataId += 1;
             }
 
             }
+        }
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -339,6 +346,40 @@ public class SQLiteJDBC {
 
     public static void main(String[] args) {
         SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
+        Connection conn = connect();
+        newDataBaseJDBC.deleteAllData(conn);
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
+            ActivityList activityList = new ActivityList("Test activity List");
+            Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
+            parserTest.parseFile();
+            ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
+            for (Data d : data) {
+                System.out.println(d.getTitle());
+                activityList.insertActivity(d);
+            }
+            userTest.getUserActivities().insertActivityList(activityList);
+
+            newDataBaseJDBC.saveUser(userTest, 1);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+
+
+
+
+
+        /*SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
         Connection conn = connect();
         newDataBaseJDBC.deleteAllData(conn);
         newDataBaseJDBC.insertUser(conn, 1, "Jack", 77.0, 183.0, 19, "MALE");
@@ -397,7 +438,7 @@ public class SQLiteJDBC {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
 
     }
 }
