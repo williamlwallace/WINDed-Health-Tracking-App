@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import seng202.group8.parser.*;
-import seng202.group8.user.User;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.TextField;
@@ -14,7 +13,7 @@ import javafx.scene.text.Text;
 import java.util.Arrays;
 import java.util.List;
 
-public class ParserErrorsController {
+public class ParserErrorTypeController {
     @FXML
     private Text errorText;
 
@@ -85,10 +84,10 @@ public class ParserErrorsController {
             } catch (DataMissingError e) {
                 // the file sent in has missing data or it was corrupt
             } catch (noTypeError e) {
-                ParserErrors parseError = new ParserErrors();
+                ParserErrorType parseError = new ParserErrorType();
                 parseError.setErrorMess(e.getMessage());
                 parseError.setParser(parser);
-                parseError.start(ParserErrors.classStage);
+                parseError.start(ParserErrorType.classStage);
             }
         }
     }

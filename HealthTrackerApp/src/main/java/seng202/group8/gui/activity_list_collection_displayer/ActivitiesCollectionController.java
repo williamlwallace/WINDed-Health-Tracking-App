@@ -2,7 +2,6 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
-import com.opencsv.CSVReader;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 
@@ -25,7 +24,6 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 
 public class ActivitiesCollectionController {
@@ -194,10 +192,10 @@ public class ActivitiesCollectionController {
             } catch (DataMissingError e) {
                 // the file sent in has missing data or it was corrupt
             } catch (noTypeError e) {
-                ParserErrors parseError = new ParserErrors();
+                ParserErrorType parseError = new ParserErrorType();
                 parseError.setErrorMess(e.getMessage());
                 parseError.setParser(parser);
-                parseError.start(ParserErrors.classStage);
+                parseError.start(ParserErrorType.classStage);
             }
         } else {
             System.out.println("csvToParse empty");
@@ -205,7 +203,7 @@ public class ActivitiesCollectionController {
     }
 
     private static void launchTypeError() {
-        Application.launch(ParserErrors.class);
+        Application.launch(ParserErrorType.class);
     }
 
 

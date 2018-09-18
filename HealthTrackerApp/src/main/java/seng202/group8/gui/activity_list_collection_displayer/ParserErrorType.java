@@ -6,9 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng202.group8.parser.Parser;
-import seng202.group8.user.User;
 
-public class ParserErrors extends Application {
+public class ParserErrorType extends Application {
 
     static Stage classStage = new Stage();
 
@@ -24,9 +23,9 @@ public class ParserErrors extends Application {
     public void start(Stage primaryStage) throws Exception {
         System.out.println("dis: "+errorMess);
         classStage = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ParserErrors.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ParserErrorType.fxml"));
         Parent root = (Parent) fxmlLoader.load();
-        ParserErrorsController noType = fxmlLoader.<ParserErrorsController>getController();
+        ParserErrorTypeController noType = fxmlLoader.<ParserErrorTypeController>getController();
         noType.setErrorMessage(errorMess);
         noType.setParser(parser);
         classStage.setTitle("WINded");
