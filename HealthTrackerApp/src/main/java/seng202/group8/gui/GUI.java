@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
@@ -15,13 +16,19 @@ import java.net.URL;
 
 public class GUI extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public static Boolean isSplashLoaded = false;
 
-        Parent root = FXMLLoader.load(getClass().getResource("splash.fxml"));
-        primaryStage.setTitle("WINded");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainFrame.fxml"));
+        Parent root = loader.load();
+        GUIController guiController = loader.getController();
+        stage.setTitle("WINded");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        guiController.setToHome();
+        stage.show();
     }
 
 

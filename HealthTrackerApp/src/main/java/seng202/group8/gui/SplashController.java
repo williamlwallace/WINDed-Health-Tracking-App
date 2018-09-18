@@ -26,7 +26,7 @@ public class SplashController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        new splashScreen().start();
+//        new splashScreen().start();
 //        FadeTransition fadeIn = new FadeTransition(javafx.util.Duration.seconds(3), parent);
 //        fadeIn.setFromValue(0);
 //        fadeIn.setToValue(1);
@@ -55,37 +55,37 @@ public class SplashController implements Initializable {
 
     }
 
-    class splashScreen extends Thread {
-
-        @Override
-        public void run() {
-            try {
-                Thread.sleep(3000);
-
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Parent root = null;
-                        try {
-                            root = FXMLLoader.load(getClass().getResource("home.fxml"));
-                            System.out.println("Done");
-                        } catch (IOException ex) {
-                            Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        Scene scene = new Scene(root);
-                        Stage stage = new Stage();
-                        stage.setScene(scene);
-                        stage.setTitle("WINded");
-                        stage.show();
-                        parent.getScene().getWindow().hide();
-
-                    }
-                });
-            } catch (InterruptedException ex) {
-                Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+//    class splashScreen extends Thread {
+//
+//        @Override
+//        public void run() {
+//            try {
+//                Thread.sleep(3000);
+//
+//                Platform.runLater(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Parent root = null;
+//                        try {
+//                            root = FXMLLoader.load(getClass().getResource("mainFrame.fxml"));
+//                            System.out.println("Done");
+//                        } catch (IOException ex) {
+//                            Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//                        Scene scene = new Scene(root);
+//                        Stage stage = new Stage();
+//                        stage.setScene(scene);
+//                        stage.setTitle("WINded");
+//                        stage.show();
+//                        parent.getScene().getWindow().hide();
+//
+//                    }
+//                });
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//    }
 
 
 }

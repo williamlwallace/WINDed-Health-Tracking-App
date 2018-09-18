@@ -80,7 +80,9 @@ public class GraphController {
         graph.setTitle("Distance Visualization");
 
         graph.setCreateSymbols(false);
+
         lineChartData.add(series);
+//        series.getNode().setStyle();
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }

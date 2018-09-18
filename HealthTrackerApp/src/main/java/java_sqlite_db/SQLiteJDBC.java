@@ -1,21 +1,34 @@
 package java_sqlite_db;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
-import seng202.group8.data_entries.CoordinateData;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.data_entries.*;
+import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class SQLiteJDBC {
 
 
     private Integer dataId = 0; // Placeholder
+
+    public LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+    }
 
     /**
      * Connect to a sample database
@@ -252,6 +265,73 @@ public class SQLiteJDBC {
         }
     }
 
+    public String getUsersActivityListCollectionTitle(Connection connection, Integer userId) {
+        assert null != connection && null != userId;
+        String collectionTitle = null;
+        ResultSet resultSet = null;
+        System.out.println("Get Users ActivityListCollection with id: " + userId );
+        String find = "SELECT title FROM Activity_Collection WHERE user_id=?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                collectionTitle = resultSet.getString("title");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return collectionTitle;
+    }
+
+    public Date getDateFromString(String dateString) {
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try {
+            date = dateFormat.parse(dateString);
+            System.out.println(date.toString());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public LocalDateTime getLocalDateTimeFromString(String dateString) {
+        LocalDateTime localDateTime = null;
+        localDateTime = LocalDateTime.parse(dateString);
+        return localDateTime;
+    }
+
+    public ArrayList<ActivityList> getUsersActivityLists(Connection connection, Integer userId) {
+        assert null != connection && null != userId;
+        ArrayList<ActivityList> listOfActivities= new ArrayList<ActivityList>();
+        ActivityList activityList = null;
+        String title = null;
+        String date = null;
+
+        System.out.println("Get Users Activities with id: " + userId );
+        String find = "SELECT title, date FROM Activity_List WHERE user_id=?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                title = resultSet.getString("title");
+                date = resultSet.getString("date");
+                activityList = new ActivityList(title);
+                activityList.setCreationDate(getDateFromString(date));
+                listOfActivities.add(activityList);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listOfActivities;
+    }
+
 
 
     public void deleteAllData(Connection connection) {
@@ -292,13 +372,12 @@ public class SQLiteJDBC {
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
 
         for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
-            insertActivityList(conn, activityList.getTitle(), activityList.getCreationDate().toString(), userId);
+            insertActivityList(conn, activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString(), userId);
             for (Data activity : activityList.getActivityList()) {
                 //Need to add data Id
                 //!!!!!!!!!!!!!!!!!!
                 if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), activityList.getCreationDate().toString())) {
                     //NOTE The placeholder += 1
-                    dataId += 1;
                     for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
                         insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
                     }
@@ -307,38 +386,92 @@ public class SQLiteJDBC {
                     }
                     for (LocalDateTime localDateTime: activity.getAllDateTimes()) {
                         insertActivityTime(conn, dataId, localDateTime.toString());
-                }
+                    }
+                    dataId += 1;
             }
 
             }
         }
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
-    /*public User retrieveUser(Integer userId) {
+    public User retrieveUser(Integer userId) {
         Connection conn = connect();
         ResultSet result = getUser(conn, userId);
-        User user;
         try {
-            result.next();
             String name = result.getString("name");
             Double weight = result.getDouble("weight");
             Double height = result.getDouble("height");
             Integer age = result.getInt("age");
             String sex = result.getString("sex");
-            //user = new User(name, age, weight, height, Sex.parseSex(sex);
             //Code to get ActivityCollection and Data of user (select queries)
+            User user = new User(name, age, weight, height, Sex.MALE);
+
+            String title = getUsersActivityListCollectionTitle(conn, userId);
+            ActivityListCollection userCollection = new ActivityListCollection(title);
+            user.setUserActivities(userCollection);
+
+            user.getUserActivities().setActivityListCollection(getUsersActivityLists(conn, userId)); //getUsersActivityList is unfinished: needs date conversion
+
+
+
+            user.setUserActivities(userCollection);
+            return user;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return user;
-    }*/
+        return null;
+
+    }
 
 
 
     public static void main(String[] args) {
         SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
+        /*Connection conn = connect();
+        newDataBaseJDBC.deleteAllData(conn);
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
+            ActivityList activityList = new ActivityList("Test activity List");
+            Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
+            parserTest.parseFile();
+            ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
+            for (Data d : data) {
+                System.out.println(d.getTitle());
+                activityList.insertActivity(d);
+            }
+            userTest.getUserActivities().insertActivityList(activityList);
+
+            newDataBaseJDBC.saveUser(userTest, 1);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }*/
+
+
+
+
+
+
+
+
+
+
+        /*SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
         Connection conn = connect();
         newDataBaseJDBC.deleteAllData(conn);
         newDataBaseJDBC.insertUser(conn, 1, "Jack", 77.0, 183.0, 19, "MALE");
@@ -397,7 +530,7 @@ public class SQLiteJDBC {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
 
     }
 }
