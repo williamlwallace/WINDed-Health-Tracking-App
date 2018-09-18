@@ -181,8 +181,8 @@ public class ActivitiesCollectionController {
         System.out.println("Ciao");
         if (csvToParse != null) {
             int error = 0;
+            Parser parser = new Parser(csvToParse, user);
             try {
-                Parser parser = new Parser(csvToParse, user);
                 parser.parseFile();
                 for (Data data : parser.getDataList()) {
                     System.out.println(data.getTitle());
@@ -196,8 +196,7 @@ public class ActivitiesCollectionController {
             } catch (noTypeError e) {
                 ParserErrors parseError = new ParserErrors();
                 parseError.setErrorMess(e.getMessage());
-                parseError.setUser(user);
-                parseError.setFilename(csvToParse);
+                parseError.setParser(parser);
                 parseError.start(ParserErrors.classStage);
             }
         } else {

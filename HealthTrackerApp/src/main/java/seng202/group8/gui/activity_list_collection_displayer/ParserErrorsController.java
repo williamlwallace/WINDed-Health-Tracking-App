@@ -26,8 +26,7 @@ public class ParserErrorsController {
 
     private String errorMessage;
     private List<String> errorList;
-    private String filename;
-    private User user;
+    private Parser parser;
 
     @FXML
     public void initialize() {
@@ -76,7 +75,7 @@ public class ParserErrorsController {
             }
         }
         if (type != 0 && phraseReturn != null) {
-            Parser parser = new Parser(filename, user, phraseReturn, type);
+            parser.add(phraseReturn, type);
             try {
                 parser.parseFile();
             } catch (FileNotFoundError e) {
@@ -88,8 +87,7 @@ public class ParserErrorsController {
             } catch (noTypeError e) {
                 ParserErrors parseError = new ParserErrors();
                 parseError.setErrorMess(e.getMessage());
-                parseError.setUser(user);
-                parseError.setFilename(filename);
+                parseError.setParser(parser);
                 parseError.start(ParserErrors.classStage);
             }
         }
@@ -99,11 +97,7 @@ public class ParserErrorsController {
         this.errorMessage = errorMessage;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setParser(Parser parser) {
+        this.parser = parser;
     }
 }
