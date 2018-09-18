@@ -300,8 +300,7 @@ public class SQLiteJDBC {
 
     public LocalDateTime getLocalDateTimeFromString(String dateString) {
         LocalDateTime localDateTime = null;
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        localDateTime = LocalDateTime.parse(dateString, dateTimeFormatter);
+        localDateTime = LocalDateTime.parse(dateString);
         return localDateTime;
     }
 
@@ -437,7 +436,7 @@ public class SQLiteJDBC {
 
     public static void main(String[] args) {
         SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
-        Connection conn = connect();
+        /*Connection conn = connect();
         newDataBaseJDBC.deleteAllData(conn);
         try {
             conn.close();
@@ -461,7 +460,7 @@ public class SQLiteJDBC {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
 
 
 
