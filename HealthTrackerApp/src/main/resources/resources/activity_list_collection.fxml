@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="812.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="812.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
    <left>
       <TreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#showNewInsightsAndMap" prefHeight="419.0" prefWidth="194.0" BorderPane.alignment="CENTER" />
    </left>
@@ -97,7 +97,7 @@
    <bottom>
       <VBox alignment="BOTTOM_CENTER" prefHeight="165.0" prefWidth="812.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" text="No file uploaded at the moment">
+            <Text fx:id="parserInfo" strokeType="OUTSIDE" text="No file uploaded at the moment">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
