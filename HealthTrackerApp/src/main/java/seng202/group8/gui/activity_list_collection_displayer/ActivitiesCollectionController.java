@@ -24,6 +24,8 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class ActivitiesCollectionController {
@@ -167,7 +169,8 @@ public class ActivitiesCollectionController {
 
         File csvDirectory = fileChooser.showOpenDialog(getPrimaryStage());
         if (csvDirectory != null) {
-            parserInfo.setText("File '"+csvDirectory.toPath().toString()+"' selected");
+            List<String> csvArray = Arrays.asList(csvDirectory.toPath().toString().split("/"));
+            parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' selected");
             csvToParse = csvDirectory.toPath().toString();
         } else {
             //Tell user the file was not found
@@ -177,7 +180,7 @@ public class ActivitiesCollectionController {
 
     //NEED TO UNDERSTAND WHAT IS GOING ON IN THE PARSER
     public void uploadFile(MouseEvent event) throws Exception {
-        System.out.println("Ciao");
+        //System.out.println("Ciao");
         if (csvToParse != null) {
             int error = 0;
             Parser parser = new Parser(csvToParse, user);
@@ -190,27 +193,32 @@ public class ActivitiesCollectionController {
                 ParserErrorOther parseError = new ParserErrorOther();
                 parseError.setErrorMess(e.getMessage());
                 parseError.start(ParserErrorOther.classStage);
+                error = 1;
             } catch (NotCSVError e) {
                 ParserErrorOther parseError = new ParserErrorOther();
                 parseError.setErrorMess(e.getMessage());
                 parseError.start(ParserErrorOther.classStage);
+                error = 1;
             } catch (DataMissingError e) {
                 ParserErrorOther parseError = new ParserErrorOther();
                 parseError.setErrorMess(e.getMessage());
                 parseError.start(ParserErrorOther.classStage);
+                error = 1;
             } catch (noTypeError e) {
                 ParserErrorType parseError = new ParserErrorType();
                 parseError.setErrorMess(e.getMessage());
                 parseError.setParser(parser);
                 parseError.start(ParserErrorType.classStage);
+                error = 1;
             }
-
-            user.getUserActivities().insertActivityList(new ActivityList("Ciao"));
-            for (Data data : parser.getDataList()) {
-                user.getUserActivities().insertActivityInGivenList(0, data);
-                System.out.println("Ciao");
+            if (error == 0) {
+                user.getUserActivities().insertActivityList(new ActivityList("Ciao"));
+                for (Data data : parser.getDataList()) {
+                    user.getUserActivities().insertActivityInGivenList(0, data);
+                    System.out.println("Ciao");
+                }
+                setUpTreeView();
             }
-            setUpTreeView();
 
         } else {
             System.out.println("csvToParse empty");

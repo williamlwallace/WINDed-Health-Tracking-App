@@ -290,7 +290,11 @@ public class StatisticsService {
     public GraphXY getGraphDataWeight() {
         GraphXY graph = new GraphXY();
         ArrayList<WeightRecord> record = userStats.getUserWeightRecords();
-        for (int i = 0; i < record.size(); i++) {
+        if (record.size() > 0) {
+            graph.addYAxis((record.get(0).getWeight()));
+            graph.addXAxis(0.0);
+        }
+        for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()));
             graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
         }
@@ -305,12 +309,13 @@ public class StatisticsService {
     public GraphXY getGraphDataBMIType() {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
-        graph.addYAxis((record.get(0).getBmi().getBMIValue()));
-        graph.addXAxis(0.0);
+        if (record.size() > 0) {
+            graph.addYAxis((record.get(0).getBmi().getBMIValue()));
+            graph.addXAxis(0.0);
+        }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getBmi().getBMIValue()));
-            //graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
-            graph.addXAxis(1.0);
+            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
         }
         return graph;
     }

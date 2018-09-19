@@ -39,6 +39,12 @@ public class GraphController {
     @FXML
     private NumberAxis yAxis;
 
+    @FXML
+    private NumberAxis xAxis2;
+
+    @FXML
+    private NumberAxis yAxis2;
+
     /**
      * The function that runs when you hit the "Distance over time" button
      * Grabs the distance data for the currently data activity selected
@@ -148,6 +154,11 @@ public class GraphController {
         graph.createSymbolsProperty();
     }
 
+    /**
+     * The function that runs when you hit the "BMI over time" button
+     * Grabs the BMI data from the user entries
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
     public void showBmi() {
         ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
         StatisticsService graphData = user.getStatsService();
@@ -156,10 +167,34 @@ public class GraphController {
 
         graph2.getXAxis().setTickLabelsVisible(false);
 
-        xAxis.setLabel("Time");
-        yAxis.setLabel("BMI Value");
+        xAxis2.setLabel("Time");
+        yAxis2.setLabel("BMI Value");
         series.setName("BMI Over Time");
         graph2.setTitle("BMI Visualization");
+
+        graph2.setCreateSymbols(false);
+        lineChartData.add(series);
+        graph2.setData(lineChartData);
+        graph2.createSymbolsProperty();
+    }
+
+    /**
+     * The function that runs when you hit the "BMI over time" button
+     * Grabs the BMI data from the user entries
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
+    public void showWeighta() {
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
+        StatisticsService graphData = user.getStatsService();
+        GraphXY xyData = graphData.getGraphDataWeight();
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+
+        graph2.getXAxis().setTickLabelsVisible(false);
+
+        xAxis2.setLabel("Time");
+        yAxis2.setLabel("Weight (kg)");
+        series.setName("Weight Over Time");
+        graph2.setTitle("Weight Change Visualization");
 
         graph2.setCreateSymbols(false);
         lineChartData.add(series);
