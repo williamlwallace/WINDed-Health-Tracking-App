@@ -54,15 +54,14 @@ public class SplashController implements Initializable {
 
         fadeIn.play();
 
-        String musicFile = "Winded Chime.wav";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
+//        String musicFile = "../../../resources/views/Winded Chime.wav";
+//        Media sound = new Media(new File(musicFile).toURI().toString());
+//        MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
         SlideInLeft anim1 = new SlideInLeft(logo);
         anim1.setSpeed(1.2);
         anim1.play();
-        mediaPlayer.play();
+//        mediaPlayer.play();
         LightSpeedOut anim2 = new LightSpeedOut(logo);
         anim2.setDelay(Duration.seconds(0.5));
         anim2.setSpeed(2);
