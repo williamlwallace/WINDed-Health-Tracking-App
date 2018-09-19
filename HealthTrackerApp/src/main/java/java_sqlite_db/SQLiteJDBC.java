@@ -291,7 +291,7 @@ public class SQLiteJDBC {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         try {
             date = dateFormat.parse(dateString);
-            System.out.println(date.toString());
+            //System.out.println(date.toString());
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -324,7 +324,11 @@ public class SQLiteJDBC {
                 date = resultSet.getString("date");
                 activityList = new ActivityList(title);
                 activityList.setCreationDate(getDateFromString(date));
-                activityList.setActivityList(getActivityListData(connection, title, date, user));
+                ArrayList<Data> dataArrayList = getActivityListData(connection, title, date, user);
+                for (Data d: dataArrayList) {
+                    System.out.println(d.getTitle());
+                    activityList.insertActivity(d);
+                }
                 listOfActivities.add(activityList);
             }
         } catch (SQLException e) {
@@ -362,33 +366,37 @@ public class SQLiteJDBC {
                 newDateTimes = getActivityDateTimes(connection, dataID);
                 newCoordinatesList = getActivityCoordinates(connection, dataID);
                 newHeartRateList = getActivityHeartRates(connection, dataID);
+                System.out.println("Data created" +  "DataID:" + dataID);
                 switch (dataType) {
-                    case "walk":
+                    case "WALK":
                         dataTypeEnum = DataType.WALK;
                         data = new WalkData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
-                    case "hike":
+                    case "HIKE":
                         dataTypeEnum = DataType.HIKE;
                         data = new HikeData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
-                    case "run":
+                    case "RUN":
                         dataTypeEnum = DataType.RUN;
                         data = new RunData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
-                    case "climb":
+                    case "CLIMB":
                         dataTypeEnum = DataType.CLIMB;
                         data = new ClimbData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
-                    case "bike":
+                    case "BIKE":
                         dataTypeEnum = DataType.BIKE;
                         data = new BikeData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
-                    case "swim":
+                    case "SWIM":
                         dataTypeEnum = DataType.SWIM;
                         data = new SwimData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                 }
-                activityListData.add(data);
+                if (data!=null) {
+                    activityListData.add(data);
+                }
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -515,7 +523,7 @@ public class SQLiteJDBC {
             for (Data activity : activityList.getActivityList()) {
                 //Need to add data Id
                 //!!!!!!!!!!!!!!!!!!
-                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), activityList.getCreationDate().toString())) {
+                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString())) {
                     //NOTE The placeholder += 1
                     for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
                         insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
@@ -556,8 +564,8 @@ public class SQLiteJDBC {
             String title = getUsersActivityListCollectionTitle(conn, userId);
             ActivityListCollection userCollection = new ActivityListCollection(title);
             user.setUserActivities(userCollection);
-
-            user.getUserActivities().setActivityListCollection(getUsersActivityLists(conn, userId, user));
+            ArrayList<ActivityList> activityList = getUsersActivityLists(conn, userId, user);
+            user.getUserActivities().setActivityListCollection(activityList);
 
 
             return user;
@@ -573,7 +581,7 @@ public class SQLiteJDBC {
 
     public static void main(String[] args) {
         SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
-        /*Connection conn = connect();
+        Connection conn = connect();
         newDataBaseJDBC.deleteAllData(conn);
         try {
             conn.close();
@@ -594,10 +602,50 @@ public class SQLiteJDBC {
             userTest.getUserActivities().insertActivityList(activityList);
 
             newDataBaseJDBC.saveUser(userTest, 1);
+            System.out.println(userTest.getName());
+            System.out.println(userTest.getAge());
+            System.out.println(userTest.getWeight());
+            System.out.println(userTest.getHeight());
+            System.out.println(userTest.getSex());
+            for (ActivityList a : userTest.getUserActivities().getActivityListCollection()) {
+                System.out.println(a.getTitle());
+                for (Data d : a.getActivityList()) {
+                    System.out.println(d.getTitle());
+                    System.out.println(d.getCoordinatesArrayList().get(0).getLatitude());
+                    System.out.println(d.getHeartRateList().get(0));
+                    System.out.println(d.getAllDateTimes().get(0));
+                }
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }*/
+        }
+
+
+        System.out.println("_____________________________________________________________________");
+        System.out.println("_____________________________________________________________________");
+
+        User userTestRetrieved = newDataBaseJDBC.retrieveUser(1);
+        System.out.println(userTestRetrieved.getName());
+        System.out.println(userTestRetrieved.getAge());
+        System.out.println(userTestRetrieved.getWeight());
+        System.out.println(userTestRetrieved.getHeight());
+        System.out.println(userTestRetrieved.getSex());
+        for (ActivityList a : userTestRetrieved.getUserActivities().getActivityListCollection()) {
+            System.out.println(a.getTitle());
+            for (Data d : a.getActivityList()) {
+                System.out.println(d.getTitle());
+                System.out.println(d.getCoordinatesArrayList().get(0).getLatitude());
+                System.out.println(d.getHeartRateList().get(0));
+                System.out.println(d.getAllDateTimes().get(0));
+            }
+        }
+
+
+
+
+
+
 
 
 
