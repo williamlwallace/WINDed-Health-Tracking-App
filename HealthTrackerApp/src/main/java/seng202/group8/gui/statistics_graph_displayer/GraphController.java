@@ -13,7 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.Data;
@@ -22,9 +24,19 @@ import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.User;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class GraphController {
+
+    @FXML
+    private Button bmi;
+
+    @FXML
+    private Button weight;
+
+    @FXML
+    private Label time;
 
     @FXML
     private SplitPane splitPane;
@@ -221,7 +233,7 @@ public class GraphController {
         series.setName("BMI Over Time");
         graph2.setTitle("BMI Visualization");
 
-        graph2.setCreateSymbols(false);
+        //graph2.setCreateSymbols(false);
         lineChartData.add(series);
         graph2.setData(lineChartData);
         graph2.createSymbolsProperty();
@@ -245,7 +257,7 @@ public class GraphController {
         series.setName("Weight Over Time");
         graph2.setTitle("Weight Change Visualization");
 
-        graph2.setCreateSymbols(false);
+        //graph2.setCreateSymbols(false);
         lineChartData.add(series);
         graph2.setData(lineChartData);
         graph2.createSymbolsProperty();
@@ -304,10 +316,23 @@ public class GraphController {
      */
     public void setCurrentData(Data currentData) {
         this.currentData = currentData;
-        System.out.println(currentData.getAllDateTimes().get(0));
-        String stringb = currentData.getTitle() + "\n" + "A";
-        String string = currentData.getAllDateTimes().get(0).toString() + " - till - " + currentData.getAllDateTimes().get(currentData.getAllDateTimes().size() - 1).toString();
-        dataName.setText(string);
+        dataName.setText(currentData.getTitle());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy - HH:mm:ss");
+        LocalDateTime after = currentData.getAllDateTimes().get(currentData.getAllDateTimes().size() - 1);
+        LocalDateTime before = currentData.getAllDateTimes().get(0);
+        String amOrPm1 = "AM";
+        String amOrPm2 = "AM";
+        if (before.getHour() > 12) {
+            before = before.minusHours(12);
+            amOrPm1 = "PM";
+        }
+        if (after.getHour() > 12) {
+            after = after.minusHours(12);
+            amOrPm2 = "PM";
+        }
+        System.out.println(after.format(formatter));
+        String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
+        time.setText(string);
     }
 
     /**
@@ -315,9 +340,24 @@ public class GraphController {
      */
     public void updateData() {
         dataName.setText(currentData.getTitle());
-        String string = currentData.getAllDateTimes().get(0).toString() + " - till - " + currentData.getAllDateTimes().get(currentData.getAllDateTimes().size() - 1).toString();
-        dataName.setText(string);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy - HH:mm:ss");
+        LocalDateTime after = currentData.getAllDateTimes().get(currentData.getAllDateTimes().size() - 1);
+        LocalDateTime before = currentData.getAllDateTimes().get(0);
+        String amOrPm1 = "AM";
+        String amOrPm2 = "AM";
+        if (before.getHour() > 12) {
+            before = before.minusHours(12);
+            amOrPm1 = "PM";
+        }
+        if (after.getHour() > 12) {
+            after = after.minusHours(12);
+            amOrPm2 = "PM";
+        }
+        System.out.println(after.format(formatter));
+        String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
+        time.setText(string);
         showDistance();
+        showBmi();
     }
 
     /**
@@ -327,26 +367,46 @@ public class GraphController {
         ActivityListCollection activities = user.getUserActivities();
         this.allData = activities.getAllData();
         dataSize = allData.size();
-        setCurrentData(allData.get(dataSize - 1));
-        currentDataIndex = dataSize - 1;
-        labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
-        labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
-        previous.setStyle("-fx-background-color:  #2e86c1");
-        next.setStyle("-fx-background-color:  #2e86c1");
-        dataName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        if (dataSize == 0) {
+            splitPane.setOpacity(0);
+            Label addData = new Label("");
+            Stage popUp = new Stage();
+            popUp.initOwner(primaryStage);
+            VBox dialogVbox = new VBox();
+            Label message = new Label("No activity data detected please go to the activity log page and upload a file");
+            message.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; ");
+            message.setWrapText(true);
+            dialogVbox.getChildren().add(message);
+            Scene popUpScene = new Scene(dialogVbox, 200, 100);
+            popUp.setScene(popUpScene);
+            popUp.show();
+        } else {
+            setCurrentData(allData.get(dataSize - 1));
+            currentDataIndex = dataSize - 1;
+            labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+            labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+            previous.setStyle("-fx-background-color:  #2e86c1");
+            next.setStyle("-fx-background-color:  #2e86c1");
+            dataName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+            time.setStyle("-fx-font-weight: bold;");
+            weight.setStyle("-fx-background-color:  #2e86c1");
+            bmi.setStyle("-fx-background-color:  #2e86c1");
+            comboBox.setStyle("-fx-background-color:  #2e86c1; -fx-font-color: #ffff");
 
-        // Makes sure the divider's value can't be changed
-        SplitPane.Divider divider = splitPane.getDividers().get(0);
-        divider.positionProperty().addListener(new ChangeListener<Number>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
+
+            // Makes sure the divider's value can't be changed
+            SplitPane.Divider divider = splitPane.getDividers().get(0);
+            divider.positionProperty().addListener(new ChangeListener<Number>()
             {
-                divider.setPosition(0.55);
-            }
-        });
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
+                {
+                    divider.setPosition(0.55);
+                }
+            });
 
-        updateData();
+            updateData();
+        }
     }
 
     /**
