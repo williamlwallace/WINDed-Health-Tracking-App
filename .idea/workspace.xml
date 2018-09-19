@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="Finished the new user window that Sam had started, now it works completely.">
+    <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayerController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayerController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarView.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarView.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/calendar_view.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/calendar_view.fxml" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/mainFrame.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/mainFrame.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,139 +23,86 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.27437246">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="GetUserInfoController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GoalsService.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-255">
-                  <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="goals_displayer.fxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="280" lean-forward="false" selection-start-line="8" selection-start-column="280" selection-end-line="8" selection-end-column="280" />
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="JavaFX-Scene-Builder">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ActivityGoal.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/ActivityGoal.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.77433">
-          <split-first>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="GoalsDisplayerController.java" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayerController.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="242">
-                      <caret line="75" column="54" lean-forward="true" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                        <element signature="e#2962#4613#0" expanded="true" />
-                        <element signature="e#4612#4613#0" expanded="true" />
-                        <element signature="e#5080#5081#0" expanded="true" />
-                        <element signature="e#5107#5108#0" expanded="true" />
-                        <element signature="e#5145#5146#0" expanded="true" />
-                        <element signature="e#5177#5178#0" expanded="true" />
-                        <element signature="e#5208#5209#0" expanded="true" />
-                        <element signature="e#5236#5237#0" expanded="true" />
-                        <element signature="e#5277#5278#0" expanded="true" />
-                        <element signature="e#5311#5312#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="FXMLLoader.java" pinned="false" current-in-tab="false">
-                <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="219">
-                      <caret line="2442" column="0" lean-forward="false" selection-start-line="2442" selection-start-column="0" selection-end-line="2442" selection-end-column="0" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="GoalsDisplayer.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="525">
-                      <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="825">
-                      <caret line="62" column="37" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="WeightLossGoal.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/WeightLossGoal.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="165">
-                      <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="FrequencyGoal.java" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="60">
-                      <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="GetUserInfoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoalsService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding>
+                <element signature="method#tidyUpWeightLossGoals#0;class#GoalsService#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUIController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="129" column="62" lean-forward="true" selection-start-line="129" selection-start-column="62" selection-end-line="129" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalendarViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="e#851#852#0" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalendarView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-95">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="goals_displayer.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="280" lean-forward="false" selection-start-line="8" selection-start-column="280" selection-end-line="8" selection-end-column="280" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActivityGoal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/ActivityGoal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -188,13 +139,13 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayerController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java" />
       </list>
     </option>
   </component>
@@ -289,69 +240,15 @@
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="goals_displayer" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics_graph_displayer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="user_info_gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="goals_service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="goals_service" type="462c0819:PsiDirectoryNode" />
-              <item name="goal_types" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -449,8 +346,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/audio" />
       <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views" />
+      <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/audio" />
       <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/audio" />
       <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/html" />
       <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources" />
@@ -468,7 +365,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GoalsDisplayer">
+  <component name="RunManager" selected="Application.GUI">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module />
       <option name="HTML_USED" value="false" />
@@ -654,8 +551,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.GoalsDisplayer" />
-        <item index="1" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="0" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="1" class="java.lang.String" itemvalue="Application.GoalsDisplayer" />
         <item index="2" class="java.lang.String" itemvalue="Application.GetUserInfo" />
         <item index="3" class="java.lang.String" itemvalue="Application.Graphs" />
         <item index="4" class="java.lang.String" itemvalue="Application.ActivityListCollectionDisplay" />
@@ -680,7 +577,7 @@
       <workItem from="1537253049781" duration="7542000" />
       <workItem from="1537264187410" duration="2000" />
       <workItem from="1537318631229" duration="7590000" />
-      <workItem from="1537326512018" duration="4012000" />
+      <workItem from="1537326512018" duration="6263000" />
     </task>
     <task id="LOCAL-00001" summary="Added resource folder for everyone to migrarte their resources on.">
       <created>1537231446993</created>
@@ -717,11 +614,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537326151864</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Started implementing the goals view. Found more problems than expected.">
+      <created>1537330570034</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1537330570034</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24470000" />
+    <option name="totallyTimeSpent" value="26721000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -744,14 +648,14 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13702929" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07635983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10564853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08591249" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3420491" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -778,7 +682,8 @@
     <MESSAGE value="Finished the new user window that Sam had started, now it works completely." />
     <MESSAGE value="Created a flow with a login and mainFrame working with MVC model and data sharing." />
     <MESSAGE value="Started on the GoalsView. Can display goals depending on type." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started on the GoalsView. Can display goals depending on type." />
+    <MESSAGE value="Started implementing the goals view. Found more problems than expected." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started implementing the goals view. Found more problems than expected." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -787,35 +692,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="72" column="57" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
-          <folding>
-            <element signature="e#5035#5036#0" expanded="false" />
-            <element signature="e#5062#5063#0" expanded="false" />
-            <element signature="e#5100#5101#0" expanded="false" />
-            <element signature="e#5132#5133#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5191#5192#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5266#5267#0" expanded="false" />
-            <marker date="1537326171940" expanded="true" signature="5001:5006" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
@@ -902,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/googleMapsView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="8" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Splash.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -939,6 +808,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -1074,14 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1110,24 +972,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
+        <state relative-caret-position="0">
           <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="62" column="37" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -1136,14 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1167,42 +1005,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="2442" column="0" lean-forward="false" selection-start-line="2442" selection-start-column="0" selection-end-line="2442" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/WeightLossGoal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="75" column="54" lean-forward="true" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
+        <state relative-caret-position="107">
+          <caret line="66" column="78" lean-forward="true" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2962#4613#0" expanded="true" />
@@ -1216,6 +1022,102 @@
             <element signature="e#5277#5278#0" expanded="true" />
             <element signature="e#5311#5312#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/GoalsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="method#tidyUpWeightLossGoals#0;class#GoalsService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="2442" column="0" lean-forward="false" selection-start-line="2442" selection-start-column="0" selection-end-line="2442" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="62" column="37" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/WeightLossGoal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ciao.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/googleMapsView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="129" column="62" lean-forward="true" selection-start-line="129" selection-start-column="62" selection-end-line="129" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

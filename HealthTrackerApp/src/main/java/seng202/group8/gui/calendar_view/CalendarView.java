@@ -7,12 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.*;
-import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -54,7 +52,7 @@ public class CalendarView extends Application {
     public void start(Stage primaryStage) throws IOException, Exception {
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("calendar_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/resources/views/calendar_view.fxml"));
 
         Parent root = loader.load();
         CalendarViewController controller = (CalendarViewController) loader.getController();

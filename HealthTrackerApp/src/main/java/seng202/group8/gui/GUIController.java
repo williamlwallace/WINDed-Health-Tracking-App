@@ -1,6 +1,7 @@
 package seng202.group8.gui;
 
 import com.jfoenix.controls.JFXButton;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
+import seng202.group8.gui.calendar_view.CalendarViewController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
 
@@ -156,6 +158,20 @@ public class GUIController implements Initializable {
         homeBtn.setStyle("-fx-background-color: transparent");
         activityBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
+    }
+
+    @FXML
+    private void loadCalendar(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/calendar_view.fxml"));
+        BorderPane calendarScene = loader.load();
+        CalendarViewController calendarViewController = loader.getController();
+        calendarViewController.setUser(user);
+        calendarViewController.setCurrentStage(stage);
+        scene.getChildren().setAll(calendarScene);
+        statsBtn.setStyle("-fx-background-color: #2874a6");
+        homeBtn.setStyle("-fx-background-color: transparent");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
     public User getUser() {
