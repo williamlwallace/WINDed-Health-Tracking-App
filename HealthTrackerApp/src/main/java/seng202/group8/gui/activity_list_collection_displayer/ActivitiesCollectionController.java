@@ -183,7 +183,11 @@ public class ActivitiesCollectionController {
 
     }
 
-    //NEED TO UNDERSTAND WHAT IS GOING ON IN THE PARSER
+    /**
+     * Written by Sam, takes the filename from searchForFile() and parses the data. Handles errors my opening new windows which give the user information of the errors.
+     * @param event
+     * @throws Exception
+     */
     public void uploadFile(MouseEvent event) throws Exception {
         //System.out.println("Ciao");
         if (csvToParse != null && titleField.getText() != null && !titleField.getText().isEmpty()) {

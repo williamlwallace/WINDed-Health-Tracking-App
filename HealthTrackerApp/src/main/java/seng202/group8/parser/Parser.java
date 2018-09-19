@@ -40,7 +40,7 @@ public class Parser {
     private String filename;
     private int lineNum;
     /**
-     * Receives a filename and starts reading the data activity by activity
+     * Receives a filename and creates the list of type trip phrases.
      * @param newFilename
      * @throws Exception
      */
@@ -56,6 +56,10 @@ public class Parser {
         filename = newFilename;
     }
 
+    /**
+     * Starts parsing the entire file sent in.
+     * @throws Exception
+     */
     public void parseFile() throws Exception {
         lineNum = 0;
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
@@ -134,7 +138,7 @@ public class Parser {
         }
     }
     /**
-     * Receives a activity and collates the data from it
+     * Receives a activity and collates the data from it. Throws custom errors so the GUI can handle the information
      * @param line
      * @param csvReader
      * @throws Exception
@@ -276,6 +280,11 @@ public class Parser {
         return dataList;
     }
 
+    /**
+     * Parses a given file, here for testing purposes.
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
         Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
@@ -287,6 +296,11 @@ public class Parser {
         }
     }
 
+    /**
+     * adds a key phrase into the collection of trip phrases for finding the type
+     * @param keyWord
+     * @param type
+     */
     public void add(String keyWord, int type) {
         acceptedValues.clear();
         switch (type) {

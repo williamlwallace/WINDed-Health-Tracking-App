@@ -46,6 +46,11 @@ public class ActivityListCollection {
         return i;
     }
 
+    /**
+     * Writen by Sam. Checks for a duplicate entry of a given title
+     * @param title
+     * @return a integer index of the location of the duplicate list
+     */
     public int checkDuplicate(String title) {
         int toReturn = -1;
         for (int i = 0; i < activityListCollection.size(); i++) {

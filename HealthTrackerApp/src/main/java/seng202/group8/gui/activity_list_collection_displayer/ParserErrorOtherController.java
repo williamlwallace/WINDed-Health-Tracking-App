@@ -16,6 +16,9 @@ public class ParserErrorOtherController {
 
     private String errorMessage;
 
+    /**
+     * Initializes the screen by setting the title to display details about the error
+     */
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
@@ -23,6 +26,10 @@ public class ParserErrorOtherController {
         });
     }
 
+    /**
+     * Quits out of the window.
+     * @param event
+     */
     public void quit(ActionEvent event) {
         Stage stage = (Stage) errorText.getScene().getWindow();
         stage.close();

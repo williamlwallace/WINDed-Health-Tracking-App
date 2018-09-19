@@ -32,6 +32,9 @@ public class ParserErrorTypeController {
 
     private ActivitiesCollectionController parentControl;
 
+    /**
+     * Initializes the screen by setting the title to display details about the error
+     */
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
@@ -40,11 +43,20 @@ public class ParserErrorTypeController {
         });
     }
 
+    /**
+     * Quits the window
+     * @param event
+     */
     public void quit(ActionEvent event) {
         Stage stage = (Stage) errorText.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Receives the information that the user gave and give it to the parser so it can continue to parse the file. Again handles errors.
+     * @param event
+     * @throws Exception
+     */
     public void enter(ActionEvent event) throws Exception {
         String phraseReturn = null;
         int type = 0;
