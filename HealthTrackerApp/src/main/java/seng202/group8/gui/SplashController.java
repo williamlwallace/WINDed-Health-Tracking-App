@@ -54,7 +54,7 @@ public class SplashController implements Initializable {
 
         fadeIn.play();
 
-        String musicFile = "Winded Chime.wav";
+        String musicFile = "HealthTrackerApp/src/main/java/seng202/group8/gui/Winded Chime.wav";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
