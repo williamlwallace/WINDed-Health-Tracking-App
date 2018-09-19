@@ -38,7 +38,15 @@ public class Graphs extends Application {
         user.updateBMI(10.0);
         user.updateBMI(20.0);
         user.updateBMI(30.0);
-        //user.getUserStats().getUserBMITypeRecords().get(0).setDate(LocalDateTime.now());
+        user.getUserStats().getUserBMITypeRecords().get(0).setDate(LocalDateTime.now().plusMinutes(5));
+        user.getUserStats().getUserBMITypeRecords().get(1).setDate(LocalDateTime.now().plusMinutes(10));
+        user.getUserStats().getUserBMITypeRecords().get(2).setDate(LocalDateTime.now().plusMinutes(15));
+        user.updateWeight(10.0);
+        user.updateWeight(20.0);
+        user.updateWeight(30.0);
+        user.getUserStats().getUserWeightRecords().get(0).setDate(LocalDateTime.now().plusMinutes(5));
+        user.getUserStats().getUserWeightRecords().get(1).setDate(LocalDateTime.now().plusMinutes(10));
+        user.getUserStats().getUserWeightRecords().get(2).setDate(LocalDateTime.now().plusMinutes(15));
     }
 
     /**
