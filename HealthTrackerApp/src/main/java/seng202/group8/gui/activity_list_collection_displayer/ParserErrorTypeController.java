@@ -71,6 +71,8 @@ public class ParserErrorTypeController {
                 case "Water Sports":
                     type = 7;
                     break;
+                default:
+                    break;
             }
         }
         if (type != 0 && phraseReturn != null) {
