@@ -60,7 +60,7 @@ public class Home extends Application {
 
         //setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/views/home.fxml"));
 
         Parent root = loader.load();
         HomeController controller = (HomeController) loader.getController();

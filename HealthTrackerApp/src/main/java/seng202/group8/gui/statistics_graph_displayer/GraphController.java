@@ -95,7 +95,7 @@ public class GraphController {
                 showStress();
                 break;
             case "Speed Over Time":
-                showDistance();
+                showSpeed();
                 break;
             default:
                 showDistance();
@@ -211,6 +211,33 @@ public class GraphController {
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }
+    /**
+     * The function that runs when you hit the "Speed over time" button
+     * Grabs the Speed data for the currently data activity selected
+     * Displays it on the graph and sets x and y axis values / customizations
+     */
+    public void showSpeed() {
+        ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
+        StatisticsService graphData = user.getStatsService();
+        GraphXY xyData = graphData.getSpeedGraphOverTime(currentData);
+        LineChart.Series<Double, Double> series = generateSeries(xyData);
+
+        graph.getXAxis().setTickLabelsVisible(false);
+        Double maxStress = (double) currentData.getStressLevelMax();
+        this.yAxis.setUpperBound(maxStress);
+        yAxis.setLowerBound((double) currentData.getStressLevelMin());
+
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Speed (km/hr)");
+        series.setName("Speed Over Time");
+        graph.setTitle("Speed Visualization");
+
+        graph.setCreateSymbols(false);
+        lineChartData.add(series);
+        graph.setData(lineChartData);
+        graph.createSymbolsProperty();
+    }
+
 
     /**
      * The function that runs when you hit the "BMI over time" button
@@ -262,6 +289,8 @@ public class GraphController {
         graph2.setData(lineChartData);
         graph2.createSymbolsProperty();
     }
+
+
 
     /**
      * Generates the series needed for the graphs to show, adds the graphXY axis arrayLists to

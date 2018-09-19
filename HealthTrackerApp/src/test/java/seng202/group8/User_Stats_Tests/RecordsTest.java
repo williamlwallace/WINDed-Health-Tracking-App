@@ -10,10 +10,7 @@ import seng202.group8.user.user_stats.*;
 import static org.junit.Assert.*;
 import static seng202.group8.user.BMIType.NORMAL;
 import static seng202.group8.user.BMIType.LIGHT;
-import static seng202.group8.user.StressLevelType.NOTPERCEIVED;
-import static seng202.group8.user.StressLevelType.PERCEIVED;
-
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -53,7 +50,7 @@ public class RecordsTest {
     @Test
     public void checkDateOfWeightRecord(){
         weightRecord.createDate();
-        Date date = new Date();
+        LocalDateTime date = LocalDateTime.now();
         assertEquals(weightRecord.getDate(), date);
     }
 
@@ -72,7 +69,7 @@ public class RecordsTest {
     @Test
     public void checkDateOfBMIRecord(){
         bmiRecord.createDate();
-        Date date = new Date();
+        LocalDateTime date = LocalDateTime.now();
         assertEquals(bmiRecord.getDate(), date);
     }
 

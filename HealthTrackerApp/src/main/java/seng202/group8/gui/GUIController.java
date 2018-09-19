@@ -1,12 +1,10 @@
 package seng202.group8.gui;
 
 import com.jfoenix.controls.JFXButton;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -18,7 +16,6 @@ import seng202.group8.gui.calendar_view.CalendarViewController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -99,7 +96,7 @@ public class GUIController implements Initializable {
 
 
     public void setToHome() throws IOException {
-        BorderPane homeScene = FXMLLoader.load(getClass().getResource("home.fxml"));
+        BorderPane homeScene = FXMLLoader.load(getClass().getResource("../../../resources/views/home.fxml"));
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
     }
@@ -107,7 +104,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadHome(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         scene.getChildren().setAll(homeScene);
