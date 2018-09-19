@@ -9,6 +9,7 @@ import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
+import javax.jnlp.IntegrationService;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -304,7 +305,7 @@ public class SQLiteJDBC {
         return localDateTime;
     }
 
-    public ArrayList<ActivityList> getUsersActivityLists(Connection connection, Integer userId) {
+    public ArrayList<ActivityList> getUsersActivityLists(Connection connection, Integer userId, User user) {
         assert null != connection && null != userId;
         ArrayList<ActivityList> listOfActivities= new ArrayList<ActivityList>();
         ActivityList activityList = null;
@@ -323,6 +324,7 @@ public class SQLiteJDBC {
                 date = resultSet.getString("date");
                 activityList = new ActivityList(title);
                 activityList.setCreationDate(getDateFromString(date));
+                activityList.setActivityList(getActivityListData(connection, title, date, user));
                 listOfActivities.add(activityList);
             }
         } catch (SQLException e) {
@@ -330,6 +332,143 @@ public class SQLiteJDBC {
         }
 
         return listOfActivities;
+    }
+
+    public ArrayList<Data> getActivityListData(Connection connection, String activityTitle, String activityDate, User user) {
+        assert null != connection && null != activityTitle && null != activityDate;
+        ArrayList<Data> activityListData = new ArrayList<Data>();
+
+        Integer dataID;
+        Integer userID;
+        String dataType;
+        DataType dataTypeEnum;
+        Data data = null;
+        ArrayList<LocalDateTime> newDateTimes;
+        ArrayList<CoordinateData> newCoordinatesList;
+        ArrayList<Integer> newHeartRateList;
+        String Title = "Forgot to store data title";
+
+        String find = "SELECT data_id, user_id, data_type FROM Data WHERE title=? AND date=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(find);
+            preparedStatement.setString(1, activityTitle);
+            preparedStatement.setString(2, activityDate);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                dataID = resultSet.getInt("data_id");
+                userID = resultSet.getInt("user_id");
+                dataType = resultSet.getString("data_type");
+                newDateTimes = getActivityDateTimes(connection, dataID);
+                newCoordinatesList = getActivityCoordinates(connection, dataID);
+                newHeartRateList = getActivityHeartRates(connection, dataID);
+                switch (dataType) {
+                    case "walk":
+                        dataTypeEnum = DataType.WALK;
+                        data = new WalkData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                    case "hike":
+                        dataTypeEnum = DataType.HIKE;
+                        data = new HikeData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                    case "run":
+                        dataTypeEnum = DataType.RUN;
+                        data = new RunData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                    case "climb":
+                        dataTypeEnum = DataType.CLIMB;
+                        data = new ClimbData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                    case "bike":
+                        dataTypeEnum = DataType.BIKE;
+                        data = new BikeData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                    case "swim":
+                        dataTypeEnum = DataType.SWIM;
+                        data = new SwimData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                }
+                activityListData.add(data);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return activityListData;
+
+    }
+
+    public ArrayList<Integer> getActivityHeartRates(Connection connection, Integer dataId) {
+        assert null != connection && null != dataId;
+        ArrayList<Integer> heartRateData = new ArrayList<Integer>();
+        Integer heartRate;
+        String find = "SELECT HeartRateBPM FROM Heartrate WHERE data_id=?";
+
+        try {
+            PreparedStatement preparedStatement  = connection.prepareStatement(find);
+            preparedStatement.setInt(1, dataId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                heartRate = resultSet.getInt("HeartRateBPM");
+                heartRateData.add(heartRate);
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return heartRateData;
+
+    }
+
+    public ArrayList<LocalDateTime> getActivityDateTimes(Connection connection, Integer dataId) {
+        assert null != connection && null != dataId;
+        ArrayList<LocalDateTime> dateData = new ArrayList<LocalDateTime>();
+        LocalDateTime dateTime;
+        String find = "SELECT DateTime FROM Activity_Time WHERE data_id=?";
+
+        try {
+            PreparedStatement preparedStatement  = connection.prepareStatement(find);
+            preparedStatement.setInt(1, dataId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                dateTime = getLocalDateTimeFromString(resultSet.getString("DateTime"));
+                dateData.add(dateTime);
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return dateData;
+
+    }
+
+    public ArrayList<CoordinateData> getActivityCoordinates(Connection connection, Integer dataId) {
+        assert null != connection && null != dataId;
+        ArrayList<CoordinateData> coordinateData = new ArrayList<CoordinateData>();
+        Double latitude;
+        Double longitude;
+        Double elevation;
+        CoordinateData coordinate;
+        String find = "SELECT latitude, longitude, elevation FROM CoOrdinate WHERE data_id=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(find);
+            preparedStatement.setInt(1, dataId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                latitude = resultSet.getDouble("latitude");
+                longitude = resultSet.getDouble("longitude");
+                elevation = resultSet.getDouble("elevation");
+                coordinate = new CoordinateData(latitude, longitude, elevation);
+                coordinateData.add(coordinate);
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return coordinateData;
     }
 
 
@@ -418,11 +557,9 @@ public class SQLiteJDBC {
             ActivityListCollection userCollection = new ActivityListCollection(title);
             user.setUserActivities(userCollection);
 
-            user.getUserActivities().setActivityListCollection(getUsersActivityLists(conn, userId)); //getUsersActivityList is unfinished: needs date conversion
+            user.getUserActivities().setActivityListCollection(getUsersActivityLists(conn, userId, user));
 
 
-
-            user.setUserActivities(userCollection);
             return user;
 
         } catch (SQLException e) {
