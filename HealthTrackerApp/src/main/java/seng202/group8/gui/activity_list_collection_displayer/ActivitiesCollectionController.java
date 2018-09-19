@@ -3,11 +3,15 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
@@ -96,45 +100,66 @@ public class ActivitiesCollectionController {
             }
             rootNode.getChildren().add(activityListNode);
         }
+        activityListCollectionTreeView.setTooltip(new Tooltip("Double click on any of the activities containers to add a new activity to its list!"));
         activityListCollectionTreeView.setRoot(rootNode);
     }
 
+
+
+
+
+
     public void setUpWebView(String htmlFile) {
         WebEngine webEngine = googleMapsWebView.getEngine();
-        System.out.println(htmlFile);
+//        System.out.println(htmlFile);
         webEngine.loadContent(htmlFile);
     }
 
 
     public void showNewInsightsAndMap(MouseEvent mouseEvent) throws IOException {
         TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null && selectedItem.isLeaf()) {
-            System.out.println(selectedItem.getValue());
-            TreeItem<String> parent = selectedItem.getParent();
-            int dataIndex = parent.getChildren().indexOf(selectedItem);
-            int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+        System.out.println("Selected Item:" + selectedItem);
+        if (selectedItem != null ) {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf()) {
+                System.out.println("Ciao " + selectedItem.getValue());
+                TreeItem<String> parent = selectedItem.getParent();
+                int dataIndex = parent.getChildren().indexOf(selectedItem);
+                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
 
-            StringBuilder bldr = new StringBuilder();
-            String str;
+                StringBuilder bldr = new StringBuilder();
+                String str;
 
-            URL urlGoogleMaps = getClass().getResource("../../../../resources/views/googleMapsView.html");
+                URL urlGoogleMaps = getClass().getResource("../../../../resources/views/googleMapsView.html");
 
-            String strGoogleMaps = "";
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(urlGoogleMaps.openStream()));
+                String strGoogleMaps = "";
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(urlGoogleMaps.openStream()));
 
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                strGoogleMaps += (inputLine + "\n");
-            in.close();
+                String inputLine;
+                while ((inputLine = in.readLine()) != null)
+                    strGoogleMaps += (inputLine + "\n");
+                in.close();
 
 
-            Data data = user.getUserActivities().getActivityListCollection().get(activityListIndex).getActivity(dataIndex);
-            String htmlFile = jsInjection(strGoogleMaps, data);
-            setUpWebView(htmlFile);
-            setInsights(user, data);
+                Data data = user.getUserActivities().getActivityListCollection().get(activityListIndex).getActivity(dataIndex);
+                String htmlFile = jsInjection(strGoogleMaps, data);
+                setUpWebView(htmlFile);
+                setInsights(user, data);
+            } else if (!selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot() && mouseEvent.getClickCount() == 2) {
+                System.out.println("This should happen only if I click a non root non leaf element and right click on it");
+                TreeItem<String> parent = selectedItem.getParent();
+                int activityListIndex = parent.getChildren().indexOf(parent);
+                triggerNewActivityDialog(activityListIndex);
+            }
         }
+
     }
+
+
+    private void triggerNewActivityDialog(int activityListIndex) {
+
+    }
+
 
     private String jsInjection(String htmlFile, Data data) {
         htmlFile = htmlFile.replace("&CENTERID", "lat: "
@@ -156,7 +181,7 @@ public class ActivitiesCollectionController {
 
         htmlFile = htmlFile.replace("&FLIGHTPATHVARID", "dataCoordPath");
         htmlFile = htmlFile.replace("&PREVFLIGHTVAR", "dataCoordVar");
-        System.out.println(htmlFile);
+//        System.out.println(htmlFile);
         return htmlFile;
 
     }
@@ -187,7 +212,7 @@ public class ActivitiesCollectionController {
             try {
                 parser.parseFile();
                 for (Data data : parser.getDataList()) {
-                    System.out.println(data.getTitle());
+//                    System.out.println(data.getTitle());
                 }
             } catch (FileNotFoundError e) {
                 ParserErrorOther parseError = new ParserErrorOther();
@@ -215,7 +240,7 @@ public class ActivitiesCollectionController {
                 user.getUserActivities().insertActivityList(new ActivityList("Ciao"));
                 for (Data data : parser.getDataList()) {
                     user.getUserActivities().insertActivityInGivenList(0, data);
-                    System.out.println("Ciao");
+//                    System.out.println("Ciao");
                 }
                 setUpTreeView();
             }
