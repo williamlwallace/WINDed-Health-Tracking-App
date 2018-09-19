@@ -125,9 +125,11 @@ public class Parser {
                 }
                 csvReader.close();
             } catch (FileNotFoundException e) {
+                dataList.clear();
                 throw new FileNotFoundError("The file '" + filename + "' doesn't exist.");
             }
         } else {
+            dataList.clear();
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
     }
@@ -159,6 +161,7 @@ public class Parser {
                 }
             }
             if (activityType.equals("")) {
+                dataList.clear();
                 throw new noTypeError("The activity '" + activityName+ "' doesnt match any of the activity types.");
 //                Scanner scanner = new Scanner(System.in);
 //                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
@@ -229,6 +232,7 @@ public class Parser {
         }
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
+            dataList.clear();
             throw new DataMissingError("Activity '" + activityName + "' is corrupt on line/lines: " + errorLines);
         }
         return line;
@@ -319,4 +323,11 @@ public class Parser {
         acceptedValues.add(waterSports);
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
 }

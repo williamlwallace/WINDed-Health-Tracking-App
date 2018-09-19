@@ -26,24 +26,35 @@ public class ActivityListCollection {
     /**
      *
      * @param activityList, a new ActivityList object to add to the actvityListCollection parameter
-     * @return a boolean value representing the success or failure of the addition of the parameter to the collection.
+     * @return a integer index of the location in the list that the activity list was added.
      */
-    public boolean insertActivityList(ActivityList activityList) {
+    public int insertActivityList(ActivityList activityList) {
         int beforeAddingCollectionSize = activityListCollection.size();
         Date activityListDate = activityList.getCreationDate();
-
-        for (int i = 0; i < activityListCollection.size(); i++) {
+        int i = 0;
+        for (; i < activityListCollection.size(); i++) {
             Date selectedActivityListDate = activityListCollection.get(i).getCreationDate();
             if (activityListDate.before(selectedActivityListDate)) {
                 activityListCollection.add(i, activityList);
                 notifyAllObservers();
-                return true;
+                return i;
             }
         }
         activityListCollection.add(activityList);
-        int afterAddingCollectionSize = activityListCollection.size();
+        //int afterAddingCollectionSize = activityListCollection.size();
         notifyAllObservers();
-        return beforeAddingCollectionSize == (afterAddingCollectionSize - 1);
+        return i;
+    }
+
+    public int checkDuplicate(String title) {
+        int toReturn = -1;
+        for (int i = 0; i < activityListCollection.size(); i++) {
+            String actTitle = activityListCollection.get(i).getTitle();
+            if (title.toLowerCase().equals(actTitle.toLowerCase())) {
+                toReturn = i;
+            }
+        }
+        return toReturn;
     }
 
     public boolean deleteActivityList(int activityListIndex) {

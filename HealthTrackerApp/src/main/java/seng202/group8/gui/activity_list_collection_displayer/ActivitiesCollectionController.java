@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
@@ -58,6 +59,9 @@ public class ActivitiesCollectionController {
     @FXML
     private Text parserInfo;
 
+    @FXML
+    private TextField titleField;
+
     /* TreeView */
     @FXML
     private TreeView activityListCollectionTreeView;
@@ -73,6 +77,7 @@ public class ActivitiesCollectionController {
     private static Stage primaryStage;
     private static User user;
     private String csvToParse;
+    private String activityTitle;
 
 
     public void setInsights(User user, Data data) {
@@ -181,7 +186,8 @@ public class ActivitiesCollectionController {
     //NEED TO UNDERSTAND WHAT IS GOING ON IN THE PARSER
     public void uploadFile(MouseEvent event) throws Exception {
         //System.out.println("Ciao");
-        if (csvToParse != null) {
+        if (csvToParse != null && titleField.getText() != null && !titleField.getText().isEmpty()) {
+            activityTitle = titleField.getText();
             int error = 0;
             Parser parser = new Parser(csvToParse, user);
             try {
@@ -208,22 +214,36 @@ public class ActivitiesCollectionController {
                 ParserErrorType parseError = new ParserErrorType();
                 parseError.setErrorMess(e.getMessage());
                 parseError.setParser(parser);
+                parseError.setParentControl(this);
                 parseError.start(ParserErrorType.classStage);
                 error = 1;
             }
             if (error == 0) {
-                user.getUserActivities().insertActivityList(new ActivityList("Ciao"));
-                for (Data data : parser.getDataList()) {
-                    user.getUserActivities().insertActivityInGivenList(0, data);
-                    System.out.println("Ciao");
+                int add = user.getUserActivities().checkDuplicate(activityTitle);
+                if (add == -1) {
+                    add = user.getUserActivities().insertActivityList(new ActivityList(activityTitle));
+                    for (Data data : parser.getDataList()) {
+                        user.getUserActivities().insertActivityInGivenList(add, data);
+                    }
+                } else {
+                    for (Data data : parser.getDataList()) {
+                        user.getUserActivities().insertActivityInGivenList(add, data);
+                    }
                 }
                 setUpTreeView();
+                List<String> csvArray = Arrays.asList(csvToParse.split("/"));
+                parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
             }
 
         } else {
             System.out.println("csvToParse empty");
         }
     }
+
+    public void setParserInfo(String s) {
+        parserInfo.setText(s);
+    }
+
 
     private static void launchTypeError() {
         Application.launch(ParserErrorType.class);
@@ -244,6 +264,14 @@ public class ActivitiesCollectionController {
 
     public void setPrimaryStage(Stage primaryStage) {
         ActivitiesCollectionController.primaryStage = primaryStage;
+    }
+
+    public String getCSVToParse() {
+        return csvToParse;
+    }
+
+    public String getActivityTitle() {
+        return activityTitle;
     }
 }
 

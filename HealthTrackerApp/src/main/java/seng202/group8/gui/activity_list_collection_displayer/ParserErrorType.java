@@ -15,19 +15,22 @@ public class ParserErrorType extends Application {
 
     private Parser parser;
 
+    private ActivitiesCollectionController parentControl;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("dis: "+errorMess);
+        //System.out.println("dis: "+errorMess);
         classStage = primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ParserErrorType.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         ParserErrorTypeController noType = fxmlLoader.<ParserErrorTypeController>getController();
         noType.setErrorMessage(errorMess);
         noType.setParser(parser);
+        noType.setParentControl(parentControl);
         classStage.setTitle("WINded");
         classStage.setScene(new Scene(root));
         classStage.show();
@@ -43,5 +46,9 @@ public class ParserErrorType extends Application {
 
     public void setParser(Parser parser) {
         this.parser = parser;
+    }
+
+    public void setParentControl(ActivitiesCollectionController parentControl) {
+        this.parentControl = parentControl;
     }
 }
