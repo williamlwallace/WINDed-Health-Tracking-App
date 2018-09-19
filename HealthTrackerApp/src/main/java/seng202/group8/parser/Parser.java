@@ -192,9 +192,10 @@ public class Parser {
         CoordinateData lineCoordinate;
         int finished = 0;
         try {
-            while ((finished == 0) && (line.length > 0) && (!isCorrupt) && (!line[0].equals("#start"))) {
+            while ((finished == 0) && (line.length > 0) && (!line[0].equals("#start"))) {
                 try {
-                    numLines = +1;
+                    //System.out.println("hi peeps");
+                    numLines++;
                     String toFormat = line[0] + ";" + line[1];
                     lineDate = LocalDateTime.parse(toFormat, timeFormat);
                     lineHeart = Integer.parseInt(line[2]);
@@ -212,7 +213,7 @@ public class Parser {
                         errorLines = errorLines + ", (Incorrect number of lines) " + String.valueOf(lineNum);
                     }
                     numErrors += 1;
-                    line = nextActivity(csvReader, line);
+                    line = readLine(csvReader);
                 } catch (NumberFormatException e) {
                     if (errorLines == null) {
                         errorLines = "(Heart-rate or Coordinates) " + String.valueOf(lineNum);
@@ -220,7 +221,7 @@ public class Parser {
                         errorLines = errorLines + ", (Heart-rate or Coordinates) " + String.valueOf(lineNum);
                     }
                     numErrors += 1;
-                    line = nextActivity(csvReader, line);
+                    line = readLine(csvReader);
                 } catch (DateTimeParseException e) {
                     if (errorLines == null) {
                         errorLines = "(date) " + String.valueOf(lineNum);
@@ -228,12 +229,13 @@ public class Parser {
                         errorLines = errorLines + ", (date) " + String.valueOf(lineNum);
                     }
                     numErrors += 1;
-                    line = nextActivity(csvReader, line);
+                    line = readLine(csvReader);
                 }
             }
         } catch (NullPointerException e) {
 
         }
+        //System.out.println("num " + numLines * 0.1 + " num2: " + numErrors);
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
             dataList.clear();
@@ -287,7 +289,7 @@ public class Parser {
      */
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
-        Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
+        Parser parserTest =  new Parser("seng202_2018_example_data_errors.csv", userTest);
         parserTest.parseFile();
         ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
         for (Data d : data) {

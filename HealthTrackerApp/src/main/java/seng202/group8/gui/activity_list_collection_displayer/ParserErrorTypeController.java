@@ -1,5 +1,6 @@
 package seng202.group8.gui.activity_list_collection_displayer;
 
+import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -32,9 +33,7 @@ public class ParserErrorTypeController {
 
     private ActivitiesCollectionController parentControl;
 
-    /**
-     * Initializes the screen by setting the title to display details about the error
-     */
+
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
@@ -136,6 +135,8 @@ public class ParserErrorTypeController {
                 parentControl.setUpTreeView();
                 List<String> csvArray = Arrays.asList(parser.getFilename().split("/"));
                 parentControl.setParserInfo("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
+                SQLiteJDBC database = new SQLiteJDBC();
+                database.saveUser(user, 1);
                 Stage stage = (Stage) errorText.getScene().getWindow();
                 stage.close();
             }

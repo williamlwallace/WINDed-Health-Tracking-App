@@ -2,6 +2,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
+import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 
@@ -237,6 +238,9 @@ public class ActivitiesCollectionController {
                 setUpTreeView();
                 List<String> csvArray = Arrays.asList(csvToParse.split("/"));
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
+                SQLiteJDBC database = new SQLiteJDBC();
+                database.saveUser(user, 1);
+
             }
 
         } else {
