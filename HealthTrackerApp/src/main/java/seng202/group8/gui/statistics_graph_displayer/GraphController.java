@@ -1,5 +1,7 @@
 package seng202.group8.gui.statistics_graph_displayer;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityListCollection;
@@ -23,10 +26,23 @@ import java.util.ArrayList;
 
 public class GraphController {
 
-
+    @FXML
+    private SplitPane splitPane;
 
     @FXML
-    private Label dataname;
+    private Label labelTitle1;
+
+    @FXML
+    private Label labelTitle2;
+
+    @FXML
+    private Button previous;
+
+    @FXML
+    private Button next;
+
+    @FXML
+    private Label dataName;
 
     @FXML
     private LineChart<Double,Double> graph;
@@ -288,14 +304,19 @@ public class GraphController {
      */
     public void setCurrentData(Data currentData) {
         this.currentData = currentData;
-        dataname.setText(currentData.getTitle());
+        System.out.println(currentData.getAllDateTimes().get(0));
+        String stringb = currentData.getTitle() + "\n" + "A";
+        String string = currentData.getAllDateTimes().get(0).toString() + " - till - " + currentData.getAllDateTimes().get(currentData.getAllDateTimes().size() - 1).toString();
+        dataName.setText(string);
     }
 
     /**
      * Updates the information on the page when the used changes the data activity selected and when first loaded
      */
     public void updateData() {
-        dataname.setText(currentData.getTitle());
+        dataName.setText(currentData.getTitle());
+        String string = currentData.getAllDateTimes().get(0).toString() + " - till - " + currentData.getAllDateTimes().get(currentData.getAllDateTimes().size() - 1).toString();
+        dataName.setText(string);
         showDistance();
     }
 
@@ -308,6 +329,23 @@ public class GraphController {
         dataSize = allData.size();
         setCurrentData(allData.get(dataSize - 1));
         currentDataIndex = dataSize - 1;
+        labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+        labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+        previous.setStyle("-fx-background-color:  #2e86c1");
+        next.setStyle("-fx-background-color:  #2e86c1");
+        dataName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+        // Makes sure the divider's value can't be changed
+        SplitPane.Divider divider = splitPane.getDividers().get(0);
+        divider.positionProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
+            {
+                divider.setPosition(0.55);
+            }
+        });
+
         updateData();
     }
 
