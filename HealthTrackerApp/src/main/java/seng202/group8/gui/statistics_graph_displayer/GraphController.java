@@ -8,6 +8,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -44,6 +45,35 @@ public class GraphController {
 
     @FXML
     private NumberAxis yAxis2;
+
+    @FXML
+    private ComboBox comboBox;
+
+    /**
+     * When combo box has selected a new item it will run the specific function required for that graph
+     */
+    public void changeGraph() {
+        switch (comboBox.getValue().toString()) {
+            case "Distance Over Time":
+                showDistance();
+                break;
+            case "Heart Rate Over Time":
+                showHeartRate();
+                break;
+            case "Calories Over Time":
+                showCalories();
+                break;
+            case "Stress Level Over Time":
+                showStress();
+                break;
+            case "Speed Over Time":
+                showDistance();
+                break;
+            default:
+                showDistance();
+                break;
+        }
+    }
 
     /**
      * The function that runs when you hit the "Distance over time" button
@@ -163,6 +193,9 @@ public class GraphController {
         ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
         StatisticsService graphData = user.getStatsService();
         GraphXY xyData = graphData.getGraphDataBMIType();
+        for(int i = 0; i < xyData.getYAxis().size(); i++) {
+            System.out.println(xyData.getYAxis().get(i));
+        }
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
         graph2.getXAxis().setTickLabelsVisible(false);
@@ -183,7 +216,7 @@ public class GraphController {
      * Grabs the BMI data from the user entries
      * Displays it on the graph and sets x and y axis values / customizations
      */
-    public void showWeighta() {
+    public void showWeight() {
         ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
         StatisticsService graphData = user.getStatsService();
         GraphXY xyData = graphData.getGraphDataWeight();

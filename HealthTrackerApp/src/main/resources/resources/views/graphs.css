@@ -1,1 +1,9 @@
 #graph .chart-series-line { -fx-stroke: blue }
+#graph2 .chart-series-line { -fx-stroke: blue }
+#graph .default-color0.chart-line-symbol { -fx-stroke: blue }
+
+.label {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1);
+}

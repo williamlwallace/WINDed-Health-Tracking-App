@@ -27,7 +27,7 @@ public class Graphs extends Application {
      * @throws Exception for when the parser could get errors
      */
     private void setUpMockUser() throws Exception {
-        user = new User("Joel", 19, 72.0, 167.0, Sex.MALE);
+        user = new User("Joel", 19, 5.0, 167.0, Sex.MALE);
         Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
         parserTest.parseFile();
         ArrayList<Data> dataList = parserTest.getDataList();
@@ -38,15 +38,15 @@ public class Graphs extends Application {
         user.updateBMI(10.0);
         user.updateBMI(20.0);
         user.updateBMI(30.0);
-        user.getUserStats().getUserBMITypeRecords().get(0).setDate(LocalDateTime.now().plusMinutes(5));
-        user.getUserStats().getUserBMITypeRecords().get(1).setDate(LocalDateTime.now().plusMinutes(10));
-        user.getUserStats().getUserBMITypeRecords().get(2).setDate(LocalDateTime.now().plusMinutes(15));
+        user.getUserStats().getUserBMITypeRecords().get(1).setDate(LocalDateTime.now().plusMinutes(5));
+        user.getUserStats().getUserBMITypeRecords().get(2).setDate(LocalDateTime.now().plusMinutes(10));
+        user.getUserStats().getUserBMITypeRecords().get(3).setDate(LocalDateTime.now().plusMinutes(15));
         user.updateWeight(10.0);
         user.updateWeight(20.0);
         user.updateWeight(30.0);
-        user.getUserStats().getUserWeightRecords().get(0).setDate(LocalDateTime.now().plusMinutes(5));
-        user.getUserStats().getUserWeightRecords().get(1).setDate(LocalDateTime.now().plusMinutes(10));
-        user.getUserStats().getUserWeightRecords().get(2).setDate(LocalDateTime.now().plusMinutes(15));
+        user.getUserStats().getUserWeightRecords().get(1).setDate(LocalDateTime.now().plusMinutes(1));
+        user.getUserStats().getUserWeightRecords().get(2).setDate(LocalDateTime.now().plusMinutes(2));
+        user.getUserStats().getUserWeightRecords().get(3).setDate(LocalDateTime.now().plusMinutes(4));
     }
 
     /**

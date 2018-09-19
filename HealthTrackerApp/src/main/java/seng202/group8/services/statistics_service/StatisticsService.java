@@ -296,7 +296,7 @@ public class StatisticsService {
         }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()));
-            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
+            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
         }
         return graph;
     }
@@ -315,7 +315,7 @@ public class StatisticsService {
         }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getBmi().getBMIValue()));
-            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
+            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
         }
         return graph;
     }
@@ -435,12 +435,9 @@ public class StatisticsService {
         ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
-        //Double summary = 0.0;
         for (int i = 0; i < time.size() - 1; i++) {
             graph.addXAxis(times.get(i));
-            //summary += calories.get(i);
             graph.addYAxis(calories.get(i));
-            //System.out.println(calories.get(i));
         }
         return graph;
     }
