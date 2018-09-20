@@ -25,7 +25,7 @@ public abstract class Data {
         When there are times that are too difficult to calculate the calories
         using the coordinates, an attempt will be made to give an
         estimation purely based on the heart rate over that time period.
-     * XX TESTS NOT WRITTEN JUST YET*/
+     * XX TESTS NOT WRITTEN JUST YETT*/
 
     private String title;
     //    private DataType = new DataType();
