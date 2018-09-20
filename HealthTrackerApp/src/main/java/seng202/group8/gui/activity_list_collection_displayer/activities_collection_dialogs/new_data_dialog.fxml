@@ -8,7 +8,7 @@
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -18,6 +18,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
@@ -79,7 +80,7 @@
             <Insets right="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="distanceCoveredTextField" maxWidth="60.0" prefHeight="25.0" prefWidth="42.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField fx:id="distanceCoveredTextField" maxWidth="60.0" prefHeight="25.0" prefWidth="42.0" promptText="km" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
@@ -89,14 +90,20 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="descriptionTextField" maxWidth="205.0" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="descriptionTextField" maxWidth="205.0" prefHeight="25.0" prefWidth="200.0" promptText="Eg: walk in the park" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <JFXButton fx:id="createDataButton" prefHeight="25.0" prefWidth="132.0" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+      <JFXToggleButton fx:id="newActivityListToggle" onAction="#togglListener" text="Add to new list" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField fx:id="newActivityListName" prefHeight="20.0" prefWidth="0.0" promptText="Activity list name" GridPane.rowIndex="5">
          <GridPane.margin>
-            <Insets right="20.0" />
+            <Insets left="20.0" right="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <JFXButton onAction="#createActivity" prefHeight="25.0" prefWidth="184.0" text="Reward the effort!" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets left="20.0" />
          </GridPane.margin>
       </JFXButton>
    </children>
