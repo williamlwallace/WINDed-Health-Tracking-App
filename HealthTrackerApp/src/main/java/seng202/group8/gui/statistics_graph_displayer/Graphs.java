@@ -35,12 +35,12 @@ public class Graphs extends Application {
         for (int i = 0; i < dataList.size(); i++) {
             user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
         }
-        user.updateBMI(10.0);
-        user.updateBMI(20.0);
-        user.updateBMI(30.0);
-        user.getUserStats().getUserBMITypeRecords().get(1).setDate(LocalDateTime.now().plusMinutes(5));
-        user.getUserStats().getUserBMITypeRecords().get(2).setDate(LocalDateTime.now().plusMinutes(10));
-        user.getUserStats().getUserBMITypeRecords().get(3).setDate(LocalDateTime.now().plusMinutes(15));
+        //user.updateBMI(10.0);
+        //user.updateBMI(20.0);
+        //user.updateBMI(30.0);
+        //user.getUserStats().getUserBMITypeRecords().get(1).setDate(LocalDateTime.now().plusMinutes(5));
+        //user.getUserStats().getUserBMITypeRecords().get(2).setDate(LocalDateTime.now().plusMinutes(10));
+        //user.getUserStats().getUserBMITypeRecords().get(3).setDate(LocalDateTime.now().plusMinutes(15));
         user.updateWeight(10.0);
         user.updateWeight(20.0);
         user.updateWeight(30.0);

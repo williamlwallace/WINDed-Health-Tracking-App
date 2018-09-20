@@ -1,5 +1,6 @@
 package seng202.group8.gui.home_displayer;
 
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,10 +8,23 @@ import javafx.stage.Stage;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.User;
 
+import java.applet.AppletContext;
+import java.io.IOException;
+import java.net.*;
+
 public class HomeController {
 
     @FXML
     private Label healthText;
+
+    @FXML
+    private Button cardio;
+
+    @FXML
+    private Button brad;
+
+    @FXML
+    private Button tach;
 
     /**
      * Sets the page up when the user first goes into the Home page
@@ -19,7 +33,22 @@ public class HomeController {
         statsService = user.getStatsService();
         statsService.setHealthStatus();
         healthText.setText(statsService.getHealthStatus());
-        System.out.println(statsService.getHealthStatus());
+    }
+
+    public void searchCardio() {
+        this.host.showDocument("https://www.google.com/search?q=Cardiovascular+Mortality");
+    }
+
+    public void searchBrad() {
+        this.host.showDocument("https://www.google.com/search?q=bradycardia");
+    }
+
+    public void searchTach() {
+        this.host.showDocument("https://www.google.com/search?q=Tachicardic");
+    }
+
+    public void setHostServices(HostServices host) {
+        this.host = host;
     }
 
     /**
@@ -28,6 +57,7 @@ public class HomeController {
     private User user;
     private Stage primaryStage;
     private StatisticsService statsService;
+    private HostServices host;
 
     /**
      * Gets the current user using the page

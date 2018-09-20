@@ -30,20 +30,6 @@ public class Home extends Application {
         Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
         parserTest.parseFile();
         ArrayList<Data> dataList = parserTest.getDataList();
-//        ArrayList<Integer> heartRates = new ArrayList<Integer>();
-//        heartRates.add(100);
-//        heartRates.add(115);
-//        heartRates.add(120);
-//        ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
-//        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 10));
-//        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 15));
-//        localTimes.add(LocalDateTime.of(2014, 9, 10, 6, 40, 25));
-//        //30.26881985,-97.83246599,204.4
-//        ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
-//        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
-//        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
-//        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
-//        RunData testData = new RunData("testDistance", DataType.RUN, localTimes, coordinateList, heartRates, user);
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
         for (int i = 0; i < dataList.size(); i++) {
             user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
@@ -68,8 +54,9 @@ public class Home extends Application {
         controller.setUser(user);
         controller.setPrimaryStage(primaryStage);
         controller.setup();
+        controller.setHostServices(getHostServices());
 
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, 1100, 640);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Home");
         primaryStage.show();

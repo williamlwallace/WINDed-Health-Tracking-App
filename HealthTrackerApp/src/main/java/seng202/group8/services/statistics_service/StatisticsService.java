@@ -109,21 +109,21 @@ public class StatisticsService {
         String healthStatus = "";
         Boolean hasRisk = Boolean.FALSE;
         if (healthService.isAtCardiovasMortalityRisk()) {
-            healthStatus += "You are at risk of Cardiovas Mortality\n";
+            healthStatus += "You are at risk of Cardiovascular Mortality\n";
             hasRisk = Boolean.TRUE;
         }
         if (healthService.isBradicardic()) {
-            healthStatus += "You are at risk of Bradicardic\n";
+            healthStatus += "You are at risk of Bradycardia\n";
             hasRisk = Boolean.TRUE;
         }
         if (healthService.isTachicardic()) {
-            healthStatus += "You are at risk of Tachicardic\n";
+            healthStatus += "You are at risk of Tachycardic\n";
             hasRisk = Boolean.TRUE;
         }
         if (!hasRisk) {
             healthStatus += "You currently have no health risks\n Nice work!";
         } else {
-            healthStatus += "Click a link below to find out more";
+            healthStatus += "Click a button below to find out more about your health risks";
         }
         this.healthStatus = healthStatus;
     }

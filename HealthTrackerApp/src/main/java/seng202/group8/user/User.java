@@ -215,8 +215,10 @@ public class User {
      * @param newBMI the new BMI of the user (kg/m**2)
      */
     public void updateBMI(Double newBMI) {
-        setBMI(newBMI);
+        //setBMI(newBMI);
+        BMI bmi = new BMI(newBMI);
         userStats.addUserBMITypeRecords(bmi);
+        this.bmi = bmi;
         notifyAllObservers();
     }
 

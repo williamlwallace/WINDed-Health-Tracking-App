@@ -136,12 +136,13 @@ public class StatisticsServiceTest {
     @Test
     public void testBMIGraph() {
         GraphXY graph = statsService.getGraphDataBMIType();
-        ArrayList<Double> correctY = new ArrayList<Double>(Arrays.asList(23.510204081632654));
-        ArrayList<Double> correctX = new ArrayList<Double>(Arrays.asList(0.0, 1.0));
+        ArrayList<Double> correctY = new ArrayList<Double>(Arrays.asList(23.510204081632654, 3.2653061224489797, 26.122448979591837, 22.857142857142858));
+        ArrayList<Double> correctX = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0));
         GraphXY graph2 = new GraphXY();
         graph2.setXAxis(correctX);
         graph2.setYAxis(correctY);
-        //System.out.println(graph.getYAxis());
+        System.out.println(graph.getXAxis());
+        System.out.println("HELLO HELLOOOOOOOOOOOOOOOOOOOOOOOOOO");
         assertTrue(EqualsBuilder.reflectionEquals(graph, graph2));
     }
 

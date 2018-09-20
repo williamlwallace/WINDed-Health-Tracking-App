@@ -2,6 +2,7 @@ package seng202.group8.gui;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,6 +46,7 @@ public class GUIController implements Initializable {
 
     private User user;
     private Stage stage;
+    private HostServices host;
 
 
     @Override
@@ -61,7 +63,7 @@ public class GUIController implements Initializable {
         try {
             GUI.isSplashLoaded = true;
 
-            StackPane pane = FXMLLoader.load(getClass().getResource("Splash.fxml"));
+            StackPane pane = FXMLLoader.load(getClass().getResource("../../../../resources/resources/views/Splash.fxml"));
             root.getChildren().setAll(pane);
 
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
@@ -103,6 +105,7 @@ public class GUIController implements Initializable {
         HomeController homeController = loader.getController();
         homeController.setPrimaryStage(stage);
         homeController.setUser(user);
+        homeController.setHostServices(host);
         homeController.setup();
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
@@ -121,6 +124,7 @@ public class GUIController implements Initializable {
         homeController.setPrimaryStage(stage);
         homeController.setUser(user);
         homeController.setup();
+        homeController.setHostServices(host);
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
         activityBtn.setStyle("-fx-background-color: transparent");
@@ -204,5 +208,9 @@ public class GUIController implements Initializable {
     @FXML
     private void quitApp(ActionEvent event) {
         stage.close();
+    }
+
+    public void setHostServices(HostServices host) {
+        this.host = host;
     }
 }

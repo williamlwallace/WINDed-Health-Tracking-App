@@ -130,9 +130,9 @@
                   </LineChart>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="bmi" alignment="TOP_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showBmi" stylesheets="@stylesheet.css" text="BMI OVER TIME" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Button fx:id="bmi" alignment="TOP_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showBmi" stylesheets="@stylesheet2.css" text="BMI OVER TIME" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                         <Label prefWidth="10.0" />
-                        <Button fx:id="weight" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showWeight" stylesheets="@stylesheet.css" text="WEIGHT OVER TIME" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Button fx:id="weight" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showWeight" stylesheets="@stylesheet2.css" text="WEIGHT OVER TIME" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                      </children>
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

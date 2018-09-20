@@ -1,6 +1,7 @@
 package seng202.group8.gui.user_info_gui;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,15 +11,12 @@ import seng202.group8.gui.GUIController;
 import seng202.group8.user.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import org.apache.commons.lang3.ObjectUtils;
 
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import seng202.group8.user.user_stats.Sex;
 
 //import javax.xml.soap.Text;
-import java.awt.*;
 import java.io.IOException;
 
 public class GetUserInfoController {
@@ -46,6 +44,7 @@ public class GetUserInfoController {
 
     private User user;
     private Stage stage;
+    private HostServices host;
 
     @FXML
     public void initialize() {
@@ -133,11 +132,12 @@ public class GetUserInfoController {
     }
 
     private void loadMainFrame() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainFrame.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/mainFrame.fxml"));
         Parent root = loader.load();
         GUIController guiController = loader.getController();
         guiController.setUser(user);
         guiController.setStage(stage);
+        guiController.setHostServices(host);
         stage.setTitle("WINded");
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -155,5 +155,9 @@ public class GetUserInfoController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setHostServices(HostServices host) {
+        this.host = host;
     }
 }

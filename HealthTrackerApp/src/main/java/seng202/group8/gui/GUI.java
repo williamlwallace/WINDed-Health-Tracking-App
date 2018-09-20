@@ -5,15 +5,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import seng202.group8.user.User;
-
-
-import javax.swing.event.ChangeListener;
-import java.io.File;
-import java.net.URL;
 
 
 public class GUI extends Application {
@@ -27,7 +20,7 @@ public class GUI extends Application {
     public void start(Stage stage) throws Exception {
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Splash.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/Splash.fxml"));
         Parent root = loader.load();
 //        GUIController guiController = loader.getController();
 //        stage.initStyle(StageStyle.UNDECORATED);
@@ -37,6 +30,7 @@ public class GUI extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
+        splashController.setHostServices(getHostServices());
 //        guiController.setToHome();
         stage.show();
 
@@ -54,10 +48,11 @@ public class GUI extends Application {
 //        stage.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
 }
+
+
 
 
