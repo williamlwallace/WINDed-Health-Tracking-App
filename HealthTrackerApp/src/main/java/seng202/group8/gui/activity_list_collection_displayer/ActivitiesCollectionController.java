@@ -8,6 +8,9 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -19,12 +22,15 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.controlsfx.dialog.LoginDialog;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController;
 import seng202.group8.parser.*;
 import seng202.group8.user.User;
 
@@ -163,6 +169,23 @@ public class ActivitiesCollectionController {
 
 
     private void triggerNewActivityDialog(int activityListIndex) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("activities_collection_dialogs/new_data_dialog.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage newStage = new Stage();
+            NewDataDialogController newDataDialogController = loader.getController();
+            newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
+            newDataDialogController.setStage(newStage);
+            newDataDialogController.setUser(user);
+
+            Scene scene = new Scene(root, 450, 400);
+//            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.setScene(scene);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
