@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.*;
+import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.user.User;
 
 import java.time.LocalDate;
@@ -29,6 +30,8 @@ public class NewDataDialogController {
     private User user;
     private int activityListIndexToAppendTo;
     private Stage stage;
+    private ActivitiesCollectionController activitiesCollectionController;
+
 
     @FXML
     private ChoiceBox<String> activitiesChoiceBox;
@@ -140,11 +143,12 @@ public class NewDataDialogController {
                 System.out.println(activityListIndexToAppendTo);
                 user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo).insertActivity(dataVal);
             }
+            stage.hide();
+            activitiesCollectionController.setUpTreeView();
         } else {
             errorText.setVisible(true);
         }
         System.out.println("All g");
-        stage.hide();
     }
 
     private Data createDataObject(String dataDescription,DataType dataType,ArrayList<LocalDateTime> dataTimes, ArrayList<CoordinateData> coordinateData, ArrayList<Integer> heartRates) {
@@ -214,5 +218,13 @@ public class NewDataDialogController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public ActivitiesCollectionController getActivitiesCollectionController() {
+        return activitiesCollectionController;
+    }
+
+    public void setActivitiesCollectionController(ActivitiesCollectionController activitiesCollectionController) {
+        this.activitiesCollectionController = activitiesCollectionController;
     }
 }

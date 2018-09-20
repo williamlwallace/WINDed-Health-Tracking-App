@@ -156,8 +156,10 @@ public class ActivitiesCollectionController {
             } else if (!selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot() && mouseEvent.getClickCount() == 2) {
                 System.out.println("This should happen only if I click a non root non leaf element and right click on it");
                 TreeItem<String> parent = selectedItem.getParent();
-                int activityListIndex = parent.getChildren().indexOf(parent);
+                int activityListIndex = parent.getChildren().indexOf(selectedItem);
+                System.out.println(activityListIndex);
                 triggerNewActivityDialog(activityListIndex);
+
             }
         }
 
@@ -173,6 +175,7 @@ public class ActivitiesCollectionController {
             newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
             newDataDialogController.setStage(newStage);
             newDataDialogController.setUser(user);
+            newDataDialogController.setActivitiesCollectionController(this);
 
             Scene scene = new Scene(root, 450, 400);
 //            primaryStage.initModality(Modality.APPLICATION_MODAL);
