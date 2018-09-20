@@ -23,7 +23,6 @@ import java.util.Date;
 public class SQLiteJDBC {
 
 
-    private Integer dataId = 0; // Placeholder
 
     public LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant()
@@ -188,8 +187,8 @@ public class SQLiteJDBC {
         }
     }
 
-    public Boolean insertData(Connection connection, Integer dataId, Integer userId, String dataType, String parentListTitle, String parentListDatetime) {
-        String sql = "INSERT INTO Data VALUES(?,?,?,?,?)";
+    public Boolean insertData(Connection connection, Integer dataId, Integer userId, String dataType, String parentListTitle, String parentListDatetime, String activityTitle) {
+        String sql = "INSERT INTO Data VALUES(?,?,?,?,?,?)";
         Boolean isInserted = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -198,6 +197,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, dataType);
             preparedStatement.setString(4, parentListTitle);
             preparedStatement.setString(5, parentListDatetime);
+            preparedStatement.setString(6, activityTitle);
 
 
 
@@ -350,9 +350,9 @@ public class SQLiteJDBC {
         ArrayList<LocalDateTime> newDateTimes;
         ArrayList<CoordinateData> newCoordinatesList;
         ArrayList<Integer> newHeartRateList;
-        String Title = "Forgot to store data title";
+        String title;
 
-        String find = "SELECT data_id, user_id, data_type FROM Data WHERE title=? AND date=?";
+        String find = "SELECT data_id, user_id, data_type, activity_title FROM Data WHERE title=? AND date=?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(find);
@@ -363,6 +363,7 @@ public class SQLiteJDBC {
                 dataID = resultSet.getInt("data_id");
                 userID = resultSet.getInt("user_id");
                 dataType = resultSet.getString("data_type");
+                title = resultSet.getString("activity_title");
                 newDateTimes = getActivityDateTimes(connection, dataID);
                 newCoordinatesList = getActivityCoordinates(connection, dataID);
                 newHeartRateList = getActivityHeartRates(connection, dataID);
@@ -370,27 +371,27 @@ public class SQLiteJDBC {
                 switch (dataType) {
                     case "WALK":
                         dataTypeEnum = DataType.WALK;
-                        data = new WalkData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        data = new WalkData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                     case "HIKE":
                         dataTypeEnum = DataType.HIKE;
-                        data = new HikeData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        data = new HikeData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                     case "RUN":
                         dataTypeEnum = DataType.RUN;
-                        data = new RunData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        data = new RunData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                     case "CLIMB":
                         dataTypeEnum = DataType.CLIMB;
-                        data = new ClimbData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        data = new ClimbData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                     case "BIKE":
                         dataTypeEnum = DataType.BIKE;
-                        data = new BikeData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        data = new BikeData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                     case "SWIM":
                         dataTypeEnum = DataType.SWIM;
-                        data = new SwimData(activityTitle, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        data = new SwimData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                 }
                 if (data!=null) {
@@ -514,6 +515,8 @@ public class SQLiteJDBC {
         insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
         updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
 
+        Integer dataId;
+
 
         ActivityListCollection activityListCollection = user.getUserActivities();
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
@@ -521,10 +524,8 @@ public class SQLiteJDBC {
         for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
             insertActivityList(conn, activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString(), userId);
             for (Data activity : activityList.getActivityList()) {
-                //Need to add data Id
-                //!!!!!!!!!!!!!!!!!!
-                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString())) {
-                    //NOTE The placeholder += 1
+                dataId = getNextDataID(conn);
+                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString(), activity.getTitle())) {
                     for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
                         insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
                     }
@@ -534,7 +535,6 @@ public class SQLiteJDBC {
                     for (LocalDateTime localDateTime: activity.getAllDateTimes()) {
                         insertActivityTime(conn, dataId, localDateTime.toString());
                     }
-                    dataId += 1;
             }
 
             }
@@ -549,6 +549,26 @@ public class SQLiteJDBC {
 
     }
 
+    public Integer getNextDataID(Connection connection) {
+        String find = "SELECT MAX(data_id) FROM Data";
+        Integer newId = 0;
+        try {
+            PreparedStatement preparedStatement  = connection.prepareStatement(find);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                newId = resultSet.getInt("MAX(data_id)");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return newId + 1;
+
+
+    }
+
+
+
     public User retrieveUser(Integer userId) {
         Connection conn = connect();
         ResultSet result = getUser(conn, userId);
@@ -558,8 +578,8 @@ public class SQLiteJDBC {
             Double height = result.getDouble("height");
             Integer age = result.getInt("age");
             String sex = result.getString("sex");
-            //Code to get ActivityCollection and Data of user (select queries)
-            User user = new User(name, age, weight, height, Sex.MALE);
+            //Code to get ActivityCollection and Data of user (select queries);
+            User user = new User(name, age, weight, height, Sex.valueOf(sex));
 
             String title = getUsersActivityListCollectionTitle(conn, userId);
             ActivityListCollection userCollection = new ActivityListCollection(title);
@@ -589,6 +609,10 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
 
+        Integer numOfCoords;
+        Integer numofHeartRates;
+        Integer numofTimes;
+
         try {
             User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
             ActivityList activityList = new ActivityList("Test activity List");
@@ -601,6 +625,7 @@ public class SQLiteJDBC {
             }
             userTest.getUserActivities().insertActivityList(activityList);
 
+
             newDataBaseJDBC.saveUser(userTest, 1);
             System.out.println(userTest.getName());
             System.out.println(userTest.getAge());
@@ -610,10 +635,22 @@ public class SQLiteJDBC {
             for (ActivityList a : userTest.getUserActivities().getActivityListCollection()) {
                 System.out.println(a.getTitle());
                 for (Data d : a.getActivityList()) {
+                    numOfCoords = d.getCoordinatesArrayList().size();
+                    numofHeartRates = d.getHeartRateList().size();
+                    numofTimes = d.getAllDateTimes().size();
+                    System.out.println();
+                    System.out.println("*******************************************");
                     System.out.println(d.getTitle());
-                    System.out.println(d.getCoordinatesArrayList().get(0).getLatitude());
-                    System.out.println(d.getHeartRateList().get(0));
-                    System.out.println(d.getAllDateTimes().get(0));
+                    System.out.println("*******************************************");
+                    System.out.println("-----------------First Items---------------");
+                    System.out.println("Latitude " + d.getCoordinatesArrayList().get(0).getLatitude());
+                    System.out.println("Heart rate " + d.getHeartRateList().get(0));
+                    System.out.println("Time " + d.getAllDateTimes().get(0));
+                    System.out.println("-----------------Last Items---------------");
+                    System.out.println("Latitude " + d.getCoordinatesArrayList().get(numOfCoords-1).getLatitude());
+                    System.out.println("Heart rate " + d.getHeartRateList().get(numofHeartRates-1));
+                    System.out.println("Time " + d.getAllDateTimes().get(numofTimes-1));
+                    System.out.println();
                 }
             }
 
@@ -624,6 +661,12 @@ public class SQLiteJDBC {
 
         System.out.println("_____________________________________________________________________");
         System.out.println("_____________________________________________________________________");
+        System.out.println("Now Retrieving");
+        System.out.println("_____________________________________________________________________");
+        System.out.println("_____________________________________________________________________");
+
+
+
 
         User userTestRetrieved = newDataBaseJDBC.retrieveUser(1);
         System.out.println(userTestRetrieved.getName());
@@ -634,10 +677,23 @@ public class SQLiteJDBC {
         for (ActivityList a : userTestRetrieved.getUserActivities().getActivityListCollection()) {
             System.out.println(a.getTitle());
             for (Data d : a.getActivityList()) {
+                numOfCoords = d.getCoordinatesArrayList().size();
+                numofHeartRates = d.getHeartRateList().size();
+                numofTimes = d.getAllDateTimes().size();
+                numofTimes = d.getAllDateTimes().size();
+                System.out.println();
+                System.out.println("*******************************************");
                 System.out.println(d.getTitle());
-                System.out.println(d.getCoordinatesArrayList().get(0).getLatitude());
-                System.out.println(d.getHeartRateList().get(0));
-                System.out.println(d.getAllDateTimes().get(0));
+                System.out.println("*******************************************");
+                System.out.println("-----------------First Items---------------");
+                System.out.println("Latitude " + d.getCoordinatesArrayList().get(0).getLatitude());
+                System.out.println("Heart rate " + d.getHeartRateList().get(0));
+                System.out.println("Time " + d.getAllDateTimes().get(0));
+                System.out.println("-----------------Last Items---------------");
+                System.out.println("Latitude " + d.getCoordinatesArrayList().get(numOfCoords-1).getLatitude());
+                System.out.println("Heart rate " + d.getHeartRateList().get(numofHeartRates-1));
+                System.out.println("Time " + d.getAllDateTimes().get(numofTimes-1));
+                System.out.println();
             }
         }
 
