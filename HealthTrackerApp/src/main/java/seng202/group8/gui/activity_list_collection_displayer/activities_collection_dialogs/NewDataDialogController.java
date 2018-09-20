@@ -137,12 +137,14 @@ public class NewDataDialogController {
                 activityList.insertActivity(dataVal);
                 user.getUserActivities().insertActivityList(activityList);
             } else {
+                System.out.println(activityListIndexToAppendTo);
                 user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo).insertActivity(dataVal);
             }
         } else {
             errorText.setVisible(true);
         }
         System.out.println("All g");
+        stage.hide();
     }
 
     private Data createDataObject(String dataDescription,DataType dataType,ArrayList<LocalDateTime> dataTimes, ArrayList<CoordinateData> coordinateData, ArrayList<Integer> heartRates) {

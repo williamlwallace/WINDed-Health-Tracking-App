@@ -4,10 +4,11 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -25,6 +26,7 @@ import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController;
 import seng202.group8.parser.*;
 import seng202.group8.user.User;
 
@@ -126,7 +128,7 @@ public class ActivitiesCollectionController {
         TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         System.out.println("Selected Item:" + selectedItem);
         if (selectedItem != null ) {
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf()) {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot()) {
                 System.out.println("Ciao " + selectedItem.getValue());
                 TreeItem<String> parent = selectedItem.getParent();
                 int dataIndex = parent.getChildren().indexOf(selectedItem);
@@ -163,6 +165,23 @@ public class ActivitiesCollectionController {
 
 
     private void triggerNewActivityDialog(int activityListIndex) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/new_data_dialog.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage newStage = new Stage();
+            NewDataDialogController newDataDialogController = loader.getController();
+            newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
+            newDataDialogController.setStage(newStage);
+            newDataDialogController.setUser(user);
+
+            Scene scene = new Scene(root, 450, 400);
+//            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.setScene(scene);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
