@@ -60,7 +60,7 @@
             <Insets />
          </GridPane.margin>
          <children>
-            <JFXTimePicker fx:id="fromTime" prefHeight="32.0" prefWidth="200.0">
+            <JFXTimePicker fx:id="fromTime" defaultColor="#19a4e4" prefHeight="32.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />
                </HBox.margin>
@@ -93,12 +93,12 @@
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <JFXButton onAction="#createActivity" prefHeight="25.0" prefWidth="184.0" text="Reward the effort!" GridPane.rowIndex="7">
+      <JFXButton buttonType="RAISED" onAction="#createActivity" prefHeight="25.0" prefWidth="184.0" ripplerFill="BLACK" text="Reward the effort!" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </JFXButton>
-      <JFXDatePicker fx:id="datePickerNewActivity" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <JFXDatePicker fx:id="datePickerNewActivity" defaultColor="#19a4e4" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -108,7 +108,7 @@
             <Insets right="20.0" />
          </GridPane.margin>
       </Text>
-      <JFXTimePicker fx:id="toTime" prefHeight="32.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <JFXTimePicker fx:id="toTime" defaultColor="#19a4e4" prefHeight="32.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>

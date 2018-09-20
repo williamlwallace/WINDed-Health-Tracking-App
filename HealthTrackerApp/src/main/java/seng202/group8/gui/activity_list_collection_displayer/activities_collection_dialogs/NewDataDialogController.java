@@ -129,7 +129,6 @@ public class NewDataDialogController {
             ArrayList<Integer> heartRates = new ArrayList<>();
             heartRates.add(60);
             heartRates.add(60);
-            heartRates.add(60);
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
 

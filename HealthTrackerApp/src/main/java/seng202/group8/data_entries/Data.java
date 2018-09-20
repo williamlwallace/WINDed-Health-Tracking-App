@@ -566,11 +566,11 @@ public abstract class Data {
         for (int i = 0; i < (calorieSpeedMets.size());i++) {
             double caloriesBurned = 0.0;
             double caloriesBurnedWithIncline = 0.0;
-            System.out.println("user: " + currentUser);
-            System.out.println("caloriesSpeedMets: " + calorieSpeedMets);
-            System.out.println(calorieSpeedMets.get(i));
-            System.out.println(String.valueOf(this.currentUser.getWeight()));
-            System.out.println(String.valueOf(localMillisecondsOfExerciseBetweenPoints.get(i)));
+//            System.out.println("user: " + currentUser);
+//            System.out.println("caloriesSpeedMets: " + calorieSpeedMets);
+//            System.out.println(calorieSpeedMets.get(i));
+//            System.out.println(String.valueOf(this.currentUser.getWeight()));
+//            System.out.println(String.valueOf(localMillisecondsOfExerciseBetweenPoints.get(i)));
             caloriesBurned = ((calorieSpeedMets.get(i) * this.currentUser.getWeight()) * ((double) (localMillisecondsOfExerciseBetweenPoints.get(i)) / 1000 / 60 / 60));
             caloriesBurnedWithIncline = caloriesBurned + (caloriesBurned * ((localGradientsBetweenPoints.get(i) / 100) * 0.12));
             calories += caloriesBurnedWithIncline;
