@@ -22,7 +22,7 @@
          <children>
             <ImageView fitHeight="119.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/windedTitle.png" />
+                  <Image url="@../../../../resources/resources/views/images/windedTitle.png" />
                </image>
             </ImageView>
             <HBox prefHeight="100.0" prefWidth="887.0" />

@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.gui.calendar_view.CalendarViewController;
+import seng202.group8.gui.home_displayer.HomeController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
 
@@ -96,9 +97,18 @@ public class GUIController implements Initializable {
 
 
     public void setToHome() throws IOException {
-        BorderPane homeScene = FXMLLoader.load(getClass().getResource("../../../resources/views/home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
+        BorderPane homeScene = loader.load();
+        //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
+        HomeController homeController = loader.getController();
+        homeController.setPrimaryStage(stage);
+        homeController.setUser(user);
+        homeController.setup();
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        statsBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -107,6 +117,10 @@ public class GUIController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
+        HomeController homeController = loader.getController();
+        homeController.setPrimaryStage(stage);
+        homeController.setUser(user);
+        homeController.setup();
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
         activityBtn.setStyle("-fx-background-color: transparent");

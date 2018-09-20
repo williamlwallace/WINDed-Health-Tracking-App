@@ -18,7 +18,7 @@
             <Insets top="10.0" />
          </VBox.margin>
          <image>
-            <Image url="@../images/WINdedLogo.png" />
+            <Image url="@../../../../../resources/resources/views/images/WINdedLogo.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to WINded" textAlignment="CENTER">

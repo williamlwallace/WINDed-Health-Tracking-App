@@ -15,7 +15,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" styleClass="top" stylesheets="@stylesheet.css" />
       <ImageView fx:id="logo" fitHeight="312.0" fitWidth="623.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/WINdedLogo.png" />
+            <Image url="@../../../../resources/resources/views/images/WINdedLogo.png" />
          </image>
       </ImageView>
    </children>
