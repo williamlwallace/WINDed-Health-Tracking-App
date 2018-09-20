@@ -29,6 +29,7 @@ public abstract class Data {
 
     private String title;
     //    private DataType = new DataType();
+    public boolean isGraphable;
     private User currentUser;
     private Date creationDate;
     private DataType dataType;
@@ -60,7 +61,13 @@ public abstract class Data {
      * This is the constructor for the Data class. A Data object contains the values of different parameters,
      * and calculates other values and ArrayLists of values so that those can be graphed. Those values are calculated
      * upon initialisation of the object, so that they are ready for use later. This means that even if adding a csv
-     * file takes a little longer, the graphing portion of the program will function more quickly.
+     * file takes a little longer, the graphing portion of the program will function more quickly. isGraphable is a
+     * notable boolean variable here: there are particular variable ArrayLists with calculate methods that can only be
+     * operated if the input contains csv data. If it is instead from the custom activity creator, the calculate methods
+     * that require csvdata will not be run, and their values will be left as null. The only class that attempts to call
+     * those null values is Graphs, and Graphs will check the value of isGraphable anyway. This is simply a second layer
+     * of crash prevention.
+     *
      *
      * @param newTitle is the String title of the incoming activity data.
      * @param dataType is DataType enumerator value of the incoming activity data.
@@ -91,19 +98,22 @@ public abstract class Data {
         this.millisecondsOfExercise = calculateMillisecondsOfExercise();
         this.dataSpeedKph = calculateDataSpeedKilometresPerHour();
         this.dataSpeedMph = calculateDataSpeedMilesPerHour();
-        this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
-        this.kphSpeedsBetweenPoints = calculateKphSpeedsBetweenPoints();
-        this.gradientsBetweenPoints = calculateGradientsBetweenPoints();
-        this.millisecondsOfExerciseBetweenPoints = calculateMillisecondsOfExerciseBetweenPoints();
-        this.kmDistancesBetweenPoints = calculateKmDistancesBetweenPoints();
-        this.milesDistancesBetweenPoints = calculateMilesDistancesBetweenPoints();
-        this.consumedCalories = getConsumedCalories();
-        this.consumedCaloriesBetweenPoints = getConsumedCaloriesBetweenPoints();
-        this.stressLevelsBetweenPoints = calculateStressLevelsBetweenPoints();
-        this.stressLevelMax = calculateStressLevelMax();
-        this.stressLevelMin = calculateStressLevelMin();
-        this.stressProportionsBetweenPoints = calculateStressProportionsBetweenPoints();
-
+        this.isGraphable = ((newDateTimes.size() == newCoordinatesList.size()) ==
+                (newCoordinatesList.size() == newHeartRateList.size()));
+        if (this.isGraphable) {
+            this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
+            this.kphSpeedsBetweenPoints = calculateKphSpeedsBetweenPoints();
+            this.gradientsBetweenPoints = calculateGradientsBetweenPoints();
+            this.millisecondsOfExerciseBetweenPoints = calculateMillisecondsOfExerciseBetweenPoints();
+            this.kmDistancesBetweenPoints = calculateKmDistancesBetweenPoints();
+            this.milesDistancesBetweenPoints = calculateMilesDistancesBetweenPoints();
+            this.consumedCalories = getConsumedCalories();
+            this.consumedCaloriesBetweenPoints = getConsumedCaloriesBetweenPoints();
+            this.stressLevelsBetweenPoints = calculateStressLevelsBetweenPoints();
+            this.stressLevelMax = calculateStressLevelMax();
+            this.stressLevelMin = calculateStressLevelMin();
+            this.stressProportionsBetweenPoints = calculateStressProportionsBetweenPoints();
+        }
     }
 
 
@@ -113,7 +123,7 @@ public abstract class Data {
 //    }
 
     /**
-     * This function calculates the total distance covered over the course of the activity, based on the coordinates
+     * This function calculates the total distance covered in metres over the course of the activity, based on the coordinates
      * the user moves through. The calculation is based on the coordinatesArrayList of the Data object. The differences
      * between each pair of coordinate objects are calculated by the CoordinateDataDifference class constructor. By
      * passing coordinate values into that constructor, the distance differences between two coordinates can then be
@@ -674,7 +684,9 @@ public abstract class Data {
         return calories;
     }
 
-
+    public boolean isGraphable() {
+        return isGraphable;
+    }
 
     public String getTitle() {
         return title;
