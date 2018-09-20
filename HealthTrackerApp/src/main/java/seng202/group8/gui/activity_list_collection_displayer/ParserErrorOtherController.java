@@ -3,10 +3,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.parser.*;
 
@@ -19,6 +16,9 @@ public class ParserErrorOtherController {
 
     private String errorMessage;
 
+    /**
+     * Initializes the screen by setting the title to display details about the error
+     */
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
@@ -26,6 +26,10 @@ public class ParserErrorOtherController {
         });
     }
 
+    /**
+     * Quits out of the window.
+     * @param event
+     */
     public void quit(ActionEvent event) {
         Stage stage = (Stage) errorText.getScene().getWindow();
         stage.close();

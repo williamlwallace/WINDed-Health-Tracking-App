@@ -40,7 +40,7 @@ public class Parser {
     private String filename;
     private int lineNum;
     /**
-     * Receives a filename and starts reading the data activity by activity
+     * Receives a filename and creates the list of type trip phrases.
      * @param newFilename
      * @throws Exception
      */
@@ -56,6 +56,10 @@ public class Parser {
         filename = newFilename;
     }
 
+    /**
+     * Starts parsing the entire file sent in.
+     * @throws Exception
+     */
     public void parseFile() throws Exception {
         lineNum = 0;
         if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
@@ -125,14 +129,16 @@ public class Parser {
                 }
                 csvReader.close();
             } catch (FileNotFoundException e) {
+                dataList.clear();
                 throw new FileNotFoundError("The file '" + filename + "' doesn't exist.");
             }
         } else {
+            dataList.clear();
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
     }
     /**
-     * Receives a activity and collates the data from it
+     * Receives a activity and collates the data from it. Throws custom errors so the GUI can handle the information
      * @param line
      * @param csvReader
      * @throws Exception
@@ -159,6 +165,7 @@ public class Parser {
                 }
             }
             if (activityType.equals("")) {
+                dataList.clear();
                 throw new noTypeError("The activity '" + activityName+ "' doesnt match any of the activity types.");
 //                Scanner scanner = new Scanner(System.in);
 //                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
@@ -185,9 +192,10 @@ public class Parser {
         CoordinateData lineCoordinate;
         int finished = 0;
         try {
-            while ((finished == 0) && (line.length > 0) && (!isCorrupt) && (!line[0].equals("#start"))) {
+            while ((finished == 0) && (line.length > 0) && (!line[0].equals("#start"))) {
                 try {
-                    numLines = +1;
+                    //System.out.println("hi peeps");
+                    numLines++;
                     String toFormat = line[0] + ";" + line[1];
                     lineDate = LocalDateTime.parse(toFormat, timeFormat);
                     lineHeart = Integer.parseInt(line[2]);
@@ -205,7 +213,7 @@ public class Parser {
                         errorLines = errorLines + ", (Incorrect number of lines) " + String.valueOf(lineNum);
                     }
                     numErrors += 1;
-                    line = nextActivity(csvReader, line);
+                    line = readLine(csvReader);
                 } catch (NumberFormatException e) {
                     if (errorLines == null) {
                         errorLines = "(Heart-rate or Coordinates) " + String.valueOf(lineNum);
@@ -213,7 +221,7 @@ public class Parser {
                         errorLines = errorLines + ", (Heart-rate or Coordinates) " + String.valueOf(lineNum);
                     }
                     numErrors += 1;
-                    line = nextActivity(csvReader, line);
+                    line = readLine(csvReader);
                 } catch (DateTimeParseException e) {
                     if (errorLines == null) {
                         errorLines = "(date) " + String.valueOf(lineNum);
@@ -221,14 +229,16 @@ public class Parser {
                         errorLines = errorLines + ", (date) " + String.valueOf(lineNum);
                     }
                     numErrors += 1;
-                    line = nextActivity(csvReader, line);
+                    line = readLine(csvReader);
                 }
             }
         } catch (NullPointerException e) {
 
         }
+        //System.out.println("num " + numLines * 0.1 + " num2: " + numErrors);
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
+            dataList.clear();
             throw new DataMissingError("Activity '" + activityName + "' is corrupt on line/lines: " + errorLines);
         }
         return line;
@@ -272,9 +282,14 @@ public class Parser {
         return dataList;
     }
 
+    /**
+     * Parses a given file, here for testing purposes.
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
-        Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
+        Parser parserTest =  new Parser("seng202_2018_example_data_errors.csv", userTest);
         parserTest.parseFile();
         ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
         for (Data d : data) {
@@ -283,6 +298,11 @@ public class Parser {
         }
     }
 
+    /**
+     * adds a key phrase into the collection of trip phrases for finding the type
+     * @param keyWord
+     * @param type
+     */
     public void add(String keyWord, int type) {
         acceptedValues.clear();
         switch (type) {
@@ -319,4 +339,11 @@ public class Parser {
         acceptedValues.add(waterSports);
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
 }
