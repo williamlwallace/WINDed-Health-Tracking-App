@@ -1,28 +1,23 @@
 package seng202.group8.gui.home_displayer;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import seng202.group8.activity_collection.ActivityListCollection;
-import seng202.group8.data_entries.Data;
-import seng202.group8.services.statistics_service.GraphXY;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.User;
 
-import java.util.ArrayList;
-
 public class HomeController {
+
+    @FXML
+    private Label healthText;
 
     /**
      * Sets the page up when the user first goes into the Home page
      */
     public void setup() {
+        statsService = user.getStatsService();
+        healthText.setText(statsService.getHealthStatus());
     }
 
     /**
@@ -30,6 +25,7 @@ public class HomeController {
      */
     private User user;
     private Stage primaryStage;
+    private StatisticsService statsService;
 
     /**
      * Gets the current user using the page

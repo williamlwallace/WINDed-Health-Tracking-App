@@ -1,5 +1,6 @@
 package seng202.group8.user;
 
+import seng202.group8.services.health_service.HealthService;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.user_stats.Sex;
 import seng202.group8.user.user_stats.UserStats;
@@ -23,7 +24,7 @@ public class User {
     private UserStats userStats;
     private ActivityListCollection userActivities;
     private ArrayList<UserObserver> observers;
-    //private HealthService userHealth;
+    private HealthService userHealth;
     private StatisticsService statsService;
 
 
@@ -45,7 +46,7 @@ public class User {
         this.userActivities = new ActivityListCollection(name + "'s activity collection");
         this.bmi = new BMI(calculateBMI());
         this.sex = sex;
-        //this.userHealth = new HealthService(this);
+        this.userHealth = new HealthService(this);
         this.statsService = new StatisticsService(this);
         userStats.addUserBMITypeRecords(bmi);
         userStats.addUserWeightRecords(weight);
