@@ -30,6 +30,31 @@ public class SQLiteJDBC {
                 .toLocalDateTime();
     }
 
+    public String getStringFromLocalDateTime(LocalDateTime localDateTime) {
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String dateString = localDateTime.format(dateFormat);
+        return  dateString;
+    }
+
+    public Date getDateFromString(String dateString) {
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            date = dateFormat.parse(dateString);
+            //System.out.println(date.toString());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public LocalDateTime getLocalDateTimeFromString(String dateString) {
+        LocalDateTime localDateTime = null;
+        localDateTime = LocalDateTime.parse(dateString);
+        return localDateTime;
+    }
+
     /**
      * Connect to a sample database
      */
@@ -286,24 +311,7 @@ public class SQLiteJDBC {
         return collectionTitle;
     }
 
-    public Date getDateFromString(String dateString) {
-        Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        try {
-            date = dateFormat.parse(dateString);
-            //System.out.println(date.toString());
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
-    }
-
-    public LocalDateTime getLocalDateTimeFromString(String dateString) {
-        LocalDateTime localDateTime = null;
-        localDateTime = LocalDateTime.parse(dateString);
-        return localDateTime;
-    }
 
     public ArrayList<ActivityList> getUsersActivityLists(Connection connection, Integer userId, User user) {
         assert null != connection && null != userId;
@@ -510,22 +518,80 @@ public class SQLiteJDBC {
         }
     }
 
+
+    public void deleteListData(Connection connection, String parentActivityListTitle, String parentActivityListDate) {
+        System.out.println(getNextDataID(connection));
+        String find = "SELECT data_id FROM Data WHERE title=? AND date=?";
+        System.out.println("Deletion from activity List: " + parentActivityListTitle +  "   " + parentActivityListDate);
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(find);
+            preparedStatement.setString(1, parentActivityListTitle);
+            preparedStatement.setString(2, parentActivityListDate);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Integer dataID = resultSet.getInt("data_id");
+                System.out.println("Data deleted" +  "DataID:" + dataID);
+
+                String sql2 = "DELETE FROM CoOrdinate WHERE data_id=?";
+                PreparedStatement preparedStatement1 = connection.prepareStatement(sql2);
+                preparedStatement1.setInt(1, dataID);
+                preparedStatement1.executeUpdate();
+                String sql3 = "DELETE FROM Heartrate WHERE data_id=?";
+                PreparedStatement preparedStatement2 = connection.prepareStatement(sql3);
+                preparedStatement2.setInt(1, dataID);
+                preparedStatement2.executeUpdate();
+                String sql4 = "DELETE FROM Activity_Time WHERE data_id=?";
+                PreparedStatement preparedStatement3 = connection.prepareStatement(sql4);
+                preparedStatement3.setInt(1, dataID);
+                preparedStatement3.executeUpdate();
+                String sql1 = "DELETE FROM Data WHERE title=? AND date=?";
+                PreparedStatement preparedStatement4 = connection.prepareStatement(sql1);
+                preparedStatement4.setString(1, parentActivityListTitle);
+                preparedStatement4.setString(2, parentActivityListDate);
+                preparedStatement4.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
     public void saveUser(User user, Integer userId) {
         Connection conn = connect();
         insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
         updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
 
         Integer dataId;
+        try {
+        String sql2 = "DELETE FROM CoOrdinate";
+        PreparedStatement preparedStatement1 = conn.prepareStatement(sql2);
+        preparedStatement1.executeUpdate();
+        String sql3 = "DELETE FROM Heartrate";
+        PreparedStatement preparedStatement2 = conn.prepareStatement(sql3);
+        preparedStatement2.executeUpdate();
+        String sql4 = "DELETE FROM Activity_Time";
+        PreparedStatement preparedStatement3 = conn.prepareStatement(sql4);
+        preparedStatement3.executeUpdate();
+        String sql1 = "DELETE FROM Data";
+        PreparedStatement preparedStatement4 = conn.prepareStatement(sql1);
+        preparedStatement4.executeUpdate();
+        }   catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         ActivityListCollection activityListCollection = user.getUserActivities();
+
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
 
         for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
-            insertActivityList(conn, activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString(), userId);
+            //deleteListData(conn, activityList.getTitle(), getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityList.getCreationDate())));
+            insertActivityList(conn, activityList.getTitle(), getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityList.getCreationDate())), userId);
             for (Data activity : activityList.getActivityList()) {
                 dataId = getNextDataID(conn);
-                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), convertToLocalDateTimeViaInstant(activityList.getCreationDate()).toString(), activity.getTitle())) {
+                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityList.getCreationDate())), activity.getTitle())) {
                     for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
                         insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
                     }
@@ -587,12 +653,21 @@ public class SQLiteJDBC {
             ArrayList<ActivityList> activityList = getUsersActivityLists(conn, userId, user);
             user.getUserActivities().setActivityListCollection(activityList);
 
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
 
             return user;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+
         return null;
 
     }
@@ -627,13 +702,14 @@ public class SQLiteJDBC {
 
 
             newDataBaseJDBC.saveUser(userTest, 1);
-            System.out.println(userTest.getName());
+            /*System.out.println(userTest.getName());
             System.out.println(userTest.getAge());
             System.out.println(userTest.getWeight());
             System.out.println(userTest.getHeight());
             System.out.println(userTest.getSex());
             for (ActivityList a : userTest.getUserActivities().getActivityListCollection()) {
                 System.out.println(a.getTitle());
+                System.out.println(a.getCreationDate());
                 for (Data d : a.getActivityList()) {
                     numOfCoords = d.getCoordinatesArrayList().size();
                     numofHeartRates = d.getHeartRateList().size();
@@ -652,7 +728,7 @@ public class SQLiteJDBC {
                     System.out.println("Time " + d.getAllDateTimes().get(numofTimes-1));
                     System.out.println();
                 }
-            }
+            }*/
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -676,6 +752,7 @@ public class SQLiteJDBC {
         System.out.println(userTestRetrieved.getSex());
         for (ActivityList a : userTestRetrieved.getUserActivities().getActivityListCollection()) {
             System.out.println(a.getTitle());
+            System.out.println(a.getCreationDate());
             for (Data d : a.getActivityList()) {
                 numOfCoords = d.getCoordinatesArrayList().size();
                 numofHeartRates = d.getHeartRateList().size();
@@ -697,81 +774,11 @@ public class SQLiteJDBC {
             }
         }
 
+        System.out.println("_____________________________________________________");
+        System.out.println("Now Saving Again");
+        System.out.println("_____________________________________________________");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
-        Connection conn = connect();
-        newDataBaseJDBC.deleteAllData(conn);
-        newDataBaseJDBC.insertUser(conn, 1, "Jack", 77.0, 183.0, 19, "MALE");
-        newDataBaseJDBC.insertUser(conn, 2, "John", 89.0, 193.0, 25, "MALE");
-        newDataBaseJDBC.updateUser(conn, 2, "Jonathon", 90.0, 200.0, 26, "FEMALE");
-        ResultSet allUsers2 = newDataBaseJDBC.selectAllUsers(conn);
-        ResultSet oneUser2 = newDataBaseJDBC.getUser(conn, 1);
-        try {
-            while (allUsers2.next()) {
-                System.out.println(allUsers2.getInt("user_id") +  "\t" +
-                        allUsers2.getString("name") + "\t" +
-                        allUsers2.getDouble("weight") + "\t" +
-                        allUsers2.getDouble("height") + "\t" +
-                        allUsers2.getInt("age") + "\t" +
-                        allUsers2.getString("sex"));
-
-            }
-            //if (conn != null) {
-            //    conn.close();
-            //}
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-
-        System.out.println("-----------------------------------------------------------------------");
-
-        //now try adding data
-        newDataBaseJDBC.insertActivityCollection(conn, 1, "Jack's Activity collection");
-        newDataBaseJDBC.insertActivityList(conn, "Runs", "2018-09-10/11:00", 1);
-        newDataBaseJDBC.insertActivityList(conn, "Walks", "2018-09-10/11:00", 1);
-        newDataBaseJDBC.insertData(conn, 1,1, "RUN","Runs", "2018-09-10/11:00");
-        newDataBaseJDBC.insertData(conn, 2,1, "RUN","Runs", "2018-10-10/11:00");
-        newDataBaseJDBC.insertCoordinate(conn, 30.2553368, 97.83891084, 239.5, 1);
-        newDataBaseJDBC.insertCoordinate(conn, 30.2553368, 197.83891084, 239.5, 2);
-        newDataBaseJDBC.insertHeartRate(conn, 250, 1);
-        newDataBaseJDBC.insertHeartRate(conn, 250, 2);
-        newDataBaseJDBC.insertActivityTime(conn, 1,"2018-12-10/10:33");
-        newDataBaseJDBC.insertActivityTime(conn, 2,"2018-12-10/10:34");
-
-
-        newDataBaseJDBC.insertActivityCollection(conn, 2, "Jonathon's Activity collection");
-        newDataBaseJDBC.insertActivityList(conn, "Runs", "2018-09-10/10:38", 2);
-        newDataBaseJDBC.insertData(conn, 3,2, "RUN","Runs", "2018-09-10/10:38");
-        newDataBaseJDBC.insertData(conn, 4,2, "RUN","Runs", "2018-10-10/10:38");
-        newDataBaseJDBC.insertCoordinate(conn, 30.2553368, 97.83891084, 239.5, 3);
-        newDataBaseJDBC.insertCoordinate(conn, 30.2553368, 197.83891084, 239.5, 4);
-        newDataBaseJDBC.insertHeartRate(conn, 250, 3);
-        newDataBaseJDBC.insertHeartRate(conn, 250, 4);
-        newDataBaseJDBC.insertActivityTime(conn, 3,"2018-12-10/10:33");
-        newDataBaseJDBC.insertActivityTime(conn, 4,"2018-12-10/10:34");
-
-        try {
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }*/
+        newDataBaseJDBC.saveUser(userTestRetrieved, 1);
 
     }
 }
