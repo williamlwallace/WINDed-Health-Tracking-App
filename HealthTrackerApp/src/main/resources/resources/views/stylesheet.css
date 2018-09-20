@@ -18,11 +18,6 @@
     -fx-background-color:  #2874a6  ;
 }
 
-.round-box{
-    -fx-background-radius: 100%;
-    -fx-border-radius: 100%;
-    -fx-border-image-width: 5px;
-}
 
 /* VARIABLE DEFINITIONS: Only these 4 variables have to be adjusted, the rest is copy-paste */
 * {

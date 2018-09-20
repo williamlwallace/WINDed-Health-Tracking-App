@@ -14,10 +14,8 @@
     -fx-background-color:  #2874a6  ;
 }
 
-.round-box{
-    -fx-background-radius: 100%;
-    -fx-border-radius: 100%;
-    -fx-border-image-width: 5px;
+.top {
+    -fx-background-color: linear-gradient(to left, #2e86c1, #2874a6);
 }
 
 

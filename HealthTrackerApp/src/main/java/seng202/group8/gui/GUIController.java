@@ -6,6 +6,7 @@ import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -43,6 +44,13 @@ public class GUIController implements Initializable {
 
     @FXML
     private JFXButton goalsBtn;
+
+    @FXML
+    private JFXButton calendarBtn;
+
+    @FXML
+    private MenuButton userBtn;
+
 
     private User user;
     private Stage stage;
@@ -112,6 +120,7 @@ public class GUIController implements Initializable {
         activityBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
         goalsBtn.setStyle("-fx-background-color: transparent");
+        calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -130,6 +139,7 @@ public class GUIController implements Initializable {
         activityBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
         goalsBtn.setStyle("-fx-background-color: transparent");
+        calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -146,6 +156,8 @@ public class GUIController implements Initializable {
         homeBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
         goalsBtn.setStyle("-fx-background-color: transparent");
+        calendarBtn.setStyle("-fx-background-color: transparent");
+
     }
 
     @FXML
@@ -162,6 +174,7 @@ public class GUIController implements Initializable {
         homeBtn.setStyle("-fx-background-color: transparent");
         activityBtn.setStyle("-fx-background-color: transparent");
         goalsBtn.setStyle("-fx-background-color: transparent");
+        calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -173,6 +186,7 @@ public class GUIController implements Initializable {
         homeBtn.setStyle("-fx-background-color: transparent");
         activityBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
+        calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
     @FXML
@@ -183,9 +197,10 @@ public class GUIController implements Initializable {
         calendarViewController.setUser(user);
         calendarViewController.setCurrentStage(stage);
         scene.getChildren().setAll(calendarScene);
-        statsBtn.setStyle("-fx-background-color: #2874a6");
+        calendarBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");
         activityBtn.setStyle("-fx-background-color: transparent");
+        statsBtn.setStyle("-fx-background-color: transparent");
         goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
