@@ -14,6 +14,25 @@ public enum DataType {
     NOT_ASSISTED_SPORTS_DATA,
     ALL;
 
+    public static DataType fromStringToEnum(String dataTypeStr) {
+        switch (dataTypeStr) {
+            case "Walk":
+                return WALK;
+            case "Run":
+                return RUN;
+            case "Hike":
+                return HIKE;
+            case "Climb":
+                return CLIMB;
+            case "Bike":
+                return BIKE;
+            case "Swim":
+                return SWIM;
+            default:
+                return WATER_SPORTS;
+        }
+    }
+
 //    private String activityType;
 //    private DataType superDataType;
 //    private DataType subDataType;

@@ -28,7 +28,7 @@ public class CalendarView extends Application {
         //ArrayList<Data> dataList = parserTest.getDataList();
         ArrayList<Integer> heartRates = new ArrayList<Integer>();
         heartRates.add(100);
-        heartRates.add(115);
+//        heartRates.add(115);
         heartRates.add(120);
         ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
         localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 10));
@@ -52,7 +52,7 @@ public class CalendarView extends Application {
     public void start(Stage primaryStage) throws IOException, Exception {
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/resources/views/calendar_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/calendar_view.fxml"));
 
         Parent root = loader.load();
         CalendarViewController controller = (CalendarViewController) loader.getController();

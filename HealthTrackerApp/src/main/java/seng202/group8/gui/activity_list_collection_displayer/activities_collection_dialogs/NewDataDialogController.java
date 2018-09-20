@@ -1,6 +1,8 @@
 package seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,9 +12,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import seng202.group8.activity_collection.ActivityList;
+import seng202.group8.data_entries.*;
 import seng202.group8.user.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -29,13 +37,14 @@ public class NewDataDialogController {
     private TextField descriptionTextField;
 
     @FXML
-    private DatePicker datePickerNewActivity;
+    private JFXDatePicker datePickerNewActivity;
 
     @FXML
-    private ChoiceBox<Integer> fromTime;
+    private JFXTimePicker toTime;
 
     @FXML
-    private ChoiceBox<Integer> toTime;
+    private JFXTimePicker fromTime;
+
 
     @FXML
     private TextField distanceCoveredTextField;
@@ -48,6 +57,9 @@ public class NewDataDialogController {
 
     @FXML
     private TextField newActivityListName;
+
+    @FXML
+    private Text errorText;
 
     @FXML
     public void initialize() {
@@ -73,16 +85,7 @@ public class NewDataDialogController {
             }
         });
 
-        ArrayList<Integer> hours = new ArrayList<>();
-        for (int i = 0; i < 25; i++) {
-            hours.add(i);
-        }
-        ObservableList<Integer> integerObservableList = FXCollections.observableList(hours);
-        fromTime.setItems(integerObservableList);
-        toTime.setItems(integerObservableList);
-        fromTime.setValue(hours.get(0));
-        toTime.setValue(hours.get(0));
-
+        errorText.setVisible(false);
         newActivityListName.setVisible(false);
 
     }
@@ -98,20 +101,89 @@ public class NewDataDialogController {
 
     public void createActivity() {
 
-        if (allFieldsAreCorrect()) {
+        if (allFieldsAreCorrect(newActivityListToggle.isSelected())) {
+
+            String dataDescription = descriptionTextField.getText();
+            DataType dataType = DataType.fromStringToEnum(activitiesChoiceBox.getValue());
+
+            //Dates creation
+            LocalDate dataDate = datePickerNewActivity.getValue();
+            LocalTime toTimeData = toTime.getValue();
+            LocalTime fromTimeData = fromTime.getValue();
+
+            LocalDateTime startTime = dataDate.atTime(fromTimeData);
+            LocalDateTime endTime = dataDate.atTime(toTimeData);
+
+            ArrayList<LocalDateTime> dataTimes = new ArrayList<>();
+            dataTimes.add(startTime);
+            dataTimes.add(endTime);
+            //
+
+            ArrayList<CoordinateData> coordinateData = new ArrayList<>();
+            CoordinateData coordinate1 = new CoordinateData(34, 45, 54);
+            CoordinateData coordinate2 = new CoordinateData(34, 35, 54);
+            coordinateData.add(coordinate1);
+            coordinateData.add(coordinate2);
+
+
+            ArrayList<Integer> heartRates = new ArrayList<>();
+            heartRates.add(60);
+            heartRates.add(60);
+            heartRates.add(60);
+
+            Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
+
             if (newActivityListToggle.isSelected()) {
-
+                ActivityList activityList = new ActivityList(newActivityListName.getText());
+                activityList.insertActivity(dataVal);
+                user.getUserActivities().insertActivityList(activityList);
             } else {
-
+                user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo).insertActivity(dataVal);
             }
         } else {
-
+            errorText.setVisible(true);
         }
+        System.out.println("All g");
     }
 
-    private boolean allFieldsAreCorrect() {
+    private Data createDataObject(String dataDescription,DataType dataType,ArrayList<LocalDateTime> dataTimes, ArrayList<CoordinateData> coordinateData, ArrayList<Integer> heartRates) {
+
+        switch (dataType) {
+            case WALK:
+                return new WalkData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+            case RUN:
+                return new RunData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+            case HIKE:
+                return new HikeData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+            case BIKE:
+                return new BikeData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+            case CLIMB:
+                return new ClimbData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+            case SWIM:
+                return new SwimData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+            default:
+                return new WaterSportsData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
+        }
+
+    }
+
+    private boolean allFieldsAreCorrect(boolean isToggleSelected) {
         boolean descrNoNull = !descriptionTextField.getText().equals("");
-        return true;
+        boolean datePickerNoNull = !(datePickerNewActivity.getValue() == null);
+        boolean timesNoNull = (fromTime.getValue() != null) && (toTime.getValue() != null);
+        boolean fromTimeSmallerThanToTime = true;
+
+        if (timesNoNull) {
+            fromTimeSmallerThanToTime = fromTime.getValue().isBefore(toTime.getValue());
+        }
+        boolean distanceCoveredTextFieldNoNull = !distanceCoveredTextField.getText().equals("");
+        boolean activityListNotNull = true;
+        if (isToggleSelected) {
+            activityListNotNull = !newActivityListToggle.getText().equals("");
+        }
+        return descrNoNull && datePickerNoNull && timesNoNull
+                && fromTimeSmallerThanToTime && distanceCoveredTextFieldNoNull
+                && activityListNotNull;
     }
 
 
