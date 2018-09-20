@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.mailmap" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewDataDialogController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NewDataDialogController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1148">
@@ -93,6 +92,16 @@
                 <element signature="e#7801#7802#0" expanded="true" />
                 <element signature="e#7854#7855#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".mailmap" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.mailmap">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -733,7 +742,7 @@
       <workItem from="1537391618113" duration="6319000" />
       <workItem from="1537399323386" duration="3587000" />
       <workItem from="1537409026675" duration="2427000" />
-      <workItem from="1537483625333" duration="1039000" />
+      <workItem from="1537483625333" duration="1187000" />
     </task>
     <task id="LOCAL-00001" summary="Added resource folder for everyone to migrarte their resources on.">
       <created>1537231446993</created>
@@ -812,11 +821,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537411420939</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed issue with index out ofrange when inserting data manually. Fixed the logs problems for commits">
+      <created>1537484727743</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1537484727743</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40220000" />
+    <option name="totallyTimeSpent" value="40368000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -879,7 +895,8 @@
     <MESSAGE value="Working on retrieving new Data from user manually." />
     <MESSAGE value="Kept working on retrieving a single Data value from user (manual addition)." />
     <MESSAGE value="Started adding the logic into creating a new Data object given the user input." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started adding the logic into creating a new Data object given the user input." />
+    <MESSAGE value="Fixed issue with index out ofrange when inserting data manually. Fixed the logs problems for commits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with index out ofrange when inserting data manually. Fixed the logs problems for commits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,13 +905,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="50" lean-forward="true" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
@@ -1292,6 +1302,14 @@
             <element signature="e#7801#7802#0" expanded="true" />
             <element signature="e#7854#7855#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.mailmap">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
