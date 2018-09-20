@@ -58,7 +58,7 @@ public class Home extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //setUpMockUser();
+        setUpMockUser();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/home.fxml"));
 

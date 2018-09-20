@@ -64,9 +64,9 @@ public class User {
      * Get the users Health Service data
      * @return a Health Service object which contains all health risk information
      */
-    //public HealthService getUserHealth() {
-        //return userHealth;
-    //}
+    public HealthService getUserHealth() {
+        return userHealth;
+    }
 
     /**
      * Set the Name of the user

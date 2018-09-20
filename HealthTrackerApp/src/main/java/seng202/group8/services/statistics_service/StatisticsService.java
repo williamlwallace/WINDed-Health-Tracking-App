@@ -106,7 +106,7 @@ public class StatisticsService {
      * Checks the health service class to determine the users health risks and displays them in a readable way
      */
     public void setHealthStatus() {
-        String healthStatus = "Current Health Status:\n";
+        String healthStatus = "";
         Boolean hasRisk = Boolean.FALSE;
         if (healthService.isAtCardiovasMortalityRisk()) {
             healthStatus += "You are at risk of Cardiovas Mortality\n";
@@ -123,7 +123,7 @@ public class StatisticsService {
         if (!hasRisk) {
             healthStatus += "You currently have no health risks\n Nice work!";
         } else {
-            healthStatus += "Use the search bar to find out more about your risks";
+            healthStatus += "Click a link below to find out more";
         }
         this.healthStatus = healthStatus;
     }

@@ -17,7 +17,9 @@ public class HomeController {
      */
     public void setup() {
         statsService = user.getStatsService();
+        statsService.setHealthStatus();
         healthText.setText(statsService.getHealthStatus());
+        System.out.println(statsService.getHealthStatus());
     }
 
     /**

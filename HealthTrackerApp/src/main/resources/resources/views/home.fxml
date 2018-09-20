@@ -17,7 +17,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
    <center>
-      <AnchorPane fx:id="parent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="parent" stylesheets="@../../../java/seng202/group8/gui/stylesheet.css">
+      <AnchorPane fx:id="parent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="parent">
          <children>
             <GridPane prefHeight="640.0" prefWidth="1110.0">
               <columnConstraints>
