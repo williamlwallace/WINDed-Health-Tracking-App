@@ -87,6 +87,15 @@
                   </JFXButton>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="155.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet.css">
+               <children>
+                  <JFXButton fx:id="calendarBtn" buttonType="RAISED" onAction="#loadCalendar" prefHeight="176.0" prefWidth="185.0" styleClass="btns" stylesheets="@stylesheet.css" text="Calendar" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
          </children>
          <effect>
             <DropShadow blurType="GAUSSIAN" offsetY="3.5" />

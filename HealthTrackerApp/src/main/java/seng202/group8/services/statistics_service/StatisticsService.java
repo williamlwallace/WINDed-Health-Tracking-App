@@ -32,6 +32,7 @@ public class StatisticsService {
      */
     public void setAverageHeartRate() {
         int heartRateValues = 0;
+        averageHeartRate = 0;
         for(int i = 0; i < arrayCollection.size(); i++) {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
@@ -39,6 +40,7 @@ public class StatisticsService {
                 ArrayList<Integer> heartRateList = data.getHeartRateList();
                 for(int k = 0; k < heartRateList.size(); k++){
                     averageHeartRate += heartRateList.get(k);
+
                 }
                 heartRateValues += heartRateList.size();
             }
@@ -48,48 +50,48 @@ public class StatisticsService {
     }
 
     /**
-     * Gets the km ran between now and last week
+     * Gets the km ran in total
      * @return a Double of the amount of Km's
      */
-    public Double getKmRunWeek() {
-        return kmRunWeek;
+    public Double getKmRunTotal() {
+        return kmRunTotal;
     }
 
     /**
-     * Calls the getKmOfActivity with type RUN to see how many km's the user has run in the past week
+     * Calls the getKmOfActivity with type RUN to see how many km's the user has run in total
      */
-    public void setKmRunWeek() {
-        this.kmRunWeek = getKmOfActivityType(DataType.RUN);
+    public void setKmRunTotal() {
+        this.kmRunTotal = getKmOfActivityType(DataType.RUN);
     }
 
     /**
-     * Gets the amount of km swum since last week
+     * Gets the amount of km walked in total
      * @return a Double of the amount of Km's
      */
-    public Double getmSwamWeek() {
-        return mSwamWeek;
+    public Double getkmWalkTotal() {
+        return kmWalkTotal;
     }
 
     /**
-     * Calls the getKmOfActivity with type SWIM to see how many km's the user has swum in the past week
+     * Calls the getKmOfActivity with type WALK to see how many km's the user has walked in total
      */
-    public void setmSwamWeek() {
-        this.mSwamWeek = getKmOfActivityType(DataType.SWIM);
+    public void setKmWalkTotal() {
+        this.kmWalkTotal = getKmOfActivityType(DataType.WALK);
     }
 
     /**
-     * Gets the amount of km biked since last week
+     * Gets the amount of km biked total
      * @return a Double of the amount of Km's
      */
-    public Double getKmBikedWeek() {
-        return kmBikedWeek;
+    public Double getKmBikedTotal() {
+        return kmBikedTotal;
     }
 
     /**
-     * Calls the getKmOfActivity with type BIKE to see how many km's the user has biked in the past week
+     * Calls the getKmOfActivity with type BIKE to see how many km's the user has biked total
      */
-    public void setKmBikedWeek() {
-        this.kmBikedWeek = getKmOfActivityType(DataType.BIKE);
+    public void setKmBikedTotal() {
+        this.kmBikedTotal = getKmOfActivityType(DataType.BIKE);
     }
 
     /**
@@ -127,79 +129,75 @@ public class StatisticsService {
     }
 
     /**
-     * Gets the amount fo calories burned by the user in the last week
+     * Gets the amount fo calories burned by the user in total
      * @return a Double of the amount of calories burned
      */
-    public Double getCaloriesBurnedWeek() {
-        return caloriesBurnedWeek;
+    public Double getCaloriesBurnedTotal() {
+        return caloriesBurnedTotal;
     }
 
     /**
-     * Searches through all data in the past week and adds how much calories were burned by the user
+     * Searches through all data and adds how much calories were burned by the user
      */
-    public void setCaloriesBurnedWeek() {
+    public void setCaloriesBurned() {
 
         Double calories = 0.0;
         for(int i = 0; i < arrayCollection.size(); i++) {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
-                if (inLastWeek(data.getCreationDate())) {
-                    calories += data.getConsumedCalories();
-                }
+                calories += data.getConsumedCalories();
             }
 
         }
 
-        this.caloriesBurnedWeek = calories;
+        this.caloriesBurnedTotal = calories;
     }
 
     /**
-     * Gets the amount of weight the user has lost in the past week
+     * Gets the amount of weight the user has lost in total
      * @return a Double with the weight lost
      */
-    public Double getWeightLossWeek() {
-        return weightLossWeek;
+    public Double getWeightLossTotal() {
+        return weightLossTotal;
     }
 
     /**
-     * Looks back 1 week to see the weight of the user and compares it with today's weight
+     * Sets the weight loss in total for the user for all drops in weight
      */
-    public void setWeightLossWeek() {
-        Double lastWeekWeight = 0.0;
+    public void setWeightLossTotal() {
+        Double totalLost = 0.0;
+        Double current;
         ArrayList<WeightRecord> weightRecords = userStats.getUserWeightRecords();
-        for (int i = weightRecords.size() - 1; i >= 0; i--) {
-            LocalDateTime newDateTimes = weightRecords.get(i).getDate();
-            Date date = Date.from(newDateTimes.atZone(ZoneId.systemDefault()).toInstant());
-            if (!inLastWeek(date)) {
-                lastWeekWeight = weightRecords.get(i).getWeight();
-                break;
+        Double previous = weightRecords.get(0).getWeight();
+        for (int i = 1; i < weightRecords.size() ; i++) {
+            current = weightRecords.get(i).getWeight();
+            if (( previous - current) > 0) {
+                totalLost += previous - current;
             }
+            previous = current;
         }
-        this.weightLossWeek = lastWeekWeight - weightRecords.get(weightRecords.size() - 1).getWeight();
-        if (this.weightLossWeek < 0) {
-            this.weightLossWeek = 0.0;
-        }
+        this.weightLossTotal = totalLost;
     }
 
     /**
-     * Gets the total amount the user has travelled in km's over the past week
+     * Gets the total amount the user has travelled in km's
      * @return a Double of the amount of Km's
      */
-    public Double getTotalKmWeek() {
-        return totalKmWeek;
+    public Double getKmTotal() {
+        return totalKm;
     }
 
     /**
      * uses getKmOfActivityType with parameter ALL to gets the total amount of Km's in the past week
      */
-    public void setTotalKmWeek() {
-        this.totalKmWeek = getKmOfActivityType(DataType.ALL);
+    public void setTotalKm() {
+        this.totalKm = getKmOfActivityType(DataType.ALL);
     }
 
     /**
-     * Searches through all data and checks if the data is within the last week by comparing it with a dateWeek variable
-     * If it is within the week then it checks the activityType to see if it wants to add the distance covered to the km Double
+     * Searches through all data and checks if the activity type is the same as the current data being checked
+     * or if activity type is all and if that holds then add that to the km's
      * @param activityType the type of activity to figure out the Km's, can be ALL to get all types of activities
      * @return the amount of km's travelled by the certain activityType
      */
@@ -210,12 +208,9 @@ public class StatisticsService {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
-                if (inLastWeek(data.getCreationDate())) {
-                    if (data.getDataType() == activityType || activityType == DataType.ALL) {
-                        km += data.getDistanceCovered();
-                    }
+                if (data.getDataType() == activityType || activityType == DataType.ALL) {
+                    km += data.getDistanceCovered() / 1000;
                 }
-
             }
 
         }
@@ -224,54 +219,22 @@ public class StatisticsService {
 
 
     /**
-     * Gets the date for the past week time
-     * @return a Date variabel of last weeks date
-     */
-    public Date getDateWeek() {
-        return dateWeek;
-    }
-
-    /**
-     * Calculates the Date last week by using milliseconds in a day * 7 taken away from the current time
-     */
-    public void calDateWeek() {
-        long day = 86400000;
-        Date date = new Date(System.currentTimeMillis() - (7 * day));
-        this.dateWeek = date;
-    }
-
-    /**
-     * Checks if the date passed in is within the last week or not
-     * @param compare the date that could or could not be within the last week
-     * @return True if it is within the last week, False if it is not within the last week
-     */
-    public Boolean inLastWeek(Date compare) {
-        if (dateWeek.before(compare)) {
-            return Boolean.TRUE;
-        } else {
-            return Boolean.FALSE;
-        }
-    }
-
-
-    /**
      * Variables used for the main statistics display screen/tab
      */
 
     private Integer averageHeartRate;
-    private Double kmRunWeek;
-    private Double mSwamWeek;
-    private Double kmBikedWeek;
+    private Double kmRunTotal;
+    private Double kmWalkTotal;
+    private Double kmBikedTotal;
     private String healthStatus;
-    private Double caloriesBurnedWeek;
-    private Double weightLossWeek;
-    private Double totalKmWeek;
+    private Double caloriesBurnedTotal;
+    private Double weightLossTotal;
+    private Double totalKm;
     private HealthService healthService;
 
     private UserStats userStats;
     private ActivityListCollection collection;
     private ArrayList<ActivityList> arrayCollection;
-    private Date dateWeek;
 
     public StatisticsService(User user) {
         healthService = new HealthService(user);
@@ -280,11 +243,25 @@ public class StatisticsService {
         arrayCollection = collection.getActivityListCollection();
     }
 
+    /**
+     * A function to update all of the home statistics
+     */
+    public void updateHomeStats() {
+        setAverageHeartRate();
+        setWeightLossTotal();
+        setCaloriesBurned();
+        setHealthStatus();
+        setKmRunTotal();
+        setKmWalkTotal();
+        setKmBikedTotal();
+        setTotalKm();
+    }
+
     //Functions for graphs
 
     /**
      * Grabs the record for weight records and grabs each date and weight and assigns them to an x or y axis arrayList
-     * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
+     * so that it can be plotted and adds these arrayLists to a graph object which only stores Doubles in the lists
      * @return a graphXY object that contains the x and y axis arrayLists
      */
     public GraphXY getGraphDataWeight() {
@@ -296,14 +273,14 @@ public class StatisticsService {
         }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()));
-            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
+            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
         }
         return graph;
     }
 
     /**
      * Grabs the record for bmi records and grabs each date and bmi data and assigns them to an x or y axis arrayList
-     * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
+     * so that it can be plotted and adds these arrayLists to a graph object which only stores Doubles in the lists
      * @return a graphXY object that contains the x and y axis arrayLists
      */
     public GraphXY getGraphDataBMIType() {
@@ -315,14 +292,31 @@ public class StatisticsService {
         }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getBmi().getBMIValue()));
-            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(i - 1).getDate()));
+            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
         }
         return graph;
     }
 
     /**
-     * Grabs the record for Stress Level records and grabs each date and stress level data and assigns them to an x or y axis arrayList
-     * so that it can be plotted and adds these arrayLists to a graph object which only stores Strings in the lists
+     * Grabs the speed data for the current activity and assigns the date or the speed to the x or y axis ArrayLists
+     * so that it can be plotted, these arrayLists are added to a graphXY object which the Graph Controller uses
+     * @return a graphXY object that contains the x and y axis arrayLists
+     */
+    public GraphXY getSpeedGraphOverTime(Data data) {
+        GraphXY graph = new GraphXY();
+        ArrayList<Double> speedList = data.getKphSpeedsBetweenPoints();
+        ArrayList<LocalDateTime> time = data.getAllDateTimes();
+        ArrayList<Double> times = createTimes(time);
+        for (int i = 0; i < speedList.size() - 1; i++) {
+            graph.addYAxis(speedList.get(i));
+            graph.addXAxis(times.get(i));
+        }
+        return graph;
+    }
+
+    /**
+     * Grabs the data for Stress Level and grabs each date and stress level data and assigns them to an x or y axis arrayList
+     * so that it can be plotted and adds these arrayLists to a graph object which only stores Doubles in the lists
      * @return a graphXY object that contains the x and y axis arrayLists
      */
     public GraphXY getStressLevelOverTimeGraph(Data data) {
@@ -435,12 +429,9 @@ public class StatisticsService {
         ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
-        //Double summary = 0.0;
         for (int i = 0; i < time.size() - 1; i++) {
             graph.addXAxis(times.get(i));
-            //summary += calories.get(i);
             graph.addYAxis(calories.get(i));
-            //System.out.println(calories.get(i));
         }
         return graph;
     }

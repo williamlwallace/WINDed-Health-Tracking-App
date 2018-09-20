@@ -5,7 +5,6 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -13,10 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
+import seng202.group8.gui.calendar_view.CalendarViewController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -97,7 +96,7 @@ public class GUIController implements Initializable {
 
 
     public void setToHome() throws IOException {
-        BorderPane homeScene = FXMLLoader.load(getClass().getResource("home.fxml"));
+        BorderPane homeScene = FXMLLoader.load(getClass().getResource("../../../resources/views/home.fxml"));
         scene.getChildren().setAll(homeScene);
         homeBtn.setStyle("-fx-background-color: #2874a6");
     }
@@ -105,7 +104,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadHome(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         scene.getChildren().setAll(homeScene);
@@ -156,6 +155,20 @@ public class GUIController implements Initializable {
         homeBtn.setStyle("-fx-background-color: transparent");
         activityBtn.setStyle("-fx-background-color: transparent");
         statsBtn.setStyle("-fx-background-color: transparent");
+    }
+
+    @FXML
+    private void loadCalendar(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/calendar_view.fxml"));
+        BorderPane calendarScene = loader.load();
+        CalendarViewController calendarViewController = loader.getController();
+        calendarViewController.setUser(user);
+        calendarViewController.setCurrentStage(stage);
+        scene.getChildren().setAll(calendarScene);
+        statsBtn.setStyle("-fx-background-color: #2874a6");
+        homeBtn.setStyle("-fx-background-color: transparent");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
     public User getUser() {

@@ -34,6 +34,12 @@ public class CalendarViewController {
 
 
 
+    @FXML
+    public void initialize() {
+        setDatePickerListener();
+    }
+
+
     public void setDatePickerListener() {
 
         noActivitiesText.setText("Click on a day to find the activities performed or the goals due");

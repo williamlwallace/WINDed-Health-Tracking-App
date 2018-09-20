@@ -43,6 +43,13 @@
       <artifactId>AnimateFX</artifactId>
       <version>1.2.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/no.tornado/tornadofx-controls -->
+    <dependency>
+      <groupId>no.tornado</groupId>
+      <artifactId>tornadofx-controls</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
 
   </dependencies>
   <build>
