@@ -4,8 +4,6 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -22,9 +20,7 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.controlsfx.dialog.LoginDialog;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
@@ -132,7 +128,7 @@ public class ActivitiesCollectionController {
         TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         System.out.println("Selected Item:" + selectedItem);
         if (selectedItem != null ) {
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf()) {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot()) {
                 System.out.println("Ciao " + selectedItem.getValue());
                 TreeItem<String> parent = selectedItem.getParent();
                 int dataIndex = parent.getChildren().indexOf(selectedItem);
@@ -169,7 +165,7 @@ public class ActivitiesCollectionController {
 
 
     private void triggerNewActivityDialog(int activityListIndex) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("activities_collection_dialogs/new_data_dialog.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/new_data_dialog.fxml"));
         try {
             Parent root = loader.load();
             Stage newStage = new Stage();

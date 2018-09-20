@@ -9,11 +9,9 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.RunData;
-import seng202.group8.gui.calendar_view.CalendarViewController;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -57,7 +55,7 @@ public class NewDataDialog extends Application {
     public void start(Stage primaryStage) throws Exception {
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("new_data_dialog.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../../resources/resources/views/new_data_dialog.fxml"));
 
         Parent root = loader.load();
 //        CalendarViewController controller = (CalendarViewController) loader.getController();

@@ -6,12 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-
 public class GetUserInfo extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GetUserInfo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../../../resources/resources/views/GetUserInfo.fxml"));
         primaryStage.setTitle("WINded");
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root));

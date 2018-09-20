@@ -4,11 +4,18 @@
     <bookmark url="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" line="571" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="Spotted the bug in Data, all Data entries need to have arrayLists of same size.">
+    <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="Connecting the new_data_diolog to the activityListCollectionDisplay. encountering indexing problems within the treeView in activityListCollectinDisplay">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/new_data_dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/new_data_dialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/new_data_dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/goals_displayer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/GetUserInfo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/get_user_info.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/winded.db" beforeDir="false" afterPath="$PROJECT_DIR$/winded.db" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,42 +28,47 @@
     <SUITE FILE_PATH="coverage/HealthTrackerApp$GoalsDisplayer.coverage" NAME="GoalsDisplayer Coverage Results" MODIFIED="1537324648781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>seng202.group8.gui.goals_displayer.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$All_in_HealthTrackerApp.ic" NAME="All in HealthTrackerApp Coverage Results" MODIFIED="1537439543855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1351477956">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="15" />
-          <entry key="java" value="2310" />
-          <entry key="txt" value="128" />
+          <entry key="java" value="2337" />
+          <entry key="txt" value="297" />
           <entry key="xml" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2310" />
-          <entry key="PLAIN_TEXT" value="128" />
+          <entry key="JAVA" value="2337" />
+          <entry key="PLAIN_TEXT" value="297" />
           <entry key="XML" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="2" />
-          <entry key="java" value="15" />
+          <entry key="css" value="1" />
+          <entry key="fxml" value="5" />
+          <entry key="java" value="19" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="15" />
-          <entry key="XML" value="3" />
+          <entry key="CSS" value="1" />
+          <entry key="JAVA" value="19" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -64,11 +76,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="138" column="20" lean-forward="true" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+            <state relative-caret-position="740">
+              <caret line="200" column="5" selection-start-line="200" selection-start-column="5" selection-end-line="200" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,8 +91,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="180" column="48" selection-start-line="180" selection-start-column="48" selection-end-line="180" selection-end-column="48" />
+            <state relative-caret-position="178">
+              <caret line="130" column="147" selection-start-line="130" selection-start-column="147" selection-end-line="130" selection-end-column="147" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivityListCollectionDisplay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+              <folding>
+                <element signature="e#944#953#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="94" column="79" lean-forward="true" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/GetUserInfo.fxml">
+          <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Goals.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Splash.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOtherController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -118,7 +187,6 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java" />
@@ -132,8 +200,9 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarView.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
       </list>
     </option>
   </component>
@@ -162,6 +231,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -170,102 +240,6 @@
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="data_entries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="activity_list_collection_displayer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="activity_list_collection_displayer" type="462c0819:PsiDirectoryNode" />
-              <item name="activities_collection_dialogs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics_graph_displayer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -297,13 +271,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537436067709" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537439594891" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -331,7 +304,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ActivityListCollectionDisplay">
+  <component name="RunManager" selected="JUnit.All in HealthTrackerApp">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -380,20 +353,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GoalsDisplayer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="seng202.group8.gui.goals_displayer.GoalsDisplayer" />
-      <module name="HealthTrackerApp" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="seng202.group8.gui.goals_displayer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NewDataDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialog" />
       <module name="HealthTrackerApp" />
@@ -410,6 +369,15 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in HealthTrackerApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthTrackerApp" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -440,17 +408,17 @@
     <list>
       <item itemvalue="Application.ActivityListCollectionDisplay" />
       <item itemvalue="Application.GUI" />
-      <item itemvalue="Application.GoalsDisplayer" />
       <item itemvalue="Application.NewDataDialog" />
       <item itemvalue="Application.CalendarView" />
+      <item itemvalue="JUnit.All in HealthTrackerApp" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in HealthTrackerApp" />
         <item itemvalue="Application.ActivityListCollectionDisplay" />
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.NewDataDialog" />
         <item itemvalue="Application.CalendarView" />
-        <item itemvalue="Application.GUI" />
-        <item itemvalue="Application.GoalsDisplayer" />
       </list>
     </recent_temporary>
   </component>
@@ -558,8 +526,26 @@
       <option name="project" value="LOCAL" />
       <updated>1537434800549</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Connecting the new_data_diolog to the activityListCollectionDisplay. encountering indexing problems within the treeView in activityListCollectinDisplay">
+      <created>1537436379294</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1537436379294</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_HealthTrackerApp - 2018.09.20 at 22h 31m 50s.xml">
+      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_HealthTrackerApp - 2018.09.20 at 22h 32m 20s.xml">
+      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_HealthTrackerApp - 2018.09.20 at 22h 32m 25s.xml">
+      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="39106000" />
@@ -575,9 +561,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2257886" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37188712" />
       <window_info id="Structure" order="1" weight="0.2497332" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -586,7 +571,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21945946" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28864864" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32901555" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -604,7 +589,7 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32977587" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32927504" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,17 +611,11 @@
     <MESSAGE value="Kept working on retrieving a single Data value from user (manual addition)." />
     <MESSAGE value="Added logic into new_data_dialog" />
     <MESSAGE value="Spotted the bug in Data, all Data entries need to have arrayLists of same size." />
-    <option name="LAST_COMMIT_MESSAGE" value="Spotted the bug in Data, all Data entries need to have arrayLists of same size." />
+    <MESSAGE value="Connecting the new_data_diolog to the activityListCollectionDisplay. encountering indexing problems within the treeView in activityListCollectinDisplay" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connecting the new_data_diolog to the activityListCollectionDisplay. encountering indexing problems within the treeView in activityListCollectinDisplay" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/main.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Splash.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/target/classes/seng202/group8/gui/GUI.class">
@@ -659,17 +638,8 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/get_user_info.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/stylesheet.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1096" />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home.fxml" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/target/classes/resources/views/graphs.fxml">
@@ -691,23 +661,6 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
-          <folding>
-            <element signature="e#5035#5036#0" />
-            <element signature="e#5062#5063#0" />
-            <element signature="e#5100#5101#0" />
-            <element signature="e#5132#5133#0" />
-            <element signature="e#5163#5164#0" />
-            <element signature="e#5191#5192#0" />
-            <element signature="e#5232#5233#0" />
-            <element signature="e#5266#5267#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -722,7 +675,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/goals_displayer.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -827,7 +780,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/new_data_dialog.fxml">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="930">
@@ -863,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivityListCollectionDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="65" lean-forward="true" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/Graphs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -902,19 +848,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="180" column="48" selection-start-line="180" selection-start-column="48" selection-end-line="180" selection-end-column="48" />
+        <state relative-caret-position="740">
+          <caret line="200" column="5" selection-start-line="200" selection-start-column="5" selection-end-line="200" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/get_user_info.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Goals.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Splash.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOtherController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="138" column="20" lean-forward="true" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+        <state relative-caret-position="60">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="94" column="79" lean-forward="true" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/GetUserInfo.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="130" column="147" selection-start-line="130" selection-start-column="147" selection-end-line="130" selection-end-column="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivityListCollectionDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#944#953#0" expanded="true" />
           </folding>
         </state>
       </provider>
