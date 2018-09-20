@@ -70,17 +70,6 @@ public class SplashController implements Initializable {
         anim1.playOnFinished(anim2);
 
 
-
-
-
-//        Bounce tada = new Bounce(logo);
-//        tada.setCycleCount(6);
-//        tada.play();
-
-
-
-
-
         fadeIn.setOnFinished((e) -> {
             fadeOut.play();
         });
@@ -120,37 +109,6 @@ public class SplashController implements Initializable {
 
     }
 
-//    class splashScreen extends Thread {
-//
-//        @Override
-//        public void run() {
-//            try {
-//                Thread.sleep(3000);
-//
-//                Platform.runLater(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Parent root = null;
-//                        try {
-//                            root = FXMLLoader.load(getClass().getResource("mainFrame.fxml"));
-//                         mainFrame   System.out.println("Done");
-//                        } catch (IOException ex) {
-//                            Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                        Scene scene = new Scene(root);
-//                        Stage stage = new Stage();
-//                        stage.setScene(scene);
-//                        stage.setTitle("WINded");
-//                        stage.show();
-//                        parent.getScene().getWindow().hide();
-//
-//                    }
-//                });
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
 
 
     public User getUser() {

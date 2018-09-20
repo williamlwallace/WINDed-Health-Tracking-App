@@ -66,49 +66,53 @@ public class GUIController implements Initializable {
     }
 
 
-    private void loadSplash()
-    {
-        try {
-            GUI.isSplashLoaded = true;
-
-            StackPane pane = FXMLLoader.load(getClass().getResource("../../../../resources/resources/views/Splash.fxml"));
-            root.getChildren().setAll(pane);
-
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
-
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
-            fadeIn.setFromValue(1);
-            fadeIn.setToValue(0);
-            fadeIn.setCycleCount(1);
-
-            fadeIn.play();
-
-            fadeIn.setOnFinished((e) -> {
-                fadeOut.play();
-            });
-
-            fadeOut.setOnFinished((e) -> {
-                try {
-                    BorderPane parentContent = FXMLLoader.load(getClass().getResource(("mainFrame.fxml")));
-                    root.getChildren().setAll(parentContent);
-
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-
-        } catch (IOException ex) {
-            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private void loadSplash()
+//    {
+//        try {
+//            GUI.isSplashLoaded = true;
+//
+//            StackPane pane = FXMLLoader.load(getClass().getResource("../../../../resources/resources/views/Splash.fxml"));
+//            root.getChildren().setAll(pane);
+//
+//            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
+//            fadeIn.setFromValue(0);
+//            fadeIn.setToValue(1);
+//            fadeIn.setCycleCount(1);
+//
+//            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
+//            fadeIn.setFromValue(1);
+//            fadeIn.setToValue(0);
+//            fadeIn.setCycleCount(1);
+//
+//            fadeIn.play();
+//
+//            fadeIn.setOnFinished((e) -> {
+//                fadeOut.play();
+//            });
+//            System.out.println(user.getName());
+//            fadeOut.setOnFinished((e) -> {
+//                try {
+//
+//
+//                    BorderPane parentContent = FXMLLoader.load(getClass().getResource(("mainFrame.fxml")));
+//                    root.getChildren().setAll(parentContent);
+//
+//
+//                } catch (IOException ex) {
+//                    Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            });
+//
+//        } catch (IOException ex) {
+//            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
 
     public void setToHome() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
+        userBtn.setText(user.getName());
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         HomeController homeController = loader.getController();
         homeController.setPrimaryStage(stage);
