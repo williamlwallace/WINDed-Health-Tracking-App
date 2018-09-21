@@ -15,7 +15,7 @@
 }
 
 .top {
-    -fx-background-color: linear-gradient(to left, #2e86c1, #2874a6);
+    -fx-background-color: linear-gradient(to right, #2e86c1, #2874a6);
 }
 
 .textfield {
@@ -41,6 +41,11 @@
 .choice-box .arrow {
     -fx-background-color: #4d4d4d;
 }
+
+.combo-box:hover{
+    -fx-background-color: #2874a6;
+}
+
 
 
 

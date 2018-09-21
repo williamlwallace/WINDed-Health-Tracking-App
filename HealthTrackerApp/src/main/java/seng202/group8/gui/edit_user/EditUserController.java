@@ -130,13 +130,13 @@ public class EditUserController {
             user.setAge(age);
             user.updateWeight(weight);
             user.setHeight(height);
-        }
-        try {
-            SQLiteJDBC database = new SQLiteJDBC();
-            database.saveUser(user, 1);
-            guiController.setToHome();
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                SQLiteJDBC database = new SQLiteJDBC();
+                database.saveUser(user, 1);
+                guiController.setToHome();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

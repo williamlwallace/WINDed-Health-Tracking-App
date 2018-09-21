@@ -7,7 +7,7 @@
 }
 
 .top {
-    -fx-background-color: linear-gradient(to left, #2e86c1, #2874a6);
+    -fx-background-color: linear-gradient(to right, #2e86c1, #2874a6);
 }
 
 .btns{
@@ -34,8 +34,8 @@
 }
 
 /*** Top-level menu itself (not selected / hovered) ***/
-.menu-bar > .container > .menu-button {
-    -fx-background-color: -fx-my-menu-color;
+.menu-bar:hover{
+    -fx-background-color: -fx-my-menu-color-highlighted;
 }
 
 /*** Top-level menu's label (not selected / hovered) ***/
