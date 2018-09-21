@@ -63,11 +63,6 @@ public class ActivitiesCollectionController {
     @FXML
     private Text averageSpeed;
 
-    @FXML
-    private Text maxSpeed;
-
-    @FXML
-    private Text minSpeed;
 
     @FXML
     private Text parserInfo;
@@ -106,6 +101,9 @@ public class ActivitiesCollectionController {
         averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()));
         maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate()));
         minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate()));
+        String averageSpeedString = String.format("%.2f", String.valueOf(data.getDataSpeedKph()));
+        averageSpeed.setText(averageSpeedString);
+
     }
 
     public void setUpTreeView() {

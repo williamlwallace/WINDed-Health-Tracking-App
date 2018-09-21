@@ -54,16 +54,6 @@
                   <Font size="8.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Speed" wrappingWidth="67.76171875" AnchorPane.leftAnchor="10.0">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Text>
-            <Text layoutX="10.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Speed" wrappingWidth="62.76171875" AnchorPane.leftAnchor="10.0">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Text>
             <Text fx:id="distanceCovered" layoutX="121.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <font>
                   <Font size="8.0" />
@@ -85,16 +75,6 @@
                </font>
             </Text>
             <Text fx:id="averageSpeed" layoutX="121.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Text>
-            <Text fx:id="maxSpeed" layoutX="121.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Text>
-            <Text fx:id="minSpeed" layoutX="121.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <font>
                   <Font size="8.0" />
                </font>
