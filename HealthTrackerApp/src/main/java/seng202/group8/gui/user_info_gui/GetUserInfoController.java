@@ -26,26 +26,6 @@ import java.io.IOException;
 
 public class GetUserInfoController {
 
-//    @FXML
-//    private ChoiceBox sexChoice;
-//
-//    @FXML
-//    private JFXButton enterDetailsButton;
-//
-//    @FXML
-//    private TextField nameField;
-//
-//    @FXML
-//    private TextField ageField;
-//
-//    @FXML
-//    private TextField weightField;
-//
-//    @FXML
-//    private TextField heightField;
-//
-//    @FXML
-//    private Text errorText;
 
     @FXML
     private ComboBox sexChoice;
