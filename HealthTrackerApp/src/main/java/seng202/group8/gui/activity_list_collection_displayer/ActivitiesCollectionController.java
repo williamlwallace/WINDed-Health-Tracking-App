@@ -111,6 +111,7 @@ public class ActivitiesCollectionController {
         }
         activityListCollectionTreeView.setTooltip(new Tooltip("Double click on any of the activities containers to add a new activity to its list!"));
         activityListCollectionTreeView.setRoot(rootNode);
+
     }
 
 

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
 import com.jfoenix.controls.JFXToggleButton;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,6 +26,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author lfa69
+ * Controller for new_data_dialog.fxml deals with asking the user for a set of minimum values required to create a Data value.
+ * This value if valid data is returned will be added to an already existing ActivityList or it will ad an ActivityList
+ * and then populate it with the Data value created (user choice)
+ */
 public class NewDataDialogController {
 
     private User user;
@@ -64,6 +71,10 @@ public class NewDataDialogController {
     @FXML
     private Text errorText;
 
+    /**
+     * Method called by fxml view as soon as the fxml file is loaded, populates choice boxes.
+     * Checks for user to add only integers to distance covered values.
+     */
     @FXML
     public void initialize() {
         ArrayList<String> activitiesChoice = new ArrayList<>();
@@ -135,13 +146,22 @@ public class NewDataDialogController {
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
 
+            SQLiteJDBC database = new SQLiteJDBC();
+
             if (newActivityListToggle.isSelected()) {
                 ActivityList activityList = new ActivityList(newActivityListName.getText());
                 activityList.insertActivity(dataVal);
                 user.getUserActivities().insertActivityList(activityList);
+                database.insertActivityList(activityList.getTitle(),
+                        database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(activityList.getCreationDate())), 1);
+                database.updateWithListOfData(activityList.getActivityList(), activityList.getTitle(), activityList.getCreationDate(), 1);
             } else {
                 System.out.println(activityListIndexToAppendTo);
-                user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo).insertActivity(dataVal);
+                ActivityList existingList = user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo);
+                existingList.insertActivity(dataVal);
+                ArrayList<Data> newDataList = new ArrayList<Data>();
+                newDataList.add(dataVal);
+                database.updateWithListOfData(newDataList, existingList.getTitle(), existingList.getCreationDate(), 1);
             }
             stage.hide();
             activitiesCollectionController.setUpTreeView();
