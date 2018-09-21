@@ -127,7 +127,7 @@ public class GUIController implements Initializable {
     }
 
     @FXML
-    private void loadHome(ActionEvent event) throws IOException
+    public void loadHome(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
@@ -214,6 +214,7 @@ public class GUIController implements Initializable {
         EditUserController editUserController = loader.getController();
         editUserController.setUser(user);
         editUserController.setStage(stage);
+        editUserController.setGuiController(this);
         editUserController.setUp();
         scene.getChildren().setAll(editUserScene);
         calendarBtn.setStyle("-fx-background-color: transparent");

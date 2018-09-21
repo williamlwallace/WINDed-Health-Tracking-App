@@ -2,6 +2,7 @@ package seng202.group8.gui.edit_user;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,6 +14,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class EditUserController {
+
+
 
     @FXML
     private JFXTextField nameField;
@@ -37,6 +40,9 @@ public class EditUserController {
 
     private User user;
     private Stage stage;
+
+    private GUIController guiController;
+
 
     public User getUser() { return user; }
 
@@ -125,16 +131,29 @@ public class EditUserController {
             user.setWeight(weight);
             user.setHeight(height);
         }
+        try {
+            SQLiteJDBC database = new SQLiteJDBC();
+            database.saveUser(user, 1);
+            guiController.setToHome();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void cancelPressed(ActionEvent event) throws IOException{
-        GUIController guiController = new GUIController();
         guiController.setToHome();
 
     }
 
 
+    public GUIController getGuiController() {
+        return guiController;
+    }
+
+    public void setGuiController(GUIController guiController) {
+        this.guiController = guiController;
+    }
 }
 
 
