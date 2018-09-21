@@ -1,5 +1,6 @@
 package seng202.group8.gui.calendar_view;
 
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,13 +19,17 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author lfa69
+ * calendar_view.fxml controller. It allows the user to check the performed activities during specific days.
+ */
 public class CalendarViewController {
 
     private User user;
     private Stage currentStage;
 
     @FXML
-    private DatePicker datePicker;
+    private JFXDatePicker datePicker;
 
     @FXML
     private ListView<Data> activitiesListView;
@@ -40,6 +45,11 @@ public class CalendarViewController {
     }
 
 
+    /**
+     * DatePicker listener, every time a date is selected a list of all the activities performed during
+     * the selected day will appear in the ListView dedicated to activities.
+     * TODO: add logic for the Goals part of it (Deliverable 3).
+     */
     public void setDatePickerListener() {
 
         noActivitiesText.setText("Click on a day to find the activities performed or the goals due");
@@ -77,6 +87,12 @@ public class CalendarViewController {
         });
     }
 
+    /**
+     *
+     * @param userData
+     * ListView for Data values helper, it populates the ListView with all the activities
+     * performed during the selected (from DatePicker) date.
+     */
     private void displayActivitiesForTheSelectedDay(ArrayList<Data> userData) {
         ObservableList<Data> dataObservableList = FXCollections.observableList(userData);
         activitiesListView.setItems(dataObservableList);

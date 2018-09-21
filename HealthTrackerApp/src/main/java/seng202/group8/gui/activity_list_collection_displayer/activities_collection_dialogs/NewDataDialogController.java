@@ -104,7 +104,10 @@ public class NewDataDialogController {
 
     }
 
-
+    /**
+     * Toggle button listener, make the newActivityListName parameter visible
+     * only if required to create a new ActivityList.
+     */
     public void togglListener() {
         if (newActivityListToggle.isSelected()) {
             newActivityListName.setVisible(true);
@@ -113,6 +116,10 @@ public class NewDataDialogController {
         }
     }
 
+    /**
+     * Backend process that once createDataButton is clicked and the given info are correct it creates an Data object
+     * and adds it to the user data values.
+     */
     public void createActivity() {
 
         if (allFieldsAreCorrect(newActivityListToggle.isSelected())) {

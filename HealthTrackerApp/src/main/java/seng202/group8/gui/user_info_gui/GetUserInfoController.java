@@ -24,6 +24,11 @@ import seng202.group8.user.user_stats.Sex;
 //import javax.xml.soap.Text;
 import java.io.IOException;
 
+/**
+ * @author lfa69
+ * GetUserInfo.fxml controller.
+ * Deals with adding logic to the login screen. Allows new user to sign up.
+ */
 public class GetUserInfoController {
 
 
@@ -61,6 +66,12 @@ public class GetUserInfoController {
         sexChoice.getSelectionModel().select("Male");
     }
 
+    /**
+     *
+     * @param event
+     * Handles the errors due to misfilling some fields, if everything is set correctly,
+     * it creates a user object and stores it in the database.
+     */
     public void enterDetails(ActionEvent event) {
         System.out.println("Pressed");
         String name = null;
@@ -139,6 +150,11 @@ public class GetUserInfoController {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     * Loads mainFrame.fxml after the user has been created.
+     */
     private void loadMainFrame() throws IOException {
         SQLiteJDBC database = new SQLiteJDBC();
 
@@ -158,6 +174,11 @@ public class GetUserInfoController {
         stage.show();
     }
 
+    /**
+     *
+     * @param event
+     * cancelBtn event listener, closes the application without saving the entered data if clicked.
+     */
     @FXML
     private void quitApp(ActionEvent event) {
         stage.close();

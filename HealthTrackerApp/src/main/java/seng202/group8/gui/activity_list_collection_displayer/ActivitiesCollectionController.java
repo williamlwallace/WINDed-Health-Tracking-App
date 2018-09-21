@@ -2,6 +2,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
+import com.jfoenix.controls.JFXButton;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -82,11 +83,22 @@ public class ActivitiesCollectionController {
     @FXML
     private Button searchForFileButton;
 
+    @FXML
+    private JFXButton deleteButton;
+
     private static Stage primaryStage;
     private static User user;
     private String csvToParse;
     private String activityTitle;
 
+
+    /**
+     * TODO: make it available once the logic behind it can vbe implemented
+     */
+    @FXML
+    private void initialize() {
+        deleteButton.setVisible(false);
+    }
 
     /**
      *
@@ -114,6 +126,9 @@ public class ActivitiesCollectionController {
 
     }
 
+    /**
+     * TreeView items updater, called every time there is a need to display more data points (when data is added or deleted)
+     */
     public void setUpTreeView() {
         ActivityListCollection activityListCollection = user.getUserActivities();
         TreeItem<String> rootNode = new TreeItem<>(activityListCollection.getTitle());
@@ -132,10 +147,11 @@ public class ActivitiesCollectionController {
     }
 
 
-
-
-
-
+    /**
+     *
+     * @param htmlFile
+     * GoogleMaps parsed file loader.
+     */
     public void setUpWebView(String htmlFile) {
         WebEngine webEngine = googleMapsWebView.getEngine();
 //        System.out.println(htmlFile);
@@ -143,6 +159,13 @@ public class ActivitiesCollectionController {
     }
 
 
+    /**
+     *
+     * @param mouseEvent
+     * @throws IOException
+     * TreeView item listener that allows to update the WebEngine rendering the GoogleMaps file
+     * and the insights view every time a new Data object is clicked in the TreeView.
+     */
     public void showNewInsightsAndMap(MouseEvent mouseEvent) throws IOException {
         TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         System.out.println("Selected Item:" + selectedItem);
@@ -185,6 +208,11 @@ public class ActivitiesCollectionController {
     }
 
 
+    /**
+     *
+     * @param activityListIndex
+     * Opens a dialog for the user to input manual data in the app.
+     */
     private void triggerNewActivityDialog(int activityListIndex) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/new_data_dialog.fxml"));
         try {
@@ -208,6 +236,14 @@ public class ActivitiesCollectionController {
     }
 
 
+    /**
+     *
+     * @param htmlFile
+     * @param data
+     * @return the parsed html file injected with the Data coordinates
+     * Parses the googleMapsView.html file and injects specific variables to allow the plotting of coordinates in the
+     * WebView that will render the html file.
+     */
     private String jsInjection(String htmlFile, Data data) {
         htmlFile = htmlFile.replace("&CENTERID", "lat: "
                 + data.getCoordinatesArrayList().get(0).getLatitude()
@@ -233,6 +269,11 @@ public class ActivitiesCollectionController {
 
     }
 
+    /**
+     *
+     * @param event
+     * Helper function that will make sure the csv file is loaded in the app before allowing the user to upload the data.
+     */
     public void searchForFile(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV File", "*.csv");
@@ -322,6 +363,36 @@ public class ActivitiesCollectionController {
             System.out.println("csvToParse empty");
         }
     }
+
+
+//    /**
+//     *OnActionListener for the delete button, it allows to delete an activity or a list of activities.
+//     * Problem: if deleting the last ActivityList, then you must upload using the parser and no manual entrance is possible.
+//     */
+//    //Need to link it to the database
+//    public void deleteSelectedActivityOrActivityList() {
+//        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
+//        if (selectedItem != null && selectedItem != activityListCollectionTreeView.getRoot()) {
+//            TreeItem<String> parent = selectedItem.getParent();
+//            if (!selectedItem.isLeaf()) {
+//                int activityListIndex = parent.getChildren().indexOf(selectedItem);
+//                user.getUserActivities().deleteActivityList(activityListIndex);
+//            } else {
+//                int dataListIndex = parent.getChildren().indexOf(selectedItem);
+//                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+//                System.out.println("activity list index: " + activityListIndex);
+//                System.out.println("data index: " + dataListIndex);
+//                ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+//                if (activityList.getActivityList().size() > 1) {
+//                    Data dataToDelete = activityList.getActivity(dataListIndex);
+//                    activityList.getActivityList().remove(dataToDelete);
+//                } else {
+//                    user.getUserActivities().deleteActivityList(activityListIndex);
+//                }
+//            }
+//        }
+//        setUpTreeView();
+//    }
 
     public void setParserInfo(String s) {
         parserInfo.setText(s);
