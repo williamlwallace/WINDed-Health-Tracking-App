@@ -26,57 +26,65 @@
       <WebView fx:id="googleMapsWebView" prefHeight="455.0" prefWidth="742.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <AnchorPane fx:id="acticvityInsightsAnchorPane" prefHeight="455.0" prefWidth="178.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="acticvityInsightsAnchorPane" prefHeight="455.0" prefWidth="292.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="insightsTitle" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insights" />
-            <Text layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" AnchorPane.bottomAnchor="234.9921875" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="104.34765625" AnchorPane.topAnchor="79.3671875">
+            <Text fx:id="insightsTitle" layoutX="15.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="14.0" />
+               </font></Text>
+            <Text layoutX="9.0" layoutY="137.8515625" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="297.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="123.0">
+               <font>
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Heart Rate" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
+            <Text layoutX="6.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Heart Rate" wrappingWidth="95.76171875" AnchorPane.leftAnchor="6.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avearge Speed" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
+            <Text layoutX="10.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avearge Speed" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Heart Rate" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
+            <Text layoutX="12.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Heart Rate" wrappingWidth="84.76171875" AnchorPane.leftAnchor="12.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Heart Rate" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
+            <Text layoutX="14.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Heart Rate" wrappingWidth="81.76171875" AnchorPane.leftAnchor="14.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="distanceCovered" layoutX="121.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="distanceCovered" layoutX="169.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="averageHeartRate" layoutX="121.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="averageHeartRate" layoutX="168.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="maxHeartRate" layoutX="121.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="maxHeartRate" layoutX="169.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="minHeartRate" layoutX="121.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="minHeartRate" layoutX="168.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="averageSpeed" layoutX="121.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="averageSpeed" layoutX="168.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="8.0" />
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="15.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insights">
+               <font>
+                  <Font size="33.0" />
                </font>
             </Text>
          </children></AnchorPane>

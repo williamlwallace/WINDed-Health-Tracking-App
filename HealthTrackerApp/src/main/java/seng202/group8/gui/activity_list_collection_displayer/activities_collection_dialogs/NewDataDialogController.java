@@ -134,8 +134,8 @@ public class NewDataDialogController {
             //
 
             ArrayList<CoordinateData> coordinateData = new ArrayList<>();
-            CoordinateData coordinate1 = new CoordinateData(34, 45, 54);
-            CoordinateData coordinate2 = new CoordinateData(34, 35, 54);
+            CoordinateData coordinate1 = new CoordinateData(44.79935, 10.32618, 54);
+            CoordinateData coordinate2 = new CoordinateData(44.79945, 10.32628, 54);
             coordinateData.add(coordinate1);
             coordinateData.add(coordinate2);
 
@@ -146,6 +146,7 @@ public class NewDataDialogController {
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
+            dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
             SQLiteJDBC database = new SQLiteJDBC();
 
             if (newActivityListToggle.isSelected()) {
