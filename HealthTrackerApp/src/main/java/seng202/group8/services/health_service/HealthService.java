@@ -12,6 +12,7 @@ import java.util.Date;
 
 /**
  *
+ *@author lfa69
  * A maximum person heart rate should be equal to: max_heart_rate =  220 - person_age.
  * To be considered within standards a person heart rate should be between:
  * min_standard_heart_rate = max_heart_rate * 0.50 and max_standard_heart_rate = max_heart_rate * 0.85 .

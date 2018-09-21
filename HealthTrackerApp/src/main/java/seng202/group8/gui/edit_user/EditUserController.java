@@ -128,7 +128,7 @@ public class EditUserController {
         } else {
             user.setName(name);
             user.setAge(age);
-            user.setWeight(weight);
+            user.updateWeight(weight);
             user.setHeight(height);
         }
         try {

@@ -11,6 +11,13 @@ import javax.naming.ServiceUnavailableException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * @author lfa69
+ * The actual service the user will have to store. This offers the list of all the current and previous
+ * user goals divided into the 3 different types.
+ * Listens to user and their activities changes implementing ActivityListCollectionObserver and UserObserver observers.
+ *
+ */
 public class GoalsService extends Service implements ActivityListCollectionObserver, UserObserver {
 
 
@@ -43,6 +50,9 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
 
+    /**
+     * Function called when the observers are triggered.
+     */
     public void update() {
         tidyUpActivityGoals();
         tidyUpTimesPerformedGoals();
@@ -50,6 +60,9 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         System.out.println("The updater is called");
     }
 
+    /**
+     * Helper function called every time a new Data value is added to the user data collection
+     */
     private void tidyUpActivityGoals() {
         Iterator<Goal> it = currentActivityGoals.iterator();
         while (it.hasNext()) {
@@ -62,6 +75,9 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         }
     }
 
+    /**
+     * Helper function called every time a new Data value is added to the user data collection
+     */
     private void tidyUpWeightLossGoals() {
         Iterator<Goal> it = currentWeightLossGoals.iterator();
         while (it.hasNext()) {
@@ -74,6 +90,9 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         }
     }
 
+    /**
+     * Helper function called every time a new Data value is added to the user data collection
+     */
     private void tidyUpTimesPerformedGoals() {
         Iterator<Goal> it = currentTimesPerformedGoals.iterator();
         while (it.hasNext()) {

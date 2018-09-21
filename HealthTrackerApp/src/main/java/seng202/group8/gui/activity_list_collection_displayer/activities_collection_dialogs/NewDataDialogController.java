@@ -145,7 +145,7 @@ public class NewDataDialogController {
             heartRates.add(60);
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
-
+            dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
             SQLiteJDBC database = new SQLiteJDBC();
 
             if (newActivityListToggle.isSelected()) {

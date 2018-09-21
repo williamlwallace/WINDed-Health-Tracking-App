@@ -2,6 +2,11 @@ package seng202.group8.services;
 
 import seng202.group8.user.User;
 
+/**
+ * @author lfa69
+ * Parent class for all three GoalsService, HealthService and StatisticsService.
+ *
+ */
 public class Service {
 
     private User user;

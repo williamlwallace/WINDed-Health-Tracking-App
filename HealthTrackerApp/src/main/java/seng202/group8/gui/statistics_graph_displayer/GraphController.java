@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -301,7 +302,10 @@ public class GraphController {
     public LineChart.Series<Double, Double> generateSeries(GraphXY xyData) {
         LineChart.Series<Double, Double> series = new LineChart.Series<Double, Double>();
         for (int i = 0; i < xyData.getXAxis().size(); i++) {
-            series.getData().add(new XYChart.Data<Double, Double>(xyData.getXAxis().get(i), xyData.getYAxis().get(i)));
+            XYChart.Data dataPoint = new XYChart.Data<Double, Double>(xyData.getXAxis().get(i), xyData.getYAxis().get(i));
+//            dataPoint.getNode().setStyle("-fx-background-color: #2874a6;");
+//            lineSymbol.setStyle("-fx-background-color: #2874a6;");
+            series.getData().add(dataPoint);
         }
         return series;
     }

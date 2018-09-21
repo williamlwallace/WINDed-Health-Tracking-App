@@ -4,6 +4,9 @@ import seng202.group8.user.User;
 
 import java.util.Date;
 
+/**
+ * @author lfa69
+ */
 public abstract class Goal {
 
     private String description;

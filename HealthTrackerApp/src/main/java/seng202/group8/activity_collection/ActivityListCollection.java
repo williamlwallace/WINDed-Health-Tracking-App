@@ -8,6 +8,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+/**
+ * @author lfa69
+ */
 public class ActivityListCollection {
 
     private String title;

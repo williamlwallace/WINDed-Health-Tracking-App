@@ -6,6 +6,9 @@ import seng202.group8.user.User;
 
 import java.util.ArrayList;
 
+/**
+ * @author lfa69
+ */
 public class FrequencyGoal extends Goal {
 
     private Integer timesToPerformActivity;

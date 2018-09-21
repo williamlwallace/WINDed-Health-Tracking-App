@@ -37,6 +37,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
+/**
+ * @author lfa69
+ * Controller for activity_list_collection.fxml.
+ * Deals with displaying the user Data values, display major insights and path followed, retrieve and upload CSV data from local directory
+ */
 public class ActivitiesCollectionController {
 
     /*Insights GUI elements*/
@@ -88,6 +93,12 @@ public class ActivitiesCollectionController {
     private String activityTitle;
 
 
+    /**
+     *
+     * @param user
+     * @param data
+     * Deals with displaying the major insights of the Data value selected from the TreeView.
+     */
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
         insightsTitle.setText(data.getTitle() + " insights:");

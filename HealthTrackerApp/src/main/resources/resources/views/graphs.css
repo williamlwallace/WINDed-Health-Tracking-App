@@ -1,3 +1,10 @@
 #graph .chart-series-line { -fx-stroke: blue }
 #graph2 .chart-series-line { -fx-stroke: blue }
-#graph .default-color0.chart-line-symbol { -fx-stroke: blue }
+
+#graph .chart-line-symbol {
+    -fx-background-color: blue
+}
+
+#graph2 .chart-line-symbol {
+    -fx-background-color: blue
+}

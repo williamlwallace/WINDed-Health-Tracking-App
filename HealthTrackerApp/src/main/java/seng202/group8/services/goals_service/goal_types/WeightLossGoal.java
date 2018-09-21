@@ -3,7 +3,9 @@ package seng202.group8.services.goals_service.goal_types;
 import seng202.group8.user.User;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
-
+/**
+ * @author lfa69
+ */
 public class WeightLossGoal extends Goal {
 
     private Double targetWeight;

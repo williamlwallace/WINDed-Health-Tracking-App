@@ -6,6 +6,9 @@ import seng202.group8.user.User;
 
 import java.util.ArrayList;
 
+/**
+ * @author lfa69
+ */
 public class ActivityGoal extends Goal {
 
 //    private DataType dataType; implement once Data classes will be ready

@@ -5,6 +5,9 @@ import seng202.group8.data_entries.Data;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author lfa69
+ */
 public class ActivityList {
 
 
