@@ -26,13 +26,38 @@ public class HomeController {
     @FXML
     private Button tach;
 
+    @FXML
+    private Label bmiText;
+
+    @FXML
+    private Label run;
+
+    @FXML
+    private Label walk;
+
+    @FXML
+    private Label bike;
+
+    @FXML
+    private Label all;
+
+    @FXML
+    private Label calories;
+
     /**
      * Sets the page up when the user first goes into the Home page
      */
     public void setup() {
         statsService = user.getStatsService();
+        statsService.updateHomeStats(user);
         statsService.setHealthStatus();
         healthText.setText(statsService.getHealthStatus());
+        bmiText.setText(user.getBMIString());
+        run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km's");
+        walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km's");
+        bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km's");
+        all.setText(String.format("%.1f", statsService.getKmTotal()) + " km's");
+        calories.setText(String.format("%.1f", statsService.getCaloriesBurnedTotal()) + " calories burned");
     }
 
     public void searchCardio() {

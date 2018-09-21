@@ -411,6 +411,7 @@ public abstract class Data {
         ArrayList<Long> millisecondsTrained = new ArrayList<Long>();
 
         if (this.allDateTimes.size() < 2) {
+            millisecondsTrained.add((long) 0);
             return millisecondsTrained;
         }
 

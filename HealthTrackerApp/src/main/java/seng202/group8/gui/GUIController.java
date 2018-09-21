@@ -1,19 +1,16 @@
 package seng202.group8.gui;
 
+import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.animation.FadeTransition;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.gui.calendar_view.CalendarViewController;
 import seng202.group8.gui.edit_user.EditUserController;
@@ -24,8 +21,6 @@ import seng202.group8.user.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GUIController implements Initializable {
 
@@ -57,59 +52,13 @@ public class GUIController implements Initializable {
 
 
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-//        if (!GUI.isSplashLoaded) {
-//            loadSplash();
-//        }
+    public void initialize(URL url, ResourceBundle rb) {
     }
 
 
-//    private void loadSplash()
-//    {
-//        try {
-//            GUI.isSplashLoaded = true;
-//
-//            StackPane pane = FXMLLoader.load(getClass().getResource("../../../../resources/resources/views/Splash.fxml"));
-//            root.getChildren().setAll(pane);
-//
-//            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
-//            fadeIn.setFromValue(0);
-//            fadeIn.setToValue(1);
-//            fadeIn.setCycleCount(1);
-//
-//            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
-//            fadeIn.setFromValue(1);
-//            fadeIn.setToValue(0);
-//            fadeIn.setCycleCount(1);
-//
-//            fadeIn.play();
-//
-//            fadeIn.setOnFinished((e) -> {
-//                fadeOut.play();
-//            });
-//            System.out.println(user.getName());
-//            fadeOut.setOnFinished((e) -> {
-//                try {
-//
-//
-//                    BorderPane parentContent = FXMLLoader.load(getClass().getResource(("mainFrame.fxml")));
-//                    root.getChildren().setAll(parentContent);
-//
-//
-//                } catch (IOException ex) {
-//                    Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            });
-//
-//        } catch (IOException ex) {
-//            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-
-
-    public void setToHome() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
+    public void setToHome() throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home-test.fxml"));
         BorderPane homeScene = loader.load();
         userBtn.setText(user.getName());
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
@@ -129,7 +78,7 @@ public class GUIController implements Initializable {
     @FXML
     public void loadHome(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home-test.fxml"));
         BorderPane homeScene = loader.load();
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         HomeController homeController = loader.getController();
@@ -183,7 +132,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadGoals(ActionEvent event) throws IOException
     {
-        BorderPane goalsScene = FXMLLoader.load(getClass().getResource("Goals.fxml"));
+        BorderPane goalsScene = FXMLLoader.load(getClass().getResource("../../../resources/views/Goals.fxml"));
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");
@@ -193,7 +142,8 @@ public class GUIController implements Initializable {
     }
 
     @FXML
-    private void loadCalendar(ActionEvent event) throws IOException {
+    private void loadCalendar(ActionEvent event) throws IOException
+    {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/calendar_view.fxml"));
         BorderPane calendarScene = loader.load();
         CalendarViewController calendarViewController = loader.getController();
@@ -208,7 +158,8 @@ public class GUIController implements Initializable {
     }
 
     @FXML
-    private void loadEditUser(ActionEvent event) throws IOException{
+    private void loadEditUser(ActionEvent event) throws IOException
+    {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/editUser.fxml"));
         BorderPane editUserScene = loader.load();
         EditUserController editUserController = loader.getController();

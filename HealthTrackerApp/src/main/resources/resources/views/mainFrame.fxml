@@ -101,12 +101,9 @@
                </children>
             </HBox>
          </children>
-         <effect>
-            <DropShadow blurType="GAUSSIAN" offsetY="3.5" />
-         </effect>
       </VBox>
    </left>
    <center>
-      <BorderPane fx:id="scene" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="scene" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

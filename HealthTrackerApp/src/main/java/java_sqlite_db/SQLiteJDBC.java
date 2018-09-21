@@ -20,22 +20,41 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+/**
+ * Class to manage the database, Inserting, Retrieving, Updating and Deleting from the project SQLite database file
+ * @author jco165
+ */
 public class SQLiteJDBC {
 
-
-
+    /**
+     * Converts a Date object to a LocalDateTime object
+     * @param dateToConvert the Date object to convert to a LocalDateTime
+     * @return LocalDateTime object that is equilvalent to dateToConvert
+     */
     public LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDateTime();
     }
 
+    /**
+     * Converts a LocalDateTime object to a string suitable for storing in the database
+     * @param localDateTime LocalDateTime object to convert to a String
+     * @return The string representation of the LocalDateTime formatted for the database
+     */
     public String getStringFromLocalDateTime(LocalDateTime localDateTime) {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String dateString = localDateTime.format(dateFormat);
         return  dateString;
     }
 
+
+    /**
+     * Converts a formatted String (retrieved from database) to a Date object
+     * @param dateString the formatted string retrieved form the database
+     * @return the Date object equivalent to the formatted String
+     */
     public Date getDateFromString(String dateString) {
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -49,6 +68,11 @@ public class SQLiteJDBC {
         return date;
     }
 
+    /**
+     * Converts a formatted String (retrieved from database) to a LocalDateTimeObject
+     * @param dateString the formatted String retrieved from the database
+     * @return the LocalDatetime object equivalent to the formatted String
+     */
     public LocalDateTime getLocalDateTimeFromString(String dateString) {
         LocalDateTime localDateTime = null;
         localDateTime = LocalDateTime.parse(dateString);
@@ -56,7 +80,7 @@ public class SQLiteJDBC {
     }
 
     /**
-     * Connect to a sample database
+     * Connect to the winded.db database
      */
     public static Connection connect() {
         Connection conn = null;
@@ -74,6 +98,17 @@ public class SQLiteJDBC {
         return conn;
     }
 
+
+    /**
+     * Insert a User into the database, if it already exists in the database doesn't execute the Insert
+     * @param connection the Connection to the Database
+     * @param id the unique user Id
+     * @param name the name of the user
+     * @param weight the weight of the User in kg
+     * @param height the height of the User in cm
+     * @param age the age of the user
+     * @param sex the sex of the user as a String
+     */
     public void insertUser(Connection connection, Integer id, String name, Double weight, Double height, Integer age, String sex) {
 
         String sql = "INSERT INTO user VALUES(?,?,?,?,?,?)";
@@ -102,6 +137,7 @@ public class SQLiteJDBC {
 
     }
 
+
     public ResultSet selectAllUsers(Connection connection) {
         assert null != connection;
         System.out.println("Get all tuples");
@@ -115,6 +151,12 @@ public class SQLiteJDBC {
         return resultSet;
     }
 
+    /**
+     * Perform a SQL select statement to get information form the user table
+     * @param connection the connection to the database
+     * @param userID the userId of the desired User
+     * @return the ResultSet of the query (size of 1 row)
+     */
     public ResultSet getUser(Connection connection, Integer userID) {
         assert null != connection && null != userID;
         ResultSet resultSet = null;
@@ -144,6 +186,17 @@ public class SQLiteJDBC {
 
     }
 
+
+    /**
+     * Perform an SQL update for the User with new attributes to store in the database
+     * @param connection the connection to the database
+     * @param userId the unique user ID to indentify the user
+     * @param name the new Name for the user
+     * @param weight the new Weight for the user in kg
+     * @param height the new Height for the user in cm
+     * @param age the new age for the user
+     * @param sex the new string Sex for the user (MALE or FEMALE)
+     */
     public void updateUser(Connection connection,  Integer userId, String name, Double weight, Double height, Integer age, String sex) {
         assert null != connection && null != userId && null != name && null != weight && null != height && null != age && null != sex;
 
@@ -171,6 +224,14 @@ public class SQLiteJDBC {
     }
 
 
+    /**
+     * Perfoms an SQL Insert to put a coordinate into the table for a given activity
+     * @param connection the connection to the database
+     * @param latitude the latitude of the coordinate
+     * @param longitude the longitude of the coordinate
+     * @param elevation the elevation of the coordinate
+     * @param dataId the data Id identifying what activity the coordinate relates to
+     */
     public void insertCoordinate(Connection connection, Double latitude, Double longitude, Double elevation, Integer dataId){
         String sql = "INSERT INTO CoOrdinate VALUES(?,?,?,?)";
         try {
@@ -186,6 +247,12 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Perfoms an SQL Insert to put a heartrate into the table for a given activity
+     * @param connection the connection to the database
+     * @param HeartRate the heartrate to be stored in BPM
+     * @param dataId the data Id identifying what activity the heartrate relates to
+     */
     public void insertHeartRate(Connection connection, Integer HeartRate, Integer dataId) {
         String sql = "INSERT INTO Heartrate VALUES(?,?)";
         try {
@@ -199,6 +266,12 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Perfoms an SQL Insert to put an ActivityTime into the table for a given activity
+     * @param connection the connection to the database
+     * @param dataId the data Id identifying what activity the heart rate relates to
+     * @param dateTime the date and time formatted string to be inserted
+     */
     public void insertActivityTime(Connection connection, Integer dataId, String dateTime) {
         String sql = "INSERT INTO Activity_Time VALUES(?,?)";
         try {
@@ -245,9 +318,12 @@ public class SQLiteJDBC {
     }
 
 
-
-
-
+    /**
+     * Perform an SQL Insert to put an ActivityList into the database, if it already exists in the database doesn't execute the Insert
+     * @param title the title of the ActivityList to insert
+     * @param datetime the creation date of the ActivityList as a formatted string
+     * @param userId the unique user Id to identify which User the ActivityList belongs
+     */
     public void insertActivityList(String title, String datetime, Integer userId) {
         String sql = "INSERT INTO Activity_List VALUES(?,?,?)";
         try {
@@ -275,6 +351,12 @@ public class SQLiteJDBC {
     }
 
 
+    /**
+     * Perform an SQL Insert to put an activity collection into the Database, if it already exists in the database doesn't execute the Insert
+     * @param connection the connection to the database
+     * @param userId the unique user Id that identifies which user the Activity Collection belongs to
+     * @param title the title for the activity collection
+     */
     public void insertActivityCollection(Connection connection, Integer userId, String title) {
         String sql = "INSERT INTO Activity_Collection VALUES(?,?)";
         try {
@@ -297,6 +379,12 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Performs an SQL Select to get the title of the Users activity list collection from the Database
+     * @param connection the connection to the database
+     * @param userId the unique Id of the user identifying which ActivityCollection to retrieve
+     * @return the title String of the activity collection
+     */
     public String getUsersActivityListCollectionTitle(Connection connection, Integer userId) {
         assert null != connection && null != userId;
         String collectionTitle = null;
@@ -318,7 +406,13 @@ public class SQLiteJDBC {
     }
 
 
-
+    /**
+     * Perform an SQL select to get all the Users activity lists
+     * @param connection the connection to the database
+     * @param userId the unique Id of the user identifying which lists to retrieve
+     * @param user the User whose lists need to be retrieved
+     * @return an Array List of activity lists populated with the data from the database
+     */
     public ArrayList<ActivityList> getUsersActivityLists(Connection connection, Integer userId, User user) {
         assert null != connection && null != userId;
         ArrayList<ActivityList> listOfActivities= new ArrayList<ActivityList>();
@@ -352,6 +446,14 @@ public class SQLiteJDBC {
         return listOfActivities;
     }
 
+    /**
+     * Perform an SQL select to get Data objects for an Activity List
+     * @param connection the connection to the database
+     * @param activityTitle the title of the activity list (part of foreign key needed)
+     * @param activityDate the String creation date of the activity list (part of foreign key needed)
+     * @param user the User whose data needs to be retrieved
+     * @return an Array List of data objects fully populated
+     */
     public ArrayList<Data> getActivityListData(Connection connection, String activityTitle, String activityDate, User user) {
         assert null != connection && null != activityTitle && null != activityDate;
         ArrayList<Data> activityListData = new ArrayList<Data>();
@@ -420,6 +522,12 @@ public class SQLiteJDBC {
 
     }
 
+    /**
+     * Perform an SQL select to get an activities heart rate list
+     * @param connection the connection to the database
+     * @param dataId the unique data Id identifying which activity the heart rates are needed for
+     * @return an Array List of integers representing heart rate in BPM
+     */
     public ArrayList<Integer> getActivityHeartRates(Connection connection, Integer dataId) {
         assert null != connection && null != dataId;
         ArrayList<Integer> heartRateData = new ArrayList<Integer>();
@@ -443,6 +551,12 @@ public class SQLiteJDBC {
 
     }
 
+    /**
+     * Perform an SQL select to get an activities times list
+     * @param connection the connection to the database
+     * @param dataId the unique data Id identifying which activity the times are needed for
+     * @return an Array List of LocalDateTime objects representing the times for the Data
+     */
     public ArrayList<LocalDateTime> getActivityDateTimes(Connection connection, Integer dataId) {
         assert null != connection && null != dataId;
         ArrayList<LocalDateTime> dateData = new ArrayList<LocalDateTime>();
@@ -466,6 +580,12 @@ public class SQLiteJDBC {
 
     }
 
+    /**
+     * Perform an SQL select to get an activities coordinates list
+     * @param connection the connection to the database
+     * @param dataId the unique data Id identifying which activity the coordinates are needed for
+     * @return an Array List of CoordinateData objects representing the times for the Data
+     */
     public ArrayList<CoordinateData> getActivityCoordinates(Connection connection, Integer dataId) {
         assert null != connection && null != dataId;
         ArrayList<CoordinateData> coordinateData = new ArrayList<CoordinateData>();
@@ -495,7 +615,10 @@ public class SQLiteJDBC {
     }
 
 
-
+    /**
+     * Performs SQL Deletes to delete all data in the database
+     * @param connection the connection to the database
+     */
     public void deleteAllData(Connection connection) {
         try {
             String sql = "DELETE FROM user";
@@ -564,6 +687,13 @@ public class SQLiteJDBC {
 
     }
 
+    /**
+     * Performs SQL inserts as a single transaction to add a list of data to the database
+     * @param dataList the Array List of new Data objects to be added
+     * @param parentListTitle the title of the activity list the data is for
+     * @param parentListDatetime the creation date of the activity list the data is for
+     * @param userId the unique userId to relate the date to a user
+     */
     public void updateWithListOfData(ArrayList<Data> dataList, String parentListTitle, Date parentListDatetime, Integer userId) {
 
         String dataUpdate = "INSERT INTO Data VALUES(?,?,?,?,?,?)";
@@ -608,6 +738,11 @@ public class SQLiteJDBC {
 
     }
 
+    /**
+     * Performs the necessary database functions to save a User into the database new or existing
+     * @param user the User to be stored
+     * @param userId the id of the user to be stored which uniquely identifies them
+     */
     public void saveUser(User user, Integer userId) {
         Connection conn = connect();
         insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
@@ -628,6 +763,11 @@ public class SQLiteJDBC {
 
     }
 
+    /**
+     * Gets the next data Id to assign to a new data object to be stored
+     * @param connection the connection to the database
+     * @return the next DataId available in the database
+     */
     public Integer getNextDataID(Connection connection) {
         String find = "SELECT MAX(data_id) FROM Data";
         Integer newId = 0;
@@ -647,7 +787,11 @@ public class SQLiteJDBC {
     }
 
 
-
+    /**
+     * Performs the necessary database function to retrieve a user along with all its data from the database
+     * @param userId the unique Id of the User to be retrieved
+     * @return a new User object representing the User asked for
+     */
     public User retrieveUser(Integer userId) {
         Connection conn = connect();
         ResultSet result = getUser(conn, userId);
