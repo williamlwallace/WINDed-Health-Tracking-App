@@ -19,119 +19,156 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox style="-fx-background-color: #2e86c1;" BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox spacing="15.0">
                <children>
-                  <VBox>
+                  <VBox prefHeight="303.0" prefWidth="550.0" style="-fx-background-color: White;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="550.0" text="Total Statistics">
+                        <Label fx:id="totalStatsLabel" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Total Statistics" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER">
+                        <VBox alignment="CENTER" prefHeight="250.0" prefWidth="550.0">
                            <children>
-                              <Label alignment="CENTER" text="Total Km's Run:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font></Label>
-                              <Label fx:id="run" alignment="CENTER" text="Value">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </Label>
+                              <HBox alignment="CENTER" prefWidth="550.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefWidth="275.0" style="-fx-font-weight: bold;" text="Total Km's Run:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="run" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="550.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefWidth="275.0" style="-fx-font-weight: bold;" text="Total Km's Walked:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="walk" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="550.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefWidth="275.0" style="-fx-font-weight: bold;" text="Total Km's Biked:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="bike" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="550.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefWidth="275.0" style="-fx-font-weight: bold;" text="Total Km's">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="all" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="550.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefWidth="275.0" style="-fx-font-weight: bold;" text="Total Calories Burned:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="calories" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="100.0">
-                           <children>
-                              <Label alignment="CENTER" text="Total Km's Walked:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="walk" alignment="CENTER" text="Value">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="125.0">
-                           <children>
-                              <Label alignment="CENTER" text="Total Km's Biked:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="bike" alignment="CENTER" text="Value">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="175.0">
-                           <children>
-                              <Label alignment="CENTER" text="Total Km's for all Activities:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="all" alignment="CENTER" text="Value">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="150.0">
-                           <children>
-                              <Label alignment="CENTER" text="Total Calories Burned:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="calories" alignment="CENTER" text="Value">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
+                        </VBox>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox>
+                  <VBox prefHeight="297.0" prefWidth="550.0" style="-fx-background-color: white;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="550.0" text="Average Heart Rate">
+                        <Label fx:id="heartLabel" alignment="CENTER" prefHeight="51.0" prefWidth="550.0" text="Average Heart Rate" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="162.0" prefWidth="550.0" spacing="30.0">
+                        <HBox alignment="CENTER" prefHeight="236.0" prefWidth="551.0" spacing="30.0">
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../Downloads/heartbeat(1).png" />
+                                    <Image url="@images/heartrate.png" />
                                  </image>
                               </ImageView>
-                              <Label alignment="TOP_LEFT" prefHeight="44.0" prefWidth="129.0" text="86BPM">
+                              <Label fx:id="heartValue" alignment="TOP_LEFT" prefHeight="44.0" prefWidth="129.0" style="-fx-font-weight: bold;" text="86 BPM">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -145,19 +182,18 @@
                   </VBox>
                </children>
             </HBox>
-            <Separator />
-            <HBox>
+            <HBox prefHeight="329.0" prefWidth="1110.0" spacing="15.0">
                <children>
-                  <VBox prefHeight="299.0" prefWidth="550.0">
+                  <VBox prefHeight="299.0" prefWidth="550.0" style="-fx-background-color: white;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="90.0" prefWidth="550.0" text="BMI">
+                        <Label fx:id="bmiLabel2" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="BMI" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <HBox prefHeight="293.0" prefWidth="555.0">
+                        <HBox prefHeight="261.0" prefWidth="548.0">
                            <children>
-                              <ImageView fitHeight="254.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7" scaleZ="0.7">
+                              <ImageView fitHeight="230.0" fitWidth="217.0" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7" scaleZ="0.7">
                                  <image>
                                     <Image url="@images/running-man-md.png" />
                                  </image>
@@ -165,22 +201,21 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="257.0" prefWidth="311.0" text="22.6 Normal" />
+                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="219.0" prefWidth="311.0" style="-fx-font-weight: bold;" text="22.6 Normal" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox>
+                  <VBox style="-fx-background-color: white;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="90.0" prefWidth="550.0" text="Health Risks">
+                        <Label fx:id="healthLabel" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Health Risks" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <HBox>
+                        <HBox prefHeight="242.0" prefWidth="550.0">
                            <children>
-                              <ImageView fitHeight="254.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7" scaleZ="0.7">
+                              <ImageView fitHeight="214.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7" scaleZ="0.7">
                                  <image>
                                     <Image url="@images/heart.png" />
                                  </image>
@@ -188,16 +223,19 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <VBox alignment="CENTER" prefHeight="257.0" prefWidth="318.0">
+                              <VBox alignment="CENTER" prefHeight="270.0" prefWidth="318.0">
                                  <children>
-                                    <Label fx:id="healthText" alignment="CENTER" contentDisplay="CENTER" prefHeight="112.0" prefWidth="315.0" text="You are at risk of tachycardia " textAlignment="CENTER" />
-                                    <Button fx:id="cardio" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchCardio" text="Cardiovascular Mortality" />
-                                    <Button fx:id="brad" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchBrad" text="Bradycardia">
+                                    <Label fx:id="healthText" alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="315.0" style="-fx-font-weight: bold;" text="You are at risk of tachycardia " textAlignment="CENTER" />
+                                    <Button fx:id="cardio" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchCardio" text="Cardiovascular Mortality" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></Button>
+                                    <Button fx:id="brad" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchBrad" text="Bradycardia" textFill="WHITE">
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="tach" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchTach" text="Tachycardic">
+                                    <Button fx:id="tach" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchTach" text="Tachycardia" textFill="WHITE">
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
@@ -213,16 +251,4 @@
          </children>
       </VBox>
    </center>
-   <top>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Separator prefWidth="200.0" />
-         </children>
-      </VBox>
-   </top>
 </BorderPane>

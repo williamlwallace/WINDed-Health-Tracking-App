@@ -117,7 +117,7 @@ public class StatisticsService {
             hasRisk = Boolean.TRUE;
         }
         if (healthService.isTachicardic()) {
-            healthStatus += "You are at risk of Tachycardic\n";
+            healthStatus += "You are at risk of Tachycardia\n";
             hasRisk = Boolean.TRUE;
         }
         if (!hasRisk) {

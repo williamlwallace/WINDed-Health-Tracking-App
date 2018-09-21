@@ -44,6 +44,21 @@ public class HomeController {
     @FXML
     private Label calories;
 
+    @FXML
+    private Label bmiLabel2;
+
+    @FXML
+    private Label healthLabel;
+
+    @FXML
+    private Label totalStatsLabel;
+
+    @FXML
+    private Label heartLabel;
+
+    @FXML
+    private Label heartValue;
+
     /**
      * Sets the page up when the user first goes into the Home page
      */
@@ -58,6 +73,14 @@ public class HomeController {
         bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km's");
         all.setText(String.format("%.1f", statsService.getKmTotal()) + " km's");
         calories.setText(String.format("%.1f", statsService.getCaloriesBurnedTotal()) + " calories burned");
+        heartValue.setText(statsService.getAverageHeartRate() + " BPM");
+        totalStatsLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color: #2e86c1");
+        bmiLabel2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
+        healthLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
+        heartLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
+        brad.setStyle("-fx-background-color:  #2e86c1");
+        cardio.setStyle("-fx-background-color:  #2e86c1");
+        tach.setStyle("-fx-background-color:  #2e86c1");
     }
 
     public void searchCardio() {
@@ -69,7 +92,7 @@ public class HomeController {
     }
 
     public void searchTach() {
-        this.host.showDocument("https://www.google.com/search?q=Tachicardic");
+        this.host.showDocument("https://www.google.com/search?q=Tachycardia");
     }
 
     public void setHostServices(HostServices host) {

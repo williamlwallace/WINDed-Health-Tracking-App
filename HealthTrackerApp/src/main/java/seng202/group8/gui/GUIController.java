@@ -58,7 +58,7 @@ public class GUIController implements Initializable {
 
     public void setToHome() throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home-test.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         userBtn.setText(user.getName());
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
@@ -78,7 +78,7 @@ public class GUIController implements Initializable {
     @FXML
     public void loadHome(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home-test.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         HomeController homeController = loader.getController();
