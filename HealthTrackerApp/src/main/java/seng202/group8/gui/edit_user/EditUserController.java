@@ -9,13 +9,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng202.group8.gui.GUIController;
 import seng202.group8.user.User;
-
-import java.awt.*;
 import java.io.IOException;
 
 public class EditUserController {
-
-
 
     @FXML
     private JFXTextField nameField;
@@ -43,7 +39,6 @@ public class EditUserController {
 
     private GUIController guiController;
 
-
     public User getUser() { return user; }
 
     public void setUser(User user) {
@@ -56,14 +51,18 @@ public class EditUserController {
 
     public void setStage(Stage stage) { this.stage = stage; }
 
-    public void setUp() {
+
+    public void setUp()
+    {
         nameField.setText(user.getName());
         ageField.setText(Integer.toString(user.getAge()));
         weightField.setText(Double.toString(user.getWeight()));
         heightField.setText(Double.toString(user.getHeight()));
     }
 
-    public void submitPressed(ActionEvent event) {
+
+    public void submitPressed(ActionEvent event)
+    {
         System.out.println("Pressed");
         String name = null;
         int age = 0;
@@ -140,12 +139,12 @@ public class EditUserController {
         }
     }
 
+
     @FXML
     private void cancelPressed(ActionEvent event) throws IOException{
         guiController.setToHome();
 
     }
-
 
     public GUIController getGuiController() {
         return guiController;
