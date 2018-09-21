@@ -147,6 +147,26 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
+                              <HBox alignment="CENTER" prefWidth="550.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefWidth="275.0" style="-fx-font-weight: bold;" text="Total Weight Lost:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="weight" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>

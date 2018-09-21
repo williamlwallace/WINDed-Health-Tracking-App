@@ -1,5 +1,6 @@
 package seng202.group8.services.statistics_service;
 
+import org.apache.commons.lang3.ObjectUtils;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.*;
@@ -256,14 +257,28 @@ public class StatisticsService {
         collection = this.user.getUserActivities();
         healthService.update();
         arrayCollection = collection.getActivityListCollection();
-        setAverageHeartRate();
-        setWeightLossTotal();
-        setCaloriesBurned();
-        setHealthStatus();
-        setKmRunTotal();
-        setKmWalkTotal();
-        setKmBikedTotal();
-        setTotalKm();
+        System.out.println(arrayCollection.size());
+        if (arrayCollection.size() == 0) {
+            averageHeartRate = 0;
+            kmRunTotal = 0.0;
+            kmWalkTotal = 0.0;
+            kmBikedTotal = 0.0;
+            caloriesBurnedTotal = 0.0;
+            weightLossTotal = 0.0;
+            totalKm = 0.0;
+            weightLossTotal = 0.0;
+            setHealthStatus();
+        } else {
+            setAverageHeartRate();
+            setWeightLossTotal();
+            setCaloriesBurned();
+            setHealthStatus();
+            setKmRunTotal();
+            setKmWalkTotal();
+            setKmBikedTotal();
+            setTotalKm();
+            setWeightLossTotal();
+        }
     }
 
     //Functions for graphs
