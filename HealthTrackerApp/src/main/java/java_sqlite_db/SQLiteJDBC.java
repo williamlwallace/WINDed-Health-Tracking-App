@@ -793,7 +793,15 @@ public class SQLiteJDBC {
         System.out.println("Now Saving Again");
         System.out.println("_____________________________________________________");
 
-        //newDataBaseJDBC.saveUser(userTestRetrieved, 1);
 
+        Connection connection = connect();
+        newDataBaseJDBC.deleteAllData(connection);
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //newDataBaseJDBC.saveUser(userTestRetrieved, 1);
     }
-}
+    }

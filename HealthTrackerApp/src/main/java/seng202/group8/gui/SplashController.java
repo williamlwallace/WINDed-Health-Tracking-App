@@ -2,6 +2,7 @@ package seng202.group8.gui;
 
 import animatefx.animation.*;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.animation.FadeTransition;
 import javafx.animation.Timeline;
 import javafx.application.HostServices;
@@ -78,7 +79,8 @@ public class SplashController implements Initializable {
 
         fadeOut.setOnFinished((e) -> {
             try {
-                // This is where we call the database and try to retrieve the user
+                SQLiteJDBC database = new SQLiteJDBC();
+                user = database.retrieveUser(1);
                 if (user != null) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/mainFrame.fxml"));
                     Parent root = loader.load();

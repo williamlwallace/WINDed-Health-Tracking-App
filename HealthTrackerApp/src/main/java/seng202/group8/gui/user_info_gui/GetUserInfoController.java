@@ -1,6 +1,7 @@
 package seng202.group8.gui.user_info_gui;
 
 import com.jfoenix.controls.JFXButton;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -132,10 +133,15 @@ public class GetUserInfoController {
     }
 
     private void loadMainFrame() throws IOException {
+        SQLiteJDBC database = new SQLiteJDBC();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/mainFrame.fxml"));
         Parent root = loader.load();
         GUIController guiController = loader.getController();
         guiController.setUser(user);
+
+        database.saveUser(user, 1);
+
         guiController.setStage(stage);
         guiController.setHostServices(host);
         stage.setTitle("WINded");

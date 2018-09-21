@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="Finished database for 1 User (deletes all data then updates new)">
+    <list default="true" id="6401de2f-4f49-43d8-ba87-925f70bed9d9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
       <change beforePath="$PROJECT_DIR$/winded.db" afterPath="$PROJECT_DIR$/winded.db" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
@@ -22,49 +23,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SQLiteJDBC.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SQLiteJDBC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="568" column="67" lean-forward="false" selection-start-line="568" selection-start-column="67" selection-end-line="568" selection-end-column="67" />
+            <state relative-caret-position="600">
+              <caret line="666" column="77" lean-forward="false" selection-start-line="666" selection-start-column="77" selection-end-line="666" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1537488151552" expanded="true" signature="2497:2533" ph="INSERT INTO user... " />
-                <marker date="1537488151552" expanded="true" signature="2956:2990" ph="SELECT * fro... user" />
-                <marker date="1537488151552" expanded="true" signature="3888:3906" ph="SELECT * FRO... user" />
-                <marker date="1537488151552" expanded="true" signature="4278:4312" ph="SELECT * FRO... user" />
-                <marker date="1537488151552" expanded="true" signature="4714:4746" ph="DELETE FROM user... " />
-                <marker date="1537488151552" expanded="true" signature="5411:5600" ph="UPDATE user... " />
-                <marker date="1537488151552" expanded="true" signature="6367:6405" ph="INSERT INTO CoOrdinate... " />
-                <marker date="1537488151552" expanded="true" signature="7018:7051" ph="INSERT INTO Heartrate... " />
-                <marker date="1537488151552" expanded="true" signature="7551:7588" ph="INSERT INTO Activity_Time... " />
-                <marker date="1537488151552" expanded="true" signature="8178:8214" ph="INSERT INTO Data... " />
-                <marker date="1537488151552" expanded="true" signature="8717:8751" ph="SELECT * fro... Data" />
-                <marker date="1537488151552" expanded="true" signature="9488:9527" ph="INSERT INTO Activity_List... " />
-                <marker date="1537488151552" expanded="true" signature="9857:9909" ph="SELECT * fro... Activity_List" />
-                <marker date="1537488151552" expanded="true" signature="10734:10777" ph="INSERT INTO Activity_Collection... " />
-                <marker date="1537488151552" expanded="true" signature="11006:11055" ph="SELECT * fro... Activity_Collection" />
-                <marker date="1537488151552" expanded="true" signature="12019:12072" ph="SELECT title... Activity_Collection" />
-                <marker date="1537488151552" expanded="true" signature="12946:12999" ph="SELECT title... " />
-                <marker date="1537488151552" expanded="true" signature="14536:14621" ph="SELECT data_... Data" />
-                <marker date="1537488151552" expanded="true" signature="17506:17556" ph="SELECT Heart... Heartrate" />
-                <marker date="1537488151552" expanded="true" signature="18353:18403" ph="SELECT DateT... Activity_Time" />
-                <marker date="1537488151552" expanded="true" signature="19306:19375" ph="SELECT latit... CoOrdinate" />
-                <marker date="1537488151552" expanded="true" signature="20191:20207" ph="DELETE FROM user... " />
-                <marker date="1537488151552" expanded="true" signature="20360:20391" ph="DELETE FROM Activity_Collection... " />
-                <marker date="1537488151552" expanded="true" signature="20526:20551" ph="DELETE FROM Activity_List... " />
-                <marker date="1537488151552" expanded="true" signature="20686:20702" ph="DELETE FROM Data... " />
-                <marker date="1537488151552" expanded="true" signature="20837:20859" ph="DELETE FROM CoOrdinate... " />
-                <marker date="1537488151552" expanded="true" signature="20994:21015" ph="DELETE FROM Heartrate... " />
-                <marker date="1537488151552" expanded="true" signature="21150:21175" ph="DELETE FROM Activity_Time... " />
-                <marker date="1537488151552" expanded="true" signature="21574:21623" ph="SELECT data_... Data" />
-                <marker date="1537488151552" expanded="true" signature="22258:22296" ph="DELETE FROM CoOrdinate... " />
-                <marker date="1537488151552" expanded="true" signature="22526:22563" ph="DELETE FROM Heartrate... " />
-                <marker date="1537488151552" expanded="true" signature="22793:22834" ph="DELETE FROM Activity_Time... " />
-                <marker date="1537488151552" expanded="true" signature="23064:23105" ph="DELETE FROM Data... " />
-                <marker date="1537488151552" expanded="true" signature="23659:23695" ph="INSERT INTO Data... " />
-                <marker date="1537488151552" expanded="true" signature="26210:26239" ph="SELECT MAX(d... Data" />
+                <marker date="1537488530192" expanded="true" signature="2497:2533" ph="INSERT INTO user... " />
+                <marker date="1537488530192" expanded="true" signature="2956:2990" ph="SELECT * fro... user" />
+                <marker date="1537488530192" expanded="true" signature="3888:3906" ph="SELECT * FRO... user" />
+                <marker date="1537488530192" expanded="true" signature="4278:4312" ph="SELECT * FRO... user" />
+                <marker date="1537488530192" expanded="true" signature="4714:4746" ph="DELETE FROM user... " />
+                <marker date="1537488530192" expanded="true" signature="5411:5600" ph="UPDATE user... " />
+                <marker date="1537488530192" expanded="true" signature="6367:6405" ph="INSERT INTO CoOrdinate... " />
+                <marker date="1537488530192" expanded="true" signature="7018:7051" ph="INSERT INTO Heartrate... " />
+                <marker date="1537488530192" expanded="true" signature="7551:7588" ph="INSERT INTO Activity_Time... " />
+                <marker date="1537488530192" expanded="true" signature="8178:8214" ph="INSERT INTO Data... " />
+                <marker date="1537488530192" expanded="true" signature="8717:8751" ph="SELECT * fro... Data" />
+                <marker date="1537488530192" expanded="true" signature="9488:9527" ph="INSERT INTO Activity_List... " />
+                <marker date="1537488530192" expanded="true" signature="9857:9909" ph="SELECT * fro... Activity_List" />
+                <marker date="1537488530192" expanded="true" signature="10734:10777" ph="INSERT INTO Activity_Collection... " />
+                <marker date="1537488530192" expanded="true" signature="11006:11055" ph="SELECT * fro... Activity_Collection" />
+                <marker date="1537488530192" expanded="true" signature="12019:12072" ph="SELECT title... Activity_Collection" />
+                <marker date="1537488530192" expanded="true" signature="12946:12999" ph="SELECT title... " />
+                <marker date="1537488530192" expanded="true" signature="14536:14621" ph="SELECT data_... Data" />
+                <marker date="1537488530192" expanded="true" signature="17506:17556" ph="SELECT Heart... Heartrate" />
+                <marker date="1537488530192" expanded="true" signature="18353:18403" ph="SELECT DateT... Activity_Time" />
+                <marker date="1537488530192" expanded="true" signature="19306:19375" ph="SELECT latit... CoOrdinate" />
+                <marker date="1537488530192" expanded="true" signature="20191:20207" ph="DELETE FROM user... " />
+                <marker date="1537488530192" expanded="true" signature="20360:20391" ph="DELETE FROM Activity_Collection... " />
+                <marker date="1537488530192" expanded="true" signature="20526:20551" ph="DELETE FROM Activity_List... " />
+                <marker date="1537488530192" expanded="true" signature="20686:20702" ph="DELETE FROM Data... " />
+                <marker date="1537488530192" expanded="true" signature="20837:20859" ph="DELETE FROM CoOrdinate... " />
+                <marker date="1537488530192" expanded="true" signature="20994:21015" ph="DELETE FROM Heartrate... " />
+                <marker date="1537488530192" expanded="true" signature="21150:21175" ph="DELETE FROM Activity_Time... " />
+                <marker date="1537488530192" expanded="true" signature="21574:21623" ph="SELECT data_... Data" />
+                <marker date="1537488530192" expanded="true" signature="22258:22296" ph="DELETE FROM CoOrdinate... " />
+                <marker date="1537488530192" expanded="true" signature="22526:22563" ph="DELETE FROM Heartrate... " />
+                <marker date="1537488530192" expanded="true" signature="22793:22834" ph="DELETE FROM Activity_Time... " />
+                <marker date="1537488530192" expanded="true" signature="23064:23105" ph="DELETE FROM Data... " />
+                <marker date="1537488530192" expanded="true" signature="23659:23695" ph="INSERT INTO Data... " />
+                <marker date="1537488530192" expanded="true" signature="26210:26239" ph="SELECT MAX(d... Data" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,11 +83,9 @@
       <file leaf-file-name="ActivitiesCollectionController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
-              <caret line="294" column="32" lean-forward="false" selection-start-line="294" selection-start-column="32" selection-end-line="294" selection-end-column="32" />
-              <folding>
-                <element signature="e#10953#10959#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="3630">
+              <caret line="275" column="29" lean-forward="false" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,9 +113,41 @@
       <file leaf-file-name="ActivityListCollection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
+            <state relative-caret-position="1110">
               <caret line="80" column="47" lean-forward="false" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetUserInfoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="491">
+              <caret line="123" column="69" lean-forward="false" selection-start-line="123" selection-start-column="69" selection-end-line="123" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SplashController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="81" column="55" lean-forward="false" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUIController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1770">
+              <caret line="118" column="37" lean-forward="false" selection-start-line="118" selection-start-column="37" selection-end-line="118" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,8 +190,6 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/get_user_info.css" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/goals_displayer.fxml" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java" />
@@ -160,6 +199,8 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/user_stats/Sex.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
       </list>
     </option>
   </component>
@@ -197,6 +238,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,16 +306,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="activity_list_collection_displayer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -352,10 +384,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -390,18 +421,12 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/BikeData.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/RunData.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/WalkData.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/mainFrame.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/stylesheet.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/stylesheet2.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/GraphController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/services/statistics_service/StatisticsService.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -409,7 +434,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.mailmap</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -510,7 +534,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SQLiteJDBC">
+  <component name="RunManager" selected="Application.GUI">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module />
       <option name="HTML_USED" value="false" />
@@ -696,8 +720,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.SQLiteJDBC" />
-        <item index="1" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="0" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="1" class="java.lang.String" itemvalue="Application.SQLiteJDBC" />
         <item index="2" class="java.lang.String" itemvalue="Application.Sex" />
         <item index="3" class="java.lang.String" itemvalue="Application.GoalsDisplayer" />
         <item index="4" class="java.lang.String" itemvalue="Application.GetUserInfo" />
@@ -727,7 +751,8 @@
       <workItem from="1537398301336" duration="3944000" />
       <workItem from="1537402274643" duration="2643000" />
       <workItem from="1537432740070" duration="10960000" />
-      <workItem from="1537482779471" duration="5391000" />
+      <workItem from="1537482779471" duration="7237000" />
+      <workItem from="1537495718438" duration="949000" />
     </task>
     <task id="LOCAL-00001" summary="Added resource folder for everyone to migrarte their resources on.">
       <created>1537231446993</created>
@@ -799,11 +824,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537443691974</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated Database to seperate inserting data and saving a user. Database uses transactions&#10;to save data now improving speed.">
+      <created>1537488229489</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1537488229489</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55164000" />
+    <option name="totallyTimeSpent" value="57959000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -826,7 +858,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3503575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19305414" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10504202" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -865,7 +897,8 @@
     <MESSAGE value="Debugged date matching issue in retrieveUser for database" />
     <MESSAGE value="Finished database with dynamically updating data ids within it." />
     <MESSAGE value="Finished database for 1 User (deletes all data then updates new)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished database for 1 User (deletes all data then updates new)" />
+    <MESSAGE value="Updated Database to seperate inserting data and saving a user. Database uses transactions&#10;to save data now improving speed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Database to seperate inserting data and saving a user. Database uses transactions&#10;to save data now improving speed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -902,16 +935,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Splash.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Splash.fxml" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/target/classes/seng202/group8/gui/GUI.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -939,24 +963,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/graphs.css" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/statistics_graph_displayer/graphs.fxml" />
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Statistics.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/Statistics.fxml" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/get_user_info.css" />
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/stylesheet.css" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.fxml" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home.fxml" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/target/classes/resources/views/graphs.fxml">
@@ -987,28 +996,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/mainFrame.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/mainFrame.fxml" />
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1106,19 +1099,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="120" column="70" lean-forward="false" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="36" column="49" lean-forward="false" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1134,7 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1142,14 +1125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="908" column="0" lean-forward="false" selection-start-line="908" selection-start-column="0" selection-end-line="908" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,7 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,15 +1155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="255" column="54" lean-forward="true" selection-start-line="255" selection-start-column="54" selection-end-line="255" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1203,7 +1168,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="1110">
           <caret line="80" column="47" lean-forward="false" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
           <folding />
         </state>
@@ -1211,56 +1176,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="925">
-          <caret line="294" column="32" lean-forward="false" selection-start-line="294" selection-start-column="32" selection-end-line="294" selection-end-column="32" />
+        <state relative-caret-position="3630">
+          <caret line="275" column="29" lean-forward="false" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="118" column="37" lean-forward="false" selection-start-line="118" selection-start-column="37" selection-end-line="118" selection-end-column="37" />
           <folding>
-            <element signature="e#10953#10959#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="81" column="55" lean-forward="false" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="123" column="69" lean-forward="false" selection-start-line="123" selection-start-column="69" selection-end-line="123" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="568" column="67" lean-forward="false" selection-start-line="568" selection-start-column="67" selection-end-line="568" selection-end-column="67" />
+        <state relative-caret-position="600">
+          <caret line="666" column="77" lean-forward="false" selection-start-line="666" selection-start-column="77" selection-end-line="666" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1537488151552" expanded="true" signature="2497:2533" ph="INSERT INTO user... " />
-            <marker date="1537488151552" expanded="true" signature="2956:2990" ph="SELECT * fro... user" />
-            <marker date="1537488151552" expanded="true" signature="3888:3906" ph="SELECT * FRO... user" />
-            <marker date="1537488151552" expanded="true" signature="4278:4312" ph="SELECT * FRO... user" />
-            <marker date="1537488151552" expanded="true" signature="4714:4746" ph="DELETE FROM user... " />
-            <marker date="1537488151552" expanded="true" signature="5411:5600" ph="UPDATE user... " />
-            <marker date="1537488151552" expanded="true" signature="6367:6405" ph="INSERT INTO CoOrdinate... " />
-            <marker date="1537488151552" expanded="true" signature="7018:7051" ph="INSERT INTO Heartrate... " />
-            <marker date="1537488151552" expanded="true" signature="7551:7588" ph="INSERT INTO Activity_Time... " />
-            <marker date="1537488151552" expanded="true" signature="8178:8214" ph="INSERT INTO Data... " />
-            <marker date="1537488151552" expanded="true" signature="8717:8751" ph="SELECT * fro... Data" />
-            <marker date="1537488151552" expanded="true" signature="9488:9527" ph="INSERT INTO Activity_List... " />
-            <marker date="1537488151552" expanded="true" signature="9857:9909" ph="SELECT * fro... Activity_List" />
-            <marker date="1537488151552" expanded="true" signature="10734:10777" ph="INSERT INTO Activity_Collection... " />
-            <marker date="1537488151552" expanded="true" signature="11006:11055" ph="SELECT * fro... Activity_Collection" />
-            <marker date="1537488151552" expanded="true" signature="12019:12072" ph="SELECT title... Activity_Collection" />
-            <marker date="1537488151552" expanded="true" signature="12946:12999" ph="SELECT title... " />
-            <marker date="1537488151552" expanded="true" signature="14536:14621" ph="SELECT data_... Data" />
-            <marker date="1537488151552" expanded="true" signature="17506:17556" ph="SELECT Heart... Heartrate" />
-            <marker date="1537488151552" expanded="true" signature="18353:18403" ph="SELECT DateT... Activity_Time" />
-            <marker date="1537488151552" expanded="true" signature="19306:19375" ph="SELECT latit... CoOrdinate" />
-            <marker date="1537488151552" expanded="true" signature="20191:20207" ph="DELETE FROM user... " />
-            <marker date="1537488151552" expanded="true" signature="20360:20391" ph="DELETE FROM Activity_Collection... " />
-            <marker date="1537488151552" expanded="true" signature="20526:20551" ph="DELETE FROM Activity_List... " />
-            <marker date="1537488151552" expanded="true" signature="20686:20702" ph="DELETE FROM Data... " />
-            <marker date="1537488151552" expanded="true" signature="20837:20859" ph="DELETE FROM CoOrdinate... " />
-            <marker date="1537488151552" expanded="true" signature="20994:21015" ph="DELETE FROM Heartrate... " />
-            <marker date="1537488151552" expanded="true" signature="21150:21175" ph="DELETE FROM Activity_Time... " />
-            <marker date="1537488151552" expanded="true" signature="21574:21623" ph="SELECT data_... Data" />
-            <marker date="1537488151552" expanded="true" signature="22258:22296" ph="DELETE FROM CoOrdinate... " />
-            <marker date="1537488151552" expanded="true" signature="22526:22563" ph="DELETE FROM Heartrate... " />
-            <marker date="1537488151552" expanded="true" signature="22793:22834" ph="DELETE FROM Activity_Time... " />
-            <marker date="1537488151552" expanded="true" signature="23064:23105" ph="DELETE FROM Data... " />
-            <marker date="1537488151552" expanded="true" signature="23659:23695" ph="INSERT INTO Data... " />
-            <marker date="1537488151552" expanded="true" signature="26210:26239" ph="SELECT MAX(d... Data" />
+            <marker date="1537488530192" expanded="true" signature="2497:2533" ph="INSERT INTO user... " />
+            <marker date="1537488530192" expanded="true" signature="2956:2990" ph="SELECT * fro... user" />
+            <marker date="1537488530192" expanded="true" signature="3888:3906" ph="SELECT * FRO... user" />
+            <marker date="1537488530192" expanded="true" signature="4278:4312" ph="SELECT * FRO... user" />
+            <marker date="1537488530192" expanded="true" signature="4714:4746" ph="DELETE FROM user... " />
+            <marker date="1537488530192" expanded="true" signature="5411:5600" ph="UPDATE user... " />
+            <marker date="1537488530192" expanded="true" signature="6367:6405" ph="INSERT INTO CoOrdinate... " />
+            <marker date="1537488530192" expanded="true" signature="7018:7051" ph="INSERT INTO Heartrate... " />
+            <marker date="1537488530192" expanded="true" signature="7551:7588" ph="INSERT INTO Activity_Time... " />
+            <marker date="1537488530192" expanded="true" signature="8178:8214" ph="INSERT INTO Data... " />
+            <marker date="1537488530192" expanded="true" signature="8717:8751" ph="SELECT * fro... Data" />
+            <marker date="1537488530192" expanded="true" signature="9488:9527" ph="INSERT INTO Activity_List... " />
+            <marker date="1537488530192" expanded="true" signature="9857:9909" ph="SELECT * fro... Activity_List" />
+            <marker date="1537488530192" expanded="true" signature="10734:10777" ph="INSERT INTO Activity_Collection... " />
+            <marker date="1537488530192" expanded="true" signature="11006:11055" ph="SELECT * fro... Activity_Collection" />
+            <marker date="1537488530192" expanded="true" signature="12019:12072" ph="SELECT title... Activity_Collection" />
+            <marker date="1537488530192" expanded="true" signature="12946:12999" ph="SELECT title... " />
+            <marker date="1537488530192" expanded="true" signature="14536:14621" ph="SELECT data_... Data" />
+            <marker date="1537488530192" expanded="true" signature="17506:17556" ph="SELECT Heart... Heartrate" />
+            <marker date="1537488530192" expanded="true" signature="18353:18403" ph="SELECT DateT... Activity_Time" />
+            <marker date="1537488530192" expanded="true" signature="19306:19375" ph="SELECT latit... CoOrdinate" />
+            <marker date="1537488530192" expanded="true" signature="20191:20207" ph="DELETE FROM user... " />
+            <marker date="1537488530192" expanded="true" signature="20360:20391" ph="DELETE FROM Activity_Collection... " />
+            <marker date="1537488530192" expanded="true" signature="20526:20551" ph="DELETE FROM Activity_List... " />
+            <marker date="1537488530192" expanded="true" signature="20686:20702" ph="DELETE FROM Data... " />
+            <marker date="1537488530192" expanded="true" signature="20837:20859" ph="DELETE FROM CoOrdinate... " />
+            <marker date="1537488530192" expanded="true" signature="20994:21015" ph="DELETE FROM Heartrate... " />
+            <marker date="1537488530192" expanded="true" signature="21150:21175" ph="DELETE FROM Activity_Time... " />
+            <marker date="1537488530192" expanded="true" signature="21574:21623" ph="SELECT data_... Data" />
+            <marker date="1537488530192" expanded="true" signature="22258:22296" ph="DELETE FROM CoOrdinate... " />
+            <marker date="1537488530192" expanded="true" signature="22526:22563" ph="DELETE FROM Heartrate... " />
+            <marker date="1537488530192" expanded="true" signature="22793:22834" ph="DELETE FROM Activity_Time... " />
+            <marker date="1537488530192" expanded="true" signature="23064:23105" ph="DELETE FROM Data... " />
+            <marker date="1537488530192" expanded="true" signature="23659:23695" ph="INSERT INTO Data... " />
+            <marker date="1537488530192" expanded="true" signature="26210:26239" ph="SELECT MAX(d... Data" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
