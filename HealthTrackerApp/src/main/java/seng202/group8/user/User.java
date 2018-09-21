@@ -9,7 +9,7 @@ import seng202.group8.activity_collection.ActivityListCollection;
 import java.util.ArrayList;
 
 /**
- * user is the class which stores the user data for a user of the Winded App
+ * User is the class which stores the user data for a user of the Winded App
  * @author jco165
  */
 public class User {
