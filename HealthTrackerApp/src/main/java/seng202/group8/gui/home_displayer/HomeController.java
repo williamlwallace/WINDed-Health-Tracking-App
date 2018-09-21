@@ -1,10 +1,14 @@
 package seng202.group8.gui.home_displayer;
 
+import animatefx.animation.Pulse;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.User;
 
@@ -62,6 +66,9 @@ public class HomeController {
     @FXML
     private Label weightValue;
 
+    @FXML
+    private ImageView heartrate;
+
     /**
      * Sets the page up when the user first goes into the Home page
      */
@@ -70,6 +77,12 @@ public class HomeController {
         statsService.updateHomeStats(user);
         statsService.setHealthStatus();
         healthText.setText(statsService.getHealthStatus());
+        Pulse pulse = new Pulse(heartrate);
+        pulse.setSpeed(3);
+        pulse.setCycleCount(2);
+        pulse.setDelay(Duration.seconds(0.5));
+        pulse.play();
+        pulse.playOnFinished(pulse);
         bmiText.setText(user.getBMIString());
         run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km");
         walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km");

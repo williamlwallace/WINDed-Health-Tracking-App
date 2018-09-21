@@ -61,6 +61,7 @@ public class GUIController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         userBtn.setText(user.getName());
+
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         HomeController homeController = loader.getController();
         homeController.setPrimaryStage(stage);
