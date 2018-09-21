@@ -59,6 +59,9 @@ public class HomeController {
     @FXML
     private Label heartValue;
 
+    @FXML
+    private Label weightValue;
+
     /**
      * Sets the page up when the user first goes into the Home page
      */
@@ -68,12 +71,14 @@ public class HomeController {
         statsService.setHealthStatus();
         healthText.setText(statsService.getHealthStatus());
         bmiText.setText(user.getBMIString());
-        run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km's");
-        walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km's");
-        bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km's");
-        all.setText(String.format("%.1f", statsService.getKmTotal()) + " km's");
-        calories.setText(String.format("%.1f", statsService.getCaloriesBurnedTotal()) + " calories burned");
+        run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km");
+        walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km");
+        bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km");
+        all.setText(String.format("%.1f", statsService.getKmTotal()) + " km");
+        calories.setText(String.format("%.1f", statsService.getCaloriesBurnedTotal()) + " Cal");
         heartValue.setText(statsService.getAverageHeartRate() + " BPM");
+        statsService.setWeightLossTotal();
+        weightValue.setText(String.format("%.1f", statsService.getWeightLossTotal()) + " kg");
         totalStatsLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color: #2e86c1");
         bmiLabel2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
         healthLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");

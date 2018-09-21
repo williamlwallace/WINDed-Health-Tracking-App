@@ -27,7 +27,7 @@
                      <children>
                         <Label fx:id="totalStatsLabel" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Total Statistics" textFill="WHITE">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="30.0" />
                            </font>
                         </Label>
                         <VBox alignment="CENTER" prefHeight="250.0" prefWidth="550.0">
@@ -154,7 +154,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="weight" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
+                                    <Label fx:id="weightValue" prefWidth="275.0" style="-fx-font-weight: bold;" text="Value">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -166,6 +166,9 @@
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
                               </HBox>
                            </children>
                         </VBox>
@@ -188,13 +191,16 @@
                                     <Image url="@images/heartrate.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="heartValue" alignment="TOP_LEFT" prefHeight="44.0" prefWidth="129.0" style="-fx-font-weight: bold;" text="86 BPM">
+                              <Label fx:id="heartValue" alignment="TOP_LEFT" prefHeight="137.0" prefWidth="283.0" style="-fx-font-weight: bold;" text="86 BPM">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                                  <padding>
                                     <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                                  </padding>
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
                               </Label>
                            </children>
                         </HBox>
@@ -221,7 +227,10 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="219.0" prefWidth="311.0" style="-fx-font-weight: bold;" text="22.6 Normal" />
+                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="219.0" prefWidth="311.0" style="-fx-font-weight: bold;" text="22.6 Normal">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </children>

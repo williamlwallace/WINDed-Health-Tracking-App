@@ -266,8 +266,8 @@ public class StatisticsService {
             caloriesBurnedTotal = 0.0;
             weightLossTotal = 0.0;
             totalKm = 0.0;
-            weightLossTotal = 0.0;
             setHealthStatus();
+            setWeightLossTotal();
         } else {
             setAverageHeartRate();
             setWeightLossTotal();

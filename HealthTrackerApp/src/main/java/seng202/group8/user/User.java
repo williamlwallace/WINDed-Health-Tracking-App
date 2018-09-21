@@ -98,6 +98,7 @@ public class User {
      */
     public void setHeight(Double height) {
         this.height = height;
+        updateBMI(calculateBMI());
     }
 
     /**
