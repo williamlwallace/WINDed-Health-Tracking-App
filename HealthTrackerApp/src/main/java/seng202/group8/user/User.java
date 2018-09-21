@@ -215,11 +215,19 @@ public class User {
      * @param newBMI the new BMI of the user (kg/m**2)
      */
     public void updateBMI(Double newBMI) {
-        //setBMI(newBMI);
         BMI bmi = new BMI(newBMI);
         userStats.addUserBMITypeRecords(bmi);
         this.bmi = bmi;
         notifyAllObservers();
+    }
+
+    /**
+     * Gets the bmi string for the user to view on the home page
+     * @return the home screen String value for bmi viewer
+     */
+    public String getBMIString() {
+        String string = String.format("%.1f", getBMI().getBMIValue()) + " " + getBMI().getBMICategory();
+        return string;
     }
 
     /**

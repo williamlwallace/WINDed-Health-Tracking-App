@@ -37,7 +37,7 @@ public class StatisticsServiceTest {
         user.updateWeight(10.0);
         user.updateWeight(80.0);
         user.updateWeight(70.0);
-        statsService.updateHomeStats();
+        statsService.updateHomeStats(user);
     }
 
     @Test

@@ -33,6 +33,7 @@ public class StatisticsService {
     public void setAverageHeartRate() {
         int heartRateValues = 0;
         averageHeartRate = 0;
+        System.out.println(this.arrayCollection.size());
         for(int i = 0; i < arrayCollection.size(); i++) {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
@@ -40,7 +41,6 @@ public class StatisticsService {
                 ArrayList<Integer> heartRateList = data.getHeartRateList();
                 for(int k = 0; k < heartRateList.size(); k++){
                     averageHeartRate += heartRateList.get(k);
-
                 }
                 heartRateValues += heartRateList.size();
             }
@@ -146,7 +146,9 @@ public class StatisticsService {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
-                calories += data.getConsumedCalories();
+                if (data.isGraphable) {
+                    calories += data.getConsumedCalories();
+                }
             }
 
         }
@@ -231,22 +233,29 @@ public class StatisticsService {
     private Double weightLossTotal;
     private Double totalKm;
     private HealthService healthService;
+    private User user;
 
     private UserStats userStats;
     private ActivityListCollection collection;
     private ArrayList<ActivityList> arrayCollection;
 
     public StatisticsService(User user) {
-        healthService = new HealthService(user);
-        userStats = user.getUserStats();
-        collection = user.getUserActivities();
+        this.user = user;
+        healthService = new HealthService(this.user);
+        userStats = this.user.getUserStats();
+        collection = this.user.getUserActivities();
         arrayCollection = collection.getActivityListCollection();
     }
 
     /**
      * A function to update all of the home statistics
      */
-    public void updateHomeStats() {
+    public void updateHomeStats(User user) {
+        this.user = user;
+        userStats = this.user.getUserStats();
+        collection = this.user.getUserActivities();
+        healthService.update();
+        arrayCollection = collection.getActivityListCollection();
         setAverageHeartRate();
         setWeightLossTotal();
         setCaloriesBurned();
@@ -426,12 +435,14 @@ public class StatisticsService {
      */
     public GraphXY getCaloriesBurnedOverTimeGraph(Data data) {
         GraphXY graph = new GraphXY();
-        ArrayList<Double> calories = data.calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
+        ArrayList<Double> calories = data.getConsumedCaloriesBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
         ArrayList<Double> times = createTimes(time);
+        Double summary = 0.0;
         for (int i = 0; i < time.size() - 1; i++) {
             graph.addXAxis(times.get(i));
-            graph.addYAxis(calories.get(i));
+            summary += calories.get(i);
+            graph.addYAxis(summary);
         }
         return graph;
     }

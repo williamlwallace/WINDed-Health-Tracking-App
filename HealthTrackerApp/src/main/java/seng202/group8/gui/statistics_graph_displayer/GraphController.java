@@ -261,7 +261,6 @@ public class GraphController {
         series.setName("BMI Over Time");
         graph2.setTitle("BMI Visualization");
 
-        //graph2.setCreateSymbols(false);
         lineChartData.add(series);
         graph2.setData(lineChartData);
         graph2.createSymbolsProperty();
@@ -285,7 +284,6 @@ public class GraphController {
         series.setName("Weight Over Time");
         graph2.setTitle("Weight Change Visualization");
 
-        //graph2.setCreateSymbols(false);
         lineChartData.add(series);
         graph2.setData(lineChartData);
         graph2.createSymbolsProperty();
@@ -324,6 +322,7 @@ public class GraphController {
                 currentDataIndex = currentDataIndex2;
                 setCurrentData(allData.get(currentDataIndex));
                 found = true;
+                changeGraph();
                 updateData();
             }
         }
@@ -343,6 +342,7 @@ public class GraphController {
                 currentDataIndex = currentDataIndex2;
                 setCurrentData(allData.get(currentDataIndex));
                 found = true;
+                changeGraph();
                 updateData();
             }
         }
@@ -402,7 +402,7 @@ public class GraphController {
         System.out.println(after.format(formatter));
         String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
         time.setText(string);
-        showDistance();
+        changeGraph();
         showBmi();
     }
 
@@ -446,6 +446,7 @@ public class GraphController {
             weight.setStyle("-fx-background-color:  #2e86c1");
             bmi.setStyle("-fx-background-color:  #2e86c1");
             comboBox.setStyle("-fx-background-color:  #2e86c1; -fx-font-color: #ffff");
+            comboBox.getSelectionModel().select("Distance Over Time");
 
 
             // Makes sure the divider's value can't be changed
