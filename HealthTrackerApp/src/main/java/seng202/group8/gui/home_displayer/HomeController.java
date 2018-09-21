@@ -78,7 +78,7 @@ public class HomeController {
         statsService.setHealthStatus();
         healthText.setText(statsService.getHealthStatus());
         Pulse pulse = new Pulse(heartrate);
-        pulse.setSpeed(3);
+        pulse.setSpeed(3.5);
         pulse.setCycleCount(2);
         pulse.setDelay(Duration.seconds(0.5));
         pulse.play();
