@@ -19,16 +19,95 @@
                <children>
                   <VBox>
                      <children>
-                        <Label alignment="CENTER" prefHeight="90.0" prefWidth="550.0" text="Welcome!">
+                        <Label alignment="CENTER" prefHeight="90.0" prefWidth="550.0" text="Total Statistics">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label alignment="TOP_LEFT" prefHeight="277.0" prefWidth="550.0" text="Stats">
-                           <padding>
-                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                           </padding>
-                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" text="Total Km's Run:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Label>
+                              <Label alignment="CENTER" text="Value">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="100.0">
+                           <children>
+                              <Label alignment="CENTER" text="Total Km's Walked:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" text="Value">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="125.0">
+                           <children>
+                              <Label alignment="CENTER" text="Total Km's Biked:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" text="Value">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="175.0">
+                           <children>
+                              <Label alignment="CENTER" text="Total Km's for all Activities:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" text="Value">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="150.0">
+                           <children>
+                              <Label alignment="CENTER" text="Total Calories Burned:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" text="Value">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />

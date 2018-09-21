@@ -121,9 +121,9 @@ public class StatisticsService {
             hasRisk = Boolean.TRUE;
         }
         if (!hasRisk) {
-            healthStatus += "You currently have no health risks\n Nice work!";
+            healthStatus += "You currently have no health risks\nNice work!";
         } else {
-            healthStatus += "Click a button below to find out more about your health risks";
+            healthStatus += "Click a button below to find out more\nabout your health risks";
         }
         this.healthStatus = healthStatus;
     }

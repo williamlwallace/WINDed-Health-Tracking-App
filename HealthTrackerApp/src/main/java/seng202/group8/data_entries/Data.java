@@ -100,6 +100,13 @@ public abstract class Data {
         this.dataSpeedMph = calculateDataSpeedMilesPerHour();
         this.isGraphable = ((newDateTimes.size() == newCoordinatesList.size()) ==
                 (newCoordinatesList.size() == newHeartRateList.size()));
+        System.out.println(newDateTimes);
+        System.out.println(newCoordinatesList);
+        System.out.println(newHeartRateList);
+        if (newDateTimes.size() < 3) {
+            this.isGraphable = false;
+        }
+        System.out.println("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO:" + isGraphable);
         if (this.isGraphable) {
             this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
             this.kphSpeedsBetweenPoints = calculateKphSpeedsBetweenPoints();
@@ -684,7 +691,7 @@ public abstract class Data {
         return calories;
     }
 
-    public boolean isGraphable() {
+    public boolean getIsGraphable() {
         return isGraphable;
     }
 

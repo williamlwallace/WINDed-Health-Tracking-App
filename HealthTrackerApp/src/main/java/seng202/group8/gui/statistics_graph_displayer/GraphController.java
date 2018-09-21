@@ -308,26 +308,39 @@ public class GraphController {
 
     /**
      * The function that runs when the user clicks next activity and will travel through the allData arrayList
-     * to a more recent data activity, unless at the end of the list then it won't go any further
+     * to a more recent data activity, unless at the end of the list then it won't go any further and checks tha
+     * the data it is trying it select is graph able
      */
     public void nextData() {
-        if (currentDataIndex != dataSize - 1) {
-            currentDataIndex++;
-            setCurrentData(allData.get(currentDataIndex));
-            updateData();
+        Boolean found = false;
+        Integer currentDataIndex2 = currentDataIndex;
+        while (currentDataIndex2 != dataSize - 1 && !found) {
+            currentDataIndex2++;
+            if (allData.get(currentDataIndex2).getIsGraphable()) {
+                currentDataIndex = currentDataIndex2;
+                setCurrentData(allData.get(currentDataIndex));
+                found = true;
+                updateData();
+            }
         }
     }
 
     /**
      * The function that runs when the user clicks on the button previous activity which will travel through the allData
      * arrayList to a previous done activity to the current one selected, unless at the first activity that the user ever
-     * inputted into the system
+     * inputted into the system, also when it runs through all data checks that the data value is graph abale before it is selected
      */
     public void previousData() {
-        if (currentDataIndex != 0) {
-            currentDataIndex--;
-            setCurrentData(allData.get(currentDataIndex));
-            updateData();
+        Boolean found = false;
+        Integer currentDataIndex2 = currentDataIndex;
+        while (currentDataIndex2 != 0 && !found) {
+            currentDataIndex2--;
+            if (allData.get(currentDataIndex2).getIsGraphable()) {
+                currentDataIndex = currentDataIndex2;
+                setCurrentData(allData.get(currentDataIndex));
+                found = true;
+                updateData();
+            }
         }
     }
 
@@ -410,8 +423,16 @@ public class GraphController {
             popUp.setScene(popUpScene);
             popUp.show();
         } else {
-            setCurrentData(allData.get(dataSize - 1));
-            currentDataIndex = dataSize - 1;
+            Boolean found = false;
+            Integer currentDataIndex2 = allData.size();
+            while (currentDataIndex2 != 0 && !found) {
+                currentDataIndex2--;
+                if (allData.get(currentDataIndex2).getIsGraphable()) {
+                    currentDataIndex = currentDataIndex2;
+                    setCurrentData(allData.get(currentDataIndex));
+                    found = true;
+                }
+            }
             labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
             labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
             previous.setStyle("-fx-background-color:  #2e86c1");
