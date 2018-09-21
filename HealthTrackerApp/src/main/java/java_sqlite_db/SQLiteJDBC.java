@@ -244,9 +244,14 @@ public class SQLiteJDBC {
         }
     }
 
-    public void insertActivityList(Connection connection, String title, String datetime, Integer userId) {
+
+
+
+
+    public void insertActivityList(String title, String datetime, Integer userId) {
         String sql = "INSERT INTO Activity_List VALUES(?,?,?)";
         try {
+            Connection connection = connect();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, title);
             preparedStatement.setString(2, datetime);
@@ -263,6 +268,7 @@ public class SQLiteJDBC {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
                 System.out.println("Rows added to Activity List:" + preparedStatement.executeUpdate());
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -558,53 +564,60 @@ public class SQLiteJDBC {
 
     }
 
+    public void updateWithListOfData(ArrayList<Data> dataList, String parentListTitle, Date parentListDatetime, Integer userId) {
+
+        String dataUpdate = "INSERT INTO Data VALUES(?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = null;
+
+
+        try {
+            Connection connection = connect();
+            connection.setAutoCommit(false);
+            String parentListDateTimeString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(parentListDatetime));
+
+            for (Data activity : dataList) {
+                Integer newDataId = getNextDataID(connection);
+                preparedStatement = connection.prepareStatement(dataUpdate);
+                preparedStatement.setInt(1, newDataId);
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setString(3, activity.getDataType().toString());
+                preparedStatement.setString(4, parentListTitle);
+                preparedStatement.setString(5, parentListDateTimeString);
+                preparedStatement.setString(6, activity.getTitle());
+                preparedStatement.executeUpdate();
+                for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
+                    insertCoordinate(connection, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), newDataId);
+                }
+                for (Integer heartRate : activity.getHeartRateList()) {
+                    insertHeartRate(connection, heartRate, newDataId);
+                }
+                for (LocalDateTime localDateTime: activity.getAllDateTimes()) {
+                    insertActivityTime(connection, newDataId, localDateTime.toString());
+                }
+            }
+
+            connection.commit();
+            preparedStatement.close();
+            connection.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public void saveUser(User user, Integer userId) {
         Connection conn = connect();
         insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
         updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
-
-        Integer dataId;
-        try {
-        String sql2 = "DELETE FROM CoOrdinate";
-        PreparedStatement preparedStatement1 = conn.prepareStatement(sql2);
-        preparedStatement1.executeUpdate();
-        String sql3 = "DELETE FROM Heartrate";
-        PreparedStatement preparedStatement2 = conn.prepareStatement(sql3);
-        preparedStatement2.executeUpdate();
-        String sql4 = "DELETE FROM Activity_Time";
-        PreparedStatement preparedStatement3 = conn.prepareStatement(sql4);
-        preparedStatement3.executeUpdate();
-        String sql1 = "DELETE FROM Data";
-        PreparedStatement preparedStatement4 = conn.prepareStatement(sql1);
-        preparedStatement4.executeUpdate();
-        }   catch (SQLException e) {
-            e.printStackTrace();
-        }
 
 
         ActivityListCollection activityListCollection = user.getUserActivities();
 
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
 
-        for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
-            //deleteListData(conn, activityList.getTitle(), getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityList.getCreationDate())));
-            insertActivityList(conn, activityList.getTitle(), getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityList.getCreationDate())), userId);
-            for (Data activity : activityList.getActivityList()) {
-                dataId = getNextDataID(conn);
-                if (insertData(conn, dataId, userId, activity.getDataType().toString(), activityList.getTitle(), getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityList.getCreationDate())), activity.getTitle())) {
-                    for (CoordinateData coordinate : activity.getCoordinatesArrayList()) {
-                        insertCoordinate(conn, coordinate.getLatitude(), coordinate.getLongitude(), coordinate.getAltitude(), dataId);
-                    }
-                    for (Integer heartRate : activity.getHeartRateList()) {
-                        insertHeartRate(conn, heartRate, dataId);
-                    }
-                    for (LocalDateTime localDateTime: activity.getAllDateTimes()) {
-                        insertActivityTime(conn, dataId, localDateTime.toString());
-                    }
-            }
-
-            }
-        }
         try {
             if (conn != null) {
                 conn.close();
@@ -699,9 +712,11 @@ public class SQLiteJDBC {
                 activityList.insertActivity(d);
             }
             userTest.getUserActivities().insertActivityList(activityList);
-
-
+            newDataBaseJDBC.insertActivityList(activityList.getTitle(), newDataBaseJDBC.getStringFromLocalDateTime(newDataBaseJDBC.convertToLocalDateTimeViaInstant(activityList.getCreationDate())), 1);
             newDataBaseJDBC.saveUser(userTest, 1);
+            newDataBaseJDBC.updateWithListOfData(data, activityList.getTitle(), activityList.getCreationDate(), 1);
+
+
             /*System.out.println(userTest.getName());
             System.out.println(userTest.getAge());
             System.out.println(userTest.getWeight());
@@ -778,7 +793,7 @@ public class SQLiteJDBC {
         System.out.println("Now Saving Again");
         System.out.println("_____________________________________________________");
 
-        newDataBaseJDBC.saveUser(userTestRetrieved, 1);
+        //newDataBaseJDBC.saveUser(userTestRetrieved, 1);
 
     }
 }

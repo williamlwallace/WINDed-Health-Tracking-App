@@ -32,6 +32,7 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -238,6 +239,7 @@ public class ActivitiesCollectionController {
      */
     public void uploadFile(MouseEvent event) throws Exception {
         //System.out.println("Ciao");
+        SQLiteJDBC database = new SQLiteJDBC();
         if (csvToParse != null && titleField.getText() != null && !titleField.getText().isEmpty()) {
             activityTitle = titleField.getText();
             int error = 0;
@@ -272,21 +274,29 @@ public class ActivitiesCollectionController {
             }
             if (error == 0) {
                 int add = user.getUserActivities().checkDuplicate(activityTitle);
+                ArrayList<Data> newData = new ArrayList<Data>();
                 if (add == -1) {
-                    add = user.getUserActivities().insertActivityList(new ActivityList(activityTitle));
+                    ActivityList newList = new ActivityList(activityTitle);
+                    add = user.getUserActivities().insertActivityList(newList);
+                    database.insertActivityList(activityTitle, database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(newList.getCreationDate())), 1);
                     for (Data data : parser.getDataList()) {
+                        newData.add(data);
                         user.getUserActivities().insertActivityInGivenList(add, data);
                     }
+                    database.updateWithListOfData(newData,newList.getTitle(), newList.getCreationDate(), 1);
                 } else {
                     for (Data data : parser.getDataList()) {
+                        newData.add(data);
                         user.getUserActivities().insertActivityInGivenList(add, data);
                     }
+                    ActivityList existingList = user.getUserActivities().getActivityListCollection().get(add);
+                    database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), 1);
                 }
                 setUpTreeView();
                 List<String> csvArray = Arrays.asList(csvToParse.split("/"));
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
-                SQLiteJDBC database = new SQLiteJDBC();
-                database.saveUser(user, 1);
+                //database.saveUser(user, 1);
+
 
             }
 
