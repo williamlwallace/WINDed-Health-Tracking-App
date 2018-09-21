@@ -38,18 +38,24 @@ public class HeartRateData {
             this.medianIndex = (sortedHeartRateList.size() / 2);     /** Note this is floor division **/
             this.medianHeartRate = sortedHeartRateList.get(medianIndex);
             this.standardDeviation = sortedHeartRateList.get(medianIndex) - sortedHeartRateList.get(0);
+            this.highestHeartRate = sortedHeartRateList.get(sortedHeartRateList.size() - 1);
+            this.lowestHeartRate = sortedHeartRateList.get(0);
 
         } else if (this.heartRateList.size() == 1) {
             this.meanAverageHeartRate = getMeanAverageHeartRate();
             this.medianIndex = 0;
             this.medianHeartRate = sortedHeartRateList.get(medianIndex);
             this.standardDeviation = sortedHeartRateList.get(medianIndex) - sortedHeartRateList.get(0);
+            this.highestHeartRate = sortedHeartRateList.get(0);
+            this.lowestHeartRate = sortedHeartRateList.get(0);
 
         } else {
             this.meanAverageHeartRate = 0;
             this.medianIndex = 0;
             this.medianHeartRate = 0;
             this.standardDeviation = 0;
+            this.highestHeartRate = 0;
+            this.lowestHeartRate = 0;
         }
     }
 

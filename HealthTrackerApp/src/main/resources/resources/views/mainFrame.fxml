@@ -30,9 +30,14 @@
                </image>
             </ImageView>
             <HBox prefHeight="100.0" prefWidth="887.0" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="318.0" spacing="5.0">
                <children>
-                  <MenuButton fx:id="userBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" styleClass="menu-bar" stylesheets="@stylesheet.css" textFill="WHITE">
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/user.png" />
+                     </image>
+                  </ImageView>
+                  <MenuButton fx:id="userBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" styleClass="menu-bar" stylesheets="@stylesheet.css" textFill="WHITE">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#loadEditUser" text="Edit User" />
                       <!--<MenuItem mnemonicParsing="false" text="Change User" />-->

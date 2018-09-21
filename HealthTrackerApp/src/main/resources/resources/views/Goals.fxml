@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,7 +11,26 @@
 <!--<?import de.jensd.fx.glyphs.fontawesome.*?>-->
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="333.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="222.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/under_construction.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </top>
    <center>
-      <Label text="GOALS" BorderPane.alignment="CENTER" />
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="46.0" prefWidth="300.0" text="Goals screen under construction!">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
    </center>
 </BorderPane>

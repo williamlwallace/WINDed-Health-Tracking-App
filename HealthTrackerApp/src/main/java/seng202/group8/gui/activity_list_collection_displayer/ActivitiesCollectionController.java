@@ -96,12 +96,20 @@ public class ActivitiesCollectionController {
      */
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
-        insightsTitle.setText(data.getTitle() + " insights:");
-        distanceCovered.setText(data.getDistanceCovered().toString());
-        averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()));
-        maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate()));
-        minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate()));
-        String averageSpeedString = String.format("%.2f", String.valueOf(data.getDataSpeedKph()));
+        HeartRateData heartRateData1 = new HeartRateData(data.getHeartRateData().getHeartRateList());
+        for (Integer integer : heartRateData.getHeartRateList()) {
+            System.out.println("HR VAL: " + integer);
+        }
+        insightsTitle.setText(data.getTitle());
+        if (data.getDistanceCovered() < 1000) {
+            distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
+        } else {
+            distanceCovered.setText(String.format("%.2f", data.getDistanceCovered() / 1000) + " km");
+        }
+        averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()) + " bpm");
+        maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate())  + " bpm");
+        minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate())  + " bpm");
+        String averageSpeedString = String.format("%.2f", data.getDataSpeedKph()) + " km/h";
         averageSpeed.setText(averageSpeedString);
 
     }
