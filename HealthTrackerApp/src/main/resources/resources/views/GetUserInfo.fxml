@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -11,89 +18,65 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="740.0" styleClass="top" stylesheets="@stylesheet2.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.user_info_gui.GetUserInfoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="740.0" styleClass="top" stylesheets="@stylesheet2.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.user_info_gui.GetUserInfoController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-         <image>
-            <Image url="@images/WINdedLogo.png" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to WINded" textAlignment="CENTER">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="20.0" top="20.0" />
-         </VBox.margin>
-      </Text>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="TOP_CENTER" prefHeight="121.0" prefWidth="740.0">
          <children>
-            <Text fx:id="nameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Text>
-            <TextField fx:id="nameField">
-               <HBox.margin>
-                  <Insets left="36.0" />
-               </HBox.margin>
-            </TextField>
+            <ImageView fitHeight="126.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/WINdedLogo.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text fx:id="nameText1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight (Kg)">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Text>
-            <TextField fx:id="weightField" />
+            <Label prefWidth="90.0" text="Name:" textFill="WHITE" />
+            <JFXTextField fx:id="nameField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text fx:id="ageText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Text>
-            <TextField fx:id="ageField">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </TextField>
+            <Label prefWidth="90.0" text="Age:" textFill="WHITE" />
+            <JFXTextField fx:id="ageField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text fx:id="heightText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height (cm):" />
-            <TextField fx:id="heightField">
-               <HBox.margin>
-                  <Insets left="18.0" />
-               </HBox.margin>
-            </TextField>
+            <Label prefWidth="90.0" text="Weight (kg):" textFill="WHITE" />
+            <JFXTextField fx:id="weightField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ChoiceBox fx:id="sexChoice" prefWidth="150.0" />
+            <Label prefWidth="90.0" text="Height (kg):" textFill="WHITE" />
+            <JFXTextField fx:id="heightField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
-      <Text fx:id="errorText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-         <VBox.margin>
-            <Insets bottom="25.0" />
-         </VBox.margin>
-      </Text>
-      <JFXButton fx:id="enterDetailsButton" onAction="#enterDetails" prefHeight="45.0" prefWidth="283.0" style="-fx-background-color: #21618c;" text="Let the fun begin!" textFill="WHITE">
-         <VBox.margin>
-            <Insets bottom="20.0" />
-         </VBox.margin>
-         <font>
-            <Font size="24.0" />
-         </font>
-      </JFXButton>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label prefWidth="90.0" text="Gender" textFill="WHITE" />
+            <ComboBox fx:id="sexChoice" prefWidth="150.0" promptText="Gender" styleClass="combobox" stylesheets="@stylesheet2.css" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="740.0">
+         <children>
+            <Label fx:id="errorText" textFill="#c1c1c1" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="116.0" prefWidth="740.0" spacing="30.0">
+         <children>
+            <JFXButton fx:id="enterDetailsButton" onAction="#enterDetails" prefHeight="45.0" prefWidth="110.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Enter" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="cancelBtn" onAction="#quitApp" prefHeight="45.0" prefWidth="110.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
    </children>
 </VBox>

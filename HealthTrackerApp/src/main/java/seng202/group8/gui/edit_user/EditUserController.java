@@ -1,57 +1,18 @@
-package seng202.group8.gui.user_info_gui;
+package seng202.group8.gui.edit_user;
 
 import com.jfoenix.controls.JFXButton;
-import java_sqlite_db.SQLiteJDBC;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.application.HostServices;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng202.group8.gui.GUIController;
 import seng202.group8.user.User;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import seng202.group8.user.user_stats.Sex;
-
-//import javax.xml.soap.Text;
+import java.awt.*;
 import java.io.IOException;
 
-public class GetUserInfoController {
-
-//    @FXML
-//    private ChoiceBox sexChoice;
-//
-//    @FXML
-//    private JFXButton enterDetailsButton;
-//
-//    @FXML
-//    private TextField nameField;
-//
-//    @FXML
-//    private TextField ageField;
-//
-//    @FXML
-//    private TextField weightField;
-//
-//    @FXML
-//    private TextField heightField;
-//
-//    @FXML
-//    private Text errorText;
-
-    @FXML
-    private ComboBox sexChoice;
-
-    @FXML
-    private JFXButton enterDetailsButton;
+public class EditUserController {
 
     @FXML
     private JFXTextField nameField;
@@ -66,22 +27,37 @@ public class GetUserInfoController {
     private JFXTextField heightField;
 
     @FXML
+    private JFXButton submitBtn;
+
+    @FXML
+    private JFXButton cancelBtn;
+
+    @FXML
     private Label errorText;
-
-
 
     private User user;
     private Stage stage;
-    private HostServices host;
 
-    @FXML
-    public void initialize() {
-        sexChoice.getItems().removeAll(sexChoice.getItems());
-        sexChoice.getItems().addAll("Male", "Female");
-        sexChoice.getSelectionModel().select("Male");
+    public User getUser() { return user; }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void enterDetails(ActionEvent event) {
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) { this.stage = stage; }
+
+    public void setUp() {
+        nameField.setText(user.getName());
+        ageField.setText(Integer.toString(user.getAge()));
+        weightField.setText(Double.toString(user.getWeight()));
+        heightField.setText(Double.toString(user.getHeight()));
+    }
+
+    public void submitPressed(ActionEvent event) {
         System.out.println("Pressed");
         String name = null;
         int age = 0;
@@ -144,58 +120,24 @@ public class GetUserInfoController {
         if (errorMessage.length() > 0) {
             errorText.setText(errorMessage);
         } else {
-            String sex = (String) sexChoice.getSelectionModel().getSelectedItem();
-            if (sex.equals("Female")) {
-                user = new User(name, age, weight, height, Sex.FEMALE);
-            } else {
-                user = new User(name, age, weight, height, Sex.MALE);
-            }
-            try {
-                loadMainFrame();
-            } catch (IOException e) {
-                System.out.println("Something wrong in GUI: " + e);
-            }
+            user.setName(name);
+            user.setAge(age);
+            user.setWeight(weight);
+            user.setHeight(height);
         }
-
-    }
-
-    private void loadMainFrame() throws IOException {
-        SQLiteJDBC database = new SQLiteJDBC();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/mainFrame.fxml"));
-        Parent root = loader.load();
-        GUIController guiController = loader.getController();
-        guiController.setUser(user);
-
-        database.saveUser(user, 1);
-
-        guiController.setStage(stage);
-        guiController.setHostServices(host);
-        stage.setTitle("WINded");
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        guiController.setToHome();
-        stage.show();
     }
 
     @FXML
-    private void quitApp(ActionEvent event) {
-        stage.close();
+    private void cancelPressed(ActionEvent event) throws IOException{
+        GUIController guiController = new GUIController();
+        guiController.setToHome();
+
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public void setHostServices(HostServices host) {
-        this.host = host;
-    }
 }
+
+
+
+
+

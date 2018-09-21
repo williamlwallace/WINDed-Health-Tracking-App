@@ -7,7 +7,7 @@
 }
 
 .btns{
-    -fx-background-color: transparent;
+    -fx-background-color: #2e86c1;
 }
 
 .btns:hover{
@@ -17,5 +17,31 @@
 .top {
     -fx-background-color: linear-gradient(to left, #2e86c1, #2874a6);
 }
+
+.textfield {
+    -fx-prompt-text-fill: #c1c1c1;
+    -fx-text-inner-color: WHITE;
+}
+
+.combo-box,
+.choice-box {
+    -fx-font-size: 13px;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color:  #4d4d4d;
+    -fx-padding: 0 0 3 -8;
+}
+
+.combo-box .list-cell:filled:selected .text,
+.choice-box .list-cell:filled:selected .text {
+    -fx-fill: WHITE;
+}
+
+.combo-box .arrow,
+.choice-box .arrow {
+    -fx-background-color: #4d4d4d;
+}
+
+
 
 

@@ -1,6 +1,7 @@
 package seng202.group8.gui;
 
 import com.jfoenix.controls.JFXButton;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.FadeTransition;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.gui.calendar_view.CalendarViewController;
+import seng202.group8.gui.edit_user.EditUserController;
 import seng202.group8.gui.home_displayer.HomeController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
@@ -26,9 +28,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GUIController implements Initializable {
-
-    @FXML
-    private BorderPane root;
 
     @FXML
     private BorderPane scene;
@@ -208,9 +207,28 @@ public class GUIController implements Initializable {
         goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
-    public User getUser() {
-        return user;
+    @FXML
+    private void loadEditUser(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/editUser.fxml"));
+        BorderPane editUserScene = loader.load();
+        EditUserController editUserController = loader.getController();
+        editUserController.setUser(user);
+        editUserController.setStage(stage);
+        editUserController.setUp();
+        scene.getChildren().setAll(editUserScene);
+        calendarBtn.setStyle("-fx-background-color: transparent");
+        homeBtn.setStyle("-fx-background-color: transparent");
+        activityBtn.setStyle("-fx-background-color: transparent");
+        statsBtn.setStyle("-fx-background-color: transparent");
+        goalsBtn.setStyle("-fx-background-color: transparent");
     }
+
+    @FXML
+    private void quitApp(ActionEvent event) {
+        stage.close();
+    }
+
+    public User getUser() { return user; }
 
     public void setUser(User user) {
         this.user = user;
@@ -222,11 +240,6 @@ public class GUIController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-    }
-
-    @FXML
-    private void quitApp(ActionEvent event) {
-        stage.close();
     }
 
     public void setHostServices(HostServices host) {
