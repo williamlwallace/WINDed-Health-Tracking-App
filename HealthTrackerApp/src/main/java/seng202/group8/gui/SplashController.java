@@ -44,7 +44,7 @@ public class SplashController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        new splashScreen().start();
+
         FadeTransition fadeIn = new FadeTransition(javafx.util.Duration.seconds(1), parent);
         fadeIn.setFromValue(1);
         fadeIn.setToValue(1);
