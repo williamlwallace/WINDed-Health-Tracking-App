@@ -106,7 +106,6 @@ public abstract class Data {
         if (newDateTimes.size() < 3) {
             this.isGraphable = false;
         }
-        System.out.println("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO:" + isGraphable);
         if (this.isGraphable) {
             this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
             this.kphSpeedsBetweenPoints = calculateKphSpeedsBetweenPoints();
