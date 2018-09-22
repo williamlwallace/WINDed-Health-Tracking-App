@@ -81,12 +81,12 @@ public class StatisticsServiceTest {
         assertEquals(expected, lost);
     }
 
-//    @Test
-//    public void testCaloriesBurnedTotal() {
-//        Double lost = statsService.getCaloriesBurnedTotal();
-//        Double expected = 0.0;
-//        assertEquals(expected, lost);
-//    }
+    @Test
+    public void testCaloriesBurnedTotal() {
+        Double lost = statsService.getCaloriesBurnedTotal();
+        Double expected = 1699.0970363288718;
+        assertEquals(expected, lost);
+    }
 
 
     @Test
@@ -111,16 +111,18 @@ public class StatisticsServiceTest {
         assertTrue(EqualsBuilder.reflectionEquals(graph, graph2));
     }
 
-//    @Test
-//    public void testCaloriesGraph() {
-//        GraphXY graph = statsService.getCaloriesBurnedOverTimeGraph(data);
-//        ArrayList<Double> correctY = new ArrayList<Double>(Arrays.asList(0.38149816762268957, 0.4016033301465902, 8.59199808795411));
-//        ArrayList<Double> correctX = new ArrayList<Double>(Arrays.asList(0.0, 1.0, 2.0));
-//        GraphXY graph2 = new GraphXY();
-//        graph2.setXAxis(correctX);
-//        graph2.setYAxis(correctY);
-//        assertTrue(EqualsBuilder.reflectionEquals(graph, graph2));
-//    }
+    @Test
+    public void testCaloriesGraph() {
+        GraphXY graph = statsService.getCaloriesBurnedOverTimeGraph(data);
+        ArrayList<Double> correctY = new ArrayList<Double>(Arrays.asList(0.38149816762268957, 0.7831014977692798, 9.37509958572339));
+        ArrayList<Double> correctX = new ArrayList<Double>(Arrays.asList(0.0, 1.0, 2.0));
+        GraphXY graph2 = new GraphXY();
+        graph2.setXAxis(correctX);
+        graph2.setYAxis(correctY);
+        System.out.println(graph.getXAxis());
+        System.out.println(graph.getYAxis());
+        assertTrue(EqualsBuilder.reflectionEquals(graph, graph2));
+    }
 
     @Test
     public void testStressGraph() {
@@ -141,8 +143,6 @@ public class StatisticsServiceTest {
         GraphXY graph2 = new GraphXY();
         graph2.setXAxis(correctX);
         graph2.setYAxis(correctY);
-        System.out.println(graph.getXAxis());
-        System.out.println("HELLO HELLOOOOOOOOOOOOOOOOOOOOOOOOOO");
         assertTrue(EqualsBuilder.reflectionEquals(graph, graph2));
     }
 
@@ -167,8 +167,4 @@ public class StatisticsServiceTest {
         ArrayList<Double> expectedTimes = new ArrayList<Double>(Arrays.asList(0.0, 60.0, 120.0));
         assertEquals(expectedTimes, times);
     }
-
-
-
-// [139, 145, 149, 147]
 }
