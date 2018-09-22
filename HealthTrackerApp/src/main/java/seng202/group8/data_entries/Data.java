@@ -694,6 +694,9 @@ public abstract class Data {
     public boolean getIsGraphable() {
         return isGraphable;
     }
+    public void setIsGraphable(boolean isGraphabe) {
+        this.isGraphable = isGraphable;
+    }
 
     public String getTitle() {
         return title;

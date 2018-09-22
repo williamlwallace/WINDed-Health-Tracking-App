@@ -153,6 +153,7 @@ public class NewDataDialogController {
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
+            dataVal.setIsGraphable(false);
             dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
             SQLiteJDBC database = new SQLiteJDBC();
 
