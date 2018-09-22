@@ -10,7 +10,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.calendar_view.CalendarViewController">
    <top>
-      <JFXDatePicker fx:id="datePicker" prefWidth="223.0" BorderPane.alignment="CENTER">
+      <JFXDatePicker fx:id="datePicker" defaultColor="#2e86c1" prefWidth="223.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="30.0" />
          </BorderPane.margin>

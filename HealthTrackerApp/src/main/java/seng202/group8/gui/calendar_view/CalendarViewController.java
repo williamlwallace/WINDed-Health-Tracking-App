@@ -110,8 +110,9 @@ public class CalendarViewController {
                             VBox vBox = new VBox();
                             Text title = new Text(data.getTitle());
                             Text distanceCovered = new Text("Distance covered: " + data.getDistanceCovered().toString());
-                            Text burntCalories = new Text("Burnt calories: " + String.valueOf(data.getConsumedCalories()));
-                            vBox.getChildren().addAll(title, distanceCovered, burntCalories);
+//                            Text burntCalories = new Text("Burnt calories: " + String.valueOf(data.getConsumedCalories()));
+                            vBox.getChildren().addAll(title, distanceCovered);
+//                                    , burntCalories);
                             vBox.setPadding(new Insets(5));
                             setGraphic(vBox);
                         }
