@@ -9,8 +9,5 @@
         <module name="HealthTrackerApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="HealthTrackerApp" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
