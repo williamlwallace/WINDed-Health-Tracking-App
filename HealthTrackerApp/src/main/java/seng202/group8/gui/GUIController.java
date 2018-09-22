@@ -58,7 +58,7 @@ public class GUIController implements Initializable {
 
     public void setToHome() throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         userBtn.setText(user.getName());
 
@@ -79,7 +79,7 @@ public class GUIController implements Initializable {
     @FXML
     public void loadHome(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         //TO ADD THE CONTROLLER LINK AND FOLLOW SAME PROCEDURE IN METHODS BELOW
         HomeController homeController = loader.getController();
@@ -98,7 +98,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/activity_list_collection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/activity_list_collection.fxml"));
         BorderPane activityScene = loader.load();
         ActivitiesCollectionController activitiesCollectionController = loader.getController();
         activitiesCollectionController.setPrimaryStage(stage);
@@ -116,7 +116,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadStatistics(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/graphs.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/graphs.fxml"));
         BorderPane statsScene = loader.load();
         GraphController graphController = loader.getController();
         graphController.setPrimaryStage(stage);
@@ -133,7 +133,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadGoals(ActionEvent event) throws IOException
     {
-        BorderPane goalsScene = FXMLLoader.load(getClass().getResource("../../../resources/views/Goals.fxml"));
+        BorderPane goalsScene = FXMLLoader.load(getClass().getResource("/resources/views/Goals.fxml"));
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");
@@ -145,7 +145,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadCalendar(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/calendar_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/calendar_view.fxml"));
         BorderPane calendarScene = loader.load();
         CalendarViewController calendarViewController = loader.getController();
         calendarViewController.setUser(user);
@@ -161,7 +161,7 @@ public class GUIController implements Initializable {
     @FXML
     private void loadEditUser(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/editUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/editUser.fxml"));
         BorderPane editUserScene = loader.load();
         EditUserController editUserController = loader.getController();
         editUserController.setUser(user);

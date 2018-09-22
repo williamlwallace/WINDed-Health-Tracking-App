@@ -158,7 +158,7 @@ public class GetUserInfoController {
     private void loadMainFrame() throws IOException {
         SQLiteJDBC database = new SQLiteJDBC();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/mainFrame.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
         Parent root = loader.load();
         GUIController guiController = loader.getController();
         guiController.setUser(user);

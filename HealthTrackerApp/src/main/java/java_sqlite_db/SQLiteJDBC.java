@@ -87,6 +87,14 @@ public class SQLiteJDBC {
         try {
             // db parameters
             String url = "jdbc:sqlite:winded.db";
+
+            //Lorenzo's trial, I created a folder where I copied the database, all your database instances are still there
+            // Also I noticed that the database gets created just outside the .jar file, maybe this can help??
+//            String url = "/resources/views/database/jdbc:sqlite:winded.db";
+
+            ///
+
+
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 

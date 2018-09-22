@@ -16,7 +16,7 @@ public class GUI extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/Splash.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/Splash.fxml"));
         Parent root = loader.load();
         SplashController splashController = loader.getController();
         splashController.setStage(stage);

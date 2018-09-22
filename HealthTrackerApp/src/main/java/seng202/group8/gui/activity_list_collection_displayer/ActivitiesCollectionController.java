@@ -179,7 +179,7 @@ public class ActivitiesCollectionController {
                 StringBuilder bldr = new StringBuilder();
                 String str;
 
-                URL urlGoogleMaps = getClass().getResource("../../../../resources/views/googleMapsView.html");
+                URL urlGoogleMaps = getClass().getResource("/resources/views/googleMapsView.html");
 
                 String strGoogleMaps = "";
                 BufferedReader in = new BufferedReader(

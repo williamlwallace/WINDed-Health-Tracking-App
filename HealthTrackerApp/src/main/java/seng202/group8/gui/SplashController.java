@@ -82,7 +82,7 @@ public class SplashController implements Initializable {
                 SQLiteJDBC database = new SQLiteJDBC();
                 user = database.retrieveUser(1);
                 if (user != null) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/mainFrame.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
                     Parent root = loader.load();
                     GUIController guiController = loader.getController();
                     guiController.setHostServices(host);
@@ -94,7 +94,7 @@ public class SplashController implements Initializable {
                     guiController.setToHome();
                     stage.show();
                 } else {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../resources/views/GetUserInfo.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/GetUserInfo.fxml"));
                     Parent root = loader.load();
                     GetUserInfoController getUserInfoController = loader.getController();
                     getUserInfoController.setHostServices(host);
