@@ -44,6 +44,8 @@ public class DataTests {
         heartRates.add(100);
         heartRates.add(115);
         heartRates.add(120);
+        heartRates.add(125);
+        heartRates.add(130);
 
         ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
         localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 10));
@@ -56,6 +58,8 @@ public class DataTests {
         coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
         coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
         coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
+        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
+        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
 
         RunData testData = new RunData("testDistance", DataType.WALK, localTimes, coordinateList, heartRates, testUser);
         testUser.getUserActivities().insertActivityList(new ActivityList("TESTS"));
@@ -104,7 +108,8 @@ public class DataTests {
     @Test
     public void testWalkCalories() throws Exception {
 
-        assertTrue((testUser.getUserActivities().getAllData().get(0).getConsumedCalories()) == 0.0);
+        //System.out.println(testUser.getUserActivities().getAllData().get(0).getConsumedCalories());
+        assertTrue((testUser.getUserActivities().getAllData().get(0).getConsumedCalories()) == 19033.458413001918);
 
     }
 
