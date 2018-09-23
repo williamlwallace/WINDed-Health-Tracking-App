@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
    <center>
       <VBox style="-fx-background-color: #2e86c1;" BorderPane.alignment="CENTER">
          <children>
@@ -184,7 +184,7 @@
                                     <Image url="@images/heartrate.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="heartValue" alignment="TOP_LEFT" prefHeight="137.0" prefWidth="283.0" style="-fx-font-weight: bold;" text="86 BPM">
+                              <Label fx:id="heartValue" alignment="TOP_LEFT" prefHeight="87.0" prefWidth="177.0" style="-fx-font-weight: bold;" text="86 BPM">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -210,17 +210,14 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <HBox prefHeight="261.0" prefWidth="548.0">
+                        <HBox alignment="CENTER" prefHeight="261.0" prefWidth="548.0" spacing="15.0">
                            <children>
-                              <ImageView fitHeight="230.0" fitWidth="217.0" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7" scaleZ="0.7">
-                                 <image>
-                                    <Image url="@images/running-man-md.png" />
-                                 </image>
+                              <ImageView fx:id="bmiImage" fitHeight="237.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true" scaleX="0.7" scaleY="0.7" scaleZ="0.7">
                                  <HBox.margin>
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="219.0" prefWidth="311.0" style="-fx-font-weight: bold;" text="22.6 Normal">
+                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="99.0" prefWidth="236.0" style="-fx-font-weight: bold;" text="22.6 Normal">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Label>
