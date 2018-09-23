@@ -39,6 +39,9 @@ public class ParserTest {
         parserTest2 = null;
     }
 
+    /**
+     * Tests to make sure a csv file with no errors compiles correctly. Tests that the titles and types stored are correct, as well as the right amount of lines are correct.
+     */
     @Test
     public void noErrors() {
         List<String> testListTitle = Stream.of("walk in the woods", "run around the block", "walk in the woods", "longer run", "walk with dog", "hike in the mountains", "run in the city", "walk in the mountains", "walk in the city", "hiking with friends", "some outdoor exercise running", "exercising with friends bike").collect(Collectors.toList());
@@ -46,12 +49,8 @@ public class ParserTest {
         List<Integer> testListNum = Stream.of(33, 7, 33, 294, 4, 33, 5, 8, 8, 318, 291, 101).collect(Collectors.toList());
         ArrayList<Data> dataTest = new ArrayList<>(parserTest1.getDataList());
         for (int i = 0; i < dataTest.size(); i++) {
-            //System.out.println(dataTest.get(i).getCoordinatesArrayList().size());
-            //System.out.println(dataTest.get(i).getTitle());
             assertEquals(dataTest.get(i).getTitle(), testListTitle.get(i));
             assertEquals(dataTest.get(i).getDataType(), testListType.get(i));
-            //System.out.println(dataTest.get(i).getCoordinatesArrayList().size());
-            //System.out.println(testListNum.get(i));
             assertEquals(dataTest.get(i).getCoordinatesArrayList().size(), (int) testListNum.get(i));
             assertEquals(dataTest.get(i).getAllDateTimes().size(), (int) testListNum.get(i));
             assertEquals(dataTest.get(i).getHeartRateList().size(), (int) testListNum.get(i));
@@ -59,6 +58,10 @@ public class ParserTest {
 //        assertTrue(true);
     }
 
+    /**
+     * Checks that an error is thrown when a non CSV file is sent in.
+     * @throws Exception
+     */
     @Test
     public void notCSV() throws Exception {
         int finished = 0;
@@ -72,6 +75,10 @@ public class ParserTest {
 //        assertTrue(true);
     }
 
+    /**
+     * Checks that an error is thrown when a non existing file is sent in.
+     * @throws Exception
+     */
     @Test
     public void wrongFileName() throws Exception {
         int finished = 0;
@@ -82,20 +89,41 @@ public class ParserTest {
             finished = 1;
         }
         assertEquals(finished, 1);
-//        assertTrue(true);
     }
 
+    /**
+     * Checks that an error is thrown when a actitvity name doesn't match any of the key words
+     * @throws Exception
+     */
     @Test
     public void noType() throws Exception {
         int finished = 0;
         try {
-            parserTest2 =  new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data.csv", userTest);
             parserTest2.parseFile();
         } catch (noTypeError e) {
             finished = 1;
         }
         assertEquals(finished, 1);
 //        assertTrue(true);
+    }
+
+    /**
+     * Checks that the add() function works and you can add key words to trip the parser. This then checks that the first error is fixed when a new keyword is added.
+     * @throws Exception
+     */
+    @Test
+    public  void noTypeFix() throws Exception {
+        try {
+            parserTest2.parseFile();
+        } catch (noTypeError e) {
+            assertEquals(e.getMessage(), "The activity 'some outdoor exercise' doesnt match any of the activity types.");
+        }
+        parserTest2.add("exercise", 3);
+        try {
+            parserTest2.parseFile();
+        } catch (noTypeError e) {
+            assertEquals(e.getMessage(), "The activity 'exercising with friends' doesnt match any of the activity types.");
+        }
     }
 
 }
