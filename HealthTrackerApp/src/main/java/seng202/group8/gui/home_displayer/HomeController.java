@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import seng202.group8.services.statistics_service.StatisticsService;
+import seng202.group8.user.BMIType;
 import seng202.group8.user.User;
 
 import java.applet.AppletContext;
@@ -32,6 +33,9 @@ public class HomeController {
 
     @FXML
     private Label bmiText;
+
+    @FXML
+    private ImageView bmiImage;
 
     @FXML
     private Label run;
@@ -69,6 +73,12 @@ public class HomeController {
     @FXML
     private ImageView heartrate;
 
+    private Image anorexicBMI = new Image("/resources/views/images/anorexic_bmi.png");
+    private Image lightBMI = new Image("/resources/views/images/light_bmi.png");
+    private Image normalBMI = new Image("/resources/views/images/normal_bmi.png");
+    private Image overweightBMI = new Image("/resources/views/images/overweight_bmi.png");
+    private Image obeseBMI = new Image("/resources/views/images/obese_bmi.png");
+
     /**
      * Sets the page up when the user first goes into the Home page
      */
@@ -83,6 +93,22 @@ public class HomeController {
         pulse.setDelay(Duration.seconds(0.5));
         pulse.play();
         pulse.playOnFinished(pulse);
+        if (user.getBMI().getBMICategory() == BMIType.ANOREXIC) {
+            bmiImage.setImage(anorexicBMI);
+        }
+        if (user.getBMI().getBMICategory() == BMIType.LIGHT) {
+            bmiImage.setImage(lightBMI);
+        }
+        if (user.getBMI().getBMICategory() == BMIType.NORMAL) {
+            bmiImage.setImage(normalBMI);
+        }
+        if (user.getBMI().getBMICategory() == BMIType.OVERWEIGHT) {
+            bmiImage.setImage(overweightBMI);
+        }
+        if (user.getBMI().getBMICategory() == BMIType.OBESE) {
+            bmiImage.setImage(obeseBMI);
+        }
+
         bmiText.setText(user.getBMIString());
         run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km");
         walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km");
