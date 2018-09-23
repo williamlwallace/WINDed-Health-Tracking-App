@@ -3,6 +3,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTreeView;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -73,7 +74,7 @@ public class ActivitiesCollectionController {
 
     /* TreeView */
     @FXML
-    private TreeView activityListCollectionTreeView;
+    private JFXTreeView activityListCollectionTreeView;
 
     /* WebView */
     @FXML
