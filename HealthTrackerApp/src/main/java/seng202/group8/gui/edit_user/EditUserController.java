@@ -126,6 +126,7 @@ public class EditUserController {
             errorText.setText(errorMessage);
         } else {
             user.setName(name);
+            user.getUserActivities().setTitle(user.getName() + "'s activities collection");
             user.setAge(age);
             user.updateWeight(weight);
             user.setHeight(height);

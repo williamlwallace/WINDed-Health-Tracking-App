@@ -832,6 +832,7 @@ public abstract class Data {
 
 
 
+
     public abstract double getConsumedCalories();
     //Note: The two arrays in each activity data child read as follows: the MET value at index
     //x of the mets array is valid for calculation for speeds up to the value x of the speeds

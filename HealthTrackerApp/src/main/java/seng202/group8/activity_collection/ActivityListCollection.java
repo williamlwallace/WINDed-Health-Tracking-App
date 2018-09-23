@@ -172,7 +172,7 @@ public class ActivityListCollection {
      * @param newTitle, a new String value for the ActivityListCollection object
      */
     public void setTitle(String newTitle) {
-        if (newTitle.length() < 25 && newTitle.length() > 5) {
+        if (newTitle.length() < 50 && newTitle.length() > 5) {
             this.title = newTitle;
         } else {
             // to limit in related View class, no point in adding an error handler here

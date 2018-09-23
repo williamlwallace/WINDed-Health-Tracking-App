@@ -43,7 +43,7 @@ public class User {
         this.height = height;
         this.userStats = new UserStats();
         this.observers = new ArrayList<UserObserver>();
-        this.userActivities = new ActivityListCollection(name + "'s activity collection");
+        this.userActivities = new ActivityListCollection(name + "'s activities collection");
         this.bmi = new BMI(calculateBMI());
         this.sex = sex;
         this.userHealth = new HealthService(this);

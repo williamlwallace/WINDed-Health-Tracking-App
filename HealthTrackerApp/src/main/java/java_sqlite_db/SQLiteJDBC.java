@@ -9,7 +9,7 @@ import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
-import javax.jnlp.IntegrationService;
+//import javax.jnlp.IntegrationService;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;

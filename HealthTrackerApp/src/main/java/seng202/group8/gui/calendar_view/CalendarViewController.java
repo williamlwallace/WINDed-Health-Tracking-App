@@ -5,18 +5,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import seng202.group8.data_entries.Data;
+import seng202.group8.data_entries.DataType;
 import seng202.group8.user.User;
 
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -107,18 +114,25 @@ public class CalendarViewController {
                         super.updateItem(data, bln);
 
                         if (data != null) {
+                            HBox hBox = new HBox();
+                            Image activityImage = selectRightImageForActivity(data.getDataType());
+                            ImageView imageView = new ImageView(activityImage);
                             VBox vBox = new VBox();
+
+                            hBox.getChildren().addAll(imageView, vBox);
+
                             Text title = new Text(data.getTitle());
-                            Text distanceCovered = new Text("Distance covered: " + data.getDistanceCovered().toString());
+                            Text distanceCovered = new Text("Distance covered: " + String.format("%.2f", data.getDistanceCovered()) + " m");
                             if (data.isGraphable) {
-                                Text burntCalories = new Text("Burnt calories: " + String.valueOf(data.getConsumedCalories()));
+                                Text burntCalories = new Text("Burnt calories: " + String.format("%.2f", data.getConsumedCalories()) + " cal");
                                 vBox.getChildren().addAll(title, distanceCovered, burntCalories);
                             } else {
                                 vBox.getChildren().addAll(title, distanceCovered);
                             }
 //                                    , burntCalories);
                             vBox.setPadding(new Insets(5));
-                            setGraphic(vBox);
+                            vBox.setAlignment(Pos.CENTER_LEFT);
+                            setGraphic(hBox);
                         }
                     }
                 };
@@ -127,6 +141,25 @@ public class CalendarViewController {
             }
         });
 
+    }
+
+    private Image selectRightImageForActivity(DataType dataType) {
+        switch (dataType) {
+            case WALK:
+                return new Image("resources/views/images/activities_images/icons8-walking-80.png");
+            case RUN:
+                return new Image("resources/views/images/activities_images/icons8-exercise-80(1).png");
+            case HIKE:
+                return new Image("resources/views/images/activities_images/icons8-trekking-80(1).png");
+            case CLIMB:
+                return new Image("resources/views/images/activities_images/icons8-climbing-80.png");
+            case SWIM:
+                return new Image("resources/views/images/activities_images/icons8-swimmer-80.png");
+            case WATER_SPORTS:
+                return new Image("resources/views/images/activities_images/icons8-water-sport-80.png");
+            default:
+                return new Image("resources/views/images/activities_images/icons8-bicycle-80.png");
+        }
     }
 
 
