@@ -27,6 +27,18 @@ import java.util.Date;
  */
 public class SQLiteJDBC {
 
+    private static Boolean isTest = false;
+
+    public void setIsTest(Boolean isTest) {
+        this.isTest = isTest;
+    }
+    public Boolean getIsTest() {
+        return isTest;
+    }
+
+
+
+
     /**
      * Converts a Date object to a LocalDateTime object
      * @param dateToConvert the Date object to convert to a LocalDateTime
@@ -87,13 +99,10 @@ public class SQLiteJDBC {
         try {
             // db parameters
             String url = "jdbc:sqlite::resource:" + SQLiteJDBC.class.getResource("/resources/views/database/winded.db");
-
-            //Lorenzo's trial, I created a folder where I copied the database, all your database instances are still there
-            // Also I noticed that the database gets created just outside the .jar file, maybe this can help??
-//            String url = "/resources/views/database/jdbc:sqlite:winded.db";
-
-            ///
-
+            if (isTest) {
+                System.out.println("Test Database connection");
+                url = "jdbc:sqlite::resource:" + SQLiteJDBC.class.getResource("/resources/views/test_resources/test.db");
+            }
 
             // create a connection to the database
             conn = DriverManager.getConnection(url);
@@ -293,37 +302,7 @@ public class SQLiteJDBC {
         }
     }
 
-    public Boolean insertData(Connection connection, Integer dataId, Integer userId, String dataType, String parentListTitle, String parentListDatetime, String activityTitle) {
-        String sql = "INSERT INTO Data VALUES(?,?,?,?,?,?)";
-        Boolean isInserted = false;
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, dataId);
-            preparedStatement.setInt(2, userId);
-            preparedStatement.setString(3, dataType);
-            preparedStatement.setString(4, parentListTitle);
-            preparedStatement.setString(5, parentListDatetime);
-            preparedStatement.setString(6, activityTitle);
 
-
-
-            String find = "SELECT * from Data where data_id=?";
-            PreparedStatement findStatement = connection.prepareStatement(find);
-            findStatement.setInt(1, dataId);
-            ResultSet results = findStatement.executeQuery();
-            if (results.next()) {
-                System.out.println("Data Tuple already exists");
-                isInserted = false;
-            } else {
-                System.out.println("Rows added to Data:" + preparedStatement.executeUpdate());
-                isInserted = true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            return isInserted;
-        }
-    }
 
 
     /**
@@ -625,10 +604,10 @@ public class SQLiteJDBC {
 
     /**
      * Performs SQL Deletes to delete all data in the database
-     * @param connection the connection to the database
      */
-    public void deleteAllData(Connection connection) {
+    public void deleteAllData() {
         try {
+            Connection connection = connect();
             String sql = "DELETE FROM user";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
@@ -650,6 +629,10 @@ public class SQLiteJDBC {
             sql = "DELETE FROM Activity_Time";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
+
+            if (connection != null) {
+                connection.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -841,13 +824,7 @@ public class SQLiteJDBC {
 
     public static void main(String[] args) {
         SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
-        Connection conn = connect();
-        newDataBaseJDBC.deleteAllData(conn);
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        newDataBaseJDBC.deleteAllData();
 
         Integer numOfCoords;
         Integer numofHeartRates;
@@ -856,7 +833,7 @@ public class SQLiteJDBC {
         try {
             User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
             ActivityList activityList = new ActivityList("Test activity List");
-            Parser parserTest =  new Parser("seng202_2018_example_data_clean.csv", userTest);
+            Parser parserTest =  new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data_clean.csv", userTest);
             parserTest.parseFile();
             ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
             for (Data d : data) {
@@ -946,13 +923,7 @@ public class SQLiteJDBC {
         System.out.println("_____________________________________________________");
 
 
-        Connection connection = connect();
-        newDataBaseJDBC.deleteAllData(connection);
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        newDataBaseJDBC.deleteAllData();
 
         //newDataBaseJDBC.saveUser(userTestRetrieved, 1);
     }
