@@ -17,7 +17,11 @@ Please download the following tools:\
 To download the repository, you need to:\
     1. Open a Terminal Window\
     2. Navigate to the directory where you wish to store the code\
-    3. Type: git clone https://eng-git.canterbury.ac.nz/lfa69/SENG202Team8.git in the terminal and press enter\
+    3. Type: 
+    ```
+    git clone https://eng-git.canterbury.ac.nz/lfa69/SENG202Team8.git
+    ```
+    in the terminal and press enter\
 Following these instructions creates a new copy of the WINded application code in the directory where the git command is called.\
 
 ##Packaging a .jar file
