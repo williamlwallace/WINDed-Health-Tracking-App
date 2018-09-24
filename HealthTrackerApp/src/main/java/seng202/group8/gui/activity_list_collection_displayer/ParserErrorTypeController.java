@@ -91,7 +91,7 @@ public class ParserErrorTypeController {
                     break;
             }
         }
-        if (type != 0 && phraseReturn != null) {
+        if (type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0))) {
             parser.add(phraseReturn, type);
             int error  = 0;
             try {

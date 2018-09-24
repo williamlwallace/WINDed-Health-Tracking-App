@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import seng202.group8.parser.Parser;
 
 public class ParserErrorOther extends Application {
 
@@ -20,7 +19,7 @@ public class ParserErrorOther extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         classStage = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ParserErrorOther.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/views/ParserErrorOther.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         ParserErrorOtherController other = fxmlLoader.<ParserErrorOtherController>getController();
         other.setErrorMessage(errorMess);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,7 +23,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#quit" text="Continue" />
+            <JFXButton mnemonicParsing="false" onAction="#quit" prefHeight="72.0" prefWidth="315.0" style="-fx-background-color: #2e86c1;" text="Back to the app" />
          </children>
     </GridPane>
       <Label fx:id="errorText" text="Error" textAlignment="CENTER" wrapText="true" />

@@ -1,166 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f5eb44c-f759-4f63-8ef1-dc6d8745051c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="ba041def-fe05-4132-8549-8b42985f07a8" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_calendarfx_recurrence_8_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_calendarfx_view_8_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jfoenix_jfoenix_8_0_7.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_opencsv_opencsv_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_jensd_fontawesomefx_commons_8_13.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_jensd_fontawesomefx_fontawesome_4_7_0_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_typhon0_AnimateFX_1_2_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_9_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_text_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_controlsfx_controlsfx_8_40_13.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_21_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/SENG202Team8.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorOther.fxml" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorType.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorType.fxml" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorType.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorType.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/edit_user/EditUserController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/edit_user/EditUserController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-437595426">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.57" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="JAVA/" value="1" />
-          <entry key="class" value="1" />
-          <entry key="fxml" value="2" />
-          <entry key="java" value="9" />
-          <entry key="md" value="1" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="9" />
-          <entry key="Markdown" value="1" />
-          <entry key="UML" value="1" />
-          <entry key="XML" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="fxml" value="9" />
-          <entry key="java" value="483" />
-          <entry key="md" value="139" />
-          <entry key="txt" value="145" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="483" />
-          <entry key="Markdown" value="139" />
-          <entry key="PLAIN_TEXT" value="145" />
-          <entry key="XML" value="9" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages" />
-      <usages-collector id="statistics.spring.boot.run.usages" />
-      <usages-collector id="statistics.js.language.service.starts" />
-      <usages-collector id="statistics.spring.boot.mvc.usages" />
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="510">
-                <caret line="34" column="174" selection-start-line="34" selection-start-column="174" selection-end-line="34" selection-end-column="174" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/edit_user/EditUserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1725">
-              <caret line="128" column="41" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="ActivitiesCollectionController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="76" column="15" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="375">
+              <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
+      <file leaf-file-name="GetUserInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2505">
-              <caret line="177" column="61" selection-start-line="177" selection-start-column="61" selection-end-line="177" selection-end-column="61" />
+            <state relative-caret-position="60">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/calendar_view.fxml">
+      <file leaf-file-name="GetUserInfoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12930">
-              <caret line="884" column="90" selection-start-line="884" selection-start-column="90" selection-end-line="884" selection-end-column="90" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="153" column="44" lean-forward="true" selection-start-line="153" selection-start-column="44" selection-end-line="153" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java">
+      <file leaf-file-name="ParserErrorOtherController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOtherController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+            <state relative-caret-position="255">
+              <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
+      <file leaf-file-name="ParserErrorOther.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10425">
-              <caret line="718" column="5" selection-start-line="718" selection-start-column="5" selection-end-line="718" selection-end-column="5" />
+            <state relative-caret-position="225">
+              <caret line="21" column="83" lean-forward="false" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
+      <file leaf-file-name="ParserErrorType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2190">
-              <caret line="180" column="34" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
+            <state relative-caret-position="300">
+              <caret line="27" column="72" lean-forward="false" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
+              <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="23" column="33" lean-forward="false" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParserErrorOther.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorOther.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -168,25 +136,32 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Tree</find>
+      <find>error</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/edit_user/EditUserController.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/edit_user/EditUserController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorOther.fxml" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorType.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorType.fxml" />
       </list>
     </option>
   </component>
@@ -204,25 +179,40 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="781" />
-    <option name="y" value="25" />
-    <option name="width" value="715" />
-    <option name="height" value="875" />
+    <option name="x" value="1920" />
+    <option name="width" value="1674" />
+    <option name="height" value="1046" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -257,24 +247,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="activity_collection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="data_entries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -303,16 +275,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="calendar_view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
               <item name="edit_user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -322,7 +284,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="user_info_gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -339,62 +302,25 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="java_sqlite_db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="seng202" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="seng202" type="462c0819:PsiDirectoryNode" />
-              <item name="group8" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537745114117" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/images/activities_images" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views" />
+      <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -409,132 +335,187 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GUI">
+  <component name="RunManager" selected="Application.SQLiteJDBC">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="seng202.group8.gui.GUI" />
-      <module name="HealthTrackerApp" />
-      <extension name="coverage">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="seng202.group8.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="MAIN_CLASS_NAME" value="seng202.group8.gui.GUI" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="HealthTrackerApp" />
+      <envs />
     </configuration>
     <configuration name="SQLiteJDBC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="java_sqlite_db.SQLiteJDBC" />
-      <module name="HealthTrackerApp" />
-      <extension name="coverage">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="java_sqlite_db.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in HealthTrackerApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="java_sqlite_db.SQLiteJDBC" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="HealthTrackerApp" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <envs />
     </configuration>
-    <list>
-      <item itemvalue="Application.SQLiteJDBC" />
-      <item itemvalue="Application.GUI" />
-      <item itemvalue="JUnit.All in HealthTrackerApp" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.SQLiteJDBC" />
+      <item index="1" class="java.lang.String" itemvalue="Application.GUI" />
     </list>
     <recent_temporary>
-      <list>
-        <item itemvalue="Application.SQLiteJDBC" />
-        <item itemvalue="Application.GUI" />
-        <item itemvalue="JUnit.All in HealthTrackerApp" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.SQLiteJDBC" />
+        <item index="1" class="java.lang.String" itemvalue="Application.GUI" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0f5eb44c-f759-4f63-8ef1-dc6d8745051c" name="Default Changelist" comment="" />
-      <created>1537675712495</created>
+      <changelist id="ba041def-fe05-4132-8549-8b42985f07a8" name="Default" comment="" />
+      <created>1537751355523</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1537675712495</updated>
-      <workItem from="1537675714398" duration="7038000" />
-      <workItem from="1537744386109" duration="712000" />
+      <updated>1537751355523</updated>
+      <workItem from="1537751356995" duration="5665000" />
     </task>
-    <task id="LOCAL-00001" summary="Added calendar pictures for the performed activities">
-      <created>1537680192234</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1537680192234</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Modified the calendar view style">
-      <created>1537681566456</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1537681566456</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added meaningful README file">
-      <created>1537744599220</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1537744599220</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="All_in_HealthTrackerApp - 2018.09.23 at 16h 46m 58s.xml">
-      <configuration name="All in HealthTrackerApp" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7750000" />
+    <option name="totallyTimeSpent" value="5665000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1429" height="875" extended-state="6" />
-    <editor active="true" />
+    <frame x="1919" y="0" width="1682" height="1050" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="simpleUML" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289941" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.050887574" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32885906" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.28994083" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18358532" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6295896" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27111384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,723 +524,230 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added calendar pictures for the performed activities" />
-    <MESSAGE value="Modified the calendar view style" />
-    <MESSAGE value="Added meaningful README file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added meaningful README file" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/target/classes/java_sqlite_db/SQLiteJDBC.class">
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="115" column="20" lean-forward="true" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="6455.023684210526" y="3942.0">seng202.group8.services.goals_service.GoalsService</node>
-            <node x="5400.530276653168" y="3600.5">seng202.group8.gui.statistics_graph_displayer.Graphs</node>
-            <node x="817.5261099865015" y="298.0">seng202.group8.data_entries.Data</node>
-            <node x="7011.523684210526" y="2406.0">seng202.group8.user.user_stats.Records</node>
-            <node x="6854.292776653168" y="4038.0">seng202.group8.services.goals_service.goal_types.WeightLossGoal</node>
-            <node x="642.0" y="4533.0">seng202.group8.data_entries.CoordinateDataDifference</node>
-            <node x="1447.0" y="4533.0">seng202.group8.gui.activity_list_collection_displayer.ParserErrorOtherController</node>
-            <node x="1176.0" y="4533.0">seng202.group8.services.statistics_service.GraphXY</node>
-            <node x="1087.0261099865015" y="0.0">seng202.group8.data_entries.HeartRateData</node>
-            <node x="0.0" y="4533.0">java_sqlite_db.SQLiteJDBC</node>
-            <node x="3431.8736842105263" y="1824.5">seng202.group8.data_entries.WaterSportsData</node>
-            <node x="1888.5261099865015" y="1516.5">seng202.group8.data_entries.NotAssistedSportsData</node>
-            <node x="2541.0261099865015" y="1824.5">seng202.group8.data_entries.ClimbData</node>
-            <node x="4536.767776653168" y="1480.0">seng202.group8.activity_collection.ActivityList</node>
-            <node x="2740.780276653168" y="3612.5">seng202.group8.gui.activity_list_collection_displayer.ActivityListCollectionDisplay</node>
-            <node x="6934.635828272608" y="1528.5">seng202.group8.user.user_stats.BMITypeRecord</node>
-            <node x="3403.780276653168" y="3492.0">seng202.group8.gui.GUIController</node>
-            <node x="7376.60701754386" y="96.5">seng202.group8.data_entries.DataType</node>
-            <node x="6940.323684210527" y="3564.0">seng202.group8.services.goals_service.goal_types.Goal</node>
-            <node x="1236.0261099865015" y="1824.5">seng202.group8.data_entries.RunData</node>
-            <node x="3192.0" y="4533.0">utils</node>
-            <node x="5131.142776653168" y="1528.5">seng202.group8.activity_collection.ActivityListCollectionObserver</node>
-            <node x="4892.123684210526" y="1740.0">seng202.group8.services.health_service.HealthService</node>
-            <node x="2500.780276653168" y="3600.5">seng202.group8.gui.calendar_view.CalendarView</node>
-            <node x="2655.0" y="4533.0">seng202.group8.parser.NotCSVError</node>
-            <node x="6026.23201754386" y="3552.0">seng202.group8.gui.home_displayer.HomeController</node>
-            <node x="7144.273684210526" y="3056.5">seng202.group8.user.user_stats.StressLevelRecord</node>
-            <node x="3004.780276653168" y="3456.0">seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController</node>
-            <node x="5664.526472672064" y="802.5">seng202.group8.user.BMI</node>
-            <node x="5297.776472672064" y="2106.0">seng202.group8.services.statistics_service.StatisticsService</node>
-            <node x="5640.530276653168" y="3552.0">seng202.group8.gui.user_info_gui.GetUserInfoController</node>
-            <node x="7220.523684210526" y="2430.5">seng202.group8.user.StressLevelType</node>
-            <node x="4180.909807692308" y="2876.0">seng202.group8.user.User</node>
-            <node x="112.80000000000018" y="72.5">seng202.group8.data_entries.CoordinateData</node>
-            <node x="1814.8277884615377" y="2418.5">seng202.group8.user.UserObserver</node>
-            <node x="7466.292776653168" y="4014.0">seng202.group8.services.goals_service.goal_types.ActivityGoal</node>
-            <node x="2837.0" y="4533.0">seng202.group8.parser.noTypeError</node>
-            <node x="4824.530276653168" y="3600.5">seng202.group8.gui.home_displayer.Home</node>
-            <node x="864.9999999999995" y="3432.0">seng202.group8.gui.statistics_graph_displayer.GraphController</node>
-            <node x="2996.8736842105263" y="1824.5">seng202.group8.data_entries.BikeData</node>
-            <node x="5064.530276653168" y="3588.0">seng202.group8.gui.SplashController</node>
-            <node x="2440.0" y="4533.0">seng202.group8.parser.DataMissingError</node>
-            <node x="2926.530276653168" y="4002.0">seng202.group8.gui.activity_list_collection_displayer.ParserErrorType</node>
-            <node x="7514.273684210526" y="1528.5">seng202.group8.user.user_stats.WeightRecord</node>
-            <node x="2903.8736842105263" y="2430.5">seng202.group8.user.user_stats.Sex</node>
-            <node x="3935.530276653168" y="3954.0">seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController</node>
-            <node x="0.0" y="3528.0">seng202.group8.parser.Parser</node>
-            <node x="7111.292776653168" y="4014.0">seng202.group8.services.goals_service.goal_types.FrequencyGoal</node>
-            <node x="5638.526472672064" y="96.5">seng202.group8.user.BMIType</node>
-            <node x="3477.892776653168" y="1516.5">seng202.group8.data_entries.AssistedSportsData</node>
-            <node x="4124.155276653168" y="3612.5">seng202.group8.gui.GUI</node>
-            <node x="1731.0" y="4533.0">seng202.group8.gui.activity_list_collection_displayer.ParserErrorOther</node>
-            <node x="6716.573328272608" y="4264.0">seng202.group8.gui.goals_displayer.GoalsDisplayerController</node>
-            <node x="2106.0261099865015" y="1824.5">seng202.group8.data_entries.HikeData</node>
-            <node x="7371.273684210526" y="3068.5">seng202.group8.services.goals_service.goal_types.GoalType</node>
-            <node x="4356.0560037112045" y="1692.0">seng202.group8.activity_collection.ActivityListCollection</node>
-            <node x="3016.0" y="4533.0">resources.views</node>
-            <node x="4342.155276653168" y="3600.5">seng202.group8.gui.goals_displayer.GoalsDisplayer</node>
-            <node x="3739.780276653168" y="3600.5">seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialog</node>
-            <node x="377.99999999999955" y="3564.0">seng202.group8.gui.calendar_view.CalendarViewController</node>
-            <node x="0.25" y="3990.0">seng202.group8.gui.activity_list_collection_displayer.ParserErrorTypeController</node>
-            <node x="1974.0" y="4533.0">seng202.group8.gui.user_info_gui.GetUserInfo</node>
-            <node x="3616.530276653168" y="3990.0">seng202.group8.gui.edit_user.EditUserController</node>
-            <node x="2217.0" y="4533.0">seng202.group8.parser.FileNotFoundError</node>
-            <node x="3866.8736842105263" y="1824.5">seng202.group8.data_entries.SwimData</node>
-            <node x="6312.480276653168" y="1800.0">seng202.group8.user.user_stats.UserStats</node>
-            <node x="4899.142776653168" y="1516.5">seng202.group8.services.Service</node>
-            <node x="1671.0261099865015" y="1824.5">seng202.group8.data_entries.WalkData</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="seng202.group8.gui.statistics_graph_displayer.GraphController" target="seng202.group8.data_entries.Data">
-              <point x="-136.33333333333303" y="-220.0" />
-              <point x="933.1666666666665" y="3312.0" />
-              <point x="1058.4999999999995" y="3312.0" />
-              <point x="1058.4999999999995" y="1450.0" />
-              <point x="1134.8594433198346" y="1450.0" />
-              <point x="-90.66666666666697" y="556.0" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.GoalsService" target="seng202.group8.activity_collection.ActivityListCollectionObserver">
-              <point x="47.125" y="-136.0" />
-              <point x="6690.648684210526" y="3922.0" />
-              <point x="6707.980276653168" y="3922.0" />
-              <point x="6707.980276653168" y="1652.0" />
-              <point x="5346.142776653168" y="1652.0" />
-              <point x="86.0" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.GoalsService" target="seng202.group8.services.goals_service.goal_types.Goal">
-              <point x="141.375" y="-136.0" />
-              <point x="6784.898684210526" y="3902.0" />
-              <point x="6964.023684210526" y="3902.0" />
-              <point x="-94.79999999999995" y="88.0" />
-            </edge>
-            <edge source="seng202.group8.activity_collection.ActivityListCollection" target="seng202.group8.activity_collection.ActivityListCollectionObserver">
-              <point x="121.25" y="-172.0" />
-              <point x="4719.8060037112045" y="1672.0" />
-              <point x="5174.142776653168" y="1672.0" />
-              <point x="-86.0" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.activity_collection.ActivityListCollection" target="seng202.group8.activity_collection.ActivityList">
-              <point x="-121.25" y="-172.0" />
-              <point x="4477.3060037112045" y="1652.0" />
-              <point x="4602.517776653168" y="1652.0" />
-              <point x="-65.75" y="76.0" />
-            </edge>
-            <edge source="seng202.group8.gui.home_displayer.Home" target="seng202.group8.user.User">
-              <point x="0.0" y="-51.5" />
-              <point x="4934.530276653168" y="3382.0" />
-              <point x="4391.225597165992" y="3382.0" />
-              <point x="62.31578947368416" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.user.user_stats.Sex">
-              <point x="-103.59999999999991" y="-208.0" />
-              <point x="4225.309807692308" y="2846.0" />
-              <point x="2939.8736842105263" y="2846.0" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="seng202.group8.gui.GUIController" target="seng202.group8.user.User">
-              <point x="0.0" y="-160.0" />
-              <point x="3561.780276653168" y="3382.0" />
-              <point x="4282.172965587045" y="3382.0" />
-              <point x="-46.73684210526335" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.Goal" target="seng202.group8.user.User">
-              <point x="-59.25" y="-88.0" />
-              <point x="6999.573684210527" y="3332.0" />
-              <point x="4469.120334008097" y="3332.0" />
-              <point x="140.21052631578914" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.services.health_service.HealthService" target="seng202.group8.activity_collection.ActivityListCollectionObserver">
-              <point x="97.25" y="-124.0" />
-              <point x="5183.873684210526" y="1672.0" />
-              <point x="5260.142776653168" y="1672.0" />
-              <point x="0.0" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.gui.edit_user.EditUserController" target="seng202.group8.user.User">
-              <point x="74.75" y="-88.0" />
-              <point x="3840.780276653168" y="3922.0" />
-              <point x="3970.280276653168" y="3922.0" />
-              <point x="3970.280276653168" y="3402.0" />
-              <point x="4313.3308603238875" y="3402.0" />
-              <point x="-15.578947368420813" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.WaterSportsData" target="seng202.group8.data_entries.AssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="3639.3736842105263" y="1672.0" />
-              <point x="3685.392776653168" y="1672.0" />
-              <point x="0.0" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.ActivityGoal" target="seng202.group8.services.goals_service.goal_types.Goal">
-              <point x="-71.25" y="-64.0" />
-              <point x="7537.542776653168" y="3912.0" />
-              <point x="7153.623684210526" y="3912.0" />
-              <point x="94.80000000000007" y="88.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.WalkData" target="seng202.group8.data_entries.NotAssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="1878.5261099865015" y="1672.0" />
-              <point x="2044.1511099865015" y="1672.0" />
-              <point x="-51.875" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.ParserErrorTypeController" target="seng202.group8.parser.Parser">
-              <point x="-89.25" y="-88.0" />
-              <point x="-89.5" y="124.0" />
-            </edge>
-            <edge source="seng202.group8.gui.goals_displayer.GoalsDisplayerController" target="seng202.group8.user.User">
-              <point x="-100.5" y="-112.0" />
-              <point x="6750.073328272608" y="4244.0" />
-              <point x="4814.030276653168" y="4244.0" />
-              <point x="4814.030276653168" y="3392.0" />
-              <point x="4375.646649797572" y="3392.0" />
-              <point x="46.73684210526335" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.services.statistics_service.StatisticsService" target="seng202.group8.user.User">
-              <point x="0.0" y="340.0" />
-              <point x="5534.276472672064" y="2846.0" />
-              <point x="4432.509807692308" y="2846.0" />
-              <point x="103.59999999999991" y="-208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.goals_displayer.GoalsDisplayerController" target="seng202.group8.services.goals_service.goal_types.GoalType">
-              <point x="100.5" y="-112.0" />
-              <point x="6951.073328272608" y="4244.0" />
-              <point x="7455.792776653168" y="4244.0" />
-              <point x="7455.792776653168" y="3412.0" />
-              <point x="7454.523684210526" y="3412.0" />
-              <point x="27.75" y="15.5" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.BMITypeRecord" target="seng202.group8.user.user_stats.Records">
-              <point x="38.75" y="27.5" />
-              <point x="7050.885828272608" y="1662.0" />
-              <point x="7106.023684210526" y="1662.0" />
-              <point x="0.0" y="-40.0" />
-            </edge>
-            <edge source="seng202.group8.gui.statistics_graph_displayer.Graphs" target="seng202.group8.user.User">
-              <point x="0.0" y="-51.5" />
-              <point x="5510.530276653168" y="3362.0" />
-              <point x="4422.383491902834" y="3362.0" />
-              <point x="93.47368421052624" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.AssistedSportsData" target="seng202.group8.data_entries.Data">
-              <point x="0.0" y="-39.5" />
-              <point x="3685.392776653168" y="1440.0" />
-              <point x="1497.5261099865015" y="1440.0" />
-              <point x="272.0" y="556.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.Data" target="seng202.group8.data_entries.CoordinateData">
-              <point x="-272.0" y="-556.0" />
-              <point x="953.5261099865015" y="273.0" />
-              <point x="255.30000000000018" y="273.0" />
-              <point x="57.0" y="51.5" />
-            </edge>
-            <edge source="seng202.group8.services.health_service.HealthService" target="seng202.group8.services.Service">
-              <point x="-97.25" y="-124.0" />
-              <point x="4989.373684210526" y="1662.0" />
-              <point x="5005.142776653168" y="1662.0" />
-              <point x="0.0" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.gui.home_displayer.HomeController" target="seng202.group8.services.statistics_service.StatisticsService">
-              <point x="58.0" y="-100.0" />
-              <point x="6200.23201754386" y="2846.0" />
-              <point x="5691.943139338731" y="2846.0" />
-              <point x="157.66666666666697" y="340.0" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.FrequencyGoal" target="seng202.group8.services.goals_service.goal_types.Goal">
-              <point x="-83.5" y="-64.0" />
-              <point x="7194.792776653168" y="3922.0" />
-              <point x="7106.223684210527" y="3922.0" />
-              <point x="47.40000000000009" y="88.0" />
-            </edge>
-            <edge source="seng202.group8.gui.home_displayer.HomeController" target="seng202.group8.user.User">
-              <point x="-58.0" y="-100.0" />
-              <point x="6084.23201754386" y="3342.0" />
-              <point x="4453.541386639677" y="3342.0" />
-              <point x="124.63157894736833" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.calendar_view.CalendarView" target="seng202.group8.user.User">
-              <point x="0.0" y="-51.5" />
-              <point x="2610.780276653168" y="3352.0" />
-              <point x="4235.436123481782" y="3352.0" />
-              <point x="-93.47368421052624" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.user.BMI" target="seng202.group8.user.BMIType">
-              <point x="0.0" y="-51.5" />
-              <point x="0.0" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.Goal" target="seng202.group8.services.goals_service.goal_types.GoalType">
-              <point x="59.25" y="-88.0" />
-              <point x="7118.073684210527" y="3412.0" />
-              <point x="7399.023684210526" y="3412.0" />
-              <point x="-27.75" y="15.5" />
-            </edge>
-            <edge source="seng202.group8.gui.goals_displayer.GoalsDisplayerController" target="seng202.group8.services.goals_service.goal_types.Goal">
-              <point x="33.5" y="-112.0" />
-              <point x="6884.073328272608" y="4244.0" />
-              <point x="6842.523684210526" y="4244.0" />
-              <point x="6842.523684210526" y="3912.0" />
-              <point x="7011.4236842105265" y="3912.0" />
-              <point x="-47.40000000000009" y="88.0" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.services.health_service.HealthService">
-              <point x="44.40000000000009" y="-208.0" />
-              <point x="4373.309807692308" y="2826.0" />
-              <point x="4769.825096153846" y="2826.0" />
-              <point x="4769.825096153846" y="2086.0" />
-              <point x="4989.373684210526" y="2086.0" />
-              <point x="-97.25" y="124.0" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.user.UserObserver">
-              <point x="-133.20000000000027" y="-208.0" />
-              <point x="4195.709807692308" y="2856.0" />
-              <point x="1935.5777884615377" y="2856.0" />
-              <point x="40.25" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.gui.calendar_view.CalendarViewController" target="seng202.group8.data_entries.Data">
-              <point x="-116.75" y="-88.0" />
-              <point x="494.74999999999955" y="1460.0" />
-              <point x="1044.1927766531685" y="1460.0" />
-              <point x="-181.33333333333303" y="556.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.BikeData" target="seng202.group8.data_entries.AssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="3204.3736842105263" y="1672.0" />
-              <point x="3547.059443319835" y="1672.0" />
-              <point x="-138.33333333333303" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.services.statistics_service.StatisticsService" target="seng202.group8.activity_collection.ActivityList">
-              <point x="-59.125" y="-340.0" />
-              <point x="5475.151472672064" y="2066.0" />
-              <point x="4851.5560037112045" y="2066.0" />
-              <point x="4851.5560037112045" y="1652.0" />
-              <point x="4734.017776653168" y="1652.0" />
-              <point x="65.75" y="76.0" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.ParserErrorType" target="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
-              <point x="89.25" y="-76.0" />
-              <point x="0.0" y="196.0" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.Records" target="seng202.group8.user.user_stats.UserStats">
-              <point x="-63.0" y="-40.0" />
-              <point x="7043.023684210526" y="2086.0" />
-              <point x="6633.313609986501" y="2086.0" />
-              <point x="128.33333333333348" y="64.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.Data" target="seng202.group8.data_entries.HeartRateData">
-              <point x="0.0" y="-556.0" />
-              <point x="0.0" y="124.0" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.ActivityGoal" target="seng202.group8.data_entries.DataType">
-              <point x="71.25" y="-64.0" />
-              <point x="7680.042776653168" y="273.0" />
-              <point x="7644.940350877192" y="273.0" />
-              <point x="107.33333333333303" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.data_entries.HikeData" target="seng202.group8.data_entries.NotAssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="2313.5261099865015" y="1672.0" />
-              <point x="2147.9011099865015" y="1672.0" />
-              <point x="51.875" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.FrequencyGoal" target="seng202.group8.data_entries.DataType">
-              <point x="83.5" y="-64.0" />
-              <point x="7361.792776653168" y="3922.0" />
-              <point x="7503.773684210526" y="3922.0" />
-              <point x="7503.773684210526" y="273.0" />
-              <point x="7537.60701754386" y="273.0" />
-              <point x="0.0" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.activity_collection.ActivityListCollection">
-              <point x="14.800000000000182" y="-208.0" />
-              <point x="4343.7098076923085" y="2816.0" />
-              <point x="4477.3060037112045" y="2816.0" />
-              <point x="-121.25" y="172.0" />
-            </edge>
-            <edge source="seng202.group8.parser.Parser" target="seng202.group8.data_entries.Data">
-              <point x="71.60000000000036" y="-124.0" />
-              <point x="250.60000000000036" y="3312.0" />
-              <point x="367.1750000000002" y="3312.0" />
-              <point x="367.1750000000002" y="1450.0" />
-              <point x="953.5261099865015" y="1450.0" />
-              <point x="-272.0" y="556.0" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.GoalsService" target="seng202.group8.user.UserObserver">
-              <point x="-141.375" y="-136.0" />
-              <point x="6502.148684210526" y="3902.0" />
-              <point x="1855.0777884615377" y="3902.0" />
-              <point x="-40.25" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.data_entries.ClimbData" target="seng202.group8.data_entries.NotAssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="2748.5261099865015" y="1662.0" />
-              <point x="2251.6511099865015" y="1662.0" />
-              <point x="155.625" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.services.statistics_service.StatisticsService">
-              <point x="74.0" y="-208.0" />
-              <point x="4402.909807692308" y="2836.0" />
-              <point x="5376.609806005397" y="2836.0" />
-              <point x="-157.66666666666697" y="340.0" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.ParserErrorTypeController" target="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
-              <point x="89.25" y="-88.0" />
-              <point x="268.0" y="3922.0" />
-              <point x="3067.946943319835" y="3922.0" />
-              <point x="-126.33333333333303" y="196.0" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.user.BMI">
-              <point x="-44.40000000000009" y="-208.0" />
-              <point x="4284.509807692308" y="2856.0" />
-              <point x="4292.373684210526" y="2856.0" />
-              <point x="4292.373684210526" y="1460.0" />
-              <point x="5715.526472672064" y="1460.0" />
-              <point x="-51.0" y="51.5" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.BMITypeRecord" target="seng202.group8.user.BMI">
-              <point x="0.0" y="-27.5" />
-              <point x="7012.135828272608" y="1460.0" />
-              <point x="5817.526472672064" y="1460.0" />
-              <point x="51.0" y="51.5" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.goal_types.WeightLossGoal" target="seng202.group8.services.goals_service.goal_types.Goal">
-              <point x="0.0" y="-40.0" />
-              <point x="6972.792776653168" y="3922.0" />
-              <point x="7058.823684210527" y="3922.0" />
-              <point x="0.0" y="88.0" />
-            </edge>
-            <edge source="seng202.group8.services.Service" target="seng202.group8.user.User">
-              <point x="-70.66666666666674" y="39.5" />
-              <point x="4934.476109986501" y="1662.0" />
-              <point x="4345.5560037112045" y="1662.0" />
-              <point x="4345.5560037112045" y="2806.0" />
-              <point x="4314.109807692308" y="2806.0" />
-              <point x="-14.800000000000182" y="-208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.user_info_gui.GetUserInfoController" target="seng202.group8.user.User">
-              <point x="0.0" y="-100.0" />
-              <point x="5781.530276653168" y="3352.0" />
-              <point x="4437.962439271256" y="3352.0" />
-              <point x="109.05263157894751" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.services.statistics_service.StatisticsService" target="seng202.group8.user.user_stats.UserStats">
-              <point x="177.375" y="-340.0" />
-              <point x="5711.651472672064" y="2076.0" />
-              <point x="6376.6469433198345" y="2076.0" />
-              <point x="-128.33333333333348" y="64.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.NotAssistedSportsData" target="seng202.group8.data_entries.Data">
-              <point x="0.0" y="-39.5" />
-              <point x="2096.0261099865015" y="1460.0" />
-              <point x="1316.1927766531685" y="1460.0" />
-              <point x="90.66666666666697" y="556.0" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.StressLevelRecord" target="seng202.group8.user.user_stats.Records">
-              <point x="-51.75" y="-27.5" />
-              <point x="7196.023684210526" y="2856.0" />
-              <point x="7106.023684210526" y="2856.0" />
-              <point x="0.0" y="40.0" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.UserStats" target="seng202.group8.user.user_stats.WeightRecord">
-              <point x="96.25" y="-64.0" />
-              <point x="6601.230276653168" y="1672.0" />
-              <point x="7552.773684210526" y="1672.0" />
-              <point x="-38.5" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.data_entries.RunData" target="seng202.group8.data_entries.NotAssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="1443.5261099865015" y="1662.0" />
-              <point x="1940.4011099865015" y="1662.0" />
-              <point x="-155.625" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.WeightRecord" target="seng202.group8.user.user_stats.Records">
-              <point x="38.5" y="27.5" />
-              <point x="7629.773684210526" y="2086.0" />
-              <point x="7169.023684210526" y="2086.0" />
-              <point x="63.0" y="-40.0" />
-            </edge>
-            <edge source="seng202.group8.parser.Parser" target="seng202.group8.data_entries.CoordinateData">
-              <point x="-71.60000000000036" y="-124.0" />
-              <point x="107.39999999999964" y="3402.0" />
-              <point x="198.30000000000018" y="3402.0" />
-              <point x="0.0" y="51.5" />
-            </edge>
-            <edge source="seng202.group8.data_entries.SwimData" target="seng202.group8.data_entries.AssistedSportsData">
-              <point x="0.0" y="-39.5" />
-              <point x="4074.3736842105263" y="1672.0" />
-              <point x="3823.726109986501" y="1672.0" />
-              <point x="138.33333333333303" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.ParserErrorType" target="seng202.group8.parser.Parser">
-              <point x="-89.25" y="-76.0" />
-              <point x="3015.780276653168" y="3912.0" />
-              <point x="268.5" y="3912.0" />
-              <point x="89.5" y="124.0" />
-            </edge>
-            <edge source="seng202.group8.gui.SplashController" target="seng202.group8.user.User">
-              <point x="0.0" y="-64.0" />
-              <point x="5222.530276653168" y="3372.0" />
-              <point x="4406.804544534413" y="3372.0" />
-              <point x="77.89473684210498" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.services.statistics_service.StatisticsService" target="seng202.group8.activity_collection.ActivityListCollection">
-              <point x="-177.375" y="-340.0" />
-              <point x="5356.901472672064" y="2076.0" />
-              <point x="4719.8060037112045" y="2076.0" />
-              <point x="121.25" y="172.0" />
-            </edge>
-            <edge source="seng202.group8.gui.goals_displayer.GoalsDisplayerController" target="seng202.group8.services.goals_service.GoalsService">
-              <point x="-33.5" y="-112.0" />
-              <point x="6817.073328272608" y="4234.0" />
-              <point x="6643.523684210526" y="4234.0" />
-              <point x="0.0" y="136.0" />
-            </edge>
-            <edge source="seng202.group8.gui.edit_user.EditUserController" target="seng202.group8.gui.GUIController">
-              <point x="-74.75" y="-88.0" />
-              <point x="3691.280276653168" y="3922.0" />
-              <point x="3561.780276653168" y="3922.0" />
-              <point x="0.0" y="160.0" />
-            </edge>
-            <edge source="seng202.group8.user.User" target="seng202.group8.user.user_stats.UserStats">
-              <point x="133.19999999999982" y="-208.0" />
-              <point x="4462.109807692308" y="2856.0" />
-              <point x="5781.276472672064" y="2856.0" />
-              <point x="5781.276472672064" y="2086.0" />
-              <point x="6504.980276653168" y="2086.0" />
-              <point x="0.0" y="64.0" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.UserStats" target="seng202.group8.user.user_stats.BMITypeRecord">
-              <point x="-96.25" y="-64.0" />
-              <point x="6408.730276653168" y="1662.0" />
-              <point x="6973.385828272608" y="1662.0" />
-              <point x="-38.75" y="27.5" />
-            </edge>
-            <edge source="seng202.group8.services.statistics_service.StatisticsService" target="seng202.group8.services.health_service.HealthService">
-              <point x="59.125" y="-340.0" />
-              <point x="5593.401472672064" y="2056.0" />
-              <point x="5183.873684210526" y="2056.0" />
-              <point x="97.25" y="124.0" />
-            </edge>
-            <edge source="seng202.group8.activity_collection.ActivityList" target="seng202.group8.data_entries.Data">
-              <point x="0.0" y="-76.0" />
-              <point x="4668.267776653168" y="1430.0" />
-              <point x="1588.1927766531685" y="1430.0" />
-              <point x="362.66666666666697" y="556.0" />
-            </edge>
-            <edge source="seng202.group8.gui.statistics_graph_displayer.GraphController" target="seng202.group8.user.User">
-              <point x="136.33333333333394" y="-220.0" />
-              <point x="1205.8333333333335" y="3342.0" />
-              <point x="4219.857176113361" y="3342.0" />
-              <point x="-109.05263157894751" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.services.goals_service.GoalsService" target="seng202.group8.services.Service">
-              <point x="-47.125" y="-136.0" />
-              <point x="6596.398684210526" y="3892.0" />
-              <point x="6285.105276653168" y="3892.0" />
-              <point x="6285.105276653168" y="1662.0" />
-              <point x="5075.809443319835" y="1662.0" />
-              <point x="70.66666666666674" y="39.5" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController" target="seng202.group8.user.User">
-              <point x="217.0" y="-124.0" />
-              <point x="4586.530276653168" y="3402.0" />
-              <point x="4360.06770242915" y="3402.0" />
-              <point x="31.15789473684208" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController" target="seng202.group8.user.User">
-              <point x="0.0" y="-196.0" />
-              <point x="3194.280276653168" y="3372.0" />
-              <point x="4266.594018218624" y="3372.0" />
-              <point x="-62.31578947368416" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.calendar_view.CalendarViewController" target="seng202.group8.user.User">
-              <point x="116.75" y="-88.0" />
-              <point x="728.2499999999995" y="3332.0" />
-              <point x="4204.27822874494" y="3332.0" />
-              <point x="-124.63157894736833" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController" target="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
-              <point x="-217.0" y="-124.0" />
-              <point x="4152.530276653168" y="3912.0" />
-              <point x="3320.613609986501" y="3912.0" />
-              <point x="126.33333333333303" y="196.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.Data" target="seng202.group8.user.User">
-              <point x="181.33333333333394" y="556.0" />
-              <point x="1406.8594433198355" y="1450.0" />
-              <point x="2986.3736842105263" y="1450.0" />
-              <point x="2986.3736842105263" y="2836.0" />
-              <point x="4254.909807692308" y="2836.0" />
-              <point x="-74.0" y="-208.0" />
-            </edge>
-            <edge source="seng202.group8.user.user_stats.StressLevelRecord" target="seng202.group8.user.StressLevelType">
-              <point x="51.75" y="-27.5" />
-              <point x="0.0" y="15.5" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialog" target="seng202.group8.user.User">
-              <point x="0.0" y="-51.5" />
-              <point x="3849.780276653168" y="3392.0" />
-              <point x="4297.751912955466" y="3392.0" />
-              <point x="-31.15789473684208" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.GUI" target="seng202.group8.user.User">
-              <point x="0.0" y="-39.5" />
-              <point x="4223.155276653168" y="3412.0" />
-              <point x="4328.909807692308" y="3412.0" />
-              <point x="0.0" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.goals_displayer.GoalsDisplayer" target="seng202.group8.user.User">
-              <point x="0.0" y="-51.5" />
-              <point x="4452.155276653168" y="3412.0" />
-              <point x="4344.488755060729" y="3412.0" />
-              <point x="15.578947368420813" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.gui.activity_list_collection_displayer.ActivityListCollectionDisplay" target="seng202.group8.user.User">
-              <point x="0.0" y="-39.5" />
-              <point x="2862.780276653168" y="3362.0" />
-              <point x="4251.015070850202" y="3362.0" />
-              <point x="-77.89473684210543" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.parser.Parser" target="seng202.group8.user.User">
-              <point x="143.20000000000073" y="-124.0" />
-              <point x="322.2000000000007" y="3322.0" />
-              <point x="4188.699281376518" y="3322.0" />
-              <point x="-140.2105263157896" y="208.0" />
-            </edge>
-            <edge source="seng202.group8.data_entries.Data" target="seng202.group8.data_entries.DataType">
-              <point x="272.0" y="-556.0" />
-              <point x="1497.5261099865015" y="273.0" />
-              <point x="7430.273684210526" y="273.0" />
-              <point x="-107.33333333333337" y="27.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.7966952264381884" x="1277.0" y="477.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>Project Files</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/SplashController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+        <state relative-caret-position="346">
+          <caret line="820" column="5" lean-forward="true" selection-start-line="820" selection-start-column="5" selection-end-line="820" selection-end-column="5" />
+          <folding>
+            <marker date="1537752162813" expanded="true" signature="4544:4580" ph="INSERT INTO user... " />
+            <marker date="1537752162813" expanded="true" signature="5003:5037" ph="SELECT * fro... user" />
+            <marker date="1537752162813" expanded="true" signature="5936:5954" ph="SELECT * FRO... user" />
+            <marker date="1537752162813" expanded="true" signature="6585:6619" ph="SELECT * FRO... user" />
+            <marker date="1537752162813" expanded="true" signature="7021:7053" ph="DELETE FROM user... " />
+            <marker date="1537752162813" expanded="true" signature="8205:8394" ph="UPDATE user... " />
+            <marker date="1537752162813" expanded="true" signature="9569:9607" ph="INSERT INTO CoOrdinate... " />
+            <marker date="1537752162813" expanded="true" signature="10518:10551" ph="INSERT INTO Heartrate... " />
+            <marker date="1537752162813" expanded="true" signature="11369:11406" ph="INSERT INTO Activity_Time... " />
+            <marker date="1537752162813" expanded="true" signature="12288:12327" ph="INSERT INTO Activity_List... " />
+            <marker date="1537752162813" expanded="true" signature="12657:12709" ph="SELECT * fro... Activity_List" />
+            <marker date="1537752162813" expanded="true" signature="13908:13951" ph="INSERT INTO Activity_Collection... " />
+            <marker date="1537752162813" expanded="true" signature="14180:14229" ph="SELECT * fro... Activity_Collection" />
+            <marker date="1537752162813" expanded="true" signature="15523:15576" ph="SELECT title... Activity_Collection" />
+            <marker date="1537752162813" expanded="true" signature="16819:16872" ph="SELECT title... " />
+            <marker date="1537752162813" expanded="true" signature="18863:18948" ph="SELECT data_... Data" />
+            <marker date="1537752162813" expanded="true" signature="22141:22191" ph="SELECT Heart... Heartrate" />
+            <marker date="1537752162813" expanded="true" signature="23303:23353" ph="SELECT DateT... Activity_Time" />
+            <marker date="1537752162813" expanded="true" signature="24584:24653" ph="SELECT latit... CoOrdinate" />
+            <marker date="1537752162813" expanded="true" signature="25573:25589" ph="DELETE FROM user... " />
+            <marker date="1537752162813" expanded="true" signature="25742:25773" ph="DELETE FROM Activity_Collection... " />
+            <marker date="1537752162813" expanded="true" signature="25908:25933" ph="DELETE FROM Activity_List... " />
+            <marker date="1537752162813" expanded="true" signature="26068:26084" ph="DELETE FROM Data... " />
+            <marker date="1537752162813" expanded="true" signature="26219:26241" ph="DELETE FROM CoOrdinate... " />
+            <marker date="1537752162813" expanded="true" signature="26376:26397" ph="DELETE FROM Heartrate... " />
+            <marker date="1537752162813" expanded="true" signature="26532:26557" ph="DELETE FROM Activity_Time... " />
+            <marker date="1537752162813" expanded="true" signature="27045:27094" ph="SELECT data_... Data" />
+            <marker date="1537752162813" expanded="true" signature="27729:27767" ph="DELETE FROM CoOrdinate... " />
+            <marker date="1537752162813" expanded="true" signature="27997:28034" ph="DELETE FROM Heartrate... " />
+            <marker date="1537752162813" expanded="true" signature="28264:28305" ph="DELETE FROM Activity_Time... " />
+            <marker date="1537752162813" expanded="true" signature="28535:28576" ph="DELETE FROM Data... " />
+            <marker date="1537752162813" expanded="true" signature="29539:29575" ph="INSERT INTO Data... " />
+            <marker date="1537752162813" expanded="true" signature="32531:32560" ph="SELECT MAX(d... Data" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/edit_user/EditUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1725">
-          <caret line="128" column="41" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding>
+            <element signature="e#5017#5018#0" expanded="false" />
+            <element signature="e#5053#5054#0" expanded="false" />
+            <element signature="e#5118#5119#0" expanded="false" />
+            <element signature="e#5168#5169#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="178" column="17" lean-forward="false" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/graphs.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1582">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="115" column="43" lean-forward="false" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorType.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="93" column="87" lean-forward="false" selection-start-line="93" selection-start-column="87" selection-end-line="93" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserErrorOther.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="33" lean-forward="false" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/Goals.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/GetUserInfo.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="153" column="44" lean-forward="true" selection-start-line="153" selection-start-column="44" selection-end-line="153" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOther.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="21" column="83" lean-forward="false" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="72" lean-forward="false" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorOtherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="76" column="15" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/activity_collection/ActivityListCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2505">
-          <caret line="177" column="61" selection-start-line="177" selection-start-column="61" selection-end-line="177" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/calendar_view.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/java_sqlite_db/SQLiteJDBC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12930">
-          <caret line="884" column="90" selection-start-line="884" selection-start-column="90" selection-end-line="884" selection-end-column="90" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10425">
-          <caret line="718" column="5" selection-start-line="718" selection-start-column="5" selection-end-line="718" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2190">
-          <caret line="180" column="34" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="510">
-            <caret line="34" column="174" selection-start-line="34" selection-start-column="174" selection-end-line="34" selection-end-column="174" />
-          </first_editor>
-          <second_editor />
+        <state relative-caret-position="375">
+          <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ProjectJDKs.UI">
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
         <settings>
           <last-edited>1.8</last-edited>
           <splitter-proportions>
@@ -1271,56 +759,29 @@
           </splitter-proportions>
         </settings>
       </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8 (1)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
     </states>
-  </component>
-  <component name="simpleUML.UMLToolWindowPlugin">
-    <General>
-      <option name="birdViewUpdateDelay" value="2000" />
-      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
-    </General>
-    <Classdiagram>
-      <option name="diagramTitleFont" value="SansSerif,1,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="defaultFieldsExpanded" value="false" />
-      <option name="defaultContructorsExpanded" value="false" />
-      <option name="defaultMethodsExpanded" value="false" />
-      <option name="showParameters" value="true" />
-      <option name="showTooltip" value="true" />
-      <option name="showReturnValues" value="true" />
-      <option name="longModifier" value="true" />
-      <option name="implementsBehaviour" value="1" />
-      <option name="extendsBehaviour" value="1" />
-      <option name="compartmentBehaviour" value="1" />
-      <option name="interfaceBackgroundColor" value="-6494306" />
-      <option name="abstractClassBackgroundColor" value="-1580132" />
-      <option name="classBackgroundColor" value="-6508057" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="quickSourceLinkColor" value="-16776961" />
-      <option name="quickDiagramLinkColor" value="-8454144" />
-      <option name="drawDecorations" value="false" />
-      <option name="hideFieldList" value="" />
-      <option name="showFieldList" value="" />
-      <option name="hideConstructorList" value="" />
-      <option name="showConstructorList" value="" />
-      <option name="hideMethodList" value="" />
-      <option name="showMethodList" value="" />
-      <option name="minimumFigureSize" value="0,0" />
-    </Classdiagram>
-    <Dependencydiagram>
-      <option name="diagramTitleFont" value="SansSerif,1,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="packageNameCompressionLevel" value="0" />
-    </Dependencydiagram>
-    <Packagediagram>
-      <option name="diagramTitleFont" value="SansSerif,0,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="packageBackgroundColor" value="-4144960" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="packageNameCompressionLevel" value="2" />
-    </Packagediagram>
   </component>
 </project>

@@ -23,6 +23,7 @@ import seng202.group8.user.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -202,8 +203,8 @@ public class NewDataDialogController {
     }
 
     private boolean allFieldsAreCorrect(boolean isToggleSelected) {
-        boolean descrNoNull = !descriptionTextField.getText().equals("");
-        boolean datePickerNoNull = !(datePickerNewActivity.getValue() == null);
+        boolean descrNoNull = !descriptionTextField.getText().trim().equals("");
+        boolean datePickerNoNull = !(datePickerNewActivity.getValue() == null) && !(datePickerNewActivity.getValue().isAfter(LocalDate.now()));
         boolean timesNoNull = (fromTime.getValue() != null) && (toTime.getValue() != null);
         boolean fromTimeSmallerThanToTime = true;
 

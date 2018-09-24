@@ -215,7 +215,7 @@ public class ActivitiesCollectionController {
      * Opens a dialog for the user to input manual data in the app.
      */
     private void triggerNewActivityDialog(int activityListIndex) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/new_data_dialog.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/new_data_dialog.fxml"));
         try {
             Parent root = loader.load();
             Stage newStage = new Stage();

@@ -71,12 +71,17 @@ public class EditUserController {
         String errorMessage = "";
         errorText.setText("");
         if (nameField.getText() != null && !nameField.getText().isEmpty() && !nameField.getText().matches(".*\\d+.*")) {
-            name = nameField.getText();
+            name = nameField.getText().trim();
         }
         if (ageField.getText() != null && !ageField.getText().isEmpty()) {
             System.out.println("hello: " + ageField.getText());
             try {
-                age = Integer.parseInt(ageField.getText());
+                Integer usernewAge = Integer.parseInt(ageField.getText());
+                if (usernewAge > 0) {
+                    age = usernewAge;
+                } else {
+                    throw new NumberFormatException();
+                }
                 System.out.println(age);
             } catch(NumberFormatException e) {
                 age = 0;
@@ -85,40 +90,50 @@ public class EditUserController {
         }
         if (weightField.getText() != null && !weightField.getText().isEmpty()) {
             try {
-                weight = Double.parseDouble(weightField.getText());
+                Double userWeight = Double.parseDouble(weightField.getText());
+                if (userWeight > 0) {
+                    weight = userWeight;
+                } else {
+                    throw new NumberFormatException();
+                }
             } catch(NumberFormatException e) {
                 weight = 0.0;
             }
         }
         if (heightField.getText() != null && !heightField.getText().isEmpty()) {
             try {
-                height = Double.parseDouble(heightField.getText());
+                Double userNewWeight = Double.parseDouble(heightField.getText());
+                if (userNewWeight > 0) {
+                    height = userNewWeight;
+                } else {
+                    throw new NumberFormatException();
+                }
             } catch (NumberFormatException e) {
                 height = 0.0;
             }
         }
-        if (name == null) {
+        if (name == null || (name.trim().length() == 0)) {
             errorMessage += "You must enter a name to proceed.";
         }
         else if (age == 0) {
             if (errorMessage.length() > 0) {
-                errorMessage += " Your age must be a number.";
+                errorMessage += " Your age must be a positive number.";
             } else {
-                errorMessage += "Your age must be a number.";
+                errorMessage += "Your age must be a positive number.";
             }
         }
         else if (weight == 0.0){
             if (errorMessage.length() > 0) {
-                errorMessage += " Your weight must be a number.";
+                errorMessage += "Your weight must be a positive number.";
             } else {
-                errorMessage += "Your weight must be a number.";
+                errorMessage += "Your weight must be a positive number.";
             }
         }
         else if (height == 0.0) {
             if (errorMessage.length() > 0) {
-                errorMessage += " Your height must be a number.";
+                errorMessage += " Your height must be a positive number.";
             } else {
-                errorMessage += "Your height must be a number.";
+                errorMessage += "Your height must be a positive number.";
             }
         }
 

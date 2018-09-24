@@ -25,7 +25,7 @@ public class ParserErrorType extends Application {
     public void start(Stage primaryStage) throws Exception {
         //System.out.println("dis: "+errorMess);
         classStage = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ParserErrorType.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/views/ParserErrorType.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         ParserErrorTypeController noType = fxmlLoader.<ParserErrorTypeController>getController();
         noType.setErrorMessage(errorMess);
