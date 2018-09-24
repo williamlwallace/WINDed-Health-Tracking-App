@@ -733,6 +733,20 @@ public class SQLiteJDBC {
 
     }
 
+    public void updateActivityListCollection(Connection connection, Integer userId, String newTitle) {
+        String sql = "UPDATE Activity_Collection SET title = ? WHERE user_id=?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, newTitle);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
     /**
      * Performs the necessary database functions to save a User into the database new or existing
      * @param user the User to be stored
@@ -747,6 +761,8 @@ public class SQLiteJDBC {
         ActivityListCollection activityListCollection = user.getUserActivities();
 
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
+        updateActivityListCollection(conn, userId, activityListCollection.getTitle());
+
 
         try {
             if (conn != null) {
