@@ -108,7 +108,7 @@ public class Parser {
                                 activityEnum = DataType.SWIM;
                                 activityToSend = new SwimData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
-                            case "water sport":ault:
+                            case "water sport":
                                 activityEnum = DataType.WATER_SPORTS;
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
