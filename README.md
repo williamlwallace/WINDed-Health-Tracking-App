@@ -1,11 +1,11 @@
 # WINded Health Tracker Application
 ## SENG202 Team 8
 ##### Lorenzo Fasano (lfa69, 34853558)
-##### Sam Verdellen ()
-##### Will Wallace ()
-##### Jack Orchard ()
-##### Joel Ridden ()
-##### Clarke Mcfadzien ()
+##### Sam Verdellen (sgv15, 33899963)
+##### Will Wallace (wwa52, 11389447)
+##### Jack Orchard (jco165, 49860178)
+##### Joel Ridden (jnr26, 97580731)
+##### Clarke Mcfadzien (cmc280, 75890469)
 
 ## Requirements
 Please download the following tools:
@@ -28,7 +28,7 @@ Following these instructions creates a new copy of the WINded application code i
 To package a .jar file you need to:
 
 1. Navigate to the directory where you downloaded the WINded application code from the already opened terminal
-2. Navigate to “/SENG202Team8/HealthTrackerApp” running the following command in the terminal: ```cd SENG202/HealthTrackerApp```
+2. Navigate to “/SENG202Team8/HealthTrackerApp” running the following command in the terminal: ```$ cd SENG202/HealthTrackerApp```
 3. Type: ```$ mvn package``` in the terminal and press enter
 
 Following these instructions creates a .jar file, follow the next sections steps to run the .jar file

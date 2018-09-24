@@ -7,10 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HealthTrackerApp" />
+        <module name="HealthTrackerApp (1)" />
+        <module name="HealthTrackerApp (2)" />
+        <module name="maven-archiver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="HealthTrackerApp" target="1.8" />
+      <module name="HealthTrackerApp (1)" target="1.8" />
+      <module name="HealthTrackerApp (2)" target="1.5" />
+      <module name="maven-archiver" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

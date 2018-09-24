@@ -3,7 +3,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/HealthTrackerApp/target/maven-archiver/pom.properties" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/pom.xml" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/dependency-reduced-pom.xml" />
       </list>
     </option>
   </component>

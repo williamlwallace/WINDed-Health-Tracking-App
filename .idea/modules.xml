@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" filepath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp (1).iml" filepath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp (2).iml" filepath="$PROJECT_DIR$/HealthTrackerApp/HealthTrackerApp (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/HealthTrackerApp/target/maven-archiver/maven-archiver.iml" filepath="$PROJECT_DIR$/HealthTrackerApp/target/maven-archiver/maven-archiver.iml" />
     </modules>
   </component>
 </project>
