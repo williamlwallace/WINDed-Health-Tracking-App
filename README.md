@@ -4,7 +4,7 @@
 ##### Sam Verdellen ()
 ##### Will Wallace ()
 ##### Jack Orchard ()
-##### Joel Ridden ()
+##### Joel Ridden (jnr26, 97580731)
 ##### Clarke Mcfadzien ()
 
 ## Requirements
