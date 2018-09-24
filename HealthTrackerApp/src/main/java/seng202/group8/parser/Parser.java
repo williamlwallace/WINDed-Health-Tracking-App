@@ -108,9 +108,13 @@ public class Parser {
                                 activityEnum = DataType.SWIM;
                                 activityToSend = new SwimData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
-                            default: //case "Walk": defult for now
-                                activityEnum = DataType.WALK;
+                            case "water sport":ault:
+                                activityEnum = DataType.WATER_SPORTS;
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
+                                break;
+                            default://case "walk": default for now
+                                activityEnum = DataType.WALK;
+                                activityToSend = new WalkData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
                         }
                         try {
