@@ -1,11 +1,11 @@
 # WINded Health Tracker Application
 ## SENG202 Team 8
 ##### Lorenzo Fasano (lfa69, 34853558)
-##### Sam Verdellen (sgv15, 33899963)
+##### Sam Verdellen ()
 ##### Will Wallace (wwa52, 11389447)
 ##### Jack Orchard (jco165, 49860178)
 ##### Joel Ridden (jnr26, 97580731)
-##### Clarke Mcfadzien ()
+##### Clarke Mcfadzien (cmc280, 75890469)
 
 ## Requirements
 Please download the following tools:
