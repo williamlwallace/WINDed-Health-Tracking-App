@@ -123,9 +123,11 @@ public class CalendarViewController {
 
                             Text title = new Text(data.getTitle());
                             Text distanceCovered = new Text("Distance covered: " + String.format("%.2f", data.getDistanceCovered()) + " m");
-                            if (data.isGraphable) {
-                                Text burntCalories = new Text("Burnt calories: " + String.format("%.2f", data.getConsumedCalories()) + " cal");
-                                vBox.getChildren().addAll(title, distanceCovered, burntCalories);
+                            if (data.getIsGraphable()) {
+                                //Text burntCalories = new Text("Burnt calories: " + String.format("%.2f", data.getConsumedCalories()) + " cal");
+                                vBox.getChildren().addAll(title, distanceCovered);//, burntCalories);
+
+                                // TODO
                             } else {
                                 vBox.getChildren().addAll(title, distanceCovered);
                             }

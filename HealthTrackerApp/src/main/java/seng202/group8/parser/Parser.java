@@ -257,12 +257,13 @@ public class Parser {
     }
 
     /**
-     * Scrolls through the lines until the next activity is reached.
+     * Scrolls through the lines until the next activity is reached. Unused in the current iteration but may be used in future.
      * @param csvReader
      * @param line
      * @return line
      * @throws Exception
      */
+    /*
     private String[] nextActivity(CSVReader csvReader, String[] line) throws Exception {
         try {
             while ((line != null) && !(line[0].equals("#start"))) {
@@ -273,6 +274,7 @@ public class Parser {
         }
         return line;
     }
+    */
 
     /**
      * Returns a list of the data it parsed
@@ -287,6 +289,7 @@ public class Parser {
      * @param args
      * @throws Exception
      */
+    /*
     public static void main(String[] args) throws Exception {
         User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
         Parser parserTest =  new Parser("seng202_2018_example_data_errors.csv", userTest);
@@ -297,6 +300,7 @@ public class Parser {
             System.out.println(d.getCoordinatesArrayList().size());
         }
     }
+    */
 
     /**
      * adds a key phrase into the collection of trip phrases for finding the type
