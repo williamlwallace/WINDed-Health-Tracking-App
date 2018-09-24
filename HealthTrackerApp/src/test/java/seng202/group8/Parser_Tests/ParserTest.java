@@ -27,9 +27,10 @@ public class ParserTest {
     @Before
     public void setUp() throws Exception {
         userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
-        parserTest1 =  new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data_clean.csv", userTest);
+        parserTest1 = new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data_clean.csv", userTest);
         parserTest1.parseFile();
-        parserTest2 =  new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data.csv", userTest);
+        parserTest2 = new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data.csv", userTest);
+        parserTest3 = new Parser("src/main/resources/resources/views/test_resources/seng202_2018_example_data_errors.csv", userTest);
     }
 
     @After
@@ -37,6 +38,16 @@ public class ParserTest {
 
         parserTest1 = null;
         parserTest2 = null;
+    }
+
+    @Test
+    public void getFilename() {
+        assertEquals(parserTest1.getFilename(), "src/main/resources/resources/views/test_resources/seng202_2018_example_data_clean.csv");
+    }
+
+    @Test
+    public void getUser() {
+        assertEquals(parserTest1.getUser(), userTest);
     }
 
     /**
@@ -56,6 +67,16 @@ public class ParserTest {
             assertEquals(dataTest.get(i).getHeartRateList().size(), (int) testListNum.get(i));
         }
 //        assertTrue(true);
+    }
+
+    @Test
+    public void multiErrors() throws Exception {
+        try {
+            parserTest3.parseFile();
+        } catch(DataMissingError e) {
+            //System.out.println(e.getMessage());
+            assertEquals(e.getMessage(), "Activity 'walk in the woods' is corrupt on line/lines: (Heart-rate or Coordinates) 2, (Incorrect number of lines) 3, (date) 8, (date) 15");
+        }
     }
 
     /**
