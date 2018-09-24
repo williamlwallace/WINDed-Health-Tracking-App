@@ -107,7 +107,7 @@ public class SQLiteJDBC {
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
-            System.out.println("Connection to SQLite has been established.");
+            //System.out.println("Connection to SQLite has been established.");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -143,10 +143,10 @@ public class SQLiteJDBC {
             findStatement.setInt(1, id);
             ResultSet results = findStatement.executeQuery();
             if (results.next()) {
-                System.out.println("User Tuple already exists");
+                //System.out.println("User Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
-                System.out.println("Rows added to user: " + preparedStatement.executeUpdate());
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -157,7 +157,7 @@ public class SQLiteJDBC {
 
     public ResultSet selectAllUsers(Connection connection) {
         assert null != connection;
-        System.out.println("Get all tuples");
+        //System.out.println("Get all tuples");
         ResultSet resultSet = null;
         try {
         Statement statement = connection.createStatement();
@@ -177,7 +177,7 @@ public class SQLiteJDBC {
     public ResultSet getUser(Connection connection, Integer userID) {
         assert null != connection && null != userID;
         ResultSet resultSet = null;
-        System.out.println("Get User with id: " + userID );
+        //System.out.println("Get User with id: " + userID );
         String find = "SELECT * FROM user WHERE user_id=?";
 
         try {
@@ -193,7 +193,7 @@ public class SQLiteJDBC {
     public void deleteUser(Connection connection, Integer userID) {
         String sql = "DELETE FROM user WHERE user_id=?";
         try {
-            System.out.println("Deleting User with id = " + userID);
+            //System.out.println("Deleting User with id = " + userID);
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
@@ -225,7 +225,7 @@ public class SQLiteJDBC {
                 + "WHERE user_id = ?";
 
         try {
-            System.out.println("Updating User with id: " + userId);
+            //System.out.println("Updating User with id: " + userId);
             PreparedStatement preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, name);
             preparedStatement.setDouble(2, weight);
@@ -258,7 +258,7 @@ public class SQLiteJDBC {
             preparedStatement.setDouble(3, elevation);
             preparedStatement.setInt(4, dataId);
 
-            System.out.println("Rows added to Co-Ordinate: " + preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -495,6 +495,10 @@ public class SQLiteJDBC {
                     case "SWIM":
                         dataTypeEnum = DataType.SWIM;
                         data = new SwimData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
+                        break;
+                    case "WATER_SPORTS":
+                        dataTypeEnum = DataType.WATER_SPORTS;
+                        data = new WaterSportsData(title, dataTypeEnum, newDateTimes, newCoordinatesList, newHeartRateList, user);
                         break;
                 }
                 if (data!=null) {
