@@ -34,7 +34,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avearge Speed" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
+            <Text layoutX="10.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Speed" wrappingWidth="69.76171875" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font size="16.0" />
                </font>
