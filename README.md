@@ -2,7 +2,7 @@
 ## SENG202 Team 8
 ##### Lorenzo Fasano (lfa69, 34853558)
 ##### Sam Verdellen ()
-##### Will Wallace ()
+##### Will Wallace (wwa52, 11389447)
 ##### Jack Orchard ()
 ##### Joel Ridden ()
 ##### Clarke Mcfadzien ()
