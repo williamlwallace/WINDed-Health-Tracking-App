@@ -308,12 +308,13 @@ public class SQLiteJDBC {
     /**
      * Perform an SQL Insert to put an ActivityList into the database, if it already exists in the database doesn't execute the Insert
      * @param title the title of the ActivityList to insert
-     * @param datetime the creation date of the ActivityList as a formatted string
+     * @param date the creation date of the ActivityList as a date object
      * @param userId the unique user Id to identify which User the ActivityList belongs
      */
-    public void insertActivityList(String title, String datetime, Integer userId) {
+    public void insertActivityList(String title, Date date, Integer userId) {
         String sql = "INSERT INTO Activity_List VALUES(?,?,?)";
         try {
+            String datetime = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(date));
             Connection connection = connect();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, title);

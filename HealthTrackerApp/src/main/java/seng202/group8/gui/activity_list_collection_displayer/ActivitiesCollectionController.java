@@ -338,7 +338,7 @@ public class ActivitiesCollectionController {
                 if (add == -1) {
                     ActivityList newList = new ActivityList(activityTitle);
                     add = user.getUserActivities().insertActivityList(newList);
-                    database.insertActivityList(activityTitle, database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(newList.getCreationDate())), 1);
+                    database.insertActivityList(activityTitle, newList.getCreationDate(), 1);
                     for (Data data : parser.getDataList()) {
                         newData.add(data);
                         user.getUserActivities().insertActivityInGivenList(add, data);
@@ -355,7 +355,6 @@ public class ActivitiesCollectionController {
                 setUpTreeView();
                 List<String> csvArray = Arrays.asList(csvToParse.split("/"));
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
-                //database.saveUser(user, 1);
 
 
             }

@@ -128,7 +128,7 @@ public class ParserErrorTypeController {
                 if (add == -1) {
                     ActivityList newList = new ActivityList(parentControl.getActivityTitle());
                     add = user.getUserActivities().insertActivityList(newList);
-                    database.insertActivityList(newList.getTitle(), database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(newList.getCreationDate())), 1);
+                    database.insertActivityList(newList.getTitle(), newList.getCreationDate(), 1);
                     for (Data data : parser.getDataList()) {
                         user.getUserActivities().insertActivityInGivenList(add, data);
                         newData.add(data);

@@ -162,8 +162,7 @@ public class NewDataDialogController {
                 ActivityList activityList = new ActivityList(newActivityListName.getText());
                 activityList.insertActivity(dataVal);
                 user.getUserActivities().insertActivityList(activityList);
-                database.insertActivityList(activityList.getTitle(),
-                        database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(activityList.getCreationDate())), 1);
+                database.insertActivityList(activityList.getTitle(), activityList.getCreationDate(), 1);
                 database.updateWithListOfData(activityList.getActivityList(), activityList.getTitle(), activityList.getCreationDate(), 1);
             } else {
                 System.out.println(activityListIndexToAppendTo);
