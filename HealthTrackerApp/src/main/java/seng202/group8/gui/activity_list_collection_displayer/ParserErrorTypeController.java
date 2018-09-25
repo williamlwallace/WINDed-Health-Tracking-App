@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import seng202.group8.user.User;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -121,22 +122,31 @@ public class ParserErrorTypeController {
             }
             if (error == 0) {
                 User user = parser.getUser();
+                SQLiteJDBC database = new SQLiteJDBC();
                 int add = user.getUserActivities().checkDuplicate(parentControl.getActivityTitle());
+                ArrayList<Data> newData = new ArrayList<Data>();
                 if (add == -1) {
-                    add = user.getUserActivities().insertActivityList(new ActivityList(parentControl.getActivityTitle()));
+                    ActivityList newList = new ActivityList(parentControl.getActivityTitle());
+                    add = user.getUserActivities().insertActivityList(newList);
+                    database.insertActivityList(newList.getTitle(), database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(newList.getCreationDate())), 1);
                     for (Data data : parser.getDataList()) {
                         user.getUserActivities().insertActivityInGivenList(add, data);
+                        newData.add(data);
                     }
+                    database.updateWithListOfData(newData, newList.getTitle(), newList.getCreationDate(), 1);
                 } else {
                     for (Data data : parser.getDataList()) {
                         user.getUserActivities().insertActivityInGivenList(add, data);
+                        newData.add(data);
                     }
+                    ActivityList existingList = user.getUserActivities().getActivityListCollection().get(add);
+                    database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), 1);
                 }
                 parentControl.setUpTreeView();
                 List<String> csvArray = Arrays.asList(parser.getFilename().split("/"));
                 parentControl.setParserInfo("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
-                SQLiteJDBC database = new SQLiteJDBC();
-                database.saveUser(user, 1);
+
+                //database.saveUser(user, 1);
                 Stage stage = (Stage) errorText.getScene().getWindow();
                 stage.close();
             }
