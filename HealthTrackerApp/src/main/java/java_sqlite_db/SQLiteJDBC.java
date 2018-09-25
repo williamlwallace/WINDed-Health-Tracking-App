@@ -644,44 +644,49 @@ public class SQLiteJDBC {
     }
 
 
-    public void deleteListData(Connection connection, String parentActivityListTitle, String parentActivityListDate) {
-        System.out.println(getNextDataID(connection));
+    public void deleteActivityList(String parentActivityListTitle, Date parentActivityListDate) {
+        String parentActivityListDateString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(parentActivityListDate));
         String find = "SELECT data_id FROM Data WHERE title=? AND date=?";
         System.out.println("Deletion from activity List: " + parentActivityListTitle +  "   " + parentActivityListDate);
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(find);
-            preparedStatement.setString(1, parentActivityListTitle);
-            preparedStatement.setString(2, parentActivityListDate);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            Connection connection = connect();
+            PreparedStatement preparedStatementFind = connection.prepareStatement(find);
+            preparedStatementFind.setString(1, parentActivityListTitle);
+            preparedStatementFind.setString(2, parentActivityListDateString);
+            ResultSet resultSet = preparedStatementFind.executeQuery();
             while (resultSet.next()) {
                 Integer dataID = resultSet.getInt("data_id");
                 System.out.println("Data deleted" +  "DataID:" + dataID);
 
-                String sql2 = "DELETE FROM CoOrdinate WHERE data_id=?";
-                PreparedStatement preparedStatement1 = connection.prepareStatement(sql2);
-                preparedStatement1.setInt(1, dataID);
-                preparedStatement1.executeUpdate();
-                String sql3 = "DELETE FROM Heartrate WHERE data_id=?";
-                PreparedStatement preparedStatement2 = connection.prepareStatement(sql3);
-                preparedStatement2.setInt(1, dataID);
-                preparedStatement2.executeUpdate();
-                String sql4 = "DELETE FROM Activity_Time WHERE data_id=?";
-                PreparedStatement preparedStatement3 = connection.prepareStatement(sql4);
-                preparedStatement3.setInt(1, dataID);
-                preparedStatement3.executeUpdate();
-                String sql1 = "DELETE FROM Data WHERE title=? AND date=?";
-                PreparedStatement preparedStatement4 = connection.prepareStatement(sql1);
-                preparedStatement4.setString(1, parentActivityListTitle);
-                preparedStatement4.setString(2, parentActivityListDate);
-                preparedStatement4.executeUpdate();
+                String sqlCoordinate = "DELETE FROM CoOrdinate WHERE data_id=?";
+                PreparedStatement preparedStatementCoordinate = connection.prepareStatement(sqlCoordinate);
+                preparedStatementCoordinate.setInt(1, dataID);
+                preparedStatementCoordinate.executeUpdate();
+                String sqlHeartRate = "DELETE FROM Heartrate WHERE data_id=?";
+                PreparedStatement preparedStatementHeartRate = connection.prepareStatement(sqlHeartRate);
+                preparedStatementHeartRate.setInt(1, dataID);
+                preparedStatementHeartRate.executeUpdate();
+                String sqlActivityTime = "DELETE FROM Activity_Time WHERE data_id=?";
+                PreparedStatement preparedStatementTime = connection.prepareStatement(sqlActivityTime);
+                preparedStatementTime.setInt(1, dataID);
+                preparedStatementTime.executeUpdate();
+                String sqlData = "DELETE FROM Data WHERE title=? AND date=?";
+                PreparedStatement preparedStatementData = connection.prepareStatement(sqlData);
+                preparedStatementData.setString(1, parentActivityListTitle);
+                preparedStatementData.setString(2, parentActivityListDateString);
+                preparedStatementData.executeUpdate();
             }
+            String activityDelete = "DELETE FROM Activity_List WHERE title=? AND date=?";
+            PreparedStatement preparedStatementActivityList = connection.prepareStatement(activityDelete);
+            preparedStatementActivityList.setString(1, parentActivityListTitle);
+            preparedStatementActivityList.setString(2, parentActivityListDateString);
+            preparedStatementActivityList.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
     }
+
 
     /**
      * Performs SQL inserts as a single transaction to add a list of data to the database
