@@ -7,6 +7,8 @@ import java.util.Arrays;
 
 import seng202.group8.user.User;
 
+import javax.annotation.Resource;
+
 public class RunData extends NotAssistedSportsData {
     public RunData(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList, User theCurrentUser) {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList, theCurrentUser);

@@ -51,6 +51,9 @@ public class ActivitiesCollectionController {
     private Text insightsTitle;
 
     @FXML
+    private Text dateText;
+
+    @FXML
     private Text distanceCovered;
 
     @FXML
@@ -109,19 +112,28 @@ public class ActivitiesCollectionController {
      */
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
-        HeartRateData heartRateData1 = new HeartRateData(data.getHeartRateData().getHeartRateList());
-        for (Integer integer : heartRateData.getHeartRateList()) {
-            System.out.println("HR VAL: " + integer);
-        }
+//        for (Integer integer : heartRateData.getHeartRateList()) {
+//            System.out.println("HR VAL: " + integer);
+//        }
+
         insightsTitle.setText(data.getTitle());
+        dateText.setText(data.getAllDateTimes().get(0).toLocalDate().toString());
+
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
         } else {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered() / 1000) + " km");
         }
-        averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()) + " bpm");
-        maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate())  + " bpm");
-        minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate())  + " bpm");
+
+        if (heartRateData.getMeanAverageHeartRate() < 0) {
+            averageHeartRate.setText("N/A");
+            maxHeartRate.setText("N/A");
+            minHeartRate.setText("N/A");
+        } else {
+            averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()) + " bpm");
+            maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate()) + " bpm");
+            minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate()) + " bpm");
+        }
         String averageSpeedString = String.format("%.2f", data.getDataSpeedKph()) + " km/h";
         averageSpeed.setText(averageSpeedString);
 
