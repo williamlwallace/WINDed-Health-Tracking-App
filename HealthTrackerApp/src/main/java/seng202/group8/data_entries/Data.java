@@ -1,6 +1,7 @@
 package seng202.group8.data_entries;
 
 
+import javafx.scene.Node;
 import org.apache.commons.lang3.ObjectUtils;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
