@@ -31,7 +31,7 @@
                <font>
                   <Font size="17.0" />
                </font></Text>
-            <Text layoutX="9.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="287.2265625" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="141.1015625" AnchorPane.topAnchor="149.1484375">
+            <Text layoutX="9.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="278.2265625" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="141.1015625" AnchorPane.topAnchor="158.1484375">
                <font>
                   <Font size="16.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="distanceCovered" layoutX="168.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
+            <Text fx:id="distanceCovered" layoutX="168.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
@@ -66,7 +66,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="maxHeartRate" layoutX="169.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="maxHeartRate" layoutX="169.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="averageSpeed" layoutX="168.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="averageSpeed" layoutX="168.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
@@ -87,7 +87,7 @@
                </font>
             </Text>
             <Text fx:id="fromText" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
-            <Text fx:id="toText" layoutX="16.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <Text fx:id="toText" layoutX="15.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
          </children></AnchorPane>
    </right>
    <bottom>
