@@ -34,6 +34,7 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -120,8 +121,10 @@ public class ActivitiesCollectionController {
 //        }
 
         insightsTitle.setText(data.getTitle());
-        fromText.setText(data.getAllDateTimes().get(0).toString());
-        toText.setText(data.getAllDateTimes().get(data.getAllDateTimes().size() - 1).toString());
+        LocalDateTime fromTime = data.getAllDateTimes().get(0);
+        LocalDateTime toTime = data.getAllDateTimes().get(data.getAllDateTimes().size() - 1);
+        fromText.setText("From: " + fromTime.toLocalDate().toString() + " " + fromTime.toLocalTime());
+        toText.setText("To: " + toTime.toLocalDate().toString() + " " + toTime.toLocalTime());
 
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");

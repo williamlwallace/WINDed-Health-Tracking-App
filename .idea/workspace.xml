@@ -4,7 +4,6 @@
     <list default="true" id="305b2c2f-9a49-454e-b1fa-7a860e35139f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,25 +50,25 @@
       <file leaf-file-name="ActivitiesCollectionController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="95" column="38" lean-forward="true" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
+            <state relative-caret-position="241">
+              <caret line="126" column="94" lean-forward="false" selection-start-line="126" selection-start-column="94" selection-end-line="126" selection-end-column="94" />
               <folding>
-                <element signature="e#16760#16761#0" expanded="true" />
-                <element signature="e#16797#16798#0" expanded="true" />
-                <element signature="e#16843#16844#0" expanded="true" />
-                <element signature="e#16900#16901#0" expanded="true" />
-                <element signature="e#16930#16931#0" expanded="true" />
-                <element signature="e#16957#16958#0" expanded="true" />
-                <element signature="e#16995#16996#0" expanded="true" />
-                <element signature="e#17027#17028#0" expanded="true" />
+                <element signature="e#16982#16983#0" expanded="true" />
+                <element signature="e#17019#17020#0" expanded="true" />
                 <element signature="e#17065#17066#0" expanded="true" />
-                <element signature="e#17100#17101#0" expanded="true" />
-                <element signature="e#17155#17156#0" expanded="true" />
-                <element signature="e#17229#17230#0" expanded="true" />
-                <element signature="e#17266#17267#0" expanded="true" />
-                <element signature="e#17299#17300#0" expanded="true" />
-                <element signature="e#17339#17340#0" expanded="true" />
-                <element signature="e#17375#17376#0" expanded="true" />
+                <element signature="e#17122#17123#0" expanded="true" />
+                <element signature="e#17152#17153#0" expanded="true" />
+                <element signature="e#17179#17180#0" expanded="true" />
+                <element signature="e#17217#17218#0" expanded="true" />
+                <element signature="e#17249#17250#0" expanded="true" />
+                <element signature="e#17287#17288#0" expanded="true" />
+                <element signature="e#17322#17323#0" expanded="true" />
+                <element signature="e#17377#17378#0" expanded="true" />
+                <element signature="e#17451#17452#0" expanded="true" />
+                <element signature="e#17488#17489#0" expanded="true" />
+                <element signature="e#17521#17522#0" expanded="true" />
+                <element signature="e#17561#17562#0" expanded="true" />
+                <element signature="e#17597#17598#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -624,11 +623,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537936355934</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added a from and to test values for each activity.">
+      <created>1537936733825</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1537936733825</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6522000" />
+    <option name="totallyTimeSpent" value="6827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="1682" height="1050" extended-state="6" />
@@ -691,7 +697,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made changes to ActivitiesCollectionController allowing to display N/A for manually inserted data for the heart rate values." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made changes to ActivitiesCollectionController allowing to display N/A for manually inserted data for the heart rate values." />
+    <MESSAGE value="Added a from and to test values for each activity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a from and to test values for each activity." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -889,25 +896,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="95" column="38" lean-forward="true" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
+        <state relative-caret-position="241">
+          <caret line="126" column="94" lean-forward="false" selection-start-line="126" selection-start-column="94" selection-end-line="126" selection-end-column="94" />
           <folding>
-            <element signature="e#16760#16761#0" expanded="true" />
-            <element signature="e#16797#16798#0" expanded="true" />
-            <element signature="e#16843#16844#0" expanded="true" />
-            <element signature="e#16900#16901#0" expanded="true" />
-            <element signature="e#16930#16931#0" expanded="true" />
-            <element signature="e#16957#16958#0" expanded="true" />
-            <element signature="e#16995#16996#0" expanded="true" />
-            <element signature="e#17027#17028#0" expanded="true" />
+            <element signature="e#16982#16983#0" expanded="true" />
+            <element signature="e#17019#17020#0" expanded="true" />
             <element signature="e#17065#17066#0" expanded="true" />
-            <element signature="e#17100#17101#0" expanded="true" />
-            <element signature="e#17155#17156#0" expanded="true" />
-            <element signature="e#17229#17230#0" expanded="true" />
-            <element signature="e#17266#17267#0" expanded="true" />
-            <element signature="e#17299#17300#0" expanded="true" />
-            <element signature="e#17339#17340#0" expanded="true" />
-            <element signature="e#17375#17376#0" expanded="true" />
+            <element signature="e#17122#17123#0" expanded="true" />
+            <element signature="e#17152#17153#0" expanded="true" />
+            <element signature="e#17179#17180#0" expanded="true" />
+            <element signature="e#17217#17218#0" expanded="true" />
+            <element signature="e#17249#17250#0" expanded="true" />
+            <element signature="e#17287#17288#0" expanded="true" />
+            <element signature="e#17322#17323#0" expanded="true" />
+            <element signature="e#17377#17378#0" expanded="true" />
+            <element signature="e#17451#17452#0" expanded="true" />
+            <element signature="e#17488#17489#0" expanded="true" />
+            <element signature="e#17521#17522#0" expanded="true" />
+            <element signature="e#17561#17562#0" expanded="true" />
+            <element signature="e#17597#17598#0" expanded="true" />
           </folding>
         </state>
       </provider>
