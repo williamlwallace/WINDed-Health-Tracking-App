@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -10,26 +11,75 @@
 
 <!--<?import de.jensd.fx.glyphs.fontawesome.*?>-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <VBox alignment="BOTTOM_CENTER" prefHeight="333.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+<?import javafx.collections.FXCollections?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.GoalsDisplayerController">
+<center>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" style="-fx-background-color: #2e86c1;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="222.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/under_construction.png" />
-               </image>
-            </ImageView>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label prefHeight="46.0" prefWidth="300.0" text="Goals screen under construction!">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
+            <HBox prefHeight="468.0" prefWidth="1100.0" spacing="15.0" style="-fx-background-color: #2e86c1;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="454.0" prefWidth="986.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <Label fx:id="totalStatsLabel" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="543.0" style="-fx-background-color: #2e86c1;" text="Current Goals" textFill="WHITE">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="goalTypeLabel" alignment="CENTER" text="Goal Type">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="404.0" prefWidth="543.0">
+                           <content>
+                              <VBox fx:id="currentGoals" prefHeight="197.0" prefWidth="527.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="454.0" prefWidth="986.0" spacing="15.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <Label fx:id="totalStatsLabel1" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="550.0" style="-fx-background-color: #2e86c1;" text="Previous Goals" textFill="WHITE">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="166.0" prefWidth="1100.0" spacing="25.0" style="-fx-background-color: #ffff;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="131.0" prefWidth="201.0" spacing="20.0">
+                     <children>
+                        <Label text="Change Goal Type View">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="viewBox" onAction="#changeView" prefWidth="150.0" promptText="Goal Types" style="-fx-background-color: #2e86c1;">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="Activity Goals" />
+                                       <String fx:value="Frequency Goals" />
+                                       <String fx:value="Weight Goals" />
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: #2e86c1;" text="Add a Goal" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>

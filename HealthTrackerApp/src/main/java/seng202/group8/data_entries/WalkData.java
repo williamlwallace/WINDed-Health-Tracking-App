@@ -13,9 +13,13 @@ public class WalkData extends NotAssistedSportsData {
 
 
     public double getConsumedCalories() {
+        ArrayList<Double> caloriesList = new ArrayList<>(calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime());
+        //double caloriesList = ;
+        double calories = 0.0;
 
-        double calories = calculateCaloriesFromUserStatsAndHeartRateAndTime();
-
+        for (int i = 0; i < caloriesList.size(); i++) {
+            calories += caloriesList.get(i);
+        }
         return calories;
         //if (this.getHeartRateList() == 0);
     }
@@ -51,7 +55,7 @@ public class WalkData extends NotAssistedSportsData {
 //        return calorieTotal;
 //        //if (this.getHeartRateList() == 0);
 //    }
-//
+
 //    public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
 //
 //        Double[] metValuesArray = {2.8, 3.0, 3.5, 4.3, 5.0, 7.0, 8.3};
@@ -62,6 +66,7 @@ public class WalkData extends NotAssistedSportsData {
 //        ArrayList<Double> caloriesList = new ArrayList<>();
 //
 //        caloriesList = calculateCaloriesBurnedBetweenPointsFromStats(metValues, speedDivisions);
+//        System.out.println(caloriesList);
 //        return caloriesList;
 //    }
 }

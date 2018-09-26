@@ -376,7 +376,6 @@ public class GraphController {
             after = after.minusHours(12);
             amOrPm2 = "PM";
         }
-        System.out.println(after.format(formatter));
         String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
         time.setText(string);
     }
@@ -399,7 +398,6 @@ public class GraphController {
             after = after.minusHours(12);
             amOrPm2 = "PM";
         }
-        System.out.println(after.format(formatter));
         String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
         time.setText(string);
         changeGraph();
@@ -432,6 +430,7 @@ public class GraphController {
             while (currentDataIndex2 != 0 && !found) {
                 currentDataIndex2--;
                 if (allData.get(currentDataIndex2).getIsGraphable()) {
+                    System.out.println("YES");
                     currentDataIndex = currentDataIndex2;
                     setCurrentData(allData.get(currentDataIndex));
                     found = true;

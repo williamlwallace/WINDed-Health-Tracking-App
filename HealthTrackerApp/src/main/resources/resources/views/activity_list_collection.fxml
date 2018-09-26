@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeView?>
 <?import javafx.geometry.Insets?>
@@ -20,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
    <center>
       <WebView fx:id="googleMapsWebView" prefHeight="455.0" prefWidth="577.0" BorderPane.alignment="CENTER" />
    </center>
@@ -31,7 +24,7 @@
                <font>
                   <Font size="17.0" />
                </font></Text>
-            <Text layoutX="9.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="278.2265625" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="141.1015625" AnchorPane.topAnchor="158.1484375">
+            <Text layoutX="6.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="262.2265625" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="144.1015625" AnchorPane.topAnchor="174.1484375">
                <font>
                   <Font size="16.0" />
                </font>
@@ -56,7 +49,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="distanceCovered" layoutX="168.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
+            <Text fx:id="distanceCovered" layoutX="165.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
@@ -86,8 +79,9 @@
                   <Font size="33.0" />
                </font>
             </Text>
-            <Text fx:id="fromText" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
-            <Text fx:id="toText" layoutX="15.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
+            <Text fx:id="dateText" layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+            <Text fx:id="fromText" layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+            <Text fx:id="toText" layoutX="15.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
          </children></AnchorPane>
    </right>
    <bottom>

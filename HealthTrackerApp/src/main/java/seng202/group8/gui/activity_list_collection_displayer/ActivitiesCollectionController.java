@@ -11,11 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTreeCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -23,11 +22,10 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
-import seng202.group8.data_entries.CoordinateData;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.data_entries.*;
 import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController;
 import seng202.group8.parser.*;
 import seng202.group8.user.User;
@@ -50,6 +48,9 @@ public class ActivitiesCollectionController {
     /*Insights GUI elements*/
     @FXML
     private Text insightsTitle;
+
+    @FXML
+    private Text dateText;
 
     @FXML
     private Text fromText;
@@ -120,11 +121,13 @@ public class ActivitiesCollectionController {
 //            System.out.println("HR VAL: " + integer);
 //        }
 
-        insightsTitle.setText(data.getTitle());
         LocalDateTime fromTime = data.getAllDateTimes().get(0);
         LocalDateTime toTime = data.getAllDateTimes().get(data.getAllDateTimes().size() - 1);
-        fromText.setText("From: " + fromTime.toLocalDate().toString() + " " + fromTime.toLocalTime());
-        toText.setText("To: " + toTime.toLocalDate().toString() + " " + toTime.toLocalTime());
+
+        insightsTitle.setText(data.getTitle());
+        dateText.setText("Date: " + fromTime.toLocalDate().toString());
+        fromText.setText("From: " + fromTime.toLocalTime());
+        toText.setText("To: " + toTime.toLocalTime());
 
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
@@ -163,6 +166,14 @@ public class ActivitiesCollectionController {
         }
         activityListCollectionTreeView.setTooltip(new Tooltip("Double click on any of the activities containers to add a new activity to its list!"));
         activityListCollectionTreeView.setRoot(rootNode);
+
+        activityListCollectionTreeView.setEditable(true);
+        activityListCollectionTreeView.setCellFactory(new Callback<TreeView, TreeCell>() {
+            @Override
+            public TreeCell call(TreeView param) {
+                return new TextFieldTreeCellImpl();
+            }
+        });
 
     }
 

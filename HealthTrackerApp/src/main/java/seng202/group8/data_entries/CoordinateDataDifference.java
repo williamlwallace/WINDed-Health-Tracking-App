@@ -2,6 +2,10 @@ package seng202.group8.data_entries;
 
 import static java.lang.Math.PI;
 
+/**
+ * @author cmc280
+ *
+ */
 public class CoordinateDataDifference {
 
     private double latitudeDifference;

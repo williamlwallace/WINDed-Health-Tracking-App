@@ -11,8 +11,13 @@ public class ClimbData extends NotAssistedSportsData {
     }
 
     public double getConsumedCalories() {
+        ArrayList<Double> caloriesList = new ArrayList<>(calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime());
+        //double caloriesList = ;
+        double calories = 0.0;
 
-        double calories = calculateCaloriesFromUserStatsAndHeartRateAndTime();
+        for (int i = 0; i < caloriesList.size(); i++) {
+            calories += caloriesList.get(i);
+        }
 
         return calories;
         //if (this.getHeartRateList() == 0);
