@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.gui.calendar_view.CalendarViewController;
 import seng202.group8.gui.edit_user.EditUserController;
+import seng202.group8.gui.goals_displayer.GoalsDisplayerController;
 import seng202.group8.gui.home_displayer.HomeController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.user.User;
@@ -133,7 +134,12 @@ public class GUIController implements Initializable {
     @FXML
     private void loadGoals(ActionEvent event) throws IOException
     {
-        BorderPane goalsScene = FXMLLoader.load(getClass().getResource("/resources/views/Goals.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/Goals.fxml"));
+        BorderPane goalsScene = loader.load();
+        GoalsDisplayerController goalsController = loader.getController();
+        goalsController.setPrimaryStage(stage);
+        goalsController.setUser(user);
+        goalsController.initialize();
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");

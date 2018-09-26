@@ -14,13 +14,39 @@ public abstract class Goal {
     private GoalType goalType;
     private User user;
     private boolean isCompleted;
-
+    private Double progress;
+    private Double current;
+    private Double target;
 
     public Goal(User user, String description, GoalType goalType) {
         this.user = user;
         this.description = description;
         this.startDate = new Date();
         this.goalType = goalType;
+    }
+
+    public Double getTarget() {
+        return target;
+    }
+
+    public void setTarget(Double target) {
+        this.target = target;
+    }
+
+    public Double getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Double progress) {
+        this.progress = progress;
+    }
+
+    public Double getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Double current) {
+        this.current = current;
     }
 
     /**
@@ -105,5 +131,11 @@ public abstract class Goal {
     }
 
     public abstract void checkIsCompleted();
+
+    public abstract void calculateProgress();
+
+    public abstract void calculateCurrent();
+
+    public abstract void calculateTarget();
 
 }

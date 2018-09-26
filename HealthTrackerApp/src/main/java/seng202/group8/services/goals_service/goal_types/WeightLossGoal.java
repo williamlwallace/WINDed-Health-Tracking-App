@@ -3,6 +3,8 @@ package seng202.group8.services.goals_service.goal_types;
 import seng202.group8.user.User;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
+import java.util.ArrayList;
+
 /**
  * @author lfa69
  */
@@ -10,12 +12,15 @@ public class WeightLossGoal extends Goal {
 
     private Double targetWeight;
 
+    private Double startWeight;
+
     public WeightLossGoal(User user, String description, GoalType goalType, Double targetWeight) throws NotCoherentWeightLossGoalException {
         super(user, description, goalType);
         if (targetWeight >= user.getWeight()) {
             throw new NotCoherentWeightLossGoalException();
         } else {
             this.targetWeight = targetWeight;
+            this.startWeight = user.getWeight();
         }
     }
 
@@ -51,5 +56,25 @@ public class WeightLossGoal extends Goal {
      */
     public void setTargetWeight(Double targetWeight) {
         this.targetWeight = targetWeight;
+    }
+
+    public Double getStartWeight() {
+        return startWeight;
+    }
+
+    public void setStartWeight(Double startWeight) {
+        this.startWeight = startWeight;
+    }
+
+    public void calculateProgress() {
+        setProgress(1 - (startWeight - targetWeight) / targetWeight);
+    }
+
+    public void calculateTarget() {
+        setTarget(targetWeight);
+    }
+
+    public void calculateCurrent() {
+        setCurrent(startWeight);
     }
 }

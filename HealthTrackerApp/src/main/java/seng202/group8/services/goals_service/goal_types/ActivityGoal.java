@@ -75,4 +75,26 @@ public class ActivityGoal extends Goal {
         setDistanceCurrentlyCovered(distanceCovered);
     }
 
+    public void calculateProgress() {
+        Double distanceCovered = 0.0;
+        ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
+        for (Data data : sameTypeData) {
+            distanceCovered += data.getDistanceCovered();
+        }
+        setProgress(1 - (distanceToCoverKm - distanceCovered) / distanceToCoverKm);
+    }
+
+    public void calculateTarget() {
+        setTarget(distanceToCoverKm);
+    }
+
+    public void calculateCurrent() {
+        Double distanceCovered = 0.0;
+        ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
+        for (Data data : sameTypeData) {
+            distanceCovered += data.getDistanceCovered();
+        }
+        setCurrent(distanceCovered);
+    }
+
 }

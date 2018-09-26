@@ -29,7 +29,6 @@ public class FrequencyGoal extends Goal {
      * If the the activity type has been performed as many times as required then the goal is completed.
      */
     public void checkIsCompleted() {
-        Double distanceCovered = 0.0;
         ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
 
         if (timesToPerformActivity <= sameTypeData.size()) {
@@ -70,5 +69,18 @@ public class FrequencyGoal extends Goal {
         this.dataType = dataType;
     }
 
+    public void calculateProgress() {
+        ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
+        setProgress((double) 1 - (timesToPerformActivity - sameTypeData.size()) / timesToPerformActivity);
+    }
+
+    public void calculateTarget() {
+        setTarget((double) timesToPerformActivity);
+    }
+
+    public void calculateCurrent() {
+        ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
+        setCurrent((double) sameTypeData.size());
+    }
 
 }
