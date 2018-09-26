@@ -86,7 +86,8 @@
                   <Font size="33.0" />
                </font>
             </Text>
-            <Text fx:id="dateText" layoutX="15.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+            <Text fx:id="fromText" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+            <Text fx:id="toText" layoutX="16.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
          </children></AnchorPane>
    </right>
    <bottom>

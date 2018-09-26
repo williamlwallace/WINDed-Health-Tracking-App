@@ -51,7 +51,10 @@ public class ActivitiesCollectionController {
     private Text insightsTitle;
 
     @FXML
-    private Text dateText;
+    private Text fromText;
+
+    @FXML
+    private Text toText;
 
     @FXML
     private Text distanceCovered;
@@ -117,7 +120,8 @@ public class ActivitiesCollectionController {
 //        }
 
         insightsTitle.setText(data.getTitle());
-        dateText.setText(data.getAllDateTimes().get(0).toLocalDate().toString());
+        fromText.setText(data.getAllDateTimes().get(0).toString());
+        toText.setText(data.getAllDateTimes().get(data.getAllDateTimes().size() - 1).toString());
 
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
