@@ -112,7 +112,7 @@ public class SQLiteJDBCTest {
     public void testUpdateWithListOfData() {
         database.saveUser(testUser, 1);
         ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
-        database.insertActivityList(insertedList.getTitle(), database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(insertedList.getCreationDate())), 1);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
         database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
         User retrievedUser = database.retrieveUser(1);
         ActivityList retrievedList = retrievedUser.getUserActivities().getActivityListCollection().get(0);
@@ -133,7 +133,7 @@ public class SQLiteJDBCTest {
     public void testInsertActivityList() {
         database.saveUser(testUser, 1);
         ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
-        database.insertActivityList(insertedList.getTitle(), database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(insertedList.getCreationDate())), 1);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
         User retrievedUser = database.retrieveUser(1);
         ActivityList retrievedActivityList = retrievedUser.getUserActivities().getActivityListCollection().get(0);
         assertEquals(insertedList.getCreationDate().toString(), retrievedActivityList.getCreationDate().toString());

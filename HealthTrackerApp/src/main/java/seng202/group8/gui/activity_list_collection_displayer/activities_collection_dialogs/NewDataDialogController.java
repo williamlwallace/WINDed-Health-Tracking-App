@@ -142,15 +142,15 @@ public class NewDataDialogController {
             //
 
             ArrayList<CoordinateData> coordinateData = new ArrayList<>();
-            CoordinateData coordinate1 = new CoordinateData(44.79935, 10.32618, 54);
-            CoordinateData coordinate2 = new CoordinateData(44.79945, 10.32628, 54);
+            CoordinateData coordinate1 = new CoordinateData(-1, -1, -1);
+            CoordinateData coordinate2 = new CoordinateData(-1, -1, -((Double.valueOf(distanceCoveredTextField.getText() + 1) / 10.0)));
             coordinateData.add(coordinate1);
             coordinateData.add(coordinate2);
 
 
             ArrayList<Integer> heartRates = new ArrayList<>();
-            heartRates.add(60);
-            heartRates.add(60);
+            heartRates.add(-1);
+            heartRates.add(-1);
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
@@ -162,8 +162,7 @@ public class NewDataDialogController {
                 ActivityList activityList = new ActivityList(newActivityListName.getText());
                 activityList.insertActivity(dataVal);
                 user.getUserActivities().insertActivityList(activityList);
-                database.insertActivityList(activityList.getTitle(),
-                        database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(activityList.getCreationDate())), 1);
+                database.insertActivityList(activityList.getTitle(), activityList.getCreationDate(), 1);
                 database.updateWithListOfData(activityList.getActivityList(), activityList.getTitle(), activityList.getCreationDate(), 1);
             } else {
                 System.out.println(activityListIndexToAppendTo);

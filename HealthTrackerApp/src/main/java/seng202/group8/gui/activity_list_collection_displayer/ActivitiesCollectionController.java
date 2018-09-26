@@ -34,6 +34,7 @@ import seng202.group8.user.User;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +50,12 @@ public class ActivitiesCollectionController {
     /*Insights GUI elements*/
     @FXML
     private Text insightsTitle;
+
+    @FXML
+    private Text fromText;
+
+    @FXML
+    private Text toText;
 
     @FXML
     private Text distanceCovered;
@@ -109,19 +116,31 @@ public class ActivitiesCollectionController {
      */
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
-        HeartRateData heartRateData1 = new HeartRateData(data.getHeartRateData().getHeartRateList());
-        for (Integer integer : heartRateData.getHeartRateList()) {
-            System.out.println("HR VAL: " + integer);
-        }
+//        for (Integer integer : heartRateData.getHeartRateList()) {
+//            System.out.println("HR VAL: " + integer);
+//        }
+
         insightsTitle.setText(data.getTitle());
+        LocalDateTime fromTime = data.getAllDateTimes().get(0);
+        LocalDateTime toTime = data.getAllDateTimes().get(data.getAllDateTimes().size() - 1);
+        fromText.setText("From: " + fromTime.toLocalDate().toString() + " " + fromTime.toLocalTime());
+        toText.setText("To: " + toTime.toLocalDate().toString() + " " + toTime.toLocalTime());
+
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
         } else {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered() / 1000) + " km");
         }
-        averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()) + " bpm");
-        maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate())  + " bpm");
-        minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate())  + " bpm");
+
+        if (heartRateData.getMeanAverageHeartRate() < 0) {
+            averageHeartRate.setText("N/A");
+            maxHeartRate.setText("N/A");
+            minHeartRate.setText("N/A");
+        } else {
+            averageHeartRate.setText(String.valueOf(heartRateData.getMeanAverageHeartRate()) + " bpm");
+            maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate()) + " bpm");
+            minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate()) + " bpm");
+        }
         String averageSpeedString = String.format("%.2f", data.getDataSpeedKph()) + " km/h";
         averageSpeed.setText(averageSpeedString);
 
@@ -338,7 +357,7 @@ public class ActivitiesCollectionController {
                 if (add == -1) {
                     ActivityList newList = new ActivityList(activityTitle);
                     add = user.getUserActivities().insertActivityList(newList);
-                    database.insertActivityList(activityTitle, database.getStringFromLocalDateTime(database.convertToLocalDateTimeViaInstant(newList.getCreationDate())), 1);
+                    database.insertActivityList(activityTitle, newList.getCreationDate(), 1);
                     for (Data data : parser.getDataList()) {
                         newData.add(data);
                         user.getUserActivities().insertActivityInGivenList(add, data);
@@ -355,7 +374,6 @@ public class ActivitiesCollectionController {
                 setUpTreeView();
                 List<String> csvArray = Arrays.asList(csvToParse.split("/"));
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
-                //database.saveUser(user, 1);
 
 
             }

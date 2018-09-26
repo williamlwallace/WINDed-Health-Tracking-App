@@ -56,6 +56,9 @@ public class CoordinateDataDifference {
         double haversineTwo = 2 * Math.atan2(Math.sqrt(haversineOne), Math.sqrt(1 - haversineOne));
 
         this.haversineDistance = (earthsRadius * haversineTwo);
+
+        //(2 * 6371e3) * (Math.asin((Math.sqrt((Math.pow((Math.sin((newPointTwo.getLatitude() - newPointOne.getLatitude()) / 2.0)), 2.0))))))
+        //double first = earthRadius
     }
 
     public double getAltitudeDifference() {
@@ -79,7 +82,7 @@ public class CoordinateDataDifference {
          * equivalent.
          */
 
-        this.distanceDifference = Math.hypot(this.haversineDistance, this.altitudeDifference);;
+        this.distanceDifference = Math.hypot(this.haversineDistance, this.altitudeDifference);
     }
 
     public CoordinateDataDifference(CoordinateData pointOne, CoordinateData pointTwo) {

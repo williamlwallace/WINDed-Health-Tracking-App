@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeView?>
 <?import javafx.geometry.Insets?>
@@ -13,23 +20,23 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
    <center>
       <WebView fx:id="googleMapsWebView" prefHeight="455.0" prefWidth="577.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <AnchorPane fx:id="acticvityInsightsAnchorPane" prefHeight="455.0" prefWidth="292.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="insightsTitle" layoutX="15.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="insightsTitle" layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="title">
                <font>
-                  <Font size="14.0" />
+                  <Font size="17.0" />
                </font></Text>
-            <Text layoutX="9.0" layoutY="137.8515625" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="297.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="123.0">
+            <Text layoutX="9.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance Covered" wrappingWidth="141.8984375" AnchorPane.bottomAnchor="278.2265625" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="141.1015625" AnchorPane.topAnchor="158.1484375">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="6.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Heart Rate" wrappingWidth="95.76171875" AnchorPane.leftAnchor="6.0">
+            <Text layoutX="6.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Heart Rate" wrappingWidth="95.76171875" AnchorPane.leftAnchor="6.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -49,27 +56,27 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="distanceCovered" layoutX="169.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="distanceCovered" layoutX="168.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="averageHeartRate" layoutX="168.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="averageHeartRate" layoutX="168.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="maxHeartRate" layoutX="169.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="maxHeartRate" layoutX="169.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="minHeartRate" layoutX="168.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="minHeartRate" layoutX="168.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="averageSpeed" layoutX="168.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="averageSpeed" layoutX="168.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ciao">
                <font>
                   <Font size="16.0" />
                </font>
@@ -79,6 +86,8 @@
                   <Font size="33.0" />
                </font>
             </Text>
+            <Text fx:id="fromText" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+            <Text fx:id="toText" layoutX="15.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
          </children></AnchorPane>
    </right>
    <bottom>
@@ -120,7 +129,7 @@
       <VBox prefHeight="455.0" prefWidth="192.0" BorderPane.alignment="CENTER">
          <children>
             <JFXTreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#showNewInsightsAndMap" prefHeight="424.0" prefWidth="192.0" style="-fx-background-insets: #2e86c1;" />
-            <JFXButton fx:id="deleteButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #ff0000;" text="Remove Selected" />
+            <JFXButton fx:id="deleteButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #ff0000;" text="Remove Selected" />
          </children>
       </VBox>
    </left>
