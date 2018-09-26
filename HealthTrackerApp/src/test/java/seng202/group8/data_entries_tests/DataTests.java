@@ -3,10 +3,7 @@ package seng202.group8.data_entries_tests;
 import org.junit.Before;
 import org.junit.Test;
 import seng202.group8.activity_collection.ActivityList;
-import seng202.group8.data_entries.CoordinateData;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.DataType;
-import seng202.group8.data_entries.RunData;
+import seng202.group8.data_entries.*;
 import seng202.group8.parser.Parser;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
@@ -109,8 +106,15 @@ public class DataTests {
     public void testWalkCalories() throws Exception {
 
         //System.out.println(testUser.getUserActivities().getAllData().get(0).getConsumedCalories());
-        assertTrue((testUser.getUserActivities().getAllData().get(0).getConsumedCalories()) == 19033.458413001918);
+        assertTrue((testUser.getUserActivities().getAllData().get(0).getConsumedCalories()) == 19403.08347952518);
 
+    }
+
+    @Test
+    public void testDistanceDifference() throws Exception {
+
+        CoordinateDataDifference distanceDifference = new CoordinateDataDifference(testUser.getUserActivities().getAllData().get(0).getCoordinatesArrayList().get(0), (testUser.getUserActivities().getAllData().get(0).getCoordinatesArrayList().get(1)));
+        System.out.println(distanceDifference.getDistanceDifference());
     }
 
 

@@ -141,7 +141,6 @@ public class StatisticsService {
      * Searches through all data and adds how much calories were burned by the user
      */
     public void setCaloriesBurned() {
-
         Double calories = 0.0;
         for(int i = 0; i < arrayCollection.size(); i++) {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();

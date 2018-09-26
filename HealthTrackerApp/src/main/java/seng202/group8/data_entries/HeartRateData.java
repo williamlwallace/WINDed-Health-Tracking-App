@@ -3,6 +3,10 @@ package seng202.group8.data_entries;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * @author cmc280
+ *
+ */
 public class HeartRateData {
 
     private ArrayList<Integer> heartRateList;

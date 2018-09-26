@@ -16,6 +16,8 @@ import java.util.Date;
  * This is the Data abstract class definition. Data objects contain all of the information from an activity. They also
  * calculate values, and ArrayLists of values, based on the activity. For example, the calories burned over time, the
  * total number of calories burned in the activity, or the speeds between two particular coordinates.
+ *
+ * @author cmc280
  */
 public abstract class Data {
 
@@ -25,7 +27,7 @@ public abstract class Data {
         When there are times that are too difficult to calculate the calories
         using the coordinates, an attempt will be made to give an
         estimation purely based on the heart rate over that time period.
-     * XX TESTS NOT WRITTEN JUST YETT*/
+     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
     //    private DataType = new DataType();
@@ -102,6 +104,8 @@ public abstract class Data {
             if (newHeartRateList.get(0) == -1) {
                 this.isGraphable = false;
             }
+        } else {
+            this.isGraphable = true;
         }
         if (this.isGraphable) {
             this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
