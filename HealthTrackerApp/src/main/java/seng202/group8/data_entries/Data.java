@@ -98,10 +98,10 @@ public abstract class Data {
         this.millisecondsOfExercise = calculateMillisecondsOfExercise();
         this.dataSpeedKph = calculateDataSpeedKilometresPerHour();
         this.dataSpeedMph = calculateDataSpeedMilesPerHour();
-        this.isGraphable = ((newDateTimes.size() == newCoordinatesList.size()) ==
-                (newCoordinatesList.size() == newHeartRateList.size()));
-        if (newDateTimes.size() < 3) {
-            this.isGraphable = false;
+        if (newCoordinatesList.get(0).getLatitude() == -1 && newCoordinatesList.get(0).getLongitude() == -1 && newCoordinatesList.get(0).getAltitude() == -1) {
+            if (newHeartRateList.get(0) == -1) {
+                this.isGraphable = false;
+            }
         }
         if (this.isGraphable) {
             this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
