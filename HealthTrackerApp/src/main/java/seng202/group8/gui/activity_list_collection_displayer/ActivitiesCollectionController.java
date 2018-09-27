@@ -3,6 +3,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeView;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
@@ -52,25 +53,25 @@ public class ActivitiesCollectionController {
     private Text insightsTitle;
 
     @FXML
-    private Text fromText;
+    private JFXTextField fromText;
 
     @FXML
-    private Text toText;
+    private JFXTextField toText;
 
     @FXML
-    private Text distanceCovered;
+    private JFXTextField distanceCovered;
 
     @FXML
-    private Text averageHeartRate;
+    private JFXTextField averageHeartRate;
 
     @FXML
-    private Text maxHeartRate;
+    private JFXTextField maxHeartRate;
 
     @FXML
-    private Text minHeartRate;
+    private JFXTextField minHeartRate;
 
     @FXML
-    private Text averageSpeed;
+    private JFXTextField averageSpeed;
 
 
     @FXML
