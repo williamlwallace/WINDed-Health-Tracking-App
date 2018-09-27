@@ -1,6 +1,7 @@
 package seng202.group8.data_entries;
 
 
+import javafx.scene.Node;
 import org.apache.commons.lang3.ObjectUtils;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
@@ -16,6 +17,8 @@ import java.util.Date;
  * This is the Data abstract class definition. Data objects contain all of the information from an activity. They also
  * calculate values, and ArrayLists of values, based on the activity. For example, the calories burned over time, the
  * total number of calories burned in the activity, or the speeds between two particular coordinates.
+ *
+ * @author cmc280
  */
 public abstract class Data {
 
@@ -25,7 +28,7 @@ public abstract class Data {
         When there are times that are too difficult to calculate the calories
         using the coordinates, an attempt will be made to give an
         estimation purely based on the heart rate over that time period.
-     * XX TESTS NOT WRITTEN JUST YETT*/
+     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
     //    private DataType = new DataType();
@@ -102,6 +105,8 @@ public abstract class Data {
             if (newHeartRateList.get(0) == -1) {
                 this.isGraphable = false;
             }
+        } else {
+            this.isGraphable = true;
         }
         if (this.isGraphable) {
             this.mphSpeedsBetweenPoints = calculateMphSpeedsBetweenPoints();
@@ -117,6 +122,27 @@ public abstract class Data {
             this.stressLevelMin = calculateStressLevelMin();
             this.stressProportionsBetweenPoints = calculateStressProportionsBetweenPoints();
         }
+    }
+
+    /**
+     * Writted by Sam, compares two data classes to see if they are duplicate.
+     * @param data
+     * @return
+     */
+    public boolean equalsNewData(Data data) {
+        boolean to_return  = false;
+        if (this.title.equals(data.getTitle())) {
+            to_return = true;
+        } else if (this.dataType.equals(data.getDataType())) {
+            to_return = true;
+        } else if (this.allDateTimes.equals(data.getAllDateTimes())) {
+            to_return = true;
+        } else if (this.coordinatesArrayList.equals(data.getCoordinatesArrayList())) {
+            to_return = true;
+        } else if (this.heartRateList.equals(data.getHeartRateList())) {
+            to_return = true;
+        }
+        return to_return;
     }
 
 

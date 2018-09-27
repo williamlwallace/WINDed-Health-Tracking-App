@@ -1,5 +1,6 @@
 package seng202.group8.user;
 
+import seng202.group8.services.goals_service.GoalsService;
 import seng202.group8.services.health_service.HealthService;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.user_stats.Sex;
@@ -26,6 +27,7 @@ public class User {
     private ArrayList<UserObserver> observers;
     private HealthService userHealth;
     private StatisticsService statsService;
+    private GoalsService goalsService;
 
 
 
@@ -48,8 +50,17 @@ public class User {
         this.sex = sex;
         this.userHealth = new HealthService(this);
         this.statsService = new StatisticsService(this);
+        this.goalsService = new GoalsService(this);
         userStats.addUserBMITypeRecords(bmi);
         userStats.addUserWeightRecords(weight);
+    }
+
+    public GoalsService getGoalsService() {
+        return goalsService;
+    }
+
+    public void setGoalsService(GoalsService goalsService) {
+        this.goalsService = goalsService;
     }
 
     /**
