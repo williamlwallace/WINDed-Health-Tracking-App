@@ -4,6 +4,7 @@ import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.user.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,9 @@ public class FrequencyGoal extends Goal {
     private Integer timesCurrentlyPerformedActivity;
     private DataType dataType;
 
-    public FrequencyGoal(User user, String description, GoalType goalType, DataType dataType, Integer timesToPerformActivity) {
+    public FrequencyGoal(User user, String description, GoalType goalType, DataType dataType, Integer timesToPerformActivity, LocalDateTime targetDate) {
         super(user, description, goalType);
+        setTargetDate(targetDate);
         this.timesToPerformActivity = timesToPerformActivity;
         this.dataType = dataType;
         this.timesCurrentlyPerformedActivity = 0;

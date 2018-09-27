@@ -4,8 +4,11 @@ import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
@@ -13,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.apache.commons.lang3.ObjectUtils;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
@@ -22,6 +26,8 @@ import seng202.group8.services.goals_service.goal_types.*;
 import seng202.group8.user.User;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class GoalsDisplayerController {
@@ -29,7 +35,6 @@ public class GoalsDisplayerController {
     private User user;
     private Stage stage;
     private GoalType selectedGoalType;
-    //TO DELETE ONCE CONNECTED TO USERS
     private GoalsService goalsService;
     //
 
@@ -44,19 +49,18 @@ public class GoalsDisplayerController {
 
 
     public void createGoals() throws Exception {
-        goalsService = new GoalsService(user);
-        ActivityGoal activityGoal = new ActivityGoal(user, "activity1", GoalType.ActivityGoal, DataType.WALK, 200.0);
-        ActivityGoal activityGoal2 = new ActivityGoal(user, "activity2", GoalType.ActivityGoal, DataType.RUN, 300.0);
-        ActivityGoal activityGoal3 = new ActivityGoal(user, "activity3", GoalType.ActivityGoal, DataType.WALK, 200.0);
-        ActivityGoal activityGoal4 = new ActivityGoal(user, "activity4", GoalType.ActivityGoal, DataType.RUN, 300.0);
-        ActivityGoal activityGoal5 = new ActivityGoal(user, "activity5", GoalType.ActivityGoal, DataType.WALK, 200.0);
-        ActivityGoal activityGoal6 = new ActivityGoal(user, "activity6", GoalType.ActivityGoal, DataType.RUN, 750.0);
-        ActivityGoal activityGoal7 = new ActivityGoal(user, "activity7", GoalType.ActivityGoal, DataType.WALK, 1000.0);
-        ActivityGoal activityGoal8 = new ActivityGoal(user, "activity8", GoalType.ActivityGoal, DataType.RUN, 2000.0);
-        FrequencyGoal frequencyGoal = new FrequencyGoal(user, "Frequency1", GoalType.TimePerformedGoal, DataType.WALK, 3);
+        ActivityGoal activityGoal = new ActivityGoal(user, "activity1", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
+        ActivityGoal activityGoal2 = new ActivityGoal(user, "activity2", GoalType.ActivityGoal, DataType.RUN, 300.0, LocalDateTime.now());
+        ActivityGoal activityGoal3 = new ActivityGoal(user, "activity3", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
+        ActivityGoal activityGoal4 = new ActivityGoal(user, "activity4", GoalType.ActivityGoal, DataType.RUN, 300.0, LocalDateTime.now());
+        ActivityGoal activityGoal5 = new ActivityGoal(user, "activity5", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
+        ActivityGoal activityGoal6 = new ActivityGoal(user, "activity6", GoalType.ActivityGoal, DataType.RUN, 750.0, LocalDateTime.now());
+        ActivityGoal activityGoal7 = new ActivityGoal(user, "activity7", GoalType.ActivityGoal, DataType.WALK, 1000.0, LocalDateTime.now());
+        ActivityGoal activityGoal8 = new ActivityGoal(user, "activity8", GoalType.ActivityGoal, DataType.RUN, 2000.0, LocalDateTime.now());
+        FrequencyGoal frequencyGoal = new FrequencyGoal(user, "Frequency1", GoalType.TimePerformedGoal, DataType.WALK, 3, LocalDateTime.now());
         WeightLossGoal weightLossGoal;
         try {
-            weightLossGoal = new WeightLossGoal(user, "weight1", GoalType.WeightLossGoal, 60.0);
+            weightLossGoal = new WeightLossGoal(user, "weight1", GoalType.WeightLossGoal, 60.0, LocalDateTime.now());
             goalsService.getCurrentActivityGoals().add(activityGoal);
             goalsService.getCurrentActivityGoals().add(activityGoal2);
             goalsService.getCurrentActivityGoals().add(activityGoal3);
@@ -86,6 +90,8 @@ public class GoalsDisplayerController {
             goalTypeLabel.setText("Activity Goals");
             viewBox.setValue("Activity Goals");
             setUpGoalsView();
+        } else {
+            goalTypeLabel.setText("Create a goal to get started");
         }
     }
 
@@ -104,10 +110,13 @@ public class GoalsDisplayerController {
                 selectedGoalType = GoalType.WeightLossGoal;
                 break;
             default:
-                selectedGoalType = GoalType.ActivityGoal;
                 break;
         }
-        setUpGoalsView();
+        if (goalsService != null) {
+            setUpGoalsView();
+        } else {
+            goalTypeLabel.setText("Create a goal to get started");
+        }
     }
 
 
@@ -125,6 +134,7 @@ public class GoalsDisplayerController {
                 goalsToDisplay = goalsService.getCurrentActivityGoals();
                 break;
         }
+        System.out.println(goalsToDisplay);
         Label [] titles = new Label[goalsToDisplay.size()];
         Label [] currents = new Label[goalsToDisplay.size()];
         Label [] targets = new Label[goalsToDisplay.size()];
@@ -166,56 +176,29 @@ public class GoalsDisplayerController {
         }
         currentGoals.setSpacing(10);
         currentGoals.getChildren().addAll(vbs);
-
-
-
-
-
-//        ObservableList<Goal> goalObservableList = FXCollections.observableList(goalsToDisplay);
-//        goalsListView.setItems(goalObservableList);
-//        goalsListView.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
-//            @Override
-//            public ListCell<Goal> call(ListView<Goal> param) {
-//                ListCell<Goal> cell = new ListCell<Goal>(){
-//
-//                    @Override
-//                    protected void updateItem(Goal goal, boolean bln) {
-//                        super.updateItem(goal, bln);
-//
-//                        HBox hBox = new HBox();
-//                        Text title = new Text();
-//                        if (goal != null) {
-//                            title.setText(goal.getDescription());
-//                            switch (selectedGoalType) {
-//                                case WeightLossGoal:
-//                                    hBox.getChildren().addAll(title);
-//                                    hBox.setPadding(new Insets(5));
-//                                    hBox.setStyle("-fx-background-color : green;");
-//                                    setGraphic(hBox);
-//                                    break;
-//                                case ActivityGoal:
-//                                    hBox.getChildren().addAll(title);
-//                                    hBox.setPadding(new Insets(5));
-//                                    hBox.setStyle("-fx-background-color : red;");
-//                                    setGraphic(hBox);
-//                                    break;
-//                                case TimePerformedGoal:
-//                                    hBox.getChildren().addAll(title);
-//                                    hBox.setPadding(new Insets(5));
-//                                    hBox.setStyle("-fx-background-color : blue;");
-//                                    setGraphic(hBox);
-//                                    break;
-//                            }
-//                        }
-//                    }
-//                };
-//
-//                return cell;
-//            }
-//        });
     }
 
 
+    public void createGoal() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/add_goal.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AddGoalController addGoalController = loader.getController();
+        Stage newStage = new Stage();
+        addGoalController.setStage(newStage);
+        addGoalController.setUser(user);
+        addGoalController.start();
+        newStage.setTitle("Add Goal");
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setResizable(false);
+        newStage.show();
+        changeView();
+    }
 
     public void showActivityGoals() {
         selectedGoalType = GoalType.ActivityGoal;
@@ -232,6 +215,9 @@ public class GoalsDisplayerController {
         setUpGoalsView();
     }
 
+    public void setGoalsService(GoalsService goalsService) {
+        this.goalsService = goalsService;
+    }
 
     public User getUser() {
         return user;

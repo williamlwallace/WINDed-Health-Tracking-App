@@ -186,6 +186,10 @@ public class User {
         return userStats;
     }
 
+    public void setUserStats(UserStats userStats) {
+        this.userStats = userStats;
+    }
+
     /**
      * @return The activity list collection of all the users activities
      */

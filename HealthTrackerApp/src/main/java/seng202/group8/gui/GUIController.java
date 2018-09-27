@@ -139,6 +139,7 @@ public class GUIController implements Initializable {
         GoalsDisplayerController goalsController = loader.getController();
         goalsController.setPrimaryStage(stage);
         goalsController.setUser(user);
+        goalsController.setGoalsService(user.getGoalsService());
         goalsController.initialize();
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");
