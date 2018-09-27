@@ -333,7 +333,7 @@ public class Parser {
      * @param keyWord
      * @param type
      */
-    public void add(String keyWord, int type) {
+    public void add(String keyWord, int type, boolean addToDataBase) {
         acceptedValues.clear();
         switch (type) {
             case 1:

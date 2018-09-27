@@ -367,6 +367,31 @@ public class SQLiteJDBC {
         }
     }
 
+    public void addParserKeyword(Connection connection, Integer userId, String phrase, int type) {
+        String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            preparedStatement.setInt(3,type);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteParserKeyword(Connection connection, Integer userId, String phrase) {
+        String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Performs an SQL Select to get the title of the Users activity list collection from the Database
      * @param connection the connection to the database
@@ -634,7 +659,9 @@ public class SQLiteJDBC {
             sql = "DELETE FROM Activity_Time";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
-
+            sql = "DELETE FROM parser_keywords";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
             if (connection != null) {
                 connection.close();
             }

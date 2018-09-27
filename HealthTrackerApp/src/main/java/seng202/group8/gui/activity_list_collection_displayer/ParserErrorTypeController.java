@@ -3,6 +3,7 @@ package seng202.group8.gui.activity_list_collection_displayer;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
@@ -27,6 +28,9 @@ public class ParserErrorTypeController {
 
     @FXML
     private ComboBox actType;
+
+    @FXML
+    private CheckBox rememberTick;
 
     private String errorMessage;
     private List<String> errorList;
@@ -92,8 +96,13 @@ public class ParserErrorTypeController {
                     break;
             }
         }
-        if (type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0))) {
-            parser.add(phraseReturn, type);
+        rememberTick.isSelected();
+        if ((type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0))) || (rememberTick.isSelected() && type != 0))  {
+            if (rememberTick.isSelected()) {
+                parser.add(errorList.get(1), type, false);
+            } else {
+                parser.add(phraseReturn, type, true);
+            }
             int error  = 0;
             try {
                 parser.parseFile();
