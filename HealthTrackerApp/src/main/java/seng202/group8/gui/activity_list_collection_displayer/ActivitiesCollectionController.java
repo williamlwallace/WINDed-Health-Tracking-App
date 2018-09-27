@@ -24,6 +24,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.commons.text.WordUtils;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
@@ -53,32 +54,31 @@ public class ActivitiesCollectionController {
     private Text insightsTitle;
 
     @FXML
-    private JFXTextField fromText;
+    private Text dateText;
 
     @FXML
-    private JFXTextField toText;
+    private Text fromText;
 
     @FXML
-    private JFXTextField distanceCovered;
+    private Text toText;
 
     @FXML
-    private JFXTextField averageHeartRate;
+    private Text distanceCovered;
 
     @FXML
-    private JFXTextField maxHeartRate;
+    private Text averageSpeed;
 
     @FXML
-    private JFXTextField minHeartRate;
+    private Text averageHeartRate;
 
     @FXML
-    private JFXTextField averageSpeed;
+    private Text maxHeartRate;
 
+    @FXML
+    private Text minHeartRate;
 
     @FXML
     private Text parserInfo;
-
-    @FXML
-    private TextField titleField;
 
     /* TreeView */
     @FXML
@@ -91,6 +91,9 @@ public class ActivitiesCollectionController {
     /* File Searching */
     @FXML
     private Button searchForFileButton;
+
+    @FXML
+    private TextField titleField;
 
     @FXML
     private JFXButton deleteButton;
@@ -106,7 +109,6 @@ public class ActivitiesCollectionController {
      */
     @FXML
     private void initialize() {
-        deleteButton.setVisible(false);
     }
 
     /**
@@ -121,11 +123,16 @@ public class ActivitiesCollectionController {
 //            System.out.println("HR VAL: " + integer);
 //        }
 
-        insightsTitle.setText(data.getTitle());
+        if (data.getTitle().length() < 20) {
+            insightsTitle.setText(WordUtils.capitalize(data.getTitle()));
+        } else {
+            insightsTitle.setText(WordUtils.capitalize(data.getTitle().substring(0, 17) + "..."));
+        }
         LocalDateTime fromTime = data.getAllDateTimes().get(0);
         LocalDateTime toTime = data.getAllDateTimes().get(data.getAllDateTimes().size() - 1);
-        fromText.setText("From: " + fromTime.toLocalDate().toString() + " " + fromTime.toLocalTime());
-        toText.setText("To: " + toTime.toLocalDate().toString() + " " + toTime.toLocalTime());
+        dateText.setText(fromTime.toLocalDate().toString());
+        fromText.setText(fromTime.toLocalTime().toString());
+        toText.setText(toTime.toLocalTime().toString());
 
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
@@ -385,34 +392,34 @@ public class ActivitiesCollectionController {
     }
 
 
-//    /**
-//     *OnActionListener for the delete button, it allows to delete an activity or a list of activities.
-//     * Problem: if deleting the last ActivityList, then you must upload using the parser and no manual entrance is possible.
-//     */
-//    //Need to link it to the database
-//    public void deleteSelectedActivityOrActivityList() {
-//        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
-//        if (selectedItem != null && selectedItem != activityListCollectionTreeView.getRoot()) {
-//            TreeItem<String> parent = selectedItem.getParent();
-//            if (!selectedItem.isLeaf()) {
-//                int activityListIndex = parent.getChildren().indexOf(selectedItem);
-//                user.getUserActivities().deleteActivityList(activityListIndex);
-//            } else {
-//                int dataListIndex = parent.getChildren().indexOf(selectedItem);
-//                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
-//                System.out.println("activity list index: " + activityListIndex);
-//                System.out.println("data index: " + dataListIndex);
-//                ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
-//                if (activityList.getActivityList().size() > 1) {
-//                    Data dataToDelete = activityList.getActivity(dataListIndex);
-//                    activityList.getActivityList().remove(dataToDelete);
-//                } else {
-//                    user.getUserActivities().deleteActivityList(activityListIndex);
-//                }
-//            }
-//        }
-//        setUpTreeView();
-//    }
+    /**
+     *OnActionListener for the delete button, it allows to delete an activity or a list of activities.
+     * Problem: if deleting the last ActivityList, then you must upload using the parser and no manual entrance is possible.
+     */
+    //Need to link it to the database
+    public void deleteSelectedActivityOrActivityList() {
+        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null && selectedItem != activityListCollectionTreeView.getRoot()) {
+            TreeItem<String> parent = selectedItem.getParent();
+            if (!selectedItem.isLeaf()) {
+                int activityListIndex = parent.getChildren().indexOf(selectedItem);
+                user.getUserActivities().deleteActivityList(activityListIndex);
+            } else {
+                int dataListIndex = parent.getChildren().indexOf(selectedItem);
+                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+                System.out.println("activity list index: " + activityListIndex);
+                System.out.println("data index: " + dataListIndex);
+                ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+                if (activityList.getActivityList().size() > 1) {
+                    Data dataToDelete = activityList.getActivity(dataListIndex);
+                    activityList.getActivityList().remove(dataToDelete);
+                } else {
+                    user.getUserActivities().deleteActivityList(activityListIndex);
+                }
+            }
+        }
+        setUpTreeView();
+    }
 
     public void setParserInfo(String s) {
         parserInfo.setText(s);
