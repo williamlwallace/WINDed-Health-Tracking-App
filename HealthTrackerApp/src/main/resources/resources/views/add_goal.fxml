@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController">
+<?import seng202.group8.data_entries.DataType?>
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.AddGoalController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="133.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="317.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -27,17 +33,26 @@
             <Insets right="20.0" />
          </GridPane.margin>
       </Text>
-      <ChoiceBox fx:id="goalChoiceBox" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
+      <Separator prefHeight="1.0" prefWidth="256.0" GridPane.valignment="BOTTOM" />
+      <ComboBox fx:id="goalTypeCombo" onAction="#changeGoal" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1">
          <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
-      </ChoiceBox>
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Activity Goal" />
+                  <String fx:value="Frequency Goal" />
+                  <String fx:value="Weight Goal" />
+              </FXCollections>
+          </items>
+      </ComboBox>
+      <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
       <Text fx:id="goalTargetLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Target:" textAlignment="CENTER" wrappingWidth="126.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets right="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="targetTextField" maxWidth="185.0" prefHeight="26.0" prefWidth="185.0" promptText="Eg; 1000 (m)" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="targetTextField" maxWidth="203.0" prefHeight="26.0" prefWidth="200.0" promptText="Eg; 1000 (m)" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
@@ -52,10 +67,40 @@
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <JFXButton buttonType="RAISED" prefHeight="25.0" prefWidth="184.0" ripplerFill="BLACK" style="-fx-background-color: #2e86c1;" text="Create Goal!" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <JFXButton fx:id="createGoal" buttonType="RAISED" onAction="#errorCheck" prefHeight="26.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #2e86c1;" text="Create Goal!" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </JFXButton>
+      <JFXDatePicker fx:id="datePicker" defaultColor="#2e86c1" prefHeight="26.0" prefWidth="208.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></JFXDatePicker>
+      <Text fx:id="targetDateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Target Date:" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="activityTypeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Activity Type:" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Text>
+      <ComboBox fx:id="activityTypeBox" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <DataType fx:value="WALK" />
+                  <DataType fx:value="HIKE" />
+                  <DataType fx:value="RUN" />
+                  <DataType fx:value="CLIMB" />
+                  <DataType fx:value="BIKE" />
+                  <DataType fx:value="SWIM" />
+                  <DataType fx:value="WATER_SPORTS" />
+              </FXCollections>
+          </items>
+      </ComboBox>
    </children>
 </GridPane>

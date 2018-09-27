@@ -45,7 +45,7 @@ public class FrequencyGoalTest {
         coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
 
         frequencyGoal = new FrequencyGoal(user, "Gotta go running more!",
-                        GoalType.TimePerformedGoal, DataType.HIKE, 2);
+                        GoalType.TimePerformedGoal, DataType.HIKE, 2, LocalDateTime.now());
         frequencyGoal.setStartDate(new Date(0));
         hikeData1 = new HikeData("Hike", DataType.HIKE, localTimes, coordinateList, heartRates, user);
         hikeData2 = new HikeData("Hike", DataType.HIKE, localTimes, coordinateList, heartRates, user);

@@ -47,7 +47,7 @@ public class ActivityGoalTest {
 
 
         activityGoal = new ActivityGoal(user, "Gotta go running more!",
-                GoalType.ActivityGoal, DataType.HIKE, 250.0);
+                GoalType.ActivityGoal, DataType.HIKE, 250.0, LocalDateTime.now());
         activityGoal.setStartDate(new Date(0));
         hikeData1 = new HikeData("Hike", DataType.HIKE, localTimes, coordinateList, heartRates, user);
         hikeData1.setDistanceCovered(200.0);

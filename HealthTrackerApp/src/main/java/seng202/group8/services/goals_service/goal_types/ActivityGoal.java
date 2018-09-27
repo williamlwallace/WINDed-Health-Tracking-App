@@ -4,6 +4,7 @@ import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.user.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -16,8 +17,9 @@ public class ActivityGoal extends Goal {
     private Double distanceCurrentlyCovered;
     private DataType dataType;
 
-    public ActivityGoal(User user, String description, GoalType goalType, DataType dataType,  Double distanceToCover) {
+    public ActivityGoal(User user, String description, GoalType goalType, DataType dataType, Double distanceToCover, LocalDateTime targetDate) {
         super(user, description, goalType);
+        setTargetDate(targetDate);
         this.distanceToCoverKm = distanceToCover;
         this.distanceCurrentlyCovered = 0.0;
         this.dataType = dataType;
