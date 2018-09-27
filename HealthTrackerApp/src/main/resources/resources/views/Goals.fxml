@@ -21,7 +21,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="454.0" prefWidth="990.0" style="-fx-background-color: #ffff;">
                      <children>
-                        <Label fx:id="totalStatsLabel" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="543.0" style="-fx-background-color: #2e86c1;" text="Current Goals" textFill="WHITE">
+                        <Label fx:id="totalStatsLabel" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="551.0" style="-fx-background-color: #2e86c1;" text="Current Goals" textFill="WHITE">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -31,7 +31,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="442.0" prefWidth="543.0">
+                        <ScrollPane prefHeight="460.0" prefWidth="550.0">
                            <content>
                               <VBox fx:id="currentGoals" prefHeight="197.0" prefWidth="527.0" />
                            </content>

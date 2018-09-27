@@ -66,11 +66,11 @@ public class WeightLossGoal extends Goal {
     }
 
     public void calculateProgress() {
-        Double a = getUser().getWeight() - startWeight;
-        if (a < 0.0 ) {
+        Double currentLost = startWeight - getUser().getWeight();
+        if (currentLost < 0.0 ) {
             setProgress(0.0);
         } else {
-            setProgress(((getUser().getWeight()) - targetWeight) / (startWeight - targetWeight));
+            setProgress((currentLost / (startWeight - targetWeight)));
         }
 
     }

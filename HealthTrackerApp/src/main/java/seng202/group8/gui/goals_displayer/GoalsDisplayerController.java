@@ -3,6 +3,8 @@ package seng202.group8.gui.goals_displayer;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -13,7 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.apache.commons.lang3.ObjectUtils;
@@ -28,6 +30,7 @@ import utils.exceptions.NotCoherentWeightLossGoalException;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class GoalsDisplayerController {
@@ -142,6 +145,9 @@ public class GoalsDisplayerController {
         ProgressBar[] pbs = new ProgressBar[goalsToDisplay.size()];
         VBox vbs [] = new VBox [goalsToDisplay.size()];
         HBox hbs [] = new HBox [goalsToDisplay.size()];
+        Button edits [] = new Button [goalsToDisplay.size()];
+        Button removes [] = new Button [goalsToDisplay.size()];
+        Label dates [] = new Label [goalsToDisplay.size()];
         currentGoals.getChildren().clear();
         for (int i = 0; i < goalsToDisplay.size(); i++) {
 
@@ -151,7 +157,12 @@ public class GoalsDisplayerController {
             ProgressBar pb = pbs[i] = new ProgressBar();
             goalsToDisplay.get(i).calculateProgress();
             pb.setProgress(goalsToDisplay.get(i).getProgress());
-            pb.setMinWidth(300.0);
+            pb.setMinWidth(200.0);
+
+            Label date = dates[i] = new Label();
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            date.setTextAlignment(TextAlignment.CENTER);
+            date.setText("Target Date\n" + goalsToDisplay.get(i).getTargetDate().format(format));
 
             Label current = currents[i] = new Label();
             goalsToDisplay.get(i).calculateCurrent();
@@ -164,10 +175,34 @@ public class GoalsDisplayerController {
             Label percentage = percentages[i] = new Label();
             percentage.setText(Double.toString(goalsToDisplay.get(i).getProgress() * 100.0) + " %");
 
+            Button edit = edits[i] = new Button();
+            edit.setText("Edit");
+            edit.setStyle("-fx-background-color: #2e86c1");
+            edit.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    System.out.println("edit");
+
+                }
+            });
+
+            Button remove = removes[i] = new Button();
+            remove.setText("Remove");
+            remove.setStyle("-fx-background-color: #2e86c1");
+            remove.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                    System.out.println("Test2");
+
+                }
+            });
+
             HBox hb = hbs[i] = new HBox();
             hb.setSpacing(15);
             hb.setAlignment(Pos.CENTER);
-            hb.getChildren().addAll(current, pb, target);
+            hb.getChildren().addAll(date, current, pb, target, edit, remove);
 
             VBox vb = vbs[i] = new VBox();
             vb.setSpacing(7);
