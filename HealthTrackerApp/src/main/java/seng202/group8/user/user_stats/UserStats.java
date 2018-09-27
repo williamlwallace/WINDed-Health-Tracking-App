@@ -18,6 +18,14 @@ public class UserStats {
         return userBMITypeRecords;
     }
 
+    public void setUserWeightRecords(ArrayList userWeightRecords) {
+        this.userWeightRecords = userWeightRecords;
+    }
+
+    public void setUserBMITypeRecords(ArrayList userBMITypeRecords) {
+        this.userBMITypeRecords = userBMITypeRecords;
+    }
+
     /**
      *Adders for each arrayList to create the records and add them to the arrayLists
      * Each function takes the input needed for the record specified

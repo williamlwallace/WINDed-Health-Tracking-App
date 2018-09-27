@@ -7,6 +7,8 @@ import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
+import java.time.LocalDateTime;
+
 import static org.junit.Assert.*;
 
 public class WeightLossGoalTest {
@@ -27,11 +29,7 @@ public class WeightLossGoalTest {
     @Test
     public void constructorExceptionTest() {
         boolean thrown = false;
-        try {
-            WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 170.0);
-        } catch (NotCoherentWeightLossGoalException e) {
-            thrown = true;
-        }
+        WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 170.0, LocalDateTime.now());
 
         assertTrue(thrown);
     }
@@ -39,11 +37,7 @@ public class WeightLossGoalTest {
     @Test
     public void constructorWorkingTest() {
         boolean thrown = false;
-        try {
-            WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 78.0);
-        } catch (NotCoherentWeightLossGoalException e) {
-            thrown = true;
-        }
+        WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 78.0, LocalDateTime.now());
 
         assertFalse(thrown);
     }
@@ -51,14 +45,10 @@ public class WeightLossGoalTest {
     @Test
     public void checkIsCompletedTrueTest1() {
         WeightLossGoal weightLossGoal;
-        try {
-            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
+            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0, LocalDateTime.now());
 //            user.setWeight(83.0);
 //            weightLossGoal.checkIsCompleted();
 //            assertTrue(weightLossGoal.getIsCompleted());
-        } catch (NotCoherentWeightLossGoalException e) {
-            e.printStackTrace();
-        }
 
 
     }
@@ -66,14 +56,10 @@ public class WeightLossGoalTest {
     @Test
     public void checkIsCompletedTrueTest2() {
         WeightLossGoal weightLossGoal;
-        try {
-            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
+            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0, LocalDateTime.now());
 //            user.setWeight(73.0);
 //            weightLossGoal.checkIsCompleted();
 //            assertTrue(weightLossGoal.getIsCompleted());
-        } catch (NotCoherentWeightLossGoalException e) {
-            e.printStackTrace();
-        }
 
 
     }
@@ -81,14 +67,10 @@ public class WeightLossGoalTest {
     @Test
     public void checkIsCompletedFalseTest1() {
         WeightLossGoal weightLossGoal;
-        try {
-            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
-            user.setWeight(83.1);
-            weightLossGoal.checkIsCompleted();
-            assertFalse(weightLossGoal.getIsCompleted());
-        } catch (NotCoherentWeightLossGoalException e) {
-            e.printStackTrace();
-        }
+        weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0, LocalDateTime.now());
+        user.setWeight(83.1);
+        weightLossGoal.checkIsCompleted();
+        assertFalse(weightLossGoal.getIsCompleted());
 
 
 
@@ -97,15 +79,10 @@ public class WeightLossGoalTest {
     @Test
     public void checkIsCompletedFalseTest2() {
         WeightLossGoal weightLossGoal;
-        try {
-            weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0);
-            user.setWeight(120.1);
-            weightLossGoal.checkIsCompleted();
-            assertFalse(weightLossGoal.getIsCompleted());
-        } catch (NotCoherentWeightLossGoalException e) {
-            e.printStackTrace();
-        }
-
+        weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0, LocalDateTime.now());
+        user.setWeight(120.1);
+        weightLossGoal.checkIsCompleted();
+        assertFalse(weightLossGoal.getIsCompleted());
     }
 
 

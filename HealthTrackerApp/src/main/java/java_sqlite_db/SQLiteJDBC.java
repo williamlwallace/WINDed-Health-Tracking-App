@@ -6,8 +6,13 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.*;
 import seng202.group8.parser.Parser;
+import seng202.group8.user.BMI;
+import seng202.group8.user.BMIType;
 import seng202.group8.user.User;
+import seng202.group8.user.user_stats.BMITypeRecord;
 import seng202.group8.user.user_stats.Sex;
+import seng202.group8.user.user_stats.UserStats;
+import seng202.group8.user.user_stats.WeightRecord;
 
 //import javax.jnlp.IntegrationService;
 import java.sql.*;
@@ -367,6 +372,145 @@ public class SQLiteJDBC {
         }
     }
 
+    public void addParserKeyword(Connection connection, Integer userId, String phrase, int type) {
+        String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            preparedStatement.setInt(3,type);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteParserKeyword(Connection connection, Integer userId, String phrase) {
+        String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertWeightRecords(Connection connection, ArrayList<WeightRecord> weightRecordArrayList, Integer userId) {
+        String sql = "INSERT INTO Weight_record VALUES(?,?,?)";
+        Double weight;
+        LocalDateTime dateTime;
+        for (WeightRecord weightRecord: weightRecordArrayList) {
+            try {
+                weight = weightRecord.getWeight();
+                dateTime = weightRecord.getDate();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, dateTime.toString());
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setDouble(3, weight);
+
+                String find = "SELECT * from Weight_record where user_id=? AND record_datetime=?";
+                PreparedStatement findStatement = connection.prepareStatement(find);
+                findStatement.setInt(1, userId);
+                findStatement.setString(2, dateTime.toString());
+                ResultSet results = findStatement.executeQuery();
+                if (results.next()) {
+                    System.out.println("WeightRecord Tuple already exists");
+                } else {
+                    // Print out the result of the insert statement, 0 means nothing has been inserted
+                    System.out.println("Rows added to WeightRecord:" + preparedStatement.executeUpdate());
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+    }
+
+    public void insertBMIRecords(Connection connection, ArrayList<BMITypeRecord> bmiTypeRecordArrayList, Integer userId) {
+        String sql = "INSERT INTO BMI_Record VALUES(?,?,?)";
+        Double bmi;
+        LocalDateTime dateTime;
+        for (BMITypeRecord bmiTypeRecord: bmiTypeRecordArrayList) {
+            bmi = bmiTypeRecord.getBmi().getBMIValue();
+            dateTime = bmiTypeRecord.getDate();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, dateTime.toString());
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setDouble(3, bmi);
+
+                String find = "SELECT * from BMI_Record where user_id=? AND record_datetime=?";
+                PreparedStatement findStatement = connection.prepareStatement(find);
+                findStatement.setInt(1, userId);
+                findStatement.setString(2, dateTime.toString());
+                ResultSet results = findStatement.executeQuery();
+                if (results.next()) {
+                    System.out.println("BMIRecord Tuple already exists");
+                } else {
+                    // Print out the result of the insert statement, 0 means nothing has been inserted
+                    System.out.println("Rows added to BMIRecord:" + preparedStatement.executeUpdate());
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+    }
+
+    public ArrayList<WeightRecord> getWeightRecords(Connection connection, Integer userId) {
+        String find = "SELECT record_datetime, weight FROM Weight_record WHERE user_id=?";
+        ResultSet resultSet = null;
+        WeightRecord weightRecord;
+        LocalDateTime recordDatetime;
+        Double recordWeight;
+        ArrayList<WeightRecord> weightRecordArrayList = new ArrayList<WeightRecord>();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                recordDatetime = getLocalDateTimeFromString(resultSet.getString("record_datetime"));
+                recordWeight = resultSet.getDouble("weight");
+                weightRecord = new WeightRecord(recordWeight);
+                weightRecord.setDate(recordDatetime);
+                weightRecordArrayList.add(weightRecord);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return  weightRecordArrayList;
+    }
+
+    public ArrayList<BMITypeRecord> getBMIRecords(Connection connection, Integer userId) {
+        String find = "SELECT record_datetime, bmi FROM BMI_Record WHERE user_id=?";
+        ResultSet resultSet = null;
+        BMITypeRecord bmiRecord;
+        LocalDateTime recordDatetime;
+        Double recordBMI;
+        BMI bmi;
+        ArrayList<BMITypeRecord> bmiRecordArrayList = new ArrayList<BMITypeRecord>();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                recordDatetime = getLocalDateTimeFromString(resultSet.getString("record_datetime"));
+                recordBMI = resultSet.getDouble("bmi");
+                bmi = new BMI(recordBMI);
+                bmiRecord = new BMITypeRecord(bmi);
+                bmiRecord.setDate(recordDatetime);
+                bmiRecordArrayList.add(bmiRecord);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return  bmiRecordArrayList;
+    }
+
     /**
      * Performs an SQL Select to get the title of the Users activity list collection from the Database
      * @param connection the connection to the database
@@ -634,7 +778,15 @@ public class SQLiteJDBC {
             sql = "DELETE FROM Activity_Time";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
-
+            sql = "DELETE FROM parser_keywords";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+            sql = "DELETE FROM bmi_record";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+            sql = "DELETE FROM weight_record";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
             if (connection != null) {
                 connection.close();
             }
@@ -768,6 +920,9 @@ public class SQLiteJDBC {
 
         insertActivityCollection(conn, userId, activityListCollection.getTitle());
         updateActivityListCollection(conn, userId, activityListCollection.getTitle());
+        insertWeightRecords(conn, user.getUserStats().getUserWeightRecords(), userId);
+        insertBMIRecords(conn, user.getUserStats().getUserBMITypeRecords(), userId);
+
 
 
         try {
@@ -818,7 +973,6 @@ public class SQLiteJDBC {
             Double height = result.getDouble("height");
             Integer age = result.getInt("age");
             String sex = result.getString("sex");
-            //Code to get ActivityCollection and Data of user (select queries);
             User user = new User(name, age, weight, height, Sex.valueOf(sex));
 
             String title = getUsersActivityListCollectionTitle(conn, userId);
@@ -826,6 +980,12 @@ public class SQLiteJDBC {
             user.setUserActivities(userCollection);
             ArrayList<ActivityList> activityList = getUsersActivityLists(conn, userId, user);
             user.getUserActivities().setActivityListCollection(activityList);
+
+            //Weight and BMI records
+            UserStats userStats = new UserStats();
+            userStats.setUserWeightRecords(getWeightRecords(conn, userId));
+            userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
+            user.setUserStats(userStats);
 
             try {
                 if (conn != null) {
