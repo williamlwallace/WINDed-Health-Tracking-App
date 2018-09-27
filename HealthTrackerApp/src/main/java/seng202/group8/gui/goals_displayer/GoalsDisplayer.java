@@ -37,7 +37,6 @@ public class GoalsDisplayer extends Application {
         user.updateBMI(10.0);
         user.updateBMI(20.0);
         user.updateBMI(30.0);
-        System.out.println(user.getWeight());
     }
 
     @Override

@@ -139,7 +139,7 @@ public class ParserTest {
         } catch (noTypeError e) {
             assertEquals(e.getMessage(), "The activity 'some outdoor exercise' doesnt match any of the activity types.");
         }
-        parserTest2.add("exercise", 3);
+        parserTest2.add("exercise", 3, false);
         try {
             parserTest2.parseFile();
         } catch (noTypeError e) {

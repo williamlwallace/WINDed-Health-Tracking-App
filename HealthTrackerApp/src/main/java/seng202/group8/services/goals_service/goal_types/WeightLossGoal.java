@@ -3,6 +3,8 @@ package seng202.group8.services.goals_service.goal_types;
 import seng202.group8.user.User;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -14,14 +16,11 @@ public class WeightLossGoal extends Goal {
 
     private Double startWeight;
 
-    public WeightLossGoal(User user, String description, GoalType goalType, Double targetWeight) throws NotCoherentWeightLossGoalException {
+    public WeightLossGoal(User user, String description, GoalType goalType, Double targetWeight, LocalDateTime targetDate) {
         super(user, description, goalType);
-        if (targetWeight >= user.getWeight()) {
-            throw new NotCoherentWeightLossGoalException();
-        } else {
-            this.targetWeight = targetWeight;
-            this.startWeight = user.getWeight();
-        }
+        setTargetDate(targetDate);
+        this.targetWeight = targetWeight;
+        this.startWeight = user.getWeight();
     }
 
     /**
@@ -67,7 +66,13 @@ public class WeightLossGoal extends Goal {
     }
 
     public void calculateProgress() {
-        setProgress(1 - (startWeight - targetWeight) / targetWeight);
+        Double a = getUser().getWeight() - startWeight;
+        if (a < 0.0 ) {
+            setProgress(0.0);
+        } else {
+            setProgress(((getUser().getWeight()) - targetWeight) / (startWeight - targetWeight));
+        }
+
     }
 
     public void calculateTarget() {

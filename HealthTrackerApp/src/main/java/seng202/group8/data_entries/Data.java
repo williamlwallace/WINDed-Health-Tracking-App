@@ -124,6 +124,27 @@ public abstract class Data {
         }
     }
 
+    /**
+     * Writted by Sam, compares two data classes to see if they are duplicate.
+     * @param data
+     * @return
+     */
+    public boolean equalsNewData(Data data) {
+        boolean to_return  = false;
+        if (this.title.equals(data.getTitle())) {
+            to_return = true;
+        } else if (this.dataType.equals(data.getDataType())) {
+            to_return = true;
+        } else if (this.allDateTimes.equals(data.getAllDateTimes())) {
+            to_return = true;
+        } else if (this.coordinatesArrayList.equals(data.getCoordinatesArrayList())) {
+            to_return = true;
+        } else if (this.heartRateList.equals(data.getHeartRateList())) {
+            to_return = true;
+        }
+        return to_return;
+    }
+
 
 //    public void setCoordinatesArrayList(ArrayList<CoordinateData> newCoordinatesList) {
 //        this.coordinatesArrayList = new ArrayList<CoordinateData>();

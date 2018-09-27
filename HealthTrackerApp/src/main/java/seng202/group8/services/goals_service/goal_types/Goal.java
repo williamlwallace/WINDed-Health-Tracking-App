@@ -2,6 +2,7 @@ package seng202.group8.services.goals_service.goal_types;
 
 import seng202.group8.user.User;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -11,6 +12,7 @@ public abstract class Goal {
 
     private String description;
     private Date startDate;
+    private LocalDateTime targetDate;
     private GoalType goalType;
     private User user;
     private boolean isCompleted;
@@ -23,6 +25,7 @@ public abstract class Goal {
         this.description = description;
         this.startDate = new Date();
         this.goalType = goalType;
+
     }
 
     public Double getTarget() {
@@ -128,6 +131,14 @@ public abstract class Goal {
      */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public LocalDateTime getTargetDate() {
+        return targetDate;
+    }
+
+    public void setTargetDate(LocalDateTime targetDate) {
+        this.targetDate = targetDate;
     }
 
     public abstract void checkIsCompleted();

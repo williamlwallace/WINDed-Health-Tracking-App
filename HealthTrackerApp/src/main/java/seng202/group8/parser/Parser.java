@@ -1,6 +1,7 @@
 package seng202.group8.parser;
 
 import com.opencsv.CSVReader;
+import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.*;
 import seng202.group8.user.*;
 import org.apache.commons.lang3.ObjectUtils;
@@ -39,6 +40,7 @@ public class Parser {
     private Boolean isCorrupt = Boolean.FALSE;
     private String filename;
     private int lineNum;
+    private ArrayList<ActivityList> oldData;
     /**
      * Receives a filename and creates the list of type trip phrases.
      * @param newFilename
@@ -54,6 +56,7 @@ public class Parser {
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
         filename = newFilename;
+        oldData = this.user.getUserActivities().getActivityListCollection();
     }
 
     /**
@@ -122,7 +125,26 @@ public class Parser {
                         } catch (NullPointerException e) {
                             finished = 1;
                         }
-                        this.dataList.add(activityToSend);
+                        boolean duplicate = false;
+                        for (int d = 0; d < dataList.size(); d++) {
+                            if (dataList.get(d).equalsNewData(activityToSend)) {
+                                duplicate = true;
+                            }
+                        }
+                        if (!duplicate) {
+                            for (int i = 0; i < oldData.size(); i++) {
+                                ArrayList<Data> activityList = oldData.get(i).getActivityList();
+                                for (int j = 0; j < activityList.size(); j++) {
+                                    Data data = activityList.get(j);
+                                    if (activityToSend.equalsNewData(data)) {
+                                        duplicate = true;
+                                    }
+                                }
+                            }
+                        }
+                        if (!duplicate) {
+                            this.dataList.add(activityToSend);
+                        }
                     }
                     isCorrupt = Boolean.FALSE;
                     activityName = "";
@@ -311,7 +333,7 @@ public class Parser {
      * @param keyWord
      * @param type
      */
-    public void add(String keyWord, int type) {
+    public void add(String keyWord, int type, boolean addToDataBase) {
         acceptedValues.clear();
         switch (type) {
             case 1:

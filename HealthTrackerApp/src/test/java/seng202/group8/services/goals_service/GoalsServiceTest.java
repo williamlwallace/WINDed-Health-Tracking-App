@@ -65,9 +65,9 @@ public class GoalsServiceTest {
 
         goalsService = new GoalsService(user);
 
-        activityGoal = new ActivityGoal(user, "", GoalType.ActivityGoal, DataType.WALK, 200.0);
+        activityGoal = new ActivityGoal(user, "", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
         activityGoal.setStartDate(new Date(0));
-        frequencyGoal = new FrequencyGoal(user, "", GoalType.TimePerformedGoal, DataType.RUN, 3);
+        frequencyGoal = new FrequencyGoal(user, "", GoalType.TimePerformedGoal, DataType.RUN, 3, LocalDateTime.now());
         frequencyGoal.setStartDate(new Date(0));
 
         goalsService.getCurrentActivityGoals().add(activityGoal);
