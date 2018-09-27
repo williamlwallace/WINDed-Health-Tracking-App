@@ -131,15 +131,7 @@ public abstract class Data {
      */
     public boolean equalsNewData(Data data) {
         boolean to_return  = false;
-        if (this.title.equals(data.getTitle())) {
-            to_return = true;
-        } else if (this.dataType.equals(data.getDataType())) {
-            to_return = true;
-        } else if (this.allDateTimes.equals(data.getAllDateTimes())) {
-            to_return = true;
-        } else if (this.coordinatesArrayList.equals(data.getCoordinatesArrayList())) {
-            to_return = true;
-        } else if (this.heartRateList.equals(data.getHeartRateList())) {
+        if ((this.title.equals(data.getTitle())) && (this.dataType.equals(data.getDataType())) && (this.allDateTimes.equals(data.getAllDateTimes())) && (this.coordinatesArrayList.equals(data.getCoordinatesArrayList())) && (this.heartRateList.equals(data.getHeartRateList()))) {
             to_return = true;
         }
         return to_return;
