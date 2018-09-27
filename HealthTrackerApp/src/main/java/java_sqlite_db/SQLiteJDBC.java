@@ -405,13 +405,13 @@ public class SQLiteJDBC {
         String phrase = null;
         ResultSet resultSet = null;
         int type = 0;
-        String find = "SELECT phrase, activityType FROM Activity_Collection WHERE user_id=?";
+        String find = "SELECT keyword, activityType FROM Activity_Collection WHERE user_id=?";
         try {
             PreparedStatement statement = connection.prepareStatement(find);
             statement.setInt(1, userId);
             resultSet = statement.executeQuery();
             while(resultSet.next()) {
-                phrase = resultSet.getString("phrase");
+                phrase = resultSet.getString("keyword");
                 type = resultSet.getInt("activityType");
                 parser.add(phrase, type, false);
             }

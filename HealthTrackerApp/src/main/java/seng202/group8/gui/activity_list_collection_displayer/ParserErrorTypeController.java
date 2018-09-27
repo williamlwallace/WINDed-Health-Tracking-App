@@ -96,10 +96,12 @@ public class ParserErrorTypeController {
                     break;
             }
         }
-        rememberTick.isSelected();
+        if (!rememberTick.isSelected()) {
+            phraseReturn = errorList.get(1);
+        }
         if ((type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0))) || (rememberTick.isSelected() && type != 0))  {
-            if (rememberTick.isSelected()) {
-                parser.add(errorList.get(1), type, false);
+            if (!rememberTick.isSelected()) {
+                parser.add(phraseReturn, type, false);
             } else {
                 parser.add(phraseReturn, type, true);
             }
