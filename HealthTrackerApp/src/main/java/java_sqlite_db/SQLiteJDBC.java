@@ -536,12 +536,12 @@ public class SQLiteJDBC {
         return  bmiRecordArrayList;
     }
 
-    public void insertActivityGoal(Connection connection, ActivityGoal activityGoal, Integer userId) {
+    public void insertActivityGoal(Connection connection, Goal activityGoal, Integer userId) {
         String sql = "INSERT INTO Activity_Goal VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(1, activityGoal.getDistanceCurrentlyCovered());
-            preparedStatement.setDouble(2, activityGoal.getDistanceToCoverKm());
+            preparedStatement.setDouble(1, activityGoal.getCurrent());
+            preparedStatement.setDouble(2, activityGoal.getTarget());
             preparedStatement.setString(3, activityGoal.getTargetDate().toString());
             preparedStatement.setString(4, activityGoal.getStartDate().toString());
             preparedStatement.setString(5, activityGoal.getDataType().toString());
@@ -553,12 +553,12 @@ public class SQLiteJDBC {
         }
     }
 
-    public void insertWeightGoal(Connection connection, WeightLossGoal weightLossGoal, Integer userId) {
+    public void insertWeightGoal(Connection connection, Goal weightLossGoal, Integer userId) {
         String sql = "INSERT INTO Weight_Goal VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(6, weightLossGoal.getStartWeight());
-            preparedStatement.setDouble(5, weightLossGoal.getTargetWeight());
+            preparedStatement.setDouble(6, weightLossGoal.getCurrent()); //TODO Needs to be start weight not current weight
+            preparedStatement.setDouble(5, weightLossGoal.getTarget());
             preparedStatement.setString(4, weightLossGoal.getTargetDate().toString());
             preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
             preparedStatement.setString(2, weightLossGoal.getDescription());
@@ -569,12 +569,12 @@ public class SQLiteJDBC {
         }
     }
 
-    public void insertFrequencyGoal(Connection connection, FrequencyGoal frequencyGoal, Integer userId) {
+    public void insertFrequencyGoal(Connection connection, Goal frequencyGoal, Integer userId) {
         String sql = "INSERT INTO Frequency_Goal VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(7, frequencyGoal.getTimesCurrentlyPerformedActivity());
-            preparedStatement.setInt(6, frequencyGoal.getTimesToPerformActivity());
+            preparedStatement.setDouble(7, frequencyGoal.getCurrent());
+            preparedStatement.setDouble(6, frequencyGoal.getTarget());
             preparedStatement.setString(5, frequencyGoal.getTargetDate().toString());
             preparedStatement.setString(4, frequencyGoal.getStartDate().toString());
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());
@@ -591,14 +591,37 @@ public class SQLiteJDBC {
         activityGoalsList.addAll(user.getGoalsService().getPreviousActivityGoals());
         for (Goal goal: activityGoalsList) {
             if (goal.getGoalType().equals("WeightLossGoal")) {
-                //insertWeightGoal(connection, goal, userId);  TODO change so type is compatible need a WeightLossGoal, how?
+                insertWeightGoal(connection, goal, userId);
             } else if (goal.getGoalType().equals("ActivityGoal")) {
-                //insertActivityGoal(connection, goal, userId); TODO change so type is compatible need a ActivityGoal, how?
+                insertActivityGoal(connection, goal, userId);
             } else if (goal.getGoalType().equals("TimePerformedGoal")) {
-                //insertFrequencyGoal(connection, goal, userId); TODO change so type is compatible need a FrequencyGoal, how?
+                insertFrequencyGoal(connection, goal, userId);
             } else {
                 System.out.println("No matching goal type");
             }
+        }
+
+    }
+
+    public void deleteGoals(Connection connection, Integer userId) {
+
+        try {
+            String sql = "DELETE FROM Activity_Goal WHERE user_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM Weight_Goal WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM Frequency_Goal WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -1072,7 +1095,8 @@ public class SQLiteJDBC {
         insertWeightRecords(conn, user.getUserStats().getUserWeightRecords(), userId);
         insertBMIRecords(conn, user.getUserStats().getUserBMITypeRecords(), userId);
 
-
+        /*deleteGoals(conn, userId);
+        insertGoals(conn, user, userId);*/ //TODO uncomment when goals is in GUI
 
         try {
             if (conn != null) {
