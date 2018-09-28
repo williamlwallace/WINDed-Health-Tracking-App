@@ -967,6 +967,36 @@ public class SQLiteJDBC {
         }
     }
 
+    //TODO implement updateActivity for edits
+
+
+
+    public void deleteActivity(Integer dataId) {
+        try{
+            Connection connection = connect();
+
+            String sqlCoordinate = "DELETE FROM CoOrdinate WHERE data_id=?";
+            PreparedStatement preparedStatementCoordinate = connection.prepareStatement(sqlCoordinate);
+            preparedStatementCoordinate.setInt(1, dataId);
+            preparedStatementCoordinate.executeUpdate();
+            String sqlHeartRate = "DELETE FROM Heartrate WHERE data_id=?";
+            PreparedStatement preparedStatementHeartRate = connection.prepareStatement(sqlHeartRate);
+            preparedStatementHeartRate.setInt(1, dataId);
+            preparedStatementHeartRate.executeUpdate();
+            String sqlActivityTime = "DELETE FROM Activity_Time WHERE data_id=?";
+            PreparedStatement preparedStatementTime = connection.prepareStatement(sqlActivityTime);
+            preparedStatementTime.setInt(1, dataId);
+            preparedStatementTime.executeUpdate();
+            String sqlData = "DELETE FROM Data WHERE data_id=?";
+            PreparedStatement preparedStatementData = connection.prepareStatement(sqlData);
+            preparedStatementData.setInt(1, dataId);
+            preparedStatementData.executeUpdate();
+
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void deleteActivityList(String parentActivityListTitle, Date parentActivityListDate) {
         String parentActivityListDateString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(parentActivityListDate));
