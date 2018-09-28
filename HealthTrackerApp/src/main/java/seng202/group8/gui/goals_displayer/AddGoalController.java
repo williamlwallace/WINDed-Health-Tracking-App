@@ -11,14 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.data_entries.DataType;
-import seng202.group8.services.goals_service.goal_types.ActivityGoal;
-import seng202.group8.services.goals_service.goal_types.FrequencyGoal;
-import seng202.group8.services.goals_service.goal_types.GoalType;
-import seng202.group8.services.goals_service.goal_types.WeightLossGoal;
+import seng202.group8.services.goals_service.goal_types.*;
 import seng202.group8.user.User;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddGoalController {
 
@@ -55,6 +54,7 @@ public class AddGoalController {
     private JFXButton createGoal;
 
     private User user;
+    private Goal goal;
 
     public void start() {
         targetTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -66,6 +66,33 @@ public class AddGoalController {
             }
         });
         goalTypeCombo.getSelectionModel().select("Activity Goal");
+    }
+
+    public void edit(Goal goal) {
+        this.goal = goal;
+        goalTypeCombo.setValue(goal.getGoalType());
+        descriptionTextField.setText(goal.getDescription());
+        targetTextField.setText(goal.getTarget().toString());
+        datePicker.setValue(LocalDate.from(goal.getTargetDate()));
+        createGoal.setText("Finish Changes");
+        switch (goalTypeCombo.getValue().toString()) {
+            case "Activity Goal":
+                activityTypeText.setOpacity(1);
+                activityTypeBox.setOpacity(1);
+                activityTypeBox.setValue(goal.getDataType());
+                break;
+            case "Frequency Goal":
+                activityTypeText.setOpacity(1);
+                activityTypeBox.setOpacity(1);
+                activityTypeBox.setValue(goal.getDataType());
+                break;
+            case "Weight Goal":
+                activityTypeText.setOpacity(0);
+                activityTypeBox.setOpacity(0);
+                break;
+            default:
+                break;
+        }
     }
 
     public void changeGoal() {
@@ -106,22 +133,28 @@ public class AddGoalController {
 //            System.out.println("An activity type is not selected");
 //        } else {
         } else {
-            System.out.println(activityTypeBox.getSelectionModel().getSelectedItem());
-            switch (goalTypeCombo.getValue().toString()) {
-                case "Activity Goal":
-                    ActivityGoal activityGoal = new ActivityGoal(user, descriptionTextField.getText(), GoalType.ActivityGoal, DataType.WALK, Double.valueOf(targetTextField.getText()), datePicker.getValue().atTime(0, 0));
-                    user.getGoalsService().getCurrentActivityGoals().add(activityGoal);
-                    break;
-                case "Frequency Goal":
-                    FrequencyGoal freqGoal = new FrequencyGoal(user, descriptionTextField.getText(), GoalType.TimePerformedGoal, DataType.WALK, Integer.valueOf(targetTextField.getText()), datePicker.getValue().atTime(0, 0));
-                    user.getGoalsService().getCurrentTimesPerformedGoals().add(freqGoal);
-                    break;
-                case "Weight Goal":
-                    WeightLossGoal weightGoal = new WeightLossGoal(user, descriptionTextField.getText(), GoalType.WeightLossGoal, Double.valueOf(targetTextField.getText()), datePicker.getValue().atTime(0, 0));
-                    user.getGoalsService().getCurrentWeightLossGoals().add(weightGoal);
-                    break;
-                default:
-                    break;
+            DataType dataType = createDataType(activityTypeBox.getValue().toString());
+            if (createGoal.getText() == "Finish Changes") {
+                goal.setDescription(descriptionTextField.getText());
+                goal.setTargetDate(datePicker.getValue().atTime(0, 0));
+                goal.setTarget(Double.valueOf(targetTextField.getText()));
+            } else {
+                switch (goalTypeCombo.getValue().toString()) {
+                    case "Activity Goal":
+                        ActivityGoal activityGoal = new ActivityGoal(user, descriptionTextField.getText(), GoalType.ActivityGoal, dataType, Double.valueOf(targetTextField.getText()), datePicker.getValue().atTime(0, 0));
+                        user.getGoalsService().getCurrentActivityGoals().add(activityGoal);
+                        break;
+                    case "Frequency Goal":
+                        FrequencyGoal freqGoal = new FrequencyGoal(user, descriptionTextField.getText(), GoalType.TimePerformedGoal, dataType, Integer.valueOf(targetTextField.getText()), datePicker.getValue().atTime(0, 0));
+                        user.getGoalsService().getCurrentTimesPerformedGoals().add(freqGoal);
+                        break;
+                    case "Weight Goal":
+                        WeightLossGoal weightGoal = new WeightLossGoal(user, descriptionTextField.getText(), GoalType.WeightLossGoal, Double.valueOf(targetTextField.getText()), datePicker.getValue().atTime(0, 0));
+                        user.getGoalsService().getCurrentWeightLossGoals().add(weightGoal);
+                        break;
+                    default:
+                        break;
+                }
             }
             stage.close();
         }
@@ -133,5 +166,27 @@ public class AddGoalController {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public DataType createDataType(String data) {
+        switch (data) {
+            case "WALK":
+                return DataType.WALK;
+            case "RUN":
+                return DataType.RUN;
+            case "BIKE":
+                return DataType.BIKE;
+            case "HIKE":
+                return DataType.HIKE;
+            case "SWIM":
+                return DataType.SWIM;
+            case "CLIMB":
+                return DataType.CLIMB;
+            case "WATER_SPORTS":
+                return DataType.WATER_SPORTS;
+            default:
+                return DataType.WALK;
+        }
+
     }
 }

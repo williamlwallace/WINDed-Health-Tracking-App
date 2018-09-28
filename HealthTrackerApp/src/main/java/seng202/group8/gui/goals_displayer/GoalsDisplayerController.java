@@ -160,7 +160,7 @@ public class GoalsDisplayerController {
                                 GoalsListViewSingleController controller = loader.<GoalsListViewSingleController>getController();
                                 controller.setCurrentGoal(goal);
                                 controller.setGoalsToDisplay(goalsToDisplay);
-                                controller.setGoalIndex(0);
+                                controller.setUser(user);
                                 controller.start();
                                 setGraphic(goalSingle);
                             } catch (IOException e) {
@@ -173,96 +173,6 @@ public class GoalsDisplayerController {
                 return cell;
             }
         });
-    }
-
-    private void setUpGoalsView() {
-
-        ArrayList<Goal> goalsToDisplay;
-        switch(selectedGoalType) {
-            case TimePerformedGoal:
-                goalsToDisplay = goalsService.getCurrentTimesPerformedGoals();
-                break;
-            case WeightLossGoal:
-                goalsToDisplay = goalsService.getCurrentWeightLossGoals();
-                break;
-            default:
-                goalsToDisplay = goalsService.getCurrentActivityGoals();
-                break;
-        }
-        System.out.println(goalsToDisplay);
-        Label [] titles = new Label[goalsToDisplay.size()];
-        Label [] currents = new Label[goalsToDisplay.size()];
-        Label [] targets = new Label[goalsToDisplay.size()];
-        Label [] percentages = new Label[goalsToDisplay.size()];
-        ProgressBar[] pbs = new ProgressBar[goalsToDisplay.size()];
-        VBox vbs [] = new VBox [goalsToDisplay.size()];
-        HBox hbs [] = new HBox [goalsToDisplay.size()];
-        Button edits [] = new Button [goalsToDisplay.size()];
-        Button removes [] = new Button [goalsToDisplay.size()];
-        Label dates [] = new Label [goalsToDisplay.size()];
-        currentGoals.getChildren().clear();
-        for (int i = 0; i < goalsToDisplay.size(); i++) {
-
-            Label title = titles[i] = new Label();
-            title.setText(goalsToDisplay.get(i).getDescription());
-
-            ProgressBar pb = pbs[i] = new ProgressBar();
-            goalsToDisplay.get(i).calculateProgress();
-            pb.setProgress(goalsToDisplay.get(i).getProgress());
-            pb.setMinWidth(200.0);
-
-            Label date = dates[i] = new Label();
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            date.setTextAlignment(TextAlignment.CENTER);
-            date.setText("Target Date\n" + goalsToDisplay.get(i).getTargetDate().format(format));
-
-            Label current = currents[i] = new Label();
-            goalsToDisplay.get(i).calculateCurrent();
-            current.setText(goalsToDisplay.get(i).getCurrent().toString());
-
-            Label target = targets[i] = new Label();
-            goalsToDisplay.get(i).calculateTarget();
-            target.setText(goalsToDisplay.get(i).getTarget().toString());
-
-            Label percentage = percentages[i] = new Label();
-            percentage.setText(Double.toString(goalsToDisplay.get(i).getProgress() * 100.0) + " %");
-
-            Button edit = edits[i] = new Button();
-            edit.setText("Edit");
-            edit.setStyle("-fx-background-color: #2e86c1");
-            edit.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    System.out.println("edit");
-
-                }
-            });
-
-            Button remove = removes[i] = new Button();
-            remove.setText("Remove");
-            remove.setStyle("-fx-background-color: #2e86c1");
-            remove.setOnAction(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent arg0) {
-                    System.out.println("Test2");
-
-                }
-            });
-
-            HBox hb = hbs[i] = new HBox();
-            hb.setSpacing(15);
-            hb.setAlignment(Pos.CENTER);
-            hb.getChildren().addAll(date, current, pb, target, edit, remove);
-
-            VBox vb = vbs[i] = new VBox();
-            vb.setSpacing(7);
-            vb.setAlignment(Pos.CENTER);
-            vb.getChildren().addAll(title, hb, percentage);
-        }
-        currentGoals.setSpacing(10);
-        currentGoals.getChildren().addAll(vbs);
     }
 
 
@@ -289,17 +199,17 @@ public class GoalsDisplayerController {
 
     public void showActivityGoals() {
         selectedGoalType = GoalType.ActivityGoal;
-        setUpGoalsView();
+        setupGoalsList();
     }
 
     public void showFrequencyGoals() {
         selectedGoalType = GoalType.TimePerformedGoal;
-        setUpGoalsView();
+        setupGoalsList();
     }
 
     public void showWeightLossGoals() {
         selectedGoalType = GoalType.WeightLossGoal;
-        setUpGoalsView();
+        setupGoalsList();
     }
 
     public void setGoalsService(GoalsService goalsService) {

@@ -1,5 +1,6 @@
 package seng202.group8.services.goals_service.goal_types;
 
+import seng202.group8.data_entries.DataType;
 import seng202.group8.user.User;
 
 import java.time.LocalDateTime;
@@ -148,5 +149,7 @@ public abstract class Goal {
     public abstract void calculateCurrent();
 
     public abstract void calculateTarget();
+
+    public abstract DataType getDataType();
 
 }
