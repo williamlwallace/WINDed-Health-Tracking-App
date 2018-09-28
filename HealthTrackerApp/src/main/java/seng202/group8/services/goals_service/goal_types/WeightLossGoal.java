@@ -1,5 +1,7 @@
 package seng202.group8.services.goals_service.goal_types;
 
+import org.apache.commons.lang3.ObjectUtils;
+import seng202.group8.data_entries.DataType;
 import seng202.group8.user.User;
 import utils.exceptions.NotCoherentWeightLossGoalException;
 
@@ -82,4 +84,6 @@ public class WeightLossGoal extends Goal {
     public void calculateCurrent() {
         setCurrent(startWeight);
     }
+
+    public DataType getDataType() {return DataType.WATER_SPORTS;}
 }
