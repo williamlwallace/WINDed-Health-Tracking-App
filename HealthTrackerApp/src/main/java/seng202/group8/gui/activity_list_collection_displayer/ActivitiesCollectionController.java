@@ -2,28 +2,26 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeView;
+import com.jfoenix.controls.*;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.apache.commons.text.WordUtils;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
@@ -40,6 +38,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -97,6 +96,9 @@ public class ActivitiesCollectionController {
 
     @FXML
     private JFXButton deleteButton;
+
+    @FXML
+    private StackPane dialogStackPane;
 
     private static Stage primaryStage;
     private static User user;
@@ -223,14 +225,15 @@ public class ActivitiesCollectionController {
                 String htmlFile = jsInjection(strGoogleMaps, data);
                 setUpWebView(htmlFile);
                 setInsights(user, data);
-            } else if (!selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot() && mouseEvent.getClickCount() == 2) {
-                System.out.println("This should happen only if I click a non root non leaf element and right click on it");
-                TreeItem<String> parent = selectedItem.getParent();
-                int activityListIndex = parent.getChildren().indexOf(selectedItem);
-                System.out.println(activityListIndex);
-                triggerNewActivityDialog(activityListIndex);
-
             }
+//            } else if (!selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot() && mouseEvent.getClickCount() == 2) {
+//                System.out.println("This should happen only if I click a non root non leaf element and right click on it");
+//                TreeItem<String> parent = selectedItem.getParent();
+//                int activityListIndex = parent.getChildren().indexOf(selectedItem);
+//                System.out.println(activityListIndex);
+//                triggerNewActivityDialog(activityListIndex);
+//
+//            }
         }
 
     }
@@ -241,13 +244,15 @@ public class ActivitiesCollectionController {
      * @param activityListIndex
      * Opens a dialog for the user to input manual data in the app.
      */
-    private void triggerNewActivityDialog(int activityListIndex) {
+    private void triggerNewActivityDialog(int activityListIndex, boolean isAddActList) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/new_data_dialog.fxml"));
         try {
             Parent root = loader.load();
             Stage newStage = new Stage();
             NewDataDialogController newDataDialogController = loader.getController();
             newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
+            newDataDialogController.setAddingActivityList(isAddActList);
+            newDataDialogController.toggleBtn(isAddActList);
             newDataDialogController.setStage(newStage);
             newDataDialogController.setUser(user);
             newDataDialogController.setActivitiesCollectionController(this);
@@ -398,28 +403,104 @@ public class ActivitiesCollectionController {
      */
     //Need to link it to the database
     public void deleteSelectedActivityOrActivityList() {
+
         TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null && selectedItem != activityListCollectionTreeView.getRoot()) {
             TreeItem<String> parent = selectedItem.getParent();
             if (!selectedItem.isLeaf()) {
-                int activityListIndex = parent.getChildren().indexOf(selectedItem);
-                user.getUserActivities().deleteActivityList(activityListIndex);
+
+
+                JFXDialogLayout content= new JFXDialogLayout();
+                content.setHeading(new Text("Delete Activity List"));
+                content.setBody(new Text("This process cannot be reversed, are you sure you want to delete the whole activity list?"));
+                JFXDialog dialog =new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
+                JFXButton deleteButton=new JFXButton("Delete");
+                deleteButton.setStyle("-fx-background-color: #ff0000;");
+
+                JFXButton cancelButton =new JFXButton("Cancel");
+                cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        dialog.close();
+                    }
+                });
+
+
+                deleteButton.setOnAction(new EventHandler<ActionEvent>(){
+                    @Override
+                    public void handle(ActionEvent event){
+                        int activityListIndex = parent.getChildren().indexOf(selectedItem);
+                        user.getUserActivities().deleteActivityList(activityListIndex);
+                        setUpTreeView();
+                        dialog.close();
+                    }
+                });
+                content.setActions(cancelButton, deleteButton);
+
+                dialog.show();
+
+
             } else {
-                int dataListIndex = parent.getChildren().indexOf(selectedItem);
-                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
-                System.out.println("activity list index: " + activityListIndex);
-                System.out.println("data index: " + dataListIndex);
-                ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
-                if (activityList.getActivityList().size() > 1) {
-                    Data dataToDelete = activityList.getActivity(dataListIndex);
-                    activityList.getActivityList().remove(dataToDelete);
-                } else {
-                    user.getUserActivities().deleteActivityList(activityListIndex);
-                }
+
+                JFXDialogLayout content= new JFXDialogLayout();
+                content.setHeading(new Text("Delete " + selectedItem.getValue().toString()));
+                content.setBody(new Text("This process cannot be reversed, are you sure you want to delete the selected activity?"));
+                JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
+                JFXButton deleteButton=new JFXButton("Delete");
+                deleteButton.setStyle("-fx-background-color: #ff0000;");
+
+                JFXButton cancelButton =new JFXButton("Cancel");
+                cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        dialog.close();
+                    }
+                });
+
+
+                deleteButton.setOnAction(new EventHandler<ActionEvent>(){
+                    @Override
+                    public void handle(ActionEvent event){
+                        int dataListIndex = parent.getChildren().indexOf(selectedItem);
+                        int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+                        System.out.println("activity list index: " + activityListIndex);
+                        System.out.println("data index: " + dataListIndex);
+                        ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+                        if (activityList.getActivityList().size() > 1) {
+                            Data dataToDelete = activityList.getActivity(dataListIndex);
+                            activityList.getActivityList().remove(dataToDelete);
+                        } else {
+                            user.getUserActivities().deleteActivityList(activityListIndex);
+                        }
+                        setUpTreeView();
+                        dialog.close();
+                    }
+                });
+                content.setActions(cancelButton, deleteButton);
+
+                dialog.show();
+
             }
         }
         setUpTreeView();
     }
+
+    public void addToActivityList() {
+
+        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null || selectedItem.equals(activityListCollectionTreeView.getRoot())) {
+//            TreeItem<String> parent = selectedItem.getParent();
+            int activityListIndex = -1;
+            triggerNewActivityDialog(activityListIndex, true);
+        } else if (!selectedItem.isLeaf()) {
+            TreeItem<String> parent = selectedItem.getParent();
+            int activityListIndex = parent.getChildren().indexOf(selectedItem);
+            triggerNewActivityDialog(activityListIndex, false);
+        }
+    }
+
+
+
 
     public void setParserInfo(String s) {
         parserInfo.setText(s);
