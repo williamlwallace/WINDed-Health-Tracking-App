@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.*;
@@ -50,6 +51,10 @@ public class GoalsDisplayerController {
     @FXML
     private Label goalTypeLabel;
 
+    @FXML
+    private ListView goalList;
+
+    private ArrayList<Goal> goalsToDisplay;
 
     public void createGoals() throws Exception {
         ActivityGoal activityGoal = new ActivityGoal(user, "activity1", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
@@ -92,7 +97,7 @@ public class GoalsDisplayerController {
             selectedGoalType = GoalType.ActivityGoal;
             goalTypeLabel.setText("Activity Goals");
             viewBox.setValue("Activity Goals");
-            setUpGoalsView();
+            setupGoalsList();
         } else {
             goalTypeLabel.setText("Create a goal to get started");
         }
@@ -116,12 +121,59 @@ public class GoalsDisplayerController {
                 break;
         }
         if (goalsService != null) {
-            setUpGoalsView();
+            setupGoalsList();
         } else {
             goalTypeLabel.setText("Create a goal to get started");
         }
     }
 
+    private void setupGoalsList() {
+        goalsToDisplay = goalsService.getCurrentActivityGoals();
+        switch(selectedGoalType) {
+            case TimePerformedGoal:
+                goalsToDisplay = goalsService.getCurrentTimesPerformedGoals();
+                break;
+            case WeightLossGoal:
+                goalsToDisplay = goalsService.getCurrentWeightLossGoals();
+                break;
+            default:
+                goalsToDisplay = goalsService.getCurrentActivityGoals();
+                break;
+        }
+        ObservableList<Goal> dataObservableList = FXCollections.observableList(goalsToDisplay);
+
+        goalList.setItems(dataObservableList);
+
+        goalList.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
+            @Override
+            public ListCell<Goal> call(ListView<Goal> param) {
+                ListCell<Goal> cell = new ListCell<Goal>(){
+                    @Override
+                    protected void updateItem(Goal goal, boolean bln) {
+                        super.updateItem(goal, bln);
+
+                        if (goal != null) {
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/goalsListViewSingle.fxml"));
+                                GoalsListViewSingleController controller = loader.getController();
+                                System.out.println(controller);
+                                System.out.println(goal);
+                                controller.setCurrentGoal(goal);
+                                controller.setGoalsToDisplay(goalsToDisplay);
+                                controller.setGoalIndex(0);
+                                BorderPane goalSingle = loader.load();
+                                setGraphic(goalSingle);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+    }
 
     private void setUpGoalsView() {
 
