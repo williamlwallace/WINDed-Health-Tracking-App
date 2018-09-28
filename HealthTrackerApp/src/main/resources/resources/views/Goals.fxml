@@ -33,7 +33,7 @@
                         </Label>
                         <Label fx:id="goalTypeLabel" alignment="CENTER" text="Goal Type">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="15.0" />
                            </font>
                         </Label>
                         <ListView fx:id="goalList" prefHeight="485.0" prefWidth="550.0" />
