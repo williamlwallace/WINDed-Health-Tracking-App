@@ -90,7 +90,6 @@ public class NewDataDialogController {
         ObservableList<String> observableList = FXCollections.observableList(activitiesChoice);
         activitiesChoiceBox.setItems(observableList);
         activitiesChoiceBox.setValue("Walk");
-//        activitiesChoiceBox.se
 
         distanceCoveredTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override

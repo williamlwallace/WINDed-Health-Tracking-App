@@ -23,6 +23,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
+import seng202.group8.gui.statistics_graph_displayer.GraphController;
 import seng202.group8.parser.Parser;
 import seng202.group8.services.goals_service.GoalsService;
 import seng202.group8.services.goals_service.goal_types.*;
@@ -154,14 +155,13 @@ public class GoalsDisplayerController {
 
                         if (goal != null) {
                             try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/goalsListViewSingle.fxml"));
-                                GoalsListViewSingleController controller = loader.getController();
-                                System.out.println(controller);
-                                System.out.println(goal);
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSingle.fxml"));
+                                BorderPane goalSingle = loader.load();
+                                GoalsListViewSingleController controller = loader.<GoalsListViewSingleController>getController();
                                 controller.setCurrentGoal(goal);
                                 controller.setGoalsToDisplay(goalsToDisplay);
                                 controller.setGoalIndex(0);
-                                BorderPane goalSingle = loader.load();
+                                controller.start();
                                 setGraphic(goalSingle);
                             } catch (IOException e) {
                                 e.printStackTrace();
