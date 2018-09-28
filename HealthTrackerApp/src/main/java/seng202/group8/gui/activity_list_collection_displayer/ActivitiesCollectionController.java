@@ -28,6 +28,7 @@ import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.ModifyDataValueController;
 import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController;
 import seng202.group8.parser.*;
 import seng202.group8.user.User;
@@ -121,9 +122,6 @@ public class ActivitiesCollectionController {
      */
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
-//        for (Integer integer : heartRateData.getHeartRateList()) {
-//            System.out.println("HR VAL: " + integer);
-//        }
 
         if (data.getTitle().length() < 20) {
             insightsTitle.setText(WordUtils.capitalize(data.getTitle()));
@@ -500,48 +498,36 @@ public class ActivitiesCollectionController {
         }
     }
 
-    public void modifyButtonListener() {//TODO: continue from here
-//        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
-//        if (selectedItem != null && selectedItem.isLeaf()) {
-//            TreeItem parent = selectedItem.getParent();
-//            JFXDialogLayout content = new JFXDialogLayout();
-////            content.setHeading(new Text("Delete " + selectedItem.getValue().toString()));
-//            content.setBody(new Text("This process cannot be reversed, are you sure you want to delete the selected activity?"));
-//            JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
-//            JFXButton deleteButton = new JFXButton("Delete");
-//            deleteButton.setStyle("-fx-background-color: #ff0000;");
-//
-//            JFXButton cancelButton = new JFXButton("Ca            ");
-//            cancelButton.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    dialog.close();
-//                }
-//            });
-//
-//
-//            deleteButton.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    int dataListIndex = parent.getChildren().indexOf(selectedItem);
-//                    int activityListIndex = parent.getParent().getChildren().indexOf(parent);
-//                    System.out.println("activity list index: " + activityListIndex);
-//                    System.out.println("data index: " + dataListIndex);
-//                    ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
-//                    if (activityList.getActivityList().size() > 1) {
-//                        Data dataToDelete = activityList.getActivity(dataListIndex);
-//                        activityList.getActivityList().remove(dataToDelete);
-//                    } else {
-//                        user.getUserActivities().deleteActivityList(activityListIndex);
-//                    }
-//                    setUpTreeView();
-//                    dialog.close();
-//                }
-//            });
-//            content.setActions(cancelButton, deleteButton);
-//
-//            dialog.show();
-//        }
+    public void modifyButtonListener() {
+        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null && selectedItem.isLeaf() && !selectedItem.equals(activityListCollectionTreeView.getRoot())) {
+            TreeItem parent = selectedItem.getParent();
+
+            int dataIndex = parent.getChildren().indexOf(selectedItem);
+            int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/modify_data_dialog.fxml"));
+            try {
+                Stage newStage = new Stage();
+                newStage.initStyle(StageStyle.UNDECORATED);
+                Parent root = loader.load();
+                ModifyDataValueController modifyDataValueController = loader.getController();
+                modifyDataValueController.setActivityListIndex(activityListIndex);
+                modifyDataValueController.setDataIndex(dataIndex);
+                modifyDataValueController.setStage(newStage);
+                modifyDataValueController.setUser(user);
+                modifyDataValueController.setActivitiesCollectionController(this);
+                modifyDataValueController.initialSetUp();
+
+                Scene scene = new Scene(root, 450, 400);
+                newStage.setScene(scene);
+                newStage.show();
+            } catch (IOException e) {
+                    e.printStackTrace();
+            }
+
+        }
+
     }
 
 
