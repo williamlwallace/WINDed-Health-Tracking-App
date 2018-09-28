@@ -6,9 +6,8 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.*;
 import seng202.group8.parser.Parser;
-import seng202.group8.services.goals_service.goal_types.ActivityGoal;
-import seng202.group8.services.goals_service.goal_types.FrequencyGoal;
-import seng202.group8.services.goals_service.goal_types.WeightLossGoal;
+import seng202.group8.services.goals_service.GoalsService;
+import seng202.group8.services.goals_service.goal_types.*;
 import seng202.group8.user.BMI;
 import seng202.group8.user.BMIType;
 import seng202.group8.user.User;
@@ -587,6 +586,80 @@ public class SQLiteJDBC {
         }
     }
 
+    public void insertGoals(Connection connection, User user, Integer userId) {
+        ArrayList<Goal> activityGoalsList = user.getGoalsService().getCurrentActivityGoals();
+        activityGoalsList.addAll(user.getGoalsService().getPreviousActivityGoals());
+        for (Goal goal: activityGoalsList) {
+            if (goal.getGoalType().equals("WeightLossGoal")) {
+                //insertWeightGoal(connection, goal, userId);  TODO change so type is compatible need a WeightLossGoal, how?
+            } else if (goal.getGoalType().equals("ActivityGoal")) {
+                //insertActivityGoal(connection, goal, userId); TODO change so type is compatible need a ActivityGoal, how?
+            } else if (goal.getGoalType().equals("TimePerformedGoal")) {
+                //insertFrequencyGoal(connection, goal, userId); TODO change so type is compatible need a FrequencyGoal, how?
+            } else {
+                System.out.println("No matching goal type");
+            }
+        }
+
+    }
+
+    public void getGoals(Connection connection, User user, Integer userId) {
+        String activitysql = "SELECT distance_covered, distance_to_cover, target_date, start_date, type, description FROM Activity_Goal WHERE user_id=?";
+        String weightsql = "SELECT description, start_date, target_date, target_weight, start_weight FROM Weight_Goal WHERE user_id=?";
+        String frequencysql = "SELECT description, type, start_date, target_date, times_to_perform, times_performed FROM Frequency_Goal WHERE user_id=?";;
+
+        try {
+            PreparedStatement activityStatement = connection.prepareStatement(activitysql);
+            activityStatement.setInt(1, userId);
+            ResultSet resultSet = activityStatement.executeQuery();
+            while(resultSet.next()) {
+                ActivityGoal activityGoal = new ActivityGoal(user, resultSet.getString("description"),
+                        GoalType.ActivityGoal,
+                        DataType.fromStringToEnum(resultSet.getString("type").toUpperCase()),
+                        resultSet.getDouble("distance_to_cover"),
+                        getLocalDateTimeFromString(resultSet.getString("target_date")));
+                activityGoal.setCurrent(resultSet.getDouble("distance_covered"));
+                activityGoal.setStartDate(getDateFromString(resultSet.getString("start_date")));
+                user.getGoalsService().getCurrentActivityGoals().add(activityGoal);
+            }
+
+            PreparedStatement weightStatement = connection.prepareStatement(weightsql);
+            weightStatement.setInt(1, userId);
+            resultSet = weightStatement.executeQuery();
+            while(resultSet.next()) {
+                WeightLossGoal weightLossGoal = new WeightLossGoal(user, resultSet.getString("description"),
+                        GoalType.ActivityGoal,
+                        resultSet.getDouble("target_weight"),
+                        getLocalDateTimeFromString(resultSet.getString("target_date")));
+                weightLossGoal.setStartWeight(resultSet.getDouble("start_weight"));
+                weightLossGoal.setStartDate(getDateFromString(resultSet.getString("start_date")));
+                user.getGoalsService().getCurrentWeightLossGoals().add(weightLossGoal);
+            }
+
+            PreparedStatement frequencyStatement = connection.prepareStatement(frequencysql);
+            weightStatement.setInt(1, userId);
+            resultSet = weightStatement.executeQuery();
+            while(resultSet.next()) {
+                FrequencyGoal frequencyGoal = new FrequencyGoal(user, resultSet.getString("description"),
+                        GoalType.ActivityGoal,
+                        DataType.fromStringToEnum(resultSet.getString("type").toUpperCase()),
+                        resultSet.getInt("times_to_perform"),
+                        getLocalDateTimeFromString(resultSet.getString("target_date")));
+                frequencyGoal.setTimesCurrentlyPerformedActivity(resultSet.getInt("times_performed"));
+                frequencyGoal.setStartDate(getDateFromString(resultSet.getString("start_date")));
+                user.getGoalsService().getCurrentWeightLossGoals().add(frequencyGoal);
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+    }
+
+
     /**
      * Performs an SQL Select to get the title of the Users activity list collection from the Database
      * @param connection the connection to the database
@@ -1062,6 +1135,8 @@ public class SQLiteJDBC {
             userStats.setUserWeightRecords(getWeightRecords(conn, userId));
             userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
             user.setUserStats(userStats);
+
+            //getGoals(conn, user, userId); TODO uncomment this call when goals finished in database
 
             try {
                 if (conn != null) {
