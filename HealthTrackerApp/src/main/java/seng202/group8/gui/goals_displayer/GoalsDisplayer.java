@@ -44,7 +44,7 @@ public class GoalsDisplayer extends Application {
 
         setUpMockUser();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/Goals.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/Goals.fxml"));
 
         Parent root = loader.load();
         GoalsDisplayerController goalsDisplayerController = loader.getController();

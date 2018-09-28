@@ -34,7 +34,7 @@ import java.util.Arrays;
  * and then populate it with the Data value created (user choice)
  */
 public class NewDataDialogController {
-
+    private boolean isAddingActivityList;
     private User user;
     private int activityListIndexToAppendTo;
     private Stage stage;
@@ -78,6 +78,7 @@ public class NewDataDialogController {
      */
     @FXML
     public void initialize() {
+
         ArrayList<String> activitiesChoice = new ArrayList<>();
         activitiesChoice.add("Walk");
         activitiesChoice.add("Run");
@@ -103,6 +104,10 @@ public class NewDataDialogController {
         errorText.setVisible(false);
         newActivityListName.setVisible(false);
 
+        if (isAddingActivityList) {
+            newActivityListToggle.setSelected(true);
+        }
+
     }
 
     /**
@@ -110,11 +115,17 @@ public class NewDataDialogController {
      * only if required to create a new ActivityList.
      */
     public void togglListener() {
+        System.out.println(isAddingActivityList);
+        if (isAddingActivityList) {
+            newActivityListToggle.setSelected(true);
+        }
+
         if (newActivityListToggle.isSelected()) {
             newActivityListName.setVisible(true);
         } else {
             newActivityListName.setVisible(false);
         }
+
     }
 
     /**
@@ -224,6 +235,12 @@ public class NewDataDialogController {
 
 
 
+    public void toggleBtn(boolean toToggle) {
+        if (toToggle) {
+            newActivityListToggle.setSelected(true);
+            newActivityListName.setVisible(true);
+        }
+    }
 
     public User getUser() {
         return user;
@@ -255,5 +272,13 @@ public class NewDataDialogController {
 
     public void setActivitiesCollectionController(ActivitiesCollectionController activitiesCollectionController) {
         this.activitiesCollectionController = activitiesCollectionController;
+    }
+
+    public boolean isAddingActivityList() {
+        return isAddingActivityList;
+    }
+
+    public void setAddingActivityList(boolean addingActivityList) {
+        isAddingActivityList = addingActivityList;
     }
 }

@@ -1,6 +1,7 @@
 package seng202.group8.parser;
 
 import com.opencsv.CSVReader;
+import java_sqlite_db.SQLiteJDBC;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.*;
 import seng202.group8.user.*;
@@ -41,6 +42,7 @@ public class Parser {
     private String filename;
     private int lineNum;
     private ArrayList<ActivityList> oldData;
+    private SQLiteJDBC database = new SQLiteJDBC();
     /**
      * Receives a filename and creates the list of type trip phrases.
      * @param newFilename
@@ -55,6 +57,7 @@ public class Parser {
         acceptedValues.add(bike);
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
+        database.getKeyWords(1, this);
         filename = newFilename;
         oldData = this.user.getUserActivities().getActivityListCollection();
     }
@@ -367,6 +370,9 @@ public class Parser {
         acceptedValues.add(bike);
         acceptedValues.add(swim);
         acceptedValues.add(waterSports);
+        if (addToDataBase) {
+            database.addParserKeyword(1, keyWord, type);
+        }
     }
 
     public User getUser() {

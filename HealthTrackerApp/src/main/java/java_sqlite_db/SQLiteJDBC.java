@@ -372,8 +372,9 @@ public class SQLiteJDBC {
         }
     }
 
-    public void addParserKeyword(Connection connection, Integer userId, String phrase, int type) {
+    public void addParserKeyword(Integer userId, String phrase, int type) {
         String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
+        Connection connection = connect();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);
@@ -385,8 +386,9 @@ public class SQLiteJDBC {
         }
     }
 
-    public void deleteParserKeyword(Connection connection, Integer userId, String phrase) {
+    public void deleteParserKeyword(Integer userId, String phrase) {
         String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
+        Connection connection = connect();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);
@@ -394,6 +396,27 @@ public class SQLiteJDBC {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void getKeyWords(Integer userId, Parser parser) {
+        Connection connection = connect();
+        assert null != connection && null != userId;
+        String phrase = null;
+        ResultSet resultSet = null;
+        int type = 0;
+        String find = "SELECT keyword, activityType FROM Activity_Collection WHERE user_id=?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(find);
+            statement.setInt(1, userId);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                phrase = resultSet.getString("keyword");
+                type = resultSet.getInt("activityType");
+                parser.add(phrase, type, false);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 

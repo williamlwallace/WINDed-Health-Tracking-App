@@ -70,7 +70,7 @@
          <children>
             <Button mnemonicParsing="false" style="-fx-background-color: #c90909;" text="Cancel" />
             <Button mnemonicParsing="false" onAction="#enter" style="-fx-background-color: #2e86c1;" text="Parse Again" GridPane.columnIndex="2" />
-            <CheckBox mnemonicParsing="false" text="Remember Phrase?" GridPane.columnIndex="1" />
+            <CheckBox fx:id="rememberTick" mnemonicParsing="false" text="Remember Phrase?" GridPane.columnIndex="1" />
          </children>
     </GridPane>
       <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Error Goes Here" GridPane.halignment="CENTER">
