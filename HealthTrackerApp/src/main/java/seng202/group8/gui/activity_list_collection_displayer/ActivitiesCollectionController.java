@@ -500,6 +500,24 @@ public class ActivitiesCollectionController {
     }
 
 
+    public void showHelp() {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Help"));
+        content.setBody(new Text("Select any of the elements in the activities collection and press one of the three buttons./n" +
+                "Depending on the element selected and the button pressed you will be able to modify/delete or " +
+                "add different elements in the activities collection"));
+        JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton gotItButton=new JFXButton("Got it!");
+        gotItButton.setStyle("-fx-background-color: #ff0000;");
+
+        gotItButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+    }
+
 
 
     public void setParserInfo(String s) {
