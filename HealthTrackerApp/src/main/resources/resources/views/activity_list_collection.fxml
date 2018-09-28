@@ -64,7 +64,7 @@
          <children>
             <JFXTreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#showNewInsightsAndMap" prefWidth="242.0" style="-fx-background-insets: #2e86c1;" />
             <JFXButton fx:id="addButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#addToActivityList" style="-fx-background-color: #0093e3;" text="Add" textFill="#f2ecec" />
-            <JFXButton fx:id="modifyButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #0072d2;" text="Modify" textFill="WHITE" />
+            <JFXButton fx:id="modifyButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#modifyButtonListener" style="-fx-background-color: #0072d2;" text="Modify" textFill="WHITE" />
             <JFXButton fx:id="deleteButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#deleteSelectedActivityOrActivityList" style="-fx-background-color: #005ac6;" text="Remove" textFill="WHITE" />
          </children>
       </VBox>
@@ -121,7 +121,7 @@
                   <Text fx:id="averageHeartRate" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                </children>
             </GridPane>
-            <ImageView fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="23.0" fitWidth="22.0" onMouseClicked="#showHelp" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets left="10.0" top="45.0" />
                </VBox.margin>
@@ -135,7 +135,7 @@
    <center>
       <StackPane fx:id="dialogStackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <WebView fx:id="googleMapsWebView" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showHelp" prefHeight="455.0" prefWidth="575.0" />
+            <WebView fx:id="googleMapsWebView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="575.0" />
          </children>
       </StackPane>
    </center>

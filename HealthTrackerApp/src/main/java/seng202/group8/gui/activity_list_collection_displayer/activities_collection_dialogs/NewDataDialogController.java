@@ -231,6 +231,9 @@ public class NewDataDialogController {
     }
 
 
+    public void exitButtonListener() {
+        stage.close();
+    }
 
 
 

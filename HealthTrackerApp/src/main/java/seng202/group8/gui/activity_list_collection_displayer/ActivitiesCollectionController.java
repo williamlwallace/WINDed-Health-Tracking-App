@@ -249,6 +249,7 @@ public class ActivitiesCollectionController {
         try {
             Parent root = loader.load();
             Stage newStage = new Stage();
+            newStage.initStyle(StageStyle.UNDECORATED);
             NewDataDialogController newDataDialogController = loader.getController();
             newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
             newDataDialogController.setAddingActivityList(isAddActList);
@@ -499,16 +500,60 @@ public class ActivitiesCollectionController {
         }
     }
 
+    public void modifyButtonListener() {//TODO: continue from here
+//        TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
+//        if (selectedItem != null && selectedItem.isLeaf()) {
+//            TreeItem parent = selectedItem.getParent();
+//            JFXDialogLayout content = new JFXDialogLayout();
+////            content.setHeading(new Text("Delete " + selectedItem.getValue().toString()));
+//            content.setBody(new Text("This process cannot be reversed, are you sure you want to delete the selected activity?"));
+//            JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
+//            JFXButton deleteButton = new JFXButton("Delete");
+//            deleteButton.setStyle("-fx-background-color: #ff0000;");
+//
+//            JFXButton cancelButton = new JFXButton("Ca            ");
+//            cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    dialog.close();
+//                }
+//            });
+//
+//
+//            deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    int dataListIndex = parent.getChildren().indexOf(selectedItem);
+//                    int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+//                    System.out.println("activity list index: " + activityListIndex);
+//                    System.out.println("data index: " + dataListIndex);
+//                    ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+//                    if (activityList.getActivityList().size() > 1) {
+//                        Data dataToDelete = activityList.getActivity(dataListIndex);
+//                        activityList.getActivityList().remove(dataToDelete);
+//                    } else {
+//                        user.getUserActivities().deleteActivityList(activityListIndex);
+//                    }
+//                    setUpTreeView();
+//                    dialog.close();
+//                }
+//            });
+//            content.setActions(cancelButton, deleteButton);
+//
+//            dialog.show();
+//        }
+    }
+
 
     public void showHelp() {
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Help"));
-        content.setBody(new Text("Select any of the elements in the activities collection and press one of the three buttons./n" +
-                "Depending on the element selected and the button pressed you will be able to modify/delete or " +
+        content.setBody(new Label("Select any of the elements in the activities collection and press one of the three buttons." +
+                "Depending on the element selected and the button pressed you will be able to modify/delete/" +
                 "add different elements in the activities collection"));
         JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
         JFXButton gotItButton=new JFXButton("Got it!");
-        gotItButton.setStyle("-fx-background-color: #ff0000;");
+//        gotItButton.setStyle("-fx-background-color: #ff0000;");
 
         gotItButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -516,6 +561,9 @@ public class ActivitiesCollectionController {
                 dialog.close();
             }
         });
+
+        content.setActions(gotItButton);
+        dialog.show();
     }
 
 
