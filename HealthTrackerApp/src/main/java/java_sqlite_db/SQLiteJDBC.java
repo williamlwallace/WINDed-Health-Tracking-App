@@ -6,6 +6,9 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.*;
 import seng202.group8.parser.Parser;
+import seng202.group8.services.goals_service.goal_types.ActivityGoal;
+import seng202.group8.services.goals_service.goal_types.FrequencyGoal;
+import seng202.group8.services.goals_service.goal_types.WeightLossGoal;
 import seng202.group8.user.BMI;
 import seng202.group8.user.BMIType;
 import seng202.group8.user.User;
@@ -532,6 +535,56 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
         return  bmiRecordArrayList;
+    }
+
+    public void insertActivityGoal(Connection connection, ActivityGoal activityGoal, Integer userId) {
+        String sql = "INSERT INTO Activity_Goal VALUES(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDouble(1, activityGoal.getDistanceCurrentlyCovered());
+            preparedStatement.setDouble(2, activityGoal.getDistanceToCoverKm());
+            preparedStatement.setString(3, activityGoal.getTargetDate().toString());
+            preparedStatement.setString(4, activityGoal.getStartDate().toString());
+            preparedStatement.setString(5, activityGoal.getDataType().toString());
+            preparedStatement.setString(6, activityGoal.getDescription());
+            preparedStatement.setInt(7, userId);
+            System.out.println("Rows added to Activity_Goal: " + preparedStatement.executeUpdate());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertWeightGoal(Connection connection, WeightLossGoal weightLossGoal, Integer userId) {
+        String sql = "INSERT INTO Weight_Goal VALUES(?,?,?,?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDouble(6, weightLossGoal.getStartWeight());
+            preparedStatement.setDouble(5, weightLossGoal.getTargetWeight());
+            preparedStatement.setString(4, weightLossGoal.getTargetDate().toString());
+            preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
+            preparedStatement.setString(2, weightLossGoal.getDescription());
+            preparedStatement.setInt(1, userId);
+            System.out.println("Rows added to Weight_Goal: " + preparedStatement.executeUpdate());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertFrequencyGoal(Connection connection, FrequencyGoal frequencyGoal, Integer userId) {
+        String sql = "INSERT INTO Frequency_Goal VALUES(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(7, frequencyGoal.getTimesCurrentlyPerformedActivity());
+            preparedStatement.setInt(6, frequencyGoal.getTimesToPerformActivity());
+            preparedStatement.setString(5, frequencyGoal.getTargetDate().toString());
+            preparedStatement.setString(4, frequencyGoal.getStartDate().toString());
+            preparedStatement.setString(3, frequencyGoal.getDataType().toString());
+            preparedStatement.setString(2, frequencyGoal.getDescription());
+            preparedStatement.setInt(1, userId);
+            System.out.println("Rows added to Frequency_Goal: " + preparedStatement.executeUpdate());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
