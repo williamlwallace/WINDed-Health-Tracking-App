@@ -976,6 +976,29 @@ public class SQLiteJDBC {
 
     //TODO implement updateActivity for edits
 
+    public void updateActivity(Data data, ActivityList newActivityList) {
+        String update = "UPDATE data SET "
+                + "data_type = ?, "
+                + "activity_title = ?, "
+                + "title = ?, "
+                + "date = ? "
+                + "WHERE data_id = ?";
+
+        String parentListDateTimeString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(newActivityList.getCreationDate()));
+
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement = connection.prepareStatement(update);
+            preparedStatement.setString(1, data.getDataType().toString());
+            preparedStatement.setString(2, data.getTitle());
+            preparedStatement.setString(3, newActivityList.getTitle());
+            preparedStatement.setString(4, parentListDateTimeString);
+            preparedStatement.setInt(5, data.getDataId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 
     public void deleteActivity(Integer dataId) {
@@ -1069,7 +1092,6 @@ public class SQLiteJDBC {
 
             for (Data activity : dataList) {
                 Integer newDataId = activity.getDataId();
-                System.out.println("-----------" + newDataId);
                 preparedStatement = connection.prepareStatement(dataUpdate);
                 preparedStatement.setInt(1, newDataId);
                 preparedStatement.setInt(2, userId);
