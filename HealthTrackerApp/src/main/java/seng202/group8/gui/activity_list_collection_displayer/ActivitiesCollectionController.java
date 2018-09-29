@@ -426,7 +426,7 @@ public class ActivitiesCollectionController {
      */
     //Need to link it to the database
     public void deleteSelectedActivityOrActivityList() {
-
+        SQLiteJDBC database = new SQLiteJDBC();
         TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null && selectedItem != activityListCollectionTreeView.getRoot()) {
             TreeItem<String> parent = selectedItem.getParent();
@@ -456,6 +456,9 @@ public class ActivitiesCollectionController {
                         user.getUserActivities().deleteActivityList(activityListIndex);
                         setUpTreeView();
                         dialog.close();
+                        //Database Code
+                        ActivityList toDelete = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+                        database.deleteActivityList(toDelete.getTitle(), toDelete.getCreationDate());
                     }
                 });
                 content.setActions(cancelButton, deleteButton);
@@ -492,8 +495,13 @@ public class ActivitiesCollectionController {
                         if (activityList.getActivityList().size() > 1) {
                             Data dataToDelete = activityList.getActivity(dataListIndex);
                             activityList.getActivityList().remove(dataToDelete);
+                            //Database code
+                            database.deleteActivity(dataToDelete.getDataId());
                         } else {
                             user.getUserActivities().deleteActivityList(activityListIndex);
+                            //Database code
+                            ActivityList toDelete = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+                            database.deleteActivityList(toDelete.getTitle(), toDelete.getCreationDate());
                         }
                         setUpTreeView();
                         dialog.close();

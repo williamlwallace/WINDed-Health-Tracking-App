@@ -80,6 +80,7 @@ public class Parser {
                 } catch (NullPointerException e) {
                     finished = 1;
                 }
+                Integer dataId = database.getNextDataID();
                 while (line != null && (finished == 0)) {
                     line = parseActivity(line, csvReader);
                     if (!isCorrupt) {
@@ -146,6 +147,8 @@ public class Parser {
                             }
                         }
                         if (!duplicate) {
+                            activityToSend.setDataId(dataId);
+                            dataId += 1;
                             this.dataList.add(activityToSend);
                         }
                     }
