@@ -383,6 +383,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(2,phrase);
             preparedStatement.setInt(3,type);
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -396,6 +397,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, userId);
             preparedStatement.setString(2,phrase);
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -407,7 +409,7 @@ public class SQLiteJDBC {
         String phrase = null;
         ResultSet resultSet = null;
         int type = 0;
-        String find = "SELECT keyword, activityType FROM Activity_Collection WHERE user_id=?";
+        String find = "SELECT keyword, activityType FROM parser_keywords WHERE user_id=?";
         try {
             PreparedStatement statement = connection.prepareStatement(find);
             statement.setInt(1, userId);
