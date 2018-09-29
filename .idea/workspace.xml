@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc408be8-b03e-4178-8660-efdd1571c15e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/images/stretching-exercises.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_calendarfx_recurrence_8_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_calendarfx_view_8_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jfoenix_jfoenix_8_0_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_opencsv_opencsv_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__de_jensd_fontawesomefx_commons_8_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__de_jensd_fontawesomefx_fontawesome_4_7_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_typhon0_AnimateFX_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_9_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_text_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_controlsfx_controlsfx_8_40_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_21_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/SENG202Team8.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/new_data_dialog.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,12 +35,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="664" />
+          <entry key="java" value="2016" />
+          <entry key="txt" value="94" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="664" />
+          <entry key="JAVA" value="2016" />
+          <entry key="PLAIN_TEXT" value="94" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -71,11 +50,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="129" column="43" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
+            <state relative-caret-position="211">
+              <caret line="536" column="9" lean-forward="true" selection-start-line="536" selection-start-column="9" selection-end-line="536" selection-end-column="9" />
+              <folding>
+                <element signature="e#17865#17866#0" expanded="true" />
+                <element signature="e#17927#17928#0" expanded="true" />
+                <element signature="e#19573#19574#0" expanded="true" />
+                <element signature="e#19635#19636#0" expanded="true" />
+                <element signature="e#24797#24798#0" expanded="true" />
+                <element signature="e#24843#24844#0" expanded="true" />
+                <element signature="e#24971#24972#0" expanded="true" />
+                <element signature="e#25008#25009#0" expanded="true" />
+                <element signature="e#25054#25055#0" expanded="true" />
+                <element signature="e#25111#25112#0" expanded="true" />
+                <element signature="e#25141#25142#0" expanded="true" />
+                <element signature="e#25168#25169#0" expanded="true" />
+                <element signature="e#25206#25207#0" expanded="true" />
+                <element signature="e#25238#25239#0" expanded="true" />
+                <element signature="e#25276#25277#0" expanded="true" />
+                <element signature="e#25311#25312#0" expanded="true" />
+                <element signature="e#25366#25367#0" expanded="true" />
+                <element signature="e#25440#25441#0" expanded="true" />
+                <element signature="e#25477#25478#0" expanded="true" />
+                <element signature="e#25510#25511#0" expanded="true" />
+                <element signature="e#25550#25551#0" expanded="true" />
+                <element signature="e#25586#25587#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,7 +91,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/add_goal.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
@@ -205,7 +208,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538220103630" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538221424255" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -259,6 +262,14 @@
       <option name="presentableId" value="Default" />
       <updated>1538215477597</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fixed initial display of empty insights, added a welcoming view.">
+      <created>1538220176459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1538220176459</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -296,6 +307,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed initial display of empty, insights, added a welcoming view." />
+    <MESSAGE value="Fixed initial display of empty insights, added a welcoming view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed initial display of empty insights, added a welcoming view." />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -303,18 +319,42 @@
         <state relative-caret-position="-1799" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="129" column="43" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/add_goal.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="74" column="61" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="536" column="9" lean-forward="true" selection-start-line="536" selection-start-column="9" selection-end-line="536" selection-end-column="9" />
+          <folding>
+            <element signature="e#17865#17866#0" expanded="true" />
+            <element signature="e#17927#17928#0" expanded="true" />
+            <element signature="e#19573#19574#0" expanded="true" />
+            <element signature="e#19635#19636#0" expanded="true" />
+            <element signature="e#24797#24798#0" expanded="true" />
+            <element signature="e#24843#24844#0" expanded="true" />
+            <element signature="e#24971#24972#0" expanded="true" />
+            <element signature="e#25008#25009#0" expanded="true" />
+            <element signature="e#25054#25055#0" expanded="true" />
+            <element signature="e#25111#25112#0" expanded="true" />
+            <element signature="e#25141#25142#0" expanded="true" />
+            <element signature="e#25168#25169#0" expanded="true" />
+            <element signature="e#25206#25207#0" expanded="true" />
+            <element signature="e#25238#25239#0" expanded="true" />
+            <element signature="e#25276#25277#0" expanded="true" />
+            <element signature="e#25311#25312#0" expanded="true" />
+            <element signature="e#25366#25367#0" expanded="true" />
+            <element signature="e#25440#25441#0" expanded="true" />
+            <element signature="e#25477#25478#0" expanded="true" />
+            <element signature="e#25510#25511#0" expanded="true" />
+            <element signature="e#25550#25551#0" expanded="true" />
+            <element signature="e#25586#25587#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

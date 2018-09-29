@@ -140,23 +140,31 @@ public class ActivitiesCollectionController {
     public void setInsights(User user, Data data) {
         HeartRateData heartRateData = data.getHeartRateData();
 
+        //Display data value title
         if (data.getTitle().length() < 20) {
             insightsTitle.setText(WordUtils.capitalize(data.getTitle()));
         } else {
             insightsTitle.setText(WordUtils.capitalize(data.getTitle().substring(0, 17) + "..."));
         }
+        //Display day and init/end dates of data value
         LocalDateTime fromTime = data.getAllDateTimes().get(0);
         LocalDateTime toTime = data.getAllDateTimes().get(data.getAllDateTimes().size() - 1);
         dateText.setText(fromTime.toLocalDate().toString());
         fromText.setText(fromTime.toLocalTime().toString());
         toText.setText(toTime.toLocalTime().toString());
 
+        //Displaying the data distance covered in m or km depending on the integer size
         if (data.getDistanceCovered() < 1000) {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered()) + " m");
         } else {
             distanceCovered.setText(String.format("%.2f", data.getDistanceCovered() / 1000) + " km");
         }
 
+        //Display average data speed
+        String averageSpeedString = String.format("%.2f", data.getDataSpeedKph()) + " km/h";
+        averageSpeed.setText(averageSpeedString);
+
+        //Display heart rate data insights
         if (heartRateData.getMeanAverageHeartRate() < 0) {
             averageHeartRate.setText("N/A");
             maxHeartRate.setText("N/A");
@@ -166,8 +174,7 @@ public class ActivitiesCollectionController {
             maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate()) + " bpm");
             minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate()) + " bpm");
         }
-        String averageSpeedString = String.format("%.2f", data.getDataSpeedKph()) + " km/h";
-        averageSpeed.setText(averageSpeedString);
+
 
     }
 
@@ -186,7 +193,7 @@ public class ActivitiesCollectionController {
             }
             rootNode.getChildren().add(activityListNode);
         }
-        activityListCollectionTreeView.setTooltip(new Tooltip("Double click on any of the activities containers to add a new activity to its list!"));
+
         activityListCollectionTreeView.setRoot(rootNode);
 
     }
@@ -202,95 +209,6 @@ public class ActivitiesCollectionController {
 //        System.out.println(htmlFile);
         webEngine.loadContent(htmlFile);
     }
-
-
-    /**
-     *
-     * @param mouseEvent
-     * @throws IOException
-     * TreeView item listener that allows to update the WebEngine rendering the GoogleMaps file
-     * and the insights view every time a new Data object is clicked in the TreeView.
-     */
-    public void showNewInsightsAndMap(MouseEvent mouseEvent) throws IOException {
-        TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
-//        System.out.println("Selected Item:" + selectedItem);
-
-
-        if (selectedItem != null ) {
-            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot()) {
-
-                //Makes transition from welcome view to the data insights
-                insightsVBox.setVisible(true);
-                welcomePane.setVisible(false);
-
-
-                TreeItem<String> parent = selectedItem.getParent();
-                int dataIndex = parent.getChildren().indexOf(selectedItem);
-                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
-
-                StringBuilder bldr = new StringBuilder();
-                String str;
-
-                URL urlGoogleMaps = getClass().getResource("/resources/views/googleMapsView.html");
-
-                String strGoogleMaps = "";
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(urlGoogleMaps.openStream()));
-
-                String inputLine;
-                while ((inputLine = in.readLine()) != null)
-                    strGoogleMaps += (inputLine + "\n");
-                in.close();
-
-
-                Data data = user.getUserActivities().getActivityListCollection().get(activityListIndex).getActivity(dataIndex);
-                String htmlFile = jsInjection(strGoogleMaps, data);
-                setUpWebView(htmlFile);
-                setInsights(user, data);
-            }
-//            } else if (!selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot() && mouseEvent.getClickCount() == 2) {
-//                System.out.println("This should happen only if I click a non root non leaf element and right click on it");
-//                TreeItem<String> parent = selectedItem.getParent();
-//                int activityListIndex = parent.getChildren().indexOf(selectedItem);
-//                System.out.println(activityListIndex);
-//                triggerNewActivityDialog(activityListIndex);
-//
-//            }
-        }
-
-    }
-
-
-    /**
-     *
-     * @param activityListIndex
-     * Opens a dialog for the user to input manual data in the app.
-     */
-    private void triggerNewActivityDialog(int activityListIndex, boolean isAddActList) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/new_data_dialog.fxml"));
-        try {
-            Parent root = loader.load();
-            Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UNDECORATED);
-            NewDataDialogController newDataDialogController = loader.getController();
-            newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
-            newDataDialogController.setAddingActivityList(isAddActList);
-            newDataDialogController.toggleBtn(isAddActList);
-            newDataDialogController.setStage(newStage);
-            newDataDialogController.setUser(user);
-            newDataDialogController.setActivitiesCollectionController(this);
-
-            Scene scene = new Scene(root, 450, 400);
-//            primaryStage.initModality(Modality.APPLICATION_MODAL);
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
 
     /**
      *
@@ -320,10 +238,95 @@ public class ActivitiesCollectionController {
 
         htmlFile = htmlFile.replace("&FLIGHTPATHVARID", "dataCoordPath");
         htmlFile = htmlFile.replace("&PREVFLIGHTVAR", "dataCoordVar");
-//        System.out.println(htmlFile);
         return htmlFile;
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     * @throws IOException
+     * TreeView item listener that allows to update the WebEngine rendering the GoogleMaps file
+     * and the insights view every time a new Data object is clicked in the TreeView.
+     */
+    public void showNewInsightsAndMap(MouseEvent mouseEvent) throws IOException {
+        TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
+//        System.out.println("Selected Item:" + selectedItem);
+
+
+        if (selectedItem != null ) {
+            // Triggered only if the selected value is a Data value (discards activity lists and activity list collections)
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot()) {
+
+                //Makes transition from welcome view to the data insights
+                insightsVBox.setVisible(true);
+                welcomePane.setVisible(false);
+
+
+                TreeItem<String> parent = selectedItem.getParent();
+                int dataIndex = parent.getChildren().indexOf(selectedItem);
+                int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+
+                //Loading the html template from GoogleMaps JavaScript API as URL
+                URL urlGoogleMaps = getClass().getResource("/resources/views/googleMapsView.html");
+
+                // Reading of the URL and create related String object
+                String strGoogleMaps = "";
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(urlGoogleMaps.openStream()));
+
+                String inputLine;
+                while ((inputLine = in.readLine()) != null)
+                    strGoogleMaps += (inputLine + "\n");
+                in.close();
+
+                // Retrieve selected Data value
+                Data data = user.getUserActivities().getActivityListCollection().get(activityListIndex).getActivity(dataIndex);
+
+                // Inject the GoogleMaps html file (read as string above) with the coordinates of the selected data
+                String htmlFile = jsInjection(strGoogleMaps, data);
+
+                // Now the string is complete and up-to-date (containing the
+                // selected data coordinates in it), it can be passed to the WebView to load it.
+                setUpWebView(htmlFile);
+                setInsights(user, data);
+            }
+        }
 
     }
+
+
+    /**
+     *
+     * @param activityListIndex
+     * Opens a dialog for the user to input manual data in the app.
+     */
+    private void triggerNewActivityDialog(int activityListIndex, boolean isAddActList) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/new_data_dialog.fxml"));
+        try {
+            // Set up for the new stage opening on top of the application.
+            Parent root = loader.load();
+            Stage newStage = new Stage();
+            newStage.initStyle(StageStyle.UNDECORATED);
+            NewDataDialogController newDataDialogController = loader.getController();
+            newDataDialogController.setActivityListIndexToAppendTo(activityListIndex);
+            newDataDialogController.setAddingActivityList(isAddActList);
+            newDataDialogController.toggleBtn(isAddActList);
+            newDataDialogController.setStage(newStage);
+            newDataDialogController.setUser(user);
+            newDataDialogController.setActivitiesCollectionController(this);
+
+            Scene scene = new Scene(root, 450, 400);
+            newStage.setScene(scene);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
 
     /**
      *
@@ -339,7 +342,7 @@ public class ActivitiesCollectionController {
         File csvDirectory = fileChooser.showOpenDialog(getPrimaryStage());
         if (csvDirectory != null) {
             List<String> csvArray = Arrays.asList(csvDirectory.toPath().toString().split("/"));
-            parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' selected");
+            parserInfo.setText("File '" + csvArray.get(csvArray.size() - 1)+"' selected");
             csvToParse = csvDirectory.toPath().toString();
         } else {
             //Tell user the file was not found
@@ -432,7 +435,7 @@ public class ActivitiesCollectionController {
             TreeItem<String> parent = selectedItem.getParent();
             if (!selectedItem.isLeaf()) {
 
-
+                //Dialog opening in the case the item to remove is an activity
                 JFXDialogLayout content= new JFXDialogLayout();
                 content.setHeading(new Text("Delete Activity List"));
                 content.setBody(new Text("This process cannot be reversed, are you sure you want to delete the whole activity list?"));
@@ -440,6 +443,7 @@ public class ActivitiesCollectionController {
                 JFXButton deleteButton=new JFXButton("Delete");
                 deleteButton.setStyle("-fx-background-color: #ff0000;");
 
+                // Button to cancel the removing action
                 JFXButton cancelButton =new JFXButton("Cancel");
                 cancelButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -448,7 +452,7 @@ public class ActivitiesCollectionController {
                     }
                 });
 
-
+                // Button to delete the selected activity
                 deleteButton.setOnAction(new EventHandler<ActionEvent>(){
                     @Override
                     public void handle(ActionEvent event){
@@ -468,6 +472,7 @@ public class ActivitiesCollectionController {
 
             } else {
 
+                // Dialog opening in the case the item to remove is an activity list
                 JFXDialogLayout content= new JFXDialogLayout();
                 content.setHeading(new Text("Delete " + selectedItem.getValue().toString()));
                 content.setBody(new Text("This process cannot be reversed, are you sure you want to delete the selected activity?"));
@@ -475,6 +480,7 @@ public class ActivitiesCollectionController {
                 JFXButton deleteButton=new JFXButton("Delete");
                 deleteButton.setStyle("-fx-background-color: #ff0000;");
 
+                // Button to cancel the removing action
                 JFXButton cancelButton =new JFXButton("Cancel");
                 cancelButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -483,7 +489,7 @@ public class ActivitiesCollectionController {
                     }
                 });
 
-
+                // Button to delete the selected activity list
                 deleteButton.setOnAction(new EventHandler<ActionEvent>(){
                     @Override
                     public void handle(ActionEvent event){
@@ -515,6 +521,7 @@ public class ActivitiesCollectionController {
         }
         setUpTreeView();
     }
+
 
     public void addToActivityList() {
 
@@ -563,6 +570,10 @@ public class ActivitiesCollectionController {
     }
 
 
+    /**
+     *  Listener for the info ImageView (related to the resources/views/images/info.png file). Aims to help the user
+     *  understanding how to interact with the whole view.
+     */
     public void showHelp() {
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Help"));
