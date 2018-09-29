@@ -419,6 +419,7 @@ public class SQLiteJDBC {
                 type = resultSet.getInt("activityType");
                 parser.add(phrase, type, false);
             }
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
