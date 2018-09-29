@@ -6,6 +6,7 @@ import com.jfoenix.controls.*;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
@@ -323,6 +324,13 @@ public class ActivitiesCollectionController {
 
     }
 
+    public void editKeyWords(ActionEvent event) throws Exception {
+        ParserEditKeywords parseEdit = new ParserEditKeywords();
+        parseEdit.setUser(user);
+        parseEdit.setParentControl(this);
+        parseEdit.start(ParserEditKeywords.classStage);
+    }
+
     /**
      * Written by Sam, takes the filename from searchForFile() and parses the data. Handles errors my opening new windows which give the user information of the errors.
      * @param event
@@ -394,6 +402,8 @@ public class ActivitiesCollectionController {
             System.out.println("csvToParse empty");
         }
     }
+
+
 
 
     /**
