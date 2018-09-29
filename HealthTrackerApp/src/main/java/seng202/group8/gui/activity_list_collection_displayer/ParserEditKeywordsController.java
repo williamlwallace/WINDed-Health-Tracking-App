@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -27,7 +28,7 @@ public class ParserEditKeywordsController {
     private ComboBox actType;
 
     @FXML
-    private ComboBox actRemove;
+    private ChoiceBox actRemove;
 
     private User user;
     private Parser parser;
