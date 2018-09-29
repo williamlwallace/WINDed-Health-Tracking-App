@@ -1,11 +1,15 @@
 package seng202.group8.data_entries;
 
 
+import java_sqlite_db.SQLiteJDBC;
 import javafx.scene.Node;
 import org.apache.commons.lang3.ObjectUtils;
 import seng202.group8.user.User;
 import seng202.group8.user.user_stats.Sex;
 
+import java.sql.Connection;
+import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -58,6 +62,8 @@ public abstract class Data {
     private Double distanceCovered;
     private long millisecondsOfExercise;
     public double consumedCalories;
+
+    private Integer dataId = 0;
 
 
     /**
@@ -840,6 +846,10 @@ public abstract class Data {
     public Integer getStressLevelMin() {
         return stressLevelMin;
     }
+
+    public Integer getDataId() { return  dataId;}
+
+    public void setDataId(Integer dataId) {this.dataId = dataId;}
 
     public ArrayList<Double> getStressProportionsBetweenPoints() {
         return stressProportionsBetweenPoints;

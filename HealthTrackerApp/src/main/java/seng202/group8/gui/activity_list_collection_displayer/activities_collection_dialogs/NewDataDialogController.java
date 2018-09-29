@@ -162,11 +162,14 @@ public class NewDataDialogController {
             heartRates.add(-1);
             heartRates.add(-1);
 
+            SQLiteJDBC database = new SQLiteJDBC();
+
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
+            dataVal.setDataId(database.getNextDataID());
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
             dataVal.setIsGraphable(false);
             dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
-            SQLiteJDBC database = new SQLiteJDBC();
+
 
             if (newActivityListToggle.isSelected()) {
                 ActivityList activityList = new ActivityList(newActivityListName.getText());
