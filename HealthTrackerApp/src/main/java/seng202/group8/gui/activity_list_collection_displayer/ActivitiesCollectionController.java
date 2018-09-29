@@ -15,7 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -36,10 +38,7 @@ import seng202.group8.user.User;
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 /**
@@ -101,10 +100,22 @@ public class ActivitiesCollectionController {
     @FXML
     private StackPane dialogStackPane;
 
+    @FXML
+    private BorderPane welcomePane;
+
+    @FXML
+    private VBox insightsVBox;
+
+    @FXML
+    private Label inspirationalLabel;
+
+
     private static Stage primaryStage;
     private static User user;
     private String csvToParse;
     private String activityTitle;
+
+    private final String[] aforisms = {"Success is where preparation and opportunity meet", "Winners never quit and quitters never win" };
 
 
     /**
@@ -112,6 +123,12 @@ public class ActivitiesCollectionController {
      */
     @FXML
     private void initialize() {
+        insightsVBox.setVisible(false);
+        welcomePane.setVisible(true);
+        Integer randInt = (new Random()).nextInt(2);
+        String aforism = aforisms[randInt];
+        inspirationalLabel.setText(aforism);
+
     }
 
     /**
@@ -196,10 +213,17 @@ public class ActivitiesCollectionController {
      */
     public void showNewInsightsAndMap(MouseEvent mouseEvent) throws IOException {
         TreeItem<String> selectedItem = (TreeItem<String>) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
-        System.out.println("Selected Item:" + selectedItem);
+//        System.out.println("Selected Item:" + selectedItem);
+
+
         if (selectedItem != null ) {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && selectedItem.isLeaf() && selectedItem != activityListCollectionTreeView.getRoot()) {
-                System.out.println("Ciao " + selectedItem.getValue());
+
+                //Makes transition from welcome view to the data insights
+                insightsVBox.setVisible(true);
+                welcomePane.setVisible(false);
+
+
                 TreeItem<String> parent = selectedItem.getParent();
                 int dataIndex = parent.getChildren().indexOf(selectedItem);
                 int activityListIndex = parent.getParent().getChildren().indexOf(parent);
