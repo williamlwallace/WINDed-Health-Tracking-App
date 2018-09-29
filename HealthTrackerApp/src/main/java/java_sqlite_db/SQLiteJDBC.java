@@ -539,12 +539,12 @@ public class SQLiteJDBC {
         return  bmiRecordArrayList;
     }
 
-    public void insertActivityGoal(Connection connection, Goal activityGoal, Integer userId) {
+    public void insertActivityGoal(Connection connection, ActivityGoal activityGoal, Integer userId) {
         String sql = "INSERT INTO Activity_Goal VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(1, activityGoal.getCurrent());
-            preparedStatement.setDouble(2, activityGoal.getTarget());
+            preparedStatement.setDouble(1, activityGoal.getDistanceCurrentlyCovered());
+            preparedStatement.setDouble(2, activityGoal.getDistanceToCoverKm());
             preparedStatement.setString(3, activityGoal.getTargetDate().toString());
             preparedStatement.setString(4, activityGoal.getStartDate().toString());
             preparedStatement.setString(5, activityGoal.getDataType().toString());
@@ -556,12 +556,12 @@ public class SQLiteJDBC {
         }
     }
 
-    public void insertWeightGoal(Connection connection, Goal weightLossGoal, Integer userId) {
+    public void insertWeightGoal(Connection connection, WeightLossGoal weightLossGoal, Integer userId) {
         String sql = "INSERT INTO Weight_Goal VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(6, weightLossGoal.getCurrent()); //TODO Needs to be start weight not current weight
-            preparedStatement.setDouble(5, weightLossGoal.getTarget());
+            preparedStatement.setDouble(6, weightLossGoal.getStartWeight());
+            preparedStatement.setDouble(5, weightLossGoal.getTargetWeight());
             preparedStatement.setString(4, weightLossGoal.getTargetDate().toString());
             preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
             preparedStatement.setString(2, weightLossGoal.getDescription());
@@ -572,12 +572,12 @@ public class SQLiteJDBC {
         }
     }
 
-    public void insertFrequencyGoal(Connection connection, Goal frequencyGoal, Integer userId) {
+    public void insertFrequencyGoal(Connection connection, FrequencyGoal frequencyGoal, Integer userId) {
         String sql = "INSERT INTO Frequency_Goal VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(7, frequencyGoal.getCurrent());
-            preparedStatement.setDouble(6, frequencyGoal.getTarget());
+            preparedStatement.setInt(7, frequencyGoal.getTimesCurrentlyPerformedActivity());
+            preparedStatement.setInt(6, frequencyGoal.getTimesToPerformActivity());
             preparedStatement.setString(5, frequencyGoal.getTargetDate().toString());
             preparedStatement.setString(4, frequencyGoal.getStartDate().toString());
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());
@@ -594,11 +594,14 @@ public class SQLiteJDBC {
         activityGoalsList.addAll(user.getGoalsService().getPreviousActivityGoals());
         for (Goal goal: activityGoalsList) {
             if (goal.getGoalType().equals("WeightLossGoal")) {
-                insertWeightGoal(connection, goal, userId);
+                WeightLossGoal weightLossGoal = (WeightLossGoal) goal;
+                insertWeightGoal(connection, weightLossGoal, userId);
             } else if (goal.getGoalType().equals("ActivityGoal")) {
-                insertActivityGoal(connection, goal, userId);
+                ActivityGoal activityGoal = (ActivityGoal) goal;
+                insertActivityGoal(connection, activityGoal, userId);
             } else if (goal.getGoalType().equals("TimePerformedGoal")) {
-                insertFrequencyGoal(connection, goal, userId);
+                FrequencyGoal frequencyGoal = (FrequencyGoal) goal;
+                insertFrequencyGoal(connection, frequencyGoal, userId);
             } else {
                 System.out.println("No matching goal type");
             }
