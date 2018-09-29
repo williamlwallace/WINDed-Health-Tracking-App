@@ -825,6 +825,7 @@ public class SQLiteJDBC {
                         break;
                 }
                 if (data!=null) {
+                    data.setDataId(dataID);
                     activityListData.add(data);
                 }
 
@@ -1067,7 +1068,8 @@ public class SQLiteJDBC {
             String parentListDateTimeString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(parentListDatetime));
 
             for (Data activity : dataList) {
-                Integer newDataId = getNextDataID(connection);
+                Integer newDataId = activity.getDataId();
+                System.out.println("-----------" + newDataId);
                 preparedStatement = connection.prepareStatement(dataUpdate);
                 preparedStatement.setInt(1, newDataId);
                 preparedStatement.setInt(2, userId);
@@ -1146,18 +1148,19 @@ public class SQLiteJDBC {
 
     /**
      * Gets the next data Id to assign to a new data object to be stored
-     * @param connection the connection to the database
      * @return the next DataId available in the database
      */
-    public Integer getNextDataID(Connection connection) {
+    public Integer getNextDataID() {
         String find = "SELECT MAX(data_id) FROM Data";
         Integer newId = 0;
         try {
+            Connection connection = connect();
             PreparedStatement preparedStatement  = connection.prepareStatement(find);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
                 newId = resultSet.getInt("MAX(data_id)");
             }
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
