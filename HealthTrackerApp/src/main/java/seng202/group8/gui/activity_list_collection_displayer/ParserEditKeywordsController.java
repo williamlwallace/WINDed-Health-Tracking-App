@@ -40,7 +40,7 @@ public class ParserEditKeywordsController {
 
     @FXML
     public void initialize() throws Exception {
-        parser  = new Parser("", user);
+        parser = new Parser("", user);
         ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
         actRemove.setItems(choiceAdd);
     }
@@ -54,10 +54,13 @@ public class ParserEditKeywordsController {
         stage.close();
     }
 
-    public void remove(ActionEvent event) {
+    public void remove(ActionEvent event) throws Exception {
         if (actRemove.getValue() != null) {
             SQLiteJDBC database = new SQLiteJDBC();
             database.deleteParserKeyword(1, actRemove.getValue().toString());
+            parser = new Parser("", user);
+            ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
+            actRemove.setItems(choiceAdd);
         }
     }
 
@@ -101,6 +104,9 @@ public class ParserEditKeywordsController {
         }
         if (type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0)))  {
             parser.add(phraseReturn, type, true);
+            parser = new Parser("", user);
+            ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
+            actRemove.setItems(choiceAdd);
         }
     }
 
