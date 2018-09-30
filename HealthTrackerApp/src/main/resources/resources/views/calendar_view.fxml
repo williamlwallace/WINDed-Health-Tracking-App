@@ -26,9 +26,9 @@
                         <Insets left="20.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fx:id="noActivitiesText" strokeType="OUTSIDE" strokeWidth="0.0" text="No Activities on this day!">
+                  <Text fx:id="noActivitiesText" fill="#42d13d" strokeType="OUTSIDE" strokeWidth="0.0" text="No Activities on this day!">
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
                      </VBox.margin>
                   </Text>
                   <ListView fx:id="activitiesListView" prefHeight="255.0" prefWidth="600.0" />
@@ -41,12 +41,12 @@
                         <Insets left="20.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fx:id="noGoalsText" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="noGoalsText" fill="#e59400" strokeType="OUTSIDE" strokeWidth="0.0" text="No goals on this day!">
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <ListView prefHeight="255.0" prefWidth="600.0" />
+                  <ListView fx:id="goalsListView" prefHeight="255.0" prefWidth="600.0" />
                </children>
             </VBox>
          </children>

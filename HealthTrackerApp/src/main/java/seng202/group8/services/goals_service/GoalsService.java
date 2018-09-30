@@ -8,6 +8,7 @@ import seng202.group8.user.User;
 import seng202.group8.user.UserObserver;
 
 import javax.naming.ServiceUnavailableException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -105,6 +106,27 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         }
     }
 
+
+    public ArrayList<Goal> getAllCurrentGoals() {
+        ArrayList<Goal> goals = new ArrayList<>();
+        goals.addAll(this.currentActivityGoals);
+        goals.addAll(this.currentWeightLossGoals);
+        goals.addAll(this.currentTimesPerformedGoals);
+        return goals;
+    }
+
+    public ArrayList<Goal> getAllCurrentGoalsExpiringOnGivenDate(LocalDate selectedDate) {
+        ArrayList<Goal> goals = getAllCurrentGoals();
+        ArrayList<Goal> onDateGoals = new ArrayList<>();
+        for (Goal goal : goals) {
+            LocalDate expiryDate = goal.getTargetDate().toLocalDate();
+            if (expiryDate.isEqual(selectedDate)) {
+                onDateGoals.add(goal);
+            }
+        }
+        return onDateGoals;
+
+    }
 
     /**
      *
