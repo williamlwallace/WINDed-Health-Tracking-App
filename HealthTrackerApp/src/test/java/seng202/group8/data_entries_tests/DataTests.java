@@ -52,11 +52,11 @@ public class DataTests {
         localTimes.add(LocalDateTime.of(2018, 9, 11, 00, 00, 00));
 
         ArrayList<CoordinateData> coordinateList = new ArrayList<CoordinateData>();
-        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
-        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
-        coordinateList.add(new CoordinateData(30.26863712,-97.83267747,201.5));
-        coordinateList.add(new CoordinateData(30.26881985,-97.83246599,204.4));
-        coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
+        coordinateList.add(new CoordinateData(30.2553368,-97.83891084,239.5));
+        coordinateList.add(new CoordinateData(30.25499189,-97.83913958,239));
+        coordinateList.add(new CoordinateData(30.25469617,-97.83931962,239));
+        coordinateList.add(new CoordinateData(30.2541537,-97.83977501,239.5));
+        //coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
 
         RunData testData = new RunData("testDistance", DataType.WALK, localTimes, coordinateList, heartRates, testUser);
         testUser.getUserActivities().insertActivityList(new ActivityList("TESTS"));
@@ -114,6 +114,8 @@ public class DataTests {
     public void testDistanceDifference() throws Exception {
 
         CoordinateDataDifference distanceDifference = new CoordinateDataDifference(testUser.getUserActivities().getAllData().get(0).getCoordinatesArrayList().get(0), (testUser.getUserActivities().getAllData().get(0).getCoordinatesArrayList().get(1)));
+        Double distanceDoodad = testUser.getUserActivities().getAllData().get(0).getDistanceCovered();
+        System.out.println(distanceDoodad);
         System.out.println(distanceDifference.getDistanceDifference());
     }
 

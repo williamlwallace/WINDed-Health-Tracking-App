@@ -163,8 +163,8 @@ public class StatisticsServiceTest {
         localTimes.add(LocalDateTime.now());
         localTimes.add(LocalDateTime.now().plusMinutes(1));
         localTimes.add(LocalDateTime.now().plusMinutes(2));
-        ArrayList<Double> times = statsService.createTimes(localTimes);
+        TimeScale times = statsService.createTimes(localTimes);
         ArrayList<Double> expectedTimes = new ArrayList<Double>(Arrays.asList(0.0, 60.0, 120.0));
-        assertEquals(expectedTimes, times);
+        assertEquals(expectedTimes, times.getTimes());
     }
 }
