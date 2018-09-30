@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dc408be8-b03e-4178-8660-efdd1571c15e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/SENG202Team8.iml" afterDir="false" />
+    <list default="true" id="846dc970-0423-48fa-a5e6-5fee7989cbea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/SENG202Team8.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,94 +16,120 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="1351477956">
+    <session id="-2061731187">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="1" />
-          <entry key="XML" value="2" />
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="2" />
-          <entry key="java" value="1" />
+          <entry key="fxml" value="3" />
+          <entry key="java" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="7" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2016" />
-          <entry key="txt" value="94" />
+          <entry key="java" value="1301" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2016" />
-          <entry key="PLAIN_TEXT" value="94" />
+          <entry key="JAVA" value="1301" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.js.language.service.starts" />
+      <usages-collector id="statistics.spring.boot.run.usages" />
+      <usages-collector id="statistics.spring.boot.mvc.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="536" column="9" lean-forward="true" selection-start-line="536" selection-start-column="9" selection-end-line="536" selection-end-column="9" />
-              <folding>
-                <element signature="e#17865#17866#0" expanded="true" />
-                <element signature="e#17927#17928#0" expanded="true" />
-                <element signature="e#19573#19574#0" expanded="true" />
-                <element signature="e#19635#19636#0" expanded="true" />
-                <element signature="e#24797#24798#0" expanded="true" />
-                <element signature="e#24843#24844#0" expanded="true" />
-                <element signature="e#24971#24972#0" expanded="true" />
-                <element signature="e#25008#25009#0" expanded="true" />
-                <element signature="e#25054#25055#0" expanded="true" />
-                <element signature="e#25111#25112#0" expanded="true" />
-                <element signature="e#25141#25142#0" expanded="true" />
-                <element signature="e#25168#25169#0" expanded="true" />
-                <element signature="e#25206#25207#0" expanded="true" />
-                <element signature="e#25238#25239#0" expanded="true" />
-                <element signature="e#25276#25277#0" expanded="true" />
-                <element signature="e#25311#25312#0" expanded="true" />
-                <element signature="e#25366#25367#0" expanded="true" />
-                <element signature="e#25440#25441#0" expanded="true" />
-                <element signature="e#25477#25478#0" expanded="true" />
-                <element signature="e#25510#25511#0" expanded="true" />
-                <element signature="e#25550#25551#0" expanded="true" />
-                <element signature="e#25586#25587#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1799" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/add_goal.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="74" column="61" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5504587">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="317">
+                  <caret line="267" selection-start-line="267" selection-end-line="267" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="117" column="65" lean-forward="true" selection-start-line="117" selection-start-column="65" selection-end-line="117" selection-end-column="65" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="36" selection-start-line="36" selection-end-line="36" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml">
+              <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+              <provider editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywordsController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="40" selection-start-line="40" selection-end-line="40" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="61" selection-start-line="61" selection-end-line="61" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml">
+              <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+              <provider editor-type-id="text-editor" />
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -109,9 +137,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -121,9 +157,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1843" />
-    <option name="width" value="1431" />
-    <option name="height" value="900" />
+    <option name="x" value="781" />
+    <option name="y" value="27" />
+    <option name="width" value="715" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -137,6 +174,11 @@
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -163,6 +205,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="group8" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="data_entries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
@@ -188,6 +239,17 @@
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="activity_list_collection_displayer" type="462c0819:PsiDirectoryNode" />
+              <item name="activities_collection_dialogs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,22 +264,130 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538221424255" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538276789104" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/images" />
-    </key>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywords.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywordsController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/ParserEditKeywords.fxml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -256,134 +426,121 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="dc408be8-b03e-4178-8660-efdd1571c15e" name="Default Changelist" comment="" />
-      <created>1538215477597</created>
+      <changelist id="846dc970-0423-48fa-a5e6-5fee7989cbea" name="Default Changelist" comment="" />
+      <created>1538256502734</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1538215477597</updated>
+      <updated>1538256502734</updated>
+      <workItem from="1538256510660" duration="804000" />
+      <workItem from="1538273553418" duration="3224000" />
     </task>
-    <task id="LOCAL-00001" summary="Fixed initial display of empty insights, added a welcoming view.">
-      <created>1538220176459</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1538220176459</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4028000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1600" height="902" extended-state="6" />
+    <frame x="67" y="25" width="1429" height="975" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24967825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13304411" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32901555" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13017751" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289941" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed initial display of empty, insights, added a welcoming view." />
-    <MESSAGE value="Fixed initial display of empty insights, added a welcoming view." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed initial display of empty insights, added a welcoming view." />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1799" />
+        <state relative-caret-position="255">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/add_goal.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywordsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="74" column="61" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="61" />
+        <state relative-caret-position="180">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/data_entries/DataType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="536" column="9" lean-forward="true" selection-start-line="536" selection-start-column="9" selection-end-line="536" selection-end-column="9" />
-          <folding>
-            <element signature="e#17865#17866#0" expanded="true" />
-            <element signature="e#17927#17928#0" expanded="true" />
-            <element signature="e#19573#19574#0" expanded="true" />
-            <element signature="e#19635#19636#0" expanded="true" />
-            <element signature="e#24797#24798#0" expanded="true" />
-            <element signature="e#24843#24844#0" expanded="true" />
-            <element signature="e#24971#24972#0" expanded="true" />
-            <element signature="e#25008#25009#0" expanded="true" />
-            <element signature="e#25054#25055#0" expanded="true" />
-            <element signature="e#25111#25112#0" expanded="true" />
-            <element signature="e#25141#25142#0" expanded="true" />
-            <element signature="e#25168#25169#0" expanded="true" />
-            <element signature="e#25206#25207#0" expanded="true" />
-            <element signature="e#25238#25239#0" expanded="true" />
-            <element signature="e#25276#25277#0" expanded="true" />
-            <element signature="e#25311#25312#0" expanded="true" />
-            <element signature="e#25366#25367#0" expanded="true" />
-            <element signature="e#25440#25441#0" expanded="true" />
-            <element signature="e#25477#25478#0" expanded="true" />
-            <element signature="e#25510#25511#0" expanded="true" />
-            <element signature="e#25550#25551#0" expanded="true" />
-            <element signature="e#25586#25587#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="317">
+          <caret line="267" selection-start-line="267" selection-end-line="267" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="117" column="65" lean-forward="true" selection-start-line="117" selection-start-column="65" selection-end-line="117" selection-end-column="65" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
@@ -396,17 +553,56 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
     </states>
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
   </component>
 </project>
