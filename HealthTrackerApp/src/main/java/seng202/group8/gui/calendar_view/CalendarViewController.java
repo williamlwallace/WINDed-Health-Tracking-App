@@ -91,7 +91,7 @@ public class CalendarViewController {
                         }
 
                         if (hasGoals && hasActivities) {
-                            setStyle("-fx-background-image: linear-gradient(#e59400, #42d13d)");//TODO: currently not working, fix.
+                            setStyle("-fx-background-color: linear-gradient(#e59400 50%, #42d13d 50%)");
                         } else if (hasGoals) {
                             setStyle("-fx-background-color:  #e59400");
                         } else if (hasActivities) {
