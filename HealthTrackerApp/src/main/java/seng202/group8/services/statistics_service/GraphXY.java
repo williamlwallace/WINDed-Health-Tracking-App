@@ -10,6 +10,7 @@ public class GraphXY {
      */
     public ArrayList<Double> XAxis;
     public ArrayList<Double> YAxis;
+    public String XAxisScale;
 
 
     /**
@@ -22,6 +23,14 @@ public class GraphXY {
 
     public ArrayList<Double> getYAxis() {
         return this.YAxis;
+    }
+
+    /**
+     * Grab the units of the time scale of the x-axis.
+     * @return the units of the time scale of the x-axis (hours, minutes, or seconds) as a string.
+     */
+    public String getXAxisScale() {
+        return XAxisScale;
     }
 
     /**
@@ -41,6 +50,15 @@ public class GraphXY {
     }
 
     /**
+     * Sets the scale of the XAxis values.
+     * @param XAxisScale a string containing the units desired for the values on the x-axis (which are always time
+     *                   values).
+     */
+    public void setXAxisScale(String XAxisScale) {
+        this.XAxisScale = XAxisScale;
+    }
+
+    /**
      * Adds a string to the X Axis arrayList
      * @param value the data being added to the arrayList
      */
@@ -56,8 +74,11 @@ public class GraphXY {
         this.YAxis.add(value);
     }
 
+
     public GraphXY() {
         this.YAxis = new ArrayList<>();
         this.XAxis = new ArrayList<>();
+        // Default XAxisScale value.
+        this.XAxisScale = "(seconds)";
     }
 }
