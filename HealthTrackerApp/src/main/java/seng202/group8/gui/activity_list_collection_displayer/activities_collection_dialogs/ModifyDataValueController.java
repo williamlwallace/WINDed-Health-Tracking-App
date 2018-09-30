@@ -46,7 +46,10 @@ public class ModifyDataValueController {
     private Text errorText;
 
 
-
+    /**
+     * Function called as soon as the view is loaded, forced to make a manual call as giving this function a @FXML tag would produce a NullPointerException.
+     * Pre-fills all the nodes in the view with the current values of the data object selected.
+     */
     public void initialSetUp() {
         errorText.setVisible(false);
         setDataValue();
@@ -56,6 +59,17 @@ public class ModifyDataValueController {
         newActivityListName.setVisible(false);
     }
 
+    /**
+     * Helper function for initialSetUp function.
+     */
+    public void setDataValue() {
+        this.currentActivityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+        this.dataValue = this.currentActivityList.getActivity(dataIndex);
+    }
+
+    /**
+     * Ensures the textField needed for moving the data value to another activity is made visible only if the toggle button is selected.
+     */
     public void toggleButtonListener() {
         if (newActivityListToggle.isSelected()) {
             newActivityListName.setVisible(true);
@@ -64,6 +78,9 @@ public class ModifyDataValueController {
         }
     }
 
+    /**
+     * Adds all the possible activities values and prefills the
+     */
     public void setChoiceBox() {
         ArrayList<String> activitiesChoice = new ArrayList<>();
         activitiesChoice.add("Walk");
@@ -75,34 +92,37 @@ public class ModifyDataValueController {
         activitiesChoice.add("Water Sport");
         ObservableList<String> observableList = FXCollections.observableList(activitiesChoice);
         activitiesChoiceBox.setItems(observableList);
-        switch(dataValue.getDataType()) {
-            case WALK:
-                activitiesChoiceBox.setValue("Walk");
-                break;
-            case RUN:
-                activitiesChoiceBox.setValue("Run");
-                break;
-            case HIKE:
-                activitiesChoiceBox.setValue("Hike");
-                break;
-            case CLIMB:
-                activitiesChoiceBox.setValue("Climb");
-                break;
-            case BIKE:
-                activitiesChoiceBox.setValue("Bike");
-                break;
-            case SWIM:
-                activitiesChoiceBox.setValue("Swim");
-                break;
-            default:
-                activitiesChoiceBox.setValue("Water Sport");
-                break;
-        }
+        activitiesChoiceBox.setValue(DataType.fromEnumToString(dataValue.getDataType()));
+//        switch(dataValue.getDataType()) {
+//            case WALK:
+//                activitiesChoiceBox.setValue("Walk");
+//                break;
+//            case RUN:
+//                activitiesChoiceBox.setValue("Run");
+//                break;
+//            case HIKE:
+//                activitiesChoiceBox.setValue("Hike");
+//                break;
+//            case CLIMB:
+//                activitiesChoiceBox.setValue("Climb");
+//                break;
+//            case BIKE:
+//                activitiesChoiceBox.setValue("Bike");
+//                break;
+//            case SWIM:
+//                activitiesChoiceBox.setValue("Swim");
+//                break;
+//            default:
+//                activitiesChoiceBox.setValue("Water Sport");
+//                break;
+//        }
     }
 
+    /**
+     * Ensures the data inserted is valid and that in the case
+     * the user wants to move the data value, the activity list exists.
+     */
     public void modifyDataButtonListener() {
-
-
 
         if (checkAllDataValid() && checkExistsNewActivityList()) {
             dataValue.setTitle(descriptionTextField.getText().trim());
@@ -118,6 +138,8 @@ public class ModifyDataValueController {
                     user.getUserActivities().deleteActivityList(activityListIndex);
                 }
             }
+            activitiesCollectionController.setUpTreeView();
+            stage.close();
 
         //Error handling
         } else if (!checkAllDataValid()) { //Some data is not valid
@@ -131,6 +153,10 @@ public class ModifyDataValueController {
         }
     }
 
+    /**
+     * Helper function for modifyDataButtonListener function.
+     * @return a boolean value indicating if the inputted data is valid.
+     */
     private boolean checkAllDataValid() {
         boolean okayDescriptionTextField = descriptionTextField.getText() != null && !descriptionTextField.getText().equals("");
         boolean okayToggleActivityList = true;
@@ -142,6 +168,10 @@ public class ModifyDataValueController {
         return okayDescriptionTextField && okayToggleActivityList;
     }
 
+    /**
+     * Helper function for modifyDataButtonListener function.
+     * @return a boolean value indicating if the activity list mentioned exists.
+     */
     private boolean checkExistsNewActivityList() {
         boolean exists = true;
 
@@ -162,10 +192,6 @@ public class ModifyDataValueController {
 
 
 
-    public void setDataValue() {
-        this.currentActivityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
-        this.dataValue = this.currentActivityList.getActivity(dataIndex);
-    }
 
     public void exitButtonListener() {
         stage.close();

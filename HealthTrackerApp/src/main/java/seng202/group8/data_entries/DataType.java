@@ -34,6 +34,28 @@ public enum DataType {
     }
 
 
+    public static String fromEnumToString(DataType dataType) {
+        switch (dataType) {
+            case WALK:
+                return "Walk";
+            case  RUN:
+                return "Run";
+            case HIKE:
+                return "Hike";
+            case  CLIMB:
+                return "Climb";
+            case BIKE:
+                return "Bike";
+            case SWIM:
+                return "Swim";
+            default:
+                return "Water Sport";
+        }
+    }
+
+
+
+
 
 
 //    private String activityType;
