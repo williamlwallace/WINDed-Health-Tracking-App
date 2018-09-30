@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -17,8 +18,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
+import seng202.group8.services.goals_service.goal_types.Goal;
 import seng202.group8.user.User;
 
 import java.time.*;
@@ -51,11 +54,50 @@ public class CalendarViewController {
         setDatePickerListener();
     }
 
+    public void setDatePickerCells() {//TODO: link to GUI class when this is opened. AFTER setting user!!!
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(DatePicker param) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        for (ActivityList activityList : user.getUserActivities().getActivityListCollection()) {
+                            for (Data data : activityList.getActivityList()) {
+                                LocalDate dataLocalDate = data.getCreationDate()
+                                        .toInstant()
+                                        .atZone(ZoneId.systemDefault())
+                                        .toLocalDate();
+                                if (dataLocalDate.isEqual(item)) {
+                                    setStyle("-fx-background-color:  #42d13d");
+                                }
+                            }
+                        }
+                        for (Goal goal : user.getGoalsService().getCurrentActivityGoals()) {
+                            if (goal.getTargetDate().toLocalDate().isEqual(item)) {
+                                setStyle("-fx-background-color:  #e59400");
+                            }
+                        }
+                        for (Goal goal : user.getGoalsService().getCurrentTimesPerformedGoals()) {
+                            if (goal.getTargetDate().toLocalDate().isEqual(item)) {
+                                setStyle("-fx-background-color:  #e59400");
+                            }
+                        }
+                        for (Goal goal : user.getGoalsService().getCurrentWeightLossGoals()) {
+                            if (goal.getTargetDate().toLocalDate().isEqual(item)) {
+                                setStyle("-fx-background-color:  #e59400");
+                            }
+                        }
+                    }
+                };
+            }
+        };
+        datePicker.setDayCellFactory(dayCellFactory);
+    }
 
     /**
      * DatePicker listener, every time a date is selected a list of all the activities performed during
      * the selected day will appear in the ListView dedicated to activities.
-     * TODO: add logic for the Goals part of it (Deliverable 3).
      */
     public void setDatePickerListener() {
 
