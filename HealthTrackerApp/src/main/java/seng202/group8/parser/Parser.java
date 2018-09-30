@@ -43,6 +43,21 @@ public class Parser {
     private int lineNum;
     private ArrayList<ActivityList> oldData;
     private SQLiteJDBC database = new SQLiteJDBC();
+
+    public ArrayList<String> getRemoveableWords() {
+        ArrayList<String> toReturn  = new ArrayList<String>();
+        for (int place = 0; place < acceptedValues.size(); place++) {
+            for (int i = 0; i < acceptedValues.get(place).size(); i++) {
+                if (!walk.contains(acceptedValues.get(place).get(i)) && !hike.contains(acceptedValues.get(place).get(i)) && !run.contains(acceptedValues.get(place).get(i))
+                        && !climb.contains(acceptedValues.get(place).get(i)) && !bike.contains(acceptedValues.get(place).get(i))
+                        && !swim.contains(acceptedValues.get(place).get(i)) && !waterSports.contains(acceptedValues.get(place).get(i))) {
+                    toReturn.add(acceptedValues.get(place).get(i));
+                }
+            }
+        }
+        return toReturn;
+    }
+
     /**
      * Receives a filename and creates the list of type trip phrases.
      * @param newFilename

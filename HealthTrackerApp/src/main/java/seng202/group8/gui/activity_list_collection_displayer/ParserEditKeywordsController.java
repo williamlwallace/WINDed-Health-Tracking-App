@@ -2,6 +2,8 @@ package seng202.group8.gui.activity_list_collection_displayer;
 
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -39,7 +41,8 @@ public class ParserEditKeywordsController {
     @FXML
     public void initialize() throws Exception {
         parser  = new Parser("", user);
-
+        ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
+        actRemove.setItems(choiceAdd);
     }
 
     /**
@@ -52,7 +55,10 @@ public class ParserEditKeywordsController {
     }
 
     public void remove(ActionEvent event) {
-
+        if (actRemove.getValue() != null) {
+            SQLiteJDBC database = new SQLiteJDBC();
+            database.deleteParserKeyword(1, actRemove.getValue().toString());
+        }
     }
 
     /**
