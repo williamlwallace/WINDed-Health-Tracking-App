@@ -9,6 +9,17 @@ public enum GoalType {
 
     ActivityGoal,
 
-    TimePerformedGoal
+    TimePerformedGoal;
 
+
+    public static String fromEnumToString(GoalType goalType) {
+        switch (goalType) {
+            case WeightLossGoal:
+                return "Weight Loss";
+            case ActivityGoal:
+                return "Activity";
+            default:
+                return "Frequency";
+        }
+    }
 }

@@ -22,6 +22,7 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.services.goals_service.goal_types.Goal;
+import seng202.group8.services.goals_service.goal_types.GoalType;
 import seng202.group8.user.User;
 
 import java.time.*;
@@ -69,6 +70,8 @@ public class CalendarViewController {
                     @Override
                     public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
+                        boolean hasGoals = false;
+                        boolean hasActivities = false;
                         for (ActivityList activityList : user.getUserActivities().getActivityListCollection()) {
                             for (Data data : activityList.getActivityList()) {
                                 LocalDate dataLocalDate = data.getCreationDate()
@@ -76,25 +79,25 @@ public class CalendarViewController {
                                         .atZone(ZoneId.systemDefault())
                                         .toLocalDate();
                                 if (dataLocalDate.isEqual(item)) {
-                                    setStyle("-fx-background-color:  #42d13d");
+                                    hasActivities = true;
+
                                 }
                             }
                         }
-                        for (Goal goal : user.getGoalsService().getCurrentActivityGoals()) {
+                        for (Goal goal : user.getGoalsService().getAllCurrentGoals()) {
                             if (goal.getTargetDate().toLocalDate().isEqual(item)) {
-                                setStyle("-fx-background-color:  #e59400");
+                                hasGoals = true;
                             }
                         }
-                        for (Goal goal : user.getGoalsService().getCurrentTimesPerformedGoals()) {
-                            if (goal.getTargetDate().toLocalDate().isEqual(item)) {
-                                setStyle("-fx-background-color:  #e59400");
-                            }
+
+                        if (hasGoals && hasActivities) {
+                            setStyle("-fx-background-image: linear-gradient(#e59400, #42d13d)");//TODO: currently not working, fix.
+                        } else if (hasGoals) {
+                            setStyle("-fx-background-color:  #e59400");
+                        } else if (hasActivities) {
+                            setStyle("-fx-background-color:  #42d13d");
                         }
-                        for (Goal goal : user.getGoalsService().getCurrentWeightLossGoals()) {
-                            if (goal.getTargetDate().toLocalDate().isEqual(item)) {
-                                setStyle("-fx-background-color:  #e59400");
-                            }
-                        }
+
                     }
                 };
             }
@@ -140,7 +143,7 @@ public class CalendarViewController {
                 displayGoalsForTheSelectedDay(goalsOnSelectedDate);
             } else {
                 noGoalsText.setVisible(true);
-                //TODO:raise message
+                goalsListView.getItems().clear();
             }
 
         });
@@ -162,14 +165,14 @@ public class CalendarViewController {
 
                         if (goal != null) {
                             HBox hBox = new HBox();
-                            Image activityImage = selectRightImageForActivity(goal.getDataType());
+                            Image activityImage = selectRightImageForGoal(goal.getGoalType());
                             ImageView imageView = new ImageView(activityImage);
                             VBox vBox = new VBox();
 
                             hBox.getChildren().addAll(imageView, vBox);
 
                             Text title = new Text(goal.getDescription());
-                            Text distanceCovered = new Text("Goal type: " + goal.getGoalType().toString());
+                            Text distanceCovered = new Text("Goal type: " + GoalType.fromEnumToString(goal.getGoalType()));
 
                             vBox.getChildren().addAll(title, distanceCovered);
 
@@ -235,6 +238,17 @@ public class CalendarViewController {
             }
         });
 
+    }
+
+    private Image selectRightImageForGoal(GoalType goalType) {
+        switch (goalType) {
+            case ActivityGoal:
+                return new Image("resources/views/images/icons8-geocaching-80.png");
+            case WeightLossGoal:
+                return new Image("resources/views/images/icons8-bilancia-64.png");
+            default:
+                return new Image("resources/views/images/icons8-abaco-80.png");
+        }
     }
 
     private Image selectRightImageForActivity(DataType dataType) {
