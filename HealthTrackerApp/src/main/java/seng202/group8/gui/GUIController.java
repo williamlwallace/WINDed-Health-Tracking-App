@@ -157,6 +157,7 @@ public class GUIController implements Initializable {
         CalendarViewController calendarViewController = loader.getController();
         calendarViewController.setUser(user);
         calendarViewController.setCurrentStage(stage);
+        calendarViewController.setDatePickerCells();
         scene.getChildren().setAll(calendarScene);
         calendarBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");

@@ -329,10 +329,11 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<Double> speedList = data.getKphSpeedsBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
-        ArrayList<Double> times = createTimes(time);
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
         for (int i = 0; i < speedList.size() - 1; i++) {
             graph.addYAxis(speedList.get(i));
-            graph.addXAxis(times.get(i));
+            graph.addXAxis(times.getTimes().get(i));
         }
         return graph;
     }
@@ -346,10 +347,11 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<Double> stressLevelList = data.getStressProportionsBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
-        ArrayList<Double> times = createTimes(time);
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
         for (int i = 0; i < stressLevelList.size() - 1; i++) {
             graph.addYAxis(stressLevelList.get(i));
-            graph.addXAxis(times.get(i));
+            graph.addXAxis(times.getTimes().get(i));
         }
         return graph;
     }
@@ -364,33 +366,49 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<CoordinateData> coordinatesArrayList = data.getCoordinatesArrayList();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
-        ArrayList<Double> times = createTimes(time);
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
         Double summary = 0.0;
         for (int i = 0; i < coordinatesArrayList.size() - 1; i++) {
             CoordinateDataDifference coordinateDataDifference =
                     new CoordinateDataDifference(coordinatesArrayList.get(i), coordinatesArrayList.get(i + 1));
             summary += coordinateDataDifference.getDistanceDifference();
             graph.addYAxis(summary);
-            graph.addXAxis(times.get(i));
+            graph.addXAxis(times.getTimes().get(i));
         }
         return graph;
     }
 
     /**
-     * Creates a Double list of seconds between each of the local date times for the graphing functions
-     * @param timeList a list full of local date times to be converted to doubles in seconds
-     * @return an arrayList of doubles which contains starting from 0 the time in seconds after the start point
+     * Creates a Double list of times between each of the local date times for the graphing functions
+     * @param timeList a list full of local date times to be converted to doubles in seconds, minutes, or hours
+     *                 depending on the time the total activity takes.
+     * @return an arrayList of doubles which contains (starting from 0) the time in seconds, minutes, or hours after the
+     * start point
      */
-    public ArrayList<Double> createTimes(ArrayList<LocalDateTime> timeList) {
+    public TimeScale createTimes(ArrayList<LocalDateTime> timeList) {
         ArrayList<Double> newTimes = new ArrayList<Double>();
+        String newScale = "(seconds)";
         for(int i = 0; i < timeList.size(); i++) {
             if (i != 0) {
-                newTimes.add(i, getDifference(timeList.get(i), timeList.get(0)));
+                //If the activity takes more than an hour, converts the time to hours.
+                if (((getDifference(timeList.get(timeList.size() - 1), timeList.get(0)) / 60.0)) > 60) {
+                    newTimes.add(i, (getDifference(timeList.get(i), timeList.get(0)) / 60.0 / 60.0));
+                    newScale = "(hours)";
+                //Else if the activity takes more than a minute, converts time to minutes.
+                } else if (getDifference(timeList.get(timeList.size() - 1), timeList.get(0)) > 60) {
+                    newTimes.add(i, (getDifference(timeList.get(i), timeList.get(0)) / 60.0));
+                    newScale = "(minutes)";
+                //Else leaves time in seconds.
+                } else {
+                    newTimes.add(i, (getDifference(timeList.get(i), timeList.get(0))));
+                }
             } else {
                 newTimes.add(0.0);
             }
         }
-        return newTimes;
+        TimeScale graphTimeScale = new TimeScale(newTimes, newScale);
+        return graphTimeScale;
     }
 
     /**
@@ -433,9 +451,10 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<Integer> heartRates = data.getHeartRateList();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
-        ArrayList<Double> times = createTimes(time);
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
         for (int i = 0; i < heartRates.size() - 1; i++) {
-            graph.addXAxis(times.get(i));
+            graph.addXAxis(times.getTimes().get(i));
             graph.addYAxis(Double.valueOf(heartRates.get(i)));
         }
         return graph;
@@ -451,10 +470,11 @@ public class StatisticsService {
         GraphXY graph = new GraphXY();
         ArrayList<Double> calories = data.getConsumedCaloriesBetweenPoints();
         ArrayList<LocalDateTime> time = data.getAllDateTimes();
-        ArrayList<Double> times = createTimes(time);
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
         Double summary = 0.0;
         for (int i = 0; i < time.size() - 1; i++) {
-            graph.addXAxis(times.get(i));
+            graph.addXAxis(times.getTimes().get(i));
             summary += calories.get(i);
             graph.addYAxis(summary);
         }

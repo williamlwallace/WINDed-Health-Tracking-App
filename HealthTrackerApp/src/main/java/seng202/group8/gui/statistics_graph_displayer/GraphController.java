@@ -115,12 +115,13 @@ public class GraphController {
         GraphXY xyData = graphData.getDistanceOverTimeGraph(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph.getXAxis().setTickLabelsVisible(false);
+        graph.getXAxis().setTickLabelsVisible(true);
+        //System.out.println(graph.getAxisSortingPolicy() + "This is the sorting policy.");
         Double maxDistance = xyData.getXAxis().get(xyData.getXAxis().size() - 1);
         yAxis.setUpperBound(maxDistance + (maxDistance * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
-        xAxis.setLabel("Time (S)");
+        xAxis.setLabel("Time " + (xyData.getXAxisScale()));
         yAxis.setLabel("Distance (M)");
         series.setName("Distance Over Time");
         graph.setTitle("Distance Visualization");
@@ -143,7 +144,7 @@ public class GraphController {
         GraphXY xyData = graphData.getHeartRateOverTimeGraph(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph.getXAxis().setTickLabelsVisible(false);
+        graph.getXAxis().setTickLabelsVisible(true);
         Double maxHeartRate = (double) currentData.getHeartRateData().getHighestHeartRate();
         yAxis.setUpperBound(maxHeartRate + (maxHeartRate * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
@@ -170,7 +171,7 @@ public class GraphController {
         GraphXY xyData = graphData.getCaloriesBurnedOverTimeGraph(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph.getXAxis().setTickLabelsVisible(false);
+        graph.getXAxis().setTickLabelsVisible(true);
         Double maxCalories = xyData.getYAxis().get(xyData.getYAxis().size() - 1);
         yAxis.setUpperBound(maxCalories + (maxCalories * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
@@ -197,7 +198,7 @@ public class GraphController {
         GraphXY xyData = graphData.getStressLevelOverTimeGraph(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph.getXAxis().setTickLabelsVisible(false);
+        graph.getXAxis().setTickLabelsVisible(true);
         Double maxStress = (double) currentData.getStressLevelMax();
         this.yAxis.setUpperBound(maxStress);
         yAxis.setLowerBound((double) currentData.getStressLevelMin());
@@ -223,7 +224,7 @@ public class GraphController {
         GraphXY xyData = graphData.getSpeedGraphOverTime(currentData);
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph.getXAxis().setTickLabelsVisible(false);
+        graph.getXAxis().setTickLabelsVisible(true);
         Double maxStress = (double) currentData.getStressLevelMax();
         this.yAxis.setUpperBound(maxStress);
         yAxis.setLowerBound((double) currentData.getStressLevelMin());
@@ -254,7 +255,7 @@ public class GraphController {
         }
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph2.getXAxis().setTickLabelsVisible(false);
+        graph2.getXAxis().setTickLabelsVisible(true);
 
         xAxis2.setLabel("Time");
         yAxis2.setLabel("BMI Value");
@@ -277,7 +278,7 @@ public class GraphController {
         GraphXY xyData = graphData.getGraphDataWeight();
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
-        graph2.getXAxis().setTickLabelsVisible(false);
+        graph2.getXAxis().setTickLabelsVisible(true);
 
         xAxis2.setLabel("Time");
         yAxis2.setLabel("Weight (kg)");
@@ -368,13 +369,17 @@ public class GraphController {
         LocalDateTime before = currentData.getAllDateTimes().get(0);
         String amOrPm1 = "AM";
         String amOrPm2 = "AM";
-        if (before.getHour() > 12) {
-            before = before.minusHours(12);
+        if (before.getHour() > 11) {
             amOrPm1 = "PM";
+            if (before.getHour() > 12) {
+                before = before.minusHours(12);
+            }
         }
-        if (after.getHour() > 12) {
-            after = after.minusHours(12);
+        if (after.getHour() > 11) {
             amOrPm2 = "PM";
+            if (after.getHour() > 12) {
+                after = after.minusHours(12);
+            }
         }
         String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
         time.setText(string);
@@ -390,13 +395,17 @@ public class GraphController {
         LocalDateTime before = currentData.getAllDateTimes().get(0);
         String amOrPm1 = "AM";
         String amOrPm2 = "AM";
-        if (before.getHour() > 12) {
-            before = before.minusHours(12);
+        if (before.getHour() > 11) {
             amOrPm1 = "PM";
+            if (before.getHour() > 12) {
+                before = before.minusHours(12);
+            }
         }
-        if (after.getHour() > 12) {
-            after = after.minusHours(12);
+        if (after.getHour() > 11) {
             amOrPm2 = "PM";
+            if (after.getHour() > 12) {
+                after = after.minusHours(12);
+            }
         }
         String string = before.format(formatter) + " " + amOrPm1 + " | till | " + after.format(formatter) + " " + amOrPm2;
         time.setText(string);

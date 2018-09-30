@@ -30,6 +30,7 @@ import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.activity_collection.ActivityListCollection;
 import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
+import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.HeartRateData;
 import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.ModifyDataValueController;
 import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController;
@@ -110,6 +111,9 @@ public class ActivitiesCollectionController {
     @FXML
     private Label inspirationalLabel;
 
+    @FXML
+    private Text dataTypeText;
+
 
     private static Stage primaryStage;
     private static User user;
@@ -142,10 +146,10 @@ public class ActivitiesCollectionController {
         HeartRateData heartRateData = data.getHeartRateData();
 
         //Display data value title
-        if (data.getTitle().length() < 20) {
+        if (data.getTitle().length() < 13) {
             insightsTitle.setText(WordUtils.capitalize(data.getTitle()));
         } else {
-            insightsTitle.setText(WordUtils.capitalize(data.getTitle().substring(0, 17) + "..."));
+            insightsTitle.setText(WordUtils.capitalize(data.getTitle().substring(0, 10) + "..."));
         }
         //Display day and init/end dates of data value
         LocalDateTime fromTime = data.getAllDateTimes().get(0);
@@ -153,6 +157,8 @@ public class ActivitiesCollectionController {
         dateText.setText(fromTime.toLocalDate().toString());
         fromText.setText(fromTime.toLocalTime().toString());
         toText.setText(toTime.toLocalTime().toString());
+
+        dataTypeText.setText(DataType.fromEnumToString(data.getDataType()));
 
         //Displaying the data distance covered in m or km depending on the integer size
         if (data.getDistanceCovered() < 1000) {
