@@ -389,7 +389,27 @@ public class SQLiteJDBC {
         }
     }
 
-    public void deleteParserKeyword(Integer userId, String phrase) {
+    public boolean checkDuplicateKeyword(Integer userId, String phrase) {
+        String sql = "Select count(*) from parser_keywords where user_id = ? and keyword = ?";
+        Connection connection = connect();
+        ResultSet resultSet = null;
+        boolean to_return = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.getInt("count(*)") != 0) {
+                to_return = true;
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return to_return;
+    }
+
+        public void deleteParserKeyword(Integer userId, String phrase) {
         String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
         Connection connection = connect();
         try {

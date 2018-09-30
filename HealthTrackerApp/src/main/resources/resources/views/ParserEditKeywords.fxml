@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.embed.swing.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -14,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ParserEditKeywordsController">
+<GridPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ParserEditKeywordsController">
 <columnConstraints>
   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -76,22 +83,6 @@
          <font>
             <Font size="15.0" />
          </font></Text>
-      <GridPane prefHeight="100.0" prefWidth="617.0" GridPane.rowIndex="3">
-        <columnConstraints>
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Phrase:" textAlignment="CENTER" wrapText="true" />
-            <TextField fx:id="keyPhrase" prefHeight="26.0" prefWidth="95.0" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="10.0" right="30.0" />
-               </GridPane.margin></TextField>
-         </children>
-      </GridPane>
       <Label text="Enter a type and a phrase below to store it so we can remember this phrase next time we parse a file." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
       <Button mnemonicParsing="false" onAction="#remove" style="-fx-background-color: #2e86c1;" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Text fx:id="errorText1" layoutX="82.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove Keywords" GridPane.columnIndex="1">
@@ -121,6 +112,37 @@
                <GridPane.margin>
                   <Insets right="5.0" />
                </GridPane.margin></ChoiceBox>
+         </children>
+      </GridPane>
+      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="3">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="errorMes" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="keyPhrase" prefHeight="26.0" prefWidth="120.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label prefHeight="16.0" prefWidth="54.0" text="Phrase:" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </GridPane>
          </children>
       </GridPane>
  </children>
