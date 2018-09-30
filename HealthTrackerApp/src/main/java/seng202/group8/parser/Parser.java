@@ -44,20 +44,6 @@ public class Parser {
     private ArrayList<ActivityList> oldData;
     private SQLiteJDBC database = new SQLiteJDBC();
 
-    public ArrayList<String> getRemoveableWords() {
-        ArrayList<String> toReturn  = new ArrayList<String>();
-        for (int place = 0; place < acceptedValues.size(); place++) {
-            for (int i = 0; i < acceptedValues.get(place).size(); i++) {
-                if (!walk.contains(acceptedValues.get(place).get(i)) && !hike.contains(acceptedValues.get(place).get(i)) && !run.contains(acceptedValues.get(place).get(i))
-                        && !climb.contains(acceptedValues.get(place).get(i)) && !bike.contains(acceptedValues.get(place).get(i))
-                        && !swim.contains(acceptedValues.get(place).get(i)) && !waterSports.contains(acceptedValues.get(place).get(i))) {
-                    toReturn.add(acceptedValues.get(place).get(i));
-                }
-            }
-        }
-        return toReturn;
-    }
-
     /**
      * Receives a filename and creates the list of type trip phrases.
      * @param newFilename
@@ -65,16 +51,20 @@ public class Parser {
      */
     public Parser(String newFilename, User newUser) throws Exception {
         this.user = newUser;
-        acceptedValues.add(walk);
-        acceptedValues.add(hike);
-        acceptedValues.add(run);
-        acceptedValues.add(climb);
-        acceptedValues.add(bike);
-        acceptedValues.add(swim);
-        acceptedValues.add(waterSports);
-        database.getKeyWords(1, this);
-        filename = newFilename;
-        oldData = this.user.getUserActivities().getActivityListCollection();
+        this.acceptedValues.add(this.walk);
+        this.acceptedValues.add(this.hike);
+        this.acceptedValues.add(this.run);
+        this.acceptedValues.add(this.climb);
+        this.acceptedValues.add(this.bike);
+        this.acceptedValues.add(this.swim);
+        this.acceptedValues.add(this.waterSports);
+        this.database.getKeyWords(1, this);
+        this.filename = newFilename;
+        try {
+            this.oldData = this.user.getUserActivities().getActivityListCollection();
+        } catch(NullPointerException e) {
+            this.oldData = null;
+        }
     }
 
     /**
@@ -83,9 +73,9 @@ public class Parser {
      */
     public void parseFile() throws Exception {
         lineNum = 0;
-        if (filename.substring(filename.length() - 3, filename.length()).equals("csv")) {
+        if (this.filename.substring(this.filename.length() - 3, this.filename.length()).equals("csv")) {
             try {
-                CSVReader csvReader = new CSVReader(new FileReader(filename));
+                CSVReader csvReader = new CSVReader(new FileReader(this.filename));
                 String[] line = readLine(csvReader);
                 int finished = 0;
                 //String[] myEntries = csvReader.readAll();
@@ -95,7 +85,7 @@ public class Parser {
                 } catch (NullPointerException e) {
                     finished = 1;
                 }
-                Integer dataId = database.getNextDataID();
+                Integer dataId = this.database.getNextDataID();
                 while (line != null && (finished == 0)) {
                     line = parseActivity(line, csvReader);
                     if (!isCorrupt) {
@@ -150,9 +140,9 @@ public class Parser {
                                 duplicate = true;
                             }
                         }
-                        if (!duplicate) {
-                            for (int i = 0; i < oldData.size(); i++) {
-                                ArrayList<Data> activityList = oldData.get(i).getActivityList();
+                        if (!duplicate && this.oldData != null) {
+                            for (int i = 0; i < this.oldData.size(); i++) {
+                                ArrayList<Data> activityList = this.oldData.get(i).getActivityList();
                                 for (int j = 0; j < activityList.size(); j++) {
                                     Data data = activityList.get(j);
                                     if (activityToSend.equalsNewData(data)) {
@@ -204,10 +194,10 @@ public class Parser {
         activityType = "";
         if (!isCorrupt) {
             activityName = activityName.toLowerCase();
-            for (int place = 0; place < acceptedValues.size(); place++) {
-                for (int i = 0; i < acceptedValues.get(place).size(); i++) {
-                    if (activityName.contains(acceptedValues.get(place).get(i))) {
-                        activityType = acceptedValues.get(place).get(0);
+            for (int place = 0; place < this.acceptedValues.size(); place++) {
+                for (int i = 0; i < this.acceptedValues.get(place).size(); i++) {
+                    if (activityName.contains(this.acceptedValues.get(place).get(i))) {
+                        activityType = this.acceptedValues.get(place).get(0);
                     }
                 }
             }
@@ -355,42 +345,70 @@ public class Parser {
      * @param type
      */
     public void add(String keyWord, int type, boolean addToDataBase) {
-        acceptedValues.clear();
+        this.acceptedValues.clear();
         switch (type) {
             case 1:
-                walk.add(keyWord);
+                this.walk.add(keyWord);
                 break;
             case 2:
-                hike.add(keyWord);
+                this.hike.add(keyWord);
                 break;
             case 3:
-                run.add(keyWord);
+                this.run.add(keyWord);
                 break;
             case 4:
-                climb.add(keyWord);
+                this.climb.add(keyWord);
                 break;
             case 5:
-                bike.add(keyWord);
+                this.bike.add(keyWord);
                 break;
             case 6:
-                swim.add(keyWord);
+                this.swim.add(keyWord);
                 break;
             case 7:
-                waterSports.add(keyWord);
+                this.waterSports.add(keyWord);
                 break;
             default:
                 break;
         }
-        acceptedValues.add(walk);
-        acceptedValues.add(hike);
-        acceptedValues.add(run);
-        acceptedValues.add(climb);
-        acceptedValues.add(bike);
-        acceptedValues.add(swim);
-        acceptedValues.add(waterSports);
+        this.acceptedValues.add(this.walk);
+        this.acceptedValues.add(this.hike);
+        this.acceptedValues.add(this.run);
+        this.acceptedValues.add(this.climb);
+        this.acceptedValues.add(this.bike);
+        this.acceptedValues.add(this.swim);
+        this.acceptedValues.add(this.waterSports);
         if (addToDataBase) {
-            database.addParserKeyword(1, keyWord, type);
+            this.database.addParserKeyword(1, keyWord, type);
         }
+    }
+
+    /**
+     * Gets all of the key words added by the user.
+     * @return
+     */
+    public ArrayList<String> getRemoveableWords() {
+        ArrayList<String> baseWalk = new ArrayList<String>(Arrays.asList("walk"));
+        ArrayList<String> baseHike = new ArrayList<String>(Arrays.asList("hike", "hiking"));
+        ArrayList<String> baseRun = new ArrayList<String>(Arrays.asList("run"));
+        ArrayList<String> baseClimb = new ArrayList<String>(Arrays.asList("climb"));
+        ArrayList<String> baseBike = new ArrayList<String>(Arrays.asList("bike", "biking"));
+        ArrayList<String> baseSwim = new ArrayList<String>(Arrays.asList("swim", "scuba", "diving"));
+        ArrayList<String> baseWaterSports = new ArrayList<String>(Arrays.asList("water sport","kayak", "canoe", "raft", "surf"));
+        System.out.println("hi");
+        ArrayList<String> toReturn  = new ArrayList<String>();
+        for (int place = 0; place < acceptedValues.size(); place++) {
+            for (int i = 0; i < acceptedValues.get(place).size(); i++) {
+                System.out.println("before:" + acceptedValues.get(place).get(i));
+                if (!baseWalk.contains(acceptedValues.get(place).get(i)) && !baseHike.contains(acceptedValues.get(place).get(i)) && !baseRun.contains(acceptedValues.get(place).get(i))
+                        && !baseClimb.contains(acceptedValues.get(place).get(i)) && !baseBike.contains(acceptedValues.get(place).get(i))
+                        && !baseSwim.contains(acceptedValues.get(place).get(i)) && !baseWaterSports.contains(acceptedValues.get(place).get(i))) {
+                    System.out.println("After:" + acceptedValues.get(place).get(i));
+                    toReturn.add(acceptedValues.get(place).get(i));
+                }
+            }
+        }
+        return toReturn;
     }
 
     public User getUser() {
