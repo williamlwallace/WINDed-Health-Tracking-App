@@ -57,7 +57,7 @@ public class ParserEditKeywordsController {
     public void remove(ActionEvent event) throws Exception {
         if (actRemove.getValue() != null) {
             SQLiteJDBC database = new SQLiteJDBC();
-            database.deleteParserKeyword(1, actRemove.getValue().toString());
+            database.deleteParserKeyword(user.getUserID(), actRemove.getValue().toString());
             parser = new Parser("", user);
             ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
             errorMes.setText("Phrase '"+actRemove.getValue().toString()+"' has been removed");

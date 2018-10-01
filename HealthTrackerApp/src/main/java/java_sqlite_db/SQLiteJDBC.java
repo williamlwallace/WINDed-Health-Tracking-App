@@ -1279,6 +1279,88 @@ public class SQLiteJDBC {
 
     }
 
+    /*
+    public boolean checkDuplicateKeyword(Integer userId, String phrase) {
+        String sql = "Select count(*) from parser_keywords where user_id = ? and keyword = ?";
+        Connection connection = connect();
+        ResultSet resultSet = null;
+        boolean to_return = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.getInt("count(*)") != 0) {
+                to_return = true;
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return to_return;
+    }
+    */
+    /**
+     * Performs the necessary database function to retrieve a user along with all its data from the database
+     * @return a new User object representing the User asked for
+     */
+    public ArrayList<User> retrieveAllUsers() {
+        ArrayList<User> to_return = new ArrayList<User>();
+        int userId = 0;
+        Connection conn = connect();
+        ResultSet result = null;
+        ResultSet result2 = null;
+        String sql = "Select user_id from user";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+                userId = result.getInt("user_id");
+                result2 = getUser(conn, userId);
+                String name = result2.getString("name");
+                Double weight = result2.getDouble("weight");
+                Double height = result2.getDouble("height");
+                Integer age = result2.getInt("age");
+                String sex = result2.getString("sex");
+                User user = new User(name, age, weight, height, Sex.valueOf(sex), userId);
+
+                String title = getUsersActivityListCollectionTitle(conn, userId);
+                ActivityListCollection userCollection = new ActivityListCollection(title);
+                user.setUserActivities(userCollection);
+                ArrayList<ActivityList> activityList = getUsersActivityLists(conn, userId, user);
+                user.getUserActivities().setActivityListCollection(activityList);
+
+                //Weight and BMI records
+                UserStats userStats = new UserStats();
+                userStats.setUserWeightRecords(getWeightRecords(conn, userId));
+                userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
+                user.setUserStats(userStats);
+
+                //getGoals(conn, user, userId); TODO uncomment this call when goals finished in database
+
+                to_return.add(user);
+            }
+
+
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
+            return to_return;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        return null;
+
+    }
+
 
 
     public static void main(String[] args) {
