@@ -438,7 +438,7 @@ public class SQLiteJDBC {
             userID = resultSet.getInt("user_id") + 1;
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            userID = 1;
         }
         return userID;
     }
@@ -1362,8 +1362,6 @@ public class SQLiteJDBC {
 
                 to_return.add(user);
             }
-
-
             try {
                 if (conn != null) {
                     conn.close();
@@ -1371,16 +1369,11 @@ public class SQLiteJDBC {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-
             return to_return;
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
-
         return null;
-
     }
 
 

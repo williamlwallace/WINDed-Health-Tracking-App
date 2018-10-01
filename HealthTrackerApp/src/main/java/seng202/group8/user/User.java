@@ -8,6 +8,7 @@ import seng202.group8.user.user_stats.Sex;
 import seng202.group8.user.user_stats.UserStats;
 import seng202.group8.activity_collection.ActivityListCollection;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -42,6 +43,7 @@ public class User {
      */
     public User(String name, Integer age, Double weight, Double height, Sex sex) {
         SQLiteJDBC database = new SQLiteJDBC();
+        System.out.println(database.getUserID());
         this.userID = database.getUserID();
         this.name = name;
         this.age = age;
