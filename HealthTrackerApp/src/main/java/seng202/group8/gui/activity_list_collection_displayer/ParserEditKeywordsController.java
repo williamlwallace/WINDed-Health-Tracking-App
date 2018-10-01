@@ -6,10 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
@@ -31,6 +28,9 @@ public class ParserEditKeywordsController {
 
     @FXML
     private ChoiceBox actRemove;
+
+    @FXML
+    private Label errorMes;
 
     private User user;
     private Parser parser;
@@ -60,6 +60,7 @@ public class ParserEditKeywordsController {
             database.deleteParserKeyword(1, actRemove.getValue().toString());
             parser = new Parser("", user);
             ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
+            errorMes.setText("Phrase '"+actRemove.getValue().toString()+"' has been removed");
             actRemove.setItems(choiceAdd);
         }
     }
@@ -74,6 +75,8 @@ public class ParserEditKeywordsController {
         int type = 0;
         if (keyPhrase.getText() != null && !keyPhrase.getText().isEmpty()) {
             phraseReturn = keyPhrase.getText().toLowerCase();
+        } else {
+            errorMes.setText("Please enter a phrase and select a type");
         }
         if (actType.getValue() != null) {
             switch (actType.getValue().toString()) {
@@ -103,10 +106,25 @@ public class ParserEditKeywordsController {
             }
         }
         if (type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0)))  {
-            parser.add(phraseReturn, type, true);
-            parser = new Parser("", user);
-            ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
-            actRemove.setItems(choiceAdd);
+            SQLiteJDBC database = new SQLiteJDBC();
+            ArrayList<ArrayList<String>> acceptedValues = parser.getAcceptedValues();
+            boolean continueBool = true;
+            for (int place = 0; place < acceptedValues.size(); place++) {
+                for (int i = 0; i < acceptedValues.get(place).size(); i++) {
+                    if (phraseReturn.equals(acceptedValues.get(place).get(i))) {
+                        continueBool = false;
+                    }
+                }
+            }
+            if (continueBool) {
+                parser.add(phraseReturn, type, true);
+                parser = new Parser("", user);
+                ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
+                actRemove.setItems(choiceAdd);
+                errorMes.setText("Phrase '"+phraseReturn+"' has been added");
+            } else {
+                errorMes.setText("Phrase '"+phraseReturn+"' is already in the application");
+            }
         }
     }
 

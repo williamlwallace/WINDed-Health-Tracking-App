@@ -188,6 +188,7 @@ public class GoalsDisplayerController {
         Stage newStage = new Stage();
         addGoalController.setStage(newStage);
         addGoalController.setUser(user);
+        addGoalController.setMainController(this);
         addGoalController.start();
         newStage.setTitle("Add Goal");
         Scene scene = new Scene(root);

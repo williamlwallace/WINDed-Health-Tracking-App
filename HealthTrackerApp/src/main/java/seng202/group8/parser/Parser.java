@@ -411,6 +411,10 @@ public class Parser {
         return toReturn;
     }
 
+    public ArrayList<ArrayList<String>> getAcceptedValues() {
+        return this.acceptedValues;
+    }
+
     public User getUser() {
         return user;
     }

@@ -389,6 +389,26 @@ public class SQLiteJDBC {
         }
     }
 
+    public boolean checkDuplicateKeyword(Integer userId, String phrase) {
+        String sql = "Select count(*) from parser_keywords where user_id = ? and keyword = ?";
+        Connection connection = connect();
+        ResultSet resultSet = null;
+        boolean to_return = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2,phrase);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.getInt("count(*)") != 0) {
+                to_return = true;
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return to_return;
+    }
+
     public void deleteParserKeyword(Integer userId, String phrase) {
         String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
         Connection connection = connect();
@@ -401,6 +421,23 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getUserID() {
+        Connection connection = connect();
+        assert null != connection;
+        int userID = 0;
+        ResultSet resultSet = null;
+        String find = "SELECT user_id FROM user order by user_id DESC limit 1";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(find);
+            resultSet = preparedStatement.executeQuery();
+            userID = resultSet.getInt("user_id") + 1;
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userID;
     }
 
     public void getKeyWords(Integer userId, Parser parser) {

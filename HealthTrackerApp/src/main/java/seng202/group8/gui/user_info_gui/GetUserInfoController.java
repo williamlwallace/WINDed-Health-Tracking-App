@@ -181,7 +181,7 @@ public class GetUserInfoController {
         GUIController guiController = loader.getController();
         guiController.setUser(user);
 
-        database.saveUser(user, 1);
+        database.saveUser(user, user.getUserID());
 
         guiController.setStage(stage);
         guiController.setHostServices(host);
