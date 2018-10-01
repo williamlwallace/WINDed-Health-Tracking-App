@@ -309,6 +309,7 @@ public class StatisticsService {
     public GraphXY getGraphDataBMIType() {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
+
         if (record.size() > 0) {
             graph.addYAxis((record.get(0).getBmi().getBMIValue()));
             graph.addXAxis(0.0);
@@ -389,19 +390,48 @@ public class StatisticsService {
     public TimeScale createTimes(ArrayList<LocalDateTime> timeList) {
         ArrayList<Double> newTimes = new ArrayList<Double>();
         String newScale = "(seconds)";
+        Double differenceSeconds = getDifference(timeList.get(timeList.size() - 1), timeList.get(0));
+        Double differenceMinutes = (differenceSeconds / 60.0);
+        Double differenceHours = (differenceMinutes / 60.0);
+        Double differenceDays = (differenceHours / 24.0);
+
         for(int i = 0; i < timeList.size(); i++) {
             if (i != 0) {
-                //If the activity takes more than an hour, converts the time to hours.
-                if (((getDifference(timeList.get(timeList.size() - 1), timeList.get(0)) / 60.0)) > 60) {
-                    newTimes.add(i, (getDifference(timeList.get(i), timeList.get(0)) / 60.0 / 60.0));
+                Double timeAdderSeconds = (getDifference(timeList.get(i), timeList.get(0)));
+                Double timeAdderMinutes = (timeAdderSeconds / 60.0);
+                Double timeAdderHours = timeAdderMinutes / 60.0;
+                Double timeAdderDays = timeAdderHours / 24.0;
+                Double timeAdderWeeks = timeAdderDays / 7.0;
+                Double timeAdderMonths = timeAdderDays / 30.0;
+                Double timeAdderYears = timeAdderDays / 365;
+
+                //If the activities take more than 1 week, converts the time to weeks (for BMI and Weight graphs.)
+                if (differenceDays > 365.0) {
+                    newTimes.add(i, timeAdderYears);
+                    newScale = "(years)";
+                //Else if the activities take more than 1 month, converts the time to months (for BMI and Weight graphs.)
+                } else if (differenceDays > 30.0) {
+                    newTimes.add(i, timeAdderMonths);
+                    newScale = "(months)";
+                //Else if the activities take more than 1 week, converts the time to weeks (for BMI and Weight graphs.)
+                } else if (differenceDays > 7.0) {
+                    newTimes.add(i, timeAdderWeeks);
+                    newScale = "(weeks)";
+                //Else if the activities take more than 1 day, converts the time to days (for BMI and Weight graphs.)
+                } else if (differenceHours > 24.0) {
+                    newTimes.add(i, timeAdderDays);
+                    newScale = "(days)";
+                //Else if the activity takes more than 1.5 hours, converts the time to hours.
+                } else if (differenceMinutes > 60) {
+                    newTimes.add(i, timeAdderHours);
                     newScale = "(hours)";
-                //Else if the activity takes more than a minute, converts time to minutes.
-                } else if (getDifference(timeList.get(timeList.size() - 1), timeList.get(0)) > 60) {
-                    newTimes.add(i, (getDifference(timeList.get(i), timeList.get(0)) / 60.0));
+                //Else if the activity takes more than 3 minutes, converts time to minutes.
+                } else if (differenceSeconds > 180) {
+                    newTimes.add(i,  timeAdderMinutes);
                     newScale = "(minutes)";
                 //Else leaves time in seconds.
                 } else {
-                    newTimes.add(i, (getDifference(timeList.get(i), timeList.get(0))));
+                    newTimes.add(i, timeAdderSeconds);
                 }
             } else {
                 newTimes.add(0.0);
