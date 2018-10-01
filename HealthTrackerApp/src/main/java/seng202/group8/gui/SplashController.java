@@ -20,6 +20,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import seng202.group8.gui.switch_user.SwitchUserController;
 import seng202.group8.gui.user_info_gui.GetUserInfoController;
 import seng202.group8.user.User;
 
@@ -82,17 +83,21 @@ public class SplashController implements Initializable {
                 SQLiteJDBC database = new SQLiteJDBC();
                 user = database.retrieveUser(1);
                 if (user != null) {
-                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
-                    //FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
+//                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
                     Parent root = loader.load();
-                    GUIController guiController = loader.getController();
-                    guiController.setHostServices(host);
-                    guiController.setStage(stage);
-                    guiController.setUser(user);
+                    SwitchUserController switchUserController = loader.getController();
+                    switchUserController.setHostServices(host);
+                    switchUserController.setStage(stage);
+                    switchUserController.setUser(user);
+//                    GUIController guiController = loader.getController();
+//                    guiController.setHostServices(host);
+//                    guiController.setStage(stage);
+//                    guiController.setUser(user);
                     stage.setTitle("WINded");
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
-                    guiController.setToHome();
+//                    guiController.setToHome();
                     stage.show();
                 } else {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/GetUserInfo.fxml"));
