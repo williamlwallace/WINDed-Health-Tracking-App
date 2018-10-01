@@ -197,13 +197,16 @@ public class SQLiteJDBC {
         return resultSet;
     }
 
-    public void deleteUser(Connection connection, Integer userID) {
+    public void deleteUser(Integer userID) {
         String sql = "DELETE FROM user WHERE user_id=?";
         try {
             //System.out.println("Deleting User with id = " + userID);
+            Connection connection = connect();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
+            connection.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -1228,6 +1231,24 @@ public class SQLiteJDBC {
         return newId + 1;
 
 
+    }
+
+    public Integer getNextUserId() {
+        String find = "SELECT MAX(user_id) FROM user";
+        Integer newId = 0;
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement  = connection.prepareStatement(find);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                newId = resultSet.getInt("MAX(user_id)");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return newId + 1;
     }
 
 

@@ -23,8 +23,8 @@
           <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.22" value="2" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.22" value="3" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -39,13 +39,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1894" />
+          <entry key="java" value="1945" />
           <entry key="txt" value="115" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1894" />
+          <entry key="JAVA" value="1945" />
           <entry key="PLAIN_TEXT" value="115" />
         </counts>
       </usages-collector>
@@ -57,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -65,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-261">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -74,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6495">
-              <caret line="474" column="78" selection-start-line="474" selection-start-column="78" selection-end-line="474" selection-end-column="78" />
+            <state relative-caret-position="7935">
+              <caret line="533" column="78" selection-start-line="533" selection-start-column="78" selection-end-line="533" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -92,8 +92,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/java_sqlite_db/SQLiteJDBC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="999" column="5" lean-forward="true" selection-start-line="999" selection-start-column="5" selection-end-line="999" selection-end-column="5" />
+            <state relative-caret-position="10530">
+              <caret line="1001" column="46" lean-forward="true" selection-start-line="1001" selection-start-column="46" selection-end-line="1001" selection-end-column="46" />
+              <caret line="1000" column="65" lean-forward="true" selection-start-line="1000" selection-start-column="65" selection-end-line="1000" selection-end-column="65" />
+              <caret line="999" column="48" lean-forward="true" selection-start-line="999" selection-start-column="48" selection-end-line="999" selection-end-column="48" />
+              <caret line="998" column="46" lean-forward="true" selection-start-line="998" selection-start-column="46" selection-end-line="998" selection-end-column="46" />
+              <caret line="997" column="65" lean-forward="true" selection-start-line="997" selection-start-column="65" selection-end-line="997" selection-end-column="65" />
+              <caret line="996" column="46" lean-forward="true" selection-start-line="996" selection-start-column="46" selection-end-line="996" selection-end-column="46" />
+              <caret line="995" column="46" lean-forward="true" selection-start-line="995" selection-start-column="46" selection-end-line="995" selection-end-column="46" />
+              <folding>
+                <element signature="e#22077#22091#0" expanded="true" />
+                <element signature="e#23199#23214#0" expanded="true" />
+                <element signature="e#33890#33904#0" expanded="true" />
+                <element signature="e#35814#35820#0" expanded="true" />
+                <element signature="e#39671#39680#0" expanded="true" />
+                <element signature="e#40822#40837#0" expanded="true" />
+                <element signature="e#42022#42038#0" expanded="true" />
+                <element signature="e#58149#58155#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,8 +144,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            <state relative-caret-position="255">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -192,6 +208,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -300,12 +317,196 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538217936122" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538218234810" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/misc.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/modules.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/java_sqlite_db/SQLiteJDBC.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/data_entries/DataType.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/GUIController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/SplashController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/calendar_view/CalendarViewController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/edit_user/EditUserController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/goals_displayer/AddGoalController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayer.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/goals_displayer/GoalsDisplayerController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/goals_displayer/GoalsListViewSingleController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/home_displayer/HomeController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/statistics_graph_displayer/GraphController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/user_info_gui/GetUserInfoController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/parser/Parser.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/goals_service/GoalsService.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/goals_service/goal_types/ActivityGoal.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/goals_service/goal_types/FrequencyGoal.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/goals_service/goal_types/Goal.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/goals_service/goal_types/GoalType.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/goals_service/goal_types/WeightLossGoal.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/statistics_service/GraphXY.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/statistics_service/StatisticsService.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/user/User.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/GetUserInfo.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/ParserErrorType.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/activity_list_collection.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/add_goal.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/calendar_view.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/goalsListViewSingle.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/home.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/mainFrame.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/modify_data_dialog.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/new_data_dialog.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/stylesheet2.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/test/java/seng202/group8/data_entries_tests/DataTests.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/test/java/seng202/group8/services/statistics_service/StatisticsServiceTest.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywords.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserEditKeywordsController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/gui/switch_user/SwitchUserController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/seng202/group8/services/statistics_service/TimeScale.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/ParserEditKeywords.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/delete.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/delete_user.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/delete_user_red.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/icons8-abaco-80.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/icons8-bilancia-64.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/icons8-geocaching-80.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/stretching-exercises.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/user_32px.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/images/user_black.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/resources/views/switch_user.fxml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__com_calendarfx_recurrence_8_4_2.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__com_calendarfx_view_8_4_2.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__com_jfoenix_jfoenix_8_0_7.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__com_opencsv_opencsv_4_2.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__de_jensd_fontawesomefx_commons_8_13.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__de_jensd_fontawesomefx_fontawesome_4_7_0_1.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__io_github_typhon0_AnimateFX_1_2_0.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__joda_time_joda_time_2_9_1.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__junit_junit_4_12.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__org_apache_commons_commons_text_1_3.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__org_controlsfx_controlsfx_8_40_13.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_21_0.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -386,10 +587,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1362" height="638" extended-state="6" />
+    <frame x="-1" y="0" width="1922" height="950" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.261035" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26414087" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -433,10 +634,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6495">
-          <caret line="474" column="78" selection-start-line="474" selection-start-column="78" selection-end-line="474" selection-end-column="78" />
+        <state relative-caret-position="7935">
+          <caret line="533" column="78" selection-start-line="533" selection-start-column="78" selection-end-line="533" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -470,8 +685,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ParserErrorTypeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="255">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -482,24 +697,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-261">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/java_sqlite_db/SQLiteJDBC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="999" column="5" lean-forward="true" selection-start-line="999" selection-start-column="5" selection-end-line="999" selection-end-column="5" />
+        <state relative-caret-position="10530">
+          <caret line="1001" column="46" lean-forward="true" selection-start-line="1001" selection-start-column="46" selection-end-line="1001" selection-end-column="46" />
+          <caret line="1000" column="65" lean-forward="true" selection-start-line="1000" selection-start-column="65" selection-end-line="1000" selection-end-column="65" />
+          <caret line="999" column="48" lean-forward="true" selection-start-line="999" selection-start-column="48" selection-end-line="999" selection-end-column="48" />
+          <caret line="998" column="46" lean-forward="true" selection-start-line="998" selection-start-column="46" selection-end-line="998" selection-end-column="46" />
+          <caret line="997" column="65" lean-forward="true" selection-start-line="997" selection-start-column="65" selection-end-line="997" selection-end-column="65" />
+          <caret line="996" column="46" lean-forward="true" selection-start-line="996" selection-start-column="46" selection-end-line="996" selection-end-column="46" />
+          <caret line="995" column="46" lean-forward="true" selection-start-line="995" selection-start-column="46" selection-end-line="995" selection-end-column="46" />
+          <folding>
+            <element signature="e#22077#22091#0" expanded="true" />
+            <element signature="e#23199#23214#0" expanded="true" />
+            <element signature="e#33890#33904#0" expanded="true" />
+            <element signature="e#35814#35820#0" expanded="true" />
+            <element signature="e#39671#39680#0" expanded="true" />
+            <element signature="e#40822#40837#0" expanded="true" />
+            <element signature="e#42022#42038#0" expanded="true" />
+            <element signature="e#58149#58155#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
