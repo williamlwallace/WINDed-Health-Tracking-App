@@ -190,6 +190,13 @@ public class ActivitiesCollectionController {
      */
     public void setUpTreeView() {
         ActivityListCollection activityListCollection = user.getUserActivities();
+        for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
+            System.out.println("LIST: " + activityList.getTitle());
+            for (Data data : activityList.getActivityList()) {
+                System.out.println("    DATA: " + data.getTitle());
+            }
+
+        }
         TreeItem<String> rootNode = new TreeItem<>(activityListCollection.getTitle());
         for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
             TreeItem<String> activityListNode = new TreeItem<>(activityList.getTitle());
@@ -473,12 +480,16 @@ public class ActivitiesCollectionController {
                     @Override
                     public void handle(ActionEvent event){
                         int activityListIndex = parent.getChildren().indexOf(selectedItem);
+
+                        //Database code
+                        ActivityList toDelete = user.getUserActivities().getActivityListCollection().get(activityListIndex);
+                        System.out.println("toDelete: " + toDelete.getTitle());
+                        database.deleteActivityList(toDelete.getTitle(), toDelete.getCreationDate());
+                        //
+
                         user.getUserActivities().deleteActivityList(activityListIndex);
                         setUpTreeView();
                         dialog.close();
-                        //Database Code
-                        ActivityList toDelete = user.getUserActivities().getActivityListCollection().get(activityListIndex);
-                        database.deleteActivityList(toDelete.getTitle(), toDelete.getCreationDate());
                     }
                 });
                 content.setActions(cancelButton, deleteButton);
@@ -514,7 +525,7 @@ public class ActivitiesCollectionController {
                         int activityListIndex = parent.getParent().getChildren().indexOf(parent);
                         //
                         System.out.println("activity list index: " + activityListIndex);
-                        System.out.println("data index: " + dataListIndex);
+//                        System.out.println("data index: " + dataListIndex);
                         ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
                         if (activityList.getActivityList().size() > 1) {
                             Data dataToDelete = activityList.getActivity(dataListIndex);
@@ -522,11 +533,14 @@ public class ActivitiesCollectionController {
                             //Database code
                             database.deleteActivity(dataToDelete.getDataId());
                         } else {
-                            user.getUserActivities().deleteActivityList(activityListIndex);
                             //Database code
                             ActivityList toDelete = user.getUserActivities().getActivityListCollection().get(activityListIndex);
                             database.deleteActivityList(toDelete.getTitle(), toDelete.getCreationDate());
+
+                            user.getUserActivities().deleteActivityList(activityListIndex);
+
                         }
+
                         setUpTreeView();
                         dialog.close();
                     }
