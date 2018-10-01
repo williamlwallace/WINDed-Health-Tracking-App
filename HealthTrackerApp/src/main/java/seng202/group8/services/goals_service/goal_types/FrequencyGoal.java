@@ -43,16 +43,16 @@ public class FrequencyGoal extends Goal {
      *
      * @return the timesToPerform parameter
      */
-    public Integer getTimesToPerformActivity() {
-        return timesToPerformActivity;
+    public Double getTarget() {
+        return Double.valueOf(timesToPerformActivity);
     }
 
     /**
      *
      * @param timesToPerformActivity a new Integer value for timesToPerformActivity parameter
      */
-    public void setTimesToPerformActivity(Integer timesToPerformActivity) {
-        this.timesToPerformActivity = timesToPerformActivity;
+    public void setTarget(Double timesToPerformActivity) {
+        this.timesToPerformActivity = timesToPerformActivity.intValue();
     }
 
     public Integer getTimesCurrentlyPerformedActivity() {

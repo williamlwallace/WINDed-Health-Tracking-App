@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class WeightLossGoal extends Goal {
 
     private Double targetWeight;
-
+    private DataType dataType;
     private Double startWeight;
 
     public WeightLossGoal(User user, String description, GoalType goalType, Double targetWeight, LocalDateTime targetDate) {
@@ -47,7 +47,7 @@ public class WeightLossGoal extends Goal {
      *
      * @return the targetWeight parameter
      */
-    public Double getTargetWeight() {
+    public Double getTarget() {
         return targetWeight;
     }
 
@@ -55,7 +55,7 @@ public class WeightLossGoal extends Goal {
      *
      * @param targetWeight a new Double value for the targetWeight parameter.
      */
-    public void setTargetWeight(Double targetWeight) {
+    public void setTarget(Double targetWeight) {
         this.targetWeight = targetWeight;
     }
 
@@ -86,4 +86,6 @@ public class WeightLossGoal extends Goal {
     }
 
     public DataType getDataType() {return DataType.WATER_SPORTS;}
+
+    public void setDataType(DataType dataType) {this.dataType = dataType;}
 }

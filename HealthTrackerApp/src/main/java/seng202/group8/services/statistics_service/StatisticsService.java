@@ -39,11 +39,13 @@ public class StatisticsService {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
                 Data data = activityList.get(j);
-                ArrayList<Integer> heartRateList = data.getHeartRateList();
-                for(int k = 0; k < heartRateList.size(); k++){
-                    averageHeartRate += heartRateList.get(k);
+                if (data.getIsGraphable()) {
+                    ArrayList<Integer> heartRateList = data.getHeartRateList();
+                    for(int k = 0; k < heartRateList.size(); k++){
+                        averageHeartRate += heartRateList.get(k);
+                    }
+                    heartRateValues += heartRateList.size();
                 }
-                heartRateValues += heartRateList.size();
             }
 
         }

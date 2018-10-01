@@ -581,7 +581,7 @@ public class SQLiteJDBC {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setDouble(1, activityGoal.getDistanceCurrentlyCovered());
-            preparedStatement.setDouble(2, activityGoal.getDistanceToCoverKm());
+            preparedStatement.setDouble(2, activityGoal.getTarget());
             preparedStatement.setString(3, activityGoal.getTargetDate().toString());
             preparedStatement.setString(4, activityGoal.getStartDate().toString());
             preparedStatement.setString(5, activityGoal.getDataType().toString());
@@ -598,7 +598,7 @@ public class SQLiteJDBC {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setDouble(6, weightLossGoal.getStartWeight());
-            preparedStatement.setDouble(5, weightLossGoal.getTargetWeight());
+            preparedStatement.setDouble(5, weightLossGoal.getTarget());
             preparedStatement.setString(4, weightLossGoal.getTargetDate().toString());
             preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
             preparedStatement.setString(2, weightLossGoal.getDescription());
@@ -614,7 +614,7 @@ public class SQLiteJDBC {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(7, frequencyGoal.getTimesCurrentlyPerformedActivity());
-            preparedStatement.setInt(6, frequencyGoal.getTimesToPerformActivity());
+            preparedStatement.setInt(6, frequencyGoal.getTarget().intValue());
             preparedStatement.setString(5, frequencyGoal.getTargetDate().toString());
             preparedStatement.setString(4, frequencyGoal.getStartDate().toString());
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());

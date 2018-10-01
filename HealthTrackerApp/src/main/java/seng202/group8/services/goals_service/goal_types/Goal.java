@@ -19,7 +19,6 @@ public abstract class Goal {
     private boolean isCompleted;
     private Double progress;
     private Double current;
-    private Double target;
 
     public Goal(User user, String description, GoalType goalType) {
         this.user = user;
@@ -29,13 +28,9 @@ public abstract class Goal {
 
     }
 
-    public Double getTarget() {
-        return target;
-    }
+    public abstract Double getTarget();
 
-    public void setTarget(Double target) {
-        this.target = target;
-    }
+    public abstract void setTarget(Double target);
 
     public Double getProgress() {
         return progress;
@@ -151,5 +146,7 @@ public abstract class Goal {
     public abstract void calculateTarget();
 
     public abstract DataType getDataType();
+
+    public abstract void setDataType(DataType dataType);
 
 }

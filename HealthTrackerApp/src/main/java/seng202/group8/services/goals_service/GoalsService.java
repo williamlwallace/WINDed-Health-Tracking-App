@@ -46,6 +46,7 @@ public class GoalsService extends Service implements ActivityListCollectionObser
 
         this.currentTimesPerformedGoals = new ArrayList<Goal>();
         this.previousTimesPerformedGoals = new ArrayList<Goal>();
+
         user.getUserActivities().attach(this);
         user.attach(this);
     }

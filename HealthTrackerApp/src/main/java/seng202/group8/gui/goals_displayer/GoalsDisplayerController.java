@@ -1,38 +1,19 @@
 package seng202.group8.gui.goals_displayer;
 
-import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import org.apache.commons.lang3.ObjectUtils;
-import seng202.group8.activity_collection.ActivityList;
-import seng202.group8.data_entries.Data;
-import seng202.group8.data_entries.DataType;
-import seng202.group8.gui.statistics_graph_displayer.GraphController;
-import seng202.group8.parser.Parser;
 import seng202.group8.services.goals_service.GoalsService;
 import seng202.group8.services.goals_service.goal_types.*;
 import seng202.group8.user.User;
-import utils.exceptions.NotCoherentWeightLossGoalException;
-
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class GoalsDisplayerController {
@@ -41,10 +22,6 @@ public class GoalsDisplayerController {
     private Stage stage;
     private GoalType selectedGoalType;
     private GoalsService goalsService;
-    //
-
-    @FXML
-    private VBox currentGoals;
 
     @FXML
     private ComboBox viewBox;
@@ -56,78 +33,76 @@ public class GoalsDisplayerController {
     private ListView goalList;
 
     private ArrayList<Goal> goalsToDisplay;
+    private GoalsDisplayerController mainController;
 
-    public void createGoals() throws Exception {
-        ActivityGoal activityGoal = new ActivityGoal(user, "activity1", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
-        ActivityGoal activityGoal2 = new ActivityGoal(user, "activity2", GoalType.ActivityGoal, DataType.RUN, 300.0, LocalDateTime.now());
-        ActivityGoal activityGoal3 = new ActivityGoal(user, "activity3", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
-        ActivityGoal activityGoal4 = new ActivityGoal(user, "activity4", GoalType.ActivityGoal, DataType.RUN, 300.0, LocalDateTime.now());
-        ActivityGoal activityGoal5 = new ActivityGoal(user, "activity5", GoalType.ActivityGoal, DataType.WALK, 200.0, LocalDateTime.now());
-        ActivityGoal activityGoal6 = new ActivityGoal(user, "activity6", GoalType.ActivityGoal, DataType.RUN, 750.0, LocalDateTime.now());
-        ActivityGoal activityGoal7 = new ActivityGoal(user, "activity7", GoalType.ActivityGoal, DataType.WALK, 1000.0, LocalDateTime.now());
-        ActivityGoal activityGoal8 = new ActivityGoal(user, "activity8", GoalType.ActivityGoal, DataType.RUN, 2000.0, LocalDateTime.now());
-        FrequencyGoal frequencyGoal = new FrequencyGoal(user, "Frequency1", GoalType.TimePerformedGoal, DataType.WALK, 3, LocalDateTime.now());
-        WeightLossGoal weightLossGoal;
-        try {
-            weightLossGoal = new WeightLossGoal(user, "weight1", GoalType.WeightLossGoal, 60.0, LocalDateTime.now());
-            goalsService.getCurrentActivityGoals().add(activityGoal);
-            goalsService.getCurrentActivityGoals().add(activityGoal2);
-            goalsService.getCurrentActivityGoals().add(activityGoal3);
-            goalsService.getCurrentActivityGoals().add(activityGoal4);
-            goalsService.getCurrentActivityGoals().add(activityGoal5);
-            goalsService.getCurrentActivityGoals().add(activityGoal6);
-            goalsService.getCurrentActivityGoals().add(activityGoal7);
-            goalsService.getCurrentActivityGoals().add(activityGoal8);
-            goalsService.getCurrentTimesPerformedGoals().add(frequencyGoal);
-            goalsService.getCurrentWeightLossGoals().add(weightLossGoal);
-            Parser parserTest = new Parser("seng202_2018_example_data_clean.csv", user);
-            parserTest.parseFile();
-            ArrayList<Data> dataList = parserTest.getDataList();
-            user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
-            for (int i = 0; i < dataList.size(); i++) {
-                user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
-            }
-        } catch (NotCoherentWeightLossGoalException e) {
-            e.printStackTrace();
-        }
-
-    }
-
+    /**
+     * An initial function called when you first go into the goals panel, this sets the main controller
+     * variable and sets the combo boxes to default values, also calls the change view function
+     */
     public void initialize(){
-        if (goalsService != null) {
-            selectedGoalType = GoalType.ActivityGoal;
-            goalTypeLabel.setText("Activity Goals");
-            viewBox.setValue("Activity Goals");
-            setupGoalsList();
-        } else {
-            goalTypeLabel.setText("Create a goal to get started");
-        }
+        selectedGoalType = GoalType.ActivityGoal;
+        viewBox.getSelectionModel().select(0);
+        setMainController(this);
+        changeView();
     }
 
+    /**
+     * Gets the value of the combo box for the viewing selection and sets the labels to either create a goal if there
+     * is no goals for that section or to set up the goal list for that particular type of goal
+     */
     public void changeView() {
         switch (viewBox.getValue().toString()) {
             case "Activity Goals":
                 goalTypeLabel.setText("Activity Goals");
                 selectedGoalType = GoalType.ActivityGoal;
+                if (goalsService != null) {
+                    if (goalsService.getCurrentActivityGoals().size() != 0) {
+                        setupGoalsList();
+                    } else {
+                        goalTypeLabel.setText("Create a goal to get started");
+                        setupGoalsList();
+                    }
+                } else {
+                    goalTypeLabel.setText("Create a goal to get started");
+                }
                 break;
             case "Frequency Goals":
                 goalTypeLabel.setText("Frequency Goals");
                 selectedGoalType = GoalType.TimePerformedGoal;
+                if (goalsService != null) {
+                    if (goalsService.getCurrentTimesPerformedGoals().size() != 0) {
+                        setupGoalsList();
+                    } else {
+                        goalTypeLabel.setText("Create a goal to get started");
+                        setupGoalsList();
+                    }
+                } else {
+                    goalTypeLabel.setText("Create a goal to get started");
+                }
                 break;
             case "Weight Goals":
-                goalTypeLabel.setText("Weight Goals");
+                goalTypeLabel.setText("Weight Loss Goals");
                 selectedGoalType = GoalType.WeightLossGoal;
+                if (goalsService != null) {
+                    if (goalsService.getCurrentWeightLossGoals().size() != 0) {
+                        setupGoalsList();
+                    } else {
+                        goalTypeLabel.setText("Create a goal to get started");
+                        setupGoalsList();
+                    }
+                } else {
+                    goalTypeLabel.setText("Create a goal to get started");
+                }
                 break;
             default:
                 break;
         }
-        if (goalsService != null) {
-            setupGoalsList();
-        } else {
-            goalTypeLabel.setText("Create a goal to get started");
-        }
     }
 
+    /**
+     * Sets up the display list view for the goals that is currently selected by the variable goals to display
+     * this function generates the goals single list view controllers into a list view fxml panel
+     */
     private void setupGoalsList() {
         goalsToDisplay = goalsService.getCurrentActivityGoals();
         switch(selectedGoalType) {
@@ -157,9 +132,9 @@ public class GoalsDisplayerController {
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSingle.fxml"));
                                 BorderPane goalSingle = loader.load();
-                                GoalsListViewSingleController controller = loader.<GoalsListViewSingleController>getController();
+                                GoalsListViewSingleController controller = loader.getController();
                                 controller.setCurrentGoal(goal);
-                                controller.setGoalsToDisplay(goalsToDisplay);
+                                controller.setMainController(mainController);
                                 controller.setUser(user);
                                 controller.start();
                                 setGraphic(goalSingle);
@@ -176,6 +151,10 @@ public class GoalsDisplayerController {
     }
 
 
+    /**
+     * The function called when the user clicks the add goal function
+     * This loads the add goal controller for the user ot be able to add a goal
+     */
     public void createGoal() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/add_goal.fxml"));
         Parent root = null;
@@ -198,38 +177,81 @@ public class GoalsDisplayerController {
         changeView();
     }
 
+    /**
+     * Gets the current selected goal type from the combo Box
+     * @return a goal type variable enum
+     */
+    public GoalType getSelectedGoalType() {
+        return selectedGoalType;
+    }
+
+    /**
+     * Changes the selected goal type variable to enum activity goals and calls the setup goals list function
+     */
     public void showActivityGoals() {
         selectedGoalType = GoalType.ActivityGoal;
         setupGoalsList();
     }
 
+    /**
+     * Changes the selected goal type variable to enum times performed goals and calls the setup goals list function
+     */
     public void showFrequencyGoals() {
         selectedGoalType = GoalType.TimePerformedGoal;
         setupGoalsList();
     }
 
+    /**
+     * Changes the selected goal type variable to enum weight loss goals and calls the setup goals list function
+     */
     public void showWeightLossGoals() {
         selectedGoalType = GoalType.WeightLossGoal;
         setupGoalsList();
     }
 
+    /**
+     * Sets the goals service for the goals controller that it can use to retrieve the goals
+     * @param goalsService a goals service variable that the user currently has
+     */
     public void setGoalsService(GoalsService goalsService) {
         this.goalsService = goalsService;
     }
 
+    /**
+     * Gets the user that us currently using the application
+     * @return the user of type User
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets the user variable in this controller to the user using tha application
+     * @param user the user using the application currently
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * GEts the stage of the current controller
+     * @return a stage object
+     */
     public Stage getPrimaryStage() {
         return stage;
     }
 
+    /**
+     * Sets the stage of the goals display controller
+     * @param stage a stage object for the goals display to add to
+     */
     public void setPrimaryStage(Stage stage) {
         this.stage = stage;
     }
+
+    /**
+     * Sets the main controller variable to be used by the other goal controllers
+     * @param mainController the main controller to be passed around of type GoalsDisplayController
+     */
+    public void setMainController(GoalsDisplayerController mainController) { this.mainController = mainController; }
 }

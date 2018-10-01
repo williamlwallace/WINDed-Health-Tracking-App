@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class ActivityGoal extends Goal {
 
-//    private DataType dataType; implement once Data classes will be ready
     private Double distanceToCoverKm;
     private Double distanceCurrentlyCovered;
     private DataType dataType;
@@ -29,7 +28,7 @@ public class ActivityGoal extends Goal {
      *
      * @return the distanceCovered parameter
      */
-    public Double getDistanceToCoverKm() {
+    public Double getTarget() {
         return distanceToCoverKm;
     }
 
@@ -37,7 +36,7 @@ public class ActivityGoal extends Goal {
      *
      * @param distanceToCover a new Double value for the distanceCovered parameter
      */
-    public void setDistanceToCoverKm(Double distanceToCover) {
+    public void setTarget(Double distanceToCover) {
         this.distanceToCoverKm = distanceToCover;
     }
 
@@ -57,7 +56,6 @@ public class ActivityGoal extends Goal {
         this.dataType = dataType;
     }
 
-    // Uncomment to see what is failing, I mainly need a DataType and a function in each Data subclass to retrieve the distance covered
     /**
      *
      * Sieves through the data logged by the user until a given date and it adds

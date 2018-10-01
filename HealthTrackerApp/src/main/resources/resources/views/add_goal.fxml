@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<?import seng202.group8.data_entries.DataType?>
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.AddGoalController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="133.0" />
@@ -28,9 +27,9 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Type:" textAlignment="CENTER" wrappingWidth="126.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Type:" wrappingWidth="133.0">
          <GridPane.margin>
-            <Insets right="20.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
       </Text>
       <Separator prefHeight="1.0" prefWidth="256.0" GridPane.valignment="BOTTOM" />
@@ -40,16 +39,16 @@
          </GridPane.margin>
           <items>
               <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Activity Goal" />
-                  <String fx:value="Frequency Goal" />
-                  <String fx:value="Weight Goal" />
+                  <String fx:value="Activity" />
+                  <String fx:value="Frequency" />
+                  <String fx:value="Weight Loss" />
               </FXCollections>
           </items>
       </ComboBox>
       <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
-      <Text fx:id="goalTargetLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Target:" textAlignment="CENTER" wrappingWidth="126.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Text fx:id="goalTargetLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Target:" wrappingWidth="133.0" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets right="20.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
       </Text>
       <TextField fx:id="targetTextField" maxWidth="203.0" prefHeight="26.0" prefWidth="200.0" promptText="Eg; 1000 (m)" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -57,9 +56,9 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text fx:id="goalDescriptionLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Description:" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Text fx:id="goalDescriptionLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Description:" wrappingWidth="133.416015625" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets right="10.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
       </Text>
       <TextField fx:id="descriptionTextField" maxWidth="205.0" prefHeight="25.0" prefWidth="200.0" promptText="Eg: Run for 1km" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -78,12 +77,12 @@
          </GridPane.margin></JFXDatePicker>
       <Text fx:id="targetDateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Target Date:" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="10.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <Text fx:id="activityTypeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Activity Type:" GridPane.rowIndex="4">
+      <Text fx:id="activityTypeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Activity Type:" wrappingWidth="118.658203125" GridPane.rowIndex="4">
          <GridPane.margin>
-            <Insets left="10.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
       </Text>
       <ComboBox fx:id="activityTypeBox" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -92,13 +91,13 @@
          </GridPane.margin>
           <items>
               <FXCollections fx:factory="observableArrayList">
-                  <DataType fx:value="WALK" />
-                  <DataType fx:value="HIKE" />
-                  <DataType fx:value="RUN" />
-                  <DataType fx:value="CLIMB" />
-                  <DataType fx:value="BIKE" />
-                  <DataType fx:value="SWIM" />
-                  <DataType fx:value="WATER_SPORTS" />
+                  <String fx:value="Walk" />
+                  <String fx:value="Hike" />
+                  <String fx:value="Run" />
+                  <String fx:value="Climb" />
+                  <String fx:value="Bike" />
+                  <String fx:value="Swim" />
+                  <String fx:value="Water Sport" />
               </FXCollections>
           </items>
       </ComboBox>
