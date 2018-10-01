@@ -59,6 +59,31 @@ public class User {
         userStats.addUserWeightRecords(weight);
     }
 
+    /**
+     * Receives a created user. 
+     * @param name the full name of the new user
+     * @param age the age of the new user
+     * @param weight the weight of the new user in kg
+     * @param height the height of the new user in cm
+     */
+    public User(String name, Integer age, Double weight, Double height, Sex sex, int userID) {
+        this.userID = userID;
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.userStats = new UserStats();
+        this.observers = new ArrayList<UserObserver>();
+        this.userActivities = new ActivityListCollection(name + "'s activities collection");
+        this.bmi = new BMI(calculateBMI());
+        this.sex = sex;
+        this.userHealth = new HealthService(this);
+        this.statsService = new StatisticsService(this);
+        this.goalsService = new GoalsService(this);
+        userStats.addUserBMITypeRecords(bmi);
+        userStats.addUserWeightRecords(weight);
+    }
+
     public GoalsService getGoalsService() {
         return goalsService;
     }

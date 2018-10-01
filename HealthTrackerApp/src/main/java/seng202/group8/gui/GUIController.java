@@ -185,6 +185,12 @@ public class GUIController implements Initializable {
     }
 
     @FXML
+    private void switchUser(ActionEvent event) throws IOException
+    {
+
+    }
+
+    @FXML
     private void quitApp(ActionEvent event) {
         stage.close();
     }

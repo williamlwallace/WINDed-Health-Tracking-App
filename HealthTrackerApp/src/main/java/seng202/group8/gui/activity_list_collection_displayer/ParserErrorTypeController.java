@@ -143,19 +143,19 @@ public class ParserErrorTypeController {
                 if (add == -1) {
                     ActivityList newList = new ActivityList(parentControl.getActivityTitle());
                     add = user.getUserActivities().insertActivityList(newList);
-                    database.insertActivityList(newList.getTitle(), newList.getCreationDate(), 1);
+                    database.insertActivityList(newList.getTitle(), newList.getCreationDate(), user.getUserID());
                     for (Data data : parser.getDataList()) {
                         user.getUserActivities().insertActivityInGivenList(add, data);
                         newData.add(data);
                     }
-                    database.updateWithListOfData(newData, newList.getTitle(), newList.getCreationDate(), 1);
+                    database.updateWithListOfData(newData, newList.getTitle(), newList.getCreationDate(), user.getUserID());
                 } else {
                     for (Data data : parser.getDataList()) {
                         user.getUserActivities().insertActivityInGivenList(add, data);
                         newData.add(data);
                     }
                     ActivityList existingList = user.getUserActivities().getActivityListCollection().get(add);
-                    database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), 1);
+                    database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), user.getUserID());
                 }
                 parentControl.setUpTreeView();
                 List<String> csvArray = Arrays.asList(parser.getFilename().split("/"));

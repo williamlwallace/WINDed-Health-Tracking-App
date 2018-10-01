@@ -58,7 +58,7 @@ public class Parser {
         this.acceptedValues.add(this.bike);
         this.acceptedValues.add(this.swim);
         this.acceptedValues.add(this.waterSports);
-        this.database.getKeyWords(1, this);
+        this.database.getKeyWords(user.getUserID(), this);
         this.filename = newFilename;
         try {
             this.oldData = this.user.getUserActivities().getActivityListCollection();
@@ -379,7 +379,7 @@ public class Parser {
         this.acceptedValues.add(this.swim);
         this.acceptedValues.add(this.waterSports);
         if (addToDataBase) {
-            this.database.addParserKeyword(1, keyWord, type);
+            this.database.addParserKeyword(user.getUserID(), keyWord, type);
         }
     }
 
