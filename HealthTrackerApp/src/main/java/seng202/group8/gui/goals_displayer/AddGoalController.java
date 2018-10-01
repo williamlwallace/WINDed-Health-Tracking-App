@@ -55,6 +55,7 @@ public class AddGoalController {
 
     private User user;
     private Goal goal;
+    private GoalsDisplayerController mainController;
 
     public void start() {
         targetTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -70,7 +71,7 @@ public class AddGoalController {
 
     public void edit(Goal goal) {
         this.goal = goal;
-        goalTypeCombo.setValue(goal.getGoalType());
+        goalTypeCombo.setValue(goal.getGoalType().toString());
         descriptionTextField.setText(goal.getDescription());
         targetTextField.setText(goal.getTarget().toString());
         datePicker.setValue(LocalDate.from(goal.getTargetDate()));
@@ -157,6 +158,7 @@ public class AddGoalController {
                 }
             }
             stage.close();
+            mainController.changeView();
         }
     }
 
@@ -167,6 +169,8 @@ public class AddGoalController {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public void setMainController(GoalsDisplayerController controller) { this.mainController = controller;}
 
     public DataType createDataType(String data) {
         switch (data) {
