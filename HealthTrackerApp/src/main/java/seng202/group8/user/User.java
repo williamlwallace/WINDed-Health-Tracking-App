@@ -1,5 +1,6 @@
 package seng202.group8.user;
 
+import java_sqlite_db.SQLiteJDBC;
 import seng202.group8.services.goals_service.GoalsService;
 import seng202.group8.services.health_service.HealthService;
 import seng202.group8.services.statistics_service.StatisticsService;
@@ -28,6 +29,7 @@ public class User {
     private HealthService userHealth;
     private StatisticsService statsService;
     private GoalsService goalsService;
+    private int userID;
 
 
 
@@ -39,6 +41,8 @@ public class User {
      * @param height the height of the new user in cm
      */
     public User(String name, Integer age, Double weight, Double height, Sex sex) {
+        SQLiteJDBC database = new SQLiteJDBC();
+        this.userID = database.getUserID();
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -264,5 +268,7 @@ public class User {
     }
 
 
-
+    public int getUserID() {
+        return userID;
+    }
 }

@@ -409,7 +409,7 @@ public class SQLiteJDBC {
         return to_return;
     }
 
-        public void deleteParserKeyword(Integer userId, String phrase) {
+    public void deleteParserKeyword(Integer userId, String phrase) {
         String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
         Connection connection = connect();
         try {
@@ -421,6 +421,23 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getUserID() {
+        Connection connection = connect();
+        assert null != connection;
+        int userID = 0;
+        ResultSet resultSet = null;
+        String find = "SELECT user_id FROM user order by user_id DESC limit 1";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(find);
+            resultSet = preparedStatement.executeQuery();
+            userID = resultSet.getInt("user_id") + 1;
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userID;
     }
 
     public void getKeyWords(Integer userId, Parser parser) {

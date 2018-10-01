@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng202.group8.activity_collection.ActivityList;
 import seng202.group8.data_entries.Data;
@@ -28,6 +29,9 @@ public class ParserErrorTypeController {
 
     @FXML
     private ComboBox actType;
+
+    @FXML
+    private Label errorMes;
 
     @FXML
     private CheckBox rememberTick;
@@ -160,6 +164,12 @@ public class ParserErrorTypeController {
                 //database.saveUser(user, 1);
                 Stage stage = (Stage) errorText.getScene().getWindow();
                 stage.close();
+            }
+        } else {
+            if (rememberTick.isSelected()) {
+                errorMes.setText("You must enter both a phrase and a type");
+            } else {
+                errorMes.setText("You must enter a type");
             }
         }
     }
