@@ -1,6 +1,7 @@
 package seng202.group8.gui.home_displayer;
 
 import animatefx.animation.Pulse;
+import com.jfoenix.controls.JFXButton;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,13 +24,13 @@ public class HomeController {
     private Label healthText;
 
     @FXML
-    private Button cardio;
+    private JFXButton cardio;
 
     @FXML
-    private Button brad;
+    private JFXButton brad;
 
     @FXML
-    private Button tach;
+    private JFXButton tach;
 
     @FXML
     private Label bmiText;
@@ -118,13 +119,13 @@ public class HomeController {
         heartValue.setText(statsService.getAverageHeartRate() + " BPM");
         statsService.setWeightLossTotal();
         weightValue.setText(String.format("%.1f", statsService.getWeightLossTotal()) + " kg");
-        totalStatsLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color: #2e86c1");
-        bmiLabel2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-        healthLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-        heartLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-        brad.setStyle("-fx-background-color:  #2e86c1");
-        cardio.setStyle("-fx-background-color:  #2e86c1");
-        tach.setStyle("-fx-background-color:  #2e86c1");
+//        totalStatsLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color: #2e86c1");
+//        bmiLabel2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
+//        healthLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
+//        heartLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
+//        brad.setStyle("-fx-background-color:  #2e86c1");
+//        cardio.setStyle("-fx-background-color:  #2e86c1");
+//        tach.setStyle("-fx-background-color:  #2e86c1");
     }
 
     public void searchCardio() {
