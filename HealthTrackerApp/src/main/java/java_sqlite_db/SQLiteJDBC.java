@@ -377,6 +377,12 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * written by sam, adds a Parser key word to the database.
+     * @param userId
+     * @param phrase
+     * @param type
+     */
     public void addParserKeyword(Integer userId, String phrase, int type) {
         String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
         Connection connection = connect();
@@ -392,6 +398,12 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * written by sam, checks for a duplicate of the sent in key word
+     * @param userId
+     * @param phrase
+     * @return
+     */
     public boolean checkDuplicateKeyword(Integer userId, String phrase) {
         String sql = "Select count(*) from parser_keywords where user_id = ? and keyword = ?";
         Connection connection = connect();
@@ -412,6 +424,11 @@ public class SQLiteJDBC {
         return to_return;
     }
 
+    /**
+     * Written by Sam, deletes a parser key word from the database
+     * @param userId
+     * @param phrase
+     */
     public void deleteParserKeyword(Integer userId, String phrase) {
         String sql = "DELETE FROM parser_keywords WHERE user_id = ? and keyword = ?";
         Connection connection = connect();
@@ -426,12 +443,16 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * written by sam, receives the next user id for the new user
+     * @return
+     */
     public int getUserID() {
         Connection connection = connect();
         assert null != connection;
         int userID = 0;
         ResultSet resultSet = null;
-        String find = "SELECT user_id FROM user order by user_id DESC limit 1";
+        String find = "SELECT MAX(user_id) FROM user";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(find);
             resultSet = preparedStatement.executeQuery();
@@ -443,6 +464,11 @@ public class SQLiteJDBC {
         return userID;
     }
 
+    /**
+     * Written by Sam, gets all of the key words and adds them to the parsers collection
+     * @param userId
+     * @param parser
+     */
     public void getKeyWords(Integer userId, Parser parser) {
         Connection connection = connect();
         assert null != connection && null != userId;
