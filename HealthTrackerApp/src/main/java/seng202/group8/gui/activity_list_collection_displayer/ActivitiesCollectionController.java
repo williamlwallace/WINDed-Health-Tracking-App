@@ -410,19 +410,19 @@ public class ActivitiesCollectionController {
                 if (add == -1) {
                     ActivityList newList = new ActivityList(activityTitle);
                     add = user.getUserActivities().insertActivityList(newList);
-                    database.insertActivityList(activityTitle, newList.getCreationDate(), 1);
+                    database.insertActivityList(activityTitle, newList.getCreationDate(), user.getUserID());
                     for (Data data : parser.getDataList()) {
                         newData.add(data);
                         user.getUserActivities().insertActivityInGivenList(add, data);
                     }
-                    database.updateWithListOfData(newData,newList.getTitle(), newList.getCreationDate(), 1);
+                    database.updateWithListOfData(newData,newList.getTitle(), newList.getCreationDate(), user.getUserID());
                 } else {
                     for (Data data : parser.getDataList()) {
                         newData.add(data);
                         user.getUserActivities().insertActivityInGivenList(add, data);
                     }
                     ActivityList existingList = user.getUserActivities().getActivityListCollection().get(add);
-                    database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), 1);
+                    database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), user.getUserID());
                 }
                 setUpTreeView();
                 List<String> csvArray = Arrays.asList(csvToParse.split("/"));
@@ -509,8 +509,10 @@ public class ActivitiesCollectionController {
                 deleteButton.setOnAction(new EventHandler<ActionEvent>(){
                     @Override
                     public void handle(ActionEvent event){
+                        //
                         int dataListIndex = parent.getChildren().indexOf(selectedItem);
                         int activityListIndex = parent.getParent().getChildren().indexOf(parent);
+                        //
                         System.out.println("activity list index: " + activityListIndex);
                         System.out.println("data index: " + dataListIndex);
                         ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);

@@ -1065,6 +1065,7 @@ public class SQLiteJDBC {
         }
     }
 
+    //TODO: are you sure this works properly?
     public void deleteActivityList(String parentActivityListTitle, Date parentActivityListDate) {
         String parentActivityListDateString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(parentActivityListDate));
         String find = "SELECT data_id FROM Data WHERE title=? AND date=?";

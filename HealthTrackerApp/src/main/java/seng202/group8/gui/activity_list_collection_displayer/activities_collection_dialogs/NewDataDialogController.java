@@ -175,15 +175,15 @@ public class NewDataDialogController {
                 ActivityList activityList = new ActivityList(newActivityListName.getText());
                 activityList.insertActivity(dataVal);
                 user.getUserActivities().insertActivityList(activityList);
-                database.insertActivityList(activityList.getTitle(), activityList.getCreationDate(), 1);
-                database.updateWithListOfData(activityList.getActivityList(), activityList.getTitle(), activityList.getCreationDate(), 1);
+                database.insertActivityList(activityList.getTitle(), activityList.getCreationDate(), user.getUserID());
+                database.updateWithListOfData(activityList.getActivityList(), activityList.getTitle(), activityList.getCreationDate(), user.getUserID());
             } else {
                 System.out.println(activityListIndexToAppendTo);
                 ActivityList existingList = user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo);
                 existingList.insertActivity(dataVal);
                 ArrayList<Data> newDataList = new ArrayList<Data>();
                 newDataList.add(dataVal);
-                database.updateWithListOfData(newDataList, existingList.getTitle(), existingList.getCreationDate(), 1);
+                database.updateWithListOfData(newDataList, existingList.getTitle(), existingList.getCreationDate(), user.getUserID());
             }
             stage.hide();
             activitiesCollectionController.setUpTreeView();

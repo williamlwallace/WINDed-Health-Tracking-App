@@ -15,18 +15,18 @@ public enum DataType {
     ALL;
 
     public static DataType fromStringToEnum(String dataTypeStr) {
-        switch (dataTypeStr) {
-            case "Walk":
+        switch (dataTypeStr.toLowerCase()) {
+            case "walk":
                 return WALK;
-            case "Run":
+            case "run":
                 return RUN;
-            case "Hike":
+            case "hike":
                 return HIKE;
-            case "Climb":
+            case "climb":
                 return CLIMB;
-            case "Bike":
+            case "bike":
                 return BIKE;
-            case "Swim":
+            case "swim":
                 return SWIM;
             default:
                 return WATER_SPORTS;
@@ -53,6 +53,10 @@ public enum DataType {
         }
     }
 
+    public static String[] dataTypeForChoicheBoxes() {
+        String[] dataTypesStr = {"Walk", "Run", "Hike", "Climb", "Bike", "Swim", "Water Sport"};
+        return dataTypesStr;
+    }
 
 
 
