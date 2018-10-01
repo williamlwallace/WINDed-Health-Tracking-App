@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng202.group8.gui.GUIController;
+import seng202.group8.gui.switch_user.SwitchUserController;
 import seng202.group8.user.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -195,11 +196,20 @@ public class GetUserInfoController {
     /**
      *
      * @param event
-     * cancelBtn event listener, closes the application without saving the entered data if clicked.
+     * cancelBtn event listener, goes back to the select user screen if pressed.
      */
     @FXML
-    private void quitApp(ActionEvent event) {
-        stage.close();
+    private void loadUserScreen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
+        Parent root = loader.load();
+        SwitchUserController switchUserController = loader.getController();
+        switchUserController.setHostServices(host);
+        switchUserController.setStage(stage);
+        switchUserController.setUser(user);
+        stage.setTitle("WINded");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public User getUser() {

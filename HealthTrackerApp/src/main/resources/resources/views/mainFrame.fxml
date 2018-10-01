@@ -40,7 +40,7 @@
                   <MenuButton fx:id="userBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" styleClass="menu-bar" stylesheets="@stylesheet.css" textFill="WHITE">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#loadEditUser" text="Edit User" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchUser" text="Switch User" />
+                        <MenuItem mnemonicParsing="false" onAction="#loadUserScreen" text="Switch User" />
                       <!--<MenuItem mnemonicParsing="false" text="Change User" />-->
                         <MenuItem mnemonicParsing="false" onAction="#quitApp" text="Quit" />
                     </items>

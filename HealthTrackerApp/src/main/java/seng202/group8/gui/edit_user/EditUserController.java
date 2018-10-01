@@ -147,7 +147,7 @@ public class EditUserController {
             user.setHeight(height);
             try {
                 SQLiteJDBC database = new SQLiteJDBC();
-                database.saveUser(user, 1);
+                database.saveUser(user, user.getUserID());
                 guiController.setToHome();
             } catch (IOException e) {
                 e.printStackTrace();

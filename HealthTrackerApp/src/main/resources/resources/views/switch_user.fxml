@@ -8,27 +8,43 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="740.0" styleClass="top" stylesheets="@stylesheet2.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.switch_user.SwitchUserController">
-   <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <JFXListView fx:id="switchUserListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="200.0" style="-fx-background-color: #2e86c1;" stylesheets="@stylesheet2.css" />
-         </children>
-      </StackPane>
-   </center>
    <top>
       <VBox alignment="CENTER" prefHeight="136.0" prefWidth="740.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="124.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="144.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/WINdedLogo.png" />
                </image>
             </ImageView>
-            <Label text="Select User" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
          </children>
       </VBox>
    </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="104.0" prefWidth="740.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="enterBtn" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#enterApp" prefHeight="35.0" prefWidth="80.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Enter" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="newUserBtn" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#loadNewUserScreen" prefHeight="35.0" styleClass="btns" stylesheets="@stylesheet2.css" text="New User" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="cancelBtn" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#quitApp" prefHeight="35.0" prefWidth="80.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <StackPane fx:id="dialogStackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXListView fx:id="switchUserListView" fixedCellSize="45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="316.0" showTooltip="true" stylesheets="@stylesheet2.css" />
+         </children>
+      </StackPane>
+   </center>
 </BorderPane>

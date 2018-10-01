@@ -6,6 +6,8 @@ import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
 
@@ -17,6 +19,7 @@ import seng202.group8.gui.edit_user.EditUserController;
 import seng202.group8.gui.goals_displayer.GoalsDisplayerController;
 import seng202.group8.gui.home_displayer.HomeController;
 import seng202.group8.gui.statistics_graph_displayer.GraphController;
+import seng202.group8.gui.switch_user.SwitchUserController;
 import seng202.group8.user.User;
 
 import java.io.IOException;
@@ -185,9 +188,18 @@ public class GUIController implements Initializable {
     }
 
     @FXML
-    private void switchUser(ActionEvent event) throws IOException
+    private void loadUserScreen(ActionEvent event) throws IOException
     {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
+        Parent root = loader.load();
+        SwitchUserController switchUserController = loader.getController();
+        switchUserController.setHostServices(host);
+        switchUserController.setStage(stage);
+        switchUserController.setUser(user);
+        stage.setTitle("WINded");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
