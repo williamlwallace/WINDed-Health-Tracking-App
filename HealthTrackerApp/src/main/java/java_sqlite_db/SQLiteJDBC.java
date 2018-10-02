@@ -202,15 +202,88 @@ public class SQLiteJDBC {
         try {
             //System.out.println("Deleting User with id = " + userID);
             Connection connection = connect();
+            connection.setAutoCommit(false);
+
+            deleteUserRecords(connection, userID);
+
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
+
+            connection.commit();
             connection.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void deleteUserRecords(Connection connection, Integer userID) {
+        String sql;
+        PreparedStatement preparedStatement;
+        String findData = "SELECT data_id FROM Data WHERE user_id=?";
+        try {
+
+            PreparedStatement preparedStatementFind = connection.prepareStatement(findData);
+            preparedStatementFind.setInt(1, userID);
+            ResultSet resultSet = preparedStatementFind.executeQuery();
+
+            while (resultSet.next()) {
+                Integer dataId = resultSet.getInt("data_id");
+
+                sql = "DELETE FROM CoOrdinate WHERE data_id=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, dataId);
+                preparedStatement.executeUpdate();
+                sql = "DELETE FROM Heartrate WHERE data_id=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, dataId);
+                preparedStatement.executeUpdate();
+                sql = "DELETE FROM Activity_Time WHERE data_id=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, dataId);
+                preparedStatement.executeUpdate();
+            }
+
+
+            sql = "DELETE FROM Data WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM Activity_List WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM Activity_Collection WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM parser_keywords WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM bmi_record WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM weight_record WHERE user_ideleteGoals(connection, userID);d=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            deleteGoals(connection, userID);
+
+
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
@@ -1060,6 +1133,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, newActivityList.getTitle());
             preparedStatement.setString(4, parentListDateTimeString);
             preparedStatement.setInt(5, data.getDataId());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -1259,23 +1333,6 @@ public class SQLiteJDBC {
 
     }
 
-    public Integer getNextUserId() {
-        String find = "SELECT MAX(user_id) FROM user";
-        Integer newId = 0;
-        try {
-            Connection connection = connect();
-            PreparedStatement preparedStatement  = connection.prepareStatement(find);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
-                newId = resultSet.getInt("MAX(user_id)");
-            }
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return newId + 1;
-    }
 
 
     /**
@@ -1340,7 +1397,23 @@ public class SQLiteJDBC {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.getInt("count(*)") != 0) {
                 to_return = true;
+            }public Integer getNextUserId() {
+        String find = "SELECT MAX(user_id) FROM user";
+        Integer newId = 0;
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement  = connection.prepareStatement(find);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                newId = resultSet.getInt("MAX(user_id)");
             }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return newId + 1;
+    }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

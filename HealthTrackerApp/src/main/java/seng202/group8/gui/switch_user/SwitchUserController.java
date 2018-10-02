@@ -141,7 +141,7 @@ public class SwitchUserController {
                                     content.setActions(cancelButton, deleteButton);
 
                                     dialog.show();
-                                    //DB.deleteUser(null, switchUserListView.getSelectionModel().getSelectedItem().getUserID());
+                                    //DB.deleteUser(switchUserListView.getSelectionModel().getSelectedItem().getUserID());
                                 }
                             });
                             deleteBtn.setGraphic(deleteImageView);
