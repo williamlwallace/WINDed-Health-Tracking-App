@@ -1,5 +1,6 @@
 package seng202.group8.gui.goals_displayer;
 
+import java_sqlite_db.SQLiteJDBC;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -130,6 +131,7 @@ public class GoalsListViewSingleController {
 
             @Override
             public void handle(ActionEvent arg0) {
+                SQLiteJDBC database = new SQLiteJDBC();
                 user.getGoalsService().getAllCurrentGoals().remove(currentGoal);
                 switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
                     case "Activity":
@@ -145,6 +147,7 @@ public class GoalsListViewSingleController {
                         System.out.println(currentGoal.getGoalType().toString());
                         break;
                 }
+                database.saveUser(user, user.getUserID());
                 mainController.changeView();
             }
         });

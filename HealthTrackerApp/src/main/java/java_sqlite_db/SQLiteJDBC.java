@@ -198,19 +198,19 @@ public class SQLiteJDBC {
     }
 
     public void deleteUser(Integer userID) {
-        String sql = "DELETE FROM user WHERE user_id=?";
+        String sql = "DELETE FROM User WHERE user_id=?";
         try {
             //System.out.println("Deleting User with id = " + userID);
             Connection connection = connect();
-            connection.setAutoCommit(false);
+            //connection.setAutoCommit(false);
 
-            deleteUserRecords(connection, userID);
+            //deleteUserRecords(connection, userID);
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
 
-            connection.commit();
+            //connection.commit();
             connection.close();
 
         } catch (SQLException e) {
@@ -271,7 +271,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
 
-            sql = "DELETE FROM weight_record WHERE user_ideleteGoals(connection, userID);d=?";
+            sql = "DELETE FROM weight_record WHERE user_id=?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
@@ -685,7 +685,7 @@ public class SQLiteJDBC {
             preparedStatement.setDouble(1, activityGoal.getDistanceCurrentlyCovered());
             preparedStatement.setDouble(2, activityGoal.getTarget());
             preparedStatement.setString(3, activityGoal.getTargetDate().toString());
-            preparedStatement.setString(4, activityGoal.getStartDate().toString());
+            preparedStatement.setString(4, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityGoal.getStartDate())));
             preparedStatement.setString(5, activityGoal.getDataType().toString());
             preparedStatement.setString(6, activityGoal.getDescription());
             preparedStatement.setInt(7, userId);
@@ -702,7 +702,7 @@ public class SQLiteJDBC {
             preparedStatement.setDouble(6, weightLossGoal.getStartWeight());
             preparedStatement.setDouble(5, weightLossGoal.getTarget());
             preparedStatement.setString(4, weightLossGoal.getTargetDate().toString());
-            preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
+            preparedStatement.setString(3, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(weightLossGoal.getStartDate())));
             preparedStatement.setString(2, weightLossGoal.getDescription());
             preparedStatement.setInt(1, userId);
             System.out.println("Rows added to Weight_Goal: " + preparedStatement.executeUpdate());
@@ -718,7 +718,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(7, frequencyGoal.getTimesCurrentlyPerformedActivity());
             preparedStatement.setInt(6, frequencyGoal.getTarget().intValue());
             preparedStatement.setString(5, frequencyGoal.getTargetDate().toString());
-            preparedStatement.setString(4, frequencyGoal.getStartDate().toString());
+            preparedStatement.setString(4, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(frequencyGoal.getStartDate())));
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());
             preparedStatement.setString(2, frequencyGoal.getDescription());
             preparedStatement.setInt(1, userId);
@@ -732,13 +732,13 @@ public class SQLiteJDBC {
         ArrayList<Goal> activityGoalsList = user.getGoalsService().getCurrentActivityGoals();
         activityGoalsList.addAll(user.getGoalsService().getPreviousActivityGoals());
         for (Goal goal: activityGoalsList) {
-            if (goal.getGoalType().equals("WeightLossGoal")) {
+            if (goal.getGoalType().toString().equals("WeightLossGoal")) {
                 WeightLossGoal weightLossGoal = (WeightLossGoal) goal;
                 insertWeightGoal(connection, weightLossGoal, userId);
-            } else if (goal.getGoalType().equals("ActivityGoal")) {
+            } else if (goal.getGoalType().toString().equals("ActivityGoal")) {
                 ActivityGoal activityGoal = (ActivityGoal) goal;
                 insertActivityGoal(connection, activityGoal, userId);
-            } else if (goal.getGoalType().equals("TimePerformedGoal")) {
+            } else if (goal.getGoalType().toString().equals("TimePerformedGoal")) {
                 FrequencyGoal frequencyGoal = (FrequencyGoal) goal;
                 insertFrequencyGoal(connection, frequencyGoal, userId);
             } else {
@@ -1296,8 +1296,8 @@ public class SQLiteJDBC {
         insertWeightRecords(conn, user.getUserStats().getUserWeightRecords(), userId);
         insertBMIRecords(conn, user.getUserStats().getUserBMITypeRecords(), userId);
 
-        /*deleteGoals(conn, userId);
-        insertGoals(conn, user, userId);*/ //TODO uncomment when goals is in GUI
+        deleteGoals(conn, userId);
+        insertGoals(conn, user, userId); //TODO uncomment when goals is in GUI
 
         try {
             if (conn != null) {
@@ -1363,7 +1363,7 @@ public class SQLiteJDBC {
             userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
             user.setUserStats(userStats);
 
-            //getGoals(conn, user, userId); TODO uncomment this call when goals finished in database
+            getGoals(conn, user, userId); //TODO uncomment this call when goals finished in database
 
             try {
                 if (conn != null) {
@@ -1457,7 +1457,7 @@ public class SQLiteJDBC {
                 userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
                 user.setUserStats(userStats);
 
-                //getGoals(conn, user, userId); TODO uncomment this call when goals finished in database
+                getGoals(conn, user, userId); //TODO uncomment this call when goals finished in database
 
                 to_return.add(user);
             }

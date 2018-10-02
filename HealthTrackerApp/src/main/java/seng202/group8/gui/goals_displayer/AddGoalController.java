@@ -2,6 +2,7 @@ package seng202.group8.gui.goals_displayer;
 
 import com.jfoenix.controls.JFXButton;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -141,6 +142,7 @@ public class AddGoalController {
      * this function also creates the goals once all fields are correct or updates the edited results if the user used the dit button rather than the add goal button
      */
     public void errorCheck() {
+        SQLiteJDBC database = new SQLiteJDBC();
         if (descriptionTextField.getText().isEmpty()) {
             System.out.println("No description");
         } else if (targetTextField.getText().isEmpty()) {
@@ -193,6 +195,7 @@ public class AddGoalController {
                         break;
                 }
             }
+            database.saveUser(user, user.getUserID());
             stage.close();
             mainController.changeView();
         }
