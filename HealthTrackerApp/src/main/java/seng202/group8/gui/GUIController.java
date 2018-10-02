@@ -124,6 +124,7 @@ public class GUIController implements Initializable {
         BorderPane statsScene = loader.load();
         GraphController graphController = loader.getController();
         graphController.setPrimaryStage(stage);
+        System.out.println(this.user);
         graphController.setUser(user);
         graphController.setup();
         scene.getChildren().setAll(statsScene);
@@ -141,8 +142,9 @@ public class GUIController implements Initializable {
         BorderPane goalsScene = loader.load();
         GoalsDisplayerController goalsController = loader.getController();
         goalsController.setPrimaryStage(stage);
-        goalsController.setUser(user);
-        goalsController.setGoalsService(user.getGoalsService());
+        System.out.println(this.user);
+        goalsController.setUser(this.user);
+        goalsController.setGoalsService(this.user.getGoalsService());
         goalsController.initialize();
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");

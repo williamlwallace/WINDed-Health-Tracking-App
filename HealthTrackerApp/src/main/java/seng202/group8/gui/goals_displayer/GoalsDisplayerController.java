@@ -49,6 +49,8 @@ public class GoalsDisplayerController {
     public void initialize(){
         selectedGoalType = GoalType.ActivityGoal;
         viewBox.getSelectionModel().select(0);
+        System.out.println(user);
+        user.getGoalsService().update();
         setMainController(this);
         changeView();
     }
