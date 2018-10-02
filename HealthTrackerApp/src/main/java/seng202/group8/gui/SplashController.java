@@ -27,6 +27,7 @@ import seng202.group8.user.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,9 +82,12 @@ public class SplashController implements Initializable {
         fadeOut.setOnFinished((e) -> {
             try {
                 SQLiteJDBC database = new SQLiteJDBC();
-                user = database.retrieveUser(1);
-                if (user != null) {
-//                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
+                ArrayList<User> users = database.retrieveAllUsers();
+                //TODO Does this call need to be changed?
+
+                if (users.size() != 0) {
+                    user = users.get(0);
+                    // FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
                     Parent root = loader.load();
                     SwitchUserController switchUserController = loader.getController();

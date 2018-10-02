@@ -732,10 +732,13 @@ public class SQLiteJDBC {
     }
 
     public void insertGoals(Connection connection, User user, Integer userId) {
-        ArrayList<Goal> activityGoalsList = user.getGoalsService().getCurrentActivityGoals();
+        ArrayList<Goal> activityGoalsList = user.getGoalsService().getAllCurrentGoals();
         activityGoalsList.addAll(user.getGoalsService().getPreviousActivityGoals());
+        activityGoalsList.addAll(user.getGoalsService().getPreviousTimesPerformedGoals());
+        activityGoalsList.addAll(user.getGoalsService().getPreviousWeightLossGoals());
         for (Goal goal: activityGoalsList) {
-            if (goal.getGoalType().toString().equals("WeightLossGoal")) {
+            System.out.println("Title: " + goal.getDescription() + "     Type: " + goal.getGoalType().toString());
+            if (goal.getGoalType().toString().equals("WeightLossGoal")) { ;
                 WeightLossGoal weightLossGoal = (WeightLossGoal) goal;
                 insertWeightGoal(connection, weightLossGoal, userId);
             } else if (goal.getGoalType().toString().equals("ActivityGoal")) {
@@ -799,7 +802,7 @@ public class SQLiteJDBC {
             resultSet = weightStatement.executeQuery();
             while(resultSet.next()) {
                 WeightLossGoal weightLossGoal = new WeightLossGoal(user, resultSet.getString("description"),
-                        GoalType.ActivityGoal,
+                        GoalType.WeightLossGoal,
                         resultSet.getDouble("target_weight"),
                         getLocalDateTimeFromString(resultSet.getString("target_date")));
                 weightLossGoal.setStartWeight(resultSet.getDouble("start_weight"));
@@ -812,8 +815,8 @@ public class SQLiteJDBC {
             resultSet = weightStatement.executeQuery();
             while(resultSet.next()) {
                 FrequencyGoal frequencyGoal = new FrequencyGoal(user, resultSet.getString("description"),
-                        GoalType.ActivityGoal,
-                        DataType.fromStringToEnum(resultSet.getString("type").toUpperCase()),
+                        GoalType.TimePerformedGoal,
+                        DataType.fromStringToEnum((resultSet.getString("type")).toUpperCase()),
                         resultSet.getInt("times_to_perform"),
                         getLocalDateTimeFromString(resultSet.getString("target_date")));
                 frequencyGoal.setTimesCurrentlyPerformedActivity(resultSet.getInt("times_performed"));
@@ -1306,7 +1309,6 @@ public class SQLiteJDBC {
         try {
             if (conn != null) {
                 conn.close();
-                System.out.println("Connection closed with save");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -1354,7 +1356,7 @@ public class SQLiteJDBC {
             Double height = result.getDouble("height");
             Integer age = result.getInt("age");
             String sex = result.getString("sex");
-            User user = new User(name, age, weight, height, Sex.valueOf(sex));
+            User user = new User(name, age, weight, height, Sex.valueOf(sex), userId);
 
             String title = getUsersActivityListCollectionTitle(conn, userId);
             ActivityListCollection userCollection = new ActivityListCollection(title);
@@ -1469,7 +1471,6 @@ public class SQLiteJDBC {
             try {
                 if (conn != null) {
                     conn.close();
-                    System.out.println("connection closed with retrieve");
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());

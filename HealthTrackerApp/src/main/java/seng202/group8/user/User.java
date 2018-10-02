@@ -43,9 +43,8 @@ public class User {
      */
     public User(String name, Integer age, Double weight, Double height, Sex sex) {
         SQLiteJDBC database = new SQLiteJDBC();
-        System.out.println(database.getUserID());
         this.userID = database.getUserID();
-        System.out.println("Assigning user id: " + userID);
+        System.out.println("Assigning user id: " + userID + "   Name :" + name);
         this.name = name;
         this.age = age;
         this.weight = weight;
