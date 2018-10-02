@@ -298,13 +298,24 @@ public class StatisticsService {
     public GraphXY getGraphDataWeight() {
         GraphXY graph = new GraphXY();
         ArrayList<WeightRecord> record = userStats.getUserWeightRecords();
+        ArrayList<LocalDateTime> time = new ArrayList<>();
+
         if (record.size() > 0) {
             graph.addYAxis((record.get(0).getWeight()));
-            graph.addXAxis(0.0);
+            //graph.addXAxis(0.0);
+            time.add(record.get(0).getDate());
         }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getWeight()));
-            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
+            //graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
+            time.add(record.get(i).getDate());
+        }
+
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
+
+        for (int i = 0; i < times.getTimes().size(); i++) {
+            graph.addXAxis(times.getTimes().get(i));
         }
         return graph;
     }
@@ -317,14 +328,25 @@ public class StatisticsService {
     public GraphXY getGraphDataBMIType() {
         GraphXY graph = new GraphXY();
         ArrayList<BMITypeRecord> record = userStats.getUserBMITypeRecords();
+        //ArrayList<Double> bmiValues = new ArrayList<>();
+        ArrayList<LocalDateTime> time = new ArrayList<>();
 
         if (record.size() > 0) {
             graph.addYAxis((record.get(0).getBmi().getBMIValue()));
-            graph.addXAxis(0.0);
+            //graph.addXAxis(0.0);
+            time.add(record.get(0).getDate());
         }
         for (int i = 1; i < record.size(); i++) {
             graph.addYAxis((record.get(i).getBmi().getBMIValue()));
-            graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
+            //graph.addXAxis(getDifference(record.get(i).getDate(), record.get(0).getDate()));
+            time.add(record.get(i).getDate());
+        }
+
+        TimeScale times = createTimes(time);
+        graph.setXAxisScale(times.getScale());
+
+        for (int i = 0; i < times.getTimes().size(); i++) {
+            graph.addXAxis(times.getTimes().get(i));
         }
         return graph;
     }
@@ -413,7 +435,7 @@ public class StatisticsService {
                 Double timeAdderMonths = timeAdderDays / 30.0;
                 Double timeAdderYears = timeAdderDays / 365;
 
-                //If the activities take more than 1 week, converts the time to weeks (for BMI and Weight graphs.)
+                //If the activities take more than 1 week, converts the time to years (for BMI and Weight graphs.)
                 if (differenceDays > 365.0) {
                     newTimes.add(i, timeAdderYears);
                     newScale = "(years)";
@@ -430,7 +452,7 @@ public class StatisticsService {
                     newTimes.add(i, timeAdderDays);
                     newScale = "(days)";
                 //Else if the activity takes more than 1.5 hours, converts the time to hours.
-                } else if (differenceMinutes > 60) {
+                } else if (differenceMinutes > 90) {
                     newTimes.add(i, timeAdderHours);
                     newScale = "(hours)";
                 //Else if the activity takes more than 3 minutes, converts time to minutes.
