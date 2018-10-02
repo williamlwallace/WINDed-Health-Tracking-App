@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import seng202.group8.data_entries.DataType;
@@ -56,6 +57,9 @@ public class AddGoalController {
 
     @FXML
     private JFXButton createGoal;
+
+    @FXML
+    private StackPane addStackPane;
 
     private User user;
     private Goal goal;
@@ -167,24 +171,24 @@ public class AddGoalController {
      * this function also creates the goals once all fields are correct or updates the edited results if the user used the dit button rather than the add goal button
      */
     public void errorCheck() {
-        Boolean error = false;
-        String errorMessage = "";
         if (descriptionTextField.getText().isEmpty()) {
-            errorMessage = "No description";
-            error = true;
+            showError("No description");
         } else if (targetTextField.getText().isEmpty()) {
-            errorMessage = "Target field is empty or not valid";
-            error = true;
+            showError("Target field is empty or not valid");
         } else if (Double.valueOf(targetTextField.getText()) < 1) {
-            errorMessage = "Target field is empty or not valid";
-            error = true;
+            showError("Target field is empty or not valid");
         } else if ((datePicker.getValue() == null) || (datePicker.getValue().isBefore(LocalDate.now()))) {
-            errorMessage = "Date is not entered or is set in the past";
-            error = true;
+            showError("Date is not entered or is set in the past");
         } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal)) && activityTypeBox.getSelectionModel().isEmpty()) {
-            errorMessage = "An activity type is not selected";
-            error = true;
-        } else  if (error == false){
+            showError("An activity type is not selected");
+        } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal))) {
+            //TODO
+            System.out.println("TO DO");
+        } else if (goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal))) {
+            if (Double.valueOf(targetTextField.getText()) >= user.getWeight()) {
+                showError("Weight target is not below your current weight, this is not a weight loss goal");
+            }
+        } else {
             DataType dataType;
             if (createGoal.getText() == "Finish Changes") {
                 switch (goalTypeCombo.getValue().toString()) {
@@ -228,24 +232,25 @@ public class AddGoalController {
             }
             stage.close();
             mainController.changeView();
-        } else {
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text("No Graph Data"));
-            content.setBody(new Label("No activity data available is able to be graphed, if you want to view helpful information on this page " +
-                    "Please go to the activity log section and add some csv file data"));
-            JFXDialog dialog = new JFXDialog(statsStackPane, content, JFXDialog.DialogTransition.CENTER);
-            JFXButton gotItButton = new JFXButton("Got it!");
-
-            gotItButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    dialog.close();
-                }
-            });
-
-            content.setActions(gotItButton);
-            dialog.show();
         }
+    }
+
+    private void showError(String message) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Incorrect Entry"));
+        content.setBody(new Label(message));
+        JFXDialog dialog = new JFXDialog(addStackPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton gotItButton = new JFXButton("Got it!");
+
+        gotItButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+
+        content.setActions(gotItButton);
+        dialog.show();
     }
 
     /**

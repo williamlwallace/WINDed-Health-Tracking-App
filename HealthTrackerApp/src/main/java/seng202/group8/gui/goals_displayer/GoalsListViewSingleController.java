@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
@@ -19,6 +20,7 @@ import seng202.group8.services.goals_service.goal_types.Goal;
 import seng202.group8.services.goals_service.goal_types.GoalType;
 import seng202.group8.user.User;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -49,6 +51,9 @@ public class GoalsListViewSingleController {
     @FXML
     private Label type;
 
+    @FXML
+    private BorderPane singleBorderPane;
+
 
     private Goal currentGoal;
     private User user;
@@ -67,7 +72,7 @@ public class GoalsListViewSingleController {
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString() + " m");
 
-                type.setText("Type:" + DataType.fromEnumToString(currentGoal.getDataType()));
+                type.setText("Type:\n" + DataType.fromEnumToString(currentGoal.getDataType()));
                 type.setOpacity(1);
                 break;
             case "Frequency":
@@ -77,7 +82,7 @@ public class GoalsListViewSingleController {
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString());
 
-                type.setText("Type:" + DataType.fromEnumToString(currentGoal.getDataType()));
+                type.setText("Type:\n" + DataType.fromEnumToString(currentGoal.getDataType()));
                 type.setOpacity(1);
                 break;
             case "Weight Loss":
@@ -125,29 +130,29 @@ public class GoalsListViewSingleController {
 
             }
         });
-
-        remove.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent arg0) {
-                user.getGoalsService().getAllCurrentGoals().remove(currentGoal);
-                switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
-                    case "Activity":
-                        user.getGoalsService().getCurrentActivityGoals().remove(currentGoal);
-                        break;
-                    case "Frequency":
-                        user.getGoalsService().getCurrentTimesPerformedGoals().remove(currentGoal);
-                        break;
-                    case "Weight Loss":
-                        user.getGoalsService().getCurrentWeightLossGoals().remove(currentGoal);
-                        break;
-                    default:
-                        break;
-                }
-                mainController.changeView();
-            }
-        });
     }
+
+    /**
+     * The action to remove a goal from the current list
+     */
+    public void remove() {
+        user.getGoalsService().getAllCurrentGoals().remove(currentGoal);
+        switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
+            case "Activity":
+                user.getGoalsService().getCurrentActivityGoals().remove(currentGoal);
+                break;
+            case "Frequency":
+                user.getGoalsService().getCurrentTimesPerformedGoals().remove(currentGoal);
+                break;
+            case "Weight Loss":
+                user.getGoalsService().getCurrentWeightLossGoals().remove(currentGoal);
+                break;
+            default:
+                break;
+        }
+        mainController.changeView();
+    }
+
 
     /**
      * Sets the current goal that is used to get all the information for the fxml labels

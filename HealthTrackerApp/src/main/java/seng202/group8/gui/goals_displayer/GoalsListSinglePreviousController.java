@@ -8,7 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seng202.group8.data_entries.DataType;
@@ -44,10 +45,15 @@ public class GoalsListSinglePreviousController {
     @FXML
     private VBox fill;
 
+    @FXML
+    private ImageView tickOrCross;
 
     private Goal currentGoal;
     private User user;
     private GoalsDisplayerController mainController;
+
+    private Image tick = new Image("/resources/views/images/tick.png");
+    private Image cross = new Image("/resources/views/images/cross.png");
 
     /**
      * The function to set all of the fxml labels and button actions for a single goal in the list view
@@ -58,24 +64,26 @@ public class GoalsListSinglePreviousController {
             passOrFail.setText("Success");
             retry.setText("Do Again");
             fill.setStyle("-fx-background-color: #b4ecbe;");
+            tickOrCross.setImage(tick);
         } else {
             passOrFail.setText("Not Achieved");
             retry.setText("Retry");
             fill.setStyle("-fx-background-color: #e8b0b0;");
+            tickOrCross.setImage(cross);
         }
         switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
             case "Activity":
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString() + " m");
 
-                type.setText("Type:" + DataType.fromEnumToString(currentGoal.getDataType()));
+                type.setText("Type:\n" + DataType.fromEnumToString(currentGoal.getDataType()));
                 type.setOpacity(1);
                 break;
             case "Frequency":
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString());
 
-                type.setText("Type:" + DataType.fromEnumToString(currentGoal.getDataType()));
+                type.setText("Type:\n" + DataType.fromEnumToString(currentGoal.getDataType()));
                 type.setOpacity(1);
                 break;
             case "Weight Loss":
@@ -118,28 +126,25 @@ public class GoalsListSinglePreviousController {
 
             }
         });
+    }
 
-        remove.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(ActionEvent arg0) {
-                user.getGoalsService().getAllCurrentGoals().remove(currentGoal);
-                switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
-                    case "Activity":
-                        user.getGoalsService().getPreviousActivityGoals().remove(currentGoal);
-                        break;
-                    case "Frequency":
-                        user.getGoalsService().getPreviousTimesPerformedGoals().remove(currentGoal);
-                        break;
-                    case "Weight Loss":
-                        user.getGoalsService().getPreviousWeightLossGoals().remove(currentGoal);
-                        break;
-                    default:
-                        break;
-                }
-                mainController.changeView();
-            }
-        });
+    public void remove() {
+        user.getGoalsService().getAllCurrentGoals().remove(currentGoal);
+        switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
+            case "Activity":
+                user.getGoalsService().getPreviousActivityGoals().remove(currentGoal);
+                break;
+            case "Frequency":
+                user.getGoalsService().getPreviousTimesPerformedGoals().remove(currentGoal);
+                break;
+            case "Weight Loss":
+                user.getGoalsService().getPreviousWeightLossGoals().remove(currentGoal);
+                break;
+            default:
+                break;
+        }
+        mainController.changeView();
     }
 
     /**
