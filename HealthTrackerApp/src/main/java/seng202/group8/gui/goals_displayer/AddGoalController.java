@@ -15,11 +15,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.services.goals_service.goal_types.*;
 import seng202.group8.user.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -171,24 +173,33 @@ public class AddGoalController {
      * this function also creates the goals once all fields are correct or updates the edited results if the user used the dit button rather than the add goal button
      */
     public void errorCheck() {
+        Boolean error = false;
         if (descriptionTextField.getText().isEmpty()) {
+            error = true;
             showError("No description");
         } else if (targetTextField.getText().isEmpty()) {
             showError("Target field is empty or not valid");
+            error = true;
         } else if (Double.valueOf(targetTextField.getText()) < 1) {
             showError("Target field is empty or not valid");
+            error = true;
         } else if ((datePicker.getValue() == null) || (datePicker.getValue().isBefore(LocalDate.now()))) {
             showError("Date is not entered or is set in the past");
+            error = true;
         } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal)) && activityTypeBox.getSelectionModel().isEmpty()) {
             showError("An activity type is not selected");
+            error = true;
         } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal))) {
-            //TODO
-            System.out.println("TO DO");
+            if (Double.valueOf(targetTextField.getText()) <= getCurrent()) {
+                showError("Your target is not high enough, (You have already completed this goal you are trying to create)");
+                error = true;
+            }
         } else if (goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal))) {
             if (Double.valueOf(targetTextField.getText()) >= user.getWeight()) {
                 showError("Weight target is not below your current weight, this is not a weight loss goal");
+                error = true;
             }
-        } else {
+        } if (!error) {
             DataType dataType;
             if (createGoal.getText() == "Finish Changes") {
                 switch (goalTypeCombo.getValue().toString()) {
@@ -235,6 +246,32 @@ public class AddGoalController {
         }
     }
 
+    /**
+     * Gets the current progress of a goal that is about to be created to make sure it won't be completed instantly
+     */
+    private Double getCurrent() {
+        DataType dataType = DataType.fromStringToEnum(activityTypeBox.getValue().toString());
+        Double current = 0.0;
+        ArrayList<Data> sameTypeData = user.getUserActivities().retrieveSameTypeActivities(dataType, new Date());
+        switch (goalTypeCombo.getValue().toString()) {
+            case "Activity":
+                Double distanceCovered = 0.0;
+                for (Data data : sameTypeData) {
+                    distanceCovered += data.getDistanceCovered();
+                }
+                current = distanceCovered;
+                break;
+            case "Frequency":
+                current = (double) sameTypeData.size();
+                break;
+        }
+        return current;
+    }
+
+    /**
+     * Shows an error to the user when they enter a field incorrectly
+     * @param message the message to show to the user
+     */
     private void showError(String message) {
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Incorrect Entry"));
