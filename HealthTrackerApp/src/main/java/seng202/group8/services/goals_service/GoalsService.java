@@ -70,6 +70,7 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         while (it.hasNext()) {
             Goal goal = it.next();
             goal.checkIsCompleted();
+            System.out.println(goal.getIsCompleted());
             if (goal.getIsCompleted()) {
                 previousActivityGoals.add(goal);
                 it.remove();

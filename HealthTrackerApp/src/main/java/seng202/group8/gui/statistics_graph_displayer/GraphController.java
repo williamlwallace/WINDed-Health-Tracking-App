@@ -420,7 +420,13 @@ public class GraphController {
         ActivityListCollection activities = user.getUserActivities();
         this.allData = activities.getAllData();
         dataSize = allData.size();
-        if (dataSize == 0) {
+        int graphableAmount = 0;
+        for (int i = 0; i < allData.size(); i++) {
+            if (allData.get(i).isGraphable) {
+                graphableAmount++;
+            }
+        }
+        if (dataSize == 0 || graphableAmount == 0) {
             splitPane.setOpacity(0);
             Label addData = new Label("");
             Stage popUp = new Stage();

@@ -32,7 +32,14 @@ public class GoalsDisplayerController {
     @FXML
     private ListView goalList;
 
+    @FXML
+    private Label goalTypeLabelPrevious;
+
+    @FXML
+    private ListView goalListPrevious;
+
     private ArrayList<Goal> goalsToDisplay;
+    private ArrayList<Goal> goalsToDisplayPrevious;
     private GoalsDisplayerController mainController;
 
     /**
@@ -54,48 +61,28 @@ public class GoalsDisplayerController {
         switch (viewBox.getValue().toString()) {
             case "Activity Goals":
                 goalTypeLabel.setText("Activity Goals");
+                goalTypeLabelPrevious.setText("Activity Goals");
                 selectedGoalType = GoalType.ActivityGoal;
-                if (goalsService != null) {
-                    if (goalsService.getCurrentActivityGoals().size() != 0) {
-                        setupGoalsList();
-                    } else {
-                        goalTypeLabel.setText("Create a goal to get started");
-                        setupGoalsList();
-                    }
-                } else {
-                    goalTypeLabel.setText("Create a goal to get started");
-                }
                 break;
             case "Frequency Goals":
                 goalTypeLabel.setText("Frequency Goals");
+                goalTypeLabelPrevious.setText("Frequency Goals");
                 selectedGoalType = GoalType.TimePerformedGoal;
-                if (goalsService != null) {
-                    if (goalsService.getCurrentTimesPerformedGoals().size() != 0) {
-                        setupGoalsList();
-                    } else {
-                        goalTypeLabel.setText("Create a goal to get started");
-                        setupGoalsList();
-                    }
-                } else {
-                    goalTypeLabel.setText("Create a goal to get started");
-                }
                 break;
             case "Weight Goals":
                 goalTypeLabel.setText("Weight Loss Goals");
+                goalTypeLabelPrevious.setText("Weight Loss Goals");
                 selectedGoalType = GoalType.WeightLossGoal;
-                if (goalsService != null) {
-                    if (goalsService.getCurrentWeightLossGoals().size() != 0) {
-                        setupGoalsList();
-                    } else {
-                        goalTypeLabel.setText("Create a goal to get started");
-                        setupGoalsList();
-                    }
-                } else {
-                    goalTypeLabel.setText("Create a goal to get started");
-                }
                 break;
             default:
                 break;
+        }
+        if (goalsService != null) {
+            setupGoalsList();
+            setupGoalsListPrevious();
+        } else {
+            goalTypeLabel.setText("Create a goal to get started");
+            goalTypeLabelPrevious.setText("Finish a goal!");
         }
     }
 
@@ -131,6 +118,57 @@ public class GoalsDisplayerController {
                         if (goal != null) {
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSingle.fxml"));
+                                BorderPane goalSingle = loader.load();
+                                GoalsListViewSingleController controller = loader.getController();
+                                controller.setCurrentGoal(goal);
+                                controller.setMainController(mainController);
+                                controller.setUser(user);
+                                controller.start();
+                                setGraphic(goalSingle);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+    }
+
+    /**
+     * Sets up the display list view for the goals that have been previously completed and selected by the variable goals to display
+     * this function generates the goals single list view controllers into a list view fxml panel
+     */
+    private void setupGoalsListPrevious() {
+        goalsToDisplayPrevious = goalsService.getPreviousActivityGoals();
+        switch(selectedGoalType) {
+            case TimePerformedGoal:
+                goalsToDisplayPrevious = goalsService.getPreviousTimesPerformedGoals();
+                break;
+            case WeightLossGoal:
+                goalsToDisplayPrevious = goalsService.getPreviousWeightLossGoals();
+                break;
+            default:
+                goalsToDisplayPrevious = goalsService.getPreviousActivityGoals();
+                break;
+        }
+        ObservableList<Goal> dataObservableList = FXCollections.observableList(goalsToDisplayPrevious);
+
+        goalListPrevious.setItems(dataObservableList);
+
+        goalListPrevious.setCellFactory(new Callback<ListView<Goal>, ListCell<Goal>>() {
+            @Override
+            public ListCell<Goal> call(ListView<Goal> param) {
+                ListCell<Goal> cell = new ListCell<Goal>(){
+                    @Override
+                    protected void updateItem(Goal goal, boolean bln) {
+                        super.updateItem(goal, bln);
+
+                        if (goal != null) {
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSinglePrevious.fxml"));
                                 BorderPane goalSingle = loader.load();
                                 GoalsListViewSingleController controller = loader.getController();
                                 controller.setCurrentGoal(goal);

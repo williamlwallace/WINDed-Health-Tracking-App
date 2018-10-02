@@ -24,7 +24,6 @@ public class FrequencyGoal extends Goal {
         this.timesCurrentlyPerformedActivity = 0;
     }
 
-// Uncomment to see what is failing, I mainly need a DataType and a function in each Data subclass to retrieve the distance covered
     /**
      *
      * Sieves through the data logged by the user and retrieves the number of times an activity type was performed
@@ -73,7 +72,7 @@ public class FrequencyGoal extends Goal {
 
     public void calculateProgress() {
         ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
-        setProgress((double) 1 - (timesToPerformActivity - sameTypeData.size()) / timesToPerformActivity);
+        setProgress((double) 1 - ((timesToPerformActivity - sameTypeData.size()) / timesToPerformActivity));
     }
 
     public void calculateTarget() {

@@ -33,8 +33,8 @@ public class StatisticsService {
      */
     public void setAverageHeartRate() {
         int heartRateValues = 0;
+        int graphableData = 0;
         averageHeartRate = 0;
-        System.out.println(this.arrayCollection.size());
         for(int i = 0; i < arrayCollection.size(); i++) {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
@@ -43,13 +43,19 @@ public class StatisticsService {
                     ArrayList<Integer> heartRateList = data.getHeartRateList();
                     for(int k = 0; k < heartRateList.size(); k++){
                         averageHeartRate += heartRateList.get(k);
+                        graphableData++;
                     }
                     heartRateValues += heartRateList.size();
                 }
             }
 
         }
-        this.averageHeartRate = averageHeartRate / heartRateValues;
+        if (graphableData != 0) {
+            this.averageHeartRate = averageHeartRate / heartRateValues;
+        } else {
+            this.averageHeartRate = 0;
+        }
+
     }
 
     /**
