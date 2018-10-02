@@ -74,7 +74,6 @@ public class EditUserController {
             name = nameField.getText().trim();
         }
         if (ageField.getText() != null && !ageField.getText().isEmpty()) {
-            System.out.println("hello: " + ageField.getText());
             try {
                 Integer usernewAge = Integer.parseInt(ageField.getText());
                 if (usernewAge > 0) {
@@ -82,10 +81,8 @@ public class EditUserController {
                 } else {
                     throw new NumberFormatException();
                 }
-                System.out.println(age);
             } catch(NumberFormatException e) {
                 age = 0;
-                System.out.println("the age is: " + ageField.getText());
             }
         }
         if (weightField.getText() != null && !weightField.getText().isEmpty()) {

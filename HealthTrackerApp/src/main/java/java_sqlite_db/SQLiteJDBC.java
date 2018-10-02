@@ -529,9 +529,12 @@ public class SQLiteJDBC {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(find);
             resultSet = preparedStatement.executeQuery();
-            userID = resultSet.getInt("user_id") + 1;
+            while(resultSet.next()) {
+                userID = resultSet.getInt("MAX(user_id)") + 1;
+            }
             connection.close();
         } catch (SQLException e) {
+
             userID = 1;
         }
         return userID;
@@ -1134,6 +1137,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(4, parentListDateTimeString);
             preparedStatement.setInt(5, data.getDataId());
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -1302,6 +1306,7 @@ public class SQLiteJDBC {
         try {
             if (conn != null) {
                 conn.close();
+                System.out.println("Connection closed with save");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -1464,6 +1469,7 @@ public class SQLiteJDBC {
             try {
                 if (conn != null) {
                     conn.close();
+                    System.out.println("connection closed with retrieve");
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
