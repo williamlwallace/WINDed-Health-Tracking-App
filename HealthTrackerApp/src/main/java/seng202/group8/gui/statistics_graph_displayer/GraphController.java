@@ -1,9 +1,14 @@
 package seng202.group8.gui.statistics_graph_displayer;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -14,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -78,6 +84,12 @@ public class GraphController {
     @FXML
     private ComboBox comboBox;
 
+    @FXML
+    private StackPane statsStackPane;
+
+    @FXML
+    private VBox activityVBox;
+
     /**
      * When combo box has selected a new item it will run the specific function required for that graph
      */
@@ -122,7 +134,7 @@ public class GraphController {
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
         xAxis.setLabel("Time " + (xyData.getXAxisScale()));
-        yAxis.setLabel("Distance (M)");
+        yAxis.setLabel("Distance (m)");
         series.setName("Distance Over Time");
         graph.setTitle("Distance Visualization");
 
@@ -149,8 +161,8 @@ public class GraphController {
         yAxis.setUpperBound(maxHeartRate + (maxHeartRate * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
-        xAxis.setLabel("Time (S)");
-        yAxis.setLabel("Heart Rate (BPM)");
+        xAxis.setLabel("Time " + (xyData.getXAxisScale()));
+        yAxis.setLabel("Heart Rate (bpm)");
         series.setName("Heart Rate Over Time");
         graph.setTitle("Heart Rate Visualization");
 
@@ -176,7 +188,7 @@ public class GraphController {
         yAxis.setUpperBound(maxCalories + (maxCalories * 0.1));
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
-        xAxis.setLabel("Time (S)");
+        xAxis.setLabel("Time " + (xyData.getXAxisScale()));
         yAxis.setLabel("Calories Burned (Calories)");
         series.setName("Calories Burned Over Time");
         graph.setTitle("Calories Burned Visualization");
@@ -203,7 +215,7 @@ public class GraphController {
         this.yAxis.setUpperBound(maxStress);
         yAxis.setLowerBound((double) currentData.getStressLevelMin());
 
-        xAxis.setLabel("Time");
+        xAxis.setLabel("Time " + (xyData.getXAxisScale()));
         yAxis.setLabel("Stress (%)");
         series.setName("Stress Over Time");
         graph.setTitle("Stress Visualization");
@@ -229,7 +241,7 @@ public class GraphController {
         this.yAxis.setUpperBound(maxStress);
         yAxis.setLowerBound((double) currentData.getStressLevelMin());
 
-        xAxis.setLabel("Time");
+        xAxis.setLabel("Time" + (xyData.getXAxisScale()));
         yAxis.setLabel("Speed (km/hr)");
         series.setName("Speed Over Time");
         graph.setTitle("Speed Visualization");
@@ -257,7 +269,7 @@ public class GraphController {
 
         graph2.getXAxis().setTickLabelsVisible(true);
 
-        xAxis2.setLabel("Time");
+        xAxis2.setLabel("Time " + (xyData.getXAxisScale()));
         yAxis2.setLabel("BMI Value");
         series.setName("BMI Over Time");
         graph2.setTitle("BMI Visualization");
@@ -280,7 +292,7 @@ public class GraphController {
 
         graph2.getXAxis().setTickLabelsVisible(true);
 
-        xAxis2.setLabel("Time");
+        xAxis2.setLabel("Time " + (xyData.getXAxisScale()));
         yAxis2.setLabel("Weight (kg)");
         series.setName("Weight Over Time");
         graph2.setTitle("Weight Change Visualization");
@@ -427,25 +439,44 @@ public class GraphController {
             }
         }
         if (dataSize == 0 || graphableAmount == 0) {
-            splitPane.setOpacity(0);
-            Label addData = new Label("");
-            Stage popUp = new Stage();
-            popUp.initOwner(primaryStage);
-            VBox dialogVbox = new VBox();
-            Label message = new Label("No activity data detected please go to the activity log page and upload a file");
-            message.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; ");
-            message.setWrapText(true);
-            dialogVbox.getChildren().add(message);
-            Scene popUpScene = new Scene(dialogVbox, 200, 100);
-            popUp.setScene(popUpScene);
-            popUp.show();
+            activityVBox.setOpacity(0.0);
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("No Graph Data"));
+            content.setBody(new Label("No activity data available is able to be graphed, if you want to view helpful information on this page " +
+                    "Please go to the activity log section and add some csv file data"));
+            JFXDialog dialog = new JFXDialog(statsStackPane, content, JFXDialog.DialogTransition.CENTER);
+            JFXButton gotItButton = new JFXButton("Got it!");
+
+            gotItButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialog.close();
+                }
+            });
+
+            content.setActions(gotItButton);
+            dialog.show();
+            // Makes sure the divider's value can't be changed
+            SplitPane.Divider divider = splitPane.getDividers().get(0);
+            divider.positionProperty().addListener(new ChangeListener<Number>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
+                {
+                    divider.setPosition(0.55);
+                }
+            });
+            labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+            weight.setStyle("-fx-background-color:  #2e86c1");
+            bmi.setStyle("-fx-background-color:  #2e86c1");
+            showBmi();
+
         } else {
             Boolean found = false;
             Integer currentDataIndex2 = allData.size();
             while (currentDataIndex2 != 0 && !found) {
                 currentDataIndex2--;
                 if (allData.get(currentDataIndex2).getIsGraphable()) {
-                    System.out.println("YES");
                     currentDataIndex = currentDataIndex2;
                     setCurrentData(allData.get(currentDataIndex));
                     found = true;

@@ -1,11 +1,15 @@
 package seng202.group8.gui.goals_displayer;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -163,17 +167,24 @@ public class AddGoalController {
      * this function also creates the goals once all fields are correct or updates the edited results if the user used the dit button rather than the add goal button
      */
     public void errorCheck() {
+        Boolean error = false;
+        String errorMessage = "";
         if (descriptionTextField.getText().isEmpty()) {
-            System.out.println("No description");
+            errorMessage = "No description";
+            error = true;
         } else if (targetTextField.getText().isEmpty()) {
-            System.out.println("Target field is empty or not valid");
+            errorMessage = "Target field is empty or not valid";
+            error = true;
         } else if (Double.valueOf(targetTextField.getText()) < 1) {
-            System.out.println("Target field is empty or not valid");
+            errorMessage = "Target field is empty or not valid";
+            error = true;
         } else if ((datePicker.getValue() == null) || (datePicker.getValue().isBefore(LocalDate.now()))) {
-            System.out.println("Date is not entered or is set in the past");
+            errorMessage = "Date is not entered or is set in the past";
+            error = true;
         } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal)) && activityTypeBox.getSelectionModel().isEmpty()) {
-            System.out.println("An activity type is not selected");
-        } else {
+            errorMessage = "An activity type is not selected";
+            error = true;
+        } else  if (error == false){
             DataType dataType;
             if (createGoal.getText() == "Finish Changes") {
                 switch (goalTypeCombo.getValue().toString()) {
@@ -217,6 +228,23 @@ public class AddGoalController {
             }
             stage.close();
             mainController.changeView();
+        } else {
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("No Graph Data"));
+            content.setBody(new Label("No activity data available is able to be graphed, if you want to view helpful information on this page " +
+                    "Please go to the activity log section and add some csv file data"));
+            JFXDialog dialog = new JFXDialog(statsStackPane, content, JFXDialog.DialogTransition.CENTER);
+            JFXButton gotItButton = new JFXButton("Got it!");
+
+            gotItButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialog.close();
+                }
+            });
+
+            content.setActions(gotItButton);
+            dialog.show();
         }
     }
 

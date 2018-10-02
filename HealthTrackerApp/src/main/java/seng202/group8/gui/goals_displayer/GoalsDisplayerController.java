@@ -46,10 +46,10 @@ public class GoalsDisplayerController {
      * An initial function called when you first go into the goals panel, this sets the main controller
      * variable and sets the combo boxes to default values, also calls the change view function
      */
-    public void initialize(){
+    public void initialize(User user){
         selectedGoalType = GoalType.ActivityGoal;
         viewBox.getSelectionModel().select(0);
-        System.out.println(user);
+        this.user = user;
         user.getGoalsService().update();
         setMainController(this);
         changeView();
@@ -172,7 +172,7 @@ public class GoalsDisplayerController {
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSinglePrevious.fxml"));
                                 BorderPane goalSingle = loader.load();
-                                GoalsListViewSingleController controller = loader.getController();
+                                GoalsListSinglePreviousController controller = loader.getController();
                                 controller.setCurrentGoal(goal);
                                 controller.setMainController(mainController);
                                 controller.setUser(user);

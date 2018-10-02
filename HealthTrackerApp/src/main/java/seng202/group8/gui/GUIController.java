@@ -136,16 +136,15 @@ public class GUIController implements Initializable {
     }
 
     @FXML
-    private void loadGoals(ActionEvent event) throws IOException
+    private void loadGoals2(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/Goals.fxml"));
         BorderPane goalsScene = loader.load();
         GoalsDisplayerController goalsController = loader.getController();
         goalsController.setPrimaryStage(stage);
-        System.out.println(this.user);
-        goalsController.setUser(this.user);
-        goalsController.setGoalsService(this.user.getGoalsService());
-        goalsController.initialize();
+        goalsController.setUser(user);
+        goalsController.setGoalsService(user.getGoalsService());
+        goalsController.initialize(user);
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");

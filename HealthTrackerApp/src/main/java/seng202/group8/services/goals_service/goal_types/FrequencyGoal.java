@@ -16,6 +16,15 @@ public class FrequencyGoal extends Goal {
     private Integer timesCurrentlyPerformedActivity;
     private DataType dataType;
 
+    /**
+     * The frequency goal constructor to create this goal
+     * @param user
+     * @param description
+     * @param goalType
+     * @param dataType
+     * @param timesToPerformActivity
+     * @param targetDate
+     */
     public FrequencyGoal(User user, String description, GoalType goalType, DataType dataType, Integer timesToPerformActivity, LocalDateTime targetDate) {
         super(user, description, goalType);
         setTargetDate(targetDate);
