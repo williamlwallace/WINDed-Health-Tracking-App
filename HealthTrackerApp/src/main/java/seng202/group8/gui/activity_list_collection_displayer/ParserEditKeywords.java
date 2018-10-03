@@ -31,9 +31,11 @@ public class ParserEditKeywords extends Application {
         ParserEditKeywordsController editUser = fxmlLoader.<ParserEditKeywordsController>getController();
         editUser.setUser(user);
         editUser.setParentControl(parentControl);
+        System.out.println("Display: "+user.getUserID());
         classStage.setTitle("WINded");
         classStage.setScene(new Scene(root));
         classStage.show();
+
     }
 
     public void setUser(User user) {

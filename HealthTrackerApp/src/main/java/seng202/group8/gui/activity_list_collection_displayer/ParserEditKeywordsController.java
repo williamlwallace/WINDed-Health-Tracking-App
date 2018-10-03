@@ -14,6 +14,7 @@ import seng202.group8.data_entries.Data;
 import seng202.group8.parser.*;
 import seng202.group8.user.User;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +31,9 @@ public class ParserEditKeywordsController {
     private ChoiceBox actRemove;
 
     @FXML
+    private ComboBox actType1;
+
+    @FXML
     private Label errorMes;
 
     private User user;
@@ -37,12 +41,48 @@ public class ParserEditKeywordsController {
 
     private ActivitiesCollectionController parentControl;
 
+    public void update(ActionEvent event) {
+        actRemove.getItems().clear();
+        SQLiteJDBC database = new SQLiteJDBC();
+        ObservableList<String> choiceAdd = null;
+        switch (actType1.getValue().toString()) {
+            case "Walk":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 1));
+                break;
+            case "Hike":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 2));
+                break;
+            case "Run":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 3));
+                break;
+            case "Climb":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 4));
+                break;
+            case "Bike":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 5));
+                break;
+            case "Swim":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 6));
+                break;
+            case "Water Sports":
+                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 7));
+                break;
+            default:
+                break;
+        }
+        actRemove.setItems(choiceAdd);
+    }
 
     @FXML
-    public void initialize() throws Exception {
-        parser = new Parser("", user);
-        ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
-        actRemove.setItems(choiceAdd);
+    public void initialize() {
+        Platform.runLater(() -> {
+            System.out.println("Control: "+user.getName());
+            try {
+                parser = new Parser("", user);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     /**

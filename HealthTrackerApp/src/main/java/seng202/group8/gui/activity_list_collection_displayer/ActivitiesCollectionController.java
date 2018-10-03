@@ -366,6 +366,7 @@ public class ActivitiesCollectionController {
 
     public void editKeyWords(ActionEvent event) throws Exception {
         ParserEditKeywords parseEdit = new ParserEditKeywords();
+        System.out.println("Activities: "+user.getUserID());
         parseEdit.setUser(user);
         parseEdit.setParentControl(this);
         parseEdit.start(ParserEditKeywords.classStage);
@@ -411,7 +412,7 @@ public class ActivitiesCollectionController {
                 parseError.start(ParserErrorType.classStage);
                 error = 1;
             }
-            if (error == 0) {
+            if (error == 0 && !parser.getDataList().isEmpty()) {
                 int add = user.getUserActivities().checkDuplicate(activityTitle);
                 ArrayList<Data> newData = new ArrayList<Data>();
                 if (add == -1) {

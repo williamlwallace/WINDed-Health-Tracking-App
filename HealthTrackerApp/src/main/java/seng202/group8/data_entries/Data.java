@@ -136,10 +136,39 @@ public abstract class Data {
      * @return
      */
     public boolean equalsNewData(Data data) {
-        boolean to_return  = false;
-        if ((this.title.equals(data.getTitle())) && (this.dataType.equals(data.getDataType())) && (this.allDateTimes.equals(data.getAllDateTimes())) && (this.coordinatesArrayList.equals(data.getCoordinatesArrayList())) && (this.heartRateList.equals(data.getHeartRateList()))) {
-            to_return = true;
+        boolean to_return  = true;
+        int i = 0;
+        if (this.coordinatesArrayList.size() == data.getCoordinatesArrayList().size()) {
+            for (i = 0; i < this.coordinatesArrayList.size(); i++) {
+                if (this.coordinatesArrayList.get(i).getLatitude() != data.getCoordinatesArrayList().get(i).getLatitude()) {
+                    to_return = false;
+                } else if (this.coordinatesArrayList.get(i).getLongitude() != data.getCoordinatesArrayList().get(i).getLongitude()) {
+                    to_return = false;
+                } else if (this.coordinatesArrayList.get(i).getAltitude() != data.getCoordinatesArrayList().get(i).getAltitude()) {
+                    to_return = false;
+                }
+            }
+        } else {
+            to_return = false;
         }
+        if (!this.title.equals(data.getTitle())) {
+            System.out.println("Title: "+this.title+" - "+data.getTitle());
+            to_return  = false;
+        } else if (!this.dataType.equals(data.getDataType())) {
+            System.out.println("Type: "+this.dataType+" - "+data.getDataType());
+            to_return  = false;
+        } else if (!this.allDateTimes.equals(data.getAllDateTimes())) {
+            System.out.println("Date: "+this.allDateTimes.get(0)+" - "+data.getAllDateTimes().get(0));
+            to_return  = false;
+        } else if (!this.heartRateList.equals(data.getHeartRateList())) {
+            System.out.println("Heart: "+this.heartRateList.get(0)+" - "+data.getHeartRateList().get(0));
+        }
+//        System.out.println("------------------------------------------------------------------");
+//        System.out.println(this.title+" - "+data.getTitle());
+//        System.out.println(this.dataType+" - "+data.getDataType());
+//        System.out.println(this.allDateTimes.get(0)+" - "+data.getAllDateTimes().get(0));
+//        System.out.println(this.coordinatesArrayList.get(0).getLatitude()+" - "+data.getCoordinatesArrayList().get(0).getLatitude());
+//        System.out.println(this.heartRateList.get(0)+" - "+data.getHeartRateList().get(0));
         return to_return;
     }
 

@@ -107,7 +107,7 @@ public class SQLiteJDBC {
             // db parameters
             String url = "jdbc:sqlite::resource:" + SQLiteJDBC.class.getResource("/resources/views/database/winded.db");
             if (isTest) {
-                System.out.println("Test Database connection");
+                //System.out.println("Test Database connection");
                 url = "jdbc:sqlite::resource:" + SQLiteJDBC.class.getResource("/resources/views/test_resources/test.db");
             }
 
@@ -287,7 +287,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, HeartRate);
             preparedStatement.setInt(2, dataId);
 
-            System.out.println("Rows added to Heartrate: " + preparedStatement.executeUpdate());
+           // System.out.println("Rows added to Heartrate: " + preparedStatement.executeUpdate());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -306,7 +306,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, dataId);
             preparedStatement.setString(2, dateTime);
 
-            System.out.println("Rows added to Activity_Time: " + preparedStatement.executeUpdate());
+            //System.out.println("Rows added to Activity_Time: " + preparedStatement.executeUpdate());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -340,7 +340,7 @@ public class SQLiteJDBC {
                 System.out.println("Activity_List Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
-                System.out.println("Rows added to Activity List:" + preparedStatement.executeUpdate());
+                //System.out.println("Rows added to Activity List:" + preparedStatement.executeUpdate());
             }
             connection.close();
         } catch (SQLException e) {
@@ -370,7 +370,7 @@ public class SQLiteJDBC {
                 System.out.println("Activity_Collection Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
-                System.out.println("Rows added to Activity Collection:" + preparedStatement.executeUpdate());
+                //System.out.println("Rows added to Activity Collection:" + preparedStatement.executeUpdate());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -396,6 +396,27 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String> getKeyWordsByType(Integer userId, int type) {
+        String sql = "SELECT keyword FROM parser_keywords WHERE user_id = ? and type = ?";
+        Connection connection = connect();
+        ResultSet resultSet = null;
+        ArrayList<String> phrases = new ArrayList<String>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2,type);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                phrases.add(resultSet.getString("keyword"));
+            }
+            connection.close();
+        } catch (SQLException e) {
+            phrases = null;
+            e.printStackTrace();
+        }
+        return phrases;
     }
 
     /**
@@ -513,7 +534,7 @@ public class SQLiteJDBC {
                     System.out.println("WeightRecord Tuple already exists");
                 } else {
                     // Print out the result of the insert statement, 0 means nothing has been inserted
-                    System.out.println("Rows added to WeightRecord:" + preparedStatement.executeUpdate());
+                    //System.out.println("Rows added to WeightRecord:" + preparedStatement.executeUpdate());
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -544,7 +565,7 @@ public class SQLiteJDBC {
                     System.out.println("BMIRecord Tuple already exists");
                 } else {
                     // Print out the result of the insert statement, 0 means nothing has been inserted
-                    System.out.println("Rows added to BMIRecord:" + preparedStatement.executeUpdate());
+                    //System.out.println("Rows added to BMIRecord:" + preparedStatement.executeUpdate());
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -616,7 +637,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(5, activityGoal.getDataType().toString());
             preparedStatement.setString(6, activityGoal.getDescription());
             preparedStatement.setInt(7, userId);
-            System.out.println("Rows added to Activity_Goal: " + preparedStatement.executeUpdate());
+            //System.out.println("Rows added to Activity_Goal: " + preparedStatement.executeUpdate());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -632,7 +653,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
             preparedStatement.setString(2, weightLossGoal.getDescription());
             preparedStatement.setInt(1, userId);
-            System.out.println("Rows added to Weight_Goal: " + preparedStatement.executeUpdate());
+            //System.out.println("Rows added to Weight_Goal: " + preparedStatement.executeUpdate());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -649,7 +670,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());
             preparedStatement.setString(2, frequencyGoal.getDescription());
             preparedStatement.setInt(1, userId);
-            System.out.println("Rows added to Frequency_Goal: " + preparedStatement.executeUpdate());
+            //System.out.println("Rows added to Frequency_Goal: " + preparedStatement.executeUpdate());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -859,7 +880,7 @@ public class SQLiteJDBC {
                 newDateTimes = getActivityDateTimes(connection, dataID);
                 newCoordinatesList = getActivityCoordinates(connection, dataID);
                 newHeartRateList = getActivityHeartRates(connection, dataID);
-                System.out.println("Data created" +  "DataID:" + dataID);
+                //System.out.println("Data created" +  "DataID:" + dataID);
                 switch (dataType) {
                     case "WALK":
                         dataTypeEnum = DataType.WALK;

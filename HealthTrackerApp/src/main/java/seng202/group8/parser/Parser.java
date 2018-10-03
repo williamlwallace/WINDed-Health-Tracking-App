@@ -58,11 +58,16 @@ public class Parser {
         this.acceptedValues.add(this.bike);
         this.acceptedValues.add(this.swim);
         this.acceptedValues.add(this.waterSports);
+        System.out.println("Parser: "+user.getUserID());
         this.database.getKeyWords(user.getUserID(), this);
         this.filename = newFilename;
         try {
             this.oldData = this.user.getUserActivities().getActivityListCollection();
+            System.out.println("DUPE: "+oldData);
+            //System.out.println("DUPE: "+oldData.get(0).getTitle());
         } catch(NullPointerException e) {
+            this.oldData = null;
+        } catch(IndexOutOfBoundsException e) {
             this.oldData = null;
         }
     }
@@ -140,12 +145,16 @@ public class Parser {
                                 duplicate = true;
                             }
                         }
-                        if (!duplicate && this.oldData != null) {
+                        if (!duplicate && !this.oldData.isEmpty()) {
+                            System.out.println("first");
                             for (int i = 0; i < this.oldData.size(); i++) {
+                                System.out.println("second");
                                 ArrayList<Data> activityList = this.oldData.get(i).getActivityList();
                                 for (int j = 0; j < activityList.size(); j++) {
+                                    System.out.println("third");
                                     Data data = activityList.get(j);
                                     if (activityToSend.equalsNewData(data)) {
+                                        System.out.println("hey");
                                         duplicate = true;
                                     }
                                 }
