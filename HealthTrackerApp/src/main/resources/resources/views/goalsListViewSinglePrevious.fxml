@@ -45,11 +45,11 @@
                         <Image url="@images/tick.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="type" prefWidth="40.0" style="-fx-font-weight: bold;" text="Type" wrapText="true">
+                  <Label fx:id="type" prefHeight="51.0" prefWidth="59.0" style="-fx-font-weight: bold;" text="Type" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <Label fx:id="end" maxWidth="-Infinity" prefWidth="75.0" style="-fx-font-weight: bold;" text="End" />
+                  <Label fx:id="end" maxWidth="-Infinity" prefHeight="16.0" prefWidth="100.0" style="-fx-font-weight: bold;" text="End" />
                   <Button fx:id="retry" mnemonicParsing="false" style="-fx-background-color: #2e86c1; -fx-font-color: #ffff;" text="Retry" textFill="WHITE" />
                   <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#remove" pickOnBounds="true" preserveRatio="true">
                      <image>

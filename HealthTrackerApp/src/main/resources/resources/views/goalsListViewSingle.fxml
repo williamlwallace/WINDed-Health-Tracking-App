@@ -40,13 +40,13 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="150.0" prefWidth="525.0" spacing="10.0">
                <children>
-                  <Label fx:id="type" prefWidth="40.0" style="-fx-font-weight: bold;" text="Type" wrapText="true">
+                  <Label fx:id="type" prefHeight="53.0" prefWidth="52.0" style="-fx-font-weight: bold;" text="Type" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <Label fx:id="start" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" style="-fx-font-weight: bold;" text="Start" />
-                  <ProgressBar fx:id="progress" prefWidth="175.0" progress="0.0" />
-                  <Label fx:id="end" maxWidth="-Infinity" prefWidth="75.0" style="-fx-font-weight: bold;" text="End" />
+                  <Label fx:id="start" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="100.0" style="-fx-font-weight: bold;" text="Start" />
+                  <ProgressBar fx:id="progress" prefWidth="150.0" progress="0.0" />
+                  <Label fx:id="end" maxWidth="-Infinity" prefHeight="16.0" prefWidth="100.0" style="-fx-font-weight: bold;" text="End" />
                   <Button fx:id="edit" mnemonicParsing="false" style="-fx-background-color: #2e86c1; -fx-font-color: #ffff;" text="Edit" textFill="WHITE" />
                   <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#remove" pickOnBounds="true" preserveRatio="true">
                      <image>

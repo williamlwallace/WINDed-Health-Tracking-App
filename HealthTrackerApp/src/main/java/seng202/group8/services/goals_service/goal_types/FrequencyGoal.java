@@ -81,7 +81,10 @@ public class FrequencyGoal extends Goal {
 
     public void calculateProgress() {
         ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
-        setProgress((double) 1 - ((timesToPerformActivity - sameTypeData.size()) / timesToPerformActivity));
+        double test = ((double) timesToPerformActivity - sameTypeData.size()) / timesToPerformActivity;
+        System.out.println("TEST: " + test);
+        System.out.println("1 - TEST: "+ (1 - test));
+        setProgress(1.0 - test);
     }
 
     public void calculateTarget() {
