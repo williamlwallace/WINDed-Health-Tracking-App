@@ -446,6 +446,10 @@ public class ActivitiesCollectionController {
         }
     }
 
+    public void setParserInfoText(String string) {
+        parserInfo.setText(string);
+    }
+
 
 
 

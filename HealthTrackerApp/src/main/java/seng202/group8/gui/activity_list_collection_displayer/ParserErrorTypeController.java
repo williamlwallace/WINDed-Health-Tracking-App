@@ -135,7 +135,8 @@ public class ParserErrorTypeController {
                 parseError.start(ParserErrorType.classStage);
                 error = 1;
             }
-            if (error == 0) {
+            List<String> csvArray = Arrays.asList(parser.getFilename().split("\\\\|/"));
+            if (error == 0 && !parser.getDataList().isEmpty()) {
                 User user = parser.getUser();
                 SQLiteJDBC database = new SQLiteJDBC();
                 int add = user.getUserActivities().checkDuplicate(parentControl.getActivityTitle());
@@ -158,10 +159,13 @@ public class ParserErrorTypeController {
                     database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), user.getUserID());
                 }
                 parentControl.setUpTreeView();
-                List<String> csvArray = Arrays.asList(parser.getFilename().split("/"));
                 parentControl.setParserInfo("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
 
                 //database.saveUser(user, 1);
+                Stage stage = (Stage) errorText.getScene().getWindow();
+                stage.close();
+            } else if (parser.getDataList().isEmpty()) {
+                parentControl.setParserInfoText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
                 Stage stage = (Stage) errorText.getScene().getWindow();
                 stage.close();
             }
