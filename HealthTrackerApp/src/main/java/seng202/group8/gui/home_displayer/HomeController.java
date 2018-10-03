@@ -8,8 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import seng202.group8.data_entries.Data;
+import seng202.group8.gui.GoogleMapsTools.GoogleMapsTools;
 import seng202.group8.services.health_service.HealthService;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.BMIType;
@@ -75,7 +79,8 @@ public class HomeController {
     @FXML
     private ImageView heartrate;
 
-    @FXML ImageView healthRiskImage;
+    @FXML
+    private WebView homeWebView;
 
     private HealthService healthService;
 
@@ -140,6 +145,27 @@ public class HomeController {
 //        brad.setStyle("-fx-background-color:  #2e86c1");
 //        cardio.setStyle("-fx-background-color:  #2e86c1");
 //        tach.setStyle("-fx-background-color:  #2e86c1");
+
+        //SWebView Setup
+        try {
+            String strGoogleMaps = GoogleMapsTools.returnHTMLFileToString("/resources/views/googleMapsView.html");
+            // Retrieve selected Data value
+            if (user.getUserActivities().getActivityListCollection().size() != 0) {
+                //TODO: create logic for showing most recent activity
+                Data data = user.getUserActivities().getActivityListCollection().get(0).getActivity(0);
+                String htmlFile = GoogleMapsTools.jsInjection(strGoogleMaps, data);
+                WebEngine webEngine = homeWebView.getEngine();
+//              System.out.println(htmlFile);
+                webEngine.loadContent(htmlFile);
+            } else {
+                //raise dialog saying no values in or show chch
+            }
+
+            // Inject the GoogleMaps html file (read as string above) with the coordinates of the selected data
+
+        } catch (IOException e) {
+
+        }
     }
 
     public void searchCardio() {
