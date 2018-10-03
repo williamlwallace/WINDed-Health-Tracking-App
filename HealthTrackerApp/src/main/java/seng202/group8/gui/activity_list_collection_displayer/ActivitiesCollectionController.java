@@ -32,6 +32,7 @@ import seng202.group8.data_entries.CoordinateData;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.data_entries.HeartRateData;
+import seng202.group8.gui.GoogleMapsTools.GoogleMapsTools;
 import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.ModifyDataValueController;
 import seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs.NewDataDialogController;
 import seng202.group8.parser.*;
@@ -224,36 +225,36 @@ public class ActivitiesCollectionController {
         webEngine.loadContent(htmlFile);
     }
 
-    /**
-     *
-     * @param htmlFile
-     * @param data
-     * @return the parsed html file injected with the Data coordinates
-     * Parses the googleMapsView.html file and injects specific variables to allow the plotting of coordinates in the
-     * WebView that will render the html file.
-     */
-    private String jsInjection(String htmlFile, Data data) {
-        htmlFile = htmlFile.replace("&CENTERID", "lat: "
-                + data.getCoordinatesArrayList().get(0).getLatitude()
-                + ", lng: "
-                + data.getCoordinatesArrayList().get(0).getLongitude());
-        StringBuilder stringBuilder = new StringBuilder("var dataCoordVar = [ ");
-        for (int i = 0; i < data.getCoordinatesArrayList().size(); i++) {
-            CoordinateData coordinateData = data.getCoordinatesArrayList().get(i);
-            if (i != (data.getCoordinatesArrayList().size() -1)) {
-                stringBuilder.append("{lat: " + coordinateData.getLatitude()
-                        + ", lng: " + coordinateData.getLongitude() + "},");
-            } else {
-                stringBuilder.append("{lat: " + coordinateData.getLatitude()
-                        + ", lng: " + coordinateData.getLongitude() + "}];");
-            }
-        }
-        htmlFile = htmlFile.replace("&PREVFLIGHTCOORDID", stringBuilder.toString());
-
-        htmlFile = htmlFile.replace("&FLIGHTPATHVARID", "dataCoordPath");
-        htmlFile = htmlFile.replace("&PREVFLIGHTVAR", "dataCoordVar");
-        return htmlFile;
-    }
+//    /**
+//     *
+//     * @param htmlFile
+//     * @param data
+//     * @return the parsed html file injected with the Data coordinates
+//     * Parses the googleMapsView.html file and injects specific variables to allow the plotting of coordinates in the
+//     * WebView that will render the html file.
+//     */
+//    private String jsInjection(String htmlFile, Data data) {
+//        htmlFile = htmlFile.replace("&CENTERID", "lat: "
+//                + data.getCoordinatesArrayList().get(0).getLatitude()
+//                + ", lng: "
+//                + data.getCoordinatesArrayList().get(0).getLongitude());
+//        StringBuilder stringBuilder = new StringBuilder("var dataCoordVar = [ ");
+//        for (int i = 0; i < data.getCoordinatesArrayList().size(); i++) {
+//            CoordinateData coordinateData = data.getCoordinatesArrayList().get(i);
+//            if (i != (data.getCoordinatesArrayList().size() -1)) {
+//                stringBuilder.append("{lat: " + coordinateData.getLatitude()
+//                        + ", lng: " + coordinateData.getLongitude() + "},");
+//            } else {
+//                stringBuilder.append("{lat: " + coordinateData.getLatitude()
+//                        + ", lng: " + coordinateData.getLongitude() + "}];");
+//            }
+//        }
+//        htmlFile = htmlFile.replace("&PREVFLIGHTCOORDID", stringBuilder.toString());
+//
+//        htmlFile = htmlFile.replace("&FLIGHTPATHVARID", "dataCoordPath");
+//        htmlFile = htmlFile.replace("&PREVFLIGHTVAR", "dataCoordVar");
+//        return htmlFile;
+//    }
 
     /**
      *
@@ -281,23 +282,23 @@ public class ActivitiesCollectionController {
                 int activityListIndex = parent.getParent().getChildren().indexOf(parent);
 
                 //Loading the html template from GoogleMaps JavaScript API as URL
-                URL urlGoogleMaps = getClass().getResource("/resources/views/googleMapsView.html");
-
-                // Reading of the URL and create related String object
-                String strGoogleMaps = "";
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(urlGoogleMaps.openStream()));
-
-                String inputLine;
-                while ((inputLine = in.readLine()) != null)
-                    strGoogleMaps += (inputLine + "\n");
-                in.close();
-
+//                URL urlGoogleMaps = getClass().getResource("/resources/views/googleMapsView.html");
+//
+//                // Reading of the URL and create related String object
+//                String strGoogleMaps = "";
+//                BufferedReader in = new BufferedReader(
+//                        new InputStreamReader(urlGoogleMaps.openStream()));
+//
+//                String inputLine;
+//                while ((inputLine = in.readLine()) != null)
+//                    strGoogleMaps += (inputLine + "\n");
+//                in.close();
+                String strGoogleMaps = GoogleMapsTools.returnHTMLFileToString("/resources/views/googleMapsView.html");
                 // Retrieve selected Data value
                 Data data = user.getUserActivities().getActivityListCollection().get(activityListIndex).getActivity(dataIndex);
 
                 // Inject the GoogleMaps html file (read as string above) with the coordinates of the selected data
-                String htmlFile = jsInjection(strGoogleMaps, data);
+                String htmlFile = GoogleMapsTools.jsInjection(strGoogleMaps, data);
 
                 // Now the string is complete and up-to-date (containing the
                 // selected data coordinates in it), it can be passed to the WebView to load it.
