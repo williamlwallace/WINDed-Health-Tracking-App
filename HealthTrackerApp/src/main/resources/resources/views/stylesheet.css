@@ -12,10 +12,12 @@
 
 .btns{
     -fx-background-color: transparent;
+    -fx-font-family: "Open Sans";
 }
 
 .btns:hover{
-    -fx-background-color:  #2874a6  ;
+    -fx-background-color:  #2874a6;
+    -fx-font-family: "Open Sans";
 }
 
 

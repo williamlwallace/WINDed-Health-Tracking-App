@@ -73,13 +73,7 @@ public class SwitchUserController {
     public void initialize() {
         users = DB.retrieveAllUsers();
         populateUsersListView(users);
-
-        // TODO make sure user cannot press enter unless a user is selected
-//        if (switchUserListView.getSelectionModel().getSelectedItem() == null) {
-//            enterBtn.setDisable(true);
-//        } else {
-//            enterBtn.setDisable(false);
-//        }
+        switchUserListView.getSelectionModel().selectFirst();
     }
 
 
@@ -87,6 +81,7 @@ public class SwitchUserController {
 
         ObservableList<User> observableList = FXCollections.observableList(users);
         switchUserListView.setItems(observableList);
+
 
         switchUserListView.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
             @Override
@@ -134,8 +129,23 @@ public class SwitchUserController {
                                     // Button to delete the selected user
                                     deleteButton.setOnAction(new EventHandler<ActionEvent>(){
                                         @Override
-                                        public void handle(ActionEvent event){
-                                            dialog.close();
+                                        public void handle(ActionEvent event) {
+                                            if (users.size() == 1) {
+                                                DB.deleteUser(switchUserListView.getSelectionModel().getSelectedItem().getUserID());
+                                                dialog.close();
+                                                try {
+                                                    loadNewUserScreen(event);
+                                                } catch (IOException e) {
+                                                    System.out.println("Something went wrong");
+                                                }
+
+                                            } else {
+                                                DB.deleteUser(switchUserListView.getSelectionModel().getSelectedItem().getUserID());
+                                                dialog.close();
+                                                initialize();
+
+                                            }
+
                                         }
 
                                     });
@@ -143,15 +153,15 @@ public class SwitchUserController {
 
                                     dialog.show();
 
-                                    //System.out.println("Deleting: " + switchUserListView.getSelectionModel().getSelectedItem().getUserID());
-                                    //DB.deleteUser(switchUserListView.getSelectionModel().getSelectedItem().getUserID());
 
                                 }
                             });
                             deleteBtn.setGraphic(deleteImageView);
                             deleteBtn.setId("deleteBtn");
-
-
+                            deleteBtn.setVisible(false);
+                            if (switchUserListView.getSelectionModel().getSelectedItem() != null) {
+                                deleteBtn.setVisible(true);
+                            }
                             hBox.getChildren().addAll(userIconView, userName, deleteBtn);
                             setGraphic(hBox);
                         }

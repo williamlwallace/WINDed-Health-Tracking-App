@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeView?>
 <?import javafx.geometry.Insets?>
@@ -19,7 +27,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
    <bottom>
       <VBox alignment="BOTTOM_CENTER" prefHeight="165.0" prefWidth="812.0" BorderPane.alignment="CENTER">
          <children>
@@ -62,10 +70,10 @@
    <left>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#showNewInsightsAndMap" prefWidth="242.0" style="-fx-background-insets: #2e86c1;" />
-            <JFXButton fx:id="addButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#addToActivityList" style="-fx-background-color: #0093e3;" text="Add" textFill="#f2ecec" />
-            <JFXButton fx:id="modifyButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#modifyButtonListener" style="-fx-background-color: #0072d2;" text="Modify" textFill="WHITE" />
-            <JFXButton fx:id="deleteButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#deleteSelectedActivityOrActivityList" style="-fx-background-color: #005ac6;" text="Remove" textFill="WHITE" />
+            <JFXTreeView fx:id="activityListCollectionTreeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#showNewInsightsAndMap" prefWidth="242.0" stylesheets="@stylesheet2.css" />
+            <JFXButton fx:id="addButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#addToActivityList" style="-fx-background-radius: 0;" styleClass="btns" stylesheets="@stylesheet2.css" text="Add" textFill="#f2ecec" />
+            <JFXButton fx:id="modifyButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#modifyButtonListener" style="-fx-background-radius: 0;" styleClass="btns" stylesheets="@stylesheet2.css" text="Modify" textFill="WHITE" />
+            <JFXButton fx:id="deleteButton" buttonType="RAISED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#deleteSelectedActivityOrActivityList" style="-fx-background-radius: 0;" styleClass="btns" stylesheets="@stylesheet2.css" text="Remove" textFill="WHITE" />
          </children>
       </VBox>
    </left>

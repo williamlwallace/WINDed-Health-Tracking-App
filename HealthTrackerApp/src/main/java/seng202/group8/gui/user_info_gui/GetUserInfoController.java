@@ -59,6 +59,7 @@ public class GetUserInfoController {
     private User user;
     private Stage stage;
     private HostServices host;
+    private SQLiteJDBC DB = new SQLiteJDBC();
 
     @FXML
     public void initialize() {
@@ -197,20 +198,25 @@ public class GetUserInfoController {
     /**
      *
      * @param event
-     * cancelBtn event listener, goes back to the select user screen if pressed.
+     * cancelBtn event listener, goes back to the select user screen or quits the app if there are no users.
      */
     @FXML
     private void loadUserScreen(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
-        Parent root = loader.load();
-        SwitchUserController switchUserController = loader.getController();
-        switchUserController.setHostServices(host);
-        switchUserController.setStage(stage);
-        switchUserController.setUser(user);
-        stage.setTitle("WINded");
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (DB.retrieveAllUsers().isEmpty()) {
+            stage.close();
+        } else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
+            Parent root = loader.load();
+            SwitchUserController switchUserController = loader.getController();
+            switchUserController.setHostServices(host);
+            switchUserController.setStage(stage);
+            switchUserController.setUser(user);
+            stage.setTitle("WINded");
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 
     public User getUser() {

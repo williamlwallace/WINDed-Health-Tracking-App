@@ -8,18 +8,22 @@
 
 .btns{
     -fx-background-color: #2e86c1;
+    -fx-font-family: "Open Sans";
 }
 
 .btns:hover{
     -fx-background-color:  #2874a6 ;
+    -fx-font-family: "Open Sans";
 }
 
 .homeBtns{
     -fx-background-color: #e5e5e5;
+    -fx-font-family: "Open Sans";
 }
 
 .homeBtns:hover{
-    -fx-background-color:  #d6d6d6  ;
+    -fx-background-color:  #d6d6d6;
+    -fx-font-family: "Open Sans";
 }
 
 .top {
@@ -84,6 +88,14 @@
     -fx-graphic: url("/resources/views/images/delete_user_red.png") ;
 }
 
+.tree-table-row-cell:selected {
+    -fx-background-color: green;
+    -fx-table-cell-border-color: green;
+}
+
+.tree-table-view .tree-table-cell{
+    -fx-background-color: yellow;
+}
 
 
 
