@@ -360,7 +360,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, HeartRate);
             preparedStatement.setInt(2, dataId);
 
-           // System.out.println("Rows added to Heartrate: " + preparedStatement.executeUpdate());
+           preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -379,7 +379,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, dataId);
             preparedStatement.setString(2, dateTime);
 
-            //System.out.println("Rows added to Activity_Time: " + preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -413,7 +413,7 @@ public class SQLiteJDBC {
                 System.out.println("Activity_List Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
-                //System.out.println("Rows added to Activity List:" + preparedStatement.executeUpdate());
+                preparedStatement.executeUpdate();
             }
             connection.close();
         } catch (SQLException e) {
@@ -431,6 +431,7 @@ public class SQLiteJDBC {
     public void insertActivityCollection(Connection connection, Integer userId, String title) {
         String sql = "INSERT INTO Activity_Collection VALUES(?,?)";
         try {
+
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);
             preparedStatement.setString(2, title);
@@ -443,7 +444,7 @@ public class SQLiteJDBC {
                 System.out.println("Activity_Collection Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
-                //System.out.println("Rows added to Activity Collection:" + preparedStatement.executeUpdate());
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -610,7 +611,7 @@ public class SQLiteJDBC {
                     System.out.println("WeightRecord Tuple already exists");
                 } else {
                     // Print out the result of the insert statement, 0 means nothing has been inserted
-                    //System.out.println("Rows added to WeightRecord:" + preparedStatement.executeUpdate());
+                    preparedStatement.executeUpdate();
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -641,7 +642,7 @@ public class SQLiteJDBC {
                     System.out.println("BMIRecord Tuple already exists");
                 } else {
                     // Print out the result of the insert statement, 0 means nothing has been inserted
-                    //System.out.println("Rows added to BMIRecord:" + preparedStatement.executeUpdate());
+                    preparedStatement.executeUpdate();
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -713,7 +714,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(5, activityGoal.getDataType().toString());
             preparedStatement.setString(6, activityGoal.getDescription());
             preparedStatement.setInt(7, userId);
-            //System.out.println("Rows added to Activity_Goal: " + preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -729,7 +730,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(weightLossGoal.getStartDate())));
             preparedStatement.setString(2, weightLossGoal.getDescription());
             preparedStatement.setInt(1, userId);
-            //System.out.println("Rows added to Weight_Goal: " + preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -746,7 +747,7 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());
             preparedStatement.setString(2, frequencyGoal.getDescription());
             preparedStatement.setInt(1, userId);
-            //System.out.println("Rows added to Frequency_Goal: " + preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -801,12 +802,13 @@ public class SQLiteJDBC {
     public void getGoals(Connection connection, User user, Integer userId) {
         String activitysql = "SELECT distance_covered, distance_to_cover, target_date, start_date, type, description FROM Activity_Goal WHERE user_id=?";
         String weightsql = "SELECT description, start_date, target_date, target_weight, start_weight FROM Weight_Goal WHERE user_id=?";
-        String frequencysql = "SELECT description, type, start_date, target_date, times_to_perform, times_performed FROM Frequency_Goal WHERE user_id=?";;
+        String frequencysql = "SELECT description, activity_type, start_date, target_date, times_to_perform, times_performed FROM Frequency_Goal WHERE user_id=?";;
 
         try {
             PreparedStatement activityStatement = connection.prepareStatement(activitysql);
             activityStatement.setInt(1, userId);
             ResultSet resultSet = activityStatement.executeQuery();
+            System.out.println("Activity Goal Retrieval");
             while(resultSet.next()) {
                 ActivityGoal activityGoal = new ActivityGoal(user, resultSet.getString("description"),
                         GoalType.ActivityGoal,
@@ -821,6 +823,7 @@ public class SQLiteJDBC {
             PreparedStatement weightStatement = connection.prepareStatement(weightsql);
             weightStatement.setInt(1, userId);
             resultSet = weightStatement.executeQuery();
+            System.out.println("Weight goal retrieval");
             while(resultSet.next()) {
                 WeightLossGoal weightLossGoal = new WeightLossGoal(user, resultSet.getString("description"),
                         GoalType.WeightLossGoal,
@@ -832,17 +835,18 @@ public class SQLiteJDBC {
             }
 
             PreparedStatement frequencyStatement = connection.prepareStatement(frequencysql);
-            weightStatement.setInt(1, userId);
-            resultSet = weightStatement.executeQuery();
+            frequencyStatement.setInt(1, userId);
+            resultSet = frequencyStatement.executeQuery();
+            System.out.println("Frequency goal retrieval");
             while(resultSet.next()) {
                 FrequencyGoal frequencyGoal = new FrequencyGoal(user, resultSet.getString("description"),
                         GoalType.TimePerformedGoal,
-                        DataType.fromStringToEnum((resultSet.getString("type")).toUpperCase()),
+                        DataType.fromStringToEnum(resultSet.getString("activity_type").toUpperCase()),
                         resultSet.getInt("times_to_perform"),
                         getLocalDateTimeFromString(resultSet.getString("target_date")));
                 frequencyGoal.setTimesCurrentlyPerformedActivity(resultSet.getInt("times_performed"));
                 frequencyGoal.setStartDate(getDateFromString(resultSet.getString("start_date")));
-                user.getGoalsService().getCurrentWeightLossGoals().add(frequencyGoal);
+                user.getGoalsService().getCurrentTimesPerformedGoals().add(frequencyGoal);
             }
 
 
@@ -1316,6 +1320,7 @@ public class SQLiteJDBC {
         insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
         updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
 
+        System.out.println("Saving......");
 
         ActivityListCollection activityListCollection = user.getUserActivities();
 
