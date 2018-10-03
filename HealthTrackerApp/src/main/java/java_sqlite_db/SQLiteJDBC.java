@@ -200,11 +200,11 @@ public class SQLiteJDBC {
     public void deleteUser(Integer userID) {
         String sql = "DELETE FROM User WHERE user_id=?";
         try {
-            //System.out.println("Deleting User with id = " + userID);
+            System.out.println("Deleting User with id = " + userID);
             Connection connection = connect();
             //connection.setAutoCommit(false);
 
-            //deleteUserRecords(connection, userID);
+            deleteUserRecords(connection, userID);
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
@@ -231,6 +231,7 @@ public class SQLiteJDBC {
 
             while (resultSet.next()) {
                 Integer dataId = resultSet.getInt("data_id");
+                System.out.println("Delete data Id:  " + dataId);
 
                 sql = "DELETE FROM CoOrdinate WHERE data_id=?";
                 preparedStatement = connection.prepareStatement(sql);
@@ -249,6 +250,7 @@ public class SQLiteJDBC {
 
             sql = "DELETE FROM Data WHERE user_id=?";
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
 
             sql = "DELETE FROM Activity_List WHERE user_id=?";
@@ -1285,7 +1287,7 @@ public class SQLiteJDBC {
             }
 
             connection.commit();
-            preparedStatement.close();
+            //preparedStatement.close();
             connection.close();
 
 
