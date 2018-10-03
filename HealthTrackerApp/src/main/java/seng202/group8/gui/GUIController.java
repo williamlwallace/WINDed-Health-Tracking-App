@@ -12,6 +12,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
 
 import javafx.event.ActionEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController;
 import seng202.group8.gui.calendar_view.CalendarViewController;
@@ -32,19 +33,19 @@ public class GUIController implements Initializable {
     private BorderPane scene;
 
     @FXML
-    private JFXButton homeBtn;
+    private StackPane homeBtn;
 
     @FXML
-    private JFXButton activityBtn;
+    private StackPane activityBtn;
 
     @FXML
-    private JFXButton statsBtn;
+    private StackPane statsBtn;
 
     @FXML
-    private JFXButton goalsBtn;
+    private StackPane goalsBtn;
 
     @FXML
-    private JFXButton calendarBtn;
+    private StackPane calendarBtn;
 
     @FXML
     private MenuButton userBtn;

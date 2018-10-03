@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import seng202.group8.services.health_service.HealthService;
 import seng202.group8.services.statistics_service.StatisticsService;
 import seng202.group8.user.BMIType;
 import seng202.group8.user.User;
@@ -74,11 +75,17 @@ public class HomeController {
     @FXML
     private ImageView heartrate;
 
+    @FXML ImageView healthRiskImage;
+
+    private HealthService healthService;
+
     private Image anorexicBMI = new Image("/resources/views/images/anorexic_bmi.png");
     private Image lightBMI = new Image("/resources/views/images/light_bmi.png");
     private Image normalBMI = new Image("/resources/views/images/normal_bmi.png");
     private Image overweightBMI = new Image("/resources/views/images/overweight_bmi.png");
     private Image obeseBMI = new Image("/resources/views/images/obese_bmi.png");
+    private Image noRisk = new Image("/resources/views/images/ok.png");
+    private Image healthRisk = new Image("/resources/views/images/healthrisk.png");
 
     /**
      * Sets the page up when the user first goes into the Home page
@@ -94,6 +101,7 @@ public class HomeController {
         pulse.setDelay(Duration.seconds(0.5));
         pulse.play();
         pulse.playOnFinished(pulse);
+
         if (user.getBMI().getBMICategory() == BMIType.ANOREXIC) {
             bmiImage.setImage(anorexicBMI);
         }
@@ -109,6 +117,12 @@ public class HomeController {
         if (user.getBMI().getBMICategory() == BMIType.OBESE) {
             bmiImage.setImage(obeseBMI);
         }
+//        System.out.println(user.getStatsService().getHealthStatus());
+//        if (healthService.isTachicardic() || healthService.isAtCardiovasMortalityRisk() || healthService.isAtCardiovasMortalityRisk()) {
+//            healthRiskImage.setImage(healthRisk);
+//        } else {
+//            healthRiskImage.setImage(noRisk);
+//        }
 
         bmiText.setText(user.getBMIString());
         run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km");
