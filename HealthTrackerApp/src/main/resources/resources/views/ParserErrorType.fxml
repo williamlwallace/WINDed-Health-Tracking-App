@@ -74,10 +74,6 @@
             <CheckBox fx:id="rememberTick" mnemonicParsing="false" text="Remember Phrase?" GridPane.columnIndex="1" />
          </children>
     </GridPane>
-      <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Error Goes Here" GridPane.halignment="CENTER">
-         <font>
-            <Font size="15.0" />
-         </font></Text>
       <GridPane prefHeight="100.0" prefWidth="617.0" GridPane.rowIndex="3">
         <columnConstraints>
           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -96,5 +92,10 @@
       </GridPane>
       <Label text="Tick 'Remember Phrase' and we will store the phrase you entered to determine the type of other activities. Otherwise we will just store the activity type for this activity once." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
       <Label fx:id="errorMes" GridPane.rowIndex="4" />
+      <Label fx:id="errorText" text="Error Goes Here" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
  </children>
 </GridPane>

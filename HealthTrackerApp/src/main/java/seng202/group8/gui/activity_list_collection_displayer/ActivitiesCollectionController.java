@@ -412,6 +412,7 @@ public class ActivitiesCollectionController {
                 parseError.start(ParserErrorType.classStage);
                 error = 1;
             }
+            List<String> csvArray = Arrays.asList(csvToParse.split("\\\\|/"));
             if (error == 0 && !parser.getDataList().isEmpty()) {
                 int add = user.getUserActivities().checkDuplicate(activityTitle);
                 ArrayList<Data> newData = new ArrayList<Data>();
@@ -433,10 +434,11 @@ public class ActivitiesCollectionController {
                     database.updateWithListOfData(newData,existingList.getTitle(), existingList.getCreationDate(), user.getUserID());
                 }
                 setUpTreeView();
-                List<String> csvArray = Arrays.asList(csvToParse.split("/"));
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
 
 
+            } else if (parser.getDataList().isEmpty()) {
+                parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
             }
 
         } else {

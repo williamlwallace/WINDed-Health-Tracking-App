@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ParserErrorTypeController {
     @FXML
-    private Text errorText;
+    private Label errorText;
 
     @FXML
     private TextField keyPhrase;
