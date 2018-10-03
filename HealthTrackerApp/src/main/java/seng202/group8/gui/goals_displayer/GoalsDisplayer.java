@@ -50,7 +50,7 @@ public class GoalsDisplayer extends Application {
         GoalsDisplayerController goalsDisplayerController = loader.getController();
         goalsDisplayerController.setUser(this.user);
         goalsDisplayerController.setPrimaryStage(stage);
-        goalsDisplayerController.initialize();
+        goalsDisplayerController.initialize(user);
         System.out.println("Ciao I am in GoalsDisplayer: " + user.getWeight());
         stage.setTitle("WINded");
         Scene scene = new Scene(root);

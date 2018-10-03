@@ -9,6 +9,7 @@ import seng202.group8.user.UserObserver;
 
 import javax.naming.ServiceUnavailableException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -59,7 +60,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         tidyUpActivityGoals();
         tidyUpTimesPerformedGoals();
         tidyUpWeightLossGoals();
-        System.out.println("The updater is called");
     }
 
     /**
@@ -70,7 +70,8 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         while (it.hasNext()) {
             Goal goal = it.next();
             goal.checkIsCompleted();
-            if (goal.getIsCompleted()) {
+            System.out.println(goal.getIsCompleted());
+            if (goal.getIsCompleted() || LocalDateTime.now().isAfter(goal.getTargetDate())) {
                 previousActivityGoals.add(goal);
                 it.remove();
             }
@@ -85,7 +86,7 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         while (it.hasNext()) {
             Goal goal = it.next();
             goal.checkIsCompleted();
-            if (goal.getIsCompleted()) {
+            if (goal.getIsCompleted() || LocalDateTime.now().isAfter(goal.getTargetDate())) {
                 previousWeightLossGoals.add(goal);
                 it.remove();
             }
@@ -100,7 +101,7 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         while (it.hasNext()) {
             Goal goal = it.next();
             goal.checkIsCompleted();
-            if (goal.getIsCompleted()) {
+            if (goal.getIsCompleted() || LocalDateTime.now().isAfter(goal.getTargetDate())) {
                 previousTimesPerformedGoals.add(goal);
                 it.remove();
             }

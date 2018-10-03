@@ -1,20 +1,28 @@
 package seng202.group8.gui.goals_displayer;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.services.goals_service.goal_types.*;
 import seng202.group8.user.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,6 +61,9 @@ public class AddGoalController {
     @FXML
     private JFXButton createGoal;
 
+    @FXML
+    private StackPane addStackPane;
+
     private User user;
     private Goal goal;
     private GoalsDisplayerController mainController;
@@ -86,6 +97,14 @@ public class AddGoalController {
         targetTextField.setText(goal.getTarget().toString());
         datePicker.setValue(LocalDate.from(goal.getTargetDate()));
         createGoal.setText("Finish Changes");
+        changeActivityType();
+    }
+
+    /**
+     * Changes the activity type box to visible or not visible based on the goal selected and fills or not fills the box
+     * only used when editing or retrying goals
+     */
+    private void changeActivityType() {
         switch (goalTypeCombo.getValue().toString()) {
             case "Activity":
                 activityTypeText.setOpacity(1);
@@ -104,6 +123,20 @@ public class AddGoalController {
             default:
                 break;
         }
+    }
+
+    /**
+     * The function to start the add goal display when a user selects the retry button on a goal in the list view previous
+     * This function will sets the fields correctly to what the user had previously put there
+     * @param goal the goal that the user is wanting to retry
+     */
+    public void retry(Goal goal) {
+        this.goal = goal;
+        goalTypeCombo.setValue(GoalType.fromEnumToString(goal.getGoalType()));
+        descriptionTextField.setText(goal.getDescription());
+        targetTextField.setText(goal.getTarget().toString());
+        createGoal.setText("Create Goal");
+        changeActivityType();
     }
 
     /**
@@ -141,17 +174,34 @@ public class AddGoalController {
      * this function also creates the goals once all fields are correct or updates the edited results if the user used the dit button rather than the add goal button
      */
     public void errorCheck() {
+        SQLiteJDBC database = new SQLiteJDBC();
+        Boolean error = false;
         if (descriptionTextField.getText().isEmpty()) {
-            System.out.println("No description");
+            error = true;
+            showError("No description");
         } else if (targetTextField.getText().isEmpty()) {
-            System.out.println("Target field is empty or not valid");
+            showError("Target field is empty or not valid");
+            error = true;
         } else if (Double.valueOf(targetTextField.getText()) < 1) {
-            System.out.println("Target field is empty or not valid");
+            showError("Target field is empty or not valid");
+            error = true;
         } else if ((datePicker.getValue() == null) || (datePicker.getValue().isBefore(LocalDate.now()))) {
-            System.out.println("Date is not entered or is set in the past");
+            showError("Date is not entered or is set in the past");
+            error = true;
         } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal)) && activityTypeBox.getSelectionModel().isEmpty()) {
-            System.out.println("An activity type is not selected");
-        } else {
+            showError("An activity type is not selected");
+            error = true;
+        } else if (!goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal))) {
+            if (Double.valueOf(targetTextField.getText()) <= getCurrent()) {
+                showError("Your target is not high enough, (You have already completed this goal you are trying to create)");
+                error = true;
+            }
+        } else if (goalTypeCombo.getValue().toString().equals(GoalType.fromEnumToString(GoalType.WeightLossGoal))) {
+            if (Double.valueOf(targetTextField.getText()) >= user.getWeight()) {
+                showError("Weight target is not below your current weight, this is not a weight loss goal");
+                error = true;
+            }
+        } if (!error) {
             DataType dataType;
             if (createGoal.getText() == "Finish Changes") {
                 switch (goalTypeCombo.getValue().toString()) {
@@ -193,9 +243,54 @@ public class AddGoalController {
                         break;
                 }
             }
+            database.saveUser(user, user.getUserID());
             stage.close();
             mainController.changeView();
         }
+    }
+
+    /**
+     * Gets the current progress of a goal that is about to be created to make sure it won't be completed instantly
+     */
+    private Double getCurrent() {
+        DataType dataType = DataType.fromStringToEnum(activityTypeBox.getValue().toString());
+        Double current = 0.0;
+        ArrayList<Data> sameTypeData = user.getUserActivities().retrieveSameTypeActivities(dataType, new Date());
+        switch (goalTypeCombo.getValue().toString()) {
+            case "Activity":
+                Double distanceCovered = 0.0;
+                for (Data data : sameTypeData) {
+                    distanceCovered += data.getDistanceCovered();
+                }
+                current = distanceCovered;
+                break;
+            case "Frequency":
+                current = (double) sameTypeData.size();
+                break;
+        }
+        return current;
+    }
+
+    /**
+     * Shows an error to the user when they enter a field incorrectly
+     * @param message the message to show to the user
+     */
+    private void showError(String message) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Incorrect Entry"));
+        content.setBody(new Label(message));
+        JFXDialog dialog = new JFXDialog(addStackPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton gotItButton = new JFXButton("Got it!");
+
+        gotItButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+
+        content.setActions(gotItButton);
+        dialog.show();
     }
 
     /**

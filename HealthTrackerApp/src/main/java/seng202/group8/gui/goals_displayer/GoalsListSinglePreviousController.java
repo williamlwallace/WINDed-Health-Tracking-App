@@ -5,29 +5,23 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import seng202.group8.data_entries.DataType;
 import seng202.group8.services.goals_service.goal_types.Goal;
 import seng202.group8.services.goals_service.goal_types.GoalType;
 import seng202.group8.user.User;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
-public class GoalsListViewSingleController {
-
+public class GoalsListSinglePreviousController {
     @FXML
     private Label title;
 
@@ -35,16 +29,10 @@ public class GoalsListViewSingleController {
     private Label date;
 
     @FXML
-    private Label start;
-
-    @FXML
-    private ProgressBar progress;
-
-    @FXML
     private Label end;
 
     @FXML
-    private Button edit;
+    private Button retry;
 
     @FXML
     private Button remove;
@@ -53,23 +41,39 @@ public class GoalsListViewSingleController {
     private Label type;
 
     @FXML
-    private BorderPane singleBorderPane;
+    private Label passOrFail;
 
+    @FXML
+    private VBox fill;
+
+    @FXML
+    private ImageView tickOrCross;
 
     private Goal currentGoal;
     private User user;
     private GoalsDisplayerController mainController;
 
+    private Image tick = new Image("/resources/views/images/tick.png");
+    private Image cross = new Image("/resources/views/images/cross.png");
+
     /**
      * The function to set all of the fxml labels and button actions for a single goal in the list view
-     * Changes the text based on the type of activity and calls other functions for when the edit button is pushed
+     * Changes the text based on the type of activity and calls other functions for when the retry / remove button is pushed
      */
     public void start() {
+        if (currentGoal.getIsCompleted()) {
+            passOrFail.setText("Success");
+            retry.setText("Do Again");
+            fill.setStyle("-fx-background-color: #b4ecbe;");
+            tickOrCross.setImage(tick);
+        } else {
+            passOrFail.setText("Not Achieved");
+            retry.setText("Retry");
+            fill.setStyle("-fx-background-color: #e8b0b0;");
+            tickOrCross.setImage(cross);
+        }
         switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
             case "Activity":
-                currentGoal.calculateCurrent();
-                start.setText(currentGoal.getCurrent().toString() + " m");
-
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString() + " m");
 
@@ -77,9 +81,6 @@ public class GoalsListViewSingleController {
                 type.setOpacity(1);
                 break;
             case "Frequency":
-                currentGoal.calculateCurrent();
-                start.setText(currentGoal.getCurrent().toString());
-
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString());
 
@@ -87,9 +88,6 @@ public class GoalsListViewSingleController {
                 type.setOpacity(1);
                 break;
             case "Weight Loss":
-                currentGoal.calculateCurrent();
-                start.setText(currentGoal.getCurrent().toString() + " kg");
-
                 currentGoal.calculateTarget();
                 end.setText(currentGoal.getTarget().toString() + " kg");
 
@@ -100,13 +98,11 @@ public class GoalsListViewSingleController {
                 break;
         }
         title.setText(currentGoal.getDescription());
-        currentGoal.calculateProgress();
-        progress.setProgress(currentGoal.getProgress());
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         date.setText(currentGoal.getTargetDate().format(format));
 
-        edit.setOnAction(new EventHandler<ActionEvent>() {
+        retry.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
@@ -122,8 +118,8 @@ public class GoalsListViewSingleController {
                 addGoalController.setStage(newStage);
                 addGoalController.setUser(user);
                 addGoalController.setMainController(mainController);
-                addGoalController.edit(currentGoal);
-                newStage.setTitle("Edit Goal");
+                addGoalController.retry(currentGoal);
+                newStage.setTitle("Retry Goal");
                 Scene scene = new Scene(root);
                 newStage.setScene(scene);
                 newStage.setResizable(false);
@@ -133,21 +129,19 @@ public class GoalsListViewSingleController {
         });
     }
 
-    /**
-     * The action to remove a goal from the current list
-     */
+
     public void remove() {
         SQLiteJDBC database = new SQLiteJDBC();
         user.getGoalsService().getAllCurrentGoals().remove(currentGoal);
         switch (GoalType.fromEnumToString(currentGoal.getGoalType())) {
             case "Activity":
-                user.getGoalsService().getCurrentActivityGoals().remove(currentGoal);
+                user.getGoalsService().getPreviousActivityGoals().remove(currentGoal);
                 break;
             case "Frequency":
-                user.getGoalsService().getCurrentTimesPerformedGoals().remove(currentGoal);
+                user.getGoalsService().getPreviousTimesPerformedGoals().remove(currentGoal);
                 break;
             case "Weight Loss":
-                user.getGoalsService().getCurrentWeightLossGoals().remove(currentGoal);
+                user.getGoalsService().getPreviousWeightLossGoals().remove(currentGoal);
                 break;
             default:
                 break;
@@ -155,7 +149,6 @@ public class GoalsListViewSingleController {
         database.saveUser(user, user.getUserID());
         mainController.changeView();
     }
-
 
     /**
      * Sets the current goal that is used to get all the information for the fxml labels

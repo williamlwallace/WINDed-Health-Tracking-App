@@ -124,6 +124,7 @@ public class GUIController implements Initializable {
         BorderPane statsScene = loader.load();
         GraphController graphController = loader.getController();
         graphController.setPrimaryStage(stage);
+        System.out.println(this.user);
         graphController.setUser(user);
         graphController.setup();
         scene.getChildren().setAll(statsScene);
@@ -135,7 +136,7 @@ public class GUIController implements Initializable {
     }
 
     @FXML
-    private void loadGoals(ActionEvent event) throws IOException
+    private void loadGoals2(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/Goals.fxml"));
         BorderPane goalsScene = loader.load();
@@ -143,7 +144,7 @@ public class GUIController implements Initializable {
         goalsController.setPrimaryStage(stage);
         goalsController.setUser(user);
         goalsController.setGoalsService(user.getGoalsService());
-        goalsController.initialize();
+        goalsController.initialize(user);
         scene.getChildren().setAll(goalsScene);
         goalsBtn.setStyle("-fx-background-color: #2874a6");
         homeBtn.setStyle("-fx-background-color: transparent");

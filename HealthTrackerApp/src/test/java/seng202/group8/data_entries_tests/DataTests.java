@@ -58,7 +58,7 @@ public class DataTests {
         coordinateList.add(new CoordinateData(30.2541537,-97.83977501,239.5));
         //coordinateList.add(new CoordinateData(30.26868423,-97.83252265,202));
 
-        RunData testData = new RunData("testDistance", DataType.WALK, localTimes, coordinateList, heartRates, testUser);
+        RunData testData = new RunData("testDistance", DataType.RUN, localTimes, coordinateList, heartRates, testUser);
         testUser.getUserActivities().insertActivityList(new ActivityList("TESTS"));
         testUser.getUserActivities().insertActivityInGivenList(0, testData);
 
@@ -118,6 +118,191 @@ public class DataTests {
         System.out.println(distanceDoodad);
         System.out.println(distanceDifference.getDistanceDifference());
     }
+
+    @Test
+    public void calorieCalculationSetup() {
+    }
+
+    @Test
+    public void calculateCaloriesFromStats() {
+    }
+
+    @Test
+    public void calculateCaloriesFromUserStatsAndHeartRateAndTime() {
+    }
+
+    @Test
+    public void calculateCaloriesBurnedBetweenPointsFromStats() {
+    }
+
+    @Test
+    public void calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime() {
+    }
+
+    @Test
+    public void equalsNewData() {
+    }
+
+    @Test
+    public void getIsGraphable() {
+    }
+
+    @Test
+    public void setIsGraphable() {
+    }
+
+    @Test
+    public void getTitle() {
+    }
+
+    @Test
+    public void setTitle() {
+    }
+
+    @Test
+    public void getCreationDate() {
+    }
+
+    @Test
+    public void setCreationDate() {
+    }
+
+    @Test
+    public void getDataType() {
+    }
+
+    @Test
+    public void setDataType() {
+    }
+
+    @Test
+    public void getDataSuperType() {
+    }
+
+    @Test
+    public void setDataSuperType() {
+    }
+
+    @Test
+    public void getAllDateTimes() {
+    }
+
+    @Test
+    public void setAllDateTimes() {
+    }
+
+    @Test
+    public void getCoordinatesArrayList() {
+    }
+
+    @Test
+    public void getHeartRateList() {
+    }
+
+    @Test
+    public void setHeartRateList() {
+    }
+
+    @Test
+    public void getHeartRateData() {
+    }
+
+    @Test
+    public void setHeartRateData() {
+    }
+
+    @Test
+    public void getDistanceCovered() {
+    }
+
+    @Test
+    public void setDistanceCovered() {
+    }
+
+    @Test
+    public void getMillisecondsOfExercise() {
+    }
+
+    @Test
+    public void setMillisecondsOfExercise() {
+    }
+
+    @Test
+    public void getDataSpeedKph() {
+    }
+
+    @Test
+    public void getDataSpeedMph() {
+    }
+
+    @Test
+    public void getMphSpeedsBetweenPoints() {
+    }
+
+    @Test
+    public void getKphSpeedsBetweenPoints() {
+    }
+
+    @Test
+    public void getGradientsBetweenPoints() {
+    }
+
+    @Test
+    public void getMillisecondsOfExerciseBetweenPoints() {
+    }
+
+    @Test
+    public void getCurrentUser() {
+    }
+
+    @Test
+    public void setCurrentUser() {
+    }
+
+    @Test
+    public void getKmDistancesBetweenPoints() {
+    }
+
+    @Test
+    public void getMilesDistancesBetweenPoints() {
+    }
+
+    @Test
+    public void getStressLevelsBetweenPoints() {
+    }
+
+    @Test
+    public void getStressLevelMax() {
+    }
+
+    @Test
+    public void getStressLevelMin() {
+    }
+
+    @Test
+    public void getDataId() {
+    }
+
+    @Test
+    public void setDataId() {
+    }
+
+    @Test
+    public void getStressProportionsBetweenPoints() {
+    }
+
+    @Test
+    public void getConsumedCalories() {
+    }
+
+    @Test
+    public void getConsumedCaloriesBetweenPoints() {
+    }
+
+    @Test
+    public void setDataSpeedKph() {
+    }
+
 
 
 

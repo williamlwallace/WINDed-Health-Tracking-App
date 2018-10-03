@@ -198,19 +198,92 @@ public class SQLiteJDBC {
     }
 
     public void deleteUser(Integer userID) {
-        String sql = "DELETE FROM user WHERE user_id=?";
+        String sql = "DELETE FROM User WHERE user_id=?";
         try {
             //System.out.println("Deleting User with id = " + userID);
             Connection connection = connect();
+            //connection.setAutoCommit(false);
+
+            //deleteUserRecords(connection, userID);
+
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
+
+            //connection.commit();
             connection.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void deleteUserRecords(Connection connection, Integer userID) {
+        String sql;
+        PreparedStatement preparedStatement;
+        String findData = "SELECT data_id FROM Data WHERE user_id=?";
+        try {
+
+            PreparedStatement preparedStatementFind = connection.prepareStatement(findData);
+            preparedStatementFind.setInt(1, userID);
+            ResultSet resultSet = preparedStatementFind.executeQuery();
+
+            while (resultSet.next()) {
+                Integer dataId = resultSet.getInt("data_id");
+
+                sql = "DELETE FROM CoOrdinate WHERE data_id=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, dataId);
+                preparedStatement.executeUpdate();
+                sql = "DELETE FROM Heartrate WHERE data_id=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, dataId);
+                preparedStatement.executeUpdate();
+                sql = "DELETE FROM Activity_Time WHERE data_id=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, dataId);
+                preparedStatement.executeUpdate();
+            }
+
+
+            sql = "DELETE FROM Data WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM Activity_List WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM Activity_Collection WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM parser_keywords WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM bmi_record WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            sql = "DELETE FROM weight_record WHERE user_id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+
+            deleteGoals(connection, userID);
+
+
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
@@ -477,9 +550,12 @@ public class SQLiteJDBC {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(find);
             resultSet = preparedStatement.executeQuery();
-            userID = resultSet.getInt("user_id") + 1;
+            while(resultSet.next()) {
+                userID = resultSet.getInt("MAX(user_id)") + 1;
+            }
             connection.close();
         } catch (SQLException e) {
+
             userID = 1;
         }
         return userID;
@@ -633,7 +709,7 @@ public class SQLiteJDBC {
             preparedStatement.setDouble(1, activityGoal.getDistanceCurrentlyCovered());
             preparedStatement.setDouble(2, activityGoal.getTarget());
             preparedStatement.setString(3, activityGoal.getTargetDate().toString());
-            preparedStatement.setString(4, activityGoal.getStartDate().toString());
+            preparedStatement.setString(4, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(activityGoal.getStartDate())));
             preparedStatement.setString(5, activityGoal.getDataType().toString());
             preparedStatement.setString(6, activityGoal.getDescription());
             preparedStatement.setInt(7, userId);
@@ -650,7 +726,7 @@ public class SQLiteJDBC {
             preparedStatement.setDouble(6, weightLossGoal.getStartWeight());
             preparedStatement.setDouble(5, weightLossGoal.getTarget());
             preparedStatement.setString(4, weightLossGoal.getTargetDate().toString());
-            preparedStatement.setString(3, weightLossGoal.getStartDate().toString());
+            preparedStatement.setString(3, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(weightLossGoal.getStartDate())));
             preparedStatement.setString(2, weightLossGoal.getDescription());
             preparedStatement.setInt(1, userId);
             //System.out.println("Rows added to Weight_Goal: " + preparedStatement.executeUpdate());
@@ -666,7 +742,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(7, frequencyGoal.getTimesCurrentlyPerformedActivity());
             preparedStatement.setInt(6, frequencyGoal.getTarget().intValue());
             preparedStatement.setString(5, frequencyGoal.getTargetDate().toString());
-            preparedStatement.setString(4, frequencyGoal.getStartDate().toString());
+            preparedStatement.setString(4, getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(frequencyGoal.getStartDate())));
             preparedStatement.setString(3, frequencyGoal.getDataType().toString());
             preparedStatement.setString(2, frequencyGoal.getDescription());
             preparedStatement.setInt(1, userId);
@@ -677,16 +753,19 @@ public class SQLiteJDBC {
     }
 
     public void insertGoals(Connection connection, User user, Integer userId) {
-        ArrayList<Goal> activityGoalsList = user.getGoalsService().getCurrentActivityGoals();
+        ArrayList<Goal> activityGoalsList = user.getGoalsService().getAllCurrentGoals();
         activityGoalsList.addAll(user.getGoalsService().getPreviousActivityGoals());
+        activityGoalsList.addAll(user.getGoalsService().getPreviousTimesPerformedGoals());
+        activityGoalsList.addAll(user.getGoalsService().getPreviousWeightLossGoals());
         for (Goal goal: activityGoalsList) {
-            if (goal.getGoalType().equals("WeightLossGoal")) {
+            System.out.println("Title: " + goal.getDescription() + "     Type: " + goal.getGoalType().toString());
+            if (goal.getGoalType().toString().equals("WeightLossGoal")) { ;
                 WeightLossGoal weightLossGoal = (WeightLossGoal) goal;
                 insertWeightGoal(connection, weightLossGoal, userId);
-            } else if (goal.getGoalType().equals("ActivityGoal")) {
+            } else if (goal.getGoalType().toString().equals("ActivityGoal")) {
                 ActivityGoal activityGoal = (ActivityGoal) goal;
                 insertActivityGoal(connection, activityGoal, userId);
-            } else if (goal.getGoalType().equals("TimePerformedGoal")) {
+            } else if (goal.getGoalType().toString().equals("TimePerformedGoal")) {
                 FrequencyGoal frequencyGoal = (FrequencyGoal) goal;
                 insertFrequencyGoal(connection, frequencyGoal, userId);
             } else {
@@ -744,7 +823,7 @@ public class SQLiteJDBC {
             resultSet = weightStatement.executeQuery();
             while(resultSet.next()) {
                 WeightLossGoal weightLossGoal = new WeightLossGoal(user, resultSet.getString("description"),
-                        GoalType.ActivityGoal,
+                        GoalType.WeightLossGoal,
                         resultSet.getDouble("target_weight"),
                         getLocalDateTimeFromString(resultSet.getString("target_date")));
                 weightLossGoal.setStartWeight(resultSet.getDouble("start_weight"));
@@ -757,8 +836,8 @@ public class SQLiteJDBC {
             resultSet = weightStatement.executeQuery();
             while(resultSet.next()) {
                 FrequencyGoal frequencyGoal = new FrequencyGoal(user, resultSet.getString("description"),
-                        GoalType.ActivityGoal,
-                        DataType.fromStringToEnum(resultSet.getString("type").toUpperCase()),
+                        GoalType.TimePerformedGoal,
+                        DataType.fromStringToEnum((resultSet.getString("type")).toUpperCase()),
                         resultSet.getInt("times_to_perform"),
                         getLocalDateTimeFromString(resultSet.getString("target_date")));
                 frequencyGoal.setTimesCurrentlyPerformedActivity(resultSet.getInt("times_performed"));
@@ -1081,6 +1160,8 @@ public class SQLiteJDBC {
             preparedStatement.setString(3, newActivityList.getTitle());
             preparedStatement.setString(4, parentListDateTimeString);
             preparedStatement.setInt(5, data.getDataId());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -1243,8 +1324,8 @@ public class SQLiteJDBC {
         insertWeightRecords(conn, user.getUserStats().getUserWeightRecords(), userId);
         insertBMIRecords(conn, user.getUserStats().getUserBMITypeRecords(), userId);
 
-        /*deleteGoals(conn, userId);
-        insertGoals(conn, user, userId);*/ //TODO uncomment when goals is in GUI
+        deleteGoals(conn, userId);
+        insertGoals(conn, user, userId); //TODO uncomment when goals is in GUI
 
         try {
             if (conn != null) {
@@ -1280,23 +1361,6 @@ public class SQLiteJDBC {
 
     }
 
-    public Integer getNextUserId() {
-        String find = "SELECT MAX(user_id) FROM user";
-        Integer newId = 0;
-        try {
-            Connection connection = connect();
-            PreparedStatement preparedStatement  = connection.prepareStatement(find);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
-                newId = resultSet.getInt("MAX(user_id)");
-            }
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return newId + 1;
-    }
 
 
     /**
@@ -1313,7 +1377,7 @@ public class SQLiteJDBC {
             Double height = result.getDouble("height");
             Integer age = result.getInt("age");
             String sex = result.getString("sex");
-            User user = new User(name, age, weight, height, Sex.valueOf(sex));
+            User user = new User(name, age, weight, height, Sex.valueOf(sex), userId);
 
             String title = getUsersActivityListCollectionTitle(conn, userId);
             ActivityListCollection userCollection = new ActivityListCollection(title);
@@ -1327,7 +1391,7 @@ public class SQLiteJDBC {
             userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
             user.setUserStats(userStats);
 
-            //getGoals(conn, user, userId); TODO uncomment this call when goals finished in database
+            getGoals(conn, user, userId); //TODO uncomment this call when goals finished in database
 
             try {
                 if (conn != null) {
@@ -1361,7 +1425,23 @@ public class SQLiteJDBC {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.getInt("count(*)") != 0) {
                 to_return = true;
+            }public Integer getNextUserId() {
+        String find = "SELECT MAX(user_id) FROM user";
+        Integer newId = 0;
+        try {
+            Connection connection = connect();
+            PreparedStatement preparedStatement  = connection.prepareStatement(find);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                newId = resultSet.getInt("MAX(user_id)");
             }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return newId + 1;
+    }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -1405,7 +1485,7 @@ public class SQLiteJDBC {
                 userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
                 user.setUserStats(userStats);
 
-                //getGoals(conn, user, userId); TODO uncomment this call when goals finished in database
+                getGoals(conn, user, userId); //TODO uncomment this call when goals finished in database
 
                 to_return.add(user);
             }

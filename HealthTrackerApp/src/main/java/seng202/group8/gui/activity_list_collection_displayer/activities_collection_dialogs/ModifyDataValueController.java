@@ -1,6 +1,7 @@
 package seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs;
 
 import com.jfoenix.controls.JFXToggleButton;
+import java_sqlite_db.SQLiteJDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -93,29 +94,6 @@ public class ModifyDataValueController {
         ObservableList<String> observableList = FXCollections.observableList(activitiesChoice);
         activitiesChoiceBox.setItems(observableList);
         activitiesChoiceBox.setValue(DataType.fromEnumToString(dataValue.getDataType()));
-//        switch(dataValue.getDataType()) {
-//            case WALK:
-//                activitiesChoiceBox.setValue("Walk");
-//                break;
-//            case RUN:
-//                activitiesChoiceBox.setValue("Run");
-//                break;
-//            case HIKE:
-//                activitiesChoiceBox.setValue("Hike");
-//                break;
-//            case CLIMB:
-//                activitiesChoiceBox.setValue("Climb");
-//                break;
-//            case BIKE:
-//                activitiesChoiceBox.setValue("Bike");
-//                break;
-//            case SWIM:
-//                activitiesChoiceBox.setValue("Swim");
-//                break;
-//            default:
-//                activitiesChoiceBox.setValue("Water Sport");
-//                break;
-//        }
     }
 
     /**
@@ -123,12 +101,16 @@ public class ModifyDataValueController {
      * the user wants to move the data value, the activity list exists.
      */
     public void modifyDataButtonListener() {
-
+        SQLiteJDBC database = new SQLiteJDBC();
         if (checkAllDataValid() && checkExistsNewActivityList()) {
             dataValue.setTitle(descriptionTextField.getText().trim());
             DataType selectedType = DataType.fromStringToEnum((String) activitiesChoiceBox.getSelectionModel().getSelectedItem());
             dataValue.setDataType(selectedType);
             if (newActivityListToggle.isSelected()) {
+                //In case I move the activity to a different activity list
+                database.updateActivity(dataValue,
+                        user.getUserActivities().getActivityListCollection().get(newActivityListIndex));
+
                 user.getUserActivities().insertActivityInGivenList(newActivityListIndex, dataValue);
                 user.getUserActivities()
                         .getActivityListCollection()
@@ -136,8 +118,14 @@ public class ModifyDataValueController {
                         .getActivityList().remove(dataIndex);
                 if (currentActivityList.getActivityList().size() == 0) {
                     user.getUserActivities().deleteActivityList(activityListIndex);
+                    database.deleteActivityList(currentActivityList.getTitle(), currentActivityList.getCreationDate());
                 }
+            } else {
+                database.updateActivity(dataValue, currentActivityList);
             }
+
+
+
             activitiesCollectionController.setUpTreeView();
             stage.close();
 

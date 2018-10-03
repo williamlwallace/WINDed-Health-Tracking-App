@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -14,92 +21,96 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.statistics_graph_displayer.GraphController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.statistics_graph_displayer.GraphController">
    <center>
       <SplitPane fx:id="splitPane" dividerPositions="0.55" BorderPane.alignment="CENTER">
          <items>
-            <VBox>
+            <StackPane fx:id="statsStackPane" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="CENTER" prefWidth="200.0">
+                  <VBox fx:id="activityVBox">
                      <children>
-                        <Label fx:id="labelTitle1" alignment="CENTER" prefHeight="38.0" prefWidth="605.0" text="Activity Graphs" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font size="26.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="58.0" prefWidth="551.0">
-                     <children>
-                        <HBox prefWidth="200.0">
-                           <children>
-                              <Button fx:id="previous" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousData" text="PREVIOUS ACTIVITY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
                         <HBox alignment="CENTER" prefWidth="200.0">
                            <children>
-                              <Label fx:id="dataName" alignment="CENTER" text="&lt;Data Name&gt;" textAlignment="CENTER" wrapText="true" />
+                              <Label fx:id="labelTitle1" alignment="CENTER" prefHeight="38.0" prefWidth="605.0" text="Activity Graphs" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="TOP_RIGHT" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="58.0" prefWidth="551.0">
                            <children>
-                              <Button fx:id="next" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextData" text="NEXT ACTIVITY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </Button>
+                              <HBox prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="previous" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousData" text="PREVIOUS ACTIVITY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="dataName" alignment="CENTER" text="&lt;Data Name&gt;" textAlignment="CENTER" wrapText="true" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_RIGHT" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="next" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextData" text="NEXT ACTIVITY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="611.0" text="Activity Time">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <LineChart fx:id="graph" stylesheets="@graphs.css" title="Graph 1">
-                     <xAxis>
-                        <NumberAxis label="" lowerBound="0" tickUnit="1" upperBound="100" fx:id="xAxis" />
-                     </xAxis>
-                     <yAxis>
-                        <NumberAxis fx:id="yAxis" label="" lowerBound="0" tickUnit="1" upperBound="100" />
-                     </yAxis>
-                  </LineChart>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Select your graph">
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin>
+                        <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="611.0" text="Activity Time">
                            <font>
                               <Font size="16.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
                         </Label>
-                        <ComboBox fx:id="comboBox" onAction="#changeGraph" promptText="Distance Over Time">
-                           <items>
-                              <FXCollections fx:factory="observableArrayList">
-                                 <String fx:value="Distance Over Time" />
-                                 <String fx:value="Heart Rate Over Time" />
-                                 <String fx:value="Calories Over Time" />
-                                 <String fx:value="Stress Level Over Time" />
-                                 <String fx:value="Speed Over Time" />
-                              </FXCollections>
-                           </items>
-                        </ComboBox>
+                        <LineChart fx:id="graph" stylesheets="@graphs.css" title="Graph 1">
+                           <xAxis>
+                              <NumberAxis label="" lowerBound="0" tickUnit="1" upperBound="100" fx:id="xAxis" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id="yAxis" label="" lowerBound="0" tickUnit="1" upperBound="100" />
+                           </yAxis>
+                        </LineChart>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Select your graph">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="comboBox" onAction="#changeGraph" promptText="Distance Over Time">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="Distance Over Time" />
+                                       <String fx:value="Heart Rate Over Time" />
+                                       <String fx:value="Calories Over Time" />
+                                       <String fx:value="Stress Level Over Time" />
+                                       <String fx:value="Speed Over Time" />
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </StackPane>
             <VBox>
                <children>
                   <HBox alignment="CENTER" prefWidth="200.0">
