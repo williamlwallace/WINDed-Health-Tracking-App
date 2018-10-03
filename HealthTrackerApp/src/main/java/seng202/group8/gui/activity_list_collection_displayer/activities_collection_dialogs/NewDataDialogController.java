@@ -153,7 +153,12 @@ public class NewDataDialogController {
 
             ArrayList<CoordinateData> coordinateData = new ArrayList<>();
             CoordinateData coordinate1 = new CoordinateData(-1, -1, -1);
-            CoordinateData coordinate2 = new CoordinateData(-1, -1, -((Double.valueOf(distanceCoveredTextField.getText() + 1) / 10.0)));
+//            CoordinateData coordinate2 = new CoordinateData(-1, -1, -((Double.valueOf(distanceCoveredTextField.getText() + 1) / 10.0)));
+            CoordinateData coordinate2 = new CoordinateData(-1, -1, -(Double.valueOf(distanceCoveredTextField.getText()) + 1));
+
+
+            System.out.println(coordinate2.getAltitude());
+
             coordinateData.add(coordinate1);
             coordinateData.add(coordinate2);
 
@@ -165,10 +170,21 @@ public class NewDataDialogController {
             SQLiteJDBC database = new SQLiteJDBC();
 
             Data dataVal = createDataObject(dataDescription, dataType, dataTimes, coordinateData, heartRates);
+            dataVal.setIsGraphable(false);
             dataVal.setDataId(database.getNextDataID());
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
-            dataVal.setIsGraphable(false);
             dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
+
+
+
+            System.out.println("Distance saved" + dataVal.getDistanceCovered());
+            for (CoordinateData coordinateDate : dataVal.getCoordinatesArrayList()) {
+                System.out.println("Altitude: " + coordinateDate.getAltitude());
+            }
+
+
+
+
 
 
             if (newActivityListToggle.isSelected()) {
