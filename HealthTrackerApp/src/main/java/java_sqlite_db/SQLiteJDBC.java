@@ -472,7 +472,7 @@ public class SQLiteJDBC {
     }
 
     public ArrayList<String> getKeyWordsByType(Integer userId, int type) {
-        String sql = "SELECT keyword FROM parser_keywords WHERE user_id = ? and type = ?";
+        String sql = "SELECT keyword FROM parser_keywords WHERE user_id = ? and activityType = ?";
         Connection connection = connect();
         ResultSet resultSet = null;
         ArrayList<String> phrases = new ArrayList<String>();

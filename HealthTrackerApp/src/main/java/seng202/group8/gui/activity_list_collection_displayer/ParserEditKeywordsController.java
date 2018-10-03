@@ -45,30 +45,32 @@ public class ParserEditKeywordsController {
         actRemove.getItems().clear();
         SQLiteJDBC database = new SQLiteJDBC();
         ObservableList<String> choiceAdd = null;
-        switch (actType1.getValue().toString()) {
-            case "Walk":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 1));
-                break;
-            case "Hike":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 2));
-                break;
-            case "Run":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 3));
-                break;
-            case "Climb":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 4));
-                break;
-            case "Bike":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 5));
-                break;
-            case "Swim":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 6));
-                break;
-            case "Water Sports":
-                choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 7));
-                break;
-            default:
-                break;
+        if (actType1.getValue() != null) {
+            switch (actType1.getValue().toString()) {
+                case "Walk":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 1));
+                    break;
+                case "Hike":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 2));
+                    break;
+                case "Run":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 3));
+                    break;
+                case "Climb":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 4));
+                    break;
+                case "Bike":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 5));
+                    break;
+                case "Swim":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 6));
+                    break;
+                case "Water Sports":
+                    choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 7));
+                    break;
+                default:
+                    break;
+            }
         }
         actRemove.setItems(choiceAdd);
     }
@@ -98,10 +100,8 @@ public class ParserEditKeywordsController {
         if (actRemove.getValue() != null) {
             SQLiteJDBC database = new SQLiteJDBC();
             database.deleteParserKeyword(user.getUserID(), actRemove.getValue().toString());
-            parser = new Parser("", user);
-            ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
             errorMes.setText("Phrase '"+actRemove.getValue().toString()+"' has been removed");
-            actRemove.setItems(choiceAdd);
+            update(event);
         }
     }
 
@@ -147,6 +147,7 @@ public class ParserEditKeywordsController {
         }
         if (type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0)))  {
             SQLiteJDBC database = new SQLiteJDBC();
+            parser = new Parser("", user);
             ArrayList<ArrayList<String>> acceptedValues = parser.getAcceptedValues();
             boolean continueBool = true;
             for (int place = 0; place < acceptedValues.size(); place++) {
@@ -158,9 +159,7 @@ public class ParserEditKeywordsController {
             }
             if (continueBool) {
                 parser.add(phraseReturn, type, true);
-                parser = new Parser("", user);
-                ObservableList<String> choiceAdd = FXCollections.observableArrayList(parser.getRemoveableWords());
-                actRemove.setItems(choiceAdd);
+                update(event);
                 errorMes.setText("Phrase '"+phraseReturn+"' has been added");
             } else {
                 errorMes.setText("Phrase '"+phraseReturn+"' is already in the application");
