@@ -63,7 +63,6 @@ public class EditUserController {
 
     public void submitPressed(ActionEvent event)
     {
-        System.out.println("Pressed");
         String name = null;
         int age = 0;
         double weight = 0.0;
@@ -140,8 +139,12 @@ public class EditUserController {
             user.setName(name);
             user.getUserActivities().setTitle(user.getName() + "'s activities collection");
             user.setAge(age);
-            user.updateWeight(weight);
-            user.setHeight(height);
+            if (user.getWeight() != weight) {
+                user.updateWeight(weight);
+            }
+            if (user.getHeight() != height) {
+                user.setHeight(height);
+            }
             try {
                 SQLiteJDBC database = new SQLiteJDBC();
                 database.saveUser(user, user.getUserID());
