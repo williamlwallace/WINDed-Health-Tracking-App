@@ -45,8 +45,8 @@ public class GraphController {
     @FXML
     private Label time;
 
-    @FXML
-    private SplitPane splitPane;
+//    @FXML
+//    private SplitPane splitPane;
 
     @FXML
     private Label labelTitle1;
@@ -457,16 +457,16 @@ public class GraphController {
             content.setActions(gotItButton);
             dialog.show();
             // Makes sure the divider's value can't be changed
-            SplitPane.Divider divider = splitPane.getDividers().get(0);
-            divider.positionProperty().addListener(new ChangeListener<Number>()
-            {
-                @Override
-                public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
-                {
-                    divider.setPosition(0.55);
-                }
-            });
-            labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+//            SplitPane.Divider divider = splitPane.getDividers().get(0);
+//            divider.positionProperty().addListener(new ChangeListener<Number>()
+//            {
+//                @Override
+//                public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
+//                {
+//                    divider.setPosition(0.55);
+//                }
+//            });
+            labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold;");
             weight.setStyle("-fx-background-color:  #2e86c1");
             bmi.setStyle("-fx-background-color:  #2e86c1");
             showBmi();
@@ -482,8 +482,8 @@ public class GraphController {
                     found = true;
                 }
             }
-            labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
-            labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  linear-gradient(to bottom, #2874a6, #2e86c1)");
+            labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold");
+            labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold");
             previous.setStyle("-fx-background-color:  #2e86c1");
             next.setStyle("-fx-background-color:  #2e86c1");
             dataName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
@@ -495,15 +495,15 @@ public class GraphController {
 
 
             // Makes sure the divider's value can't be changed
-            SplitPane.Divider divider = splitPane.getDividers().get(0);
-            divider.positionProperty().addListener(new ChangeListener<Number>()
-            {
-                @Override
-                public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
-                {
-                    divider.setPosition(0.55);
-                }
-            });
+//            SplitPane.Divider divider = splitPane.getDividers().get(0);
+//            divider.positionProperty().addListener(new ChangeListener<Number>()
+//            {
+//                @Override
+//                public void changed(ObservableValue<? extends Number> observable, Number oldvalue, Number newvalue )
+//                {
+//                    divider.setPosition(0.55);
+//                }
+//            });
 
             updateData();
         }

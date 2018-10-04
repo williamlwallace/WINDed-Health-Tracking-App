@@ -5,6 +5,7 @@ import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -135,6 +136,24 @@ public class ActivityListCollection {
             }
         }
         return activitiesAfterDate;
+    }
+
+    public Data getMostCurrentActivity() {
+        Data mostCurrentData =  null;
+        for (ActivityList activityList : activityListCollection) {
+            for (Data data : activityList.getActivityList()) {
+                if (mostCurrentData == null) {
+                    mostCurrentData = data;
+                } else {
+                    LocalDateTime dateMostCurrentData = mostCurrentData.getAllDateTimes().get(0);
+                    LocalDateTime dateData = data.getAllDateTimes().get(0);
+                    if (dateData.isAfter(dateMostCurrentData)) {
+                        mostCurrentData = data;
+                    }
+                }
+            }
+        }
+        return mostCurrentData;
     }
 
     public ArrayList<Data> getAllData() {

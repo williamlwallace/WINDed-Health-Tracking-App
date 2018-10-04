@@ -173,7 +173,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="305.0" prefWidth="670.0" spacing="10.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="totalStatsLabel1" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Most Recent Activity">
+                        <Label fx:id="mostRecentActivity" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Most Recent Activity">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>

@@ -41,6 +41,9 @@ public class HomeController {
     private Label bmiText;
 
     @FXML
+    private Label mostRecentActivity;
+
+    @FXML
     private ImageView bmiImage;
 
     @FXML
@@ -150,9 +153,11 @@ public class HomeController {
         try {
             String strGoogleMaps = GoogleMapsTools.returnHTMLFileToString("/resources/views/googleMapsView.html");
             // Retrieve selected Data value
-            if (user.getUserActivities().getActivityListCollection().size() != 0) {
+            Data data = user.getUserActivities().getMostCurrentActivity();
+            mostRecentActivity.setText("Most Recent Activity - " + data.getTitle());
+            if (data != null) {
                 //TODO: create logic for showing most recent activity
-                Data data = user.getUserActivities().getActivityListCollection().get(0).getActivity(0);
+
                 String htmlFile = GoogleMapsTools.jsInjection(strGoogleMaps, data);
                 WebEngine webEngine = homeWebView.getEngine();
 //              System.out.println(htmlFile);
