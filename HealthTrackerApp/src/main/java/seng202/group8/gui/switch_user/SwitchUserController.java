@@ -71,6 +71,7 @@ public class SwitchUserController {
 
     @FXML
     public void initialize() {
+
         users = DB.retrieveAllUsers();
         populateUsersListView(users);
         switchUserListView.getSelectionModel().selectFirst();

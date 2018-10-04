@@ -251,6 +251,7 @@ public class User {
      * @param newWeight the new weight of the user (kg)
      */
     public void updateWeight(Double newWeight) {
+        System.out.println("Updating weight: " + newWeight);
         setWeight(newWeight);
         userStats.addUserWeightRecords(newWeight);
         updateBMI(calculateBMI());

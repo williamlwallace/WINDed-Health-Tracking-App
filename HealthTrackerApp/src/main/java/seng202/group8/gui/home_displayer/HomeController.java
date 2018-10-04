@@ -154,10 +154,10 @@ public class HomeController {
             String strGoogleMaps = GoogleMapsTools.returnHTMLFileToString("/resources/views/googleMapsView.html");
             // Retrieve selected Data value
             Data data = user.getUserActivities().getMostCurrentActivity();
-            mostRecentActivity.setText("Most Recent Activity - " + data.getTitle());
+
             if (data != null) {
                 //TODO: create logic for showing most recent activity
-
+                mostRecentActivity.setText("Most Recent Activity - " + data.getTitle());
                 String htmlFile = GoogleMapsTools.jsInjection(strGoogleMaps, data);
                 WebEngine webEngine = homeWebView.getEngine();
 //              System.out.println(htmlFile);
