@@ -146,6 +146,9 @@ public class NewDataDialogController {
             LocalDateTime startTime = dataDate.atTime(fromTimeData);
             LocalDateTime endTime = dataDate.atTime(toTimeData);
 
+            System.out.println(startTime + " troubleshooting");
+            System.out.println(endTime + " troubleshooting");
+
             ArrayList<LocalDateTime> dataTimes = new ArrayList<>();
             dataTimes.add(startTime);
             dataTimes.add(endTime);
@@ -173,7 +176,8 @@ public class NewDataDialogController {
             dataVal.setIsGraphable(false);
             dataVal.setDataId(database.getNextDataID());
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
-            dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
+            dataVal.setDataSpeedKph(dataVal.getDataSpeedKph());
+            //dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
 
 
 

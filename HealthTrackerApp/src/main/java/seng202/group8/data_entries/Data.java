@@ -547,167 +547,167 @@ public abstract class Data {
         return result;
     }
 
-    /**
-     * This function sets up the calorie calculation for the walk, run, and bike data. It returns an ArrayList of
-     * speed scaled MET values: MET values that are adjusted to specifically match the speed in the provided time
-     * interval.
-     *
-     * Once the individual speed value that is being compared in the inner loop is greater than or
-     * equal to the speed value divisions that match the met values, the met value corresponding to
-     * that speed division will be associated with the value. Unless, there is a met value and speed
-     * division above the current ones. If there are, the difference between the current MET value
-     * and the next one is multiplied by the ratio of the current speed with the next speed division,
-     * relative to the current speed. Essentially, this will generate a factor by which to multiply
-     * MET value difference so that it is proportional to the difference between the current exact
-     * speed, and the speed divisons before and after it. This difference is then added to the
-     * resultant MET value that was below it.
-     *
-     * In short, the final calorie calculation is an approximation based on the accuracy of MET
-     * speed value divisions provided. (ie the range of speed between two specific MET values.)
-     *
-     * @param metValues The MET values that correspond to the speed divisions.
-     * @param speedDivisions The speed divisions are ranges of miles per hour. Each speed value will fall between two
-     *                       speed divisions, or above all of them, or below all of them.
-     * @return an ArrayList of the scaled MET values that match the MPH speeds between points.
-     */
-    ArrayList<Double> calorieCalculationSetup(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
-
-
-        ArrayList<Double> mphSpeeds = this.getMphSpeedsBetweenPoints();
-        ArrayList<Double> results = new ArrayList<Double>();
-
-        for (int speed = 0; speed < mphSpeeds.size(); speed += 1) {
-            //for (int divs = 0; divs < speedDivisions.size() - 1; mets += 1) {
-            int mets = 0;
-            double resultantMet = 0.0;
-            int divs = 0;
-            double speedDivisionChooser = speedDivisions.get(divs);
-            while (mphSpeeds.get(speed) > speedDivisionChooser) {   //Note to self: the condition on this while loop
-                                                                    // prevents speed from being higher than chooser in
-                                                                    // the calculation.
-                mets += 1;
-                if (((divs + 1) < speedDivisions.size()) && ((mets + 1) < metValues.size())) {
-                    double thisSpeedRatioWithChangeInSpeedDivision = ((mphSpeeds.get(speed) - speedDivisions.get(divs)) /
-                            (speedDivisions.get(divs + 1) - speedDivisions.get(divs)));
-                    double changeInMet = metValues.get(mets + 1) - metValues.get(mets);
-                    resultantMet = changeInMet * thisSpeedRatioWithChangeInSpeedDivision;
-                    resultantMet += metValues.get(mets);
-                } else if (((mets) < metValues.size())){
-                    resultantMet = metValues.get(mets);
-                } else {
-                    resultantMet = metValues.get(metValues.size() - 1);
-                }
-                divs += 1;
-                if (divs < speedDivisions.size()) {
-                    speedDivisionChooser = speedDivisions.get(divs);
-                } else {
-                    break;  //The current resultantMet value will be used, because there are
-                            //no further speedDivisions, so the loop would not be able to
-                            //continue past this point.
-                }
-            }
-            results.add(resultantMet);
-        }
-
-        return results;
-        //if (this.getHeartRateList() == 0);
-    }
-
-    /**
-     * Calculates the calories burned from the statistics previously calculated (such as scaled MET values). It
-     * calculates the calories burned between each pair of coordinates, and adds them to a running total.
-     *
-     * @param metValues The MET values for a particular activity type, which match the speed divisions.
-     * @param speedDivisions The speed divisions are ranges of miles per hour. Each speed value will fall between two
-     *                       speed divisions, or above all of them, or below all of them.
-     * @return the total number of calories burned during the activity.
-     */
-    Double calculateCaloriesFromStats(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
-
-        ArrayList<Double> localMphSpeedsBetweenPoints = new ArrayList<>(this.getMphSpeedsBetweenPoints());
-        ArrayList<Double> localGradientsBetweenPoints = new ArrayList<>(this.getGradientsBetweenPoints());
-        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
-        ArrayList<Double> calorieSpeedMets = new ArrayList<>(calorieCalculationSetup(metValues, speedDivisions));
-        double calories = new Double(0.0);
-
-        for (int i = 0; i < (calorieSpeedMets.size());i++) {
-            double caloriesBurned = 0.0;
-            double caloriesBurnedWithIncline = 0.0;
-//            System.out.println("user: " + currentUser);
-//            System.out.println("caloriesSpeedMets: " + calorieSpeedMets);
-//            System.out.println(calorieSpeedMets.get(i));
-//            System.out.println(String.valueOf(this.currentUser.getWeight()));
-//            System.out.println(String.valueOf(localMillisecondsOfExerciseBetweenPoints.get(i)));
-            caloriesBurned = ((calorieSpeedMets.get(i) * this.currentUser.getWeight()) * ((double) (localMillisecondsOfExerciseBetweenPoints.get(i)) / 1000 / 60 / 60));
-            caloriesBurnedWithIncline = caloriesBurned + (caloriesBurned * ((localGradientsBetweenPoints.get(i) / 100) * 0.12));
-            calories += caloriesBurnedWithIncline;
-            //System.out.println((calories));
-        }
-
-        return calories;
-    }
-
-    /**
-     * Calculates the calories burned based on the user statistics, the heart rates, and the time interval the
-     * exercise is performed over.
-     *
-     * @return the total calories burned over the length of the activity, which is added to a running total.
-     */
-    Double calculateCaloriesFromUserStatsAndHeartRateAndTime() {
-        //NOTE JACK NEEDS TO ADD BIOLOGICAL SEX TO USER STATS for this to work.
-        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
-        ArrayList<Integer> localHeartRateList = new ArrayList<>(this.heartRateData.getHeartRateList());
-        ArrayList<Integer> averageHeartRateBetweenPoints = new ArrayList<Integer>();
-        User localCurrentUser = getCurrentUser();
-        double calories = 0.0;
-
-        for (int i = 0; i < (localHeartRateList.size() - 1); i++) {
-            averageHeartRateBetweenPoints.add((int)((((double)localHeartRateList.get(i)) +
-                    ((double)localHeartRateList.get(i + 1)) / 2)));
-        }
-        //Uncomment the three lines here once biological sex is added.
-        for (int i = 0; i < (localMillisecondsOfExerciseBetweenPoints.size()); i += 1) {
-            if (localCurrentUser.getSex() == Sex.MALE) {
-                calories += ((-55.0969 + (0.6309 * averageHeartRateBetweenPoints.get(i)) + (0.1988 * localCurrentUser.getWeight())
-                        + (0.2017 * localCurrentUser.getAge()))/4.184) * 60 * (localMillisecondsOfExerciseBetweenPoints.get(i) / 1000 / 60 / 60);
-            } else if (localCurrentUser.getSex() == Sex.FEMALE) {
-                calories += ((-20.4022 + (0.4472 * averageHeartRateBetweenPoints.get(i)) - (0.1263 * localCurrentUser.getWeight()) +
-                        (0.074 * localCurrentUser.getAge()))/4.184) * 60 * (localMillisecondsOfExerciseBetweenPoints.get(i) / 1000 / 60 / 60);
-            }
-            //System.out.println(calories + "This is the calories");
-
-        }
-
-        return calories;
-    }
-
-    /**
-     * Calculates the calories burned from the statistics previously calculated (such as scaled MET values). It
-     * calculates the calories burned between each pair of coordinates, and adds them to an ArrayList.
-     *
-     * @param metValues The MET values for a particular activity type, which match the speed divisions.
-     * @param speedDivisions The speed divisions are ranges of miles per hour. Each speed value will fall between two
-     *                       speed divisions, or above all of them, or below all of them.
-     * @return an ArrayList of the number of calories burned during the activity between each pair of points.
-     */
-    ArrayList<Double> calculateCaloriesBurnedBetweenPointsFromStats(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
-
-        ArrayList<Double> localMphSpeedsBetweenPoints = new ArrayList<>(this.getMphSpeedsBetweenPoints());
-        ArrayList<Double> localGradientsBetweenPoints = new ArrayList<>(this.getGradientsBetweenPoints());
-        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
-
-        ArrayList<Double> calorieSpeedMets = new ArrayList<>(calorieCalculationSetup(metValues, speedDivisions));
-        ArrayList<Double> calories = new ArrayList<Double>();
-
-        for(int i = 0; i<(calorieSpeedMets.size());i++) {
-            double caloriesBurned = ((calorieSpeedMets.get(i) * this.currentUser.getWeight()) * ((double) (localMillisecondsOfExerciseBetweenPoints.get(i)) / 1000 / 60 / 60));
-            double caloriesBurnedWithIncline = caloriesBurned + (caloriesBurned * ((localGradientsBetweenPoints.get(i) / 100) * 0.12));
-            calories.add(caloriesBurnedWithIncline);
-            //System.out.println(calories);
-        }
-
-        return calories;
-    }
+//    /**
+//     * This function sets up the calorie calculation for the walk, run, and bike data. It returns an ArrayList of
+//     * speed scaled MET values: MET values that are adjusted to specifically match the speed in the provided time
+//     * interval.
+//     *
+//     * Once the individual speed value that is being compared in the inner loop is greater than or
+//     * equal to the speed value divisions that match the met values, the met value corresponding to
+//     * that speed division will be associated with the value. Unless, there is a met value and speed
+//     * division above the current ones. If there are, the difference between the current MET value
+//     * and the next one is multiplied by the ratio of the current speed with the next speed division,
+//     * relative to the current speed. Essentially, this will generate a factor by which to multiply
+//     * MET value difference so that it is proportional to the difference between the current exact
+//     * speed, and the speed divisons before and after it. This difference is then added to the
+//     * resultant MET value that was below it.
+//     *
+//     * In short, the final calorie calculation is an approximation based on the accuracy of MET
+//     * speed value divisions provided. (ie the range of speed between two specific MET values.)
+//     *
+//     * @param metValues The MET values that correspond to the speed divisions.
+//     * @param speedDivisions The speed divisions are ranges of miles per hour. Each speed value will fall between two
+//     *                       speed divisions, or above all of them, or below all of them.
+//     * @return an ArrayList of the scaled MET values that match the MPH speeds between points.
+//     */
+//    ArrayList<Double> calorieCalculationSetup(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
+//
+//
+//        ArrayList<Double> mphSpeeds = this.getMphSpeedsBetweenPoints();
+//        ArrayList<Double> results = new ArrayList<Double>();
+//
+//        for (int speed = 0; speed < mphSpeeds.size(); speed += 1) {
+//            //for (int divs = 0; divs < speedDivisions.size() - 1; mets += 1) {
+//            int mets = 0;
+//            double resultantMet = 0.0;
+//            int divs = 0;
+//            double speedDivisionChooser = speedDivisions.get(divs);
+//            while (mphSpeeds.get(speed) > speedDivisionChooser) {   //Note to self: the condition on this while loop
+//                                                                    // prevents speed from being higher than chooser in
+//                                                                    // the calculation.
+//                mets += 1;
+//                if (((divs + 1) < speedDivisions.size()) && ((mets + 1) < metValues.size())) {
+//                    double thisSpeedRatioWithChangeInSpeedDivision = ((mphSpeeds.get(speed) - speedDivisions.get(divs)) /
+//                            (speedDivisions.get(divs + 1) - speedDivisions.get(divs)));
+//                    double changeInMet = metValues.get(mets + 1) - metValues.get(mets);
+//                    resultantMet = changeInMet * thisSpeedRatioWithChangeInSpeedDivision;
+//                    resultantMet += metValues.get(mets);
+//                } else if (((mets) < metValues.size())){
+//                    resultantMet = metValues.get(mets);
+//                } else {
+//                    resultantMet = metValues.get(metValues.size() - 1);
+//                }
+//                divs += 1;
+//                if (divs < speedDivisions.size()) {
+//                    speedDivisionChooser = speedDivisions.get(divs);
+//                } else {
+//                    break;  //The current resultantMet value will be used, because there are
+//                            //no further speedDivisions, so the loop would not be able to
+//                            //continue past this point.
+//                }
+//            }
+//            results.add(resultantMet);
+//        }
+//
+//        return results;
+//        //if (this.getHeartRateList() == 0);
+//    }
+//
+//    /**
+//     * Calculates the calories burned from the statistics previously calculated (such as scaled MET values). It
+//     * calculates the calories burned between each pair of coordinates, and adds them to a running total.
+//     *
+//     * @param metValues The MET values for a particular activity type, which match the speed divisions.
+//     * @param speedDivisions The speed divisions are ranges of miles per hour. Each speed value will fall between two
+//     *                       speed divisions, or above all of them, or below all of them.
+//     * @return the total number of calories burned during the activity.
+//     */
+//    Double calculateCaloriesFromStats(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
+//
+//        ArrayList<Double> localMphSpeedsBetweenPoints = new ArrayList<>(this.getMphSpeedsBetweenPoints());
+//        ArrayList<Double> localGradientsBetweenPoints = new ArrayList<>(this.getGradientsBetweenPoints());
+//        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
+//        ArrayList<Double> calorieSpeedMets = new ArrayList<>(calorieCalculationSetup(metValues, speedDivisions));
+//        double calories = new Double(0.0);
+//
+//        for (int i = 0; i < (calorieSpeedMets.size());i++) {
+//            double caloriesBurned = 0.0;
+//            double caloriesBurnedWithIncline = 0.0;
+////            System.out.println("user: " + currentUser);
+////            System.out.println("caloriesSpeedMets: " + calorieSpeedMets);
+////            System.out.println(calorieSpeedMets.get(i));
+////            System.out.println(String.valueOf(this.currentUser.getWeight()));
+////            System.out.println(String.valueOf(localMillisecondsOfExerciseBetweenPoints.get(i)));
+//            caloriesBurned = ((calorieSpeedMets.get(i) * this.currentUser.getWeight()) * ((double) (localMillisecondsOfExerciseBetweenPoints.get(i)) / 1000 / 60 / 60));
+//            caloriesBurnedWithIncline = caloriesBurned + (caloriesBurned * ((localGradientsBetweenPoints.get(i) / 100) * 0.12));
+//            calories += caloriesBurnedWithIncline;
+//            //System.out.println((calories));
+//        }
+//
+//        return calories;
+//    }
+//
+//    /**
+//     * Calculates the calories burned based on the user statistics, the heart rates, and the time interval the
+//     * exercise is performed over.
+//     *
+//     * @return the total calories burned over the length of the activity, which is added to a running total.
+//     */
+//    Double calculateCaloriesFromUserStatsAndHeartRateAndTime() {
+//        //NOTE JACK NEEDS TO ADD BIOLOGICAL SEX TO USER STATS for this to work.
+//        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
+//        ArrayList<Integer> localHeartRateList = new ArrayList<>(this.heartRateData.getHeartRateList());
+//        ArrayList<Integer> averageHeartRateBetweenPoints = new ArrayList<Integer>();
+//        User localCurrentUser = getCurrentUser();
+//        double calories = 0.0;
+//
+//        for (int i = 0; i < (localHeartRateList.size() - 1); i++) {
+//            averageHeartRateBetweenPoints.add((int)((((double)localHeartRateList.get(i)) +
+//                    ((double)localHeartRateList.get(i + 1)) / 2)));
+//        }
+//        //Uncomment the three lines here once biological sex is added.
+//        for (int i = 0; i < (localMillisecondsOfExerciseBetweenPoints.size()); i += 1) {
+//            if (localCurrentUser.getSex() == Sex.MALE) {
+//                calories += ((-55.0969 + (0.6309 * averageHeartRateBetweenPoints.get(i)) + (0.1988 * localCurrentUser.getWeight())
+//                        + (0.2017 * localCurrentUser.getAge()))/4.184) * 60 * (localMillisecondsOfExerciseBetweenPoints.get(i) / 1000 / 60 / 60);
+//            } else if (localCurrentUser.getSex() == Sex.FEMALE) {
+//                calories += ((-20.4022 + (0.4472 * averageHeartRateBetweenPoints.get(i)) - (0.1263 * localCurrentUser.getWeight()) +
+//                        (0.074 * localCurrentUser.getAge()))/4.184) * 60 * (localMillisecondsOfExerciseBetweenPoints.get(i) / 1000 / 60 / 60);
+//            }
+//            //System.out.println(calories + "This is the calories");
+//
+//        }
+//
+//        return calories;
+//    }
+//
+//    /**
+//     * Calculates the calories burned from the statistics previously calculated (such as scaled MET values). It
+//     * calculates the calories burned between each pair of coordinates, and adds them to an ArrayList.
+//     *
+//     * @param metValues The MET values for a particular activity type, which match the speed divisions.
+//     * @param speedDivisions The speed divisions are ranges of miles per hour. Each speed value will fall between two
+//     *                       speed divisions, or above all of them, or below all of them.
+//     * @return an ArrayList of the number of calories burned during the activity between each pair of points.
+//     */
+//    ArrayList<Double> calculateCaloriesBurnedBetweenPointsFromStats(ArrayList<Double> metValues, ArrayList<Double> speedDivisions) {
+//
+//        ArrayList<Double> localMphSpeedsBetweenPoints = new ArrayList<>(this.getMphSpeedsBetweenPoints());
+//        ArrayList<Double> localGradientsBetweenPoints = new ArrayList<>(this.getGradientsBetweenPoints());
+//        ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
+//
+//        ArrayList<Double> calorieSpeedMets = new ArrayList<>(calorieCalculationSetup(metValues, speedDivisions));
+//        ArrayList<Double> calories = new ArrayList<Double>();
+//
+//        for(int i = 0; i<(calorieSpeedMets.size());i++) {
+//            double caloriesBurned = ((calorieSpeedMets.get(i) * this.currentUser.getWeight()) * ((double) (localMillisecondsOfExerciseBetweenPoints.get(i)) / 1000 / 60 / 60));
+//            double caloriesBurnedWithIncline = caloriesBurned + (caloriesBurned * ((localGradientsBetweenPoints.get(i) / 100) * 0.12));
+//            calories.add(caloriesBurnedWithIncline);
+//            //System.out.println(calories);
+//        }
+//
+//        return calories;
+//    }
 
     /**
      * Calculates the calories burned based on the user statistics, the heart rates, and the time interval the
@@ -716,7 +716,7 @@ public abstract class Data {
      * @return an ArrayList containing the total calories burned between each pair of points in the activity.
      */
     ArrayList<Double> calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime() {
-        //NOTE JACK NEEDS TO ADD BIOLOGICAL SEX TO USER STATS for this to work.
+
         ArrayList<Long> localMillisecondsOfExerciseBetweenPoints = new ArrayList<>(this.getMillisecondsOfExerciseBetweenPoints());
         ArrayList<Integer> localHeartRateList = new ArrayList<>(this.heartRateData.getHeartRateList());
         ArrayList<Integer> averageHeartRateBetweenPoints = new ArrayList<Integer>();
@@ -744,6 +744,7 @@ public abstract class Data {
     public boolean getIsGraphable() {
         return isGraphable;
     }
+
     public void setIsGraphable(boolean isGraphabe) {
         this.isGraphable = isGraphable;
     }
