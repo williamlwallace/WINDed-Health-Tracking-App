@@ -20,6 +20,12 @@ public abstract class Goal {
     private Double progress;
     private Double current;
 
+    /**
+     * Creates a abstract goal for all 3 different types and is called when you create either of the 3 different types of goals
+     * @param user the user in the current application
+     * @param description the description of the goal
+     * @param goalType the type of goal that the use ris creating
+     */
     public Goal(User user, String description, GoalType goalType) {
         this.user = user;
         this.description = description;
@@ -28,28 +34,45 @@ public abstract class Goal {
 
     }
 
+    /**
+     * @return gets the target valuye for the goal
+     */
     public abstract Double getTarget();
 
+    /**
+     * @param target sets the target for the goal for any goal type
+     */
     public abstract void setTarget(Double target);
 
+    /**
+     * @return the current progress of the users goal
+     */
     public Double getProgress() {
         return progress;
     }
 
+    /**
+     * @param progress sets the prigress of the current user goal
+     */
     public void setProgress(Double progress) {
         this.progress = progress;
     }
 
+    /**
+     * @return the current value that the user is at for their goal
+     */
     public Double getCurrent() {
         return current;
     }
 
+    /**
+     * @param current sets the current users current status for their goal
+     */
     public void setCurrent(Double current) {
         this.current = current;
     }
 
     /**
-     *
      * @return the description parameter
      */
     public String getDescription() {
@@ -57,7 +80,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @param description a new String value for description parameter
      */
     public void setDescription(String description) {
@@ -65,7 +87,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @return the type of the Goal object
      */
     public GoalType getGoalType() {
@@ -73,7 +94,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @param goalType a new GoalType parameter
      */
     public void setGoalType(GoalType goalType) {
@@ -81,7 +101,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @return the user parameter
      */
     public User getUser() {
@@ -89,7 +108,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @param user a new user object
      */
     public void setUser(User user) {
@@ -97,7 +115,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @return a boolean value representing if the Goal is now complete
      */
     public boolean getIsCompleted() {
@@ -106,7 +123,6 @@ public abstract class Goal {
 
 
     /**
-     *
      * @param isCompleted new boolean value to assign to isCompleted parameter
      */
     public void setIsCompleted(boolean isCompleted) {
@@ -114,7 +130,6 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @return the goal startDate
      */
     public Date getStartDate() {
@@ -122,31 +137,54 @@ public abstract class Goal {
     }
 
     /**
-     *
      * @param startDate a new Date object for startDate parameter
      */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * @return gets the target date for the goal the user is trying to achieve
+     */
     public LocalDateTime getTargetDate() {
         return targetDate;
     }
 
+    /**
+     * @param targetDate sets the target date for the goal
+     */
     public void setTargetDate(LocalDateTime targetDate) {
         this.targetDate = targetDate;
     }
 
+    /**
+     * Calls the below goals functions to check if the goal is completed or not
+     */
     public abstract void checkIsCompleted();
 
+    /**
+     * Calls the below goals functions to calculate the progress for the goal
+     */
     public abstract void calculateProgress();
 
+    /**
+     * Calls the below goals functions to calculate the current progress of the goal for the user
+     */
     public abstract void calculateCurrent();
 
+    /**
+     * Calls the below goals functions to calculate the target for this goal
+     */
     public abstract void calculateTarget();
 
+    /**
+     * Calls the below goals functions get the data type for the type of goal
+     */
     public abstract DataType getDataType();
 
+    /**
+     * Calls the below goals functions to set the data type for type of goal
+     */
     public abstract void setDataType(DataType dataType);
 
 }

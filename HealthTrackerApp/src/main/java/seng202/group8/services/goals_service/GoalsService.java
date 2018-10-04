@@ -34,8 +34,10 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     private ArrayList<Goal> previousTimesPerformedGoals;
 
 
-
-
+    /**
+     * Creates a goals service for the current user
+     * @param user the user that is currently using the application
+     */
     public GoalsService(User user) {
         super(user);
 
@@ -109,6 +111,10 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
 
+    /**
+     * Gets all the current goals for the user in 1 big list
+     * @return the a list of all of the current goals
+     */
     public ArrayList<Goal> getAllCurrentGoals() {
         ArrayList<Goal> goals = new ArrayList<>();
         goals.addAll(this.currentActivityGoals);
@@ -117,6 +123,11 @@ public class GoalsService extends Service implements ActivityListCollectionObser
         return goals;
     }
 
+    /**
+     * Gets all the current goals where their target is on a particular date
+     * @param selectedDate the date at which to see if there are any goals on that given day
+     * @return a list of goals targeted for that day
+     */
     public ArrayList<Goal> getAllCurrentGoalsExpiringOnGivenDate(LocalDate selectedDate) {
         ArrayList<Goal> goals = getAllCurrentGoals();
         ArrayList<Goal> onDateGoals = new ArrayList<>();
@@ -131,7 +142,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @return currentActivityGoals parameter
      */
     public ArrayList<Goal> getCurrentActivityGoals() {
@@ -139,7 +149,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @param currentActivityGoals a new ArrayList<Goal> parameter
      */
     public void setCurrentActivityGoals(ArrayList<Goal> currentActivityGoals) {
@@ -147,7 +156,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @return previousActivityGoals parameter
      */
     public ArrayList<Goal> getPreviousActivityGoals() {
@@ -155,7 +163,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @param previousActivityGoals a new ArrayList<Goal> parameter
      */
     public void setPreviousActivityGoals(ArrayList<Goal> previousActivityGoals) {
@@ -163,7 +170,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @return currentWeightLossGoals parameter
      */
     public ArrayList<Goal> getCurrentWeightLossGoals() {
@@ -171,7 +177,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @param currentWeightLossGoals a new ArrayList<Goal> parameter
      */
     public void setCurrentWeightLossGoals(ArrayList<Goal> currentWeightLossGoals) {
@@ -179,7 +184,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @return previousWeightLossGoals parameter
      */
     public ArrayList<Goal> getPreviousWeightLossGoals() {
@@ -187,7 +191,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @param previousWeightLossGoals a new ArrayList<Goal> parameter
      */
     public void setPreviousWeightLossGoals(ArrayList<Goal> previousWeightLossGoals) {
@@ -195,7 +198,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @return currentTimesPerformedGoals parameter
      */
     public ArrayList<Goal> getCurrentTimesPerformedGoals() {
@@ -203,7 +205,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @param currentTimesPerformedGoals a new ArrayList<Goal> parameter
      */
     public void setCurrentTimesPerformedGoals(ArrayList<Goal> currentTimesPerformedGoals) {
@@ -211,7 +212,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @return previousTimesPerformeGoals parameter
      */
     public ArrayList<Goal> getPreviousTimesPerformedGoals() {
@@ -219,7 +219,6 @@ public class GoalsService extends Service implements ActivityListCollectionObser
     }
 
     /**
-     *
      * @param previousTimesPerformedGoals a new ArrayList<Goal> parameter
      */
     public void setPreviousTimesPerformedGoals(ArrayList<Goal> previousTimesPerformedGoals) {

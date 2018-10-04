@@ -189,7 +189,7 @@ public class GraphController {
         yAxis.setLowerBound(xyData.getYAxis().get(0));
 
         xAxis.setLabel("Time " + (xyData.getXAxisScale()));
-        yAxis.setLabel("Calories Burned (Calories)");
+        yAxis.setLabel("Calories Burned (calories)");
         series.setName("Calories Burned Over Time");
         graph.setTitle("Calories Burned Visualization");
 
@@ -270,7 +270,7 @@ public class GraphController {
         graph2.getXAxis().setTickLabelsVisible(true);
 
         xAxis2.setLabel("Time " + (xyData.getXAxisScale()));
-        yAxis2.setLabel("BMI Value");
+        yAxis2.setLabel("BMI Value (kg/m²)");
         series.setName("BMI Over Time");
         graph2.setTitle("BMI Visualization");
 

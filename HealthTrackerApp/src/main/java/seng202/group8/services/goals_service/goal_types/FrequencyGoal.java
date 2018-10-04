@@ -48,7 +48,6 @@ public class FrequencyGoal extends Goal {
     }
 
     /**
-     *
      * @return the timesToPerform parameter
      */
     public Double getTarget() {
@@ -56,41 +55,60 @@ public class FrequencyGoal extends Goal {
     }
 
     /**
-     *
      * @param timesToPerformActivity a new Integer value for timesToPerformActivity parameter
      */
     public void setTarget(Double timesToPerformActivity) {
         this.timesToPerformActivity = timesToPerformActivity.intValue();
     }
 
+    /**
+     * @return the amount of times the user has currently performed a specific type of activity
+     */
     public Integer getTimesCurrentlyPerformedActivity() {
         return timesCurrentlyPerformedActivity;
     }
 
+    /**
+     * @param timesCurrentlyPerformedActivity sets the amount of times the user has done a specific activity
+     */
     public void setTimesCurrentlyPerformedActivity(Integer timesCurrentlyPerformedActivity) {
         this.timesCurrentlyPerformedActivity = timesCurrentlyPerformedActivity;
     }
 
+    /**
+     * @return the data type that the user wants to do a frequency goal on
+     */
     public DataType getDataType() {
         return dataType;
     }
 
+    /**
+     * @param dataType sets the data type for the user to use their frequency goal for
+     */
     public void setDataType(DataType dataType) {
         this.dataType = dataType;
     }
 
+    /**
+     * Calculates the progress of the user and sets the progress as a percentage out of 1.0
+     */
     public void calculateProgress() {
         ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
         double test = ((double) timesToPerformActivity - sameTypeData.size()) / timesToPerformActivity;
-        System.out.println("TEST: " + test);
-        System.out.println("1 - TEST: "+ (1 - test));
         setProgress(1.0 - test);
     }
 
+    /**
+     * Calculates the targets and sets the target with calls using the goals service abstract calls
+     */
     public void calculateTarget() {
         setTarget((double) timesToPerformActivity);
     }
 
+    /**
+     * Calculates the current progress of the user and sets the current as the number of data type activities they have
+     * done from their goal creation date till now
+     */
     public void calculateCurrent() {
         ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
         setCurrent((double) sameTypeData.size());

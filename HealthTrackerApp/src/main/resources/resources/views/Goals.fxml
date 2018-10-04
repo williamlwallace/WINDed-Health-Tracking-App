@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -14,7 +20,7 @@
 
 <!--<?import de.jensd.fx.glyphs.fontawesome.*?>-->
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.GoalsDisplayerController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.GoalsDisplayerController">
 <center>
       <VBox alignment="TOP_CENTER" prefHeight="620.0" prefWidth="1110.0" spacing="10.0" style="-fx-background-color: #e1e1e1;" BorderPane.alignment="CENTER">
          <children>
@@ -32,7 +38,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="goalList" prefHeight="485.0" prefWidth="550.0" />
+                        <ListView fx:id="goalList" minWidth="-Infinity" prefHeight="485.0" prefWidth="540.0" stylesheets="@stats.css" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="454.0" prefWidth="986.0" style="-fx-background-color: white;">
@@ -47,7 +53,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="goalListPrevious" prefHeight="485.0" prefWidth="550.0" />
+                        <ListView fx:id="goalListPrevious" minWidth="-Infinity" prefHeight="485.0" prefWidth="540.0" stylesheets="@stats.css" />
                      </children>
                   </VBox>
                </children>
