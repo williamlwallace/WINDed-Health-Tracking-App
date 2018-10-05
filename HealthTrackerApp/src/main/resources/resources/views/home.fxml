@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <?import javafx.scene.web.WebView?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" style="-fx-background-color: #e1e1e1;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
    <center>
       <VBox prefHeight="630.0" prefWidth="404.0" spacing="10.0" style="-fx-background-color: #e1e1e1;" BorderPane.alignment="CENTER">
@@ -178,7 +178,7 @@
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
                         </Label>
-                        <WebView fx:id="homeWebView" > </WebView>
+                        <WebView fx:id="homeWebView"> </WebView>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -201,7 +201,7 @@
                                  <image>
                                     <Image url="@images/light_bmi.png" />
                                  </image></ImageView>
-                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="123.0" prefWidth="195.0" text="22.6 Normal">
+                              <Label fx:id="bmiText" alignment="CENTER" prefHeight="78.0" prefWidth="343.0" text="22.6 Normal">
                                  <font>
                                     <Font name="Segoe UI" size="22.0" />
                                  </font>
@@ -258,7 +258,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="242.0" prefWidth="402.0" spacing="10.0">
                                  <children>
-                                    <Label fx:id="healthText" alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="359.0" text="You have no current health risks">
+                                    <Label fx:id="healthText" alignment="CENTER" contentDisplay="CENTER" prefHeight="99.0" prefWidth="359.0" text="You have no current health risks">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>

@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" style="-fx-background-color: #e1e1e1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" style="-fx-background-color: #e1e1e1;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.activity_list_collection_displayer.ActivitiesCollectionController">
    <center>
       <StackPane fx:id="dialogStackPane" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1;" BorderPane.alignment="CENTER">
          <children>
@@ -37,7 +37,7 @@
                <children>
                   <VBox prefWidth="100.0">
                      <children>
-                        <Text fx:id="insightsTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" wrappingWidth="208.40234375">
+                        <Text fx:id="insightsTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" wrappingWidth="209.40234375">
                            <font>
                               <Font size="20.0" />
                            </font>
