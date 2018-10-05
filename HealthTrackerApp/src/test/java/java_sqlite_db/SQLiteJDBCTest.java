@@ -1,4 +1,5 @@
 package java_sqlite_db;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -151,9 +152,11 @@ public class SQLiteJDBCTest {
         database.saveUser(testUser, 1);
         ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
         database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        database.saveUser(testUser, 2);
         database.deleteUser(1);
         ArrayList<User> userList = database.retrieveAllUsers();
-        assertEquals(0, userList.size());
+        assertEquals(1, userList.size());
     }
 
     @Test
@@ -210,6 +213,60 @@ public class SQLiteJDBCTest {
             equal = false;
         }
         assertTrue(equal);
+    }
+
+    @Test
+    public void testUpdateActivity() {
+        database.saveUser(testUser, 1);
+        ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        ActivityList newList = new ActivityList("Modified List");
+        Date date = new Date();
+        date.setTime(1000);
+        newList.setCreationDate(date);
+        database.insertActivityList(newList.getTitle(), newList.getCreationDate(),1);
+        database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
+
+        testUser.getUserActivities().getMostCurrentActivity().setTitle("Modified Title");
+        testUser.getUserActivities().getMostCurrentActivity().setDataType(DataType.HIKE);
+
+        database.updateActivity(testUser.getUserActivities().getMostCurrentActivity(),newList);
+
+        User retrievedUser = database.retrieveUser(1);
+        Boolean equal = true;
+        Data retrievedActivity = retrievedUser.getUserActivities().getActivityListCollection().get(1).getActivity(0);
+        if (!retrievedActivity.getTitle().equals("Modified Title") || !retrievedActivity.getDataType().equals(DataType.HIKE)) {
+            equal = false;
+        }
+        assertTrue(equal);
+    }
+
+    @Test
+    public void testDeleteActivity() {
+        database.saveUser(testUser, 1);
+        ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
+
+        Data toBeDeleteddata = testUser.getUserActivities().getMostCurrentActivity();
+        database.deleteActivity(toBeDeleteddata.getDataId());
+        User retrievedUser = database.retrieveUser(1);
+
+        assertTrue(!toBeDeleteddata.equals(retrievedUser.getUserActivities().getMostCurrentActivity().getDataId()));
+    }
+
+    @Test
+    public void testDeleteActivityList() {
+        database.saveUser(testUser, 1);
+        ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
+
+        database.deleteActivityList(insertedList.getTitle(), insertedList.getCreationDate());
+
+        User retrievedUser = database.retrieveUser(1);
+
+        assertTrue(retrievedUser.getUserActivities().getActivityListCollection().size() == 0);
     }
 
 
