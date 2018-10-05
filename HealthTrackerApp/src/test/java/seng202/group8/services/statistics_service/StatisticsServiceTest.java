@@ -84,7 +84,7 @@ public class StatisticsServiceTest {
     @Test
     public void testCaloriesBurnedTotal() {
         Double lost = statsService.getCaloriesBurnedTotal();
-        Double expected = 1699.0970363288718;
+        Double expected = 12381.567284496496;
         assertEquals(expected, lost);
     }
 

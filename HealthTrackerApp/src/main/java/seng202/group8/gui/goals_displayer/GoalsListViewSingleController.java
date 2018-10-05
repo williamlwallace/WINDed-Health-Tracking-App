@@ -101,6 +101,7 @@ public class GoalsListViewSingleController {
         }
         title.setText(currentGoal.getDescription());
         currentGoal.calculateProgress();
+        System.out.println(currentGoal.getProgress());
         progress.setProgress(currentGoal.getProgress());
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
