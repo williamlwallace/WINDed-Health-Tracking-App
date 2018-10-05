@@ -241,5 +241,33 @@ public class SQLiteJDBCTest {
         assertTrue(equal);
     }
 
+    @Test
+    public void testDeleteActivity() {
+        database.saveUser(testUser, 1);
+        ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
+
+        Data toBeDeleteddata = testUser.getUserActivities().getMostCurrentActivity();
+        database.deleteActivity(toBeDeleteddata.getDataId());
+        User retrievedUser = database.retrieveUser(1);
+
+        assertTrue(!toBeDeleteddata.equals(retrievedUser.getUserActivities().getMostCurrentActivity().getDataId()));
+    }
+
+    @Test
+    public void testDeleteActivityList() {
+        database.saveUser(testUser, 1);
+        ActivityList insertedList = testUser.getUserActivities().getActivityListCollection().get(0);
+        database.insertActivityList(insertedList.getTitle(), insertedList.getCreationDate(), 1);
+        database.updateWithListOfData(dataListToBeInserted, insertedList.getTitle(), insertedList.getCreationDate(), 1);
+
+        database.deleteActivityList(insertedList.getTitle(), insertedList.getCreationDate());
+
+        User retrievedUser = database.retrieveUser(1);
+
+        assertTrue(retrievedUser.getUserActivities().getActivityListCollection().size() == 0);
+    }
+
 
 }
