@@ -152,7 +152,6 @@ public class SQLiteJDBC {
             if (results.next()) {
                 //System.out.println("User Tuple already exists");
             } else {
-                // Print out the result of the insert statement, 0 means nothing has been inserted
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -162,18 +161,6 @@ public class SQLiteJDBC {
     }
 
 
-    public ResultSet selectAllUsers(Connection connection) {
-        assert null != connection;
-        //System.out.println("Get all tuples");
-        ResultSet resultSet = null;
-        try {
-        Statement statement = connection.createStatement();
-        resultSet = statement.executeQuery("SELECT * FROM user");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return resultSet;
-    }
 
     /**
      * Perform a SQL select statement to get information form the user table
@@ -200,9 +187,8 @@ public class SQLiteJDBC {
     public void deleteUser(Integer userID) {
         String sql = "DELETE FROM User WHERE user_id=?";
         try {
-            System.out.println("Deleting User with id = " + userID);
             Connection connection = connect();
-            //connection.setAutoCommit(false);
+            connection.setAutoCommit(false);
 
             deleteUserRecords(connection, userID);
 
@@ -210,7 +196,7 @@ public class SQLiteJDBC {
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
 
-            //connection.commit();
+            connection.commit();
             connection.close();
 
         } catch (SQLException e) {
@@ -231,7 +217,6 @@ public class SQLiteJDBC {
 
             while (resultSet.next()) {
                 Integer dataId = resultSet.getInt("data_id");
-                System.out.println("Delete data Id:  " + dataId);
 
                 sql = "DELETE FROM CoOrdinate WHERE data_id=?";
                 preparedStatement = connection.prepareStatement(sql);
@@ -412,7 +397,7 @@ public class SQLiteJDBC {
             findStatement.setString(2, datetime);
             ResultSet results = findStatement.executeQuery();
             if (results.next()) {
-                System.out.println("Activity_List Tuple already exists");
+                //System.out.println("Activity_List Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
                 preparedStatement.executeUpdate();
@@ -443,7 +428,7 @@ public class SQLiteJDBC {
             findStatement.setInt(1, userId);
             ResultSet results = findStatement.executeQuery();
             if (results.next()) {
-                System.out.println("Activity_Collection Tuple already exists");
+                //System.out.println("Activity_Collection Tuple already exists");
             } else {
                 // Print out the result of the insert statement, 0 means nothing has been inserted
                 preparedStatement.executeUpdate();
@@ -610,7 +595,7 @@ public class SQLiteJDBC {
                 findStatement.setString(2, dateTime.toString());
                 ResultSet results = findStatement.executeQuery();
                 if (results.next()) {
-                    System.out.println("WeightRecord Tuple already exists");
+                    //System.out.println("WeightRecord Tuple already exists");
                 } else {
                     // Print out the result of the insert statement, 0 means nothing has been inserted
                     preparedStatement.executeUpdate();
@@ -641,7 +626,7 @@ public class SQLiteJDBC {
                 findStatement.setString(2, dateTime.toString());
                 ResultSet results = findStatement.executeQuery();
                 if (results.next()) {
-                    System.out.println("BMIRecord Tuple already exists");
+                    //System.out.println("BMIRecord Tuple already exists");
                 } else {
                     // Print out the result of the insert statement, 0 means nothing has been inserted
                     preparedStatement.executeUpdate();
@@ -761,7 +746,6 @@ public class SQLiteJDBC {
         activityGoalsList.addAll(user.getGoalsService().getPreviousTimesPerformedGoals());
         activityGoalsList.addAll(user.getGoalsService().getPreviousWeightLossGoals());
         for (Goal goal: activityGoalsList) {
-            System.out.println("Title: " + goal.getDescription() + "     Type: " + goal.getGoalType().toString());
             if (goal.getGoalType().toString().equals("WeightLossGoal")) { ;
                 WeightLossGoal weightLossGoal = (WeightLossGoal) goal;
                 insertWeightGoal(connection, weightLossGoal, userId);
@@ -772,7 +756,7 @@ public class SQLiteJDBC {
                 FrequencyGoal frequencyGoal = (FrequencyGoal) goal;
                 insertFrequencyGoal(connection, frequencyGoal, userId);
             } else {
-                System.out.println("No matching goal type");
+                System.out.println("Goal not saved, no matching goal type");
             }
         }
 
@@ -810,7 +794,6 @@ public class SQLiteJDBC {
             PreparedStatement activityStatement = connection.prepareStatement(activitysql);
             activityStatement.setInt(1, userId);
             ResultSet resultSet = activityStatement.executeQuery();
-            System.out.println("Activity Goal Retrieval");
             while(resultSet.next()) {
                 ActivityGoal activityGoal = new ActivityGoal(user, resultSet.getString("description"),
                         GoalType.ActivityGoal,
@@ -825,7 +808,6 @@ public class SQLiteJDBC {
             PreparedStatement weightStatement = connection.prepareStatement(weightsql);
             weightStatement.setInt(1, userId);
             resultSet = weightStatement.executeQuery();
-            System.out.println("Weight goal retrieval");
             while(resultSet.next()) {
                 WeightLossGoal weightLossGoal = new WeightLossGoal(user, resultSet.getString("description"),
                         GoalType.WeightLossGoal,
@@ -839,7 +821,6 @@ public class SQLiteJDBC {
             PreparedStatement frequencyStatement = connection.prepareStatement(frequencysql);
             frequencyStatement.setInt(1, userId);
             resultSet = frequencyStatement.executeQuery();
-            System.out.println("Frequency goal retrieval");
             while(resultSet.next()) {
                 FrequencyGoal frequencyGoal = new FrequencyGoal(user, resultSet.getString("description"),
                         GoalType.TimePerformedGoal,
@@ -871,7 +852,6 @@ public class SQLiteJDBC {
         assert null != connection && null != userId;
         String collectionTitle = null;
         ResultSet resultSet = null;
-        System.out.println("Get Users ActivityListCollection with id: " + userId );
         String find = "SELECT title FROM Activity_Collection WHERE user_id=?";
 
         try {
@@ -902,7 +882,6 @@ public class SQLiteJDBC {
         String title = null;
         String date = null;
 
-        System.out.println("Get Users Activities with id: " + userId );
         String find = "SELECT title, date FROM Activity_List WHERE user_id=?";
 
         try {
@@ -916,7 +895,6 @@ public class SQLiteJDBC {
                 activityList.setCreationDate(getDateFromString(date));
                 ArrayList<Data> dataArrayList = getActivityListData(connection, title, date, user);
                 for (Data d: dataArrayList) {
-                    System.out.println(d.getTitle());
                     activityList.insertActivity(d);
                 }
                 listOfActivities.add(activityList);
@@ -1146,7 +1124,6 @@ public class SQLiteJDBC {
         }
     }
 
-    //TODO implement updateActivity for edits
 
     public void updateActivity(Data data, ActivityList newActivityList) {
         String update = "UPDATE data SET "
@@ -1202,11 +1179,9 @@ public class SQLiteJDBC {
         }
     }
 
-    //TODO: are you sure this works properly?
     public void deleteActivityList(String parentActivityListTitle, Date parentActivityListDate) {
         String parentActivityListDateString = getStringFromLocalDateTime(convertToLocalDateTimeViaInstant(parentActivityListDate));
         String find = "SELECT data_id FROM Data WHERE title=? AND date=?";
-        System.out.println("Deletion from activity List: " + parentActivityListTitle +  "   " + parentActivityListDate);
         try {
             Connection connection = connect();
             PreparedStatement preparedStatementFind = connection.prepareStatement(find);
@@ -1215,7 +1190,6 @@ public class SQLiteJDBC {
             ResultSet resultSet = preparedStatementFind.executeQuery();
             while (resultSet.next()) {
                 Integer dataID = resultSet.getInt("data_id");
-                System.out.println("Data deleted" +  "DataID:" + dataID);
 
                 String sqlCoordinate = "DELETE FROM CoOrdinate WHERE data_id=?";
                 PreparedStatement preparedStatementCoordinate = connection.prepareStatement(sqlCoordinate);
@@ -1318,23 +1292,27 @@ public class SQLiteJDBC {
      * @param userId the id of the user to be stored which uniquely identifies them
      */
     public void saveUser(User user, Integer userId) {
-        Connection conn = connect();
-        insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
-        updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
-
-        System.out.println("Saving......");
-
-        ActivityListCollection activityListCollection = user.getUserActivities();
-
-        insertActivityCollection(conn, userId, activityListCollection.getTitle());
-        updateActivityListCollection(conn, userId, activityListCollection.getTitle());
-        insertWeightRecords(conn, user.getUserStats().getUserWeightRecords(), userId);
-        insertBMIRecords(conn, user.getUserStats().getUserBMITypeRecords(), userId);
-
-        deleteGoals(conn, userId);
-        insertGoals(conn, user, userId); //TODO uncomment when goals is in GUI
-
         try {
+            Connection conn = connect();
+            conn.setAutoCommit(false);
+            insertUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
+            updateUser(conn, userId, user.getName(), user.getWeight(), user.getHeight(), user.getAge(), user.getSex().toString());
+
+
+            ActivityListCollection activityListCollection = user.getUserActivities();
+
+            insertActivityCollection(conn, userId, activityListCollection.getTitle());
+            updateActivityListCollection(conn, userId, activityListCollection.getTitle());
+            insertWeightRecords(conn, user.getUserStats().getUserWeightRecords(), userId);
+            insertBMIRecords(conn, user.getUserStats().getUserBMITypeRecords(), userId);
+
+            deleteGoals(conn, userId);
+            insertGoals(conn, user, userId);
+
+            conn.commit();
+            conn.close();
+
+
             if (conn != null) {
                 conn.close();
             }
@@ -1492,7 +1470,7 @@ public class SQLiteJDBC {
                 userStats.setUserBMITypeRecords(getBMIRecords(conn, userId));
                 user.setUserStats(userStats);
 
-                getGoals(conn, user, userId); //TODO uncomment this call when goals finished in database
+                getGoals(conn, user, userId);
 
                 to_return.add(user);
             }

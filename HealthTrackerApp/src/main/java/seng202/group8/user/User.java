@@ -44,7 +44,6 @@ public class User {
     public User(String name, Integer age, Double weight, Double height, Sex sex) {
         SQLiteJDBC database = new SQLiteJDBC();
         this.userID = database.getUserID();
-        System.out.println("Assigning user id: " + userID + "   Name :" + name);
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -251,7 +250,6 @@ public class User {
      * @param newWeight the new weight of the user (kg)
      */
     public void updateWeight(Double newWeight) {
-        System.out.println("Updating weight: " + newWeight);
         setWeight(newWeight);
         userStats.addUserWeightRecords(newWeight);
         updateBMI(calculateBMI());

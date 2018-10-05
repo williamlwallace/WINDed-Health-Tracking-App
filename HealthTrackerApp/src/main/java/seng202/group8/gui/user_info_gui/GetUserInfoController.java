@@ -183,7 +183,6 @@ public class GetUserInfoController {
         GUIController guiController = loader.getController();
         guiController.setUser(user);
 
-        System.out.println("Saving user: " + user.getUserID());
         database.saveUser(user, user.getUserID());
 
         guiController.setStage(stage);
