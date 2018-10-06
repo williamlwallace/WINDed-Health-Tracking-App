@@ -184,49 +184,90 @@ public class ModifyDataValueController {
     }
 
 
-
-
+    /**
+     * Closes the Stage object this controller manages
+     */
     public void exitButtonListener() {
         stage.close();
     }
 
-
+    /**
+     * @return an int value representing the index of the activity list where the Data object selected is stored
+     * when clicking on the modify button in activity_list_collection.fxml.
+     */
     public int getActivityListIndex() {
         return activityListIndex;
     }
 
+    /**
+     *
+     * @param activityListIndex a new int value for the activityListIndex method
+     */
     public void setActivityListIndex(int activityListIndex) {
         this.activityListIndex = activityListIndex;
     }
 
+    /**
+     *
+     * @return the index of the selected Data value within the activity list where it is stored.
+     */
     public int getDataIndex() {
         return dataIndex;
     }
 
+    /**
+     *
+     * @param dataIndex a new int value for the dataIndex property
+     */
     public void setDataIndex(int dataIndex) {
         this.dataIndex = dataIndex;
     }
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user a new User object for the user property
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return the stage property
+     */
     public Stage getStage() {
         return stage;
     }
 
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     *
+     * @return the parent controller (from ActivityListCollectionController) activitiesCollectionController property
+     */
     public ActivitiesCollectionController getActivitiesCollectionController() {
         return activitiesCollectionController;
     }
 
+    /**
+     *
+     * @param activitiesCollectionController a new ActivitiesCollectionController object
+     * for the activitiesCollectionController property
+     */
     public void setActivitiesCollectionController(ActivitiesCollectionController activitiesCollectionController) {
         this.activitiesCollectionController = activitiesCollectionController;
     }

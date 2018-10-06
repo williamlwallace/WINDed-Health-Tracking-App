@@ -34,6 +34,7 @@ import java.util.Arrays;
  * and then populate it with the Data value created (user choice)
  */
 public class NewDataDialogController {
+
     private boolean isAddingActivityList;
     private User user;
     private int activityListIndexToAppendTo;
@@ -154,11 +155,8 @@ public class NewDataDialogController {
 
             ArrayList<CoordinateData> coordinateData = new ArrayList<>();
             CoordinateData coordinate1 = new CoordinateData(-1, -1, -1);
-//            CoordinateData coordinate2 = new CoordinateData(-1, -1, -((Double.valueOf(distanceCoveredTextField.getText() + 1) / 10.0)));
             CoordinateData coordinate2 = new CoordinateData(-1, -1, -(Double.valueOf(distanceCoveredTextField.getText()) + 1));
 
-
-            System.out.println(coordinate2.getAltitude());
 
             coordinateData.add(coordinate1);
             coordinateData.add(coordinate2);
@@ -178,7 +176,7 @@ public class NewDataDialogController {
 
 
 
-
+            //Controlling if there is a need to create a new activity list
             if (newActivityListToggle.isSelected()) {
                 ActivityList activityList = new ActivityList(newActivityListName.getText());
                 activityList.insertActivity(dataVal);
@@ -186,7 +184,6 @@ public class NewDataDialogController {
                 database.insertActivityList(activityList.getTitle(), activityList.getCreationDate(), user.getUserID());
                 database.updateWithListOfData(activityList.getActivityList(), activityList.getTitle(), activityList.getCreationDate(), user.getUserID());
             } else {
-                System.out.println(activityListIndexToAppendTo);
                 ActivityList existingList = user.getUserActivities().getActivityListCollection().get(activityListIndexToAppendTo);
                 existingList.insertActivity(dataVal);
                 ArrayList<Data> newDataList = new ArrayList<Data>();
@@ -198,9 +195,17 @@ public class NewDataDialogController {
         } else {
             errorText.setVisible(true);
         }
-        System.out.println("All g");
     }
 
+    /**
+     *
+     * @param dataDescription
+     * @param dataType
+     * @param dataTimes
+     * @param coordinateData
+     * @param heartRates
+     * @return  Data object depending on the dataType parameter
+     */
     private Data createDataObject(String dataDescription,DataType dataType,ArrayList<LocalDateTime> dataTimes, ArrayList<CoordinateData> coordinateData, ArrayList<Integer> heartRates) {
 
         switch (dataType) {
@@ -222,6 +227,12 @@ public class NewDataDialogController {
 
     }
 
+    /**
+     *
+     * @param isToggleSelected
+     * @return a boolean value that represents if there is any problem with the filled fields, it checks the start
+     * and end time are plausible (start < end) and not null and if text fields are empty
+     */
     private boolean allFieldsAreCorrect(boolean isToggleSelected) {
         boolean descrNoNull = !descriptionTextField.getText().trim().equals("");
         boolean datePickerNoNull = !(datePickerNewActivity.getValue() == null) && !(datePickerNewActivity.getValue().isAfter(LocalDate.now()));
@@ -248,12 +259,10 @@ public class NewDataDialogController {
     }
 
 
-    public void exitButtonListener() {
-        stage.close();
-    }
-
-
-
+    /**
+     *
+     * @param toToggle a boolean value to represent if the toggle button must be forced to toggle.
+     */
     public void toggleBtn(boolean toToggle) {
         if (toToggle) {
             newActivityListToggle.setSelected(true);
@@ -261,43 +270,90 @@ public class NewDataDialogController {
         }
     }
 
+    /**
+     * Closes the Stage object this controller manages
+     */
+    public void exitButtonListener() {
+        stage.close();
+    }
+
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user a new User object for the user property
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return the index of the activity list where the selected Data object needs to be moved to
+     */
     public int getActivityListIndexToAppendTo() {
         return activityListIndexToAppendTo;
     }
 
+    /**
+     *
+     * @param activityListIndexToAppendTo an integer for the activityListIndexToAppendTo property
+     */
     public void setActivityListIndexToAppendTo(int activityListIndexToAppendTo) {
         this.activityListIndexToAppendTo = activityListIndexToAppendTo;
     }
 
+    /**
+     *
+     * @return the stage property
+     */
     public Stage getStage() {
         return stage;
     }
 
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     *
+     * @return the activitiesCollectionController property
+     */
     public ActivitiesCollectionController getActivitiesCollectionController() {
         return activitiesCollectionController;
     }
 
+    /**
+     *
+     * @param activitiesCollectionController a new ActivitiesCollectionController for the activitiesCollectionController
+     */
     public void setActivitiesCollectionController(ActivitiesCollectionController activitiesCollectionController) {
         this.activitiesCollectionController = activitiesCollectionController;
     }
 
+    /**
+     *
+     * @return shows if there is a need to move the Data value (toggled button)
+     */
     public boolean isAddingActivityList() {
         return isAddingActivityList;
     }
 
+    /**
+     *
+     * @param addingActivityList a new boolean value for the isAddingActivityList property
+     */
     public void setAddingActivityList(boolean addingActivityList) {
-        isAddingActivityList = addingActivityList;
+        this.isAddingActivityList = addingActivityList;
     }
 }

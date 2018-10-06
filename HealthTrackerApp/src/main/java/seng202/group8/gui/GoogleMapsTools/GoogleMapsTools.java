@@ -11,6 +11,13 @@ import java.net.URL;
 public class GoogleMapsTools {
 
 
+    /**
+     *
+     * @param directory
+     * @return
+     * @throws IOException
+     * Takes a directory path, loads its content as a string and copies its content in the strGooglMaps String object
+     */
     public static String returnHTMLFileToString(String directory) throws IOException {
         URL urlGoogleMaps = GoogleMapsTools.class.getResource(directory);
 

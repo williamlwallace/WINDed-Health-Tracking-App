@@ -563,6 +563,10 @@ public class ActivitiesCollectionController {
     }
 
 
+    /**
+     * Listener for the 'Add' button from activity_list_collection.fxml
+     * Triggers the opening of a new new_data_dialog.fxml view and the related controller.
+     */
     public void addToActivityList() {
 
         TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
@@ -577,6 +581,10 @@ public class ActivitiesCollectionController {
         }
     }
 
+    /**
+     * Listener for the 'Edit' button from activity_list_collection.fxml
+     * Triggers the opening of a new modify_data_dialog.fxml view and the related controller.
+     */
     public void modifyButtonListener() {
         TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null && selectedItem.isLeaf() && !selectedItem.equals(activityListCollectionTreeView.getRoot())) {
@@ -636,7 +644,10 @@ public class ActivitiesCollectionController {
     }
 
 
-
+    /**
+     *
+     * @param s a new String value for the text displayed by the parserInfo FXML object
+     */
     public void setParserInfo(String s) {
         parserInfo.setText(s);
     }
@@ -647,25 +658,38 @@ public class ActivitiesCollectionController {
     }
 
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user a new User object for the user property
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return the primaryStage property
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    /**
+     *
+     * @param primaryStage a new Stage object for the primaryStage property
+     */
     public void setPrimaryStage(Stage primaryStage) {
         ActivitiesCollectionController.primaryStage = primaryStage;
     }
 
-    public String getCSVToParse() {
-        return csvToParse;
-    }
 
     public String getActivityTitle() {
         return activityTitle;
