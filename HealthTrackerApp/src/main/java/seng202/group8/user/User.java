@@ -272,7 +272,13 @@ public class User {
      * @return the home screen String value for bmi viewer
      */
     public String getBMIString() {
-        String string = String.format("%.1f", getBMI().getBMIValue()) + " " + getBMI().getBMICategory();
+        String string;
+        if (getBMI().getBMIValue() > 2) {
+            string = String.format("%.1f", getBMI().getBMIValue()) + " " + getBMI().getBMICategory();
+        } else {
+            string = String.format("%.1f", getBMI().getBMIValue()) + " ANOREXIC" ;
+        }
+
         return string;
     }
 

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dc408be8-b03e-4178-8660-efdd1571c15e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home_displayer/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home_displayer/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/HealthTrackerApp/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,26 +23,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="7" />
-          <entry key="XML" value="4" />
+          <entry key="JAVA" value="11" />
+          <entry key="XML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="4" />
-          <entry key="java" value="7" />
+          <entry key="fxml" value="5" />
+          <entry key="java" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2578" />
-          <entry key="txt" value="379" />
+          <entry key="java" value="2743" />
+          <entry key="txt" value="493" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2578" />
-          <entry key="PLAIN_TEXT" value="379" />
+          <entry key="JAVA" value="2743" />
+          <entry key="PLAIN_TEXT" value="493" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -50,25 +51,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivitiesCollectionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-161">
-              <caret line="598" selection-start-line="598" selection-end-line="598" />
-              <folding>
-                <element signature="e#6625#6633#0" expanded="true" />
-                <element signature="e#16104#16110#0" expanded="true" />
-                <element signature="e#17745#17746#0" expanded="true" />
-                <element signature="e#17787#17788#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="289" column="5" lean-forward="true" selection-start-line="289" selection-start-column="5" selection-end-line="289" selection-end-column="5" />
+            <state relative-caret-position="312">
+              <caret line="268" column="25" lean-forward="true" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
               <folding>
                 <element signature="e#10251#10252#0" expanded="true" />
                 <element signature="e#10280#10281#0" expanded="true" />
@@ -89,6 +75,15 @@
                 <element signature="e#11485#11486#0" expanded="true" />
                 <element signature="e#11542#11543#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -131,15 +126,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/ActivityListCollectionDisplay.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -149,36 +135,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-          <provider editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
+            <state relative-caret-position="1009">
               <caret line="129" selection-start-line="129" selection-end-line="129" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/activity_list_collection.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home_displayer/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1799" />
+            <state relative-caret-position="330">
+              <caret line="136" column="40" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/add_goal.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+            <state relative-caret-position="302">
+              <caret line="276" column="91" selection-start-line="276" selection-start-column="91" selection-end-line="276" selection-end-column="91" />
+              <folding>
+                <element signature="e#7993#7994#0" expanded="true" />
+                <element signature="e#8032#8033#0" expanded="true" />
+                <element signature="e#8244#8245#0" expanded="true" />
+                <element signature="e#8273#8274#0" expanded="true" />
+              </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+              <folding>
+                <element signature="e#524#525#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml">
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -193,6 +198,8 @@
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/ModifyDataValueController.java" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/modify_data_dialog.fxml" />
         <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java" />
+        <option value="$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home_displayer/HomeController.java" />
       </list>
     </option>
   </component>
@@ -283,6 +290,16 @@
               <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="group8" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="home_displayer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HealthTrackerApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthTrackerApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -308,7 +325,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538795396615" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538796783502" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -522,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538793863715</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Excluded the possibility to add activities and create lists with empty title">
+      <created>1538795654981</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1538795654981</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -534,7 +558,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14111787" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14111787" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" weight="0.32972974" />
@@ -542,7 +566,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28216216" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28216216" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -566,7 +590,8 @@
     <MESSAGE value="Added comments to the ActivitiesCollectionController class as it is getting fairly big (~600 lines)" />
     <MESSAGE value="Fixed bug that was preventing the database to remove activities properly." />
     <MESSAGE value="Substituted the TextField with a ChoiceBox for moving activities btw activities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Substituted the TextField with a ChoiceBox for moving activities btw activities" />
+    <MESSAGE value="Excluded the possibility to add activities and create lists with empty title" />
+    <option name="LAST_COMMIT_MESSAGE" value="Excluded the possibility to add activities and create lists with empty title" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/add_goal.fxml">
@@ -574,13 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
         </state>
       </provider>
     </entry>
@@ -656,8 +674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/activity_list_collection_displayer/activities_collection_dialogs/NewDataDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="289" column="5" lean-forward="true" selection-start-line="289" selection-start-column="5" selection-end-line="289" selection-end-column="5" />
+        <state relative-caret-position="312">
+          <caret line="268" column="25" lean-forward="true" selection-start-line="268" selection-start-column="25" selection-end-line="268" selection-end-column="25" />
           <folding>
             <element signature="e#10251#10252#0" expanded="true" />
             <element signature="e#10280#10281#0" expanded="true" />
@@ -678,6 +696,55 @@
             <element signature="e#11485#11486#0" expanded="true" />
             <element signature="e#11542#11543#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1009">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/resources/resources/views/home.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="276" column="91" selection-start-line="276" selection-start-column="91" selection-end-line="276" selection-end-column="91" />
+          <folding>
+            <element signature="e#7993#7994#0" expanded="true" />
+            <element signature="e#8032#8033#0" expanded="true" />
+            <element signature="e#8244#8245#0" expanded="true" />
+            <element signature="e#8273#8274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/user/BMI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthTrackerApp/src/main/java/seng202/group8/gui/home_displayer/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="136" column="40" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
         </state>
       </provider>
     </entry>

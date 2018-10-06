@@ -125,6 +125,18 @@ public class HomeController {
         if (user.getBMI().getBMICategory() == BMIType.OBESE) {
             bmiImage.setImage(obeseBMI);
         }
+
+        bmiText.setText(user.getBMIString());
+
+        //Edge cases to cover
+        if (user.getBMI().getBMIValue() < 2) {
+            bmiImage.setImage(anorexicBMI);
+        }
+
+        if (user.getBMI().getBMIValue() > 299.0) {
+            bmiText.setText(">300 OBESE");
+        }
+
 //        System.out.println(user.getStatsService().getHealthStatus());
 //        if (healthService.isTachicardic() || healthService.isAtCardiovasMortalityRisk() || healthService.isAtCardiovasMortalityRisk()) {
 //            healthRiskImage.setImage(healthRisk);
@@ -132,7 +144,6 @@ public class HomeController {
 //            healthRiskImage.setImage(noRisk);
 //        }
 
-        bmiText.setText(user.getBMIString());
         run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km");
         walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km");
         bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km");
@@ -156,7 +167,6 @@ public class HomeController {
             Data data = user.getUserActivities().getMostCurrentActivity();
 
             if (data != null) {
-                //TODO: create logic for showing most recent activity
                 mostRecentActivity.setText("Most Recent Activity - " + data.getTitle());
                 String htmlFile = GoogleMapsTools.jsInjection(strGoogleMaps, data);
                 WebEngine webEngine = homeWebView.getEngine();
