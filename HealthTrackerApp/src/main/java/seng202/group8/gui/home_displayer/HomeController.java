@@ -148,7 +148,7 @@ public class HomeController {
         walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km");
         bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km");
         all.setText(String.format("%.1f", statsService.getKmTotal()) + " km");
-        calories.setText(String.format("%.1f", statsService.getCaloriesBurnedTotal()) + " Cal");
+        calories.setText(String.format("%.1f", (statsService.getCaloriesBurnedTotal() / 1000)) + " KCal");
         heartValue.setText(statsService.getAverageHeartRate() + " BPM");
         statsService.setWeightLossTotal();
         weightValue.setText(String.format("%.1f", statsService.getWeightLossTotal()) + " kg");
