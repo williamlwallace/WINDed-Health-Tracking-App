@@ -146,8 +146,6 @@ public class NewDataDialogController {
             LocalDateTime startTime = dataDate.atTime(fromTimeData);
             LocalDateTime endTime = dataDate.atTime(toTimeData);
 
-            System.out.println(startTime + " troubleshooting");
-            System.out.println(endTime + " troubleshooting");
 
             ArrayList<LocalDateTime> dataTimes = new ArrayList<>();
             dataTimes.add(startTime);
@@ -177,16 +175,6 @@ public class NewDataDialogController {
             dataVal.setDataId(database.getNextDataID());
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
             dataVal.setDataSpeedKph(dataVal.getDataSpeedKph());
-            //dataVal.setDataSpeedKph((new Double(distanceCoveredTextField.getText()) / 1000) / (endTime.getHour() - startTime.getHour()));
-
-
-
-            System.out.println("Distance saved" + dataVal.getDistanceCovered());
-            for (CoordinateData coordinateDate : dataVal.getCoordinatesArrayList()) {
-                System.out.println("Altitude: " + coordinateDate.getAltitude());
-            }
-
-
 
 
 
@@ -243,10 +231,16 @@ public class NewDataDialogController {
         if (timesNoNull) {
             fromTimeSmallerThanToTime = fromTime.getValue().isBefore(toTime.getValue());
         }
+
         boolean distanceCoveredTextFieldNoNull = !distanceCoveredTextField.getText().equals("");
         boolean activityListNotNull = true;
         if (isToggleSelected) {
-            activityListNotNull = !newActivityListToggle.getText().equals("");
+            if (newActivityListName.getText() != null) {
+                activityListNotNull = !(newActivityListName.getText().trim().length() == 0) ;
+            } else {
+
+                activityListNotNull = false;
+            }
         }
         return descrNoNull && datePickerNoNull && timesNoNull
                 && fromTimeSmallerThanToTime && distanceCoveredTextFieldNoNull
