@@ -37,7 +37,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
       </rowConstraints>
          <children>
-           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the activity's type:" />
+           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity type:" />
             <ComboBox fx:id="actType" prefWidth="150.0" GridPane.columnIndex="1">
              <items>
                  <FXCollections fx:factory="observableArrayList">
@@ -83,14 +83,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Give us a key phrase from this activity so we can recognise it next time:" textAlignment="CENTER" wrapText="true" />
+            <Label text="Phrase:" textAlignment="CENTER" wrapText="true" />
             <TextField fx:id="keyPhrase" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" right="30.0" />
                </GridPane.margin></TextField>
          </children>
       </GridPane>
-      <Label text="Tick 'Remember Phrase' and we will store the phrase you entered to determine the type of other activities. Otherwise we will just store the activity type for this activity once." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
+      <Label text="Enter the activity type for this activity. Optionally - if you enter a phrase from this activity title and tick 'Remember Phrase?' then the phrase will be stored and used to determine the activity type for future activities." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="5.0" right="5.0" />
+         </GridPane.margin></Label>
       <Label fx:id="errorMes" GridPane.rowIndex="4" />
       <Label fx:id="errorText" text="Error Goes Here" textAlignment="CENTER" wrapText="true">
          <font>
