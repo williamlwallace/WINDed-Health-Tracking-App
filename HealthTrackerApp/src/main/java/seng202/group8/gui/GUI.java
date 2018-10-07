@@ -35,7 +35,7 @@ public class GUI extends Application {
         try {
             GraphicsEnvironment ge =
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/resources/views/couture-bld.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/resources/views/couture-bld.otf")));
         } catch (IOException |FontFormatException e) {
             //Handle exception
         }
