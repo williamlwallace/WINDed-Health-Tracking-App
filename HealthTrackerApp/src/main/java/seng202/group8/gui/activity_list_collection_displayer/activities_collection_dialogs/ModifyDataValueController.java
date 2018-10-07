@@ -1,5 +1,6 @@
 package seng202.group8.gui.activity_list_collection_displayer.activities_collection_dialogs;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXToggleButton;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.collections.FXCollections;
@@ -41,7 +42,7 @@ public class ModifyDataValueController {
     private JFXToggleButton newActivityListToggle;
 
     @FXML
-    private TextField newActivityListName;
+    private ChoiceBox<String> newActivityListCombobox;
 
     @FXML
     private Text errorText;
@@ -56,8 +57,14 @@ public class ModifyDataValueController {
         setDataValue();
         setChoiceBox();
         descriptionTextField.setText(dataValue.getTitle());
-        newActivityListName.setText(currentActivityList.getTitle());
-        newActivityListName.setVisible(false);
+        ArrayList<String> activitiesTitle = new ArrayList<>();
+        for (ActivityList activityList : user.getUserActivities().getActivityListCollection()) {
+            activitiesTitle.add(activityList.getTitle());
+        }
+        ObservableList<String> observableList = FXCollections.observableList(activitiesTitle);
+        newActivityListCombobox.setItems(observableList);
+        newActivityListCombobox.setValue(currentActivityList.getTitle());
+        newActivityListCombobox.setVisible(false);
     }
 
     /**
@@ -73,9 +80,9 @@ public class ModifyDataValueController {
      */
     public void toggleButtonListener() {
         if (newActivityListToggle.isSelected()) {
-            newActivityListName.setVisible(true);
+            newActivityListCombobox.setVisible(true);
         } else {
-            newActivityListName.setVisible(false);
+            newActivityListCombobox.setVisible(false);
         }
     }
 
@@ -102,11 +109,12 @@ public class ModifyDataValueController {
      */
     public void modifyDataButtonListener() {
         SQLiteJDBC database = new SQLiteJDBC();
-        if (checkAllDataValid() && checkExistsNewActivityList()) {
+        if (checkAllDataValid()) {
             dataValue.setTitle(descriptionTextField.getText().trim());
             DataType selectedType = DataType.fromStringToEnum((String) activitiesChoiceBox.getSelectionModel().getSelectedItem());
             dataValue.setDataType(selectedType);
             if (newActivityListToggle.isSelected()) {
+                setNewActivityList();
                 //In case I move the activity to a different activity list
                 database.updateActivity(dataValue,
                         user.getUserActivities().getActivityListCollection().get(newActivityListIndex));
@@ -147,29 +155,26 @@ public class ModifyDataValueController {
      */
     private boolean checkAllDataValid() {
         boolean okayDescriptionTextField = descriptionTextField.getText() != null && !descriptionTextField.getText().equals("");
-        boolean okayToggleActivityList = true;
-        if (newActivityListToggle.isSelected()) {
-            if (newActivityListName.getText() == null || newActivityListName.equals("")) {
-                okayToggleActivityList = false;
-            }
-        }
-        return okayDescriptionTextField && okayToggleActivityList;
+
+        return okayDescriptionTextField;
     }
 
     /**
      * Helper function for modifyDataButtonListener function.
      * @return a boolean value indicating if the activity list mentioned exists.
      */
-    private boolean checkExistsNewActivityList() {
+    private boolean setNewActivityList() {
         boolean exists = true;
 
         if (newActivityListToggle.isSelected()) {
-            for (ActivityList activityList : user.getUserActivities().getActivityListCollection()) {
-                if (activityList.getTitle().toLowerCase().equals(newActivityListName.getText().toLowerCase().trim())) {
-                    this.newActivityList = activityList;
-                    this.newActivityListIndex = user.getUserActivities().getActivityListCollection().indexOf(activityList);
-                }
-            }
+            this.newActivityListIndex = newActivityListCombobox.getSelectionModel().getSelectedIndex();
+            this.newActivityList = user.getUserActivities().getActivityListCollection().get(newActivityListIndex);
+// for (ActivityList activityList : user.getUserActivities().getActivityListCollection()) {
+//                if (activityList.getTitle().toLowerCase().equals(newActivityListName.getText().toLowerCase().trim())) {
+//                    this.newActivityList = activityList;
+//                    this.newActivityListIndex = user.getUserActivities().getActivityListCollection().indexOf(activityList);
+//                }
+//            }
             if (this.newActivityList == null) {
                 exists = false;
             }
@@ -179,49 +184,90 @@ public class ModifyDataValueController {
     }
 
 
-
-
+    /**
+     * Closes the Stage object this controller manages
+     */
     public void exitButtonListener() {
         stage.close();
     }
 
-
+    /**
+     * @return an int value representing the index of the activity list where the Data object selected is stored
+     * when clicking on the modify button in activity_list_collection.fxml.
+     */
     public int getActivityListIndex() {
         return activityListIndex;
     }
 
+    /**
+     *
+     * @param activityListIndex a new int value for the activityListIndex method
+     */
     public void setActivityListIndex(int activityListIndex) {
         this.activityListIndex = activityListIndex;
     }
 
+    /**
+     *
+     * @return the index of the selected Data value within the activity list where it is stored.
+     */
     public int getDataIndex() {
         return dataIndex;
     }
 
+    /**
+     *
+     * @param dataIndex a new int value for the dataIndex property
+     */
     public void setDataIndex(int dataIndex) {
         this.dataIndex = dataIndex;
     }
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user a new User object for the user property
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return the stage property
+     */
     public Stage getStage() {
         return stage;
     }
 
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     *
+     * @return the parent controller (from ActivityListCollectionController) activitiesCollectionController property
+     */
     public ActivitiesCollectionController getActivitiesCollectionController() {
         return activitiesCollectionController;
     }
 
+    /**
+     *
+     * @param activitiesCollectionController a new ActivitiesCollectionController object
+     * for the activitiesCollectionController property
+     */
     public void setActivitiesCollectionController(ActivitiesCollectionController activitiesCollectionController) {
         this.activitiesCollectionController = activitiesCollectionController;
     }

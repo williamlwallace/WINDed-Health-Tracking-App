@@ -62,7 +62,12 @@ public class CalendarViewController {
         setDatePickerListener();
     }
 
-    public void setDatePickerCells() {//TODO: link to GUI class when this is opened. AFTER setting user!!!
+    /**
+     * Setting the background of the calendar cells green if that day the user
+     * performed one or more activities, orange if the user has goals due that day
+     * and both colours if both goals and activities are present that day
+     */
+    public void setDatePickerCells() {
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(DatePicker param) {
@@ -150,6 +155,11 @@ public class CalendarViewController {
     }
 
 
+    /**
+     * Takes a list of goals and displays populates the ListView to show the goals
+     * the user set for the selected date (from the DatePicker)
+     * @param goals
+     */
     private void displayGoalsForTheSelectedDay(ArrayList<Goal> goals) {
         ObservableList<Goal> goalsObservableList = FXCollections.observableList(goals);
         goalsListView.setItems(goalsObservableList);
@@ -240,6 +250,11 @@ public class CalendarViewController {
 
     }
 
+    /**
+     *
+     * @param goalType
+     * @return an Image object containing the an image resource depending on the type of the goal.
+     */
     private Image selectRightImageForGoal(GoalType goalType) {
         switch (goalType) {
             case ActivityGoal:
@@ -251,6 +266,11 @@ public class CalendarViewController {
         }
     }
 
+    /**
+     *
+     * @param dataType
+     * @return an Image object containing the an image resource depending on the type of the activity.
+     */
     private Image selectRightImageForActivity(DataType dataType) {
         switch (dataType) {
             case WALK:
@@ -271,18 +291,34 @@ public class CalendarViewController {
     }
 
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user a new User object
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return the currentStage property
+     */
     public Stage getCurrentStage() {
         return currentStage;
     }
 
+    /**
+     *
+     * @param currentStage a new Stage object
+     */
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;
     }

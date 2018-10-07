@@ -83,7 +83,6 @@ public class SplashController implements Initializable {
             try {
                 SQLiteJDBC database = new SQLiteJDBC();
                 ArrayList<User> users = database.retrieveAllUsers();
-                System.out.println("Size = " + users.size());
                 //TODO Does this call need to be changed?
 
                 if (users.size() != 0) {

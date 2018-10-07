@@ -33,13 +33,6 @@ public class WeightLossGoal extends Goal {
         this.startWeight = user.getWeight();
     }
 
-    /**
-     *
-     * @param user the user associated with the goal
-     * @param targetWeight the weight the user wants to achieve
-     * @throws NotCoherentWeightLossGoalException when the targetWeight is lower or equal to the user currentWeight.
-     */
-
 
     /**
      *

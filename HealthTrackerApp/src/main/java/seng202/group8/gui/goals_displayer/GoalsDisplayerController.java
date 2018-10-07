@@ -119,7 +119,7 @@ public class GoalsDisplayerController {
 
                         if (goal != null) {
                             try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSingle.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/goalsListViewSingle.fxml"));
                                 BorderPane goalSingle = loader.load();
                                 GoalsListViewSingleController controller = loader.getController();
                                 controller.setCurrentGoal(goal);
@@ -170,7 +170,7 @@ public class GoalsDisplayerController {
 
                         if (goal != null) {
                             try {
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/goalsListViewSinglePrevious.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/goalsListViewSinglePrevious.fxml"));
                                 BorderPane goalSingle = loader.load();
                                 GoalsListSinglePreviousController controller = loader.getController();
                                 controller.setCurrentGoal(goal);
@@ -196,7 +196,7 @@ public class GoalsDisplayerController {
      * This loads the add goal controller for the user ot be able to add a goal
      */
     public void createGoal() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../resources/views/add_goal.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/add_goal.fxml"));
         Parent root = null;
         try {
             root = loader.load();

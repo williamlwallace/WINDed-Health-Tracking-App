@@ -26,29 +26,15 @@ public class WeightLossGoalTest {
         user = null;
     }
 
-    @Test
-    public void constructorExceptionTest() {
-        boolean thrown = false;
-        WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 170.0, LocalDateTime.now());
 
-        assertTrue(thrown);
-    }
-
-    @Test
-    public void constructorWorkingTest() {
-        boolean thrown = false;
-        WeightLossGoal weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 78.0, LocalDateTime.now());
-
-        assertFalse(thrown);
-    }
 
     @Test
     public void checkIsCompletedTrueTest1() {
         WeightLossGoal weightLossGoal;
             weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0, LocalDateTime.now());
-//            user.setWeight(83.0);
-//            weightLossGoal.checkIsCompleted();
-//            assertTrue(weightLossGoal.getIsCompleted());
+            user.setWeight(63.0);
+            weightLossGoal.checkIsCompleted();
+            assertTrue(weightLossGoal.getIsCompleted());
 
 
     }
@@ -57,9 +43,9 @@ public class WeightLossGoalTest {
     public void checkIsCompletedTrueTest2() {
         WeightLossGoal weightLossGoal;
             weightLossGoal = new WeightLossGoal(user, "Losing few kgs",  GoalType.WeightLossGoal, 73.0, LocalDateTime.now());
-//            user.setWeight(73.0);
-//            weightLossGoal.checkIsCompleted();
-//            assertTrue(weightLossGoal.getIsCompleted());
+            user.setWeight(73.0);
+            weightLossGoal.checkIsCompleted();
+            assertTrue(weightLossGoal.getIsCompleted());
 
 
     }

@@ -46,11 +46,6 @@
          </GridPane.margin>
       </TextField>
       <JFXToggleButton fx:id="newActivityListToggle" onAction="#toggleButtonListener" text="Move to other list" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="newActivityListName" prefHeight="20.0" prefWidth="0.0" promptText="Activity list name" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
       <JFXButton fx:id="modifyDataButton" buttonType="RAISED" onAction="#modifyDataButtonListener" prefHeight="25.0" prefWidth="184.0" ripplerFill="BLACK" style="-fx-background-color: #2e86c1;" text="Modify the activity" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" />
@@ -71,5 +66,10 @@
                </image>
             </ImageView>
          </children></VBox>
+      <ChoiceBox fx:id="newActivityListCombobox" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </ChoiceBox>
    </children>
 </GridPane>
