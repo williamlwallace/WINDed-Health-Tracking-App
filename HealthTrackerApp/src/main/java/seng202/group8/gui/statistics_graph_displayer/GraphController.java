@@ -468,7 +468,6 @@ public class GraphController {
             }
             dataName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
             time.setStyle("-fx-font-weight: bold;");
-            comboBox.setStyle("-fx-background-color:  #2e86c1; -fx-font-color: #ffff");
             comboBox.getSelectionModel().select("Distance Over Time");
 
             updateData();

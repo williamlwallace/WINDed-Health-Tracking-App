@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.geometry.*?>
@@ -19,6 +20,8 @@
 <?import javafx.scene.text.Font?>
 
 <!--<?import de.jensd.fx.glyphs.fontawesome.*?>-->
+
+<?import com.jfoenix.controls.JFXButton?>
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.GoalsDisplayerController">
 <center>
@@ -60,17 +63,17 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="166.0" prefWidth="1100.0" spacing="30.0" style="-fx-background-color: #ffff;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#createGoal" style="-fx-background-color: #2e86c1;" text="Add a Goal" textFill="WHITE">
+                  <JFXButton mnemonicParsing="false" onAction="#createGoal" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Add a Goal">
                      <font>
                         <Font size="16.0" />
                      </font>
-                  </Button>
+                  </JFXButton>
                   <Label text="Change Goal Type View">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="viewBox" onAction="#changeView" prefHeight="26.0" prefWidth="190.0" promptText="Goal Types" style="-fx-background-color: #2e86c1;" stylesheets="@stylesheet2.css">
+                  <ComboBox fx:id="viewBox" onAction="#changeView" prefHeight="26.0" prefWidth="190.0" promptText="Goal Types" style="-fx-background-color: #2e86c1;" styleClass="cbbox" stylesheets="@stylesheet2.css">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Activity Goals" />

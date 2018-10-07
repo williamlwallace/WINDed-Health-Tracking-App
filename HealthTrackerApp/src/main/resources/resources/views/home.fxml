@@ -271,7 +271,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <JFXButton fx:id="cardio" onAction="#searchCardio" prefWidth="190.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Cardiovascular Mortality" />
+                                    <JFXButton fx:id="cardio" onAction="#searchCardio" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Cardiovascular Mortality" />
                                     <JFXButton fx:id="brad" onAction="#searchBrad" prefWidth="190.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Bradycardia" />
                                     <JFXButton fx:id="tach" onAction="#searchTach" prefWidth="190.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Tachycardia" />
                                  </children>

@@ -191,7 +191,7 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="115.0" prefWidth="1085.0">
                      <children>
-                        <JFXButton fx:id="searchForFileButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#searchForFile" prefHeight="25.0" prefWidth="110.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Search for file">
+                        <JFXButton fx:id="searchForFileButton" mnemonicParsing="false" onMouseClicked="#searchForFile" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Search for file">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
