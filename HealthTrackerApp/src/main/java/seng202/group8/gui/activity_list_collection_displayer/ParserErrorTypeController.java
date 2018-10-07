@@ -173,11 +173,11 @@ public class ParserErrorTypeController {
                 Stage stage = (Stage) errorText.getScene().getWindow();
                 System.out.println(stage);
                 stage.close();
-            } else if (parser.getDataList().isEmpty()) {
+            } else if (parser.getDataList().isEmpty() && error == 0) {
                 parentControl.setParserInfoText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
-                Stage stage = (Stage) errorText.getScene().getWindow();
-                System.out.println(stage);
-                stage.close();
+                //Stage stage = (Stage) errorText.getScene().getWindow();
+                //System.out.println(stage);
+                //stage.close();
             }
         } else {
             if (rememberTick.isSelected()) {
