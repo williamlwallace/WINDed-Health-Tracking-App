@@ -1,5 +1,6 @@
 package seng202.group8.gui.activity_list_collection_displayer;
 
+
 import java_sqlite_db.SQLiteJDBC;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -19,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author sgv15
+ */
 public class ParserEditKeywordsController {
 
     @FXML
@@ -41,6 +45,10 @@ public class ParserEditKeywordsController {
 
     private ActivitiesCollectionController parentControl;
 
+    /**
+     * Updates the choice box to store all of the correct phrases
+     * @param event
+     */
     public void update(ActionEvent event) {
         actRemove.getItems().clear();
         SQLiteJDBC database = new SQLiteJDBC();
@@ -75,6 +83,9 @@ public class ParserEditKeywordsController {
         actRemove.setItems(choiceAdd);
     }
 
+    /**
+     * Sets up the window using the incoming data
+     */
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
@@ -96,6 +107,11 @@ public class ParserEditKeywordsController {
         stage.close();
     }
 
+    /**
+     * removes a phrase from the database
+     * @param event
+     * @throws Exception
+     */
     public void remove(ActionEvent event) throws Exception {
         if (actRemove.getValue() != null) {
             SQLiteJDBC database = new SQLiteJDBC();

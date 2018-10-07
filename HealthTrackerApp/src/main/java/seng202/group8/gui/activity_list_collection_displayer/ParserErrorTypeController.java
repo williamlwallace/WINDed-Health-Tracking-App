@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author sgv15
+ */
 public class ParserErrorTypeController {
     @FXML
     private Label errorText;
@@ -43,6 +46,9 @@ public class ParserErrorTypeController {
     private ActivitiesCollectionController parentControl;
 
 
+    /**
+     * Sets up the window with the correct data from the sent in information
+     */
     @FXML
     public void initialize() {
         Platform.runLater(() -> {

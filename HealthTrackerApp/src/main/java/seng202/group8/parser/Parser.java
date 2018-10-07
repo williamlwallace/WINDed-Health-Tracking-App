@@ -17,7 +17,10 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.time.LocalTime;
 
-
+/**
+ * @author sgv15
+ *
+ */
 public class Parser {
 
     private ArrayList<ArrayList<String>> acceptedValues = new ArrayList<ArrayList<String>>();
@@ -45,8 +48,9 @@ public class Parser {
     private SQLiteJDBC database = new SQLiteJDBC();
 
     /**
-     * Receives a filename and creates the list of type trip phrases.
-     * @param newFilename
+     * Receives a filename and creates the list of type trip phrases. Gets these phrases from the database and includes a few default ones in the parser class.
+     * @param newFilename the file name of the CSV file
+     * @param newUser the user to add the data to.
      * @throws Exception
      */
     public Parser(String newFilename, User newUser) throws Exception {
@@ -73,7 +77,7 @@ public class Parser {
     }
 
     /**
-     * Starts parsing the entire file sent in.
+     * Starts parsing the entire file sent in. Does this by splitting the file into activities and adding them to a data list one by one.
      * @throws Exception
      */
     public void parseFile() throws Exception {
@@ -83,7 +87,6 @@ public class Parser {
                 CSVReader csvReader = new CSVReader(new FileReader(this.filename));
                 String[] line = readLine(csvReader);
                 int finished = 0;
-                //String[] myEntries = csvReader.readAll();
                 int length = 0;
                 try {
                     length = line.length;
@@ -129,7 +132,7 @@ public class Parser {
                                 activityEnum = DataType.WATER_SPORTS;
                                 activityToSend = new WaterSportsData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
-                            default://case "walk": default for now
+                            default://case "walk": default
                                 activityEnum = DataType.WALK;
                                 activityToSend = new WalkData(newActivityName, activityEnum, newActivityDateTime, newActivityCoordinates, newActivityHeartRate, user);
                                 break;
@@ -185,8 +188,8 @@ public class Parser {
     }
     /**
      * Receives a activity and collates the data from it. Throws custom errors so the GUI can handle the information
-     * @param line
-     * @param csvReader
+     * @param line The information help on the current line as a list of strings.
+     * @param csvReader The reader which keeps track of which line the class is currently on.
      * @throws Exception
      */
     private String[] parseActivity(String[] line, CSVReader csvReader) throws Exception {
@@ -213,22 +216,6 @@ public class Parser {
             if (activityType.equals("")) {
                 dataList.clear();
                 throw new noTypeError("The activity '" + activityName+ "' doesn't match any of the activity types.");
-//                Scanner scanner = new Scanner(System.in);
-//                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
-//                String selection = scanner.next();
-//                while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4") && !selection.equals("5") && !selection.equals("6") && !selection.equals("7")) {
-//                    System.out.print("You must enter a number between 1 and 7\n");
-//                    selection = scanner.next();
-//                }
-//                int activityNum = Integer.parseInt(selection) - 1;
-//                System.out.print("Please enter a phrase from '" + line[1] + "' so we can recognise this activities category next time\n");
-//                String phrase = scanner.next();
-//                while (!activityName.contains(phrase.toLowerCase())) {
-//                    System.out.print("You must enter a phrase from '" + line[1] + "'\n");
-//                    phrase = scanner.next();
-//                }
-//                acceptedValues.get(activityNum).add(phrase.toLowerCase());
-//                activityType = acceptedValues.get(activityNum).get(0);
             }
         }
         line = readLine(csvReader);
@@ -240,7 +227,6 @@ public class Parser {
         try {
             while ((finished == 0) && (line.length > 0) && (!line[0].equals("#start"))) {
                 try {
-                    //System.out.println("hi peeps");
                     numLines++;
                     String toFormat = line[0] + ";" + line[1];
                     lineDate = LocalDateTime.parse(toFormat, timeFormat);
@@ -281,7 +267,6 @@ public class Parser {
         } catch (NullPointerException e) {
 
         }
-        //System.out.println("num " + numLines * 0.1 + " num2: " + numErrors);
         if (numLines * 0.1 < numErrors) {
             isCorrupt = Boolean.TRUE;
             dataList.clear();
@@ -291,8 +276,8 @@ public class Parser {
     }
 
     /**
-     * Parses the next line and returns it.
-     * @param csvReader
+     * Receives the next line from the csv file.
+     * @param csvReader the csvReader which keeps track of the location in the file.
      * @throws Exception
      */
     private String[] readLine(CSVReader csvReader) throws Exception {
@@ -324,7 +309,7 @@ public class Parser {
 
     /**
      * Returns a list of the data it parsed
-     * @return dataList
+     * @return dataList A list of all of the activities from the csv file
      */
     public ArrayList<Data> getDataList() {
         return dataList;
@@ -349,9 +334,10 @@ public class Parser {
     */
 
     /**
-     * adds a key phrase into the collection of trip phrases for finding the type
-     * @param keyWord
-     * @param type
+     * Adds a key phrase into the collection of trip phrases for finding the type of an activity. Also has the option to add this phrase to the database.
+     * @param keyWord The phrase to add to the list
+     * @param type The type this phrase corresponds to
+     * @param addToDataBase A boolean to say weither the phrase should be added to the database or not.
      */
     public void add(String keyWord, int type, boolean addToDataBase) {
         this.acceptedValues.clear();

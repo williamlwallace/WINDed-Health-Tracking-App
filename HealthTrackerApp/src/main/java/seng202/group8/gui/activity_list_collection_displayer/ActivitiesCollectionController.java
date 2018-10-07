@@ -45,7 +45,7 @@ import java.util.*;
 
 
 /**
- * @author lfa69
+ * @author lfa69, sgv15
  * Controller for activity_list_collection.fxml.
  * Deals with displaying the user Data values, display major insights and path followed, retrieve and upload CSV data from local directory
  */
@@ -365,6 +365,11 @@ public class ActivitiesCollectionController {
 
     }
 
+    /**
+     * Written by Sam, A function to load the edit key words screen and sends through the user.
+     * @param event
+     * @throws Exception
+     */
     public void editKeyWords(ActionEvent event) throws Exception {
         ParserEditKeywords parseEdit = new ParserEditKeywords();
         System.out.println("Activities: "+user.getUserID());
@@ -447,6 +452,10 @@ public class ActivitiesCollectionController {
         }
     }
 
+    /**
+     * Written by Sam, sets the text of the parserInfo field
+     * @param string
+     */
     public void setParserInfoText(String string) {
         parserInfo.setText(string);
     }

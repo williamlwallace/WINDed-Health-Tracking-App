@@ -30,7 +30,7 @@ import java.util.Date;
 
 /**
  * Class to manage the database, Inserting, Retrieving, Updating and Deleting from the project SQLite database file
- * @author jco165
+ * @author jco165, sgv15
  */
 public class SQLiteJDBC {
 
@@ -449,10 +449,10 @@ public class SQLiteJDBC {
     }
 
     /**
-     * written by sam, adds a Parser key word to the database.
-     * @param userId
-     * @param phrase
-     * @param type
+     * Written by Sam, adds a Parser key word to the database.
+     * @param userId The ID of the user to add the keyword to.
+     * @param phrase The phrase to add
+     * @param type The type of the phrase
      */
     public void addParserKeyword(Integer userId, String phrase, int type) {
         String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
@@ -469,6 +469,11 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Written by Sam, Gets all of the phrases of a certain type from the database.
+     * @param userId The ID of the user to get the keywords from
+     * @param type The Type to get the keywords from
+     */
     public ArrayList<String> getKeyWordsByType(Integer userId, int type) {
         String sql = "SELECT keyword FROM parser_keywords WHERE user_id = ? and activityType = ?";
         Connection connection = connect();
@@ -491,9 +496,9 @@ public class SQLiteJDBC {
     }
 
     /**
-     * written by sam, checks for a duplicate of the sent in key word
-     * @param userId
-     * @param phrase
+     * Written by Sam, checks for a duplicate of the sent in key word
+     * @param userId The user ID to check for duplicates in
+     * @param phrase The phrase to look for duplicates of
      * @return
      */
     public boolean checkDuplicateKeyword(Integer userId, String phrase) {
@@ -536,8 +541,8 @@ public class SQLiteJDBC {
     }
 
     /**
-     * written by sam, receives the next user id for the new user
-     * @return
+     * Written by sam, receives the next user id for the new user
+     * @return The user ID number
      */
     public int getUserID() {
         Connection connection = connect();
@@ -561,8 +566,8 @@ public class SQLiteJDBC {
 
     /**
      * Written by Sam, gets all of the key words and adds them to the parsers collection
-     * @param userId
-     * @param parser
+     * @param userId The user ID to get the keywords from
+     * @param parser The parser class to add these keywords to
      */
     public void getKeyWords(Integer userId, Parser parser) {
         Connection connection = connect();

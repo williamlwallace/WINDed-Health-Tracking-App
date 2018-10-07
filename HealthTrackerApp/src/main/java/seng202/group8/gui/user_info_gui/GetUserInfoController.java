@@ -26,7 +26,7 @@ import seng202.group8.user.user_stats.Sex;
 import java.io.IOException;
 
 /**
- * @author lfa69
+ * @author lfa69, sgv15
  * GetUserInfo.fxml controller.
  * Deals with adding logic to the login screen. Allows new user to sign up.
  */

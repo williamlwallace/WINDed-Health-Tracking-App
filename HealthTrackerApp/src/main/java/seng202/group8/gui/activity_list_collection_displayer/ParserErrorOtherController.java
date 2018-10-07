@@ -10,6 +10,9 @@ import seng202.group8.parser.*;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author sgv15
+ */
 public class ParserErrorOtherController {
     @FXML
     private Label errorText;
