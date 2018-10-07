@@ -20,10 +20,12 @@ import javax.annotation.Resource;
  * different types, according to activity.
  */
 public class RunData extends NotAssistedSportsData {
+
     public RunData(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList, User theCurrentUser) {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList, theCurrentUser);
 
     }
+
 
     /**
      * Uses an accumulator and a special formula to sum the calories burned between each pair of points.
@@ -42,6 +44,7 @@ public class RunData extends NotAssistedSportsData {
         //if (this.getHeartRateList() == 0);
     }
 
+
     /**
      * Calculates the calories burned between each pair of data points. These can be used to graph calories over time.
      * @return  The calories burned over time between each pair of data points.
@@ -53,6 +56,5 @@ public class RunData extends NotAssistedSportsData {
 
         return caloriesList;
     }
-
 
 }

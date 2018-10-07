@@ -67,6 +67,7 @@ public class ModifyDataValueController {
         newActivityListCombobox.setVisible(false);
     }
 
+
     /**
      * Helper function for initialSetUp function.
      */
@@ -74,6 +75,7 @@ public class ModifyDataValueController {
         this.currentActivityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
         this.dataValue = this.currentActivityList.getActivity(dataIndex);
     }
+
 
     /**
      * Ensures the textField needed for moving the data value to another activity is made visible only if the toggle button is selected.
@@ -85,6 +87,7 @@ public class ModifyDataValueController {
             newActivityListCombobox.setVisible(false);
         }
     }
+
 
     /**
      * Adds all the possible activities values and prefills the
@@ -102,6 +105,7 @@ public class ModifyDataValueController {
         activitiesChoiceBox.setItems(observableList);
         activitiesChoiceBox.setValue(DataType.fromEnumToString(dataValue.getDataType()));
     }
+
 
     /**
      * Ensures the data inserted is valid and that in the case
@@ -132,8 +136,6 @@ public class ModifyDataValueController {
                 database.updateActivity(dataValue, currentActivityList);
             }
 
-
-
             activitiesCollectionController.setUpTreeView();
             stage.close();
 
@@ -149,6 +151,7 @@ public class ModifyDataValueController {
         }
     }
 
+
     /**
      * Helper function for modifyDataButtonListener function.
      * @return a boolean value indicating if the inputted data is valid.
@@ -158,6 +161,7 @@ public class ModifyDataValueController {
 
         return okayDescriptionTextField;
     }
+
 
     /**
      * Helper function for modifyDataButtonListener function.
@@ -191,6 +195,7 @@ public class ModifyDataValueController {
         stage.close();
     }
 
+
     /**
      * @return an int value representing the index of the activity list where the Data object selected is stored
      * when clicking on the modify button in activity_list_collection.fxml.
@@ -198,6 +203,7 @@ public class ModifyDataValueController {
     public int getActivityListIndex() {
         return activityListIndex;
     }
+
 
     /**
      *
@@ -207,6 +213,7 @@ public class ModifyDataValueController {
         this.activityListIndex = activityListIndex;
     }
 
+
     /**
      *
      * @return the index of the selected Data value within the activity list where it is stored.
@@ -214,6 +221,7 @@ public class ModifyDataValueController {
     public int getDataIndex() {
         return dataIndex;
     }
+
 
     /**
      *
@@ -223,6 +231,7 @@ public class ModifyDataValueController {
         this.dataIndex = dataIndex;
     }
 
+
     /**
      *
      * @return the user property
@@ -230,6 +239,7 @@ public class ModifyDataValueController {
     public User getUser() {
         return user;
     }
+
 
     /**
      *
@@ -239,6 +249,7 @@ public class ModifyDataValueController {
         this.user = user;
     }
 
+
     /**
      *
      * @return the stage property
@@ -246,6 +257,7 @@ public class ModifyDataValueController {
     public Stage getStage() {
         return stage;
     }
+
 
     /**
      *
@@ -255,6 +267,7 @@ public class ModifyDataValueController {
         this.stage = stage;
     }
 
+
     /**
      *
      * @return the parent controller (from ActivityListCollectionController) activitiesCollectionController property
@@ -262,6 +275,7 @@ public class ModifyDataValueController {
     public ActivitiesCollectionController getActivitiesCollectionController() {
         return activitiesCollectionController;
     }
+
 
     /**
      *

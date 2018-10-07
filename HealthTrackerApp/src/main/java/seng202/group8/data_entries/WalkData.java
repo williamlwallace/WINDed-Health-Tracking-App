@@ -35,6 +35,7 @@ public class WalkData extends NotAssistedSportsData {
         return calories;
     }
 
+
     /**
      * Calculates the calories burned between each pair of data points. These can be used to graph calories over time.
      * @return  The calories burned over time between each pair of data points.

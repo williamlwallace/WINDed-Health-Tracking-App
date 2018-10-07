@@ -16,9 +16,11 @@ import java.util.ArrayList;
  * different types, according to activity.
  */
 public class ClimbData extends NotAssistedSportsData {
+
     public ClimbData(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes, ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList, User theCurrentUser) {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList, theCurrentUser);
     }
+
 
     /**
      * Uses an accumulator and a special formula to sum the calories burned between each pair of points.
@@ -27,13 +29,12 @@ public class ClimbData extends NotAssistedSportsData {
     public double getConsumedCalories() {
         ArrayList<Double> caloriesList = new ArrayList<>(calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime());
         double calories = 0.0;
-
         for (int i = 0; i < caloriesList.size(); i++) {
             calories += caloriesList.get(i);
         }
-
         return calories;
     }
+
 
     /**
      * Calculates the calories burned between each pair of data points. These can be used to graph calories over time.
@@ -41,10 +42,9 @@ public class ClimbData extends NotAssistedSportsData {
      */
     public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
         ArrayList<Double> caloriesList = new ArrayList<Double>();
-
         caloriesList = calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime();
-
         return caloriesList;
     }
+
 }
 

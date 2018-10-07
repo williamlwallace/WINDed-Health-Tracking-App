@@ -25,41 +25,42 @@ public class CoordinateDataDifference {
     private double angle;
 
 
-
     public double getGradient() {
         return gradient;
     }
+
 
     public void setGradient() {
         this.gradient = this.altitudeDifference / this.haversineDistance;
     }
 
+
     public double getAngle() {
         return angle;
     }
+
 
     /**
      *Calculates the angle between the two coordinate points, using trigonometry.
      */
     public void setAngle() {
-
         this.angle = Math.asin(this.altitudeDifference / this.distanceDifference);
     }
+
 
     public double getHaversineDistance() {
         return haversineDistance;
     }
+
 
     /**Calculates the semi 3 dimensional distance between the two coordinates, using
      * the 'haversine' formula. This formula takes the curvature into the earth into account
      * when calculating the distance between coordinate points.
      *
      * @param newPointOne The first set of coordinates
-     * @param newPointTwo The second set of coordinates to which the first is compared. The resulting
-     *                    difference betweeen the two is the haversine distance.
+     * @param newPointTwo The second set of coordinates to which the first is compared. The resulting difference between the two is the haversine distance.
      */
     public void setHaversineDistance(CoordinateData newPointOne, CoordinateData newPointTwo) {
-
         double earthsRadius = 6371e3;   // Mean radius of Earth
         double latitudeOne = newPointOne.getLatitude() * PI / 180;  //Convert Latitude to Radians
         double latitudeTwo = newPointTwo.getLatitude() * PI / 180;
@@ -79,14 +80,17 @@ public class CoordinateDataDifference {
         //double first = earthRadius
     }
 
+
     public double getAltitudeDifference() {
         return altitudeDifference;
     }
+
 
     /** Calculates the elevation/altitude difference between the two points.**/
     public void setAltitudeDifference(CoordinateData newPointOne, CoordinateData newPointTwo) {
         this.altitudeDifference = newPointOne.getAltitude() - newPointTwo.getAltitude();
     }
+
 
     public double getDistanceDifference() {
         return distanceDifference;
@@ -106,6 +110,7 @@ public class CoordinateDataDifference {
         this.distanceDifference = Math.hypot(this.haversineDistance, this.altitudeDifference);
     }
 
+
     /**
      * This is the constructor for the CoordinateDataDifference class. It takes two CoordinateData objects as
      * parameters, and calculates the various differences between them which are then stored in the
@@ -118,7 +123,6 @@ public class CoordinateDataDifference {
      * @param pointTwo  The second coordinate data object to compare with the first one.
      */
     public CoordinateDataDifference(CoordinateData pointOne, CoordinateData pointTwo) {
-
         setHaversineDistance(pointOne, pointTwo);
         setAltitudeDifference(pointOne, pointTwo);
         setDistanceDifference();
