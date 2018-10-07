@@ -9,6 +9,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import seng202.group8.user.User;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * @author wwa52
  * Main class of the application, launches GUI window and calls needed FXML files and controllers
@@ -28,6 +32,13 @@ public class GUI extends Application {
         stage.getIcons().add(new Image("/resources/views/images/icon.png"));
         stage.setResizable(false);
         splashController.setHostServices(getHostServices());
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/resources/views/couture-bld.ttf")));
+        } catch (IOException |FontFormatException e) {
+            //Handle exception
+        }
         stage.show();
 
     }
