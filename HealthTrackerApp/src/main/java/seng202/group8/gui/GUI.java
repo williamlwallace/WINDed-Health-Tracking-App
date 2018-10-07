@@ -32,13 +32,6 @@ public class GUI extends Application {
         stage.getIcons().add(new Image("/resources/views/images/icon.png"));
         stage.setResizable(false);
         splashController.setHostServices(getHostServices());
-        try {
-            GraphicsEnvironment ge =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/resources/views/couture-bld.otf")));
-        } catch (IOException |FontFormatException e) {
-            //Handle exception
-        }
         stage.show();
 
     }
