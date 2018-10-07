@@ -26,13 +26,6 @@ import java.util.Date;
  */
 public abstract class Data {
 
-    /*This structure uses the coordinates list, and heart rate list as arguments to calculate the calories consumed in
-     * an activity
-
-        When there are times that are too difficult to calculate the calories
-        using the coordinates, an attempt will be made to give an
-        estimation purely based on the heart rate over that time period.
-     * XX TESTS NOT WRITTEN JUST YET*/
 
     private String title;
     //    private DataType = new DataType();
@@ -162,6 +155,7 @@ public abstract class Data {
             to_return  = false;
         } else if (!this.heartRateList.equals(data.getHeartRateList())) {
             //System.out.println("Heart: "+this.heartRateList.get(0)+" - "+data.getHeartRateList().get(0));
+            to_return = false;
         }
 
         return to_return;
@@ -519,7 +513,8 @@ public abstract class Data {
      * is. Then, it calculates the percentage of stress that they are currently at (out of 100). The maximum stress
      * level(100%) is the lowest heart rate variance(and therefore highest stress level) measured for that activity, and
      * the minimum stress level(0%) is the highest heart rate variance (and therefore lowest stress level) measured for
-     * that activity.
+     * that activity. It is a measurement that is relative to the users maximum and minimum heart rates measured for
+     * the activity.
      *
      * @return the "percentage of stress" out of the total activity's max and min stress levels.
      */
@@ -542,7 +537,8 @@ public abstract class Data {
 
     /**
      * Calculates the calories burned based on the user statistics, the heart rates, and the time interval the
-     * exercise is performed over.
+     * exercise is performed over. To the developer's frustration, this method is much more effective and accurate
+     * than using MET values to calculate the calories burned.
      *
      * @return an ArrayList containing the total calories burned between each pair of points in the activity.
      */

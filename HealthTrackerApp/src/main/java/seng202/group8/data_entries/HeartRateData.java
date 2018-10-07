@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * This is the heart rate data class definition. The purpose of this class is to create an object
+ * where all the information related to the user's activity data heart rate list is stored. This includes
+ * the heart rate list, along with several calculated statistics based on that list. This object makes the
+ * heart rate list and its statistics easy to pass arounf between functions and classes.
+ *
  * @author cmc280
  *
  */
@@ -31,6 +36,14 @@ public class HeartRateData {
     }
 
 
+    /**
+     * This is the HeartRateData class constructor. Its primary purpose is to
+     * create an object in which to store the heart rate list along with information
+     * about the heart rate list. From the heart rate list, various class attributes
+     * are calculated.
+     *
+     * @param heartRateList the heart rate list that needs to be stored as a HeartRateData object.
+     */
     public HeartRateData(ArrayList<Integer> heartRateList) {
         this.heartRateList = heartRateList;
 

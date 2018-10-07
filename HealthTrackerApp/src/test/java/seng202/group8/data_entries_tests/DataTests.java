@@ -21,6 +21,12 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
+
+/**
+ * This is a test class for some of data's basic functionality. Most of the methods in data are
+ * tested by their use in other classes (such as statistics service), or other methods rather
+ * than unittests.
+ */
 public class DataTests {
 
     private User testUser;
@@ -69,15 +75,6 @@ public class DataTests {
     @Test
     public void testGetAllDateTimes() throws Exception {
 
-//        Parser parserTest = new Parser("/home/cosc/student/cmc280/Desktop/SENG202_Assignment/SENG202Team8/seng202_2018_example_data_clean.csv", testUser);
-//        ArrayList<Data> dataList = parserTest.getDataList();
-//
-//        for (int i = 0; i < dataList.size(); i++) {
-//            testUser.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
-//            //System.out.println(dataList.get(i).getHeartRateList());
-//            System.out.println(dataList.get(i).getAllDateTimes());
-//        }
-
         ArrayList<LocalDateTime> localTimes = new ArrayList<LocalDateTime>();
         localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 10));
         localTimes.add(LocalDateTime.of(2018, 9, 10, 6, 40, 15));
@@ -87,26 +84,12 @@ public class DataTests {
 
         assertEquals((testUser.getUserActivities().getAllData().get(0).getAllDateTimes()), localTimes);
 
-
-        //System.out.println(testTime);
-
-        //Data tester = new Data(testTitle, dataType, ArrayList< LocalDateTime > newDateTimes, ArrayList< CoordinateData > newCoordinatesList, ArrayList<Integer> newHeartRateList, User theCurrentUser)
-        //testTime.setTime("00:00:00");
-//        {
-//            try {
-//                testTime = dateTimeFormatter.parse(stringTimeOne);
-//                testTimes.add(testTime);
-//                System.out.println(testTimes);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 
     @Test
     public void testGetConsumedCalories() throws Exception {
 
-        System.out.println(testUser.getUserActivities().getAllData().get(0).getConsumedCalories());
+        //System.out.println(testUser.getUserActivities().getAllData().get(0).getConsumedCalories());
         assertTrue((testUser.getUserActivities().getAllData().get(0).getConsumedCalories()) == 19403.08347952518);
 
     }
@@ -114,7 +97,7 @@ public class DataTests {
     @Test
     public void testGetConsumedCaloriesBetweenPoints() throws Exception {
 
-        System.out.println(testUser.getUserActivities().getAllData().get(0).getConsumedCaloriesBetweenPoints());
+        //System.out.println(testUser.getUserActivities().getAllData().get(0).getConsumedCaloriesBetweenPoints());
 
         ArrayList<Double> testCalories = new ArrayList<Double>();
         testCalories.add(1.2408779477374121);
