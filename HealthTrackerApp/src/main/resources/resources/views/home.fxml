@@ -27,7 +27,7 @@
                <children>
                   <VBox prefHeight="315.0" prefWidth="408.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="totalStatsLabel" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Total Statistics">
+                        <Label fx:id="totalStatsLabel" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="Total Statistics">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
@@ -41,7 +41,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="run" prefHeight="16.0" prefWidth="150.0" text="Value">
+                                    <Label fx:id="run" prefHeight="16.0" prefWidth="100.0" text="Value">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
@@ -64,7 +64,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="walk" prefWidth="150.0" text="Value">
+                                    <Label fx:id="walk" prefWidth="100.0" text="Value">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
@@ -87,7 +87,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bike" prefWidth="150.0" text="Value">
+                                    <Label fx:id="bike" prefWidth="100.0" text="Value">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
@@ -110,7 +110,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="all" prefWidth="150.0" text="Value">
+                                    <Label fx:id="all" prefWidth="100.0" text="Value">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
@@ -133,7 +133,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="calories" prefWidth="150.0" text="Value">
+                                    <Label fx:id="calories" prefWidth="100.0" text="Value">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
@@ -156,7 +156,7 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="weightValue" prefWidth="150.0" text="Value">
+                                    <Label fx:id="weightValue" prefWidth="100.0" text="Value">
                                        <font>
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
@@ -181,7 +181,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="305.0" prefWidth="670.0" spacing="10.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="mostRecentActivity" alignment="CENTER" prefHeight="26.0" prefWidth="688.0" text="Most Recent Activity">
+                        <Label fx:id="mostRecentActivity" alignment="CENTER" prefHeight="26.0" prefWidth="688.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="Most Recent Activity">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
@@ -198,7 +198,7 @@
                <children>
                   <VBox prefHeight="299.0" prefWidth="550.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="bmiLabel2" alignment="CENTER" prefHeight="52.0" prefWidth="347.0" text="BMI">
+                        <Label fx:id="bmiLabel2" alignment="CENTER" prefHeight="52.0" prefWidth="347.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="BMI">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
@@ -225,7 +225,7 @@
                   </VBox>
                   <VBox prefHeight="313.0" prefWidth="564.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="heartLabel" alignment="CENTER" prefHeight="51.0" prefWidth="578.0" text="Average Heart Rate">
+                        <Label fx:id="heartLabel" alignment="CENTER" prefHeight="51.0" prefWidth="578.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="Average Heart Rate">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
@@ -257,7 +257,7 @@
                   </VBox>
                   <VBox prefHeight="319.0" prefWidth="564.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="healthLabel" alignment="CENTER" prefHeight="50.0" prefWidth="565.0" text="Health Risks">
+                        <Label fx:id="healthLabel" alignment="CENTER" prefHeight="50.0" prefWidth="565.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="Health Risks">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
@@ -271,9 +271,9 @@
                                           <Font name="Segoe UI" size="16.0" />
                                        </font>
                                     </Label>
-                                    <JFXButton fx:id="cardio" onAction="#searchCardio" prefWidth="177.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Cardiovascular Mortality" />
-                                    <JFXButton fx:id="brad" onAction="#searchBrad" prefWidth="177.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Bradycardia" />
-                                    <JFXButton fx:id="tach" onAction="#searchTach" prefWidth="177.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Tachycardia" />
+                                    <JFXButton fx:id="cardio" onAction="#searchCardio" prefWidth="190.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Cardiovascular Mortality" />
+                                    <JFXButton fx:id="brad" onAction="#searchBrad" prefWidth="190.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Bradycardia" />
+                                    <JFXButton fx:id="tach" onAction="#searchTach" prefWidth="190.0" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Tachycardia" />
                                  </children>
                               </VBox>
                            </children>

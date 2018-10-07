@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -38,7 +39,7 @@
                         <Image url="@images/user.png" />
                      </image>
                   </ImageView>
-                  <MenuButton fx:id="userBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" styleClass="menu-bar" stylesheets="@stylesheet.css" text="Lorenzo" textFill="WHITE">
+                  <MenuButton fx:id="userBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" text="Lorenzo" textFill="WHITE">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#loadEditUser" text="Edit User" />
                         <MenuItem mnemonicParsing="false" onAction="#loadUserScreen" text="Switch User" />
@@ -48,6 +49,14 @@
                      <font>
                         <Font name="Segoe UI Bold" size="16.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@stylesheet.css" />
+                        <URL value="@stylesheet2.css" />
+                     </stylesheets>
+                     <styleClass>
+                        <String fx:value="menu-bar" />
+                        <String fx:value="usermenu" />
+                     </styleClass>
                   </MenuButton>
                </children>
             </HBox>
@@ -69,7 +78,7 @@
                         <Image url="@images/001-home.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadHome" prefHeight="131.0" prefWidth="192.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Home" textFill="WHITE">
+                  <JFXButton onAction="#loadHome" prefHeight="131.0" prefWidth="192.0" ripplerFill="#2874a6" styleClass="sideBtns" stylesheets="@stylesheet2.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
@@ -83,7 +92,7 @@
                         <Image url="@images/007-running.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadActivityLog" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Activity Log" textFill="WHITE">
+                  <JFXButton onAction="#loadActivityLog" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="sideBtns" stylesheets="@stylesheet2.css" text="Activity Log" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
@@ -97,7 +106,7 @@
                         <Image url="@images/003-graph.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadStatistics" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Statistics" textFill="WHITE">
+                  <JFXButton onAction="#loadStatistics" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="sideBtns" stylesheets="@stylesheet2.css" text="Statistics" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
@@ -111,7 +120,7 @@
                         <Image url="@images/001-rocket.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadGoals2" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Goals" textFill="WHITE">
+                  <JFXButton onAction="#loadGoals2" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="sideBtns" stylesheets="@stylesheet2.css" text="Goals" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
@@ -125,7 +134,7 @@
                         <Image url="@images/002-calendar.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadCalendar" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Calendar" textFill="WHITE">
+                  <JFXButton onAction="#loadCalendar" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="sideBtns" stylesheets="@stylesheet2.css" text="Calendar" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>

@@ -22,13 +22,13 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.goals_displayer.GoalsDisplayerController">
 <center>
-      <VBox alignment="TOP_CENTER" prefHeight="620.0" prefWidth="1110.0" spacing="10.0" style="-fx-background-color: #e1e1e1;" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" spacing="10.0" style="-fx-background-color: #e1e1e1;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="516.0" prefWidth="1110.0" spacing="10.0" style="-fx-background-color: #e1e1e1;">
                <children>
                   <VBox alignment="CENTER" prefHeight="454.0" prefWidth="990.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="totalStatsLabel" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="550.0" text="Current Goals">
+                        <Label fx:id="totalStatsLabel" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="550.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="Current Goals">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -43,7 +43,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="454.0" prefWidth="986.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="totalStatsLabel1" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="550.0" text="Previous Goals">
+                        <Label fx:id="totalStatsLabel1" alignment="CENTER" minHeight="-Infinity" prefHeight="50.0" prefWidth="550.0" styleClass="title-font" stylesheets="@stylesheet2.css" text="Previous Goals">
                            <font>
                               <Font size="30.0" />
                            </font>

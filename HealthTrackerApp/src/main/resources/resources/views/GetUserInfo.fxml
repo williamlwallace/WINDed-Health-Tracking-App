@@ -31,31 +31,31 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="90.0" text="Name:" textFill="WHITE" />
+            <Label prefWidth="90.0" styleClass="label-font" stylesheets="@stylesheet2.css" text="Name:" textFill="WHITE" />
             <JFXTextField fx:id="nameField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="90.0" text="Age:" textFill="WHITE" />
+            <Label prefWidth="90.0" styleClass="label-font" stylesheets="@stylesheet2.css" text="Age:" textFill="WHITE" />
             <JFXTextField fx:id="ageField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="90.0" text="Weight (kg):" textFill="WHITE" />
+            <Label prefWidth="90.0" styleClass="label-font" stylesheets="@stylesheet2.css" text="Weight (kg):" textFill="WHITE" />
             <JFXTextField fx:id="weightField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="90.0" text="Height (cm):" textFill="WHITE" />
+            <Label prefWidth="90.0" styleClass="label-font" stylesheets="@stylesheet2.css" text="Height (cm):" textFill="WHITE" />
             <JFXTextField fx:id="heightField" focusColor="WHITE" styleClass="textfield" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="90.0" text="Gender" textFill="WHITE" />
+            <Label prefWidth="90.0" styleClass="label-font" stylesheets="@stylesheet2.css" text="Gender" textFill="WHITE" />
             <ComboBox fx:id="sexChoice" prefWidth="150.0" promptText="Gender" styleClass="combobox" stylesheets="@stylesheet2.css" />
          </children>
       </HBox>
@@ -66,11 +66,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="116.0" prefWidth="740.0" spacing="30.0">
          <children>
-            <JFXButton fx:id="enterDetailsButton" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#enterDetails" prefHeight="35.0" prefWidth="80.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Enter" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
+            <JFXButton fx:id="enterDetailsButton" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#enterDetails" prefHeight="35.0" prefWidth="80.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Enter" textFill="WHITE" />
             <JFXButton fx:id="cancelBtn" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#loadUserScreen" prefHeight="35.0" prefWidth="80.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Cancel" textFill="WHITE">
                <font>
                   <Font size="16.0" />
