@@ -31,11 +31,4 @@ public class HikeData extends NotAssistedSportsData{
         return caloriesList;
     }
 }
-//    public HikeData(String newTitle,DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
-//        super(newTitle, activityType, newCoordinatesList, newHeartRateList);
-//    }
-//
-//    double getConsumedCalories(String activityType) {
-//        return 0;
-//    }
-//}
+

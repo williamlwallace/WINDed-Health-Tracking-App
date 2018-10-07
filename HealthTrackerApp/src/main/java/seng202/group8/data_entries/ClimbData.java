@@ -12,7 +12,6 @@ public class ClimbData extends NotAssistedSportsData {
 
     public double getConsumedCalories() {
         ArrayList<Double> caloriesList = new ArrayList<>(calculateCaloriesBurnedBetweenPointsFromUserStatsAndHeartRateAndTime());
-        //double caloriesList = ;
         double calories = 0.0;
 
         for (int i = 0; i < caloriesList.size(); i++) {
@@ -20,7 +19,6 @@ public class ClimbData extends NotAssistedSportsData {
         }
 
         return calories;
-        //if (this.getHeartRateList() == 0);
     }
 
     public ArrayList<Double> getConsumedCaloriesBetweenPoints() {
@@ -31,11 +29,4 @@ public class ClimbData extends NotAssistedSportsData {
         return caloriesList;
     }
 }
-//    public ClimbData(String newTitle,DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
-//        super(newTitle, activityType, newCoordinatesList, newHeartRateList);
-//    }
-//
-//    double getConsumedCalories(String activityType) {
-//        return 0;
-//    }
-//}
+

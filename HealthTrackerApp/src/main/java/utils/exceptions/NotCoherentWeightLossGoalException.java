@@ -1,5 +1,8 @@
 package utils.exceptions;
 
+/**
+ * Custom error to catch users inserting a value in the weight goal that is lower or equal to their current weight.
+ */
 public class NotCoherentWeightLossGoalException extends Exception {
 
     public NotCoherentWeightLossGoalException() {

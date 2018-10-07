@@ -14,6 +14,10 @@ public class CoordinateDataDifference {
     private double altitudeDifference;
     private double distanceDifference;
     private double gradient;
+
+    /** The angle of the slope compared to flat ground. Will always be
+     * an acute angle in degrees.
+     */
     private double angle;
 
 
@@ -31,9 +35,7 @@ public class CoordinateDataDifference {
     }
 
     public void setAngle() {
-        /** The angle of the slope compared to flat ground. Will always be
-         * an acute angle in degrees.
-         */
+
         this.angle = Math.asin(this.altitudeDifference / this.distanceDifference);
     }
 
@@ -45,7 +47,7 @@ public class CoordinateDataDifference {
         /**Calculates the semi 3 dimensional distance between the two coordinates, using
          * the 'haversine' formula. See setDistanceDifference for the 3 dimensional
          * distance.
-         **/
+         */
         double earthsRadius = 6371e3;   /** Mean radius of Earth **/
         double latitudeOne = newPointOne.getLatitude() * PI / 180;  /**Convert Latitude to Radians**/
         double latitudeTwo = newPointTwo.getLatitude() * PI / 180;

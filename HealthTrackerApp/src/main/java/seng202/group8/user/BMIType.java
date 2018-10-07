@@ -1,5 +1,8 @@
 package seng202.group8.user;
 
+/**
+ * Enumerator used to map a numerical value with a bmi value.
+ */
 public enum BMIType {
     OBESE(30.0), OVERWEIGHT(25.0), NORMAL(18.5), LIGHT(16.0), ANOREXIC(1.0);
 

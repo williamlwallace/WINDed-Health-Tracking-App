@@ -17,18 +17,34 @@ public class Service {
         this.currentlyInUse = false;
     }
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user a new User object for the user porperty
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return the currentlyInUse property
+     */
     public boolean isCurrentlyInUse() {
         return currentlyInUse;
     }
 
+    /**
+     *
+     * @param currentlyInUse a new boolean value for the currentlyInUse property
+     */
     public void setCurrentlyInUse(boolean currentlyInUse) {
         this.currentlyInUse = currentlyInUse;
     }
