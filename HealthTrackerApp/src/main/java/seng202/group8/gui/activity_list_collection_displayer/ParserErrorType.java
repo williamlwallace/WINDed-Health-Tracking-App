@@ -30,6 +30,7 @@ public class ParserErrorType extends Application {
         ParserErrorTypeController noType = fxmlLoader.<ParserErrorTypeController>getController();
         noType.setErrorMessage(errorMess);
         noType.setParser(parser);
+        noType.setStage(classStage);
         noType.setParentControl(parentControl);
         classStage.setTitle("WINded");
         classStage.setScene(new Scene(root));

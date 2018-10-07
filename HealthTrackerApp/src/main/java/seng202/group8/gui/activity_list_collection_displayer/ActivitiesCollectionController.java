@@ -390,6 +390,9 @@ public class ActivitiesCollectionController {
             activityTitle = titleField.getText();
             int error = 0;
             Parser parser = new Parser(csvToParse, user);
+            for (String s : parser.getRemoveableWords()) {
+                System.out.println("peep: "+s);
+            }
             try {
                 parser.parseFile();
                 for (Data data : parser.getDataList()) {

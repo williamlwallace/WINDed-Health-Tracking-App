@@ -42,6 +42,7 @@ public class ParserErrorTypeController {
     private String errorMessage;
     private List<String> errorList;
     private Parser parser;
+    private Stage stage;
 
     private ActivitiesCollectionController parentControl;
 
@@ -62,8 +63,7 @@ public class ParserErrorTypeController {
      * @param event
      */
     public void quit(ActionEvent event) {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        stage.close();
+        this.stage.close();
     }
 
     /**
@@ -77,6 +77,8 @@ public class ParserErrorTypeController {
         if (keyPhrase.getText() != null && !keyPhrase.getText().isEmpty()) {
             if (errorList.get(1).toLowerCase().contains(keyPhrase.getText().toLowerCase())) {
                 phraseReturn = keyPhrase.getText().toLowerCase();
+            } else {
+                errorMes.setText("Your phrase must be part of '"+errorList.get(1)+"'");
             }
         }
         if (actType.getValue() != null) {
@@ -109,7 +111,7 @@ public class ParserErrorTypeController {
         if (!rememberTick.isSelected()) {
             phraseReturn = errorList.get(1);
         }
-        if ((type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0))) || (rememberTick.isSelected() && type != 0))  {
+        if ((type != 0 && (phraseReturn != null && !(phraseReturn.trim().length() == 0))) || (!rememberTick.isSelected() && type != 0))  {
             if (!rememberTick.isSelected()) {
                 parser.add(phraseReturn, type, false);
             } else {
@@ -193,5 +195,9 @@ public class ParserErrorTypeController {
     }
     public void setParentControl(ActivitiesCollectionController parentControlNew) {
         this.parentControl = parentControlNew;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

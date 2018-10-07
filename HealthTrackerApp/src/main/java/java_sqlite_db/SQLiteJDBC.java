@@ -448,26 +448,7 @@ public class SQLiteJDBC {
         }
     }
 
-    /**
-     * Written by Sam, adds a Parser key word to the database.
-     * @param userId The ID of the user to add the keyword to.
-     * @param phrase The phrase to add
-     * @param type The type of the phrase
-     */
-    public void addParserKeyword(Integer userId, String phrase, int type) {
-        String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
-        Connection connection = connect();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, userId);
-            preparedStatement.setString(2,phrase);
-            preparedStatement.setInt(3,type);
-            preparedStatement.executeUpdate();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     /**
      * Written by Sam, Gets all of the phrases of a certain type from the database.
@@ -496,23 +477,56 @@ public class SQLiteJDBC {
     }
 
     /**
+     * Written by Sam, adds a Parser key word to the database.
+     * @param userId The ID of the user to add the keyword to.
+     * @param phrase The phrase to add
+     * @param type The type of the phrase
+     * @return a boolean to inform whether the phrase was added or not.
+     */
+    public boolean addParserKeyword(Integer userId, String phrase, int type) {
+        String sql = "INSERT INTO parser_keywords VALUES(?,?,?)";
+        Connection connection = connect();
+        boolean to_return = true;
+        if (!this.checkDuplicateKeyword(userId, phrase)) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, userId);
+                preparedStatement.setString(2, phrase);
+                preparedStatement.setInt(3, type);
+                preparedStatement.executeUpdate();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            to_return = false;
+        }
+        return to_return;
+    }
+
+    /**
      * Written by Sam, checks for a duplicate of the sent in key word
      * @param userId The user ID to check for duplicates in
      * @param phrase The phrase to look for duplicates of
      * @return
      */
     public boolean checkDuplicateKeyword(Integer userId, String phrase) {
-        String sql = "Select count(*) from parser_keywords where user_id = ? and keyword = ?";
+        String sql = "Select keyword from parser_keywords where user_id = ?";
         Connection connection = connect();
         ResultSet resultSet = null;
         boolean to_return = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);
-            preparedStatement.setString(2,phrase);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.getInt("count(*)") != 0) {
-                to_return = true;
+            while (resultSet.next()) {
+                if (resultSet.getString("keyword").contains(phrase)) {
+                    to_return = true;
+                } else if (resultSet.getString("keyword").equals(phrase)) {
+                    to_return = true;
+                } else if (phrase.contains(resultSet.getString("keyword"))) {
+                    to_return = true;
+                }
             }
             connection.close();
         } catch (SQLException e) {

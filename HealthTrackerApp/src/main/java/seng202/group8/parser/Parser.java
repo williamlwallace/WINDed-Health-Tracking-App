@@ -149,15 +149,11 @@ public class Parser {
                             }
                         }
                         if (!duplicate && !this.oldData.isEmpty()) {
-                            System.out.println("first");
                             for (int i = 0; i < this.oldData.size(); i++) {
-                                System.out.println("second");
                                 ArrayList<Data> activityList = this.oldData.get(i).getActivityList();
                                 for (int j = 0; j < activityList.size(); j++) {
-                                    System.out.println("third");
                                     Data data = activityList.get(j);
                                     if (activityToSend.equalsNewData(data)) {
-                                        System.out.println("hey");
                                         duplicate = true;
                                     }
                                 }
@@ -208,6 +204,7 @@ public class Parser {
             activityName = activityName.toLowerCase();
             for (int place = 0; place < this.acceptedValues.size(); place++) {
                 for (int i = 0; i < this.acceptedValues.get(place).size(); i++) {
+                    System.out.println(this.acceptedValues.get(place).get(i));
                     if (activityName.contains(this.acceptedValues.get(place).get(i))) {
                         activityType = this.acceptedValues.get(place).get(0);
                     }
@@ -337,34 +334,41 @@ public class Parser {
      * Adds a key phrase into the collection of trip phrases for finding the type of an activity. Also has the option to add this phrase to the database.
      * @param keyWord The phrase to add to the list
      * @param type The type this phrase corresponds to
-     * @param addToDataBase A boolean to say weither the phrase should be added to the database or not.
+     * @param addToDataBase A boolean to say whether the phrase should be added to the database or not.
+     * @return to_return returns a boolean to let the application know if the phrase was added to the database or not.
      */
-    public void add(String keyWord, int type, boolean addToDataBase) {
+    public boolean add(String keyWord, int type, boolean addToDataBase) {
         this.acceptedValues.clear();
-        switch (type) {
-            case 1:
-                this.walk.add(keyWord);
-                break;
-            case 2:
-                this.hike.add(keyWord);
-                break;
-            case 3:
-                this.run.add(keyWord);
-                break;
-            case 4:
-                this.climb.add(keyWord);
-                break;
-            case 5:
-                this.bike.add(keyWord);
-                break;
-            case 6:
-                this.swim.add(keyWord);
-                break;
-            case 7:
-                this.waterSports.add(keyWord);
-                break;
-            default:
-                break;
+        boolean to_return = true;
+        if (addToDataBase) {
+            to_return = this.database.addParserKeyword(user.getUserID(), keyWord, type);
+        }
+        if (to_return) {
+            switch (type) {
+                case 1:
+                    this.walk.add(keyWord);
+                    break;
+                case 2:
+                    this.hike.add(keyWord);
+                    break;
+                case 3:
+                    this.run.add(keyWord);
+                    break;
+                case 4:
+                    this.climb.add(keyWord);
+                    break;
+                case 5:
+                    this.bike.add(keyWord);
+                    break;
+                case 6:
+                    this.swim.add(keyWord);
+                    break;
+                case 7:
+                    this.waterSports.add(keyWord);
+                    break;
+                default:
+                    break;
+            }
         }
         this.acceptedValues.add(this.walk);
         this.acceptedValues.add(this.hike);
@@ -373,9 +377,7 @@ public class Parser {
         this.acceptedValues.add(this.bike);
         this.acceptedValues.add(this.swim);
         this.acceptedValues.add(this.waterSports);
-        if (addToDataBase) {
-            this.database.addParserKeyword(user.getUserID(), keyWord, type);
-        }
+        return to_return;
     }
 
     /**
