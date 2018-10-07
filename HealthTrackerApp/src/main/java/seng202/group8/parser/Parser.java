@@ -212,7 +212,7 @@ public class Parser {
             }
             if (activityType.equals("")) {
                 dataList.clear();
-                throw new noTypeError("The activity '" + activityName+ "' doesnt match any of the activity types.");
+                throw new noTypeError("The activity '" + activityName+ "' doesn't match any of the activity types.");
 //                Scanner scanner = new Scanner(System.in);
 //                System.out.print("This activity, '" + line[1] + "', doesn't match any of our catagorys, please select the appropriate one:\n1: Walk\n2: Hike\n3: Run\n4: Climb\n5: Bike\n6: Swim\n7: Water Sports\n");
 //                String selection = scanner.next();
