@@ -56,6 +56,7 @@ public class ParserEditKeywordsController {
         if (actType1.getValue() != null) {
             switch (actType1.getValue().toString()) {
                 case "Walk":
+                    System.out.println("Walk");
                     choiceAdd = FXCollections.observableArrayList(database.getKeyWordsByType(user.getUserID(), 1));
                     break;
                 case "Hike":
@@ -165,20 +166,12 @@ public class ParserEditKeywordsController {
             SQLiteJDBC database = new SQLiteJDBC();
             parser = new Parser("", user);
             ArrayList<ArrayList<String>> acceptedValues = parser.getAcceptedValues();
-            boolean continueBool = true;
-            for (int place = 0; place < acceptedValues.size(); place++) {
-                for (int i = 0; i < acceptedValues.get(place).size(); i++) {
-                    if (phraseReturn.equals(acceptedValues.get(place).get(i))) {
-                        continueBool = false;
-                    }
-                }
-            }
+            boolean continueBool = parser.add(phraseReturn, type, true);
             if (continueBool) {
-                parser.add(phraseReturn, type, true);
                 update(event);
                 errorMes.setText("Phrase '"+phraseReturn+"' has been added");
             } else {
-                errorMes.setText("Phrase '"+phraseReturn+"' is already in the application");
+                errorMes.setText("Phrase '"+phraseReturn+"' or similar is already in the application");
             }
         }
     }

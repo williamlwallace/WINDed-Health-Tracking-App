@@ -22,7 +22,7 @@
    <top>
       <Label alignment="CENTER" prefHeight="88.0" prefWidth="139.0" text="Edit User" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
-            <Font size="16.0" />
+            <Font size="22.0" />
          </font>
       </Label>
    </top>
@@ -60,8 +60,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <JFXButton fx:id="submitBtn" onAction="#submitPressed" prefHeight="48.0" prefWidth="110.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Submit" textFill="WHITE" />
-                  <JFXButton fx:id="cancelBtn" onAction="#cancelPressed" prefHeight="48.0" prefWidth="110.0" styleClass="btns" stylesheets="@stylesheet2.css" text="Cancel" textFill="WHITE" />
+                  <JFXButton fx:id="submitBtn" onAction="#submitPressed" prefHeight="35" prefWidth="80" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Submit" textFill="black" />
+                  <JFXButton fx:id="cancelBtn" onAction="#cancelPressed" prefHeight="35" prefWidth="80" styleClass="homeBtns" stylesheets="@stylesheet2.css" text="Cancel" textFill="black" />
                </children>
                <opaqueInsets>
                   <Insets />

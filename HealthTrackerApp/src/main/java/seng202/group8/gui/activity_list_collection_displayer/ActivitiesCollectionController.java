@@ -384,6 +384,9 @@ public class ActivitiesCollectionController {
             activityTitle = titleField.getText();
             int error = 0;
             Parser parser = new Parser(csvToParse, user);
+            for (String s : parser.getRemoveableWords()) {
+                System.out.println("peep: "+s);
+            }
             try {
                 parser.parseFile();
                 for (Data data : parser.getDataList()) {
@@ -437,7 +440,7 @@ public class ActivitiesCollectionController {
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
 
 
-            } else if (parser.getDataList().isEmpty()) {
+            } else if (error == 0 && parser.getDataList().isEmpty()) {
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
             }
 
