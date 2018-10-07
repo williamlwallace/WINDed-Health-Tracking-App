@@ -1,14 +1,14 @@
+@font-face{
+    font-family: Couture;
+    src: url("couture-bld.otf");
+}
+
 .parent{
     -fx-background-color:  #ffff;
 }
 
 .sidebar{
     -fx-background-color: #2e86c1;
-}
-
-@font-face{
-    font-family: Couture;
-    src: url("couture-bld.otf");
 }
 
 .title-font{
