@@ -45,6 +45,7 @@ public class ParserEditKeywordsController {
 
     private ActivitiesCollectionController parentControl;
 
+
     /**
      * Updates the choice box to store all of the correct phrases
      * @param event
@@ -84,6 +85,7 @@ public class ParserEditKeywordsController {
         actRemove.setItems(choiceAdd);
     }
 
+
     /**
      * Sets up the window using the incoming data
      */
@@ -99,6 +101,7 @@ public class ParserEditKeywordsController {
         });
     }
 
+
     /**
      * Quits the window
      * @param event
@@ -107,6 +110,7 @@ public class ParserEditKeywordsController {
         Stage stage = (Stage) keyPhrase.getScene().getWindow();
         stage.close();
     }
+
 
     /**
      * removes a phrase from the database
@@ -121,6 +125,7 @@ public class ParserEditKeywordsController {
             update(event);
         }
     }
+
 
     /**
      * Receives the information that the user gave and uses it to add a new key word for the parser.
@@ -176,9 +181,12 @@ public class ParserEditKeywordsController {
         }
     }
 
+
     public void setUser(User user) {
         this.user = user;
     }
+
+
     public void setParentControl(ActivitiesCollectionController parentControlNew) {
         this.parentControl = parentControlNew;
     }

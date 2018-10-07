@@ -12,4 +12,5 @@ public class NotCSVError extends Exception
     {
         super(message);
     }
+
 }

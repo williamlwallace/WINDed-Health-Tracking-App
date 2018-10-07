@@ -1,12 +1,14 @@
 package seng202.group8.user.user_stats;
 
 public class WeightRecord extends Records{
+
     /**
      * @return the weight held by the record
      */
     public Double getWeight() {
         return weight;
     }
+
 
     /**
      * @param weight a double which sets the weight record's weight value
@@ -15,10 +17,12 @@ public class WeightRecord extends Records{
         this.weight = weight;
     }
 
+
     /**
      * Initial Variables
      */
     public Double weight;
+
 
     /**
      * Adds a new weight record object and calls super classes functions for adding date

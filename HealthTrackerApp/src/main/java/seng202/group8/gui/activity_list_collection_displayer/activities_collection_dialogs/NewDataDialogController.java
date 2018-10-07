@@ -35,6 +35,7 @@ import java.util.Arrays;
  */
 public class NewDataDialogController {
 
+
     private boolean isAddingActivityList;
     private User user;
     private int activityListIndexToAppendTo;
@@ -73,6 +74,7 @@ public class NewDataDialogController {
     @FXML
     private Text errorText;
 
+
     /**
      * Method called by fxml view as soon as the fxml file is loaded, populates choice boxes.
      * Checks for user to add only integers to distance covered values.
@@ -110,6 +112,7 @@ public class NewDataDialogController {
 
     }
 
+
     /**
      * Toggle button listener, make the newActivityListName parameter visible
      * only if required to create a new ActivityList.
@@ -127,6 +130,7 @@ public class NewDataDialogController {
         }
 
     }
+
 
     /**
      * Backend process that once createDataButton is clicked and the given info are correct it creates an Data object
@@ -157,10 +161,8 @@ public class NewDataDialogController {
             CoordinateData coordinate1 = new CoordinateData(-1, -1, -1);
             CoordinateData coordinate2 = new CoordinateData(-1, -1, -(Double.valueOf(distanceCoveredTextField.getText()) + 1));
 
-
             coordinateData.add(coordinate1);
             coordinateData.add(coordinate2);
-
 
             ArrayList<Integer> heartRates = new ArrayList<>();
             heartRates.add(-1);
@@ -173,8 +175,6 @@ public class NewDataDialogController {
             dataVal.setDataId(database.getNextDataID());
             dataVal.setDistanceCovered(new Double(distanceCoveredTextField.getText()));
             dataVal.setDataSpeedKph(dataVal.getDataSpeedKph());
-
-
 
             //Controlling if there is a need to create a new activity list
             if (newActivityListToggle.isSelected()) {
@@ -207,7 +207,6 @@ public class NewDataDialogController {
      * @return  Data object depending on the dataType parameter
      */
     private Data createDataObject(String dataDescription,DataType dataType,ArrayList<LocalDateTime> dataTimes, ArrayList<CoordinateData> coordinateData, ArrayList<Integer> heartRates) {
-
         switch (dataType) {
             case WALK:
                 return new WalkData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
@@ -224,8 +223,8 @@ public class NewDataDialogController {
             default:
                 return new WaterSportsData(dataDescription, dataType, dataTimes, coordinateData, heartRates, user);
         }
-
     }
+
 
     /**
      *
@@ -249,7 +248,6 @@ public class NewDataDialogController {
             if (newActivityListName.getText() != null) {
                 activityListNotNull = !(newActivityListName.getText().trim().length() == 0) ;
             } else {
-
                 activityListNotNull = false;
             }
         }
@@ -270,12 +268,14 @@ public class NewDataDialogController {
         }
     }
 
+
     /**
      * Closes the Stage object this controller manages
      */
     public void exitButtonListener() {
         stage.close();
     }
+
 
     /**
      *
@@ -285,6 +285,7 @@ public class NewDataDialogController {
         return user;
     }
 
+
     /**
      *
      * @param user a new User object for the user property
@@ -292,6 +293,7 @@ public class NewDataDialogController {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     /**
      *
@@ -301,6 +303,7 @@ public class NewDataDialogController {
         return activityListIndexToAppendTo;
     }
 
+
     /**
      *
      * @param activityListIndexToAppendTo an integer for the activityListIndexToAppendTo property
@@ -308,6 +311,7 @@ public class NewDataDialogController {
     public void setActivityListIndexToAppendTo(int activityListIndexToAppendTo) {
         this.activityListIndexToAppendTo = activityListIndexToAppendTo;
     }
+
 
     /**
      *
@@ -317,6 +321,7 @@ public class NewDataDialogController {
         return stage;
     }
 
+
     /**
      *
      * @param stage a new Stage object for the stage property
@@ -324,6 +329,7 @@ public class NewDataDialogController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
 
     /**
      *
@@ -333,6 +339,7 @@ public class NewDataDialogController {
         return activitiesCollectionController;
     }
 
+
     /**
      *
      * @param activitiesCollectionController a new ActivitiesCollectionController for the activitiesCollectionController
@@ -340,6 +347,7 @@ public class NewDataDialogController {
     public void setActivitiesCollectionController(ActivitiesCollectionController activitiesCollectionController) {
         this.activitiesCollectionController = activitiesCollectionController;
     }
+
 
     /**
      *
@@ -349,6 +357,7 @@ public class NewDataDialogController {
         return isAddingActivityList;
     }
 
+
     /**
      *
      * @param addingActivityList a new boolean value for the isAddingActivityList property
@@ -356,4 +365,5 @@ public class NewDataDialogController {
     public void setAddingActivityList(boolean addingActivityList) {
         this.isAddingActivityList = addingActivityList;
     }
+
 }

@@ -48,6 +48,7 @@ public class SplashController implements Initializable {
     private Stage stage;
     private HostServices host;
 
+
     /**
      *
      * Initialises the splash screen including animations. Also determines whether to load the create new user screen or
@@ -83,7 +84,6 @@ public class SplashController implements Initializable {
         anim2.setSpeed(2);
         anim1.playOnFinished(anim2);
 
-
         fadeIn.setOnFinished((e) -> {
             fadeOut.play();
         });
@@ -92,7 +92,6 @@ public class SplashController implements Initializable {
             try {
                 SQLiteJDBC database = new SQLiteJDBC();
                 ArrayList<User> users = database.retrieveAllUsers();
-                //TODO Does this call need to be changed?
 
                 if (users.size() != 0) { // Check for if there are users in the database
                     user = users.get(0);
@@ -122,7 +121,6 @@ public class SplashController implements Initializable {
                 Logger.getLogger(SplashController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-
     }
 
 
@@ -132,11 +130,13 @@ public class SplashController implements Initializable {
      */
     public User getUser() { return user; }
 
+
     /**
      *
      * @param user a new User object for the user property
      */
     public void setUser(User user) { this.user = user; }
+
 
     /**
      *
@@ -144,15 +144,18 @@ public class SplashController implements Initializable {
      */
     public Stage getStage() { return stage; }
 
+
     /**
      *
      * @param stage a new Stage object for the stage property
      */
     public void setStage(Stage stage) { this.stage = stage; }
 
+
     /**
      *
      * @param host a HostServices object
      */
     public void setHostServices(HostServices host) { this.host = host; }
+
 }

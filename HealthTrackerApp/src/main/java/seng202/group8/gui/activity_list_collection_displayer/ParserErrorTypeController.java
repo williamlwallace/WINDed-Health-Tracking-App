@@ -24,6 +24,7 @@ import java.util.List;
  * @author sgv15
  */
 public class ParserErrorTypeController {
+
     @FXML
     private Label errorText;
 
@@ -58,6 +59,7 @@ public class ParserErrorTypeController {
         });
     }
 
+
     /**
      * Quits the window
      * @param event
@@ -65,6 +67,7 @@ public class ParserErrorTypeController {
     public void quit(ActionEvent event) {
         this.stage.close();
     }
+
 
     /**
      * Receives the information that the user gave and give it to the parser so it can continue to parse the file. Again handles errors.
@@ -188,16 +191,21 @@ public class ParserErrorTypeController {
         }
     }
 
+
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
+
     public void setParser(Parser parserNew) {
         this.parser = parserNew;
     }
+
+
     public void setParentControl(ActivitiesCollectionController parentControlNew) {
         this.parentControl = parentControlNew;
     }
+
 
     public void setStage(Stage stage) {
         this.stage = stage;

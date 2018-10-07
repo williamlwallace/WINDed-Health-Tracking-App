@@ -74,6 +74,7 @@ public class SwitchUserController {
     @FXML
     private StackPane dialogStackPane;
 
+
     /**
      * Initialises the switch user screen, retrieves all the users from the database and calls populateUsersListView
      * to populate the list view with the retrieved users
@@ -95,8 +96,6 @@ public class SwitchUserController {
 
         ObservableList<User> observableList = FXCollections.observableList(users);
         switchUserListView.setItems(observableList);
-
-
         switchUserListView.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
             @Override
             public ListCell<User> call(ListView<User> param) {
@@ -177,8 +176,8 @@ public class SwitchUserController {
                 return cell;
             }
         });
-
     }
+
 
     /**
      * Event handler for the enter button, loads the mainFrame and home screen, plus the GUI controller
@@ -200,6 +199,7 @@ public class SwitchUserController {
         stage.show();
     }
 
+
     /**
      * Event handler for the new user button, loads the get user info screen and controller
      * @param event
@@ -218,6 +218,7 @@ public class SwitchUserController {
         stage.show();
     }
 
+
     /**
      * Event handler for pressing the cancel button, closes the stage/window
      * @param event
@@ -225,11 +226,13 @@ public class SwitchUserController {
     @FXML
     private void quitApp(ActionEvent event) { stage.close(); }
 
+
     /**
      *
      * @return the user property
      */
     public User getUser() { return user; }
+
 
     /**
      *
@@ -237,11 +240,13 @@ public class SwitchUserController {
      */
     public void setUser(User user) { this.user = user; }
 
+
     /**
      *
      * @return the stage property
      */
     public Stage getStage() { return stage; }
+
 
     /**
      *
@@ -249,11 +254,11 @@ public class SwitchUserController {
      */
     public void setStage(Stage stage) { this.stage = stage; }
 
+
     /**
      *
      * @param host a HostServices object
      */
     public void setHostServices(HostServices host) { this.host = host; }
-
 
 }

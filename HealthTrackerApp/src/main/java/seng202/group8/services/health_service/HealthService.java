@@ -44,6 +44,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
         maxAcceptableHeartRate = (int) ((220 - getUser().getAge()) * 0.85);
     }
 
+
     /**
      *
      * @return an ArrayList<Data> object containing those data points where the
@@ -55,9 +56,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
 
         ArrayList<Data> walkData =
                 getUser().getUserActivities().retrieveSameTypeActivities(DataType.WALK, new Date(0));
-        //////////////////////////
-        //This wants to be a proof of concept, doing so I can keep the complexity to n and collect
-        // those items that could yield the dangerous heart rate.
+
         ArrayList<Data> runData =
                 getUser().getUserActivities().retrieveSameTypeActivities(DataType.RUN, new Date(0));
 
@@ -183,6 +182,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
         return isTachicardic;
     }
 
+
     /**
      *
      * @param tachicardic a new boolean value to represent if the user is tachicardic
@@ -190,6 +190,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
     public void setTachicardic(boolean tachicardic) {
         isTachicardic = tachicardic;
     }
+
 
     /**
      *
@@ -199,6 +200,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
         return isBradicardic;
     }
 
+
     /**
      *
      * @param bradicardic a new boolean value to represent if the user is bradicardic
@@ -206,6 +208,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
     public void setBradicardic(boolean bradicardic) {
         isBradicardic = bradicardic;
     }
+
 
     /**
      *
@@ -215,6 +218,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
         return isAtCardiovasMortalityRisk;
     }
 
+
     /**
      *
      * @param atCardiovasMortalityRisk a new boolean value to represent if the user is at cardiovascular disease risk
@@ -222,6 +226,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
     public void setAtCardiovasMortalityRisk(boolean atCardiovasMortalityRisk) {
         isAtCardiovasMortalityRisk = atCardiovasMortalityRisk;
     }
+
 
     /**
      *
@@ -231,6 +236,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
         return isUserNotExercising;
     }
 
+
     /**
      *
      * @param userNotExercising a new boolean value to represent if the user is not training enough.
@@ -238,6 +244,7 @@ public class HealthService extends Service implements ActivityListCollectionObse
     public void setUserNotExercising(boolean userNotExercising) {
         isUserNotExercising = userNotExercising;
     }
+
 
     /**
      * Method called every time new activities are added to the ActivityListCollection object.
@@ -247,4 +254,5 @@ public class HealthService extends Service implements ActivityListCollectionObse
         checkIsBradicardic();
         checkIsTachicardic();
     }
+
 }

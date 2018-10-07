@@ -19,6 +19,7 @@ import java.io.IOException;
  */
 public class GUI extends Application {
 
+
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -33,8 +34,8 @@ public class GUI extends Application {
         stage.setResizable(false);
         splashController.setHostServices(getHostServices());
         stage.show();
-
     }
+
 
     public static void main(String[] args) {
         launch(args);

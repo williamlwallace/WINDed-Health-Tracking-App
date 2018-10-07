@@ -60,6 +60,7 @@ public class User {
         userStats.addUserWeightRecords(weight);
     }
 
+
     /**
      * Receives a created user. 
      * @param name the full name of the new user
@@ -85,13 +86,16 @@ public class User {
         userStats.addUserWeightRecords(weight);
     }
 
+
     public GoalsService getGoalsService() {
         return goalsService;
     }
 
+
     public void setGoalsService(GoalsService goalsService) {
         this.goalsService = goalsService;
     }
+
 
     /**
      * Get the users Stats Service Data
@@ -101,6 +105,7 @@ public class User {
         return statsService;
     }
 
+
     /**
      * Get the users Health Service data
      * @return a Health Service object which contains all health risk information
@@ -108,6 +113,7 @@ public class User {
     public HealthService getUserHealth() {
         return userHealth;
     }
+
 
     /**
      * Set the Name of the user
@@ -117,6 +123,7 @@ public class User {
         this.name = name;
     }
 
+
     /**
      * Set the age of the user
      * @param age the given new age for the user
@@ -124,6 +131,7 @@ public class User {
     public void setAge(Integer age) {
         this.age = age;
     }
+
 
     /**
      * Set the users weight
@@ -133,6 +141,7 @@ public class User {
         this.weight = weight;
     }
 
+
     /**
      * Set the users height
      * @param height the new height of the user
@@ -141,6 +150,7 @@ public class User {
         this.height = height;
         updateBMI(calculateBMI());
     }
+
 
     /**
      * Set the BMICategory of the user to a given BMI type enumeration value and the BMIValue double to its value kg/m**2
@@ -159,6 +169,7 @@ public class User {
         return name;
     }
 
+
     /**
      *
      * @return The age of the user
@@ -166,6 +177,7 @@ public class User {
     public Integer getAge() {
         return age;
     }
+
 
     /**
      *
@@ -184,6 +196,7 @@ public class User {
         return height;
     }
 
+
     /**
      *
      * @return The BMI type of the user
@@ -191,6 +204,7 @@ public class User {
     public BMI getBMI() {
         return bmi;
     }
+
 
     /**
      *
@@ -200,6 +214,7 @@ public class User {
         return sex;
     }
 
+
     /**
      * Set the sex of the user to a passed Sex enum value
      * @param sex the new Sex constant of the User
@@ -207,6 +222,7 @@ public class User {
     public void setSex(Sex sex) {
         this.sex = sex;
     }
+
 
     /**
      *
@@ -216,9 +232,11 @@ public class User {
         return userStats;
     }
 
+
     public void setUserStats(UserStats userStats) {
         this.userStats = userStats;
     }
+
 
     /**
      * @return The activity list collection of all the users activities
@@ -227,6 +245,7 @@ public class User {
         return userActivities;
     }
 
+
     /**
      * Assign an ActivityListCollection to the user for the activities they have done
      * @param userActivities the ActivityListCollection that belongs to the user
@@ -234,6 +253,7 @@ public class User {
     public void setUserActivities(ActivityListCollection userActivities) {
         this.userActivities = userActivities;
     }
+
 
     /**
      * Calculates the BMI of the user based on current weight and height
@@ -244,6 +264,7 @@ public class User {
         Double numericalBMI = weight/(heightMetres * heightMetres);
         return numericalBMI;
     }
+
 
     /**
      * Update the weight of the user, notifying observers and updating records.
@@ -256,6 +277,7 @@ public class User {
         notifyAllObservers();
     }
 
+
     /**
      * Update the BMI of the user, notifying observers and updating records.
      * @param newBMI the new BMI of the user (kg/m**2)
@@ -266,6 +288,7 @@ public class User {
         this.bmi = bmi;
         notifyAllObservers();
     }
+
 
     /**
      * Gets the bmi string for the user to view on the home page
@@ -278,9 +301,9 @@ public class User {
         } else {
             string = String.format("%.1f", getBMI().getBMIValue()) + " ANOREXIC" ;
         }
-
         return string;
     }
+
 
     /**
      * Add an observer to be updated when User's attributes change
@@ -289,6 +312,7 @@ public class User {
     public void attach(UserObserver observer) {
         observers.add(observer);
     }
+
 
     /**
      * Update all observers

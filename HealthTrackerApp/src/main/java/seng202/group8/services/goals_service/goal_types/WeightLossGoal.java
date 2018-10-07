@@ -44,12 +44,14 @@ public class WeightLossGoal extends Goal {
         }
     }
 
+
     /**
      * @return the targetWeight of the user with the goals service abstract methods
      */
     public Double getTarget() {
         return targetWeight;
     }
+
 
     /**
      * @param targetWeight a new Double value for the targetWeight parameter.
@@ -58,6 +60,7 @@ public class WeightLossGoal extends Goal {
         this.targetWeight = targetWeight;
     }
 
+
     /**
      * @return returns the starting weight of the user when they created the goal
      */
@@ -65,12 +68,14 @@ public class WeightLossGoal extends Goal {
         return startWeight;
     }
 
+
     /**
      * @param startWeight sets the starting weight of the user when they create their goal
      */
     public void setStartWeight(Double startWeight) {
         this.startWeight = startWeight;
     }
+
 
     /**
      * Calculates the progress that the user has currently lost adn sets the progress variable as a percentage out of 1.0
@@ -82,8 +87,8 @@ public class WeightLossGoal extends Goal {
         } else {
             setProgress((currentLost / (startWeight - targetWeight)));
         }
-
     }
+
 
     /**
      * Calculates the target and sets the target weight based on the goals service abstract method for all goal types
@@ -92,6 +97,7 @@ public class WeightLossGoal extends Goal {
         setTarget(targetWeight);
     }
 
+
     /**
      * Calculates the current for the users weight and sets the current status of the users weight for the goal
      */
@@ -99,13 +105,16 @@ public class WeightLossGoal extends Goal {
         setCurrent(startWeight);
     }
 
+
     /**
      * @return gets the data Type for the weight loss goal which is all types as it doesn't need a type
      */
     public DataType getDataType() {return DataType.ALL;}
 
+
     /**
      * @param dataType sets the data type for the weight loss goal, onyl needed for the abstract class as weight loss doesn't need a type
      */
     public void setDataType(DataType dataType) {this.dataType = dataType;}
+
 }

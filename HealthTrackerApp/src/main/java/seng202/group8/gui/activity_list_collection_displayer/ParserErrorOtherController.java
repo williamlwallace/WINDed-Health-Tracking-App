@@ -14,10 +14,12 @@ import java.util.List;
  * @author sgv15
  */
 public class ParserErrorOtherController {
+
     @FXML
     private Label errorText;
 
     private String errorMessage;
+
 
     /**
      * Initializes the screen by setting the title to display details about the error
@@ -29,6 +31,7 @@ public class ParserErrorOtherController {
         });
     }
 
+
     /**
      * Quits out of the window.
      * @param event
@@ -37,6 +40,7 @@ public class ParserErrorOtherController {
         Stage stage = (Stage) errorText.getScene().getWindow();
         stage.close();
     }
+
 
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;

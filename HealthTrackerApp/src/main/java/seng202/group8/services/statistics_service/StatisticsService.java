@@ -26,6 +26,7 @@ public class StatisticsService {
         return averageHeartRate;
     }
 
+
     /**
      * Searches through all activities and grabs the heart rate Data
      * Then it adds all of the heart rates together and records the amount of times heart rate is recorded
@@ -58,6 +59,7 @@ public class StatisticsService {
 
     }
 
+
     /**
      * Gets the km ran in total
      * @return a Double of the amount of Km's
@@ -66,12 +68,14 @@ public class StatisticsService {
         return kmRunTotal;
     }
 
+
     /**
      * Calls the getKmOfActivity with type RUN to see how many km's the user has run in total
      */
     public void setKmRunTotal() {
         this.kmRunTotal = getKmOfActivityType(DataType.RUN);
     }
+
 
     /**
      * Gets the amount of km walked in total
@@ -81,12 +85,14 @@ public class StatisticsService {
         return kmWalkTotal;
     }
 
+
     /**
      * Calls the getKmOfActivity with type WALK to see how many km's the user has walked in total
      */
     public void setKmWalkTotal() {
         this.kmWalkTotal = getKmOfActivityType(DataType.WALK);
     }
+
 
     /**
      * Gets the amount of km biked total
@@ -96,12 +102,14 @@ public class StatisticsService {
         return kmBikedTotal;
     }
 
+
     /**
      * Calls the getKmOfActivity with type BIKE to see how many km's the user has biked total
      */
     public void setKmBikedTotal() {
         this.kmBikedTotal = getKmOfActivityType(DataType.BIKE);
     }
+
 
     /**
      * Gets the current health Status of the user as a readable String
@@ -110,6 +118,7 @@ public class StatisticsService {
     public String getHealthStatus() {
         return healthStatus;
     }
+
 
     /**
      * Checks the health service class to determine the users health risks and displays them in a readable way
@@ -137,6 +146,7 @@ public class StatisticsService {
         this.healthStatus = healthStatus;
     }
 
+
     /**
      * Gets the amount fo calories burned by the user in total
      * @return a Double of the amount of calories burned
@@ -144,6 +154,7 @@ public class StatisticsService {
     public Double getCaloriesBurnedTotal() {
         return caloriesBurnedTotal;
     }
+
 
     /**
      * Searches through all data and adds how much calories were burned by the user
@@ -158,11 +169,11 @@ public class StatisticsService {
                     calories += data.getConsumedCalories();
                 }
             }
-
         }
 
         this.caloriesBurnedTotal = calories;
     }
+
 
     /**
      * Gets the amount of weight the user has lost in total
@@ -171,6 +182,7 @@ public class StatisticsService {
     public Double getWeightLossTotal() {
         return weightLossTotal;
     }
+
 
     /**
      * Sets the weight loss in total for the user for all drops in weight
@@ -190,6 +202,7 @@ public class StatisticsService {
         this.weightLossTotal = totalLost;
     }
 
+
     /**
      * Gets the total amount the user has travelled in km's
      * @return a Double of the amount of Km's
@@ -198,12 +211,14 @@ public class StatisticsService {
         return totalKm;
     }
 
+
     /**
      * uses getKmOfActivityType with parameter ALL to gets the total amount of Km's in the past week
      */
     public void setTotalKm() {
         this.totalKm = getKmOfActivityType(DataType.ALL);
     }
+
 
     /**
      * Searches through all data and checks if the activity type is the same as the current data being checked
@@ -213,7 +228,6 @@ public class StatisticsService {
      */
     public Double getKmOfActivityType(DataType activityType) {
         Double km = 0.0;
-
         for(int i = 0; i < arrayCollection.size(); i++) {
             ArrayList<Data> activityList = arrayCollection.get(i).getActivityList();
             for(int j = 0; j < activityList.size(); j++) {
@@ -227,10 +241,6 @@ public class StatisticsService {
         return km;
     }
 
-
-    /**
-     * Variables used for the main statistics display screen/tab
-     */
 
     private Integer averageHeartRate;
     private Double kmRunTotal;
@@ -254,6 +264,7 @@ public class StatisticsService {
         collection = this.user.getUserActivities();
         arrayCollection = collection.getActivityListCollection();
     }
+
 
     /**
      * A function to update all of the home statistics
@@ -290,6 +301,7 @@ public class StatisticsService {
 
     //Functions for graphs
 
+
     /**
      * Grabs the record for weight records and grabs each date and weight and assigns them to an x or y axis arrayList
      * so that it can be plotted and adds these arrayLists to a graph object which only stores Doubles in the lists
@@ -319,6 +331,7 @@ public class StatisticsService {
         }
         return graph;
     }
+
 
     /**
      * Grabs the record for bmi records and grabs each date and bmi data and assigns them to an x or y axis arrayList
@@ -351,6 +364,7 @@ public class StatisticsService {
         return graph;
     }
 
+
     /**
      * Grabs the speed data for the current activity and assigns the date or the speed to the x or y axis ArrayLists
      * so that it can be plotted, these arrayLists are added to a graphXY object which the Graph Controller uses
@@ -369,6 +383,7 @@ public class StatisticsService {
         return graph;
     }
 
+
     /**
      * Grabs the data for Stress Level and grabs each date and stress level data and assigns them to an x or y axis arrayList
      * so that it can be plotted and adds these arrayLists to a graph object which only stores Doubles in the lists
@@ -386,6 +401,7 @@ public class StatisticsService {
         }
         return graph;
     }
+
 
     /**
      * Grabs the data for an activity, then it gets from that activity data the coordinates list and the times
@@ -409,6 +425,7 @@ public class StatisticsService {
         }
         return graph;
     }
+
 
     /**
      * Creates a Double list of times between each of the local date times for the graphing functions
@@ -471,6 +488,7 @@ public class StatisticsService {
         return graphTimeScale;
     }
 
+
     /**
      * Returns the amount of seconds in between 2 data points by comparing all available information in local date time
      * Has to sadly compare years too as we could be going from 2018 december to 2019 January on new years eve even if it was
@@ -501,6 +519,7 @@ public class StatisticsService {
         return doubleReturn;
     }
 
+
     /**
      * Grabs the data for an activity, then it gets from that activity data the heart rate and the times
      * From there is adds to both the x and y axis of the graph object from the heart rate List and the times List
@@ -519,6 +538,7 @@ public class StatisticsService {
         }
         return graph;
     }
+
 
     /**
      * Grabs the data for an activity, then it gets from that activity data the calories burned and the times

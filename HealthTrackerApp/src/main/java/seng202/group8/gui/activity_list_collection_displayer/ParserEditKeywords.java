@@ -35,12 +35,13 @@ public class ParserEditKeywords extends Application {
         classStage.setTitle("WINded");
         classStage.setScene(new Scene(root));
         classStage.show();
-
     }
+
 
     public void setUser(User user) {
         this.user = user;
     }
+
 
     public void setParentControl(ActivitiesCollectionController parentControl) {
         this.parentControl = parentControl;

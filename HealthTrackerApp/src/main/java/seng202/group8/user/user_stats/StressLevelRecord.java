@@ -4,12 +4,14 @@ import seng202.group8.user.StressLevelType;
 
 public class StressLevelRecord extends Records {
 
+
     /**
      * @return the enum value for the stress level type for this record
      */
     public StressLevelType getStress() {
         return stress;
     }
+
 
     /**
      * @param stress sets the stress level for the record with the stressLevelType enum
@@ -18,10 +20,12 @@ public class StressLevelRecord extends Records {
         this.stress = stress;
     }
 
+
     /**
      * Initial Variables
      */
     public StressLevelType stress;
+
 
     /**
      * Creates the stress level record and calls the super class functions to create a date

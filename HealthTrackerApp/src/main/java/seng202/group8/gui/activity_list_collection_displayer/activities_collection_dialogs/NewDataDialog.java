@@ -55,14 +55,8 @@ public class NewDataDialog extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../../resources/resources/views/new_data_dialog.fxml"));
 
         Parent root = loader.load();
-//        CalendarViewController controller = (CalendarViewController) loader.getController();
-//        controller.setUser(user);
-//        controller.setCurrentStage(primaryStage);
-//
-//        controller.setDatePickerListener();
 
         Scene scene = new Scene(root, 400, 400);
-
         primaryStage.setScene(scene);
         primaryStage.setTitle("Ciao");
         primaryStage.show();

@@ -87,6 +87,7 @@ public class GraphController {
     @FXML
     private VBox activityVBox;
 
+
     /**
      * When combo box has selected a new item it will run the specific function required for that graph
      */
@@ -112,6 +113,7 @@ public class GraphController {
                 break;
         }
     }
+
 
     /**
      * The function that runs when you hit the "Distance over time" button
@@ -142,6 +144,7 @@ public class GraphController {
         graph.createSymbolsProperty();
     }
 
+
     /**
      * The function that runs when you hit the "Heart Rate over time" button
      * Grabs the heart rate data for the currently data activity selected
@@ -168,6 +171,7 @@ public class GraphController {
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }
+
 
     /**
      * The function that runs when you hit the "Calories over time" button
@@ -196,6 +200,7 @@ public class GraphController {
         graph.createSymbolsProperty();
     }
 
+
     /**
      * The function that runs when you hit the "Stress Level over time" button
      * Grabs the Stress Level data for the currently data activity selected
@@ -222,6 +227,8 @@ public class GraphController {
         graph.setData(lineChartData);
         graph.createSymbolsProperty();
     }
+
+
     /**
      * The function that runs when you hit the "Speed over time" button
      * Grabs the Speed data for the currently data activity selected
@@ -276,6 +283,7 @@ public class GraphController {
         graph2.createSymbolsProperty();
     }
 
+
     /**
      * The function that runs when you hit the "BMI over time" button
      * Grabs the BMI data from the user entries
@@ -300,7 +308,6 @@ public class GraphController {
     }
 
 
-
     /**
      * Generates the series needed for the graphs to show, adds the graphXY axis arrayLists to
      * a series object which can be added to a graph to be shown to the user
@@ -317,6 +324,7 @@ public class GraphController {
         }
         return series;
     }
+
 
     /**
      * The function that runs when the user clicks next activity and will travel through the allData arrayList
@@ -338,6 +346,7 @@ public class GraphController {
         }
     }
 
+
     /**
      * The function that runs when the user clicks on the button previous activity which will travel through the allData
      * arrayList to a previous done activity to the current one selected, unless at the first activity that the user ever
@@ -358,6 +367,7 @@ public class GraphController {
         }
     }
 
+
     /**
      * Gets the current data activity that is selected by the user
      * @return the data object that the user has currently selected
@@ -365,6 +375,7 @@ public class GraphController {
     public Data getCurrentdata() {
         return currentData;
     }
+
 
     /**
      * sets the current data to a new data object that the user has selected
@@ -394,6 +405,7 @@ public class GraphController {
         time.setText(string);
     }
 
+
     /**
      * Updates the information on the page when the used changes the data activity selected and when first loaded
      */
@@ -421,6 +433,7 @@ public class GraphController {
         changeGraph();
         showBmi();
     }
+
 
     /**
      * Sets the page up when the user first goes into the Statistics page
@@ -454,7 +467,6 @@ public class GraphController {
             content.setActions(gotItButton);
             dialog.show();
             showBmi();
-
         } else {
             Boolean found = false;
             Integer currentDataIndex2 = allData.size();
@@ -474,6 +486,7 @@ public class GraphController {
         }
     }
 
+
     /**
      * Variables used for navigation of data and the stage object
      */
@@ -484,6 +497,7 @@ public class GraphController {
     private User user;
     private Stage primaryStage;
 
+
     /**
      * Gets the current user using the page
      * @return
@@ -491,6 +505,7 @@ public class GraphController {
     public User getUser() {
         return user;
     }
+
 
     /**
      * Sets the user for the page
@@ -500,6 +515,7 @@ public class GraphController {
         this.user = user;
     }
 
+
     /**
      * Gets the primary stage
      * @return the primary stage object
@@ -508,6 +524,7 @@ public class GraphController {
         return primaryStage;
     }
 
+
     /**
      * Sets the primary Stage variable
      * @param primaryStage a stage variable to be passed in
@@ -515,4 +532,6 @@ public class GraphController {
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
+
 }
+

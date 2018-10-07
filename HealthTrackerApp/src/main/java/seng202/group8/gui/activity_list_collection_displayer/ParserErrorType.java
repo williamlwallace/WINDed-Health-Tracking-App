@@ -21,6 +21,7 @@ public class ParserErrorType extends Application {
         launch(args);
     }
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         //System.out.println("dis: "+errorMess);
@@ -37,19 +38,24 @@ public class ParserErrorType extends Application {
         classStage.show();
     }
 
+
     public String getErrorMess() {
         return errorMess;
     }
+
 
     public void setErrorMess(String errorMess) {
         this.errorMess = errorMess;
     }
 
+
     public void setParser(Parser parser) {
         this.parser = parser;
     }
 
+
     public void setParentControl(ActivitiesCollectionController parentControl) {
         this.parentControl = parentControl;
     }
+
 }

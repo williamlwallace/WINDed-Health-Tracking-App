@@ -5,6 +5,7 @@ public class BMI {
     private BMIType BMICategory;
     private Double BMIValue;
 
+
     /**
      * Construct a new BMI object to hold the category and value of the BMI
      * @param BMIValue the BMI value to be stored (kg/m**2)
@@ -14,6 +15,7 @@ public class BMI {
         this.BMICategory = BMIType.parseBMI(BMIValue);
     }
 
+
     /**
      * @return the category the BMI object belongs to according to its value
      */
@@ -21,12 +23,14 @@ public class BMI {
         return BMICategory;
     }
 
+
     /**
      * @return the Double value of the BMI in kg/m**2
      */
     public Double getBMIValue() {
         return BMIValue;
     }
+
 
     /**
      * Sets the BMI to a new double value in kg/m**2, and updates the category
@@ -36,4 +40,5 @@ public class BMI {
         BMIValue = newBMIValue;
         BMICategory = BMIType.parseBMI(BMIValue);
     }
+
 }

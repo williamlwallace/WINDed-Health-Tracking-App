@@ -125,7 +125,7 @@ public class ActivitiesCollectionController {
 
 
     /**
-     * TODO: make it available once the logic behind it can vbe implemented
+     * Methods run as soon as the view is loaded
      */
     @FXML
     private void initialize() {
@@ -182,9 +182,8 @@ public class ActivitiesCollectionController {
             maxHeartRate.setText(String.valueOf(heartRateData.getHighestHeartRate()) + " bpm");
             minHeartRate.setText(String.valueOf(heartRateData.getLowestHeartRate()) + " bpm");
         }
-
-
     }
+
 
     /**
      * TreeView items updater, called every time there is a need to display more data points (when data is added or deleted)
@@ -202,9 +201,7 @@ public class ActivitiesCollectionController {
             }
             rootNode.getChildren().add(activityListNode);
         }
-
         activityListCollectionTreeView.setRoot(rootNode);
-
     }
 
 
@@ -219,36 +216,6 @@ public class ActivitiesCollectionController {
         webEngine.loadContent(htmlFile);
     }
 
-//    /**
-//     *
-//     * @param htmlFile
-//     * @param data
-//     * @return the parsed html file injected with the Data coordinates
-//     * Parses the googleMapsView.html file and injects specific variables to allow the plotting of coordinates in the
-//     * WebView that will render the html file.
-//     */
-//    private String jsInjection(String htmlFile, Data data) {
-//        htmlFile = htmlFile.replace("&CENTERID", "lat: "
-//                + data.getCoordinatesArrayList().get(0).getLatitude()
-//                + ", lng: "
-//                + data.getCoordinatesArrayList().get(0).getLongitude());
-//        StringBuilder stringBuilder = new StringBuilder("var dataCoordVar = [ ");
-//        for (int i = 0; i < data.getCoordinatesArrayList().size(); i++) {
-//            CoordinateData coordinateData = data.getCoordinatesArrayList().get(i);
-//            if (i != (data.getCoordinatesArrayList().size() -1)) {
-//                stringBuilder.append("{lat: " + coordinateData.getLatitude()
-//                        + ", lng: " + coordinateData.getLongitude() + "},");
-//            } else {
-//                stringBuilder.append("{lat: " + coordinateData.getLatitude()
-//                        + ", lng: " + coordinateData.getLongitude() + "}];");
-//            }
-//        }
-//        htmlFile = htmlFile.replace("&PREVFLIGHTCOORDID", stringBuilder.toString());
-//
-//        htmlFile = htmlFile.replace("&FLIGHTPATHVARID", "dataCoordPath");
-//        htmlFile = htmlFile.replace("&PREVFLIGHTVAR", "dataCoordVar");
-//        return htmlFile;
-//    }
 
     /**
      *
@@ -275,18 +242,6 @@ public class ActivitiesCollectionController {
                 int dataIndex = parent.getChildren().indexOf(selectedItem);
                 int activityListIndex = parent.getParent().getChildren().indexOf(parent);
 
-                //Loading the html template from GoogleMaps JavaScript API as URL
-//                URL urlGoogleMaps = getClass().getResource("/resources/views/googleMapsView.html");
-//
-//                // Reading of the URL and create related String object
-//                String strGoogleMaps = "";
-//                BufferedReader in = new BufferedReader(
-//                        new InputStreamReader(urlGoogleMaps.openStream()));
-//
-//                String inputLine;
-//                while ((inputLine = in.readLine()) != null)
-//                    strGoogleMaps += (inputLine + "\n");
-//                in.close();
                 String strGoogleMaps = GoogleMapsTools.returnHTMLFileToString("/resources/views/googleMapsView.html");
                 // Retrieve selected Data value
                 Data data = user.getUserActivities().getActivityListCollection().get(activityListIndex).getActivity(dataIndex);
@@ -330,11 +285,7 @@ public class ActivitiesCollectionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 
 
     /**
@@ -359,6 +310,7 @@ public class ActivitiesCollectionController {
 
     }
 
+
     /**
      * Written by Sam, A function to load the edit key words screen and sends through the user.
      * @param event
@@ -371,6 +323,7 @@ public class ActivitiesCollectionController {
         parseEdit.setParentControl(this);
         parseEdit.start(ParserEditKeywords.classStage);
     }
+
 
     /**
      * Written by Sam, takes the filename from searchForFile() and parses the data. Handles errors my opening new windows which give the user information of the errors.
@@ -439,7 +392,6 @@ public class ActivitiesCollectionController {
                 setUpTreeView();
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
 
-
             } else if (error == 0 && parser.getDataList().isEmpty()) {
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
             }
@@ -448,6 +400,7 @@ public class ActivitiesCollectionController {
             System.out.println("csvToParse empty");
         }
     }
+
 
     /**
      * Written by Sam, sets the text of the parserInfo field
@@ -458,13 +411,10 @@ public class ActivitiesCollectionController {
     }
 
 
-
-
     /**
      *OnActionListener for the delete button, it allows to delete an activity or a list of activities.
      * Problem: if deleting the last ActivityList, then you must upload using the parser and no manual entrance is possible.
      */
-    //Need to link it to the database
     public void deleteSelectedActivityOrActivityList() {
         SQLiteJDBC database = new SQLiteJDBC();
         TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
@@ -510,7 +460,6 @@ public class ActivitiesCollectionController {
 
                 dialog.show();
 
-
             } else {
 
                 // Dialog opening in the case the item to remove is an activity list
@@ -537,9 +486,7 @@ public class ActivitiesCollectionController {
                         //
                         int dataListIndex = parent.getChildren().indexOf(selectedItem);
                         int activityListIndex = parent.getParent().getChildren().indexOf(parent);
-                        //
-                        //System.out.println("activity list index: " + activityListIndex);
-//                        System.out.println("data index: " + dataListIndex);
+
                         ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
                         if (activityList.getActivityList().size() > 1) {
                             Data dataToDelete = activityList.getActivity(dataListIndex);
@@ -560,9 +507,7 @@ public class ActivitiesCollectionController {
                     }
                 });
                 content.setActions(cancelButton, deleteButton);
-
                 dialog.show();
-
             }
         }
         setUpTreeView();
@@ -577,7 +522,6 @@ public class ActivitiesCollectionController {
 
         TreeItem selectedItem = (TreeItem) activityListCollectionTreeView.getSelectionModel().getSelectedItem();
         if (selectedItem == null || selectedItem.equals(activityListCollectionTreeView.getRoot())) {
-//            TreeItem<String> parent = selectedItem.getParent();
             int activityListIndex = -1;
             triggerNewActivityDialog(activityListIndex, true);
         } else if (!selectedItem.isLeaf()) {
@@ -618,9 +562,7 @@ public class ActivitiesCollectionController {
             } catch (IOException e) {
                     e.printStackTrace();
             }
-
         }
-
     }
 
 
@@ -636,7 +578,6 @@ public class ActivitiesCollectionController {
                 "add different elements in the activities collection"));
         JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
         JFXButton gotItButton=new JFXButton("Got it!");
-//        gotItButton.setStyle("-fx-background-color: #ff0000;");
 
         gotItButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -672,6 +613,7 @@ public class ActivitiesCollectionController {
         return user;
     }
 
+
     /**
      *
      * @param user a new User object for the user property
@@ -680,6 +622,7 @@ public class ActivitiesCollectionController {
         this.user = user;
     }
 
+
     /**
      *
      * @return the primaryStage property
@@ -687,6 +630,7 @@ public class ActivitiesCollectionController {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
 
     /**
      *

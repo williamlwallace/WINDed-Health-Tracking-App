@@ -21,9 +21,11 @@ public class GraphXY {
         return this.XAxis;
     }
 
+
     public ArrayList<Double> getYAxis() {
         return this.YAxis;
     }
+
 
     /**
      * Grab the units of the time scale of the x-axis.
@@ -33,6 +35,7 @@ public class GraphXY {
         return XAxisScale;
     }
 
+
     /**
      * Sets the x axis arrayList
      * @param XAxis and arrayList full of Strings to be used as the xAxis
@@ -41,6 +44,7 @@ public class GraphXY {
         this.XAxis = XAxis;
     }
 
+
     /**
      * Sets they axis arrayList
      * @param YAxis and arrayList full of Strings to be used as the yAxis
@@ -48,6 +52,7 @@ public class GraphXY {
     public void setYAxis(ArrayList<Double> YAxis) {
         this.YAxis = YAxis;
     }
+
 
     /**
      * Sets the scale of the XAxis values.
@@ -58,6 +63,7 @@ public class GraphXY {
         this.XAxisScale = XAxisScale;
     }
 
+
     /**
      * Adds a string to the X Axis arrayList
      * @param value the data being added to the arrayList
@@ -65,6 +71,7 @@ public class GraphXY {
     public void addXAxis(Double value) {
         this.XAxis.add(value);
     }
+
 
     /**
      * Adds a string to the Y axis arrayList
@@ -81,4 +88,5 @@ public class GraphXY {
         // Default XAxisScale value.
         this.XAxisScale = "(seconds)";
     }
+
 }

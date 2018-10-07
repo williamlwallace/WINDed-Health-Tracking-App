@@ -8,8 +8,10 @@ public class FileNotFoundError extends Exception
 {
     public FileNotFoundError() {}
 
+
     public FileNotFoundError(String message)
     {
         super(message);
     }
+
 }

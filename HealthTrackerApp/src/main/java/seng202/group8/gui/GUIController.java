@@ -65,12 +65,12 @@ public class GUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
+
     /**
      * Function that refreshes the home screen, this is called whenever data is changed and the home screen data needs to be updated
      * @throws IOException
      */
-    public void setToHome() throws IOException
-    {
+    public void setToHome() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/home.fxml"));
         BorderPane homeScene = loader.load();
         userBtn.setText(user.getName());
@@ -88,6 +88,7 @@ public class GUIController implements Initializable {
         goalsBtn.setStyle("-fx-background-color: transparent");
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
+
 
     /**
      * Event handler for pressing the home button on the side menu, loads the home screen fxml file and controller
@@ -113,6 +114,7 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+
     /**
      * Event handler for pressing the activity log button on the side menu, loads the activity log screen fxml file and controller
      * @param event
@@ -135,6 +137,7 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
 
     }
+
 
     /**
      * Event handler for pressing the statistics button on the side menu, loads the statistics screen fxml file and controller
@@ -159,6 +162,7 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+
     /**
      * Event handler for pressing the goals button on the side menu, loads the goals screen fxml file and controller
      * @param event
@@ -182,14 +186,14 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+
     /**
      * Event handler for pressing the calendar button on the side menu, loads the calendar screen fxml file and controller
      * @param event
      * @throws IOException
      */
     @FXML
-    private void loadCalendar(ActionEvent event) throws IOException
-    {
+    private void loadCalendar(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/calendar_view.fxml"));
         BorderPane calendarScene = loader.load();
         CalendarViewController calendarViewController = loader.getController();
@@ -204,14 +208,14 @@ public class GUIController implements Initializable {
         goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
+
     /**
      * Event handler for pressing the edit user button in the user menu, loads the edit user screen fxml file and controller
      * @param event
      * @throws IOException
      */
     @FXML
-    private void loadEditUser(ActionEvent event) throws IOException
-    {
+    private void loadEditUser(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/editUser.fxml"));
         BorderPane editUserScene = loader.load();
         EditUserController editUserController = loader.getController();
@@ -227,14 +231,14 @@ public class GUIController implements Initializable {
         goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
+
     /**
      * Event handler for pressing the switch user button in the user menu, loads the switch user screen fxml file and controller
      * @param event
      * @throws IOException
      */
     @FXML
-    private void loadUserScreen(ActionEvent event) throws IOException
-    {
+    private void loadUserScreen(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/switch_user.fxml"));
         Parent root = loader.load();
         SwitchUserController switchUserController = loader.getController();
@@ -247,6 +251,7 @@ public class GUIController implements Initializable {
         stage.show();
     }
 
+
     /**
      * Event handler for pressing the quit app button in the user menu, closes the stage/window
      * @param event
@@ -254,11 +259,13 @@ public class GUIController implements Initializable {
     @FXML
     private void quitApp(ActionEvent event) { stage.close(); }
 
+
     /**
      *
      * @return the user property
      */
     public User getUser() { return user; }
+
 
     /**
      *
@@ -266,11 +273,13 @@ public class GUIController implements Initializable {
      */
     public void setUser(User user) { this.user = user; }
 
+
     /**
      *
      * @return the stage property
      */
     public Stage getStage() { return stage; }
+
 
     /**
      *
@@ -278,9 +287,11 @@ public class GUIController implements Initializable {
      */
     public void setStage(Stage stage) { this.stage = stage; }
 
+
     /**
      *
      * @param host a HostServices object
      */
     public void setHostServices(HostServices host) { this.host = host; }
+
 }

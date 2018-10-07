@@ -16,6 +16,7 @@ public class FrequencyGoal extends Goal {
     private Integer timesCurrentlyPerformedActivity;
     private DataType dataType;
 
+
     /**
      * The frequency goal constructor to create this goal
      * @param user
@@ -33,6 +34,7 @@ public class FrequencyGoal extends Goal {
         this.timesCurrentlyPerformedActivity = 0;
     }
 
+
     /**
      *
      * Sieves through the data logged by the user and retrieves the number of times an activity type was performed
@@ -47,12 +49,14 @@ public class FrequencyGoal extends Goal {
         timesCurrentlyPerformedActivity = sameTypeData.size();
     }
 
+
     /**
      * @return the timesToPerform parameter
      */
     public Double getTarget() {
         return Double.valueOf(timesToPerformActivity);
     }
+
 
     /**
      * @param timesToPerformActivity a new Integer value for timesToPerformActivity parameter
@@ -61,12 +65,14 @@ public class FrequencyGoal extends Goal {
         this.timesToPerformActivity = timesToPerformActivity.intValue();
     }
 
+
     /**
      * @return the amount of times the user has currently performed a specific type of activity
      */
     public Integer getTimesCurrentlyPerformedActivity() {
         return timesCurrentlyPerformedActivity;
     }
+
 
     /**
      * @param timesCurrentlyPerformedActivity sets the amount of times the user has done a specific activity
@@ -75,6 +81,7 @@ public class FrequencyGoal extends Goal {
         this.timesCurrentlyPerformedActivity = timesCurrentlyPerformedActivity;
     }
 
+
     /**
      * @return the data type that the user wants to do a frequency goal on
      */
@@ -82,12 +89,14 @@ public class FrequencyGoal extends Goal {
         return dataType;
     }
 
+
     /**
      * @param dataType sets the data type for the user to use their frequency goal for
      */
     public void setDataType(DataType dataType) {
         this.dataType = dataType;
     }
+
 
     /**
      * Calculates the progress of the user and sets the progress as a percentage out of 1.0
@@ -98,12 +107,14 @@ public class FrequencyGoal extends Goal {
         setProgress(1.0 - test);
     }
 
+
     /**
      * Calculates the targets and sets the target with calls using the goals service abstract calls
      */
     public void calculateTarget() {
         setTarget((double) timesToPerformActivity);
     }
+
 
     /**
      * Calculates the current progress of the user and sets the current as the number of data type activities they have
@@ -113,5 +124,4 @@ public class FrequencyGoal extends Goal {
         ArrayList<Data> sameTypeData = getUser().getUserActivities().retrieveSameTypeActivities(dataType, getStartDate());
         setCurrent((double) sameTypeData.size());
     }
-
 }

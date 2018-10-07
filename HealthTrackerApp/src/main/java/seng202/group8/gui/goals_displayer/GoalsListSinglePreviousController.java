@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
 public class GoalsListSinglePreviousController {
+
     @FXML
     private Label title;
 
@@ -55,6 +56,7 @@ public class GoalsListSinglePreviousController {
 
     private Image tick = new Image("/resources/views/images/tick.png");
     private Image cross = new Image("/resources/views/images/cross.png");
+
 
     /**
      * The function to set all of the fxml labels and button actions for a single goal in the list view
@@ -124,10 +126,10 @@ public class GoalsListSinglePreviousController {
                 newStage.setScene(scene);
                 newStage.setResizable(false);
                 newStage.show();
-
             }
         });
     }
+
 
 
     public void remove() {
@@ -150,6 +152,7 @@ public class GoalsListSinglePreviousController {
         mainController.changeView();
     }
 
+
     /**
      * Sets the current goal that is used to get all the information for the fxml labels
      * @param currentGoal a goal type variable of the goal wanting to be created
@@ -157,6 +160,7 @@ public class GoalsListSinglePreviousController {
     public void setCurrentGoal(Goal currentGoal) {
         this.currentGoal = currentGoal;
     }
+
 
     /**
      * Gets the user for the goals
@@ -166,6 +170,7 @@ public class GoalsListSinglePreviousController {
         return user;
     }
 
+
     /**
      * Sets the use for this single list view
      * @param user the user currently using the application
@@ -173,6 +178,7 @@ public class GoalsListSinglePreviousController {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     /**
      * Sets the main controller for the goals display so that this class can call the update
@@ -182,4 +188,5 @@ public class GoalsListSinglePreviousController {
     public void setMainController(GoalsDisplayerController mainController) {
         this.mainController = mainController;
     }
+
 }

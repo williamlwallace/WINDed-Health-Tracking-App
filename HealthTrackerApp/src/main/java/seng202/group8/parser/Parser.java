@@ -23,6 +23,7 @@ import java.time.LocalTime;
  */
 public class Parser {
 
+
     private ArrayList<ArrayList<String>> acceptedValues = new ArrayList<ArrayList<String>>();
     private ArrayList<String> walk = new ArrayList<String>(Arrays.asList("walk"));
     private ArrayList<String> hike = new ArrayList<String>(Arrays.asList("hike", "hiking"));
@@ -46,6 +47,7 @@ public class Parser {
     private int lineNum;
     private ArrayList<ActivityList> oldData;
     private SQLiteJDBC database = new SQLiteJDBC();
+
 
     /**
      * Receives a filename and creates the list of type trip phrases. Gets these phrases from the database and includes a few default ones in the parser class.
@@ -75,6 +77,7 @@ public class Parser {
             this.oldData = null;
         }
     }
+
 
     /**
      * Starts parsing the entire file sent in. Does this by splitting the file into activities and adding them to a data list one by one.
@@ -182,6 +185,8 @@ public class Parser {
             throw new NotCSVError("The file '" + filename + "' must be a .csv file");
         }
     }
+
+
     /**
      * Receives a activity and collates the data from it. Throws custom errors so the GUI can handle the information
      * @param line The information help on the current line as a list of strings.
@@ -271,6 +276,7 @@ public class Parser {
         return line;
     }
 
+
     /**
      * Receives the next line from the csv file.
      * @param csvReader the csvReader which keeps track of the location in the file.
@@ -283,25 +289,6 @@ public class Parser {
         return line;
     }
 
-    /**
-     * Scrolls through the lines until the next activity is reached. Unused in the current iteration but may be used in future.
-     * @param csvReader
-     * @param line
-     * @return line
-     * @throws Exception
-     */
-    /*
-    private String[] nextActivity(CSVReader csvReader, String[] line) throws Exception {
-        try {
-            while ((line != null) && !(line[0].equals("#start"))) {
-                line = readLine(csvReader);
-            }
-        } catch (NullPointerException e) {
-            System.out.println("No more activities");
-        }
-        return line;
-    }
-    */
 
     /**
      * Returns a list of the data it parsed
@@ -311,23 +298,6 @@ public class Parser {
         return dataList;
     }
 
-    /**
-     * Parses a given file, here for testing purposes.
-     * @param args
-     * @throws Exception
-     */
-    /*
-    public static void main(String[] args) throws Exception {
-        User userTest = new User("Sam", 20, 72.0, 167.0, Sex.MALE);
-        Parser parserTest =  new Parser("seng202_2018_example_data_errors.csv", userTest);
-        parserTest.parseFile();
-        ArrayList<Data> data = new ArrayList<>(parserTest.getDataList());
-        for (Data d : data) {
-            System.out.println(d.getTitle());
-            System.out.println(d.getCoordinatesArrayList().size());
-        }
-    }
-    */
 
     /**
      * Adds a key phrase into the collection of trip phrases for finding the type of an activity. Also has the option to add this phrase to the database.
@@ -379,6 +349,7 @@ public class Parser {
         return to_return;
     }
 
+
     /**
      * Gets all of the key words added by the user.
      * @return
@@ -406,15 +377,19 @@ public class Parser {
         return toReturn;
     }
 
+
     public ArrayList<ArrayList<String>> getAcceptedValues() {
         return this.acceptedValues;
     }
+
 
     public User getUser() {
         return user;
     }
 
+
     public String getFilename() {
         return filename;
     }
+
 }

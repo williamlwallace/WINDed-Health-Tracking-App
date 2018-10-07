@@ -31,18 +31,20 @@ public abstract class Goal {
         this.description = description;
         this.startDate = new Date();
         this.goalType = goalType;
-
     }
+
 
     /**
      * @return gets the target valuye for the goal
      */
     public abstract Double getTarget();
 
+
     /**
      * @param target sets the target for the goal for any goal type
      */
     public abstract void setTarget(Double target);
+
 
     /**
      * @return the current progress of the users goal
@@ -51,12 +53,14 @@ public abstract class Goal {
         return progress;
     }
 
+
     /**
      * @param progress sets the prigress of the current user goal
      */
     public void setProgress(Double progress) {
         this.progress = progress;
     }
+
 
     /**
      * @return the current value that the user is at for their goal
@@ -65,12 +69,14 @@ public abstract class Goal {
         return current;
     }
 
+
     /**
      * @param current sets the current users current status for their goal
      */
     public void setCurrent(Double current) {
         this.current = current;
     }
+
 
     /**
      * @return the description parameter
@@ -79,12 +85,14 @@ public abstract class Goal {
         return description;
     }
 
+
     /**
      * @param description a new String value for description parameter
      */
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     /**
      * @return the type of the Goal object
@@ -93,12 +101,14 @@ public abstract class Goal {
         return goalType;
     }
 
+
     /**
      * @param goalType a new GoalType parameter
      */
     public void setGoalType(GoalType goalType) {
         this.goalType = goalType;
     }
+
 
     /**
      * @return the user parameter
@@ -107,12 +117,14 @@ public abstract class Goal {
         return user;
     }
 
+
     /**
      * @param user a new user object
      */
     public void setUser(User user) {
         this.user = user;
     }
+
 
     /**
      * @return a boolean value representing if the Goal is now complete
@@ -129,12 +141,14 @@ public abstract class Goal {
         this.isCompleted = isCompleted;
     }
 
+
     /**
      * @return the goal startDate
      */
     public Date getStartDate() {
         return startDate;
     }
+
 
     /**
      * @param startDate a new Date object for startDate parameter
@@ -143,12 +157,14 @@ public abstract class Goal {
         this.startDate = startDate;
     }
 
+
     /**
      * @return gets the target date for the goal the user is trying to achieve
      */
     public LocalDateTime getTargetDate() {
         return targetDate;
     }
+
 
     /**
      * @param targetDate sets the target date for the goal
@@ -157,30 +173,36 @@ public abstract class Goal {
         this.targetDate = targetDate;
     }
 
+
     /**
      * Calls the below goals functions to check if the goal is completed or not
      */
     public abstract void checkIsCompleted();
+
 
     /**
      * Calls the below goals functions to calculate the progress for the goal
      */
     public abstract void calculateProgress();
 
+
     /**
      * Calls the below goals functions to calculate the current progress of the goal for the user
      */
     public abstract void calculateCurrent();
+
 
     /**
      * Calls the below goals functions to calculate the target for this goal
      */
     public abstract void calculateTarget();
 
+
     /**
      * Calls the below goals functions get the data type for the type of goal
      */
     public abstract DataType getDataType();
+
 
     /**
      * Calls the below goals functions to set the data type for type of goal

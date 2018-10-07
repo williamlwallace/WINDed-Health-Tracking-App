@@ -12,6 +12,7 @@ public enum GoalType {
 
     TimePerformedGoal;
 
+
     /**
      *
      * @param goalType

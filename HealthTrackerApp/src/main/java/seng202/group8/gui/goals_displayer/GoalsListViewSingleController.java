@@ -60,6 +60,7 @@ public class GoalsListViewSingleController {
     private User user;
     private GoalsDisplayerController mainController;
 
+
     /**
      * The function to set all of the fxml labels and button actions for a single goal in the list view
      * Changes the text based on the type of activity and calls other functions for when the edit button is pushed
@@ -134,6 +135,7 @@ public class GoalsListViewSingleController {
         });
     }
 
+
     /**
      * The action to remove a goal from the current list
      */
@@ -166,6 +168,7 @@ public class GoalsListViewSingleController {
         this.currentGoal = currentGoal;
     }
 
+
     /**
      * Gets the user for the goals
      * @return
@@ -173,6 +176,7 @@ public class GoalsListViewSingleController {
     public User getUser() {
         return user;
     }
+
 
     /**
      * Sets the use for this single list view
@@ -182,6 +186,7 @@ public class GoalsListViewSingleController {
         this.user = user;
     }
 
+
     /**
      * Sets the main controller for the goals display so that this class can call the update
      * function for the goals list view when something is edited or removed
@@ -190,4 +195,5 @@ public class GoalsListViewSingleController {
     public void setMainController(GoalsDisplayerController mainController) {
         this.mainController = mainController;
     }
+
 }

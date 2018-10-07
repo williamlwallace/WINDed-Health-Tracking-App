@@ -43,24 +43,24 @@ public class EditUserController {
     private Stage stage;
     private GUIController guiController;
 
+
     /**
      * Sets up the text fields with the current user data
      */
-    public void setUp()
-    {
+    public void setUp() {
         nameField.setText(user.getName());
         ageField.setText(Integer.toString(user.getAge()));
         weightField.setText(Double.toString(user.getWeight()));
         heightField.setText(Double.toString(user.getHeight()));
     }
 
+
     /**
      * Event handler for when enter button is pressed, updates the user's details with the entered values, also error
      * checks for invalid input
      * @param event
      */
-    public void submitPressed(ActionEvent event)
-    {
+    public void submitPressed(ActionEvent event) {
         String name = null;
         int age = 0;
         double weight = 0.0;
@@ -153,6 +153,7 @@ public class EditUserController {
         }
     }
 
+
     /**
      * Event handler for cancel button being pressed, cancels the editing of the user and goes back to the home screen
      * @param event
@@ -161,8 +162,8 @@ public class EditUserController {
     @FXML
     private void cancelPressed(ActionEvent event) throws IOException{
         guiController.setToHome();
-
     }
+
 
     /**
      *
@@ -172,6 +173,7 @@ public class EditUserController {
         return guiController;
     }
 
+
     /**
      *
      * @param guiController the GUI controller
@@ -180,11 +182,13 @@ public class EditUserController {
         this.guiController = guiController;
     }
 
+
     /**
      *
      * @return the user property
      */
     public User getUser() { return user; }
+
 
     /**
      *
@@ -192,17 +196,20 @@ public class EditUserController {
      */
     public void setUser(User user) { this.user = user; }
 
+
     /**
      *
      * @return the stage property
      */
     public Stage getStage() { return stage; }
 
+
     /**
      *
      * @param stage a new Stage object for the stage property
      */
     public void setStage(Stage stage) { this.stage = stage; }
+
 }
 
 

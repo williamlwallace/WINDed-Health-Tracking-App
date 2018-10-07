@@ -98,6 +98,7 @@ public class HomeController {
     private Image overweightBMI = new Image("/resources/views/images/overweight_bmi.png");
     private Image obeseBMI = new Image("/resources/views/images/obese_bmi.png");
 
+
     /**
      * Sets the page up when the user first goes into the Home page
      */
@@ -140,13 +141,6 @@ public class HomeController {
             bmiText.setText(">300 OBESE");
         }
 
-//        System.out.println(user.getStatsService().getHealthStatus());
-//        if (healthService.isTachicardic() || healthService.isAtCardiovasMortalityRisk() || healthService.isAtCardiovasMortalityRisk()) {
-//            healthRiskImage.setImage(healthRisk);
-//        } else {
-//            healthRiskImage.setImage(noRisk);
-//        }
-
         run.setText(String.format("%.1f", statsService.getKmRunTotal()) + " km");
         walk.setText(String.format("%.1f", statsService.getkmWalkTotal()) + " km");
         bike.setText(String.format("%.1f", statsService.getKmBikedTotal()) + " km");
@@ -161,7 +155,7 @@ public class HomeController {
         healthLabel.setStyle("-fx-font-weight: bold");
         heartLabel.setStyle("-fx-font-weight: bold");
 
-        //SWebView Setup
+        //WebView Setup
         try {
             String strGoogleMaps = GoogleMapsTools.returnHTMLFileToString("/resources/views/googleMapsView.html");
             // Retrieve selected Data value
@@ -171,34 +165,36 @@ public class HomeController {
                 mostRecentActivity.setText("Most Recent Activity - " + data.getTitle());
                 String htmlFile = GoogleMapsTools.jsInjection(strGoogleMaps, data);
                 WebEngine webEngine = homeWebView.getEngine();
-//              System.out.println(htmlFile);
                 webEngine.loadContent(htmlFile);
             } else {
                 //raise dialog saying no values in or show chch
             }
-
-            // Inject the GoogleMaps html file (read as string above) with the coordinates of the selected data
 
         } catch (IOException e) {
 
         }
     }
 
+
     public void searchCardio() {
         this.host.showDocument("https://www.google.com/search?q=Cardiovascular+Mortality");
     }
+
 
     public void searchBrad() {
         this.host.showDocument("https://www.google.com/search?q=bradycardia");
     }
 
+
     public void searchTach() {
         this.host.showDocument("https://www.google.com/search?q=Tachycardia");
     }
 
+
     public void setHostServices(HostServices host) {
         this.host = host;
     }
+
 
     /**
      * Variables used for navigation of data and the stage object
@@ -208,11 +204,13 @@ public class HomeController {
     private StatisticsService statsService;
     private HostServices host;
 
+
     /**
      * Gets the current user using the page
      * @return
      */
     public User getUser() { return user; }
+
 
     /**
      * Sets the user for the page
@@ -220,15 +218,18 @@ public class HomeController {
      */
     public void setUser(User user) { this.user = user; }
 
+
     /**
      * Gets the primary stage
      * @return the primary stage object
      */
     public Stage getPrimaryStage() { return primaryStage; }
 
+
     /**
      * Sets the primary Stage variable
      * @param primaryStage a stage variable to be passed in
      */
     public void setPrimaryStage(Stage primaryStage) { this.primaryStage = primaryStage; }
+
 }

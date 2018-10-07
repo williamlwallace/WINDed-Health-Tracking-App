@@ -16,6 +16,7 @@ public class ActivityGoal extends Goal {
     private Double distanceCurrentlyCovered;
     private DataType dataType;
 
+
     /**
      * Creates an activity goal and calls super functions
      * @param user the user adding the goal
@@ -33,6 +34,7 @@ public class ActivityGoal extends Goal {
         this.dataType = dataType;
     }
 
+
     /**
      *
      * @return the distanceCovered parameter
@@ -41,12 +43,14 @@ public class ActivityGoal extends Goal {
         return distanceToCoverKm;
     }
 
+
     /**
      * @param distanceToCover a new Double value for the distanceCovered parameter
      */
     public void setTarget(Double distanceToCover) {
         this.distanceToCoverKm = distanceToCover;
     }
+
 
     /**
      * @return the distcnae that the user has currently travelled for this goal
@@ -63,6 +67,7 @@ public class ActivityGoal extends Goal {
         this.distanceCurrentlyCovered = distanceCurrentlyCovered;
     }
 
+
     /**
      * @return the data type of this goal for activities
      */
@@ -70,12 +75,14 @@ public class ActivityGoal extends Goal {
         return dataType;
     }
 
+
     /**
      * @param dataType sets the data type for the activity goal
      */
     public void setDataType(DataType dataType) {
         this.dataType = dataType;
     }
+
 
     /**
      *
@@ -96,6 +103,7 @@ public class ActivityGoal extends Goal {
         setDistanceCurrentlyCovered(distanceCovered);
     }
 
+
     /**
      * Calculates the current progress of the goal by retrieving all the activity data from the goal creation date onwards
      * and seeing how much they have achieved uit by and setting the progress as a percentage out of 1.0
@@ -109,12 +117,14 @@ public class ActivityGoal extends Goal {
         setProgress(1 - (distanceToCoverKm - distanceCovered) / distanceToCoverKm);
     }
 
+
     /**
      * calculates the target for the goal, is an abstract function tha can be called for all goal types from goals service
      */
     public void calculateTarget() {
         setTarget(distanceToCoverKm);
     }
+
 
     /**
      * Calculates the current amount of distance the user has travelled for the goals display
@@ -127,5 +137,4 @@ public class ActivityGoal extends Goal {
         }
         setCurrent(distanceCovered);
     }
-
 }

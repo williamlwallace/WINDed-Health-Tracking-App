@@ -84,6 +84,7 @@ public class AddGoalController {
         changeGoal();
     }
 
+
     /**
      * The function to start the add goal display when a user selects the edit button on a goal in the list view
      * This function will sets the fields correctly to what the user had previously put there
@@ -98,6 +99,7 @@ public class AddGoalController {
         createGoal.setText("Finish Changes");
         changeActivityType();
     }
+
 
     /**
      * Changes the activity type box to visible or not visible based on the goal selected and fills or not fills the box
@@ -124,6 +126,7 @@ public class AddGoalController {
         }
     }
 
+
     /**
      * The function to start the add goal display when a user selects the retry button on a goal in the list view previous
      * This function will sets the fields correctly to what the user had previously put there
@@ -137,6 +140,7 @@ public class AddGoalController {
         createGoal.setText("Create Goal");
         changeActivityType();
     }
+
 
     /**
      * When the combo box at the top for changing the type of goal being created it will update the rest of the fields
@@ -167,6 +171,7 @@ public class AddGoalController {
                 break;
         }
     }
+
 
     /**
      * Checks for errors with the users entry fields and notifies the user if there is an incorrect fields and asks them to update them
@@ -248,6 +253,7 @@ public class AddGoalController {
         }
     }
 
+
     /**
      * Gets the current progress of a goal that is about to be created to make sure it won't be completed instantly
      */
@@ -269,6 +275,7 @@ public class AddGoalController {
         }
         return current;
     }
+
 
     /**
      * Shows an error to the user when they enter a field incorrectly
@@ -292,6 +299,7 @@ public class AddGoalController {
         dialog.show();
     }
 
+
     /**
      * Sets the stage for the add goal controller
      * @param stage a stage variable
@@ -299,6 +307,7 @@ public class AddGoalController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
 
     /**
      * Sets the user that is currently using the application into the add goal controller
@@ -308,9 +317,11 @@ public class AddGoalController {
         this.user = user;
     }
 
+
     /**
      * Sets the main controller variable to allow refreshing when a goal is edited or removed
      * @param controller the GoalsDisplayController class that holds the update methods needed
      */
     public void setMainController(GoalsDisplayerController controller) { this.mainController = controller;}
+
 }

@@ -42,6 +42,7 @@ public class GoalsDisplayerController {
     private ArrayList<Goal> goalsToDisplayPrevious;
     private GoalsDisplayerController mainController;
 
+
     /**
      * An initial function called when you first go into the goals panel, this sets the main controller
      * variable and sets the combo boxes to default values, also calls the change view function
@@ -54,6 +55,7 @@ public class GoalsDisplayerController {
         setMainController(this);
         changeView();
     }
+
 
     /**
      * Gets the value of the combo box for the viewing selection and sets the labels to either create a goal if there
@@ -87,6 +89,7 @@ public class GoalsDisplayerController {
             goalTypeLabelPrevious.setText("Finish a goal!");
         }
     }
+
 
     /**
      * Sets up the display list view for the goals that is currently selected by the variable goals to display
@@ -133,11 +136,11 @@ public class GoalsDisplayerController {
                         }
                     }
                 };
-
                 return cell;
             }
         });
     }
+
 
     /**
      * Sets up the display list view for the goals that have been previously completed and selected by the variable goals to display
@@ -184,7 +187,6 @@ public class GoalsDisplayerController {
                         }
                     }
                 };
-
                 return cell;
             }
         });
@@ -217,6 +219,7 @@ public class GoalsDisplayerController {
         changeView();
     }
 
+
     /**
      * Gets the current selected goal type from the combo Box
      * @return a goal type variable enum
@@ -224,6 +227,7 @@ public class GoalsDisplayerController {
     public GoalType getSelectedGoalType() {
         return selectedGoalType;
     }
+
 
     /**
      * Changes the selected goal type variable to enum activity goals and calls the setup goals list function
@@ -233,6 +237,7 @@ public class GoalsDisplayerController {
         setupGoalsList();
     }
 
+
     /**
      * Changes the selected goal type variable to enum times performed goals and calls the setup goals list function
      */
@@ -240,6 +245,7 @@ public class GoalsDisplayerController {
         selectedGoalType = GoalType.TimePerformedGoal;
         setupGoalsList();
     }
+
 
     /**
      * Changes the selected goal type variable to enum weight loss goals and calls the setup goals list function
@@ -249,6 +255,7 @@ public class GoalsDisplayerController {
         setupGoalsList();
     }
 
+
     /**
      * Sets the goals service for the goals controller that it can use to retrieve the goals
      * @param goalsService a goals service variable that the user currently has
@@ -256,6 +263,7 @@ public class GoalsDisplayerController {
     public void setGoalsService(GoalsService goalsService) {
         this.goalsService = goalsService;
     }
+
 
     /**
      * Gets the user that us currently using the application
@@ -265,6 +273,7 @@ public class GoalsDisplayerController {
         return user;
     }
 
+
     /**
      * Sets the user variable in this controller to the user using tha application
      * @param user the user using the application currently
@@ -273,13 +282,15 @@ public class GoalsDisplayerController {
         this.user = user;
     }
 
+
     /**
-     * GEts the stage of the current controller
+     * Gets the stage of the current controller
      * @return a stage object
      */
     public Stage getPrimaryStage() {
         return stage;
     }
+
 
     /**
      * Sets the stage of the goals display controller
@@ -289,9 +300,11 @@ public class GoalsDisplayerController {
         this.stage = stage;
     }
 
+
     /**
      * Sets the main controller variable to be used by the other goal controllers
      * @param mainController the main controller to be passed around of type GoalsDisplayController
      */
     public void setMainController(GoalsDisplayerController mainController) { this.mainController = mainController; }
+
 }

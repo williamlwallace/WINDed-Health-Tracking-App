@@ -12,4 +12,5 @@ public class noTypeError extends Exception
     {
         super(message);
     }
+
 }

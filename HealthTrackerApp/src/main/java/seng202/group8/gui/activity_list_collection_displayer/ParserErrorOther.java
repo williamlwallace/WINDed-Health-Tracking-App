@@ -10,11 +10,14 @@ public class ParserErrorOther extends Application {
 
     static Stage classStage = new Stage();
 
+
     private String errorMess;
+
 
     public static void main(String[] args) {
         launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -28,9 +31,11 @@ public class ParserErrorOther extends Application {
         classStage.show();
     }
 
+
     public String getErrorMess() {
         return errorMess;
     }
+
 
     public void setErrorMess(String errorMess) {
         this.errorMess = errorMess;

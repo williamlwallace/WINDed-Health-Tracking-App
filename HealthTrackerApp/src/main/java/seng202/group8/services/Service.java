@@ -9,13 +9,16 @@ import seng202.group8.user.User;
  */
 public class Service {
 
+
     private User user;
     private boolean currentlyInUse;
+
 
     public Service(User user) {
         this.user = user;
         this.currentlyInUse = false;
     }
+
 
     /**
      *
@@ -25,6 +28,7 @@ public class Service {
         return user;
     }
 
+
     /**
      *
      * @param user a new User object for the user porperty
@@ -32,6 +36,7 @@ public class Service {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     /**
      *
@@ -41,6 +46,7 @@ public class Service {
         return currentlyInUse;
     }
 
+
     /**
      *
      * @param currentlyInUse a new boolean value for the currentlyInUse property
@@ -48,4 +54,5 @@ public class Service {
     public void setCurrentlyInUse(boolean currentlyInUse) {
         this.currentlyInUse = currentlyInUse;
     }
+
 }

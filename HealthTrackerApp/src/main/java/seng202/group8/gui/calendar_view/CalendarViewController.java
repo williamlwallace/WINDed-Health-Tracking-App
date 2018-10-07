@@ -55,12 +55,12 @@ public class CalendarViewController {
     private Text noGoalsText;
 
 
-
     @FXML
     public void initialize() {
         noGoalsText.setVisible(false);
         setDatePickerListener();
     }
+
 
     /**
      * Setting the background of the calendar cells green if that day the user
@@ -110,6 +110,7 @@ public class CalendarViewController {
         datePicker.setDayCellFactory(dayCellFactory);
     }
 
+
     /**
      * DatePicker listener, every time a date is selected a list of all the activities performed during
      * the selected day will appear in the ListView dedicated to activities.
@@ -117,7 +118,6 @@ public class CalendarViewController {
     public void setDatePickerListener() {
 
         noActivitiesText.setText("Click on a day to find the activities performed or the goals due");
-
 
         datePicker.valueProperty().addListener((ov, oldValue, newValue) -> {
             //System.out.println(datePicker.getValue());
@@ -192,7 +192,6 @@ public class CalendarViewController {
                         }
                     }
                 };
-
                 return cell;
             }
         });
@@ -232,11 +231,9 @@ public class CalendarViewController {
                                 //Text burntCalories = new Text("Burnt calories: " + String.format("%.2f", data.getConsumedCalories()) + " cal");
                                 vBox.getChildren().addAll(title, distanceCovered);//, burntCalories);
 
-                                // TODO
                             } else {
                                 vBox.getChildren().addAll(title, distanceCovered);
                             }
-//                                    , burntCalories);
                             vBox.setPadding(new Insets(5));
                             vBox.setAlignment(Pos.CENTER_LEFT);
                             setGraphic(hBox);
@@ -247,8 +244,8 @@ public class CalendarViewController {
                 return cell;
             }
         });
-
     }
+
 
     /**
      *
@@ -265,6 +262,7 @@ public class CalendarViewController {
                 return new Image("resources/views/images/icons8-abaco-80.png");
         }
     }
+
 
     /**
      *
@@ -307,6 +305,7 @@ public class CalendarViewController {
         this.user = user;
     }
 
+
     /**
      *
      * @return the currentStage property
@@ -314,6 +313,7 @@ public class CalendarViewController {
     public Stage getCurrentStage() {
         return currentStage;
     }
+
 
     /**
      *
