@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.MenuButton?>
@@ -13,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.GUIController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.GUIController">
    <top>
       <HBox prefHeight="67.0" prefWidth="600.0" styleClass="top" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <children>
@@ -54,70 +62,70 @@
    <left>
       <VBox prefHeight="620.0" prefWidth="175.0" styleClass="sidebar" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="homeBtn" prefHeight="150.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet2.css">
+            <StackPane fx:id="homeBtn" prefHeight="150.0" prefWidth="200.0" stylesheets="@stylesheet2.css">
                <children>
                   <ImageView fitHeight="55.0" fitWidth="55.0" focusTraversable="true" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/001-home.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadHome" prefHeight="131.0" prefWidth="192.0" ripplerFill="#2874a6" stylesheets="@stylesheet.css" text="Home" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#loadHome" prefHeight="131.0" prefWidth="192.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
                   </JFXButton>
                </children>
             </StackPane>
-            <StackPane fx:id="activityBtn" prefHeight="150.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet2.css">
+            <StackPane fx:id="activityBtn" prefHeight="150.0" prefWidth="200.0" stylesheets="@stylesheet2.css">
                <children>
                   <ImageView fitHeight="55.0" fitWidth="55.0" focusTraversable="true" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/007-running.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadActivityLog" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" stylesheets="@stylesheet.css" text="Activity Log" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#loadActivityLog" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Activity Log" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
                   </JFXButton>
                </children>
             </StackPane>
-            <StackPane fx:id="statsBtn" prefHeight="150.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet2.css">
+            <StackPane fx:id="statsBtn" prefHeight="150.0" prefWidth="200.0" stylesheets="@stylesheet2.css">
                <children>
                   <ImageView fitHeight="55.0" fitWidth="55.0" focusTraversable="true" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/003-graph.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadStatistics" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" stylesheets="@stylesheet.css" text="Statistics" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#loadStatistics" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Statistics" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
                   </JFXButton>
                </children>
             </StackPane>
-            <StackPane fx:id="goalsBtn" layoutX="10.0" layoutY="254.0" prefHeight="150.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet2.css">
+            <StackPane fx:id="goalsBtn" layoutX="10.0" layoutY="254.0" prefHeight="150.0" prefWidth="200.0" stylesheets="@stylesheet2.css">
                <children>
                   <ImageView fitHeight="55.0" fitWidth="55.0" focusTraversable="true" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/001-rocket.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadGoals2" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" stylesheets="@stylesheet.css" text="Goals" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#loadGoals2" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Goals" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
                   </JFXButton>
                </children>
             </StackPane>
-            <StackPane fx:id="calendarBtn" layoutX="10.0" layoutY="379.0" prefHeight="150.0" prefWidth="200.0" styleClass="btns" stylesheets="@stylesheet2.css">
+            <StackPane fx:id="calendarBtn" layoutX="10.0" layoutY="379.0" prefHeight="150.0" prefWidth="200.0" stylesheets="@stylesheet2.css">
                <children>
                   <ImageView fitHeight="55.0" fitWidth="55.0" focusTraversable="true" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/002-calendar.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" onAction="#loadCalendar" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" stylesheets="@stylesheet.css" text="Calendar" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" onAction="#loadCalendar" prefHeight="176.0" prefWidth="185.0" ripplerFill="#2874a6" styleClass="btns" stylesheets="@stylesheet2.css" text="Calendar" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>

@@ -124,6 +124,3 @@ public class HeartRateData {
         }
     }
 }
-//}
-//}
-//public heartRateData getHeartRateData() {

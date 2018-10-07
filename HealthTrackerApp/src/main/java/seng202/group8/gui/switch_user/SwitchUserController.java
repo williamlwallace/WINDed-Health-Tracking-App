@@ -44,6 +44,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+/**
+ * @author wwa52, lfa69
+ * Controller class for the switch user screen, deals with selecting which user to load and also loading the new user
+ * screen if requested
+ */
 public class SwitchUserController {
 
     private User user;
@@ -69,6 +74,10 @@ public class SwitchUserController {
     @FXML
     private StackPane dialogStackPane;
 
+    /**
+     * Initialises the switch user screen, retrieves all the users from the database and calls populateUsersListView
+     * to populate the list view with the retrieved users
+     */
     @FXML
     public void initialize() {
 
@@ -78,6 +87,10 @@ public class SwitchUserController {
     }
 
 
+    /**
+     * Populates the list view with users retrieved from the database
+     * @param users
+     */
     private void populateUsersListView(ArrayList<User> users) {
 
         ObservableList<User> observableList = FXCollections.observableList(users);
@@ -108,18 +121,20 @@ public class SwitchUserController {
                             deleteBtn.setButtonType(JFXButton.ButtonType.RAISED);
                             deleteBtn.setTooltip(new Tooltip("Delete this user"));
                             deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
+
                                 @Override
                                 public void handle(ActionEvent event) {
-                                    // TODO add delete user functionality
+
                                     JFXDialogLayout content= new JFXDialogLayout();
-                                    content.setHeading(new Text("Delete this user")); // TODO add user name to this heading
+                                    content.setHeading(new Text("Delete this user"));
                                     content.setBody(new Text("This process cannot be reversed, are you sure you want to delete this user?"));
                                     JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER);
                                     JFXButton deleteButton=new JFXButton("Delete");
-                                    deleteButton.setStyle("-fx-background-color: #ff0000;");
+                                    deleteButton.setStyle("-fx-background-color: #c1c1c1;");
 
                                     // Button to cancel deletion of user
                                     JFXButton cancelButton = new JFXButton("Cancel");
+                                    cancelButton.setStyle("-fx-background-color: #c1c1c1;");
                                     cancelButton.setOnAction(new EventHandler<ActionEvent>() {
                                         @Override
                                         public void handle(ActionEvent event) {
@@ -137,45 +152,39 @@ public class SwitchUserController {
                                                 try {
                                                     loadNewUserScreen(event);
                                                 } catch (IOException e) {
-                                                    System.out.println("Something went wrong");
+                                                    System.out.println("Something went wrong when trying to delete user");
                                                 }
 
                                             } else {
                                                 DB.deleteUser(switchUserListView.getSelectionModel().getSelectedItem().getUserID());
                                                 dialog.close();
                                                 initialize();
-
                                             }
-
                                         }
-
                                     });
                                     content.setActions(cancelButton, deleteButton);
-
                                     dialog.show();
-
-
                                 }
                             });
+
                             deleteBtn.setGraphic(deleteImageView);
                             deleteBtn.setId("deleteBtn");
-                            deleteBtn.setVisible(false);
-                            if (switchUserListView.getSelectionModel().getSelectedItem() != null) {
-                                deleteBtn.setVisible(true);
-                            }
                             hBox.getChildren().addAll(userIconView, userName, deleteBtn);
                             setGraphic(hBox);
                         }
                     }
                 };
-
                 return cell;
             }
         });
 
     }
 
-
+    /**
+     * Event handler for the enter button, loads the mainFrame and home screen, plus the GUI controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void enterApp(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/mainFrame.fxml"));
@@ -191,6 +200,11 @@ public class SwitchUserController {
         stage.show();
     }
 
+    /**
+     * Event handler for the new user button, loads the get user info screen and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadNewUserScreen(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/GetUserInfo.fxml"));
@@ -204,25 +218,41 @@ public class SwitchUserController {
         stage.show();
     }
 
+    /**
+     * Event handler for pressing the cancel button, closes the stage/window
+     * @param event
+     */
     @FXML
-    private void quitApp(ActionEvent event) {
-        stage.close();
-    }
+    private void quitApp(ActionEvent event) { stage.close(); }
 
-    public User getUser() {
-        return user;
-    }
+    /**
+     *
+     * @return the user property
+     */
+    public User getUser() { return user; }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    /**
+     *
+     * @param user a new User object for the user property
+     */
+    public void setUser(User user) { this.user = user; }
 
-    public Stage getStage() {
-        return stage;
-    }
+    /**
+     *
+     * @return the stage property
+     */
+    public Stage getStage() { return stage; }
 
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
     public void setStage(Stage stage) { this.stage = stage; }
 
+    /**
+     *
+     * @param host a HostServices object
+     */
     public void setHostServices(HostServices host) { this.host = host; }
 
 

@@ -115,7 +115,7 @@ public class NewDataDialogController {
      * only if required to create a new ActivityList.
      */
     public void togglListener() {
-        System.out.println(isAddingActivityList);
+        //System.out.println(isAddingActivityList);
         if (isAddingActivityList) {
             newActivityListToggle.setSelected(true);
         }

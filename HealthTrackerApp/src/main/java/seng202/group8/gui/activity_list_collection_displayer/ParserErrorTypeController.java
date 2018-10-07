@@ -171,10 +171,12 @@ public class ParserErrorTypeController {
 
                 //database.saveUser(user, 1);
                 Stage stage = (Stage) errorText.getScene().getWindow();
+                System.out.println(stage);
                 stage.close();
             } else if (parser.getDataList().isEmpty()) {
                 parentControl.setParserInfoText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
                 Stage stage = (Stage) errorText.getScene().getWindow();
+                System.out.println(stage);
                 stage.close();
             }
         } else {

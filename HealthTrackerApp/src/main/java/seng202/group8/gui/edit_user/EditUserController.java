@@ -11,6 +11,11 @@ import seng202.group8.gui.GUIController;
 import seng202.group8.user.User;
 import java.io.IOException;
 
+/**
+ * @author wwa52
+ * Controller class for the edit user screen, deals with allowing the user to edit their details and updates this in
+ * the database
+ */
 public class EditUserController {
 
     @FXML
@@ -36,22 +41,11 @@ public class EditUserController {
 
     private User user;
     private Stage stage;
-
     private GUIController guiController;
 
-    public User getUser() { return user; }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) { this.stage = stage; }
-
-
+    /**
+     * Sets up the text fields with the current user data
+     */
     public void setUp()
     {
         nameField.setText(user.getName());
@@ -60,7 +54,11 @@ public class EditUserController {
         heightField.setText(Double.toString(user.getHeight()));
     }
 
-
+    /**
+     * Event handler for when enter button is pressed, updates the user's details with the entered values, also error
+     * checks for invalid input
+     * @param event
+     */
     public void submitPressed(ActionEvent event)
     {
         String name = null;
@@ -155,20 +153,56 @@ public class EditUserController {
         }
     }
 
-
+    /**
+     * Event handler for cancel button being pressed, cancels the editing of the user and goes back to the home screen
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void cancelPressed(ActionEvent event) throws IOException{
         guiController.setToHome();
 
     }
 
+    /**
+     *
+     * @return the guiController
+     */
     public GUIController getGuiController() {
         return guiController;
     }
 
+    /**
+     *
+     * @param guiController the GUI controller
+     */
     public void setGuiController(GUIController guiController) {
         this.guiController = guiController;
     }
+
+    /**
+     *
+     * @return the user property
+     */
+    public User getUser() { return user; }
+
+    /**
+     *
+     * @param user a new User object for the user property
+     */
+    public void setUser(User user) { this.user = user; }
+
+    /**
+     *
+     * @return the stage property
+     */
+    public Stage getStage() { return stage; }
+
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
+    public void setStage(Stage stage) { this.stage = stage; }
 }
 
 

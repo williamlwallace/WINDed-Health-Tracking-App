@@ -27,6 +27,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author wwa52
+ * Controller for mainFrame.fxml, the main GUI screen.
+ * Deals with the loading the fxml files for the corresponding sub menus
+ */
 public class GUIController implements Initializable {
 
     @FXML
@@ -60,7 +65,10 @@ public class GUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-
+    /**
+     * Function that refreshes the home screen, this is called whenever data is changed and the home screen data needs to be updated
+     * @throws IOException
+     */
     public void setToHome() throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/home.fxml"));
@@ -81,6 +89,11 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Event handler for pressing the home button on the side menu, loads the home screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void loadHome(ActionEvent event) throws IOException
     {
@@ -100,6 +113,11 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Event handler for pressing the activity log button on the side menu, loads the activity log screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadActivityLog(ActionEvent event) throws IOException
     {
@@ -118,6 +136,11 @@ public class GUIController implements Initializable {
 
     }
 
+    /**
+     * Event handler for pressing the statistics button on the side menu, loads the statistics screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadStatistics(ActionEvent event) throws IOException
     {
@@ -125,7 +148,7 @@ public class GUIController implements Initializable {
         BorderPane statsScene = loader.load();
         GraphController graphController = loader.getController();
         graphController.setPrimaryStage(stage);
-        System.out.println(this.user);
+        //System.out.println(this.user);
         graphController.setUser(user);
         graphController.setup();
         scene.getChildren().setAll(statsScene);
@@ -136,6 +159,11 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Event handler for pressing the goals button on the side menu, loads the goals screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadGoals2(ActionEvent event) throws IOException
     {
@@ -154,6 +182,11 @@ public class GUIController implements Initializable {
         calendarBtn.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Event handler for pressing the calendar button on the side menu, loads the calendar screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadCalendar(ActionEvent event) throws IOException
     {
@@ -171,6 +204,11 @@ public class GUIController implements Initializable {
         goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Event handler for pressing the edit user button in the user menu, loads the edit user screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadEditUser(ActionEvent event) throws IOException
     {
@@ -189,6 +227,11 @@ public class GUIController implements Initializable {
         goalsBtn.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Event handler for pressing the switch user button in the user menu, loads the switch user screen fxml file and controller
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void loadUserScreen(ActionEvent event) throws IOException
     {
@@ -204,26 +247,40 @@ public class GUIController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Event handler for pressing the quit app button in the user menu, closes the stage/window
+     * @param event
+     */
     @FXML
-    private void quitApp(ActionEvent event) {
-        stage.close();
-    }
+    private void quitApp(ActionEvent event) { stage.close(); }
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() { return user; }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    /**
+     *
+     * @param user a new User object for the user property
+     */
+    public void setUser(User user) { this.user = user; }
 
-    public Stage getStage() {
-        return stage;
-    }
+    /**
+     *
+     * @return the stage property
+     */
+    public Stage getStage() { return stage; }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
+    public void setStage(Stage stage) { this.stage = stage; }
 
-    public void setHostServices(HostServices host) {
-        this.host = host;
-    }
+    /**
+     *
+     * @param host a HostServices object
+     */
+    public void setHostServices(HostServices host) { this.host = host; }
 }

@@ -191,13 +191,7 @@ public class ActivitiesCollectionController {
      */
     public void setUpTreeView() {
         ActivityListCollection activityListCollection = user.getUserActivities();
-        for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
-            System.out.println("LIST: " + activityList.getTitle());
-            for (Data data : activityList.getActivityList()) {
-                System.out.println("    DATA: " + data.getTitle());
-            }
 
-        }
         TreeItem<String> rootNode = new TreeItem<>(activityListCollection.getTitle());
         for (ActivityList activityList : activityListCollection.getActivityListCollection()) {
             TreeItem<String> activityListNode = new TreeItem<>(activityList.getTitle());
@@ -372,7 +366,7 @@ public class ActivitiesCollectionController {
      */
     public void editKeyWords(ActionEvent event) throws Exception {
         ParserEditKeywords parseEdit = new ParserEditKeywords();
-        System.out.println("Activities: "+user.getUserID());
+        //System.out.println("Activities: "+user.getUserID());
         parseEdit.setUser(user);
         parseEdit.setParentControl(this);
         parseEdit.start(ParserEditKeywords.classStage);
@@ -503,7 +497,7 @@ public class ActivitiesCollectionController {
 
                         //Database code
                         ActivityList toDelete = user.getUserActivities().getActivityListCollection().get(activityListIndex);
-                        System.out.println("toDelete: " + toDelete.getTitle());
+                        //System.out.println("toDelete: " + toDelete.getTitle());
                         database.deleteActivityList(toDelete.getTitle(), toDelete.getCreationDate());
                         //
 
@@ -544,7 +538,7 @@ public class ActivitiesCollectionController {
                         int dataListIndex = parent.getChildren().indexOf(selectedItem);
                         int activityListIndex = parent.getParent().getChildren().indexOf(parent);
                         //
-                        System.out.println("activity list index: " + activityListIndex);
+                        //System.out.println("activity list index: " + activityListIndex);
 //                        System.out.println("data index: " + dataListIndex);
                         ActivityList activityList = user.getUserActivities().getActivityListCollection().get(activityListIndex);
                         if (activityList.getActivityList().size() > 1) {

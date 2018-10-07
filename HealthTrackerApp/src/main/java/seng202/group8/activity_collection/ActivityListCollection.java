@@ -1,10 +1,8 @@
 package seng202.group8.activity_collection;
 
-import javafx.scene.chart.PieChart;
 import seng202.group8.data_entries.Data;
 import seng202.group8.data_entries.DataType;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +10,7 @@ import java.util.Date;
 
 /**
  * @author lfa69
+ * The container for ActvityList objects
  */
 public class ActivityListCollection {
 
@@ -78,6 +77,11 @@ public class ActivityListCollection {
     }
 
 
+    /**
+     *
+     * @param index
+     * @param activity the Data value to insert into the ActivityList object at the given index
+     */
     public void insertActivityInGivenList(int index, Data activity) {
         try {
             ActivityList activityList = activityListCollection.get(index);
@@ -88,6 +92,12 @@ public class ActivityListCollection {
         }
     }
 
+    /**
+     *
+     * @param activityListIndex
+     * @param dataValueIndex
+     * @return a boolean value representing if the delete action has been accomplished or not
+     */
     public boolean deleteActivityInGivenList(int activityListIndex, int dataValueIndex) {
         try {
             ActivityList activityList = activityListCollection.get(activityListIndex);
@@ -99,6 +109,13 @@ public class ActivityListCollection {
         return true;
     }
 
+    /**
+     *
+     * @param dataType
+     * @param startDate
+     * @return an ArrayList<Data> object where the Data objects are all of the same data type
+     * and come from activityListCollection property
+     */
     public ArrayList<Data> retrieveSameTypeActivities(DataType dataType, Date startDate) {
 
         ArrayList<Data> sameTypeData = new ArrayList<Data>();
@@ -112,6 +129,12 @@ public class ActivityListCollection {
         return sameTypeData;
     }
 
+    /**
+     *
+     * @param startDate
+     * @return an ArrayList<Data> object where the Data objects are all
+     * the Data values in activityListCollection that have been performed before or during the given date
+     */
     public ArrayList<Data> retrieveActivititesBeforeDate(Date startDate) {
 
         ArrayList<Data> activitiesAfterDate = new ArrayList<Data>();
@@ -125,6 +148,12 @@ public class ActivityListCollection {
         return activitiesAfterDate;
     }
 
+    /**
+     *
+     * @param startDate
+     * @param endDate
+     * @return the list of Data values in activityListCollection property between the given date parameters
+     */
     public ArrayList<Data> retrieveActivititesBtwDates(Date startDate, Date endDate) {
 
         ArrayList<Data> activitiesAfterDate = new ArrayList<Data>();
@@ -138,6 +167,10 @@ public class ActivityListCollection {
         return activitiesAfterDate;
     }
 
+    /**
+     *
+     * @return the Data object in activityListCollection that has been performed the latest
+     */
     public Data getMostCurrentActivity() {
         Data mostCurrentData =  null;
         for (ActivityList activityList : activityListCollection) {
@@ -167,6 +200,9 @@ public class ActivityListCollection {
         return activities;
     }
 
+    /**
+     * Part of the observer pattern, notifies all the observers of happened changes.
+     */
     public void notifyAllObservers() {
         for (ActivityListCollectionObserver observer : observers) {
             observer.update();

@@ -31,11 +31,4 @@ public class WaterSportsData extends AssistedSportsData{
         return caloriesList;
     }
 }
-//    public WaterSportsData(String newTitle, DataType activityType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
-//        super(newTitle, activityType, newCoordinatesList, newHeartRateList);
-//    }
-//
-//    double getConsumedCalories(String activityType) {
-//        return 0;
-//    }
-//}
+

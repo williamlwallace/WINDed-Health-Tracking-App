@@ -23,6 +23,11 @@ import java.applet.AppletContext;
 import java.io.IOException;
 import java.net.*;
 
+/**
+ * @author jnr26, wwa52
+ * Controller class for the Home screen, deals with all the data on the home screen, and the information that needs to
+ * be displayed
+ */
 public class HomeController {
 
     @FXML
@@ -92,8 +97,6 @@ public class HomeController {
     private Image normalBMI = new Image("/resources/views/images/normal_bmi.png");
     private Image overweightBMI = new Image("/resources/views/images/overweight_bmi.png");
     private Image obeseBMI = new Image("/resources/views/images/obese_bmi.png");
-    private Image noRisk = new Image("/resources/views/images/ok.png");
-    private Image healthRisk = new Image("/resources/views/images/healthrisk.png");
 
     /**
      * Sets the page up when the user first goes into the Home page
@@ -152,13 +155,11 @@ public class HomeController {
         heartValue.setText(statsService.getAverageHeartRate() + " BPM");
         statsService.setWeightLossTotal();
         weightValue.setText(String.format("%.1f", statsService.getWeightLossTotal()) + " kg");
-//        totalStatsLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color: #2e86c1");
-//        bmiLabel2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-//        healthLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-//        heartLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-//        brad.setStyle("-fx-background-color:  #2e86c1");
-//        cardio.setStyle("-fx-background-color:  #2e86c1");
-//        tach.setStyle("-fx-background-color:  #2e86c1");
+        totalStatsLabel.setStyle("-fx-font-weight: bold");
+        mostRecentActivity.setStyle("-fx-font-weight: bold");
+        bmiLabel2.setStyle("-fx-font-weight: bold");
+        healthLabel.setStyle("-fx-font-weight: bold");
+        heartLabel.setStyle("-fx-font-weight: bold");
 
         //SWebView Setup
         try {
@@ -211,31 +212,23 @@ public class HomeController {
      * Gets the current user using the page
      * @return
      */
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user; }
 
     /**
      * Sets the user for the page
      * @param user
      */
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public void setUser(User user) { this.user = user; }
 
     /**
      * Gets the primary stage
      * @return the primary stage object
      */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+    public Stage getPrimaryStage() { return primaryStage; }
 
     /**
      * Sets the primary Stage variable
      * @param primaryStage a stage variable to be passed in
      */
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
+    public void setPrimaryStage(Stage primaryStage) { this.primaryStage = primaryStage; }
 }

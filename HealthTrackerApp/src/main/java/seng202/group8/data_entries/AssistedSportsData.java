@@ -15,11 +15,4 @@ public abstract class AssistedSportsData extends Data {
 
     public abstract ArrayList<Double> getConsumedCaloriesBetweenPoints();
 }
-//
-//
-//    public AssistedSportsData(String newTitle, DataType dataType, ArrayList<Double> newCoordinatesList, ArrayList<Integer> newHeartRateList) {
-//        super(newTitle, dataType, newCoordinatesList, newHeartRateList);
-//    }
-//
-//    abstract double getConsumedCalories(String activityType);
-//}
+

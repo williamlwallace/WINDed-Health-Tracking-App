@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * @author lfa69
+ * The container for Data values
  */
 public class ActivityList {
 
