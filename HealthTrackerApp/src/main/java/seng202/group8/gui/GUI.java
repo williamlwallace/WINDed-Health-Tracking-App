@@ -15,8 +15,6 @@ import seng202.group8.user.User;
  */
 public class GUI extends Application {
 
-    private User user;
-
     @Override
     public void start(Stage stage) throws Exception {
 

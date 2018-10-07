@@ -24,7 +24,9 @@ import java.io.IOException;
 import java.net.*;
 
 /**
- * @author j
+ * @author jnr26, wwa52
+ * Controller class for the Home screen, deals with all the data on the home screen, and the information that needs to
+ * be displayed
  */
 public class HomeController {
 
@@ -153,13 +155,11 @@ public class HomeController {
         heartValue.setText(statsService.getAverageHeartRate() + " BPM");
         statsService.setWeightLossTotal();
         weightValue.setText(String.format("%.1f", statsService.getWeightLossTotal()) + " kg");
-//        totalStatsLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color: #2e86c1");
-//        bmiLabel2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-//        healthLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-//        heartLabel.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-background-color:  #2e86c1");
-//        brad.setStyle("-fx-background-color:  #2e86c1");
-//        cardio.setStyle("-fx-background-color:  #2e86c1");
-//        tach.setStyle("-fx-background-color:  #2e86c1");
+        totalStatsLabel.setStyle("-fx-font-weight: bold");
+        mostRecentActivity.setStyle("-fx-font-weight: bold");
+        bmiLabel2.setStyle("-fx-font-weight: bold");
+        healthLabel.setStyle("-fx-font-weight: bold");
+        heartLabel.setStyle("-fx-font-weight: bold");
 
         //SWebView Setup
         try {

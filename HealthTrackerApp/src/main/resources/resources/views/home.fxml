@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" style="-fx-background-color: #e1e1e1;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1105.0" style="-fx-background-color: #e1e1e1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng202.group8.gui.home_displayer.HomeController">
    <center>
       <VBox prefHeight="630.0" prefWidth="404.0" spacing="10.0" style="-fx-background-color: #e1e1e1;" BorderPane.alignment="CENTER">
          <children>
@@ -173,7 +181,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="305.0" prefWidth="670.0" spacing="10.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="mostRecentActivity" alignment="CENTER" prefHeight="50.0" prefWidth="550.0" text="Most Recent Activity">
+                        <Label fx:id="mostRecentActivity" alignment="CENTER" prefHeight="26.0" prefWidth="688.0" text="Most Recent Activity">
                            <font>
                               <Font name="Segoe UI Bold" size="22.0" />
                            </font>
