@@ -3,7 +3,6 @@ package seng202.group8.gui.goals_displayer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import java_sqlite_db.SQLiteJDBC;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

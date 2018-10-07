@@ -505,7 +505,7 @@ public abstract class Data {
 
         if (localHeartRates.size() > 1) {
             for (int i = 0; i < (localHeartRates.size() - 1); i++) {
-                result.add(Math.abs(localHeartRates.get(i) - localHeartRates.get(i + 1)));
+                result.add(100 - (Math.abs(localHeartRates.get(i) - localHeartRates.get(i + 1))));
             }
         } else {
             result.add(0);

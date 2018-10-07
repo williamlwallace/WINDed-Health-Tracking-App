@@ -127,7 +127,7 @@ public class StatisticsServiceTest {
     @Test
     public void testStressGraph() {
         GraphXY graph = statsService.getStressLevelOverTimeGraph(data);
-        ArrayList<Double> correctY = new ArrayList<Double>(Arrays.asList(100.0, 50.0));
+        ArrayList<Double> correctY = new ArrayList<Double>(Arrays.asList(0.0, 50.0));
         ArrayList<Double> correctX = new ArrayList<Double>(Arrays.asList(0.0, 1.0));
         GraphXY graph2 = new GraphXY();
         graph2.setXAxis(correctX);
