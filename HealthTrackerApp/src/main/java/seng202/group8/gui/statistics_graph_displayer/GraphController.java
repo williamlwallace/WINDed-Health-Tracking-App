@@ -37,16 +37,13 @@ import java.util.ArrayList;
 public class GraphController {
 
     @FXML
-    private Button bmi;
+    private JFXButton bmi;
 
     @FXML
-    private Button weight;
+    private JFXButton weight;
 
     @FXML
     private Label time;
-
-//    @FXML
-//    private SplitPane splitPane;
 
     @FXML
     private Label labelTitle1;
@@ -55,10 +52,10 @@ public class GraphController {
     private Label labelTitle2;
 
     @FXML
-    private Button previous;
+    private JFXButton previous;
 
     @FXML
-    private Button next;
+    private JFXButton next;
 
     @FXML
     private Label dataName;
@@ -484,12 +481,8 @@ public class GraphController {
             }
             labelTitle1.setStyle("-fx-font-size: 26px; -fx-font-weight: bold");
             labelTitle2.setStyle("-fx-font-size: 26px; -fx-font-weight: bold");
-            previous.setStyle("-fx-background-color:  #2e86c1");
-            next.setStyle("-fx-background-color:  #2e86c1");
             dataName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
             time.setStyle("-fx-font-weight: bold;");
-            weight.setStyle("-fx-background-color:  #2e86c1");
-            bmi.setStyle("-fx-background-color:  #2e86c1");
             comboBox.setStyle("-fx-background-color:  #2e86c1; -fx-font-color: #ffff");
             comboBox.getSelectionModel().select("Distance Over Time");
 
