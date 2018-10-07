@@ -440,7 +440,7 @@ public class ActivitiesCollectionController {
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' has been uploaded.");
 
 
-            } else if (parser.getDataList().isEmpty()) {
+            } else if (error == 0 && parser.getDataList().isEmpty()) {
                 parserInfo.setText("File '"+csvArray.get(csvArray.size() - 1)+"' is either empty or only has activities you have already uploaded.");
             }
 
