@@ -23,6 +23,21 @@ To download the repository, you need to:
 
 Following these instructions creates a new copy of the WINded application code in the directory where the git command is called.
 
+## Importing project into IntelliJ
+
+To import the project into IntelliJ you need to:
+1. Open IntelliJ
+2. On the initial menu click on the 'Import Project' option 
+3. Navigate to the folder downloaded from git
+4. Select this folder and confirm
+5. In the 'Import Project' pop-up window that just appeared select the second option ('import project from external module') and then select the Maven option.
+6. The 'Import Project' window should now display many options, you can now do any editing on the way IntelliJ interacts with the project, to open the project though you are only required to tick the 'Search for project recursively' box and you can leave the other values as default and press 'Next'
+7. Now select the seng202.group8:HealthTrackerApp:1.0-SNAPSHOT[HealthTrackerApp] option and click 'Next'
+8. Select the java SDK you want to use for the project (highly recommended java-8-oracle version, due to JavaFX possible compatibility errors with newer and older versions), then click 'Next'
+9. Finally select the name you want to use for the project or leave it as default and click 'Finish'
+
+IntelliJ should now display the project structure
+
 ## Packaging a .jar file
 
 To package a .jar file you need to:
