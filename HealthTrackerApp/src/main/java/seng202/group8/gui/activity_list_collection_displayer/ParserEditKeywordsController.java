@@ -89,7 +89,7 @@ public class ParserEditKeywordsController {
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
-            System.out.println("Control: "+user.getName());
+            //System.out.println("Control: "+user.getName());
             try {
                 parser = new Parser("", user);
             } catch (Exception e) {

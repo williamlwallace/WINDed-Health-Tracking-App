@@ -94,7 +94,7 @@ public class GoalsListSinglePreviousController {
                 type.setOpacity(0);
                 break;
             default:
-                System.out.println(currentGoal.getGoalType().toString());
+                //System.out.println(currentGoal.getGoalType().toString());
                 break;
         }
         title.setText(currentGoal.getDescription());

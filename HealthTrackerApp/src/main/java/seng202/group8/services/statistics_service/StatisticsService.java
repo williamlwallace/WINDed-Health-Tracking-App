@@ -264,7 +264,7 @@ public class StatisticsService {
         collection = this.user.getUserActivities();
         healthService.update();
         arrayCollection = collection.getActivityListCollection();
-        System.out.println(arrayCollection.size());
+        //System.out.println(arrayCollection.size());
         if (arrayCollection.size() == 0) {
             averageHeartRate = 0;
             kmRunTotal = 0.0;

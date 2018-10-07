@@ -262,9 +262,9 @@ public class GraphController {
         ObservableList<XYChart.Series<Double, Double>> lineChartData = FXCollections.observableArrayList();
         StatisticsService graphData = user.getStatsService();
         GraphXY xyData = graphData.getGraphDataBMIType();
-        for(int i = 0; i < xyData.getYAxis().size(); i++) {
-            System.out.println(xyData.getYAxis().get(i));
-        }
+        //for(int i = 0; i < xyData.getYAxis().size(); i++) {
+        //    System.out.println(xyData.getYAxis().get(i));
+        //}
         LineChart.Series<Double, Double> series = generateSeries(xyData);
 
         graph2.getXAxis().setTickLabelsVisible(true);

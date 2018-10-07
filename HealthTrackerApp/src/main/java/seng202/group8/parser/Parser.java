@@ -62,12 +62,12 @@ public class Parser {
         this.acceptedValues.add(this.bike);
         this.acceptedValues.add(this.swim);
         this.acceptedValues.add(this.waterSports);
-        System.out.println("Parser: "+user.getUserID());
+        //System.out.println("Parser: "+user.getUserID());
         this.database.getKeyWords(user.getUserID(), this);
         this.filename = newFilename;
         try {
             this.oldData = this.user.getUserActivities().getActivityListCollection();
-            System.out.println("DUPE: "+oldData);
+            //System.out.println("DUPE: "+oldData);
             //System.out.println("DUPE: "+oldData.get(0).getTitle());
         } catch(NullPointerException e) {
             this.oldData = null;
@@ -149,15 +149,15 @@ public class Parser {
                             }
                         }
                         if (!duplicate && !this.oldData.isEmpty()) {
-                            System.out.println("first");
+                            //System.out.println("first");
                             for (int i = 0; i < this.oldData.size(); i++) {
-                                System.out.println("second");
+                                //System.out.println("second");
                                 ArrayList<Data> activityList = this.oldData.get(i).getActivityList();
                                 for (int j = 0; j < activityList.size(); j++) {
-                                    System.out.println("third");
+                                    //System.out.println("third");
                                     Data data = activityList.get(j);
                                     if (activityToSend.equalsNewData(data)) {
-                                        System.out.println("hey");
+                                        //System.out.println("hey");
                                         duplicate = true;
                                     }
                                 }
@@ -390,15 +390,14 @@ public class Parser {
         ArrayList<String> baseBike = new ArrayList<String>(Arrays.asList("bike", "biking"));
         ArrayList<String> baseSwim = new ArrayList<String>(Arrays.asList("swim", "scuba", "diving"));
         ArrayList<String> baseWaterSports = new ArrayList<String>(Arrays.asList("water sport","kayak", "canoe", "raft", "surf"));
-        System.out.println("hi");
         ArrayList<String> toReturn  = new ArrayList<String>();
         for (int place = 0; place < acceptedValues.size(); place++) {
             for (int i = 0; i < acceptedValues.get(place).size(); i++) {
-                System.out.println("before:" + acceptedValues.get(place).get(i));
+                //System.out.println("before:" + acceptedValues.get(place).get(i));
                 if (!baseWalk.contains(acceptedValues.get(place).get(i)) && !baseHike.contains(acceptedValues.get(place).get(i)) && !baseRun.contains(acceptedValues.get(place).get(i))
                         && !baseClimb.contains(acceptedValues.get(place).get(i)) && !baseBike.contains(acceptedValues.get(place).get(i))
                         && !baseSwim.contains(acceptedValues.get(place).get(i)) && !baseWaterSports.contains(acceptedValues.get(place).get(i))) {
-                    System.out.println("After:" + acceptedValues.get(place).get(i));
+                    //System.out.println("After:" + acceptedValues.get(place).get(i));
                     toReturn.add(acceptedValues.get(place).get(i));
                 }
             }

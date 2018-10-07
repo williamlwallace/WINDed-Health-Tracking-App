@@ -125,7 +125,7 @@ public class GUIController implements Initializable {
         BorderPane statsScene = loader.load();
         GraphController graphController = loader.getController();
         graphController.setPrimaryStage(stage);
-        System.out.println(this.user);
+        //System.out.println(this.user);
         graphController.setUser(user);
         graphController.setup();
         scene.getChildren().setAll(statsScene);

@@ -152,16 +152,16 @@ public abstract class Data {
             to_return = false;
         }
         if (!this.title.equals(data.getTitle())) {
-            System.out.println("Title: "+this.title+" - "+data.getTitle());
+            //System.out.println("Title: "+this.title+" - "+data.getTitle());
             to_return  = false;
         } else if (!this.dataType.equals(data.getDataType())) {
-            System.out.println("Type: "+this.dataType+" - "+data.getDataType());
+            //System.out.println("Type: "+this.dataType+" - "+data.getDataType());
             to_return  = false;
         } else if (!this.allDateTimes.equals(data.getAllDateTimes())) {
-            System.out.println("Date: "+this.allDateTimes.get(0)+" - "+data.getAllDateTimes().get(0));
+            //System.out.println("Date: "+this.allDateTimes.get(0)+" - "+data.getAllDateTimes().get(0));
             to_return  = false;
         } else if (!this.heartRateList.equals(data.getHeartRateList())) {
-            System.out.println("Heart: "+this.heartRateList.get(0)+" - "+data.getHeartRateList().get(0));
+            //System.out.println("Heart: "+this.heartRateList.get(0)+" - "+data.getHeartRateList().get(0));
         }
 //        System.out.println("------------------------------------------------------------------");
 //        System.out.println(this.title+" - "+data.getTitle());

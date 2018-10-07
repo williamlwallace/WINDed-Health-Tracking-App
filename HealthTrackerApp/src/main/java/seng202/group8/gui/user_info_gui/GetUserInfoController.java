@@ -75,7 +75,7 @@ public class GetUserInfoController {
      * it creates a user object and stores it in the database.
      */
     public void enterDetails(ActionEvent event) {
-        System.out.println("Pressed");
+        //System.out.println("Pressed");
         String name = null;
         int age = 0;
         double weight = 0.0;

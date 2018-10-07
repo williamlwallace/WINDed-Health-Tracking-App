@@ -120,7 +120,7 @@ public class CalendarViewController {
 
 
         datePicker.valueProperty().addListener((ov, oldValue, newValue) -> {
-            System.out.println(datePicker.getValue());
+            //System.out.println(datePicker.getValue());
             LocalDate selectedDate = datePicker.getValue();
             LocalDateTime startDate = LocalDateTime.of(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDayOfMonth(), 0, 0, 0);
             LocalDateTime endDate = LocalDateTime.of(selectedDate.getYear(), selectedDate.getMonth(), selectedDate.getDayOfMonth(), 23, 59, 59);
