@@ -68,8 +68,8 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #c90909;" text="Cancel" />
-            <Button mnemonicParsing="false" onAction="#enter" style="-fx-background-color: #2e86c1;" text="Add" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #c90909;" text="CANCEL" />
+            <Button mnemonicParsing="false" onAction="#enter" style="-fx-background-color: #2e86c1;" text="ADD" GridPane.columnIndex="1" />
          </children>
     </GridPane>
       <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Keywords" GridPane.halignment="CENTER">
@@ -77,7 +77,7 @@
             <Font size="15.0" />
          </font></Text>
       <Label text="Enter a type and a phrase below to store it so we can remember this phrase next time we parse a file." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" onAction="#remove" style="-fx-background-color: #2e86c1;" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#remove" style="-fx-background-color: #2e86c1;" text="REMOVE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Text fx:id="errorText1" layoutX="82.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove Keywords" GridPane.columnIndex="1">
          <font>
             <Font size="15.0" />
