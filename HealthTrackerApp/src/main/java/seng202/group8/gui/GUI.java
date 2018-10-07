@@ -9,7 +9,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import seng202.group8.user.User;
 
-
+/**
+ * @author wwa52
+ * Main class of the application, launches GUI window and calls needed FXML files and controllers
+ */
 public class GUI extends Application {
 
     private User user;

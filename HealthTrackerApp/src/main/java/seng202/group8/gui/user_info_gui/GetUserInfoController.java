@@ -218,18 +218,34 @@ public class GetUserInfoController {
 
     }
 
+    /**
+     *
+     * @return the user property
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @return the stage property
+     */
     public Stage getStage() {
         return stage;
     }
 
+    /**
+     *
+     * @param stage a new Stage object for the stage property
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     *
+     * @param host a HostServices object
+     */
     public void setHostServices(HostServices host) {
         this.host = host;
     }

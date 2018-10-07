@@ -23,6 +23,9 @@ import java.applet.AppletContext;
 import java.io.IOException;
 import java.net.*;
 
+/**
+ * @author j
+ */
 public class HomeController {
 
     @FXML
@@ -92,8 +95,6 @@ public class HomeController {
     private Image normalBMI = new Image("/resources/views/images/normal_bmi.png");
     private Image overweightBMI = new Image("/resources/views/images/overweight_bmi.png");
     private Image obeseBMI = new Image("/resources/views/images/obese_bmi.png");
-    private Image noRisk = new Image("/resources/views/images/ok.png");
-    private Image healthRisk = new Image("/resources/views/images/healthrisk.png");
 
     /**
      * Sets the page up when the user first goes into the Home page
@@ -211,31 +212,23 @@ public class HomeController {
      * Gets the current user using the page
      * @return
      */
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user; }
 
     /**
      * Sets the user for the page
      * @param user
      */
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public void setUser(User user) { this.user = user; }
 
     /**
      * Gets the primary stage
      * @return the primary stage object
      */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+    public Stage getPrimaryStage() { return primaryStage; }
 
     /**
      * Sets the primary Stage variable
      * @param primaryStage a stage variable to be passed in
      */
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
+    public void setPrimaryStage(Stage primaryStage) { this.primaryStage = primaryStage; }
 }
