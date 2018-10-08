@@ -86,15 +86,13 @@ public abstract class Data {
 
         this.title = newTitle;
         this.currentUser = theCurrentUser;
-        //From Lorenzo: not the prettiest but now it works;)
         this.creationDate = Date.from(newDateTimes.get(0).atZone(ZoneId.systemDefault()).toInstant());
-        //
+
         this.dataType = dataType;
         this.allDateTimes = new ArrayList<>(newDateTimes);
         ArrayList<Integer> toSendHeartRateList = new ArrayList<Integer>(newHeartRateList);
         this.heartRateData = new HeartRateData(toSendHeartRateList);
         this.heartRateList = heartRateData.getHeartRateList();
-//        setCoordinatesArrayList(newCoordinatesList);
         this.coordinatesArrayList = new ArrayList<>(newCoordinatesList);
         this.distanceCovered = calculateDistanceCovered();
         this.millisecondsOfExercise = calculateMillisecondsOfExercise();
@@ -162,8 +160,6 @@ public abstract class Data {
     }
 
 
-
-
     /**
      * This function calculates the total distance covered in metres over the course of the activity, based on the coordinates
      * the user moves through. The calculation is based on the coordinatesArrayList of the Data object. The differences
@@ -189,6 +185,7 @@ public abstract class Data {
         return distanceCovered;
     }
 
+
     /**
      * Calculates the total number of milliseconds of exercise performed throughout the whole activity. It does this by
      * comparing every pair of date time values from the activity, and adding the difference between each pair to a
@@ -208,9 +205,9 @@ public abstract class Data {
             long msTimeTwo = this.allDateTimes.get(i + 1).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
             millisecondsTrained += msTimeTwo - msTimeOne;
         }
-
         return millisecondsTrained;
     }
+
 
     /**
      * Calculates the average speed over the whole activity based on the distance covered, and the number of
@@ -230,6 +227,7 @@ public abstract class Data {
         }
         return dataSpeedKilometresPerHour;
     }
+
 
     /**
      * Calculates the average speed over the whole activity based on the distance covered, and the number of
@@ -252,6 +250,7 @@ public abstract class Data {
 
         return dataSpeedMilesPerHour;
     }
+
 
     /**
      * Calculates the speed between each pair of points in miles per hour, and adds it to an ArrayList. This is based
@@ -296,9 +295,9 @@ public abstract class Data {
             speedsArrayList.add(milesPerHourTrained);
 
         }
-
         return speedsArrayList;
     }
+
 
     /**
      * Calculates the speed between each pair of points in kilometres per hour, and adds it to an ArrayList. This is based
@@ -339,11 +338,11 @@ public abstract class Data {
             kilometresTrained = ((coordinateDataDifference.getDistanceDifference() / 1000));
             kilometresPerHourTrained = (kilometresTrained / hoursTrained);
             speedsArrayList.add(kilometresPerHourTrained);
-
         }
 
         return speedsArrayList;
     }
+
 
     /**
      * Calculates the distance between each pair of points in kilometres, and adds it to an ArrayList. This is based
@@ -357,7 +356,6 @@ public abstract class Data {
         ArrayList<LocalDateTime> localDateTimes = this.getAllDateTimes();
 
         ArrayList<Double> kilometresTrained = new ArrayList<Double>();
-
 
         if ((localCoordinatesArrayList.size() < 2) || (localDateTimes.size() < 2)) {
             kilometresTrained.add(0.0);
@@ -376,9 +374,9 @@ public abstract class Data {
             kilometresTrained.add((coordinateDataDifference.getDistanceDifference() / 1000));
 
         }
-
         return kilometresTrained;
     }
+
 
     /**
      * Calculates the distance between each pair of points in miles, and adds it to an ArrayList. This is based
@@ -412,9 +410,9 @@ public abstract class Data {
             milesTrained.add(((coordinateDataDifference.getDistanceDifference() / 1000) * kmToMilesConstant));
 
         }
-
         return milesTrained;
     }
+
 
     /**
      * Calculates the difference in gradient between every pair of points, using the gradient calculation in the
@@ -432,9 +430,9 @@ public abstract class Data {
 
             gradients.add(coordinateDataDifference.getGradient());
         }
-
         return gradients;
     }
+
 
     /**
      * Calculates the number of milliseconds of exercise between each pair of points, by converting both to milliseconds
@@ -459,6 +457,7 @@ public abstract class Data {
         return millisecondsTrained;
     }
 
+
     /**
      * Calculates the maximum stress level by taking the last value from a sorted copy of the ArrayList of stress levels.
      *
@@ -472,6 +471,7 @@ public abstract class Data {
         return stressLevelsCopy.get(0);
     }
 
+
     /**
      * Calculates the minimum stress level by taking the first value from a sorted copy of the ArrayList of stress levels.
      *
@@ -484,6 +484,7 @@ public abstract class Data {
 
         return stressLevelsCopy.get((stressLevelsCopy.size() - 1));
     }
+
 
     /**
      * Calculates the stress level between each pair of points by subtracting the stress level of one point from the
@@ -507,6 +508,7 @@ public abstract class Data {
 
         return result;
     }
+
 
     /**
      * This function reverses the heart rate variance stress levels so that they are higher the more stressed the person
@@ -568,151 +570,186 @@ public abstract class Data {
         return calories;
     }
 
+
     public boolean getIsGraphable() {
         return isGraphable;
     }
+
 
     public void setIsGraphable(boolean isGraphabe) {
         this.isGraphable = isGraphable;
     }
 
+
     public String getTitle() {
         return title;
     }
+
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+
     public Date getCreationDate() {
         return creationDate;
     }
+
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
+
     public DataType getDataType() {
         return dataType;
     }
+
 
     public void setDataType(DataType dataType) {
         this.dataType = dataType;
     }
 
+
     public DataType getDataSuperType() {
         return dataSuperType;
     }
+
 
     public void setDataSuperType(DataType dataSuperType) {
         this.dataSuperType = dataSuperType;
     }
 
+
     public ArrayList<LocalDateTime> getAllDateTimes() {
         return allDateTimes;
     }
+
 
     public void setAllDateTimes(ArrayList<LocalDateTime> allDateTimes) {
         this.allDateTimes = allDateTimes;
     }
 
+
     public ArrayList<CoordinateData> getCoordinatesArrayList() {
         return coordinatesArrayList;
     }
+
 
     public ArrayList<Integer> getHeartRateList() {
         return heartRateList;
     }
 
+
     public void setHeartRateList(ArrayList<Integer> heartRateList) {
         this.heartRateList = heartRateList;
     }
+
 
     public HeartRateData getHeartRateData() {
         return heartRateData;
     }
 
+
     public void setHeartRateData(HeartRateData heartRateData) {
         this.heartRateData = heartRateData;
     }
+
 
     public Double getDistanceCovered() {
         return distanceCovered;
     }
 
+
     public void setDistanceCovered(Double distanceCovered) {
         this.distanceCovered = distanceCovered;
     }
+
 
     public long getMillisecondsOfExercise() {
         return millisecondsOfExercise;
     }
 
+
     public void setMillisecondsOfExercise(long millisecondsOfExercise) {
         this.millisecondsOfExercise = millisecondsOfExercise;
     }
+
 
     public Double getDataSpeedKph() {
         return dataSpeedKph;
     }
 
+
     public Double getDataSpeedMph() {
         return dataSpeedMph;
     }
+
 
     public ArrayList<Double> getMphSpeedsBetweenPoints() {
         return mphSpeedsBetweenPoints;
     }
 
+
     public ArrayList<Double> getKphSpeedsBetweenPoints() {
         return kphSpeedsBetweenPoints;
     }
+
 
     public ArrayList<Double> getGradientsBetweenPoints() {
         return gradientsBetweenPoints;
     }
 
+
     public ArrayList<Long> getMillisecondsOfExerciseBetweenPoints() {
         return millisecondsOfExerciseBetweenPoints;
     }
+
 
     public User getCurrentUser() {
         return currentUser;
     }
 
+
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
+
 
     public ArrayList<Double> getKmDistancesBetweenPoints() {
         return kmDistancesBetweenPoints;
     }
 
+
     public ArrayList<Double> getMilesDistancesBetweenPoints() {
         return milesDistancesBetweenPoints;
     }
+
 
     public ArrayList<Integer> getStressLevelsBetweenPoints() {
         return stressLevelsBetweenPoints;
     }
 
+
     public Integer getStressLevelMax() {
         return stressLevelMax;
     }
+
 
     public Integer getStressLevelMin() {
         return stressLevelMin;
     }
 
+
     public Integer getDataId() { return  dataId;}
 
+
     public void setDataId(Integer dataId) {this.dataId = dataId;}
+
 
     public ArrayList<Double> getStressProportionsBetweenPoints() {
         return stressProportionsBetweenPoints;
     }
-
-
 
 
     public abstract double getConsumedCalories();
@@ -720,6 +757,7 @@ public abstract class Data {
     //x of the mets array is valid for calculation for speeds up to the value x of the speeds
     //array.
     public abstract ArrayList<Double> getConsumedCaloriesBetweenPoints();
+
 
     public void setDataSpeedKph(Double dataSpeedKph) {
         this.dataSpeedKph = dataSpeedKph;

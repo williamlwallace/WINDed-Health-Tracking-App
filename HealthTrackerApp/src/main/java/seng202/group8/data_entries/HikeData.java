@@ -20,6 +20,7 @@ public class HikeData extends NotAssistedSportsData{
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList, theCurrentUser);
     }
 
+
     /**
      * Uses an accumulator and a special formula to sum the calories burned between each pair of points.
      * @return  The calories burned for this activity.
@@ -36,6 +37,7 @@ public class HikeData extends NotAssistedSportsData{
         return calories;
         //if (this.getHeartRateList() == 0);
     }
+
 
     /**
      * Calculates the calories burned between each pair of data points. These can be used to graph calories over time.

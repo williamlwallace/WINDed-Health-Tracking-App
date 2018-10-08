@@ -1,9 +1,9 @@
 package seng202.group8.activity_collection;
 
-import seng202.group8.activity_collection.ActivityList;
 
 /**
  * @author lfa69
+ * The interface all classes that want to observe the ActvityListCollection class need to implement
  */
 public interface ActivityListCollectionObserver {
 

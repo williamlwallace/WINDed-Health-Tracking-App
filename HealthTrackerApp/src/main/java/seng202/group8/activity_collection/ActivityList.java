@@ -11,10 +11,10 @@ import java.util.Date;
  */
 public class ActivityList {
 
-
     private String title;
     private Date creationDate;
     private ArrayList<Data> activityList;
+
 
     /**
      * Structure containing Activity object, offers storage, sort and retrieval of this objects.
@@ -25,6 +25,7 @@ public class ActivityList {
         activityList = new ArrayList<Data>();
     }
 
+
     /**
      * @param index index of Activity object to retrieve
      * @return Activity object at specified index
@@ -32,6 +33,7 @@ public class ActivityList {
     public Data getActivity(int index) {
         return activityList.get(index);
     }
+
 
     /**
      * @param activity a new Activity object to add to the activityList attribute
@@ -60,6 +62,7 @@ public class ActivityList {
         return title;
     }
 
+
     /**
      * @param newTitle a String object
      */
@@ -72,12 +75,14 @@ public class ActivityList {
         }
     }
 
+
     /**
      * @return the creationDate attribute
      */
     public Date getCreationDate() {
         return creationDate;
     }
+
 
     /**
      * @param newCreationDate a Date greater than the current date (if any present)
@@ -91,12 +96,14 @@ public class ActivityList {
         }
     }
 
+
     /**
      * @return the ArrayList<Activity> attribute
      */
     public ArrayList<Data> getActivityList() {
         return activityList;
     }
+
 
     /**
      * @param activityList an ArrayList<Activity> object

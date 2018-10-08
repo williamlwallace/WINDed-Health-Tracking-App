@@ -18,6 +18,7 @@ public class ActivityListCollection {
     private ArrayList<ActivityList> activityListCollection;
     private ArrayList<ActivityListCollectionObserver> observers;
 
+
     /**
      * Initialises the activityListCollection attribute to an empty ArrayList<ActivityList> object
      */
@@ -26,6 +27,7 @@ public class ActivityListCollection {
         activityListCollection = new ArrayList<ActivityList>();
         this.observers = new ArrayList<ActivityListCollectionObserver>();
     }
+
 
     /**
      *
@@ -50,6 +52,7 @@ public class ActivityListCollection {
         return i;
     }
 
+
     /**
      * Writen by Sam. Checks for a duplicate entry of a given title
      * @param title
@@ -66,6 +69,12 @@ public class ActivityListCollection {
         return toReturn;
     }
 
+    /**
+     *
+     * @param activityListIndex
+     * @return a boolean value representing if the activity list in activitiesListCollection
+     * property at index activityListIndex has been deleted
+     */
     public boolean deleteActivityList(int activityListIndex) {
         try {
             activityListCollection.remove(activityListIndex);
@@ -92,6 +101,7 @@ public class ActivityListCollection {
         }
     }
 
+
     /**
      *
      * @param activityListIndex
@@ -108,6 +118,7 @@ public class ActivityListCollection {
         }
         return true;
     }
+
 
     /**
      *
@@ -128,6 +139,7 @@ public class ActivityListCollection {
         }
         return sameTypeData;
     }
+
 
     /**
      *
@@ -167,6 +179,7 @@ public class ActivityListCollection {
         return activitiesAfterDate;
     }
 
+
     /**
      *
      * @return the Data object in activityListCollection that has been performed the latest
@@ -189,6 +202,10 @@ public class ActivityListCollection {
         return mostCurrentData;
     }
 
+    /**
+     *
+     * @returnan ArrayList<Data> object containing all the activities stored in activityListCollection property
+     */
     public ArrayList<Data> getAllData() {
 
         ArrayList<Data> activities = new ArrayList<Data>();
@@ -199,6 +216,7 @@ public class ActivityListCollection {
         }
         return activities;
     }
+
 
     /**
      * Part of the observer pattern, notifies all the observers of happened changes.
@@ -214,6 +232,7 @@ public class ActivityListCollection {
         observers.add(observer);
     }
 
+
     /**
      *
      * @return the String parameter title, the title of the ActivityListCollection object
@@ -221,6 +240,7 @@ public class ActivityListCollection {
     public String getTitle() {
         return title;
     }
+
 
     /**
      *
@@ -235,12 +255,14 @@ public class ActivityListCollection {
         }
     }
 
+
     /**
      * @return the activityListCollection attribute
      */
     public ArrayList<ActivityList> getActivityListCollection() {
         return activityListCollection;
     }
+
 
     /**
      * @param activityListCollection a ArrayList<ActivityList> object

@@ -36,14 +36,13 @@ public class SQLiteJDBC {
 
     private static Boolean isTest = false;
 
+
     public void setIsTest(Boolean isTest) {
         this.isTest = isTest;
     }
     public Boolean getIsTest() {
         return isTest;
     }
-
-
 
 
     /**
@@ -56,6 +55,7 @@ public class SQLiteJDBC {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDateTime();
     }
+
 
     /**
      * Converts a LocalDateTime object to a string suitable for storing in the database
@@ -87,6 +87,7 @@ public class SQLiteJDBC {
         return date;
     }
 
+
     /**
      * Converts a formatted String (retrieved from database) to a LocalDateTimeObject
      * @param dateString the formatted String retrieved from the database
@@ -97,6 +98,7 @@ public class SQLiteJDBC {
         localDateTime = LocalDateTime.parse(dateString);
         return localDateTime;
     }
+
 
     /**
      * Connect to the winded.db database
@@ -134,7 +136,6 @@ public class SQLiteJDBC {
      * @param sex the sex of the user as a String
      */
     private void insertUser(Connection connection, Integer id, String name, Double weight, Double height, Integer age, String sex) {
-
         String sql = "INSERT INTO user VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -159,7 +160,6 @@ public class SQLiteJDBC {
         }
 
     }
-
 
 
     /**
@@ -207,8 +207,8 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
+
 
     /**
      * Perform SQL Deletes to delete a users associated data via foreign keys
@@ -220,7 +220,6 @@ public class SQLiteJDBC {
         PreparedStatement preparedStatement;
         String findData = "SELECT data_id FROM Data WHERE user_id=?";
         try {
-
             PreparedStatement preparedStatementFind = connection.prepareStatement(findData);
             preparedStatementFind.setInt(1, userID);
             ResultSet resultSet = preparedStatementFind.executeQuery();
@@ -275,9 +274,6 @@ public class SQLiteJDBC {
 
             deleteGoals(connection, userID);
 
-
-
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -317,7 +313,6 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
 
@@ -343,6 +338,7 @@ public class SQLiteJDBC {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Perfoms an SQL Insert to put a heartrate into the table for a given activity
@@ -381,8 +377,6 @@ public class SQLiteJDBC {
             e.printStackTrace();
         }
     }
-
-
 
 
     /**
@@ -449,7 +443,6 @@ public class SQLiteJDBC {
     }
 
 
-
     /**
      * Written by Sam, Gets all of the phrases of a certain type from the database.
      * @param userId The ID of the user to get the keywords from
@@ -475,6 +468,7 @@ public class SQLiteJDBC {
         }
         return phrases;
     }
+
 
     /**
      * Written by Sam, adds a Parser key word to the database.
@@ -503,6 +497,7 @@ public class SQLiteJDBC {
         }
         return to_return;
     }
+
 
     /**
      * Written by Sam, checks for a duplicate of the sent in key word
@@ -535,6 +530,7 @@ public class SQLiteJDBC {
         return to_return;
     }
 
+
     /**
      * Written by Sam, deletes a parser key word from the database
      * @param userId
@@ -553,6 +549,7 @@ public class SQLiteJDBC {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Written by sam, receives the next user id for the new user
@@ -577,6 +574,7 @@ public class SQLiteJDBC {
         }
         return userID;
     }
+
 
     /**
      * Written by Sam, gets all of the key words and adds them to the parsers collection
@@ -604,6 +602,7 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
     }
+
 
     /**
      * Perform SQL Insert's to add weight records
@@ -639,8 +638,8 @@ public class SQLiteJDBC {
                 System.out.println(e.getMessage());
             }
         }
-
     }
+
 
     /**
      * Perform SQL Insert's to add bmi records to the database
@@ -676,8 +675,8 @@ public class SQLiteJDBC {
                 System.out.println(e.getMessage());
             }
         }
-
     }
+
 
     /**
      * Perform an SQL query to get the users weight records
@@ -709,6 +708,7 @@ public class SQLiteJDBC {
         }
         return  weightRecordArrayList;
     }
+
 
     /**
      * Perform an SQL Query to get the users BMI records
@@ -743,6 +743,7 @@ public class SQLiteJDBC {
         return  bmiRecordArrayList;
     }
 
+
     /**
      * Perform an SQL Insert to put an activity goal into the database
      * @param connection the connection to the database where the goals are to be stored
@@ -766,6 +767,7 @@ public class SQLiteJDBC {
         }
     }
 
+
     /**
      * Perform an SQL Insert to put a weight loss goal into the database
      * @param connection the connection to the database where the goals are to be stored
@@ -787,6 +789,7 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
     }
+
 
     /**
      * Perform an SQL Insert to put a frequency goal into the database
@@ -810,6 +813,7 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
     }
+
 
     /**
      * Get the users goals and store them all in the database
@@ -839,6 +843,7 @@ public class SQLiteJDBC {
 
     }
 
+
     /**
      * Perform SQL Deletes to remove all of the users goals from the database
      * @param connection the connection to the database where the goals need to be removed from
@@ -864,8 +869,8 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
+
 
     /**
      * Perform SQL queries to get all goals of all types for a user from the database
@@ -924,9 +929,6 @@ public class SQLiteJDBC {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
-
-
     }
 
 
@@ -993,6 +995,7 @@ public class SQLiteJDBC {
 
         return listOfActivities;
     }
+
 
     /**
      * Perform an SQL select to get Data objects for an Activity List
@@ -1066,7 +1069,6 @@ public class SQLiteJDBC {
                     data.setDataId(dataID);
                     activityListData.add(data);
                 }
-
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -1074,6 +1076,7 @@ public class SQLiteJDBC {
         return activityListData;
 
     }
+
 
     /**
      * Perform an SQL select to get an activities heart rate list
@@ -1095,8 +1098,6 @@ public class SQLiteJDBC {
                 heartRate = resultSet.getInt("HeartRateBPM");
                 heartRateData.add(heartRate);
             }
-
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -1130,8 +1131,8 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
         return dateData;
-
     }
+
 
     /**
      * Perform an SQL select to get an activities coordinates list
@@ -1212,6 +1213,7 @@ public class SQLiteJDBC {
         }
     }
 
+
     /**
      * Perform the SQL Updates for modifying an activity
      * @param data the data object that is being changed
@@ -1273,6 +1275,7 @@ public class SQLiteJDBC {
             System.out.println(e.getMessage());
         }
     }
+
 
     /**
      * Perform SQL deletes to delete an activity list along with all its data
@@ -1359,18 +1362,16 @@ public class SQLiteJDBC {
                     insertActivityTime(connection, newDataId, localDateTime.toString());
                 }
             }
-
             connection.commit();
             //preparedStatement.close();
             connection.close();
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
 
     }
+
 
     /**
      * Perform an SQL update to update the activity list collection of the user
@@ -1428,6 +1429,7 @@ public class SQLiteJDBC {
 
     }
 
+
     /**
      * Gets the next data Id to assign to a new data object to be stored
      * @return the next DataId available in the database
@@ -1448,10 +1450,7 @@ public class SQLiteJDBC {
         }
 
         return newId + 1;
-
-
     }
-
 
 
     /**
@@ -1540,6 +1539,8 @@ public class SQLiteJDBC {
         return to_return;
     }
     */
+
+
     /**
      * Performs the necessary database function to retrieve a user along with all its data from the database
      * @return a new User object representing the User asked for
@@ -1595,7 +1596,10 @@ public class SQLiteJDBC {
     }
 
 
-
+    /**
+     *
+     * Erases all the data in the database, used for testing and package the clean jar file.
+     */
     public static void main(String[] args) {
         SQLiteJDBC newDataBaseJDBC = new SQLiteJDBC();
         newDataBaseJDBC.deleteAllData();

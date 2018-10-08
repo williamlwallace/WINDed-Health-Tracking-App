@@ -14,6 +14,7 @@ import java.util.Collections;
  */
 public class HeartRateData {
 
+
     private ArrayList<Integer> heartRateList;
     private ArrayList<Integer> sortedHeartRateList;
     private int meanAverageHeartRate;
@@ -81,41 +82,51 @@ public class HeartRateData {
         return heartRateList;
     }
 
+
     public void setHeartRateList(ArrayList<Integer> heartRateList) {
         this.heartRateList = heartRateList;
     }
+
 
     public void setMeanAverageHeartRate(int meanAverageHeartRate) {
         this.meanAverageHeartRate = meanAverageHeartRate;
     }
 
+
     public int getMedianIndex() {
         return medianIndex;
     }
+
 
     public void setMedianIndex(int medianIndex) {
         this.medianIndex = medianIndex;
     }
 
+
     public int getMedianHeartRate() {
         return medianHeartRate;
     }
+
 
     public void setMedianHeartRate(int medianHeartRate) {
         this.medianHeartRate = medianHeartRate;
     }
 
+
     public int getStandardDeviation() {
         return standardDeviation;
     }
+
 
     public void setStandardDeviation(int standardDeviation) {
         this.standardDeviation = standardDeviation;
     }
 
+
     public int getHighestHeartRate() {
         return highestHeartRate;
     }
+
 
     private void setHighestHeartRate() {
         if (this.sortedHeartRateList.size() == 0) {
@@ -125,9 +136,11 @@ public class HeartRateData {
         }
     }
 
+
     public int getLowestHeartRate() {
         return lowestHeartRate;
     }
+
 
     private void setLowestHeartRate() {
         if (this.sortedHeartRateList.size() == 0) {

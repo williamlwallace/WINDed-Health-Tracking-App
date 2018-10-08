@@ -45,11 +45,8 @@ public class NewDataDialog extends Application {
         RunData testData = new RunData("testDistance", DataType.RUN, localTimes, coordinateList, heartRates, user);
         user.getUserActivities().insertActivityList(new ActivityList("TESTS"));
         user.getUserActivities().insertActivityInGivenList(0, testData);
-//        for (int i = 0; i < dataList.size(); i++) {
-//            user.getUserActivities().insertActivityInGivenList(0, dataList.get(i));
-//            System.out.println(dataList.get(i).getHeartRateList());
-//        }
     }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {

@@ -12,12 +12,15 @@ import java.util.ArrayList;
  * became unnecessary, and so this abstract class level performs no significant function.
  */
 public abstract class AssistedSportsData extends Data {
+
     public AssistedSportsData(String newTitle, DataType dataType, ArrayList<LocalDateTime> newDateTimes,
                               ArrayList<CoordinateData> newCoordinatesList, ArrayList<Integer> newHeartRateList, User theCurrentUser) {
         super(newTitle, dataType, newDateTimes, newCoordinatesList, newHeartRateList, theCurrentUser);
     }
 
+
     public abstract double getConsumedCalories();
+
 
     public abstract ArrayList<Double> getConsumedCaloriesBetweenPoints();
 }

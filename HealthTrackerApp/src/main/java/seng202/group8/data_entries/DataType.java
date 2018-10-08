@@ -7,7 +7,6 @@ package seng202.group8.data_entries;
  * date of their first data upload.
  */
 public enum DataType {
-
     WALK,
     RUN,
     HIKE,
@@ -19,6 +18,7 @@ public enum DataType {
     ASSISTED_SPORTS_DATA,
     NOT_ASSISTED_SPORTS_DATA,
     ALL;
+
 
     /**
      * This function returns the enumerator value that matches the input string.
@@ -69,6 +69,7 @@ public enum DataType {
                 return "Water Sport";
         }
     }
+
 
     /**
      * This function returns an array of the different data types that are available.
