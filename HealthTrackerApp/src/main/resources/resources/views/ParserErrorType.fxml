@@ -69,8 +69,8 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #c90909;" text="Cancel" />
-            <Button mnemonicParsing="false" onAction="#enter" style="-fx-background-color: #2e86c1;" text="Parse Again" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #c90909;" text="CANCEL" />
+            <Button mnemonicParsing="false" onAction="#enter" style="-fx-background-color: #2e86c1;" text="PARSE AGAIN" GridPane.columnIndex="2" />
             <CheckBox fx:id="rememberTick" mnemonicParsing="false" text="Remember Phrase?" GridPane.columnIndex="1" />
          </children>
     </GridPane>
