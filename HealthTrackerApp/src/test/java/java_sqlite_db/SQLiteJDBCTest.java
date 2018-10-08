@@ -102,14 +102,36 @@ public class SQLiteJDBCTest {
     }
 
     @Test
+    public void testKeywords() {
+        // checking if added a keyword works.
+        database.addParserKeyword(testUser.getUserID(), "test", 1);
+        ArrayList<String> keywords = database.getKeyWordsByType(testUser.getUserID(), 1);
+        for (String s : keywords) {
+            assertEquals(s, "test");
+        }
+        // Checking now if duplicate keywords arn't accepted
+        assertEquals(false, database.addParserKeyword(testUser.getUserID(), "test", 1));
+        assertEquals(false, database.addParserKeyword(testUser.getUserID(), "testing", 1));
+        assertEquals(false, database.addParserKeyword(testUser.getUserID(), "tes", 1));
+        keywords = database.getKeyWordsByType(testUser.getUserID(), 1);
+        for (String s : keywords) {
+            assertEquals(s, "test");
+        }
+        // Testing if keyword can be deleted.
+        database.deleteParserKeyword(testUser.getUserID(), "test");
+        keywords = database.getKeyWordsByType(testUser.getUserID(), 1);
+        assertEquals(0, keywords.size());
+    }
+
+
     public void testSaveUser() {
         database.saveUser(testUser, 1);
         User retrievedUser = database.retrieveUser(1);
         Boolean isEqualUser = (testUser.getName().equals(retrievedUser.getName())
-                            && testUser.getAge().equals(retrievedUser.getAge())
-                            && testUser.getWeight().equals(retrievedUser.getWeight())
-                            && testUser.getHeight().equals(retrievedUser.getHeight())
-                            && testUser.getSex().equals(retrievedUser.getSex()));
+                && testUser.getAge().equals(retrievedUser.getAge())
+                && testUser.getWeight().equals(retrievedUser.getWeight())
+                && testUser.getHeight().equals(retrievedUser.getHeight())
+                && testUser.getSex().equals(retrievedUser.getSex()));
         assertTrue(isEqualUser);
     }
 
